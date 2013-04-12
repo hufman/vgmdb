@@ -1,15 +1,15 @@
-import BeautifulSoup
+import bs4
 
 def parse_artist_page(html_source):
 	artist_info = {}
-	soup = BeautifulSoup.BeautifulSoup(html_source)
-	soup_profile = soup.findAll(id='innermain')[0]
+	soup = bs4.BeautifulSoup(html_source)
+	soup_profile = soup.find_all(id='innermain')[0]
 
-	soup_name = soup_profile.findAll('span', recursive=False)[1]
+	soup_name = soup_profile.find_all('span', recursive=False)[1]
 	artist_info['name'] = soup_name.string.strip()
 
 	soup_profile = soup_profile.div
-	(soup_profile_left,soup_profile_right) = soup_profile.findAll('div', recursive=False, limit=2)
+	(soup_profile_left,soup_profile_right) = soup_profile.find_all('div', recursive=False, limit=2)
 
 	# Determine sex
 	soup_profile_sex_image = soup_profile_left.img
@@ -51,26 +51,26 @@ def _parse_full_name(japan_name):
 
 def _parse_profile_info(soup_profile_left):
 	ret = {}
-	for soup_item in soup_profile_left.findAll('div', recursive=False)[1:]:
+	for soup_item in soup_profile_left.find_all('div', recursive=False)[1:]:
 		item_name = soup_item.b.string.strip()
 		item_list = []
 		list_item_pre = soup_item.br
 		while list_item_pre:
 			soup_item_data = list_item_pre.next
-			if isinstance(soup_item_data, BeautifulSoup.NavigableString):
+			if isinstance(soup_item_data, bs4.NavigableString):
 				texts = []
-				while isinstance(soup_item_data, BeautifulSoup.NavigableString):
+				while isinstance(soup_item_data, bs4.NavigableString):
 					texts.append(unicode(soup_item_data))
 					soup_item_data = soup_item_data.next
 				text = ''.join(texts).strip()
 				if len(text) > 0:
 					item_list.append(text)
-			if isinstance(soup_item_data, BeautifulSoup.Tag):
+			if isinstance(soup_item_data, bs4.Tag):
 				item_data = {}
 				if soup_item_data.name == 'a':
 					item_data['link'] = soup_item_data['href']
 					item_data['name'] = soup_item_data.string
-					pic_tag = soup_item_data.findNextSibling('img')
+					pic_tag = soup_item_data.find_next_sibling('img')
 					if pic_tag:
 						if pic_tag['src'] == 'http://media.vgmdb.net/img/owner.gif':
 							item_data['owner'] = 'true'
@@ -78,10 +78,10 @@ def _parse_profile_info(soup_profile_left):
 				if soup_item_data.name == 'div' and \
 				  soup_item_data.has_key('class') and \
 				  'star' in soup_item_data['class']:
-					total_stars = soup_item.findAll('div', 'star')
-					stars = soup_item.findAll('div', 'star_on')
+					total_stars = soup_item.find_all('div', 'star')
+					stars = soup_item.find_all('div', 'star_on')
 					item_list.append('%s/%s'%(len(stars),len(total_stars)))
-					soup_votes = soup_item.findAll('div')[-1]
+					soup_votes = soup_item.find_all('div')[-1]
 					ret['Album Votes'] = soup_votes.contents[0].string + \
 					  soup_votes.contents[1] + \
 					  soup_votes.contents[2].string + \
@@ -89,10 +89,10 @@ def _parse_profile_info(soup_profile_left):
 				if soup_item_data.name == 'span' and \
 				  soup_item_data.has_key('class') and \
 				  'time' in soup_item_data['class']:
-					item_list.append(soup_item_data.string + soup_item_data.nextSibling)
+					item_list.append(soup_item_data.string + soup_item_data.next_sibling)
 					
 
-			list_item_pre = list_item_pre.findNextSibling('br')
+			list_item_pre = list_item_pre.find_next_sibling('br')
 		if len(item_list) == 0:
 			continue
 		if len(item_list) == 1:
