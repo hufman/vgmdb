@@ -86,6 +86,15 @@ def _parse_profile_info(soup_profile_left):
 					if pic_tag:
 						if pic_tag['src'] == 'http://media.vgmdb.net/img/owner.gif':
 							item_data['owner'] = 'true'
+					soup_names = soup_item_data.find_all('span', "artistname")
+					if len(soup_names) > 0:
+						del item_data['name']
+						names = {}
+						for soup_name in soup_names:
+							lang = soup_name['lang']
+							name = soup_name.string
+							names[lang] = name
+						item_data['names'] = names
 					item_list.append(item_data)
 				if soup_item_data.name == 'div' and \
 				  soup_item_data.has_key('class') and \
