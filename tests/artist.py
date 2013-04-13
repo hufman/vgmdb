@@ -33,6 +33,13 @@ class TestArtists(unittest.TestCase):
 		self.assertEqual(u'植松 伸夫', name_info['name_real'])
 		self.assertEqual(u'うえまつ のぶお', name_info['name_trans'])
 
+	def test_black_mages_name(self):
+		""" no trans name """
+		blackmages_name = u"ザ・ブラックメイジーズ"
+		name_info = artist._parse_full_name(blackmages_name)
+		self.assertEqual(u'ザ・ブラックメイジーズ', name_info['name_real'])
+		self.assertTrue(not name_info.has_key('name_trans'))
+
 	def test_sungwoon_name(self):
 		""" Korean name """
 		sung_name = u"장 성운 (ジャン ソンウン)"

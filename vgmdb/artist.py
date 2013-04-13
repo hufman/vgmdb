@@ -48,7 +48,7 @@ def parse_artist_page(html_source):
 def _parse_full_name(japan_name):
 	name_data = {}
 	if len(japan_name) > 0:
-		if japan_name.find('('):
+		if japan_name.find('(') >= 0:
 			(orig_name, gana_name) = japan_name.split('(',1)
 			gana_name = gana_name[0:-1]	# strip )
 			orig_name = orig_name.strip()
