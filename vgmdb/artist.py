@@ -39,9 +39,11 @@ def parse_artist_page(html_source):
 
 	# Parse Discography
 	soup_disco_table = soup_profile_right.br.find_next_sibling('div').find_next_sibling('div').div.table
-	artist_info['discography'] = _parse_discography(soup_disco_table)
+	if soup_disco_table:
+		artist_info['discography'] = _parse_discography(soup_disco_table)
 	soup_featured_table = soup_profile_right.br.find_next_sibling('br').find_next_sibling('div').find_next_sibling('div').div.table
-	artist_info['featured_on'] = _parse_discography(soup_featured_table)
+	if soup_featured_table:
+		artist_info['featured_on'] = _parse_discography(soup_featured_table)
 
 	return artist_info
 
