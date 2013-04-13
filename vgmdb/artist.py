@@ -3,13 +3,14 @@ import bs4
 def parse_artist_page(html_source):
 	artist_info = {}
 	soup = bs4.BeautifulSoup(html_source)
-	soup_profile = soup.find_all(id='innermain')[0]
+	soup_profile = soup.find(id='innermain')
 
 	soup_name = soup_profile.find_all('span', recursive=False)[1]
 	artist_info['name'] = soup_name.string.strip()
 
 	soup_profile = soup_profile.div
 	(soup_profile_left,soup_profile_right) = soup_profile.find_all('div', recursive=False, limit=2)
+	soup_right_column = soup.find(id='rightcolumn')
 
 	# Determine sex
 	soup_profile_sex_image = soup_profile_left.img
@@ -44,6 +45,11 @@ def parse_artist_page(html_source):
 	soup_featured_table = soup_profile_right.br.find_next_sibling('br').find_next_sibling('div').find_next_sibling('div').div.table
 	if soup_featured_table:
 		artist_info['featured_on'] = _parse_discography(soup_featured_table)
+
+	# Parse for Websites
+	soup_divs = soup_right_column.find_all('div', recursive=False)
+	if soup_divs[0].div and soup_divs[0].div.h3 and soup_divs[0].div.h3.string == 'Websites':
+		artist_info['websites'] = _parse_websites(soup_divs[1].div)
 
 	return artist_info
 
@@ -169,3 +175,20 @@ def _normalize_date(weird_date):
 	elements = weird_date.split('.')
 	output = [x for x in elements if len(x)>0 and x[0]!='?']
 	return '-'.join(output)
+
+def _parse_websites(soup_websites):
+	""" Given an array of divs containing website information """
+	sites = {}
+	for soup_category in soup_websites.find_all('div', recursive=False):
+		category = soup_category.b.string
+		soup_links = soup_category.find_all('a', recursive=False)
+		links = []
+		for soup_link in soup_links:
+			link = soup_link['href']
+			name = soup_link.string
+			if link[0:9] == '/redirect':
+				slashpos = link.find('/', 10)
+				link = 'http://'+link[slashpos+1:]
+			links.append({"link":link,"name":name})
+		sites[category] = links
+	return sites
