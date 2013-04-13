@@ -13,9 +13,18 @@ class TestArtists(unittest.TestCase):
 	def test_nobuo(self):
 		nobuo_code = file(os.path.join(base, 'artist_nobuo.html'), 'r').read()
 		nobuo = artist.parse_artist_page(nobuo_code)
-		print(nobuo)
-		self.assertEqual(nobuo['name'], 'Nobuo Uematsu')
-		self.assertEqual(nobuo['sex'], 'male')
+		self.assertEqual(u'Nobuo Uematsu', nobuo['name'])
+		self.assertEqual(u'male', nobuo['sex'])
+		self.assertEqual(u'Mar 21, 1959', nobuo['info']['Birthdate'])
+		self.assertEqual(1, len(nobuo['info']['Organizations']))
+		self.assertEqual(u'Dog Ear Records', nobuo['info']['Organizations'][0]['name'])
+		self.assertEqual(u'CRUISE CHASER BLASSTY', nobuo['discography'][0]['titles']['en'])
+		self.assertEqual(u'/album/11113', nobuo['discography'][0]['link'])
+		self.assertEqual(u'/album/719', nobuo['featured_on'][0]['link'])
+		self.assertEqual(u'bonus', nobuo['discography'][0]['type'])
+		self.assertEqual(u'1986-04-26', nobuo['discography'][0]['date'])
+		self.assertEqual(u'H25X-20015', nobuo['discography'][2]['catalog'])
+		self.assertTrue(u'Composer' in nobuo['discography'][0]['roles'])
 
 	def test_nobuo_name(self):
 		""" Japanese name """
@@ -36,3 +45,16 @@ class TestArtists(unittest.TestCase):
 		jeremy_name = u""
 		name_info = artist._parse_full_name(jeremy_name)
 		self.assertEqual(0, len(name_info.keys()))
+
+	def test_year(self):
+		""" Make sure that weird dates with unknown month and days work """
+		date = artist._normalize_date("2007.??.??")
+		self.assertEqual("2007", date)
+	def test_month(self):
+		""" Make sure that weird dates with unknown days work """
+		date = artist._normalize_date("2007.02.??")
+		self.assertEqual("2007-02", date)
+	def test_day(self):
+		""" Make sure that conversion from YYYY.MM.DD to YYYY-MM-DD works """
+		date = artist._normalize_date("2007.02.20")
+		self.assertEqual("2007-02-20", date)

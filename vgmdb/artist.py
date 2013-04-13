@@ -33,6 +33,16 @@ def parse_artist_page(html_source):
 	# Parse info
 	artist_info['info'] = _parse_profile_info(soup_profile_left)
 
+	# Parse Notes
+	soup_notes = soup_profile_right.div.find_next_sibling('div').div
+	artist_info['notes'] = soup_notes.contents[0].string if isinstance(soup_notes.contents[0], bs4.Tag) else soup_notes.string
+
+	# Parse Discography
+	soup_disco_table = soup_profile_right.br.find_next_sibling('div').find_next_sibling('div').div.table
+	artist_info['discography'] = _parse_discography(soup_disco_table)
+	soup_featured_table = soup_profile_right.br.find_next_sibling('br').find_next_sibling('div').find_next_sibling('div').div.table
+	artist_info['featured_on'] = _parse_discography(soup_featured_table)
+
 	return artist_info
 
 def _parse_full_name(japan_name):
@@ -95,11 +105,56 @@ def _parse_profile_info(soup_profile_left):
 			list_item_pre = list_item_pre.find_next_sibling('br')
 		if len(item_list) == 0:
 			continue
-		if len(item_list) == 1:
+		if len(item_list) == 1 and isinstance(item_list[0], unicode):
 			ret[item_name] = item_list[0]
-		if len(item_list) > 1:
+		else:
 			ret[item_name] = item_list
 	return ret
 
+def _parse_discography(soup_disco_table):
+	albums = []
+	for soup_tbody in soup_disco_table.find_all("tbody", recursive=False):
+		soup_rows = soup_tbody.find_all("tr", recursive=False)
+		year = soup_rows[0].find('h3').string
+		for soup_album_tr in soup_rows[1:]:
+			soup_cells = soup_album_tr.find_all('td')
+			month_day = soup_cells[0].string
+			soup_album = soup_cells[1].a
+			link = soup_album['href']
+			link = link[len("http://vgmdb.net"):] if link[0:7]=="http://" else link
+			album_type = soup_album['class'][1].split('-')[1]
+			soup_album_info = soup_cells[1].find_all('span', recursive=False)
+			catalog = soup_album_info[0].string
+			roles_str = soup_album_info[1].string
+			roles = roles_str.split(',')
+			roles = [x.strip() for x in roles]
+			date = _normalize_date("%s.%s"%(year, month_day))
 
+			titles = {}
+			for soup_title in soup_album.find_all('span', recursive=False):
+				title_lang = soup_title['lang'].lower()
+				title_text = ""
+				for child in soup_title.children:
+					if isinstance(child, bs4.Tag):
+						continue
+					title_text = unicode(child)
+					title_text = title_text.strip().strip('"')
+				if title_lang and title_text:
+					titles[title_lang] = title_text
 
+			album_info = {
+			    "date": date,
+			    "roles": roles,
+			    "titles": titles,
+			    "catalog": catalog,
+			    "link": link,
+			    "type": album_type
+			}
+			albums.append(album_info)
+	return albums
+
+def _normalize_date(weird_date):
+	""" Given a string like 2005.01.??, return 2005-01 """
+	elements = weird_date.split('.')
+	output = [x for x in elements if len(x)>0 and x[0]!='?']
+	return '-'.join(output)
