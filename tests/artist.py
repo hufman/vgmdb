@@ -26,6 +26,7 @@ class TestArtists(unittest.TestCase):
 		self.assertEqual(u'H25X-20015', nobuo['discography'][2]['catalog'])
 		self.assertTrue(u'Composer' in nobuo['discography'][0]['roles'])
 		self.assertEqual(u'DOGEARRECORDS', nobuo['websites']['Official'][0]['name'])
+		self.assertEqual('UematsuNobuo', nobuo['twitter_names'][0])
 
 	def test_nobuo_name(self):
 		""" Japanese name """

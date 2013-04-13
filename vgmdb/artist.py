@@ -51,6 +51,22 @@ def parse_artist_page(html_source):
 	if soup_divs[0].div and soup_divs[0].div.h3 and soup_divs[0].div.h3.string == 'Websites':
 		artist_info['websites'] = _parse_websites(soup_divs[1].div)
 
+	# Parse for twitter handle
+	twitters = []
+	soup_twitters = soup_right_column.find_all('script')
+	for soup_twitter in soup_twitters:
+		widget_code = unicode(soup_twitter)
+		index = widget_code.find("setUser('")
+		if index > -1:
+			index = index + 9
+			end = widget_code.find("'", index)
+			twitter = widget_code[index:end]
+			twitters.append(twitter)
+
+	if len(twitters) > 0:
+		artist_info['twitter_names'] = twitters
+
+
 	return artist_info
 
 def _parse_full_name(japan_name):
