@@ -97,9 +97,3 @@ class TestAlbums(unittest.TestCase):
 		invalid = '<table><tr></tr></tr></table>'
 		correct = '<table><tr></tr></table>'
 		self.assertEqual(correct, album._fix_invalid_table(invalid))
-
-	def test_date_parse(self):
-		date = "Aug 3, 2006 01:33 AM"
-		self.assertEqual("2006-08-03T01:33", album._parse_album_info_time(date))
-		date = "Oct 04, 2000"
-		self.assertEqual("2000-10-04", album._parse_album_info_time(date))

@@ -1,5 +1,7 @@
 import bs4
 
+import utils
+
 def parse_album_page(html_source):
 	album_info = {}
 	html_source = _fix_invalid_table(html_source)
@@ -277,7 +279,7 @@ def _parse_section_related_albums(soup_div):
 			catalog = soup_rows[1].span.string.strip()
 			names = _parse_names(soup_rows[0].a)
 			album_type = soup_rows[0].a['class'][-1].split('-')[1]
-			date = _parse_album_info_time(soup_rows[2].string.strip())
+			date = utils.parse_date_time(soup_rows[2].string.strip())
 			link = soup_rows[0].a['href']
 			if link[:len("http://vgmdb.net/")] == 'http://vgmdb.net/':
 				link = link[len("http://vgmdb.net/"):]
@@ -356,12 +358,12 @@ def _parse_section_info(soup_section):
 		if label == 'Added':
 			date = soup_div.br.next.string.strip()
 			time = soup_div.span.string.strip()
-			time = _parse_album_info_time("%s %s"%(date, time))
+			time = utils.parse_date_time("%s %s"%(date, time))
 			album_info['added_date'] = time
 		if label == 'Edited':
 			date = soup_div.br.next.string.strip()
 			time = soup_div.span.string.strip()
-			time = _parse_album_info_time("%s %s"%(date, time))
+			time = utils.parse_date_time("%s %s"%(date, time))
 			album_info['edited_date'] = time
 		if label == 'Page traffic':
 			soup_rows = soup_div.find_all('span', recursive=False)
@@ -371,23 +373,4 @@ def _parse_section_info(soup_section):
 			except:
 				pass	# who puts a not-number in a page counter?
 	return album_info
-
-def _parse_album_info_time(time):
-	months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', \
-	          'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-	month = time[0:3]
-	month = months.index(month) + 1
-	comma = time.find(',')
-	day = int(time[4:comma])
-	year = int(time[comma+2:comma+2+4])
-	timepos = comma+2+4+1
-	if timepos >= len(time):		# there is not a time to parse
-		return "%02d-%02d-%02d"%(year,month,day)
-	else:
-		hour = int(time[timepos:timepos+2])
-		minute = int(time[timepos+3:timepos+5])
-		ampm = time[timepos+6:timepos+8]
-		if ampm == 'PM':
-			hour += 12
-		return "%02d-%02d-%02dT%02d:%02d"%(year,month,day,hour,minute)
 
