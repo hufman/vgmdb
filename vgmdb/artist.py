@@ -33,6 +33,7 @@ def parse_artist_page(html_source):
 
 	# Parse info
 	artist_info['info'] = _parse_profile_info(soup_profile_left)
+	artist_info.update(_promote_profile_info(artist_info['info']))
 
 	# Parse Notes
 	soup_notes = soup_profile_right.div.find_next_sibling('div').div
@@ -143,6 +144,25 @@ def _parse_profile_info(soup_profile_left):
 		else:
 			ret[item_name] = item_list
 	return ret
+
+def _promote_profile_info(profile_info):
+	artist_info = {}
+	promote_types = {'aliases':'Aliases',
+	                 'members':'Members',
+	                 'units':'Units',
+	                 'organizations':'Organizations'}
+	for promote_key, info_key in promote_types.items():
+		if not profile_info.has_key(info_key):
+			continue
+		artist_info[promote_key] = []
+		for improper in profile_info[info_key]:
+			proper = {}
+			if isinstance(improper,basestring):
+				proper['name'] = improper
+			else:
+				proper = improper
+			artist_info[promote_key].append(proper)
+	return artist_info
 
 def _parse_discography(soup_disco_table):
 	albums = []
