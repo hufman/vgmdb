@@ -1,5 +1,7 @@
 import bs4
 
+from . import utils
+
 def parse_artist_page(html_source):
 	artist_info = {}
 	soup = bs4.BeautifulSoup(html_source)
@@ -147,6 +149,8 @@ def _parse_profile_info(soup_profile_left):
 
 def _promote_profile_info(profile_info):
 	artist_info = {}
+	if profile_info.has_key('Birthdate'):
+		artist_info['birthdate'] = utils.parse_date_time(profile_info['Birthdate']);
 	promote_types = {'aliases':'Aliases',
 	                 'members':'Members',
 	                 'units':'Units',

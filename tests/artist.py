@@ -16,6 +16,7 @@ class TestArtists(unittest.TestCase):
 		self.assertEqual(u'Nobuo Uematsu', nobuo['name'])
 		self.assertEqual(u'male', nobuo['sex'])
 		self.assertEqual(u'Mar 21, 1959', nobuo['info']['Birthdate'])
+		self.assertEqual('1959-03-21', nobuo['birthdate'])
 		self.assertEqual(1, len(nobuo['info']['Organizations']))
 		self.assertEqual(1, len(nobuo['organizations']))
 		self.assertEqual(u'Dog Ear Records', nobuo['info']['Organizations'][0]['name'])
