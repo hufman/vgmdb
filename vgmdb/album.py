@@ -1,6 +1,6 @@
 import bs4
 
-import utils
+from . import utils
 
 def parse_album_page(html_source):
 	album_info = {}
