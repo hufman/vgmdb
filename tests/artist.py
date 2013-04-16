@@ -67,3 +67,9 @@ class TestArtists(unittest.TestCase):
 		""" Make sure that conversion from YYYY.MM.DD to YYYY-MM-DD works """
 		date = artist._normalize_date("2007.02.20")
 		self.assertEqual("2007-02-20", date)
+
+	def test_ss(self):
+		ss_code = file(os.path.join(base, 'artist_ss.html'), 'r').read()
+		ss = artist.parse_artist_page(ss_code)
+		self.assertEqual(u'Composer (as HAPPY-SYNTHESIZER)', ss['discography'][12]['roles'][0])
+		self.assertEqual(u'Arranger (as (S_S))', ss['discography'][13]['roles'][0])

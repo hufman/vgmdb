@@ -158,7 +158,12 @@ def _parse_discography(soup_disco_table):
 			album_type = soup_album['class'][1].split('-')[1]
 			soup_album_info = soup_cells[1].find_all('span', recursive=False)
 			catalog = soup_album_info[0].string
-			roles_str = soup_album_info[1].string
+			roles_str = ''
+			for soup_node in soup_album_info[1].children:
+				if isinstance(soup_node, bs4.Tag):
+					roles_str += soup_node.string
+				else:
+					roles_str += unicode(soup_node)
 			roles = roles_str.split(',')
 			roles = [x.strip() for x in roles]
 			date = _normalize_date("%s.%s"%(year, month_day))
