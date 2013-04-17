@@ -1,6 +1,34 @@
 
 import bs4
 
+def fix_invalid_table(html_source):
+	# fix missing </table>
+	start = 0
+	while True:
+		start = html_source.find('<table', start+1)
+		if start == -1:
+			break
+		prevtag_end = html_source.rfind('>', max(0,start-40), start)
+		prevtag_start = html_source.rfind('<', max(0,start-40), prevtag_end)
+		prevtag = html_source[prevtag_start:prevtag_end+1]
+		if prevtag == '</tr>':
+			html_source = html_source[:prevtag_end+1] + "</table>" + html_source[prevtag_end+1:]
+			start = html_source.find('<table', prevtag_start)
+
+	# fix duplicate </tr>
+	start = 0
+	while True:
+		start = html_source.find('</tr>', start+1)
+		if start == -1:
+			break
+		prevtag_end = html_source.rfind('>', max(0,start-40), start)
+		prevtag_start = html_source.rfind('<', max(0,start-40), prevtag_end)
+		prevtag = html_source[prevtag_start:prevtag_end+1]
+		if prevtag == '</tr>':
+			html_source = html_source[:prevtag_start] + html_source[prevtag_end+1:]
+			start = prevtag_end
+	return html_source
+
 def parse_date_time(time):
 	"""
 	Receives a string like Mar 23, 1223

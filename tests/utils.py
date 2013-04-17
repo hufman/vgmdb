@@ -39,3 +39,10 @@ class TestUtils(unittest.TestCase):
 		date = utils.normalize_dashed_date("2007-2")
 		self.assertEqual("2007-02", date)
 
+	def test_invalid_html(self):
+		invalid = '<table><tr></tr><table five>asdf</table><table>'
+		correct = '<table><tr></tr></table><table five>asdf</table><table>'
+		self.assertEqual(correct, utils.fix_invalid_table(invalid))
+		invalid = '<table><tr></tr></tr></table>'
+		correct = '<table><tr></tr></table>'
+		self.assertEqual(correct, utils.fix_invalid_table(invalid))

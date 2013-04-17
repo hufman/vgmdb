@@ -90,10 +90,3 @@ class TestAlbums(unittest.TestCase):
 		self.assertEqual('2000-10-04', blooming['related'][1]['date'])
 		self.assertEqual('CD Japan (OOP)', blooming['stores'][0]['name'])
 
-	def test_invalid_html(self):
-		invalid = '<table><tr></tr><table five>asdf</table><table>'
-		correct = '<table><tr></tr></table><table five>asdf</table><table>'
-		self.assertEqual(correct, album._fix_invalid_table(invalid))
-		invalid = '<table><tr></tr></tr></table>'
-		correct = '<table><tr></tr></table>'
-		self.assertEqual(correct, album._fix_invalid_table(invalid))
