@@ -114,6 +114,12 @@ def parse_discography(soup_disco_table, label_type='roles'):
 				if title_lang and title_text:
 					titles[title_lang] = title_text
 
+			reprint = False
+			for soup_tag in soup_cells[1].find_all('img', recursive=False):
+				if soup_tag.has_key('alt') and \
+				   soup_tag['alt'] == 'This album is a reprint':
+					reprint = True
+
 			album_info = {
 			    "date": date,
 			    label_type: roles,
@@ -122,6 +128,9 @@ def parse_discography(soup_disco_table, label_type='roles'):
 			    "link": link,
 			    "type": album_type
 			}
+			if reprint:
+				album_info['reprint'] = True
+
 			albums.append(album_info)
 	albums = sorted(albums, key=lambda e:e['date'])
 	return albums
