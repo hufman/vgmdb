@@ -37,6 +37,8 @@ def parse_date_time(time):
 		return "%02d-%02d-%02dT%02d:%02d"%(year,month,day,hour,minute)
 
 def normalize_separated_date(weird_date, split):
+	if not weird_date:
+		return None
 	elements = weird_date.split(split)
 	output = [int(x) for x in elements if len(x)>0 and x[0]!='?']
 	stringed_output = ["%04i"%output[0]]
