@@ -141,14 +141,28 @@ def parse_meta(soup_meta_section):
 	for soup_div in soup_divs:
 		label = soup_div.b.string.strip()
 		if label == 'Added':
-			date = soup_div.br.next.string.strip()
+			date = soup_div.br.next_sibling.string.strip()
 			time = soup_div.span.string.strip()
 			time = parse_date_time("%s %s"%(date, time))
 			meta_info['added_date'] = time
-		if label == 'Edited':
-			date = soup_div.br.next.string.strip()
+		if label == 'Added by':
+			name = soup_div.b.next_sibling.string.strip()
+			date = soup_div.br.next_sibling.string.strip()
 			time = soup_div.span.string.strip()
 			time = parse_date_time("%s %s"%(date, time))
+			meta_info['added_user'] = name
+			meta_info['added_date'] = time
+		if label == 'Edited':
+			date = soup_div.br.next_sibling.string.strip()
+			time = soup_div.span.string.strip()
+			time = parse_date_time("%s %s"%(date, time))
+			meta_info['edited_date'] = time
+		if label == 'Edited by':
+			name = soup_div.b.next_sibling.string.strip()
+			date = soup_div.br.next_sibling.string.strip()
+			time = soup_div.span.string.strip()
+			time = parse_date_time("%s %s"%(date, time))
+			meta_info['edited_user'] = name
 			meta_info['edited_date'] = time
 		if label == 'Page traffic':
 			soup_rows = soup_div.find_all('span', recursive=False)

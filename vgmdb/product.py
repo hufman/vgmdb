@@ -6,6 +6,7 @@ def parse_product_page(html_source):
 	product_info = {}
 	soup = bs4.BeautifulSoup(html_source)
 	soup_profile = soup.find(id='innermain')
+	soup_right_column = soup.find(id='rightcolumn')
 
 	soup_name = soup_profile.h1
 	product_info['name'] = soup_name.span.string.strip()
@@ -40,6 +41,9 @@ def parse_product_page(html_source):
 			product_info['releases'] = _parse_product_releases(soup_section.div.table)
 		if section_name == 'Albums | Credits':
 			product_info['albums'] = utils.parse_discography(soup_section.div.table, 'classifications')
+
+	soup_divs = soup_right_column.find_all('div', recursive=False)
+	product_info['meta'] = utils.parse_meta(soup_divs[-1].div)
 
 	return product_info
 
