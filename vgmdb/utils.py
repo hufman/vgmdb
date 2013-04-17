@@ -36,6 +36,12 @@ def parse_date_time(time):
 			hour += 12
 		return "%02d-%02d-%02dT%02d:%02d"%(year,month,day,hour,minute)
 
+def normalize_dotted_date(weird_date):
+	""" Given a string like 2005.01.??, return 2005-01 """
+	elements = weird_date.split('.')
+	output = [x for x in elements if len(x)>0 and x[0]!='?']
+	return '-'.join(output)
+
 def parse_names(soup_parent):
 	"""
 	Given an <a> with multiple span tags with different languages
@@ -56,4 +62,51 @@ def parse_names(soup_parent):
 			name = soup_name.i.string.strip()
 		info[lang] = name
 	return info
+
+def parse_discography(soup_disco_table):
+	albums = []
+	for soup_tbody in soup_disco_table.find_all("tbody", recursive=False):
+		soup_rows = soup_tbody.find_all("tr", recursive=False)
+		year = soup_rows[0].find('h3').string
+		for soup_album_tr in soup_rows[1:]:
+			soup_cells = soup_album_tr.find_all('td')
+			month_day = soup_cells[0].string
+			soup_album = soup_cells[1].a
+			link = soup_album['href']
+			link = link[len("http://vgmdb.net"):] if link[0:7]=="http://" else link
+			album_type = soup_album['class'][1].split('-')[1]
+			soup_album_info = soup_cells[1].find_all('span', recursive=False)
+			catalog = soup_album_info[0].string
+			roles_str = ''
+			for soup_node in soup_album_info[1].children:
+				if isinstance(soup_node, bs4.Tag):
+					roles_str += soup_node.string
+				else:
+					roles_str += unicode(soup_node)
+			roles = roles_str.split(',')
+			roles = [x.strip() for x in roles]
+			date = normalize_dotted_date("%s.%s"%(year, month_day))
+
+			titles = {}
+			for soup_title in soup_album.find_all('span', recursive=False):
+				title_lang = soup_title['lang'].lower()
+				title_text = ""
+				for child in soup_title.children:
+					if isinstance(child, bs4.Tag):
+						continue
+					title_text = unicode(child)
+					title_text = title_text.strip().strip('"')
+				if title_lang and title_text:
+					titles[title_lang] = title_text
+
+			album_info = {
+			    "date": date,
+			    "roles": roles,
+			    "titles": titles,
+			    "catalog": catalog,
+			    "link": link,
+			    "type": album_type
+			}
+			albums.append(album_info)
+	return albums
 

@@ -59,19 +59,6 @@ class TestArtists(unittest.TestCase):
 		name_info = artist._parse_full_name(jeremy_name)
 		self.assertEqual(0, len(name_info.keys()))
 
-	def test_year(self):
-		""" Make sure that weird dates with unknown month and days work """
-		date = artist._normalize_date("2007.??.??")
-		self.assertEqual("2007", date)
-	def test_month(self):
-		""" Make sure that weird dates with unknown days work """
-		date = artist._normalize_date("2007.02.??")
-		self.assertEqual("2007-02", date)
-	def test_day(self):
-		""" Make sure that conversion from YYYY.MM.DD to YYYY-MM-DD works """
-		date = artist._normalize_date("2007.02.20")
-		self.assertEqual("2007-02-20", date)
-
 	def test_ss(self):
 		ss_code = file(os.path.join(base, 'artist_ss.html'), 'r').read()
 		ss = artist.parse_artist_page(ss_code)
