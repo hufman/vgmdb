@@ -11,7 +11,7 @@ def parse_album_page(html_source):
 
 	# parse names
 	soup_names = soup_profile.h1
-	album_info['name'] = _parse_names(soup_names)
+	album_info['name'] = utils.parse_names(soup_names)
 
 	# main info header
 	soup_info = soup_profile.find(id='rightfloat').div.div.table
@@ -71,22 +71,6 @@ def _fix_invalid_table(html_source):
 			start = prevtag_end
 	return html_source
 
-def _parse_names(soup_parent):
-	info = {}
-	if not soup_parent.span:
-		info['en'] = soup_parent.string.strip()
-	for soup_name in soup_parent.find_all('span', recursive=False):
-		if not soup_name.has_key('lang'):
-			continue
-		lang = soup_name['lang'].lower()
-		for child in soup_name.children:
-			if not isinstance(child, bs4.Tag):
-				name = child.string.strip()
-		if soup_name.i:		# title has weird format
-			name = soup_name.i.string.strip()
-		info[lang] = name
-	return info
-
 def _parse_album_info(soup_info):
 	album_info = {}
 	soup_info_rows = soup_info.find_all('tr', recursive=False)
@@ -143,11 +127,11 @@ def _parse_album_info(soup_info):
 			if len(soup_links) > 0:
 				album_info['publisher'] = {}
 				album_info['publisher']['link'] = soup_links[0]['href']
-				album_info['publisher']['name'] = _parse_names(soup_links[0])
+				album_info['publisher']['name'] = utils.parse_names(soup_links[0])
 			if len(soup_links) > 1:
 				album_info['distributor'] = {}
 				album_info['distributor']['link'] = soup_links[1]['href']
-				album_info['distributor']['name'] = _parse_names(soup_links[1])
+				album_info['distributor']['name'] = utils.parse_names(soup_links[1])
 		elif name in names_single.keys():
 			key = names_single[name]
 			value = soup_value.string.strip()
@@ -158,7 +142,7 @@ def _parse_album_info(soup_info):
 			for soup_link in soup_value.find_all('a', recursive=False):
 				link = {}
 				link['link'] = soup_link['href']
-				link['name'] = _parse_names(soup_link)
+				link['name'] = utils.parse_names(soup_link)
 				value.append(link)
 			album_info[key] = value
 		else:
@@ -264,7 +248,7 @@ def _parse_section_album_stats(soup_section):
 			for soup_product in soup_div.find_all('a', recursive=False):
 				product = {}
 				product['link'] = soup_div.a['href']
-				product['name'] = _parse_names(soup_div.a)
+				product['name'] = utils.parse_names(soup_div.a)
 				album_info['products'].append(product)
 		if div_name == 'Platforms represented':
 			album_info['platforms'] = [plat.strip() for plat in div_value.split(',')]
@@ -277,7 +261,7 @@ def _parse_section_related_albums(soup_div):
 		if soup_album.ul:		# if there are thumbnails
 			soup_rows = soup_album.ul.find_all('li', recursive=False)
 			catalog = soup_rows[1].span.string.strip()
-			names = _parse_names(soup_rows[0].a)
+			names = utils.parse_names(soup_rows[0].a)
 			album_type = soup_rows[0].a['class'][-1].split('-')[1]
 			date = utils.parse_date_time(soup_rows[2].string.strip())
 			link = soup_rows[0].a['href']
@@ -285,7 +269,7 @@ def _parse_section_related_albums(soup_div):
 				link = link[len("http://vgmdb.net/"):]
 		else:
 			catalog = soup_album.span.string
-			names = _parse_names(soup_album.a)
+			names = utils.parse_names(soup_album.a)
 			album_type = soup_album.a['class'][-1].split('-')[1]
 			link = soup_album.a['href']
 			if link[:len("http://vgmdb.net/")] == 'http://vgmdb.net/':
