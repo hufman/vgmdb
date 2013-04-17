@@ -4,6 +4,7 @@ import json
 import vgmdb.artist
 import vgmdb.album
 import vgmdb.product
+import vgmdb.event
 
 @route('/hello')
 def hello():
@@ -32,3 +33,11 @@ def product(product):
 	product_info = vgmdb.product.parse_product_page(data)
 	response.content_type = 'application/json; charset=utf-8'
 	return json.dumps(product_info, sort_keys=True, indent=4, separators=(',',': '), ensure_ascii=False)
+
+@route('/event/<event:int>')
+def event(event):
+	data = urllib.urlopen('http://vgmdb.net/event/%s?perpage=99999'%event).read()
+	data = data.decode('utf-8', 'ignore')	# some pages have broken utf8
+	event_info = vgmdb.event.parse_event_page(data)
+	response.content_type = 'application/json; charset=utf-8'
+	return json.dumps(event_info, sort_keys=True, indent=4, separators=(',',': '), ensure_ascii=False)

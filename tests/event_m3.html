@@ -1,0 +1,822 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html dir="ltr" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>M3-2012 Fall - VGMdb</title>
+
+
+
+
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="vBulletin 3.8.5" />
+
+
+<!-- CSS Stylesheet -->
+<style type="text/css" id="vbulletin_css">
+/**
+* vBulletin 3.8.5 CSS
+* Style: 'Default Style'; Style ID: 1
+*/
+body
+{
+	background: #001122;
+	color: #FFFFFF;
+	font: 10pt verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+	margin: 0px;
+	padding: 0px;
+}
+a:link, body_alink
+{
+	color: #B1E8FF;
+}
+a:visited, body_avisited
+{
+	color: #B1E8FF;
+}
+a:hover, a:active, body_ahover
+{
+	color: #87CEEB;
+}
+.page
+{
+	background: #001122;
+	color: #FFFFFF;
+	padding: 0px;
+}
+.page a:link, .page_alink
+{
+	color: #CEFFFF;
+	text-decoration: none;
+}
+.page a:visited, .page_avisited
+{
+	color: #CEFFFF;
+	text-decoration: none;
+}
+.page a:hover, .page a:active, .page_ahover
+{
+	text-decoration: underline;
+}
+td, th, p, li
+{
+	font: 10pt verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+}
+.tborder
+{
+	background: #001122;
+	color: #FFFFFF;
+	border: 1px solid #444465
+}
+.tcat
+{
+	background: #2F364F;
+	color: #788990;
+	font: bold 10pt verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+}
+.tcat a:link, .tcat_alink
+{
+	color: #788990;
+	text-decoration: none;
+}
+.tcat a:visited, .tcat_avisited
+{
+	color: #788990;
+	text-decoration: none;
+}
+.tcat a:hover, .tcat a:active, .tcat_ahover
+{
+	color: #FFFF66;
+	text-decoration: underline;
+}
+.thead
+{
+	background: #2F364F;
+	color: #FFFFFF;
+	font: bold 11px tahoma, verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+}
+.thead a:link, .thead_alink
+{
+	color: #FFFFFF;
+}
+.thead a:visited, .thead_avisited
+{
+	color: #FFFFFF;
+}
+.thead a:hover, .thead a:active, .thead_ahover
+{
+	color: #FFFF00;
+}
+.tfoot
+{
+	background: #2F364F;
+	color: #E0E0F6;
+}
+.tfoot a:link, .tfoot_alink
+{
+	color: #E0E0F6;
+}
+.tfoot a:visited, .tfoot_avisited
+{
+	color: #E0E0F6;
+}
+.tfoot a:hover, .tfoot a:active, .tfoot_ahover
+{
+	color: #FFFF66;
+}
+.alt1, .alt1Active
+{
+	background: #1B273D;
+	color: #FFFFFF;
+}
+.alt1 a:link, .alt1_alink, .alt1Active a:link, .alt1Active_alink
+{
+	color: #CEFFFF;
+	text-decoration: none;
+}
+.alt1 a:visited, .alt1_avisited, .alt1Active a:visited, .alt1Active_avisited
+{
+	color: #CEFFFF;
+	text-decoration: none;
+}
+.alt1 a:hover, .alt1 a:active, .alt1_ahover, .alt1Active a:hover, .alt1Active a:active, .alt1Active_ahover
+{
+	color: #87CEEB;
+	text-decoration: underline;
+}
+.alt2, .alt2Active
+{
+	background: #2F364F;
+	color: #FFFFFF;
+}
+.alt2 a:link, .alt2_alink, .alt2Active a:link, .alt2Active_alink
+{
+	color: #CEFFFF;
+	text-decoration: none;
+}
+.alt2 a:visited, .alt2_avisited, .alt2Active a:visited, .alt2Active_avisited
+{
+	color: #CEFFFF;
+	text-decoration: none;
+}
+.alt2 a:hover, .alt2 a:active, .alt2_ahover, .alt2Active a:hover, .alt2Active a:active, .alt2Active_ahover
+{
+	color: #87CEEB;
+	text-decoration: underline;
+}
+.inlinemod
+{
+	background: #3A5284;
+	color: #FFFFFF;
+}
+.wysiwyg
+{
+	background: #14194E;
+	color: #FFFFFF;
+	font: 10pt verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+}
+textarea, .bginput
+{
+	background: #14194E;
+	color: #FFFFFF;
+	font: 10pt verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+	border-left: 1px solid #3C405C;
+	border-top: 1px solid #3C405C;
+	border-right: 1px solid #666B72;
+	border-bottom: 1px solid #666B72;
+}
+.bginput option, .bginput optgroup
+{
+	font-size: 10pt;
+	font-family: verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+}
+.button
+{
+	background: #14194E;
+	color: #FFFFFF;
+	font: 11px verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+	border-left: 1px solid #666B72;
+	border-top: 1px solid #666B72;
+	border-right: 1px solid #3C405C;
+	border-bottom: 1px solid #3C405C;
+}
+select
+{
+	background: #14194E;
+	color: #FFFFFF;
+	font: 11px verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+	border-left: 1px solid #666B72;
+	border-top: 1px solid #666B72;
+	border-right: 1px solid #3C405C;
+	border-bottom: 1px solid #3C405C;
+}
+option, optgroup
+{
+	font-size: 11px;
+	font-family: verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+}
+.smallfont
+{
+	font: 11px verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+}
+.time
+{
+	color: #B0C4DE;
+}
+.navbar
+{
+	font: 11px verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+}
+.highlight
+{
+	font-weight: bold;
+	border-bottom: 1px dotted #B1E8FF;
+}
+.fjsel
+{
+	background: #3E5C92;
+	color: #E0E0F6;
+}
+.fjdpth0
+{
+	background: #F7F7F7;
+	color: #000000;
+}
+.panel
+{
+	background: #1B273D;
+	color: #FFFFFF;
+	padding: 10px;
+}
+.panelsurround
+{
+	background: #1B273D;
+	color: #FFFFFF;
+}
+legend
+{
+	color: #788990;
+	font: 11px tahoma, verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+}
+.vbmenu_control
+{
+	background: #2F364F;
+	color: #FFFFFF;
+	font: bold 11px tahoma, verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+	padding: 3px 6px 3px 6px;
+	white-space: nowrap;
+}
+.vbmenu_control a:link, .vbmenu_control_alink
+{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.vbmenu_control a:visited, .vbmenu_control_avisited
+{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.vbmenu_control a:hover, .vbmenu_control a:active, .vbmenu_control_ahover
+{
+	color: #FFFFFF;
+	text-decoration: underline;
+}
+.vbmenu_popup
+{
+	background: #FFFFFF;
+	color: #000000;
+	border: 1px solid #0B198C;
+}
+.vbmenu_option
+{
+	background: #BBC7CE;
+	color: #000000;
+	font: 11px verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+	white-space: nowrap;
+	cursor: pointer;
+}
+.vbmenu_option a:link, .vbmenu_option_alink
+{
+	color: #22229C;
+	text-decoration: none;
+}
+.vbmenu_option a:visited, .vbmenu_option_avisited
+{
+	color: #22229C;
+	text-decoration: none;
+}
+.vbmenu_option a:hover, .vbmenu_option a:active, .vbmenu_option_ahover
+{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.vbmenu_hilite
+{
+	background: #8A949E;
+	color: #FFFFFF;
+	font: 11px verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+	white-space: nowrap;
+	cursor: pointer;
+}
+.vbmenu_hilite a:link, .vbmenu_hilite_alink
+{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.vbmenu_hilite a:visited, .vbmenu_hilite_avisited
+{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.vbmenu_hilite a:hover, .vbmenu_hilite a:active, .vbmenu_hilite_ahover
+{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+/* ***** styling for 'big' usernames on postbit etc. ***** */
+.bigusername { font-size: 14pt; }
+
+/* ***** small padding on 'thead' elements ***** */
+td.thead, div.thead { padding: 4px; }
+
+/* ***** basic styles for multi-page nav elements */
+.pagenav a { text-decoration: none; }
+.pagenav td { padding: 2px 4px 2px 4px; }
+
+/* ***** define margin and font-size for elements inside panels ***** */
+.fieldset { margin-bottom: 6px; }
+.fieldset, .fieldset td, .fieldset p, .fieldset li { font-size: 11px; }
+
+fieldset { border: 1px solid #2F364F; padding: 6px; }
+
+/* .imgalpha { opacity:0.25; filter:alpha(opacity=25); -moz-opacity:0.25; } */
+
+/* ***** don't change the following ***** */
+form { display: inline; }
+.label { color: #788990; }
+</style>
+<link rel="stylesheet" type="text/css" href="http://vgmdb.net/forums/clientscript/vbulletin_important.css?v=385" />
+
+
+<link rel="stylesheet" type="text/css" href="http://vgmdb.net/db/vgmdb.css?20100801" />
+<link rel="stylesheet" type="text/css" href="http://media.vgmdb.net/css/vgmdb-colorcode-title.css" id="colorcode" />
+<link rel="stylesheet" type="text/css" href="http://vgmdb.net/db/jquery.autocomplete.css?20091023" />
+<link rel="stylesheet" type="text/css" href="http://vgmdb.net/db/jquery.twitter.css?20091005" />
+<link rel="stylesheet" type="text/css" href="http://vgmdb.net/db/jquery.jcarousel.css?20091124" />
+<link rel="stylesheet" type="text/css" href="http://vgmdb.net/db/highslide.css?080623" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" type="text/css" href="http://vgmdb.net/db/iepngfix.css" />
+<![endif]-->
+<!-- / CSS Stylesheet -->
+
+<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/yahoo-dom-event/yahoo-dom-event.js?v=385"></script>
+<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/connection/connection-min.js?v=385"></script>
+<script type="text/javascript">
+<!--
+var SESSIONURL = "s=7ab230b12d1a53a6e18565f45ed86d63&";
+var SECURITYTOKEN = "guest";
+var IMGDIR_MISC = "http://vgmdb.net/forums/images/misc";
+var vb_disable_ajax = parseInt("0", 10);
+// -->
+</script>
+<script type="text/javascript" src="http://vgmdb.net/forums/clientscript/vbulletin_global.js?v=385"></script>
+
+<link rel="alternate" type="application/rss+xml" title="VGMdb Forums RSS Feed" href="http://vgmdb.net/forums/external.php?type=RSS2" />
+
+<script type="text/javascript" src="http://media.vgmdb.net/js/jquery-1.4.min.js"></script>
+<script type="text/javascript" src="http://media.vgmdb.net/js/jquery.compressed.js"></script>
+<script type="text/javascript" src="http://media.vgmdb.net/js/jquery.tristate.js?20100420"></script>
+<script type="text/javascript" src="http://media.vgmdb.net/js/highslide.packed.js?080620"></script>
+<script type="text/javascript" src="http://media.vgmdb.net/js/vgmdb_global.js?0906"></script>
+<link rel="search" type="application/opensearchdescription+xml" title="Search VGMdb" href="http://vgmdb.net/db/search.xml" />
+<link rel="icon" href="http://vgmdb.net/favicon.ico" type="image/vnd.microsoft.icon" />
+<link rel="shortcut icon" href="http://vgmdb.net/favicon.ico" type="image/vnd.microsoft.icon" />
+<script language="javascript" type="text/javascript">
+$(document).ready(function() {
+	var ItemType = new Array;
+	ItemType["0"] = "Album";
+	ItemType["1"] = "Artist";
+	ItemType["2"] = "Organization";
+	hs.showCredits = false;
+	hs.allowMultipleInstances = false;
+	hs.graphicsDir = 'http://vgmdb.net/db/highslide/graphics/';
+	function formatItem(row) {
+		return "<span style='float: right; margin-left: 10px' class='tinyfont label'>" + ItemType[row[3]] + " #" + row[1] + "</span>" + row[0];
+	}
+	$('#navoptions a').click(function() {
+		if (!$('#pref_content form').length) {
+			$.ajax({
+				url: '/db/user.php?do=preferences',
+				beforeSend: function() {
+					$('#navoptions').css('visibility', 'hidden').parent('li').css('background', 'transparent url(http://media.vgmdb.net/img/ajax_loader_small.gif) center center no-repeat');
+				},
+				success: function(data) { 
+					$('#navoptions').css('visibility', 'visible').parent('li').css('background', 'transparent url(http://media.vgmdb.net/img/vgmdbsubnav2010.gif) -593px 0 no-repeat');
+					$('#pref_content').html(data.html);
+					$('#pref_content form label.tristate').tristate();
+					$('#pref_content form').ajaxForm({
+						beforeSubmit: function() {
+							$('#pref_content form input[type=submit]').css('visibility', 'hidden').parent('div').css('background', 'transparent url(http://media.vgmdb.net/img/ajax_loader_small.gif) center center no-repeat');
+						},
+						success: function() {
+							$('#pref').slideUp('fast');
+							$('#pref_content form input[type=submit]').css('visibility', 'visible').parent('div').css('background', 'none');
+							$('#navoptions a').blur();
+						}
+					});
+					$('#pref').slideDown('fast');
+				},
+				dataType: 'json'
+			});
+		}
+		else {
+			if ($('#pref').is(':visible')) {
+				$('#pref').slideUp('fast');
+				$('#navoptions a').blur();
+			}
+			else $('#pref').slideDown('fast');
+		}
+		return false;
+	});
+	$("#simplesearch").autocomplete('http://vgmdb.net/db/ajax-autocomplete.php', {
+		minChars: 3,
+		delay: 1000,
+		max: 150,
+		width: 500,
+		scrollHeight: 600,
+		selectFirst: false,
+		formatItem: formatItem
+	}).result(function(event, item) {
+		location.href = item[2];
+	});
+	$('label.tristate').tristate(); // 'sup IRA
+	
+	$('#chatClient').change(function() {
+		$(this).parents('form').attr('action', $(this).val());
+	});
+	$('#nav_chat a').click(function() {
+		var chatnick = 'CGI' + (Math.floor(Math.random()*901) + 100).toString();
+		var chatinterface = 'nonjs';
+		var usrAgent = navigator.userAgent.toLowerCase();
+		if (/msie/.test( usrAgent ) && !/opera/.test( usrAgent )) return true; // ie sucks
+		else if (/webkit/.test( usrAgent )) chatinterface = 'safari';
+		else if (/opera/.test( usrAgent )) chatinterface = 'opera';
+		else if (/mozilla/.test( usrAgent ) && !/(compatible|webkit)/.test( usrAgent )) chatinterface = 'mozilla';
+		else if (/konqueror/.test( usrAgent )) chatinterface = 'konqueror';
+		$('#chatNick').val(chatnick);
+		$('#chatInterface').val(chatinterface);
+		hs.htmlExpand(this, { contentId: 'chat-popup' }); return false;
+	});
+});</script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-4758350-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script');
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    ga.setAttribute('async', 'true');
+    document.documentElement.firstChild.appendChild(ga);
+  })();
+
+</script>
+
+<meta name="keywords" content="VGM, Video Game Music, Game Music, Anime, Animation, OST, Soundtrack, Doujin, database, composer, arranger, discography" />
+<meta name="description" content="VGMdb provides media, tracklist and artist information for video game soundtracks and anime music." />
+
+
+
+
+<script language="javascript" type="text/javascript">
+$(document).ready(function() {
+	$('textarea.resizable:not(.processed), select.resizable:not(.processed)').TextAreaResizer();
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+        
+	
+	// shamelessly ripped from Digg
+	var cheatCode = '';
+	var maxCode = 40;
+	$(document).keypress(function(key) {
+		if (cheatCode.length < maxCode) {
+			var k = (key.keyCode == 0) ? key.charCode : key.keyCode;
+			cheatCode = cheatCode + String(k) + ' ';
+			switch (cheatCode) {
+				case '38 40 37 39 97 13 ':
+				window.location='../album/2072';
+				break;
+				case '38 38 40 40 37 39 37 39 98 97 13 ':
+				window.location='../album/3778';
+				break;
+				case '105 100 100 113 100 ':
+				window.location='../album/2950';
+				break;
+			}
+		}
+	});
+});
+</script>
+</head>
+<body style="padding: 0; margin: 0">
+<a name="top"></a>
+<div class="page" style="background-color: #1B273D; height: 100px; width: 100%;">
+<div style="float: right; margin-top: 10px; margin-right: 10px;">
+	<ul class="pipelist tinyfont">
+	
+	<li class="smallfont first-child"><span id="navlogin"><a href="#">Login</a><script type="text/javascript"> vBmenu.register('navlogin'); </script></span></li>
+	<li class="smallfont"><a title="Register a new account" href="/forums/register.php">Register</a></li>
+	
+	</ul>
+</div>
+<div style="white-space: nowrap;">
+<!-- logo -->
+<div style="height: 100px; float: left;"><a href="/db/main.php"><img src="http://media.vgmdb.net/img/vgmdblogo.png" alt="VGMdb" style="padding: 10px; width: 250px; height: 80px; border: 0" /></a></div>
+<!-- /logo -->
+<!-- top nav -->
+<div style="height: 100px; float: left; position: relative; margin-left: 1px;">
+<ul id="topnav">
+	<li id="nav_album"><a title="Official Albums, Enclosures, Doujins" href="/db/albums.php">Albums</a><a class="buttonSubmit" href="/album/new" title="Submit a new album"><img src="http://media.vgmdb.net/img/button-add-big.png" alt="" /></a></li>
+	<li id="nav_artist"><a title="Composers, Arrangers, Lyricists, Performers" href="/db/artists.php">Artists</a><a class="buttonSubmit" href="/db/artists-submit.php" title="Submit a new artist"><img src="http://media.vgmdb.net/img/button-add-big.png" alt="" /></a></li>
+	<!-- <li id="nav_track"><a title="Instrumentals, Vocals, Sound Effects, Voice Dramas" href="#">Tracks</a></li> -->
+	<li id="nav_label"><a title="Music Labels, Publishers, Organizations and Groups" href="/db/org.php">Labels</a><a class="buttonSubmit" href="/db/org-submit.php" title="Submit a new publisher"><img src="http://media.vgmdb.net/img/button-add-big.png" alt="" /></a></li>
+	<li id="nav_product"><a title="Games, Video, Radio/Drama Programs, Print Publications" href="/db/product.php">Products</a><a class="buttonSubmit" href="/db/product-submit.php" title="Submit a new product"><img src="http://media.vgmdb.net/img/button-add-big.png" alt="" /></a></li>
+	<li id="nav_event"><a title="Conventions, Gatherings and Shows" href="/db/events.php">Events</a></li>
+	<li id="nav_podcast"><a title="VGM Decibel, our bi-monthly podcast" href="/cast">Podcast</a></li>
+</ul>
+</div>
+<!-- / top nav -->
+</div>
+</div>
+<div class="label" style="clear: both; width: 100%; background-color: #2F364F; font-family: Arial">
+<ul id="subnav">
+	<li id="nav_search" style="width: 250px">
+		<form name="navsearch" action="/search" method="get">
+			<div><input type="text" class="bginput smallfont ac_input ac_default" name="q" id="simplesearch" maxlength="150" style="width: 236px;" /></div>
+		</form>
+	</li>
+	<li id="nav_advsearch"><a title="More search options" href="/search">Advanced Search</a></li>
+	<li id="nav_update"><a title="Latest submissions and edits" href="/db/recent.php">Updates</a></li>
+	<li id="nav_calendar"><a title="Release schedules" href="/db/calendar.php?year=2013&month=4">Calendar</a></li>
+	<li id="nav_forum"><a title="Community discussions" href="/forums/">Forums</a></li>
+	<li id="nav_market"><a title="Trade with other members" href="/db/marketplace.php?do=view">Marketplace</a></li>
+	<!-- <li id="nav_radio"><a title="Live streaming VGM" href="#" onclick="alert('Under Construction');">Radio</a></li> -->
+	<li id="nav_users"><a title="User collections" href="/db/collection.php">Users</a></li>
+	<li id="nav_chat"><a title="Real-time IRC chat" rel="nofollow" href="http://bigblah.net/cgi-bin/irc/irc.cgi" target="vgmdbirc">Chat</a></li>
+	<li id="nav_submit"><a title="Submit an album" href="/album/new">Submit Album</a></li>
+	<li id="nav_customize"><span id="navoptions"><a title="Edit your preferences" href="#">Customize</a></span></li>
+</ul>
+</div>
+
+
+	<!-- login form -->
+	<div class="vbmenu_popup" id="navlogin_menu" style="display:none;">
+	<table cellpadding="4" cellspacing="1" border="0"><tr><td style="background: #BBC7CE;">
+	<form action="/forums/login.php?do=login" method="post" onsubmit="md5hash(vb_login_password, vb_login_md5password, vb_login_md5password_utf, 0)">
+	<script type="text/javascript" src="/forums/clientscript/vbulletin_md5.js?v=385"></script>
+	<table cellpadding="0" cellspacing="3" border="0">
+	<tr>
+		<td class="smallfont"><label for="navbar_username">User Name</label></td>
+		<td><input type="text" class="bginput" style="font-size: 11px" name="vb_login_username" id="navbar_username" size="10" accesskey="u" tabindex="101" value="User Name" onfocus="if (this.value == 'User Name') this.value = '';" /></td>
+		<td class="smallfont" colspan="2" nowrap="nowrap"><label for="cb_cookieuser_navbar"><input type="checkbox" name="cookieuser" value="1" tabindex="103" id="cb_cookieuser_navbar" accesskey="c" />Remember</label></td>
+	</tr><tr>
+		<td class="smallfont"><label for="navbar_password">Password</label></td>
+		<td><input type="password" class="bginput" style="font-size: 11px" name="vb_login_password" id="navbar_password" size="10" tabindex="102" /></td>
+		<td><input type="submit" class="button" value="Log in" tabindex="104" title="Enter your username and password in the boxes provided to login, or click the 'register' button to create a profile for yourself." accesskey="s" /></td>
+	</tr>
+	</table>
+	<input type="hidden" name="s" value="7ab230b12d1a53a6e18565f45ed86d63" />
+	<input type="hidden" name="securitytoken" value="guest" />
+	<input type="hidden" name="do" value="login" />		
+	<input type="hidden" name="vb_login_md5password" />
+	<input type="hidden" name="vb_login_md5password_utf" />
+	</form>
+	</td></tr></table>
+	</div>
+	<!-- / login form -->
+
+
+<!-- content table -->
+<div class="page" style="padding:20px 20px 0 20px">
+
+<div id="pref" style="width: 100%; background-color:#1B273D; margin-bottom: 20px; display: none">
+	<b class="rtop"><b></b></b>
+	<div id="pref_content"></div>
+	<b class="rbot"><b></b></b>
+</div>
+
+
+
+<!-- main page contents -->
+<div style="width: 100%; background-color:#1B273D;">
+	<b class="rtop"><b></b></b>
+	<div style="padding: 6px 10px 10px 10px">
+		<span style="float:right;" class="label smallfont"><a href="/db/events-discuss.php?id=152">Discuss</a> 
+		</span>
+
+		<span style="font-family: Arial, sans-serif; font-size: 1.5em; font-weight: bold; letter-spacing: -1px; color: #BEB993;">
+		M3-2012 Fall
+		</span>
+		<span class="smallfont label">Oct 27, 2012</span>
+		<br /><a class="smallfont" href="/db/events.php">Back to Browse Events</a>
+	</div>
+
+	<div id="innermain" style="margin: 20px; background-color: #2F364F;">
+	<b class="rtop"><b></b></b>
+	<div style="padding: 6px 10px 6px 10px">
+		30th installment of the biannual Music Media-Mix Market (M3). Site: <a href="http://www.m3net.jp/event/2012f.html" target="_blank">http://www.m3net.jp/event/2012f.html</a>
+	</div>
+	<b class="rbot"><b></b></b>
+	</div>
+	<div style="padding: 10px 10px 0px 10px">
+
+
+
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td style="padding-left: 4px"><h4>TYPE</h4></td>
+<td style="padding-left: 4px">
+<h4><span id="cnsort">CATALOG <script type="text/javascript"> vBmenu.register('cnsort'); </script></span></h4>
+
+	<!-- menu -->
+	<div class="vbmenu_popup" id="cnsort_menu" style="display:none">
+	<table cellpadding="4" cellspacing="1" border="0">
+	<tr><td class="vbmenu_option"><a href="/event/152?field=cn&amp;perpage=9999&amp;order=asc">Ascending</a></td></tr>
+	<tr><td class="vbmenu_option"><a href="/event/152?field=cn&amp;perpage=9999&amp;order=desc">Descending</a></td></tr>
+	</table>
+	</div>
+	<!-- / menu -->
+</td>
+<td style="padding-left: 4px">&nbsp;</td>
+<td style="padding-left: 4px" width="50%">
+<h4><span id="titlesort">ALBUM TITLE <script type="text/javascript"> vBmenu.register('titlesort'); </script></span></h4>
+
+	<!-- menu -->
+	<div class="vbmenu_popup" id="titlesort_menu" style="display:none">
+	<table cellpadding="4" cellspacing="1" border="0">
+	<tr><td class="vbmenu_option"><a href="/event/152?field=title&amp;perpage=9999&amp;order=asc">Ascending</a></td></tr>
+	<tr><td class="vbmenu_option"><a href="/event/152?field=title&amp;perpage=9999&amp;order=desc">Descending</a></td></tr>
+	</table>
+	</div>
+	<!-- / menu -->
+</td>
+<td style="padding-left: 4px">
+<h4><span id="pubsort">PUBLISHER <script type="text/javascript"> vBmenu.register('pubsort'); </script></span></h4>
+
+	<!-- menu -->
+	<div class="vbmenu_popup" id="pubsort_menu" style="display:none">
+	<table cellpadding="4" cellspacing="1" border="0">
+	<tr><td class="vbmenu_option"><a href="/event/152?field=publisher&amp;perpage=9999&amp;order=asc">Ascending</a></td></tr>
+	<tr><td class="vbmenu_option"><a href="/event/152?field=publisher&amp;perpage=9999&amp;order=desc">Descending</a></td></tr>
+	</table>
+	</div>
+	<!-- / menu -->
+</td>
+<td style="padding-right: 4px" align="right"><h4>RELEASED</h4></td>
+</tr>
+<tr>
+<tr><td class='alt1' style='padding: 4px;' nowrap="nowrap"><span class='label'>New Release</span></td><td class='alt1' style='padding: 4px;' nowrap="nowrap"><span class="catalog album-works">N/A</span></td><td class='alt1' style='padding: 4px;'></td><td class='alt1' style='padding: 4px;'><a class="albumtitle album-works" href="http://vgmdb.net/album/36469" title='a Tale'><span class="albumtitle" lang="en" style="display:inline">a Tale</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>a Tale</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>a Tale</i></span></a></td><td class='alt1' style='padding: 4px;'>Clinochlore</td><td align='right' class='alt1' style='padding: 4px;' nowrap><span class='time'>Oct 28, 2012</span></td></tr>
+<tr><td class='alt2' style='padding: 4px;' nowrap="nowrap"><span class='label'>New Release</span></td><td class='alt2' style='padding: 4px;' nowrap="nowrap"><span class="catalog album-works">DVSP-0084</span></td><td class='alt2' style='padding: 4px;'></td><td class='alt2' style='padding: 4px;'><a class="albumtitle album-works" href="http://vgmdb.net/album/35888" title='AD:60'><span class="albumtitle" lang="en" style="display:inline">AD:60</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>AD:60</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>AD:60</i></span></a></td><td class='alt2' style='padding: 4px;'><a href="/org/331"><span title="Diverse System" class="artistname" lang="en" style="display:inline">Diverse System</span><span style="display:none"><em> / </em></span><span title="Diverse System" class="artistname" lang="ja" style="display:none">Diverse System</span></a></td><td align='right' class='alt2' style='padding: 4px;' nowrap><span class='time'>Oct 28, 2012</span></td></tr>
+<tr><td class='alt1' style='padding: 4px;' nowrap="nowrap"><span class='label'>New Release</span></td><td class='alt1' style='padding: 4px;' nowrap="nowrap"><span class="catalog album-works">DVSP-0083~83-2</span></td><td class='alt1' style='padding: 4px;'></td><td class='alt1' style='padding: 4px;'><a class="albumtitle album-works" href="http://vgmdb.net/album/35890" title='AD:TECHNO'><span class="albumtitle" lang="en" style="display:inline">AD:TECHNO</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>AD:TECHNO</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>AD:TECHNO</i></span></a></td><td class='alt1' style='padding: 4px;'><a href="/org/331"><span title="Diverse System" class="artistname" lang="en" style="display:inline">Diverse System</span><span style="display:none"><em> / </em></span><span title="Diverse System" class="artistname" lang="ja" style="display:none">Diverse System</span></a></td><td align='right' class='alt1' style='padding: 4px;' nowrap><span class='time'>Oct 28, 2012</span></td></tr>
+<tr><td class='alt2' style='padding: 4px;' nowrap="nowrap"><span class='label'>New Release</span></td><td class='alt2' style='padding: 4px;' nowrap="nowrap"><span class="catalog album-doujin">TRBL-0011</span></td><td class='alt2' style='padding: 4px;'></td><td class='alt2' style='padding: 4px;'><a class="albumtitle album-doujin" href="http://vgmdb.net/album/36036" title='Beat U Down'><span class="albumtitle" lang="en" style="display:inline">Beat U Down</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>Beat U Down</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Beat U Down</i></span></a></td><td class='alt2' style='padding: 4px;'><a href="/org/343"><span title="Tribullets" class="artistname" lang="en" style="display:inline">Tribullets</span><span style="display:none"><em> / </em></span><span title="Tribullets" class="artistname" lang="ja" style="display:none">Tribullets</span></a></td><td align='right' class='alt2' style='padding: 4px;' nowrap><span class='time'>Oct 28, 2012</span></td></tr>
+<tr><td class='alt1' style='padding: 4px;' nowrap="nowrap"><span class='label'>New Release</span></td><td class='alt1' style='padding: 4px;' nowrap="nowrap"><span class="catalog album-doujin">SORR-00102</span></td><td class='alt1' style='padding: 4px;'></td><td class='alt1' style='padding: 4px;'><a class="albumtitle album-doujin" href="http://vgmdb.net/album/36560" title='BETWEEN LIGHTS AND DARKNESS'><span class="albumtitle" lang="en" style="display:inline">BETWEEN LIGHTS AND DARKNESS</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>BETWEEN LIGHTS AND DARKNESS</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>BETWEEN LIGHTS AND DARKNESS</i></span></a></td><td class='alt1' style='padding: 4px;'><a href="/org/465"><span title="Re:Volte" class="artistname" lang="en" style="display:inline">Re:Volte</span><span style="display:none"><em> / </em></span><span title="Re:Volte" class="artistname" lang="ja" style="display:none">Re:Volte</span></a></td><td align='right' class='alt1' style='padding: 4px;' nowrap><span class='time'>Oct 28, 2012</span></td></tr>
+<tr><td class='alt2' style='padding: 4px;' nowrap="nowrap"><span class='label'>New Release</span></td><td class='alt2' style='padding: 4px;' nowrap="nowrap"><span class="catalog album-bonus">N/A</span></td><td class='alt2' style='padding: 4px;'></td><td class='alt2' style='padding: 4px;'><a class="albumtitle album-bonus" href="http://vgmdb.net/album/37953" title='Blue Planet ~2nd Generation~ Preview Edition'><span class="albumtitle" lang="en" style="display:inline">Blue Planet ~2nd Generation~ Preview Edition</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>Blue Planet ～2nd Generation～ 準備号</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em>Blue Planet ~2nd Generation~ Junbi-gou</span></a></td><td class='alt2' style='padding: 4px;'><a href="/org/264"><span title="Carmina Lunae" class="artistname" lang="en" style="display:inline">Carmina Lunae</span><span style="display:none"><em> / </em></span><span title="Carmina Lunae" class="artistname" lang="ja" style="display:none">Carmina Lunae</span></a></td><td align='right' class='alt2' style='padding: 4px;' nowrap><span class='time'>Oct 28, 2012</span></td></tr>
+<tr><td class='alt1' style='padding: 4px;' nowrap="nowrap"><span class='label'>New Release</span></td><td class='alt1' style='padding: 4px;' nowrap="nowrap"><span class="catalog album-works">CKBX-0004</span></td><td class='alt1' style='padding: 4px;'></td><td class='alt1' style='padding: 4px;'><a class="albumtitle album-works" href="http://vgmdb.net/album/36064" title='cakebox vol.2'><span class="albumtitle" lang="en" style="display:inline">cakebox vol.2</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>cakebox vol.2</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>cakebox vol.2</i></span></a></td><td class='alt1' style='padding: 4px;'>cakebox</td><td align='right' class='alt1' style='padding: 4px;' nowrap><span class='time'>Oct 28, 2012</span></td></tr>
+<tr><td class='alt2' style='padding: 4px;' nowrap="nowrap"><span class='label'>New Release</span></td><td class='alt2' style='padding: 4px;' nowrap="nowrap"><span class="catalog album-works">FRCT-0013</span></td><td class='alt2' style='padding: 4px;'></td><td class='alt2' style='padding: 4px;'><a class="albumtitle album-works" href="http://vgmdb.net/album/36446" title='CLASHED Harmless DayDream'><span class="albumtitle" lang="en" style="display:inline">CLASHED Harmless DayDream</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>CLASHED Harmless DayDream</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>CLASHED Harmless DayDream</i></span></a></td><td class='alt2' style='padding: 4px;'><a href="/org/1069"><span title="fractaleline" class="artistname" lang="en" style="display:inline">fractaleline</span><span style="display:none"><em> / </em></span><span title="fractaleline" class="artistname" lang="ja" style="display:none">fractaleline</span></a></td><td align='right' class='alt2' style='padding: 4px;' nowrap><span class='time'>Oct 28, 2012</span></td></tr>
+<tr><td class='alt1' style='padding: 4px;' nowrap="nowrap"><span class='label'>New Release</span></td><td class='alt1' style='padding: 4px;' nowrap="nowrap"><span class="catalog album-works">100SR-A014~5</span></td><td class='alt1' style='padding: 4px;'></td><td class='alt1' style='padding: 4px;'><a class="albumtitle album-works" href="http://vgmdb.net/album/36024" title='Collapse/Rebirth'><span class="albumtitle" lang="en" style="display:inline">Collapse/Rebirth</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>Collapse/Rebirth</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Collapse/Rebirth</i></span></a></td><td class='alt1' style='padding: 4px;'>100sec Records</td><td align='right' class='alt1' style='padding: 4px;' nowrap><span class='time'>Oct 28, 2012</span></td></tr>
+<tr><td class='alt2' style='padding: 4px;' nowrap="nowrap"><span class='label'>New Release</span></td><td class='alt2' style='padding: 4px;' nowrap="nowrap"><span class="catalog album-works">SNRG-004</span></td><td class='alt2' style='padding: 4px;'></td><td class='alt2' style='padding: 4px;'><a class="albumtitle album-works" href="http://vgmdb.net/album/35409" title='Crying Beauty'><span class="albumtitle" lang="en" style="display:inline">Crying Beauty</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>Crying Beauty</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Crying Beauty</i></span></a></td><td class='alt2' style='padding: 4px;'><a href="/org/1023"><span title="Splash Energy Recordings" class="artistname" lang="en" style="display:inline">Splash Energy Recordings</span><span style="display:none"><em> / </em></span><span title="Splash Energy Recordings" class="artistname" lang="ja" style="display:none">Splash Energy Recordings</span></a></td><td align='right' class='alt2' style='padding: 4px;' nowrap><span class='time'>Oct 28, 2012</span></td></tr>
+<tr><td class='alt1' style='padding: 4px;' nowrap="nowrap"><span class='label'>New Release</span></td><td class='alt1' style='padding: 4px;' nowrap="nowrap"><span class="catalog album-works">SACD-0016</span></td><td class='alt1' style='padding: 4px;'></td><td class='alt1' style='padding: 4px;'><a class="albumtitle album-works" href="http://vgmdb.net/album/35985" title='Driven&#039; De:st-ructure2 -Heteronomy-'><span class="albumtitle" lang="en" style="display:inline">Driven' De:st-ructure2 -Heteronomy-</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>Driven' De:st-ructure2 -Heteronomy-</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Driven' De:st-ructure2 -Heteronomy-</i></span></a></td><td class='alt1' style='padding: 4px;'><a href="/org/105"><span title="Sound.AVE" class="artistname" lang="en" style="display:inline">Sound.AVE</span><span style="display:none"><em> / </em></span><span title="Sound.AVE" class="artistname" lang="ja" style="display:none">Sound.AVE</span></a></td><td align='right' class='alt1' style='padding: 4px;' nowrap><span class='time'>Oct 28, 2012</span></td></tr>
+<tr><td class='alt2' style='padding: 4px;' nowrap="nowrap"><span class='label'>New Release</span></td><td class='alt2' style='padding: 4px;' nowrap="nowrap"><span class="catalog album-works">DVSP-0085</span></td><td class='alt2' style='padding: 4px;'></td><td class='alt2' style='padding: 4px;'><a class="albumtitle album-works" href="http://vgmdb.net/album/36032" title='Escape from 10 minutes'><span class="albumtitle" lang="en" style="display:inline">Escape from 10 minutes</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>Escape from 10 minutes</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Escape from 10 minutes</i></span></a></td><td class='alt2' style='padding: 4px;'><a href="/org/331"><span title="Diverse System" class="artistname" lang="en" style="display:inline">Diverse System</span><span style="display:none"><em> / </em></span><span title="Diverse System" class="artistname" lang="ja" style="display:none">Diverse System</span></a></td><td align='right' class='alt2' style='padding: 4px;' nowrap><span class='time'>Oct 28, 2012</span></td></tr>
+<tr><td class='alt1' style='padding: 4px;' nowrap="nowrap"><span class='label'>New Release</span></td><td class='alt1' style='padding: 4px;' nowrap="nowrap"><span class="catalog album-works">GECD-005</span></td><td class='alt1' style='padding: 4px;'></td><td class='alt1' style='padding: 4px;'><a class="albumtitle album-works" href="http://vgmdb.net/album/35934" title='ForceMotion'><span class="albumtitle" lang="en" style="display:inline">ForceMotion</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>ForceMotion</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>ForceMotion</i></span></a></td><td class='alt1' style='padding: 4px;'><a href="/org/432"><span title="SKETCH UP! Recordings" class="artistname" lang="en" style="display:inline">SKETCH UP! Recordings</span><span style="display:none"><em> / </em></span><span title="SKETCH UP! Recordings" class="artistname" lang="ja" style="display:none">SKETCH UP! Recordings</span></a></td><td align='right' class='alt1' style='padding: 4px;' nowrap><span class='time'>Oct 28, 2012</span></td></tr>
+<tr><td class='alt2' style='padding: 4px;' nowrap="nowrap"><span class='label'>New Release</span></td><td class='alt2' style='padding: 4px;' nowrap="nowrap"><span class="catalog album-doujin">MGM-01</span></td><td class='alt2' style='padding: 4px;'></td><td class='alt2' style='padding: 4px;'><a class="albumtitle album-doujin" href="http://vgmdb.net/album/37941" title='G-minor -Minor Game Music Compilation Album-'><span class="albumtitle" lang="en" style="display:inline">G-minor -Minor Game Music Compilation Album-</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>G-minor -Minor Game Music Compilation Album-</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>G-minor -Minor Game Music Compilation Album-</i></span></a></td><td class='alt2' style='padding: 4px;'><a href="/org/914"><span title="Unknown Dimension" class="artistname" lang="en" style="display:inline">Unknown Dimension</span><span style="display:none"><em> / </em></span><span title="Unknown Dimension" class="artistname" lang="ja" style="display:none">Unknown Dimension</span></a></td><td align='right' class='alt2' style='padding: 4px;' nowrap><span class='time'>Oct 28, 2012</span></td></tr>
+<tr><td class='alt1' style='padding: 4px;' nowrap="nowrap"><span class='label'>Pre-release</span></td><td class='alt1' style='padding: 4px;' nowrap="nowrap"><span class="catalog album-doujin">UDAR-005</span></td><td class='alt1' style='padding: 4px;'></td><td class='alt1' style='padding: 4px;'><a class="albumtitle album-doujin" href="http://vgmdb.net/album/37939" title='GAMES STRINGS EDITION 2'><span class="albumtitle" lang="en" style="display:inline">GAMES STRINGS EDITION 2</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>GAMES STRINGS EDITION 2</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>GAMES STRINGS EDITION 2</i></span></a></td><td class='alt1' style='padding: 4px;'><a href="/org/914"><span title="Unknown Dimension" class="artistname" lang="en" style="display:inline">Unknown Dimension</span><span style="display:none"><em> / </em></span><span title="Unknown Dimension" class="artistname" lang="ja" style="display:none">Unknown Dimension</span></a></td><td align='right' class='alt1' style='padding: 4px;' nowrap><span class='time'>Oct 28, 2012</span></td></tr>
+<tr><td class='alt2' style='padding: 4px;' nowrap="nowrap"><span class='label'>New Release</span></td><td class='alt2' style='padding: 4px;' nowrap="nowrap"><span class="catalog album-works">N/A</span></td><td class='alt2' style='padding: 4px;'></td><td class='alt2' style='padding: 4px;'><a class="albumtitle album-works" href="http://vgmdb.net/album/36447" title='Green Fog* +2CDs'><span class="albumtitle" lang="en" style="display:inline">Green Fog* +2CDs</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>Green Fog* +2CDs</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Green Fog* +2CDs</i></span></a></td><td class='alt2' style='padding: 4px;'>SEPIA-SIS</td><td align='right' class='alt2' style='padding: 4px;' nowrap><span class='time'>Oct 28, 2012</span></td></tr>
+<tr><td class='alt1' style='padding: 4px;' nowrap="nowrap"><span class='label'>New Release</span></td><td class='alt1' style='padding: 4px;' nowrap="nowrap"><span class="catalog album-works">LLAC-0013</span></td><td class='alt1' style='padding: 4px;'></td><td class='alt1' style='padding: 4px;'><a class="albumtitle album-works" href="http://vgmdb.net/album/35959" title='Helical Addiction'><span class="albumtitle" lang="en" style="display:inline">Helical Addiction</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>Helical Addiction</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Helical Addiction</i></span></a></td><td class='alt1' style='padding: 4px;'><a href="/org/554"><span title="LiLA&#039;c Records" class="artistname" lang="en" style="display:inline">LiLA'c Records</span><span style="display:none"><em> / </em></span><span title="LiLA&#039;c Records" class="artistname" lang="ja" style="display:none">LiLA'c Records</span></a></td><td align='right' class='alt1' style='padding: 4px;' nowrap><span class='time'>Oct 28, 2012</span></td></tr>
+<tr><td class='alt2' style='padding: 4px;' nowrap="nowrap"><span class='label'>New Release</span></td><td class='alt2' style='padding: 4px;' nowrap="nowrap"><span class="catalog album-works">IRHC-008</span></td><td class='alt2' style='padding: 4px;'></td><td class='alt2' style='padding: 4px;'><a class="albumtitle album-works" href="http://vgmdb.net/album/35821" title='Hiten'><span class="albumtitle" lang="en" style="display:inline">Hiten</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>匪天</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Hiten</i></span></a></td><td class='alt2' style='padding: 4px;'><a href="/org/1014"><span title="不可逆 ハードコア" class="artistname" lang="en" style="display:inline">Hukagyaku Hardcore</span><span style="display:none"><em> / </em></span><span title="Hukagyaku Hardcore" class="artistname" lang="ja" style="display:none">不可逆 ハードコア</span></a></td><td align='right' class='alt2' style='padding: 4px;' nowrap><span class='time'>Oct 28, 2012</span></td></tr>
+<tr><td class='alt1' style='padding: 4px;' nowrap="nowrap"><span class='label'>New Release</span></td><td class='alt1' style='padding: 4px;' nowrap="nowrap"><span class="catalog album-works">ALMR-016</span></td><td class='alt1' style='padding: 4px;'></td><td class='alt1' style='padding: 4px;'><a class="albumtitle album-works" href="http://vgmdb.net/album/35945" title='Hyoushou to Kouchiku'><span class="albumtitle" lang="en" style="display:inline">Hyoushou to Kouchiku</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>表象と構築</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Hyoushou to Kouchiku</i></span></a></td><td class='alt1' style='padding: 4px;'><a href="/org/952"><span title="minimum electric design" class="artistname" lang="en" style="display:inline">minimum electric design</span><span style="display:none"><em> / </em></span><span title="minimum electric design" class="artistname" lang="ja" style="display:none">minimum electric design</span></a></td><td align='right' class='alt1' style='padding: 4px;' nowrap><span class='time'>Oct 28, 2012</span></td></tr>
+<tr><td class='alt2' style='padding: 4px;' nowrap="nowrap"><span class='label'>New Release</span></td><td class='alt2' style='padding: 4px;' nowrap="nowrap"><span class="catalog album-works">SUHD-002</span></td><td class='alt2' style='padding: 4px;'></td><td class='alt2' style='padding: 4px;'><a class="albumtitle album-works" href="http://vgmdb.net/album/35932" title='JP-H/D#02'><span class="albumtitle" lang="en" style="display:inline">JP-H/D#02</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>JP-H/D#02</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>JP-H/D#02</i></span></a></td><td class='alt2' style='padding: 4px;'><a href="/org/432"><span title="SKETCH UP! Recordings" class="artistname" lang="en" style="display:inline">SKETCH UP! Recordings</span><span style="display:none"><em> / </em></span><span title="SKETCH UP! Recordings" class="artistname" lang="ja" style="display:none">SKETCH UP! Recordings</span></a></td><td align='right' class='alt2' style='padding: 4px;' nowrap><span class='time'>Oct 28, 2012</span></td></tr>
+<tr><td class='alt1' style='padding: 4px;' nowrap="nowrap"><span class='label'>New Release</span></td><td class='alt1' style='padding: 4px;' nowrap="nowrap"><span class="catalog album-works">CRTX-002</span></td><td class='alt1' style='padding: 4px;'></td><td class='alt1' style='padding: 4px;'><a class="albumtitle album-works" href="http://vgmdb.net/album/35801" title='Logos'><span class="albumtitle" lang="en" style="display:inline">Logos</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>Logos</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Logos</i></span></a></td><td class='alt1' style='padding: 4px;'>Cyberaser Records</td><td align='right' class='alt1' style='padding: 4px;' nowrap><span class='time'>Oct 28, 2012</span></td></tr>
+<tr><td class='alt2' style='padding: 4px;' nowrap="nowrap"><span class='label'>New Release</span></td><td class='alt2' style='padding: 4px;' nowrap="nowrap"><span class="catalog album-doujin">SDDC-1201</span></td><td class='alt2' style='padding: 4px;'></td><td class='alt2' style='padding: 4px;'><a class="albumtitle album-doujin" href="http://vgmdb.net/album/36909" title='Musou 2 Original Soundtrack'><span class="albumtitle" lang="en" style="display:inline">Musou 2 Original Soundtrack</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>東方夢想夏郷 第二話サウンドトラック</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Musou 2 Original Soundtrack</i></span></a></td><td class='alt2' style='padding: 4px;'><a href="/org/231"><span title="舞風" class="artistname" lang="en" style="display:inline">MAIKAZE</span><span style="display:none"><em> / </em></span><span title="MAIKAZE" class="artistname" lang="ja" style="display:none">舞風</span></a></td><td align='right' class='alt2' style='padding: 4px;' nowrap><span class='time'>Oct 28, 2012</span></td></tr>
+<tr><td class='alt1' style='padding: 4px;' nowrap="nowrap"><span class='label'>New Release</span></td><td class='alt1' style='padding: 4px;' nowrap="nowrap"><span class="catalog album-works">MTCD-013</span></td><td class='alt1' style='padding: 4px;'></td><td class='alt1' style='padding: 4px;'><a class="albumtitle album-works" href="http://vgmdb.net/album/35984" title='neu erstellen'><span class="albumtitle" lang="en" style="display:inline">neu erstellen</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>neu erstellen</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>neu erstellen</i></span></a></td><td class='alt1' style='padding: 4px;'><a href="/org/391"><span title="MINAMOTRANCE" class="artistname" lang="en" style="display:inline">MINAMOTRANCE</span><span style="display:none"><em> / </em></span><span title="MINAMOTRANCE" class="artistname" lang="ja" style="display:none">MINAMOTRANCE</span></a></td><td align='right' class='alt1' style='padding: 4px;' nowrap><span class='time'>Oct 28, 2012</span></td></tr>
+<tr><td class='alt2' style='padding: 4px;' nowrap="nowrap"><span class='label'>New Release</span></td><td class='alt2' style='padding: 4px;' nowrap="nowrap"><span class="catalog album-doujin">Lvlt-0014</span></td><td class='alt2' style='padding: 4px;'></td><td class='alt2' style='padding: 4px;'><a class="albumtitle album-doujin" href="http://vgmdb.net/album/36389" title='Overdrive'><span class="albumtitle" lang="en" style="display:inline">Overdrive</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>Overdrive</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Overdrive</i></span></a></td><td class='alt2' style='padding: 4px;'><a href="/org/378"><span title="Levo Lution" class="artistname" lang="en" style="display:inline">Levo Lution</span><span style="display:none"><em> / </em></span><span title="Levo Lution" class="artistname" lang="ja" style="display:none">Levo Lution</span></a></td><td align='right' class='alt2' style='padding: 4px;' nowrap><span class='time'>Oct 28, 2012</span></td></tr>
+<tr><td class='alt1' style='padding: 4px;' nowrap="nowrap"><span class='label'>New Release</span></td><td class='alt1' style='padding: 4px;' nowrap="nowrap"><span class="catalog album-works">HZMT-0008</span></td><td class='alt1' style='padding: 4px;'></td><td class='alt1' style='padding: 4px;'><a class="albumtitle album-works" href="http://vgmdb.net/album/34925" title='overdrive hell 8: Hizumi Tengoku Muchi to no Sogu'><span class="albumtitle" lang="en" style="display:inline">overdrive hell 8: Hizumi Tengoku Muchi to no Sogu</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>overdrive hell 8: ヒズミ天国・無知との遭遇</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>overdrive hell 8: Hizumi Tengoku Muchi to no Sogu</i></span></a></td><td class='alt1' style='padding: 4px;'>Supersweep</td><td align='right' class='alt1' style='padding: 4px;' nowrap><span class='time'>Oct 28, 2012</span></td></tr>
+<tr><td class='alt2' style='padding: 4px;' nowrap="nowrap"><span class='label'>New Release</span></td><td class='alt2' style='padding: 4px;' nowrap="nowrap"><span class="catalog album-works">N/A</span></td><td class='alt2' style='padding: 4px;'></td><td class='alt2' style='padding: 4px;'><a class="albumtitle album-works" href="http://vgmdb.net/album/38340" title='Phony Trad'><span class="albumtitle" lang="en" style="display:inline">Phony Trad</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>Phony Trad</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Phony Trad</i></span></a></td><td class='alt2' style='padding: 4px;'>Tranica</td><td align='right' class='alt2' style='padding: 4px;' nowrap><span class='time'>Oct 28, 2012</span></td></tr>
+<tr><td class='alt1' style='padding: 4px;' nowrap="nowrap"><span class='label'>New Release</span></td><td class='alt1' style='padding: 4px;' nowrap="nowrap"><span class="catalog album-doujin">IO-0194</span></td><td class='alt1' style='padding: 4px;'></td><td class='alt1' style='padding: 4px;'><a class="albumtitle album-doujin" href="http://vgmdb.net/album/36039" title='Project U-Ta-Hi-Me Original Soundtrack'><span class="albumtitle" lang="en" style="display:inline">Project U-Ta-Hi-Me Original Soundtrack</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>Project U-Ta-Hi-Me Original Soundtrack</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Project U-Ta-Hi-Me Original Soundtrack</i></span></a></td><td class='alt1' style='padding: 4px;'><a href="/org/333"><span title="IOSYS" class="artistname" lang="en" style="display:inline">IOSYS</span><span style="display:none"><em> / </em></span><span title="IOSYS" class="artistname" lang="ja" style="display:none">IOSYS</span></a></td><td align='right' class='alt1' style='padding: 4px;' nowrap><span class='time'>Oct 28, 2012</span></td></tr>
+<tr><td class='alt2' style='padding: 4px;' nowrap="nowrap"><span class='label'>New Release</span></td><td class='alt2' style='padding: 4px;' nowrap="nowrap"><span class="catalog album-works">SRCD-0004</span></td><td class='alt2' style='padding: 4px;'></td><td class='alt2' style='padding: 4px;'><a class="albumtitle album-works" href="http://vgmdb.net/album/36090" title='Reminisphere'><span class="albumtitle" lang="en" style="display:inline">Reminisphere</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>Reminisphere</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Reminisphere</i></span></a></td><td class='alt2' style='padding: 4px;'><a href="/org/1085"><span title="Sprite Recordings" class="artistname" lang="en" style="display:inline">Sprite Recordings</span><span style="display:none"><em> / </em></span><span title="Sprite Recordings" class="artistname" lang="ja" style="display:none">Sprite Recordings</span></a></td><td align='right' class='alt2' style='padding: 4px;' nowrap><span class='time'>Oct 28, 2012</span></td></tr>
+<tr><td class='alt1' style='padding: 4px;' nowrap="nowrap"><span class='label'>New Release</span></td><td class='alt1' style='padding: 4px;' nowrap="nowrap"><span class="catalog album-works">N/A</span></td><td class='alt1' style='padding: 4px;'></td><td class='alt1' style='padding: 4px;'><a class="albumtitle album-works" href="http://vgmdb.net/album/36510" title='simple'><span class="albumtitle" lang="en" style="display:inline">simple</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>「 」</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>simple</i></span></a></td><td class='alt1' style='padding: 4px;'>群青リボン, 暴LADY</td><td align='right' class='alt1' style='padding: 4px;' nowrap><span class='time'>Oct 28, 2012</span></td></tr>
+<tr><td class='alt2' style='padding: 4px;' nowrap="nowrap"><span class='label'>New Release</span></td><td class='alt2' style='padding: 4px;' nowrap="nowrap"><span class="catalog album-works">N/A</span></td><td class='alt2' style='padding: 4px;'></td><td class='alt2' style='padding: 4px;'><a class="albumtitle album-works" href="http://vgmdb.net/album/36470" title='Sola'><span class="albumtitle" lang="en" style="display:inline">Sola</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>ソラ</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Sola</i></span></a></td><td class='alt2' style='padding: 4px;'>ferhallent</td><td align='right' class='alt2' style='padding: 4px;' nowrap><span class='time'>Oct 28, 2012</span></td></tr>
+<tr><td class='alt1' style='padding: 4px;' nowrap="nowrap"><span class='label'>New Release</span></td><td class='alt1' style='padding: 4px;' nowrap="nowrap"><span class="catalog album-game">PNZY-12001</span></td><td class='alt1' style='padding: 4px;'></td><td class='alt1' style='padding: 4px;'><a class="albumtitle album-game" href="http://vgmdb.net/album/35033" title='Star Cruiser ~Toshiya Yamanaka Works~'><span class="albumtitle" lang="en" style="display:inline">Star Cruiser ~Toshiya Yamanaka Works~</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>スタークルーザー　～山中季哉ワークス～</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Star Cruiser ~Toshiya Yamanaka Works~</i></span></a></td><td class='alt1' style='padding: 4px;'>Presence of Nostalgia (distributed by SuperSweep)</td><td align='right' class='alt1' style='padding: 4px;' nowrap><span class='time'>Oct 28, 2012</span></td></tr>
+<tr><td class='alt2' style='padding: 4px;' nowrap="nowrap"><span class='label'>Resale</span></td><td class='alt2' style='padding: 4px;' nowrap="nowrap"><span class="catalog album-doujin">KNDY-0011</span></td><td class='alt2' style='padding: 4px;'></td><td class='alt2' style='padding: 4px;'><a class="albumtitle album-doujin" href="http://vgmdb.net/album/35806" title='Starless ~Gensou Kigakukyoku~'><span class="albumtitle" lang="en" style="display:inline">Starless ~Gensou Kigakukyoku~</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>Starless ～幻想器樂曲～</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Starless ~Gensou Kigakukyoku~</i></span></a></td><td class='alt2' style='padding: 4px;'><a href="/org/839"><span title="子猫奪回屋" class="artistname" lang="en" style="display:inline">KONEKODAKKAIYA</span><span style="display:none"><em> / </em></span><span title="KONEKODAKKAIYA" class="artistname" lang="ja" style="display:none">子猫奪回屋</span></a></td><td align='right' class='alt2' style='padding: 4px;' nowrap><span class='time'>Oct 07, 2012</span></td></tr>
+<tr><td class='alt1' style='padding: 4px;' nowrap="nowrap"><span class='label'>New Release</span></td><td class='alt1' style='padding: 4px;' nowrap="nowrap"><span class="catalog album-works">LIEN-0011</span></td><td class='alt1' style='padding: 4px;'></td><td class='alt1' style='padding: 4px;'><a class="albumtitle album-works" href="http://vgmdb.net/album/36601" title='Struggle to end'><span class="albumtitle" lang="en" style="display:inline">Struggle to end</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>Struggle to end</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Struggle to end</i></span></a></td><td class='alt1' style='padding: 4px;'>LC:AZE</td><td align='right' class='alt1' style='padding: 4px;' nowrap><span class='time'>Oct 28, 2012</span></td></tr>
+<tr><td class='alt2' style='padding: 4px;' nowrap="nowrap"><span class='label'>New Release</span></td><td class='alt2' style='padding: 4px;' nowrap="nowrap"><span class="catalog album-works">CGSP-0002</span></td><td class='alt2' style='padding: 4px;'></td><td class='alt2' style='padding: 4px;'><a class="albumtitle album-works" href="http://vgmdb.net/album/35936" title='SUPER AURA'><span class="albumtitle" lang="en" style="display:inline">SUPER AURA</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>SUPER AURA</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>SUPER AURA</i></span></a></td><td class='alt2' style='padding: 4px;'>cubegrams</td><td align='right' class='alt2' style='padding: 4px;' nowrap><span class='time'>Oct 28, 2012</span></td></tr>
+<tr><td class='alt1' style='padding: 4px;' nowrap="nowrap"><span class='label'>New Release</span></td><td class='alt1' style='padding: 4px;' nowrap="nowrap"><span class="catalog album-doujin">S2TB-0004</span></td><td class='alt1' style='padding: 4px;'></td><td class='alt1' style='padding: 4px;'><a class="albumtitle album-doujin" href="http://vgmdb.net/album/35902" title='The 4th EP'><span class="albumtitle" lang="en" style="display:inline">The 4th EP</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>The 4th EP</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>The 4th EP</i></span></a></td><td class='alt1' style='padding: 4px;'>S2TB Recording</td><td align='right' class='alt1' style='padding: 4px;' nowrap><span class='time'>Oct 28, 2012</span></td></tr>
+<tr><td class='alt2' style='padding: 4px;' nowrap="nowrap"><span class='label'>Resale</span></td><td class='alt2' style='padding: 4px;' nowrap="nowrap"><span class="catalog album-doujin">IO-0212</span></td><td class='alt2' style='padding: 4px;'></td><td class='alt2' style='padding: 4px;'><a class="albumtitle album-doujin" href="http://vgmdb.net/album/35753" title='Touhou Eternal Fantasia'><span class="albumtitle" lang="en" style="display:inline">Touhou Eternal Fantasia</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>東方Eternal Fantasia</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Touhou Eternal Fantasia</i></span></a></td><td class='alt2' style='padding: 4px;'><a href="/org/333"><span title="IOSYS" class="artistname" lang="en" style="display:inline">IOSYS</span><span style="display:none"><em> / </em></span><span title="IOSYS" class="artistname" lang="ja" style="display:none">IOSYS</span></a></td><td align='right' class='alt2' style='padding: 4px;' nowrap><span class='time'>Sep 28, 2012</span></td></tr>
+<tr><td class='alt1' style='padding: 4px;' nowrap="nowrap"><span class='label'>New Release</span></td><td class='alt1' style='padding: 4px;' nowrap="nowrap"><span class="catalog album-works">CHS-0013</span></td><td class='alt1' style='padding: 4px;'></td><td class='alt1' style='padding: 4px;'><a class="albumtitle album-works" href="http://vgmdb.net/album/35903" title='ULTRA CUTiE BREAKiN&#039;!!!!'><span class="albumtitle" lang="en" style="display:inline">ULTRA CUTiE BREAKiN'!!!!</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>ULTRA CUTiE BREAKiN'!!!!</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>ULTRA CUTiE BREAKiN'!!!!</i></span></a></td><td class='alt1' style='padding: 4px;'><a href="/org/173"><span title="C.H.S" class="artistname" lang="en" style="display:inline">C.H.S</span><span style="display:none"><em> / </em></span><span title="C.H.S" class="artistname" lang="ja" style="display:none">C.H.S</span></a></td><td align='right' class='alt1' style='padding: 4px;' nowrap><span class='time'>Oct 28, 2012</span></td></tr>
+<tr><td class='alt2' style='padding: 4px;' nowrap="nowrap"><span class='label'>New Release</span></td><td class='alt2' style='padding: 4px;' nowrap="nowrap"><span class="catalog album-works">UTCD-001</span></td><td class='alt2' style='padding: 4px;'></td><td class='alt2' style='padding: 4px;'><a class="albumtitle album-works" href="http://vgmdb.net/album/35994" title='Unitone phase:01'><span class="albumtitle" lang="en" style="display:inline">Unitone phase:01</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>Unitone phase:01</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Unitone phase:01</i></span></a></td><td class='alt2' style='padding: 4px;'>Unitone</td><td align='right' class='alt2' style='padding: 4px;' nowrap><span class='time'>Oct 28, 2012</span></td></tr>
+<tr><td class='alt1' style='padding: 4px;' nowrap="nowrap"><span class='label'>New Release</span></td><td class='alt1' style='padding: 4px;' nowrap="nowrap"><span class="catalog album-works">EYPSCD-005</span></td><td class='alt1' style='padding: 4px;'></td><td class='alt1' style='padding: 4px;'><a class="albumtitle album-works" href="http://vgmdb.net/album/37634" title='World feat.Mitsuki Nakae'><span class="albumtitle" lang="en" style="display:inline">World feat.Mitsuki Nakae</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>World feat.中恵光城</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>World feat.Mitsuki Nakae</i></span></a></td><td class='alt1' style='padding: 4px;'>Eryps</td><td align='right' class='alt1' style='padding: 4px;' nowrap><span class='time'>Oct 28, 2012</span></td></tr>
+
+</tr></table>
+
+
+	</div>
+	<b class="rbot"><b></b></b>
+</div>
+<!-- / main page contents -->
+
+</div>
+<!-- /content area table -->
+<div style="clear: both; height: 20px"></div>
+
+<!-- chat popup -->
+<div style="display: none; width: 500px; padding: 10px;" id="chat-popup">
+	<a class="buttonCancel" style="float: right" href="#" onclick="return hs.close(this)"><img title="Close" src="http://media.vgmdb.net/img/button-cancel.gif" alt="Close"></a>
+	<div>
+		<h3>Chat with us!</h3>
+		<p>Our official IRC channel is <b>#vgmdb</b> on <b>irc.psigenix.net</b></p>
+		<p>You may use any IRC client such as <a rel="nofollow" href="http://www.mirc.com/">mIRC</a> to connect. Alternatively you may chat in your browser window using the form below.</p>
+		<p class="smallfont">If you are unable to run Java applets, please choose CGI:IRC from the dropdown menu. Note that there is a limit to the number of connections allowed for this option.</p>
+		<form id="loginform" name="loginform" action="http://bigblah.net/irc/index.php" method="post" target="vgmdbirc">
+		<input id="chatInterface" type="hidden" name="interface" value="nonjs">
+		<span class="label">Nickname</span> <input id="chatNick" class="bginput" type="text" name="Nickname" value="CGI-IRC">
+		<select id="chatClient" class="bginput" name="client">
+		<option value="http://bigblah.net/irc/index.php">PJIRC</option>
+		<option value="http://bigblah.net/cgi-bin/irc/irc.cgi">CGI:IRC</option>
+		</select>
+		<input type="hidden" name="server" value="irc.psigenix.net">
+		<input type="hidden" name="channel" value="#vgmdb">
+		<input class="button" type="submit" name="submit" value="Connect"></form>
+	</div>
+</div>
+<!-- / chat popup -->
+
+<div class="alt1" style="width: 100%">
+<div id="footer">
+<div style="padding: 20px 10px 0 200px">
+
+
+
+	<div style="float: right; text-align: right; font-family: Arial;" class="label">
+		<a href="/about">About Us</a> &bull;
+		<a href="/faq">F.A.Q.</a> &bull;
+		<a href="/forums/sendmessage.php?s=7ab230b12d1a53a6e18565f45ed86d63" rel="nofollow" accesskey="9">Contact Us</a> &bull;
+		<a href="/db/statistics.php" rel="nofollow">Statistics</a> &bull;
+		<a href="http://vgmdb.net">Home</a>
+
+		<div class="smallfont" style="font-family: Arial; margin-top: 10px">
+		
+		
+		
+		<a href="/forums/archive/index.php">Archive</a> &bull;
+		
+		<a href="/privacy">Privacy Statement</a> &bull;
+		
+		<a href="#top" onclick="self.scrollTo(0, 0); return false;">Top</a>
+		</div>
+
+	<div style="margin-top: 10px"><form action="index.php" method="get">
+	
+	
+	
+
+	</form></div>
+	</div>
+
+	<div class="label">
+		<h3>VGMdb 0.15 (beta)</h3>
+		<div class="smallfont"><!-- Do not remove this copyright notice -->
+		Powered by vBulletin&reg; Version 3.8.5<br />Copyright &copy;2000 - 2013, Jelsoft Enterprises Ltd.
+		<!-- Do not remove this copyright notice --></div>
+		<div class="smallfont">Site code and design copyright VGMdb.net</div>
+		<div class="smallfont">Site material is property of their respective owners.</div>
+		<div class="smallfont">All times are GMT -8. The time now is <span class="time">08:52 PM</span>.</div>
+	</div>
+
+
+
+</div></div></div>
+
+
+<script type="text/javascript">
+<!--
+	// Main vBulletin Javascript Initialization
+	vBulletin_init();
+//-->
+</script>
+
+</body>
+</html>
