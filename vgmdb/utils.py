@@ -123,5 +123,6 @@ def parse_discography(soup_disco_table, label_type='roles'):
 			    "type": album_type
 			}
 			albums.append(album_info)
+	albums = sorted(albums, key=lambda e:e['date'])
 	return albums
 
