@@ -72,7 +72,13 @@ def parse_names(soup_parent):
 		info[lang] = name
 	return info
 
-def parse_discography(soup_disco_table):
+def parse_discography(soup_disco_table, label_type='roles'):
+	"""
+	Parse a discography table
+	Each album has a span.label element. Set label_type to handle that element differently.
+	On artist pages, pass label_type='roles'
+	On product pages, pass label_type='classification'
+	"""
 	albums = []
 	for soup_tbody in soup_disco_table.find_all("tbody", recursive=False):
 		soup_rows = soup_tbody.find_all("tr", recursive=False)
@@ -110,7 +116,7 @@ def parse_discography(soup_disco_table):
 
 			album_info = {
 			    "date": date,
-			    "roles": roles,
+			    label_type: roles,
 			    "titles": titles,
 			    "catalog": catalog,
 			    "link": link,
