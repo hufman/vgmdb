@@ -36,13 +36,20 @@ def parse_date_time(time):
 			hour += 12
 		return "%02d-%02d-%02dT%02d:%02d"%(year,month,day,hour,minute)
 
-def normalize_dotted_date(weird_date):
-	""" Given a string like 2005.01.??, return 2005-01 """
-	elements = weird_date.split('.')
+def normalize_separated_date(weird_date, split):
+	elements = weird_date.split(split)
 	output = [int(x) for x in elements if len(x)>0 and x[0]!='?']
 	stringed_output = ["%04i"%output[0]]
 	stringed_output.extend(["%02i"%x for x in output[1:]])
 	return '-'.join(stringed_output)
+
+def normalize_dotted_date(weird_date):
+	""" Given a string like 2005.01.??, return 2005-01 """
+	return normalize_separated_date(weird_date, '.')
+
+def normalize_dashed_date(weird_date):
+	""" Given a string like 2005-01-2 return 2005-01-02 """
+	return normalize_separated_date(weird_date, '-')
 
 def parse_names(soup_parent):
 	"""

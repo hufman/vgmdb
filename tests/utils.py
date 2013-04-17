@@ -34,4 +34,8 @@ class TestUtils(unittest.TestCase):
 		""" Make sure that conversion from YYYY.M.D to YYYY-MM-DD works """
 		date = utils.normalize_dotted_date("2007.2.9")
 		self.assertEqual("2007-02-09", date)
+	def test_dashed_shortmonth(self):
+		""" Make sure that conversion from YYYY.M.D to YYYY-MM-DD works """
+		date = utils.normalize_dashed_date("2007-2")
+		self.assertEqual("2007-02", date)
 
