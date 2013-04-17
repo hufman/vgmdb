@@ -43,6 +43,9 @@ class TestUtils(unittest.TestCase):
 		invalid = '<table><tr></tr><table five>asdf</table><table>'
 		correct = '<table><tr></tr></table><table five>asdf</table><table>'
 		self.assertEqual(correct, utils.fix_invalid_table(invalid))
+		invalid = '<table><tr><tr></tr></table>'
+		correct = '<table><tr></tr></table>'
+		self.assertEqual(correct, utils.fix_invalid_table(invalid))
 		invalid = '<table><tr></tr></tr></table>'
 		correct = '<table><tr></tr></table>'
 		self.assertEqual(correct, utils.fix_invalid_table(invalid))
