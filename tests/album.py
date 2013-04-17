@@ -52,10 +52,10 @@ class TestAlbums(unittest.TestCase):
 		self.assertEqual(u"/db/assets/covers-medium/7/9/79-1190730814.jpg", ff8['covers'][0]['medium'])
 		self.assertEqual(u"/db/assets/covers/7/9/79-1190730814.jpg", ff8['covers'][0]['full'])
 		self.assertEqual(u"EYES ON ME: featured in FINAL FANTASY VIII", ff8['related'][0]['name']['en'])
-		self.assertEqual(u"2006-08-03T01:33", ff8['added_date'])
-		self.assertEqual(u"2012-08-12T19:55", ff8['edited_date'])
-		self.assertEqual(5484, ff8['visitors'])
-		self.assertEqual(16, ff8['freedb'])
+		self.assertEqual(u"2006-08-03T01:33", ff8['meta']['added_date'])
+		self.assertEqual(u"2012-08-12T19:55", ff8['meta']['edited_date'])
+		self.assertEqual(5484, ff8['meta']['visitors'])
+		self.assertEqual(16, ff8['meta']['freedb'])
 
 	def test_arciel(self):
 		arciel_code = file(os.path.join(base, 'album_arciel.html'), 'r').read()
@@ -78,7 +78,7 @@ class TestAlbums(unittest.TestCase):
 		viking = album.parse_album_page(viking_code)
 
 		self.assertEqual('Free', viking['release_price']['price'])
-		self.assertEqual(500, viking['visitors'])
+		self.assertEqual(500, viking['meta']['visitors'])
 		self.assertEqual('NES (Famicom)', viking['platforms'][0])
 		self.assertEqual('Duty Cycle Generator', viking['publishers'][0]['name'])
 

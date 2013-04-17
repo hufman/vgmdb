@@ -135,3 +135,27 @@ def parse_discography(soup_disco_table, label_type='roles'):
 	albums = sorted(albums, key=lambda e:e['date'])
 	return albums
 
+def parse_meta(soup_meta_section):
+	meta_info = {}
+	soup_divs = soup_meta_section.find_all('div', recursive=False)
+	for soup_div in soup_divs:
+		label = soup_div.b.string.strip()
+		if label == 'Added':
+			date = soup_div.br.next.string.strip()
+			time = soup_div.span.string.strip()
+			time = parse_date_time("%s %s"%(date, time))
+			meta_info['added_date'] = time
+		if label == 'Edited':
+			date = soup_div.br.next.string.strip()
+			time = soup_div.span.string.strip()
+			time = parse_date_time("%s %s"%(date, time))
+			meta_info['edited_date'] = time
+		if label == 'Page traffic':
+			soup_rows = soup_div.find_all('span', recursive=False)
+			try:
+				meta_info['visitors'] = int(soup_rows[0].string.strip())
+				meta_info['freedb'] = int(soup_rows[1].string.strip())
+			except:
+				pass	# who puts a not-number in a page counter?
+	return meta_info
+

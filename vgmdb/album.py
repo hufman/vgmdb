@@ -214,7 +214,7 @@ def _parse_right_column(soup_right_column):
 		else:
 			# found entry stats
 			soup_section = soup_div.div
-			album_info.update(_parse_section_info(soup_section))
+			album_info['meta'] = utils.parse_meta(soup_section)
 			soup_div = None
 			pass
 	return album_info
@@ -333,28 +333,4 @@ def _parse_section_covers(soup_covers):
 				         "medium":medium_link, "full":full_link}
 				covers.append(cover)
 	return covers
-
-def _parse_section_info(soup_section):
-	album_info = {}
-	soup_divs = soup_section.find_all('div', recursive=False)
-	for soup_div in soup_divs:
-		label = soup_div.b.string.strip()
-		if label == 'Added':
-			date = soup_div.br.next.string.strip()
-			time = soup_div.span.string.strip()
-			time = utils.parse_date_time("%s %s"%(date, time))
-			album_info['added_date'] = time
-		if label == 'Edited':
-			date = soup_div.br.next.string.strip()
-			time = soup_div.span.string.strip()
-			time = utils.parse_date_time("%s %s"%(date, time))
-			album_info['edited_date'] = time
-		if label == 'Page traffic':
-			soup_rows = soup_div.find_all('span', recursive=False)
-			try:
-				album_info['visitors'] = int(soup_rows[0].string.strip())
-				album_info['freedb'] = int(soup_rows[1].string.strip())
-			except:
-				pass	# who puts a not-number in a page counter?
-	return album_info
 
