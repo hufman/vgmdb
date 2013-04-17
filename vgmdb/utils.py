@@ -9,10 +9,19 @@ def parse_date_time(time):
 	"""
 	months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', \
 	          'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-	month = time[0:3]
-	month = months.index(month) + 1
+	fullmonths = ['January', 'February', 'March', 'April', \
+	              'May', 'June', 'July', 'August', \
+	              'September', 'October', 'November', 'December']
+	space = time.find(' ')
+	month = time[0:space]
+	if month in months:
+		month = months.index(month) + 1
+	elif month in fullmonths:
+		month = fullmonths.index(month) + 1
+	else:
+		month = 0
 	comma = time.find(',')
-	day = int(time[4:comma])
+	day = int(time[space+1:comma])
 	year = int(time[comma+2:comma+2+4])
 	timepos = comma+2+4+1
 	if timepos >= len(time):		# there is not a time to parse
