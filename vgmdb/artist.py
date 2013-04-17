@@ -53,6 +53,7 @@ def parse_artist_page(html_source):
 	soup_divs = soup_right_column.find_all('div', recursive=False)
 	if soup_divs[0].div and soup_divs[0].div.h3 and soup_divs[0].div.h3.string == 'Websites':
 		artist_info['websites'] = _parse_websites(soup_divs[1].div)
+	artist_info['meta'] = utils.parse_meta(soup_divs[-1].div)
 
 	# Parse for twitter handle
 	twitters = []

@@ -31,6 +31,7 @@ class TestArtists(unittest.TestCase):
 		self.assertTrue(u'Composer' in nobuo['discography'][0]['roles'])
 		self.assertEqual(u'DOGEARRECORDS', nobuo['websites']['Official'][0]['name'])
 		self.assertEqual('UematsuNobuo', nobuo['twitter_names'][0])
+		self.assertEqual('2007-10-17T09:14', nobuo['meta']['added_date'])
 
 	def test_nobuo_name(self):
 		""" Japanese name """
@@ -66,3 +67,4 @@ class TestArtists(unittest.TestCase):
 		self.assertEqual(u'Arranger (as (S_S))', ss['discography'][13]['roles'][0])
 		self.assertEqual(u'HAPPY-SYNTHESIZER', ss['aliases'][1]['name'])
 		self.assertEqual(u'Takeshi Nagai', ss['members'][0]['name'])
+		self.assertEqual(u'2011-10-03T05:45', ss['meta']['edited_date'])
