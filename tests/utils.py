@@ -30,3 +30,8 @@ class TestUtils(unittest.TestCase):
 		""" Make sure that conversion from YYYY.MM.DD to YYYY-MM-DD works """
 		date = utils.normalize_dotted_date("2007.02.20")
 		self.assertEqual("2007-02-20", date)
+	def test_dotted_shortday(self):
+		""" Make sure that conversion from YYYY.M.D to YYYY-MM-DD works """
+		date = utils.normalize_dotted_date("2007.2.9")
+		self.assertEqual("2007-02-09", date)
+
