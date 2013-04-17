@@ -17,16 +17,25 @@ def parse_product_page(html_source):
 		elif len(soup_real_name.contents) > 1:
 			product_info['name_real'] = soup_real_name.contents[0].string
 
-	soup_profile = soup_profile.find(id='innercontent').find(id='innermain')
+	soup_type = soup_name.find_next_sibling('span')
+	if soup_type:
+		product_info['type'] = soup_type.string[1:-1]
+
+	soup_profile = soup_profile.find(id='innercontent')
+	if soup_profile.find(id='innermain'):
+		soup_profile = soup_profile.find(id='innermain')
 	soup_profile_sections = soup_profile.find_all('div', recursive=False)
 
-	soup_profile_info = soup_profile_sections[1].div.dl
-	product_info.update(_parse_product_info(soup_profile_info))
+	if soup_profile.find('h3').find_previous_sibling('div'):	# full profile
+		soup_profile_info = soup_profile_sections[1].div.dl
+		product_info.update(_parse_product_info(soup_profile_info))
 
 	soup_section_heads = soup_profile.find_all('h3', recursive=False)
 	for soup_section_head in soup_section_heads:
 		section_name = soup_section_head.string
 		soup_section = soup_section_head.find_next_sibling('div')
+		if section_name == 'Titles':
+			product_info['titles'] = _parse_franchise_titles(soup_section.div.table)
 		if section_name == 'Releases':
 			product_info['releases'] = _parse_product_releases(soup_section.div.table)
 		if section_name == 'Albums | Credits':
@@ -87,4 +96,20 @@ def _parse_product_releases(soup_table):
 		releases.append(release)
 	releases = sorted(releases, key=lambda e:e['date'])
 	return releases
+
+def _parse_franchise_titles(soup_table):
+	titles = []
+	if not soup_table:
+		return titles
+	soup_rows = soup_table.find_all('tr', recursive=False)
+	if len(soup_rows) == 0:
+		return titles
+	for soup_row in soup_rows[1:]:
+		soup_cells = soup_row.find_all('td', recursive=False)
+		title = {}
+		title['date'] = utils.normalize_dashed_date(soup_cells[0].span.string)
+		title['name'] = utils.parse_names(soup_cells[1].span)
+		titles.append(title)
+	titles = sorted(titles, key=lambda e:e['date'])
+	return titles
 

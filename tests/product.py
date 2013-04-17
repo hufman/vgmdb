@@ -29,3 +29,10 @@ class TestProducts(unittest.TestCase):
 		self.assertEqual(0, len(witcher['releases']))
 		self.assertEqual(u"KK25", witcher['albums'][0]['catalog'])
 
+	def test_at(self):
+		at_code = file(os.path.join(base, 'product_at.html'), 'r').read()
+		at = product.parse_product_page(at_code)
+		self.assertEqual(u"Ar tonelico", at['name'])
+		self.assertEqual(u"アルトネリコ", at['name_real'])
+		self.assertEqual(4, len(at['titles']))
+		self.assertEqual("Ar tonelico: Melody of Elemia", at['titles'][0]['name']['en'])
