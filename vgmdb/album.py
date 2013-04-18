@@ -111,11 +111,17 @@ def _parse_album_info(soup_info):
 		elif name in names_multiple.keys():
 			key = names_multiple[name]
 			value = []
-			for soup_link in soup_value.find_all('a', recursive=False):
-				link = {}
-				link['link'] = soup_link['href']
-				link['name'] = utils.parse_names(soup_link)
-				value.append(link)
+			for soup_child in soup_value.children:
+				if isinstance(soup_child, bs4.Tag) and soup_child.name=='a':
+					link = {}
+					link['link'] = soup_child['href']
+					link['name'] = utils.parse_names(soup_child)
+					value.append(link)
+				else:
+					pieces = soup_child.string.split(',')
+					pieces = [a.strip() for a in pieces if len(a.strip())>0]
+					names = [{'name':{'en':name}} for name in pieces]
+					value.extend(names)
 			album_info[key] = value
 		else:
 			# unknown key

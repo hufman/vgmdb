@@ -90,3 +90,10 @@ class TestAlbums(unittest.TestCase):
 		self.assertEqual('2000-10-04', blooming['related'][1]['date'])
 		self.assertEqual('CD Japan (OOP)', blooming['stores'][0]['name'])
 
+	def test_istoria(self):
+		istoria_code = file(os.path.join(base, 'album_istoria.html'), 'r').read()
+		istoria = album.parse_album_page(istoria_code)
+
+		self.assertEqual(u'Tomoki Yamada', istoria['performers'][-1]['name']['en'])
+		self.assertEqual(u'Vocal, Original Work', istoria['classification'])
+
