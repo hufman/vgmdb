@@ -55,6 +55,9 @@ def parse_date_time(time):
 	fullmonths = ['January', 'February', 'March', 'April', \
 	              'May', 'June', 'July', 'August', \
 	              'September', 'October', 'November', 'December']
+	time = time.strip()
+	if len(time) == 4:		# just a year
+		return time
 	space = time.find(' ')
 	month = time[0:space]
 	if month in months:
@@ -63,19 +66,22 @@ def parse_date_time(time):
 		month = fullmonths.index(month) + 1
 	else:
 		month = 0
+	notmonth = time[space+1:].strip()
+	if len(notmonth) == 4:
+		return "%04d-%02d"%(int(notmonth),month)
 	comma = time.find(',')
 	day = int(time[space+1:comma])
 	year = int(time[comma+2:comma+2+4])
 	timepos = comma+2+4+1
 	if timepos >= len(time):		# there is not a time to parse
-		return "%02d-%02d-%02d"%(year,month,day)
+		return "%04d-%02d-%02d"%(year,month,day)
 	else:
 		hour = int(time[timepos:timepos+2])
 		minute = int(time[timepos+3:timepos+5])
 		ampm = time[timepos+6:timepos+8]
 		if ampm == 'PM':
 			hour += 12
-		return "%02d-%02d-%02dT%02d:%02d"%(year,month,day,hour,minute)
+		return "%04d-%02d-%02dT%02d:%02d"%(year,month,day,hour,minute)
 
 def normalize_separated_date(weird_date, split):
 	if not weird_date:
