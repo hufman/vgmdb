@@ -6,6 +6,12 @@ import vgmdb.album
 import vgmdb.product
 import vgmdb.event
 import vgmdb.org
+import vgmdb.cache
+
+try:
+	import simplejson as json
+except:
+	pass
 
 @route('/hello')
 def hello():
