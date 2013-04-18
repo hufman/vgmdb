@@ -96,4 +96,7 @@ class TestAlbums(unittest.TestCase):
 
 		self.assertEqual(u'Tomoki Yamada', istoria['performers'][-1]['name']['en'])
 		self.assertEqual(u'Vocal, Original Work', istoria['classification'])
+		self.assertEqual(u'Comic Market 81', istoria['event']['name'])
+		self.assertEqual(u'C81', istoria['event']['shortname'])
+		self.assertEqual(u'/event/146', istoria['event']['link'])
 

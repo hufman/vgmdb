@@ -85,6 +85,13 @@ def _parse_album_info(soup_info):
 		elif name == "Release Date":
 			date = soup_value.a['href'].split('#')[1]
 			album_info['release_date'] = '%s-%s-%s'%(date[0:4], date[4:6], date[6:8])
+			soup_event = soup_value.a.find_next_sibling('a')
+			if soup_event:
+				event = {}
+				event['name'] = soup_event['title']
+				event['shortname'] = soup_event.string
+				event['link'] = soup_event['href']
+				album_info['event'] = event
 		elif name == 'Release Price':
 			price = soup_value.contents[0].strip()
 			album_info['release_price'] = {"price":price}
