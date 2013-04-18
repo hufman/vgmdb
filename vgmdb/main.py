@@ -19,11 +19,17 @@ def hello():
 
 @route('/<type:re:(artist|album|product|event|org)>/<id:int>')
 def info(type,id):
-	data = urllib.urlopen('http://vgmdb.net/%s/%s?perpage=99999'%(type,id)).read()
-	data = data.decode('utf-8', 'ignore')	# some pages have broken utf8
-	module = getattr(vgmdb, type)
-	parse_page = getattr(module, "parse_%s_page"%type)
-	info = parse_page(data)
+	prevdata = vgmdb.cache.get('%s/%s'%(type,id))
+	if not prevdata:
+		data = urllib.urlopen('http://vgmdb.net/%s/%s?perpage=99999'%(type,id)).read()
+		data = data.decode('utf-8', 'ignore')	# some pages have broken utf8
+		module = getattr(vgmdb, type)
+		parse_page = getattr(module, "parse_%s_page"%type)
+		info = parse_page(data)
+		vgmdb.cache.set('%s/%s'%(type,id), info)
+	else:
+		info = prevdata
+
 	response.content_type = 'application/json; charset=utf-8'
 	return json.dumps(info, sort_keys=True, indent=4, separators=(',',': '), ensure_ascii=False)
 
