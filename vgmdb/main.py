@@ -11,42 +11,13 @@ import vgmdb.org
 def hello():
 	return "Hello!"
 
-@route('/artist/<artist:int>')
-def artist(artist):
-	data = urllib.urlopen('http://vgmdb.net/artist/%s'%artist).read()
+@route('/<type:re:(artist|album|product|event|org)>/<id:int>')
+def info(type,id):
+	data = urllib.urlopen('http://vgmdb.net/%s/%s?perpage=99999'%(type,id)).read()
 	data = data.decode('utf-8', 'ignore')	# some pages have broken utf8
-	artist_info = vgmdb.artist.parse_artist_page(data)
+	module = getattr(vgmdb, type)
+	parse_page = getattr(module, "parse_%s_page"%type)
+	info = parse_page(data)
 	response.content_type = 'application/json; charset=utf-8'
-	return json.dumps(artist_info, sort_keys=True, indent=4, separators=(',',': '), ensure_ascii=False)
+	return json.dumps(info, sort_keys=True, indent=4, separators=(',',': '), ensure_ascii=False)
 
-@route('/album/<album:int>')
-def album(album):
-	data = urllib.urlopen('http://vgmdb.net/album/%s'%album).read()
-	data = data.decode('utf-8', 'ignore')	# some pages have broken utf8
-	album_info = vgmdb.album.parse_album_page(data)
-	response.content_type = 'application/json; charset=utf-8'
-	return json.dumps(album_info, sort_keys=True, indent=4, separators=(',',': '), ensure_ascii=False)
-
-@route('/product/<product:int>')
-def product(product):
-	data = urllib.urlopen('http://vgmdb.net/product/%s'%product).read()
-	data = data.decode('utf-8', 'ignore')	# some pages have broken utf8
-	product_info = vgmdb.product.parse_product_page(data)
-	response.content_type = 'application/json; charset=utf-8'
-	return json.dumps(product_info, sort_keys=True, indent=4, separators=(',',': '), ensure_ascii=False)
-
-@route('/event/<event:int>')
-def event(event):
-	data = urllib.urlopen('http://vgmdb.net/event/%s?perpage=99999'%event).read()
-	data = data.decode('utf-8', 'ignore')	# some pages have broken utf8
-	event_info = vgmdb.event.parse_event_page(data)
-	response.content_type = 'application/json; charset=utf-8'
-	return json.dumps(event_info, sort_keys=True, indent=4, separators=(',',': '), ensure_ascii=False)
-
-@route('/org/<org:int>')
-def org(org):
-	data = urllib.urlopen('http://vgmdb.net/org/%s'%org).read()
-	data = data.decode('utf-8', 'ignore')	# some pages have broken utf8
-	org_info = vgmdb.org.parse_org_page(data)
-	response.content_type = 'application/json; charset=utf-8'
-	return json.dumps(org_info, sort_keys=True, indent=4, separators=(',',': '), ensure_ascii=False)
