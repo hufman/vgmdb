@@ -5,6 +5,7 @@ import vgmdb.artist
 import vgmdb.album
 import vgmdb.product
 import vgmdb.event
+import vgmdb.org
 
 @route('/hello')
 def hello():
@@ -41,3 +42,11 @@ def event(event):
 	event_info = vgmdb.event.parse_event_page(data)
 	response.content_type = 'application/json; charset=utf-8'
 	return json.dumps(event_info, sort_keys=True, indent=4, separators=(',',': '), ensure_ascii=False)
+
+@route('/org/<org:int>')
+def org(org):
+	data = urllib.urlopen('http://vgmdb.net/org/%s'%org).read()
+	data = data.decode('utf-8', 'ignore')	# some pages have broken utf8
+	org_info = vgmdb.org.parse_org_page(data)
+	response.content_type = 'application/json; charset=utf-8'
+	return json.dumps(org_info, sort_keys=True, indent=4, separators=(',',': '), ensure_ascii=False)
