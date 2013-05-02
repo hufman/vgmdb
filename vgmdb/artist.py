@@ -152,6 +152,8 @@ def _promote_profile_info(profile_info):
 	artist_info = {}
 	if profile_info.has_key('Birthdate'):
 		artist_info['birthdate'] = utils.parse_date_time(profile_info['Birthdate']);
+	if profile_info.has_key('Birthplace'):
+		artist_info['birthplace'] = profile_info['Birthplace'];
 	promote_types = {'aliases':'Aliases',
 	                 'members':'Members',
 	                 'units':'Units',
