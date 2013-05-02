@@ -95,7 +95,7 @@ def _parse_album_info(soup_info):
 		elif name == 'Release Price':
 			price = soup_value.contents[0].strip()
 			album_info['release_price'] = {"price":price}
-			if price != 'Free':
+			if price not in ['Free', 'Not for Sale']:
 				price = float(soup_value.contents[0])
 				currency = soup_value.acronym.string.strip()
 				album_info['release_price'] = {"price":price, "currency":currency}
