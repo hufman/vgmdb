@@ -10,5 +10,5 @@ def parse_artist(artist):
 	data = data.decode('utf-8', 'ignore')
 	artist_info = vgmdb.artist.parse_artist_page(data)
 	return json.dumps(artist_info, sort_keys=True, indent=4, separators=(',',': '), ensure_ascii=False)
-if len(sys.argv) > 1:
+if __name__ == '__main__' and len(sys.argv) > 1:
 	print parse_artist(sys.argv[1]).encode('utf-8')
