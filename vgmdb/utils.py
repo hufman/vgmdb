@@ -70,8 +70,12 @@ def parse_date_time(time):
 	if len(notmonth) == 4:
 		return "%04d-%02d"%(int(notmonth),month)
 	comma = time.find(',')
-	day = int(time[space+1:comma])
-	year = int(time[comma+2:comma+2+4])
+	if comma < 0:	# no year
+		day = int(time[space+1:])
+		year = 0
+	else:
+		day = int(time[space+1:comma])
+		year = int(time[comma+2:comma+2+4])
 	timepos = comma+2+4+1
 	if timepos >= len(time):		# there is not a time to parse
 		return "%04d-%02d-%02d"%(year,month,day)
