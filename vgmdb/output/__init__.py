@@ -2,6 +2,7 @@ from vgmdb.accept import parse_accept_header
 
 # import submodules
 import json
+import yaml
 
 # As output modules are loaded the name_outputters and
 # add_name_handler will be populated

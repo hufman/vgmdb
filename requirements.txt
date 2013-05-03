@@ -2,3 +2,5 @@ bottle
 unittest
 beautifulsoup4
 memcache
+PyYAML
+json
