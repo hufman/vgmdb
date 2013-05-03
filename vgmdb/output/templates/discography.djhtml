@@ -1,0 +1,30 @@
+{% macro discography(discography, property="foaf:made", rel=None, rev=None) -%}
+      <table>
+        <thead>
+          <tr>
+            <td>Date</td>
+            <td>Catalog</td>
+            <td>Name</td>
+            <td>Roles</td>
+          </tr>
+        </thead>
+        <tbody{{(' rev="%s"'%rev)|safe if rev}}>
+          {% for disc in discography -%}
+          <tr resource="{{disc.link | linkhref }}#subject" typeof="mo:Release"{{('property="%s"'%property)|safe if property}}{{('rel="%s"'%rel)|safe if rel}}>
+            <td property="dc:created" content="{{disc.date}}" datatype="xsd:date">{{ disc.date -}}</td>
+            <td property="mo:catalogue_number">{{ disc.catalog }}</td>
+            <td class="names">
+              {{ disc.titles|lang_names|link_album(disc.link) }}
+            </td>
+            <td class="list">
+              <ul>
+                {% for role in disc.roles -%}
+                <li>{{role}}</li>
+                {% endfor -%}
+              </ul>
+            </td>
+          </tr>
+          {% endfor -%}
+        </tbody>
+      </table>
+{% endmacro -%}

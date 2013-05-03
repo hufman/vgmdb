@@ -1,6 +1,7 @@
 from vgmdb.accept import parse_accept_header
 
 # import submodules
+import html
 import json
 import yaml
 

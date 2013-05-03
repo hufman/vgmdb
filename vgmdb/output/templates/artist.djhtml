@@ -1,0 +1,79 @@
+{% from 'discography.djhtml' import discography -%}
+<!DOCTYPE html>
+<html>
+  <head>
+    <base href="{{config.BASE_URL}}" />
+    <meta charset='utf-8'/>
+    <title>{{data.name}}</title>
+    <style>
+.names span {display: none}
+.names span:first-child {display: inline}
+dt {font-weight: bold}
+td.list ul {display: inline; padding:0}
+td.list li {display: inline}
+td.list li:after {content: ", "}
+td.list li:last-child:after {content: ""}
+.artist_websites ul {padding:0; margin:0}
+    </style>
+  </head>
+  <body prefix="dc: http://purl.org/dc/terms/
+                schema: http://schema.org/
+                foaf: http://xmlns.com/foaf/0.1/
+                bio: http://purl.org/vocab/bio/0.1/
+                xsd: http://www.w3.org/2001/XMLSchema#
+                mo: http://purl.org/ontology/mo/" resource="{{data.link | linkhref}}">
+    <h1 property="dc:subject" typeof="foaf:person" about="{{data.link | linkhref}}#subject"><span property="foaf:name">{{data.name}}</span></h1>
+    <div id="info" resource="{{data.link | linkhref}}#subject">
+      <h2><label>Information</label></h2>
+      <div resource="{{data.link | linkhref}}#birthinfo" typeof="bio:birth">
+        <span property="bio:principal" about="{{data.link | linkhref}}#subject"></span>
+        <dl>
+          <dt>Birthday</dt>
+          <dd property="bio:date" content="{{data.birthdate}}" datatype="xsd:date">{{data.birthdate | format_date | or_unavailable}}</dd>
+          <dt>Birthplace</dt>
+          <dd property="bio:place" content="{{data.birthplace}}">{{data.birthplace | or_unavailable}}</dd>
+        </dl>
+      </div>
+      <dl>
+        <dt>Bands and Groups</dt>
+        <dd>
+          {% if data.units and data.units is not empty -%}
+          <ul>
+            {% for unit in data.units -%}
+            <li rev="foaf:member">
+              <span resource="{{unit.link | linkhref}}#subject" typeof="foaf:organization">
+                {{ unit.name | link_artist(unit.link) }}
+              </span>
+            </li>
+            {% endfor -%}
+          </ul>
+          {% endif -%}
+        </dd>
+      </dl>
+      <div class="artist_websites">
+        <dl>
+          {% if data.websites and data.websites is not empty -%}
+          {% for websitetype,websites in data.websites.items() -%}
+          <dt>{{websitetype}} Websites</dt>
+          <dd>
+            <ul>
+              {% for website in websites -%}
+              <li><a rel="foaf:page" href="{{website.link}}">{{website.name}}</a></li>
+              {% endfor -%}
+            </ul>
+          </dd>
+         {% endfor -%}
+         {% endif -%}
+        </dl>
+      </div>
+    </div>
+    <div class="discography" resource="{{data.link | linkhref}}#subject">
+      <h2><label>Discography</label></h2>
+      {{ discography(data.discography) -}}
+    </div>
+    <div class="discography" resource="{{data.link | linkhref}}#subject">
+      <h2><label>Featured On</label></h2>
+      {{ discography(data.featured_on, property=None, rev="mo:tribute_to") -}}
+    </div>
+  </body>
+</html>
