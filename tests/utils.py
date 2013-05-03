@@ -23,6 +23,8 @@ class TestUtils(unittest.TestCase):
 		self.assertEqual("2011-10", utils.parse_date_time(date))
 		date = "2011"
 		self.assertEqual("2011", utils.parse_date_time(date))
+		date = "Jan 7"
+		self.assertEqual("0000-01-07", utils.parse_date_time(date))
 
 	def test_dotted_year(self):
 		""" Make sure that weird dates with unknown month and days work """
