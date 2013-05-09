@@ -47,10 +47,10 @@
     </div>
     <div class="discography" resource="{{data.link | linkhref}}#subject">
       <h2><label>Discography</label></h2>
-      {{ discography(data.discography) -}}
+      {{ discography(data.discography, rev="dc:creator") -}}
     </div>
     <div class="discography" resource="{{data.link | linkhref}}#subject">
       <h2><label>Featured On</label></h2>
-      {{ discography(data.featured_on, property=None, rev="mo:tribute_to") -}}
+      {{ discography(data.featured_on, rel=None, rev="mo:tribute_to") -}}
     </div>
 {% endblock %}
