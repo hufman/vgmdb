@@ -59,8 +59,15 @@ def link(name, link):
 
 def format_date(date):
 	if date:
-		date = datetime.datetime.strptime(date, "%Y-%m-%d")
-		return date.strftime("%b %d, %Y")
+		if date[0:4] == '0000':
+			date = datetime.datetime.strptime(date, "0000-%m-%d")
+			return date.strftime("%b %d")
+		if len(date) == 4:	# only a year
+			date = datetime.datetime.strptime(date, "%Y")
+			return date.strftime("%Y")
+		else:
+			date = datetime.datetime.strptime(date, "%Y-%m-%d")
+			return date.strftime("%b %d, %Y")
 def or_unavailable(data):
 	if data:
 		result = data
