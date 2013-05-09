@@ -11,7 +11,7 @@
         <tbody{{(' rev="%s"'%rev)|safe if rev}}>
           {% for disc in discography -%}
           <tr resource="{{disc.link | linkhref }}#subject" typeof="mo:Release"{{('property="%s"'%property)|safe if property}}{{('rel="%s"'%rel)|safe if rel}}>
-            <td property="dc:created" content="{{disc.date}}" datatype="xsd:date">{{ disc.date -}}</td>
+            <td property="dcterms:created" content="{{disc.date}}" datatype="xsd:date">{{ disc.date -}}</td>
             <td property="mo:catalogue_number">{{ disc.catalog }}</td>
             <td class="names">
               {{ disc.titles|lang_names|link_album(disc.link) }}

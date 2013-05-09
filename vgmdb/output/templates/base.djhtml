@@ -1,0 +1,28 @@
+{% from 'discography.djhtml' import discography -%}
+<!DOCTYPE html>
+<html>
+  <head>
+    <base href="{{config.BASE_URL}}" />
+    <meta charset='utf-8'/>
+    <title>{{data.name}}</title>
+    <style>
+.names span {display: none}
+.names span:first-child {display: inline}
+dt {font-weight: bold}
+td.list ul {display: inline; padding:0}
+td.list li {display: inline}
+td.list li:after {content: ", "}
+td.list li:last-child:after {content: ""}
+.artist_websites ul {padding:0; margin:0}
+    </style>
+  </head>
+  <body prefix="dcterms: http://purl.org/dc/terms/
+                schema: http://schema.org/
+                foaf: http://xmlns.com/foaf/0.1/
+                bio: http://purl.org/vocab/bio/0.1/
+                xsd: http://www.w3.org/2001/XMLSchema#
+                mo: http://purl.org/ontology/mo/" resource="{{data.link | linkhref}}">
+{% block body %}
+{% endblock %}
+  </body>
+</html>
