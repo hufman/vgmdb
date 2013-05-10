@@ -1,11 +1,13 @@
 {% from 'discography.djhtml' import discography -%}
+{% from 'common.djhtml' import list_names -%}
 <!DOCTYPE html>
 <html>
   <head>
     <base href="{{config.BASE_URL}}" />
     <meta charset='utf-8'/>
-    <title>{{data.name}}</title>
+    <title>{{data.name.en | default(data.name)}}</title>
     <style>
+.metadata {display: none}
 .names span {display: none}
 .names span:first-child {display: inline}
 dt {font-weight: bold}
