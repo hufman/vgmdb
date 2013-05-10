@@ -1,0 +1,69 @@
+{% extends "base.djhtml" %}
+{% block body %}
+    <h1 property="foaf:primaryTopic" typeof="mo:Release schema:MusicAlbum" resource="{{data.link | linkhref}}#subject"><span class="names">{{data.name | lang_names(rel="dcterms:title")}}</span></h1>
+    <div id="info" resource="{{data.link | linkhref}}#subject">
+      <div class="metadata">
+        <div rel="mo:publication_of" rev="mo:published_as" resource="{{data.link | linkhref}}#musicalexpression" typeof="mo:Signal">
+          <div rel="mo:records" rev="mo:recorded_as" resource="{{data.link | linkhref}}#performance" typeof="mo:Performance">
+            <div rel="mo:performance_of" rev="mo:performed_in" resource="{{data.link | linkhref}}#musicalwork" typeof="mo:MusicalWork">
+              <div rel="mo:composed_in" rev="mo:produced_work" resource="{{data.link | linkhref}}#composition" typeof="mo:Composition"></div>
+              <div rel="mo:lyrics" resource="{{data.link | linkhref}}#lyrics" typeof="mo:Lyrics"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h2><label>Information</label></h2>
+      <dl>
+        <dt>Release</dt>
+        <dd property="dcterms:created schema:datePublished" content="{{data.release_date}}" datatype="xsd:date">{{data.release_date | format_date | or_unavailable}}</dd>
+        <dt>Publisher</dt>
+        <dd rel="mo:publisher schema:publisher" class="names">{{data.publisher.name|lang_names|link(data.publisher.link)}}</dd>
+        <dt>Games</dt>
+        <dd class="names">{{list_names(data.products)}}</dd>
+        <dt>Classification</dt>
+        <dd>{{data.classification}}</dd>
+        <dt>Category</dt>
+        <dd property="schema:genre">{{data.category}}</dd>
+        <dt>Media Format</dt>
+        <dd property="mo:media_type">{{data.media_format}}</dd>
+        <dt>Rating</dt>
+        <dd property="schema:aggregateRating">{{data.rating}}</dd>
+        <dt>Re-releases</dt>
+        <dd>
+         <ul rel="mo:other_release_of">
+          {% for reprint in data.reprints -%}
+          <li><a typeof="mo:Release" href="{{reprint.link | linkhref}}" about="{{reprint.link | linkhref}}#subject"><span property="mo:catalogue">{{reprint.catalog}}</span> ({{reprint.note}})</a></li>
+          {% endfor -%}
+        </ul>
+      </dl>
+      <dl>
+        <dt>Composers</dt>
+        <dd resource="{{data.link | linkhref}}#composition" class="names">{{ list_names(data.composers, rel="mo:composer", rev="foaf:made") }}</dd>
+        <dt>Performers</dt>
+        <dd resource="{{data.link | linkhref}}#performance" class="names">{{ list_names(data.performers, rel="mo:performer", rev="mo:performed") }}</dd>
+        <dt>Lyricists</dt>
+        <dd resource="{{data.link | linkhref}}#lyrics" class="names">{{ list_names(data.lyricists, rel="foaf:made") }}</dd>
+      </dl>
+    </div>
+    <div id="tracklist" resource="{{data.link | linkhref}}#subject">
+      <h2><label>Track List</label></h2>
+      <span class="metadata">
+        <span property="mo:record_count" content="{{data.discs | count}}" datatype="xsd:int"></span>
+      </span>
+      {% for disc in data.discs %}
+      <div rel="mo:record" typeof="mo:Record schema:MusicPlaylist">
+        <span class="metadata">
+          <span property="mo:record_number" content="{{loop.index}}" datatype="xsd:int"></span>
+          <span property="mo:track_count" content="{{disc.tracks | count}}" datatype="xsd:int"></span>
+          <span property="schema:numTracks" content="{{disc.tracks | count}}" datatype="xsd:int"></span>
+        </span>
+        <h3><label>{{disc.name}}</label></h3>
+        <ul>
+          {% for track in disc.tracks %}
+          <li rel="mo:track schema:track" typeof="mo:Track schema:MusicRecording"><span property="mo:track_number" datatype="xsd:int">{{loop.index}}</span> - <span class="names">{{track.name|lang_names}}</span> (<span property="schema:duration" content="{{track.track_length|format_interval}}" datatype="xsd:interval">{{track.track_length}}</span>)</li>
+          {% endfor %}
+        </ul>
+        {% endfor %}
+      </div>
+    </div>
+{% endblock %}

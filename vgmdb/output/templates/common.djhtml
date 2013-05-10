@@ -1,0 +1,9 @@
+{% macro list_names(names, rel=None, property=None, rev=None) -%}
+      <ul{{(' rev="%s"'%rev)|safe if rev}}{{(' rel="%s"'%rel)|safe if rel}}>
+        {% for name in names -%}
+        <li>
+            {{ name.name|lang_names|link_artist(name.link) }}
+        </li>
+        {% endfor -%}
+      </ul>
+{% endmacro -%}
