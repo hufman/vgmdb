@@ -60,6 +60,8 @@ def _parse_album_info(soup_info):
 		if name == "Catalog Number":
 			if soup_value.span:
 				catalog = soup_value.span.a.string.strip()
+			elif soup_value.a:
+				catalog = soup_value.a.string.strip()
 			else:
 				catalog = soup_value.string.strip()
 			reprints = []
@@ -102,7 +104,7 @@ def _parse_album_info(soup_info):
 		elif name == 'Published by':
 			soup_links = soup_value.find_all('a')
 			if len(soup_links) == 0:
-				album_info['publishers'] = [{'name':soup_value.string.strip()}]
+				album_info['publisher'] = {'name':soup_value.string.strip()}
 			if len(soup_links) > 0:
 				album_info['publisher'] = {}
 				album_info['publisher']['link'] = soup_links[0]['href']
@@ -136,6 +138,11 @@ def _parse_album_info(soup_info):
 	return album_info
 
 def _parse_tracklist(soup_tracklist):
+	language_codes = {
+		"English":"en",
+		"Japanese":"ja",
+		"Romaji":"ja-latn"
+	}
 	discs = []
 	soup_sections = soup_tracklist.find_all('div', recursive=False)
 	languages = [li.a.string for li in soup_sections[0].ul.find_all('li', recursive=False)]
@@ -144,6 +151,8 @@ def _parse_tracklist(soup_tracklist):
 	for soup_tab in soup_tabs:
 		tab_index += 1
 		tab_language = languages[tab_index]
+		if language_codes.has_key(tab_language):
+			tab_language = language_codes[tab_language]
 		index = 0
 		soup_cur = soup_tab.span
 		while soup_cur:
@@ -235,6 +244,12 @@ def _parse_section_album_stats(soup_section):
 				product['link'] = soup_div.a['href']
 				product['name'] = utils.parse_names(soup_div.a)
 				album_info['products'].append(product)
+			text = soup_div.find('br').next
+			if not isinstance(text, bs4.Tag):
+				for productname in [x.strip() for x in text.split(',') if len(x.strip())>0]:
+					product = {}
+					product['name'] = productname
+					album_info['products'].append(product)
 		if div_name == 'Platforms represented':
 			album_info['platforms'] = [plat.strip() for plat in div_value.split(',')]
 	return album_info
