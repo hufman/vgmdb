@@ -1,6 +1,6 @@
 {% extends "base.djhtml" %}
 {% block body %}
-    <h1 property="dcterms:subject" typeof="foaf:person" about="{{data.link | linkhref}}#subject"><span property="foaf:name">{{data.name}}</span></h1>
+    <h1 property="foaf:primaryTopic" typeof="foaf:person" about="{{data.link | linkhref}}#subject"><span property="foaf:name">{{data.name}}</span></h1>
     <div id="info" resource="{{data.link | linkhref}}#subject">
       <h2><label>Information</label></h2>
       <div resource="{{data.link | linkhref}}#birthinfo" typeof="bio:birth">
@@ -18,9 +18,9 @@
           {% if data.units and data.units is not empty -%}
           <ul>
             {% for unit in data.units -%}
-            <li rev="foaf:member">
+            <li rev="foaf:member mo:member" rel="mo:member_of">
               <span resource="{{unit.link | linkhref}}#subject" typeof="foaf:organization">
-                {{ unit.name | link_artist(unit.link) }}
+                {{ unit.name | link_artist(unit.link,None) }}
               </span>
             </li>
             {% endfor -%}
