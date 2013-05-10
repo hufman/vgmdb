@@ -65,7 +65,7 @@
     </div>
     <div class="discography" resource="{{data.link | linkhref}}#subject">
       <h2><label>Discography</label></h2>
-      {{ discography(data.discography, rev="dc:creator") -}}
+      {{ discography(data.discography, rev="dc:creator schema:byArtist") -}}
     </div>
     <div class="discography" resource="{{data.link | linkhref}}#subject">
       <h2><label>Featured On</label></h2>

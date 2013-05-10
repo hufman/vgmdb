@@ -1,4 +1,4 @@
-{% macro discography(discography, rel="foaf:made", property=None, rev=None) -%}
+{% macro discography(discography, rel="foaf:made schema:album", property=None, rev=None) -%}
       <table>
         <thead>
           <tr>
@@ -10,8 +10,8 @@
         </thead>
         <tbody{{(' rev="%s"'%rev)|safe if rev}}{{(' rel="%s"'%rel)|safe if rel}}>
           {% for disc in discography -%}
-          <tr resource="{{disc.link | linkhref }}#subject" typeof="mo:Release"{{(' property="%s"'%property)|safe if property}}>
-            <td property="dcterms:created" content="{{disc.date}}" datatype="xsd:date">{{ disc.date -}}</td>
+          <tr resource="{{disc.link | linkhref }}#subject" typeof="mo:Release schema:MusicAlbum"{{(' property="%s"'%property)|safe if property}}>
+            <td property="dcterms:created schema:datePublished" content="{{disc.date}}" datatype="xsd:date">{{ disc.date -}}</td>
             <td property="mo:catalogue_number">{{ disc.catalog }}</td>
             <td class="names">
               {{ disc.titles|lang_names|link_album(disc.link) }}
