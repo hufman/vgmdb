@@ -241,8 +241,8 @@ def _parse_section_album_stats(soup_section):
 			album_info['products'] = []
 			for soup_product in soup_div.find_all('a', recursive=False):
 				product = {}
-				product['link'] = soup_div.a['href']
-				product['name'] = utils.parse_names(soup_div.a)
+				product['link'] = soup_product['href']
+				product['name'] = utils.parse_names(soup_product)
 				album_info['products'].append(product)
 			text = soup_div.find('br').next
 			if not isinstance(text, bs4.Tag):
