@@ -12,6 +12,7 @@ class outputter(object):
 	def __init__(self):
 		import jinja2
 		self._templates = jinja2.Environment(loader=jinja2.PackageLoader('vgmdb.output'), trim_blocks=True, autoescape=autoescape)
+		self._templates.filters['artist_type'] = artist_type
 		self._templates.filters['linkhref'] = linkhref
 		self._templates.filters['link'] = link
 		self._templates.filters['link_artist'] = link_artist
@@ -29,6 +30,17 @@ class outputter(object):
 	def __call__(self, type, data):
 		template = self._templates.get_template('%s.djhtml'%type)
 		return template.render(config=vgmdb.config, data=data)
+
+def artist_type(artist_data):
+	types = []
+	if artist_data.has_key('members') and len(artist_data['members']) > 0:
+		types.append('foaf:Organization')
+		types.append('schema:MusicGroup')
+	else:
+		types.append('foaf:Person')
+		types.append('schema:Person')
+		types.append('schema:MusicGroup')
+	return ' '.join(types)
 
 def span_name(lang, name, rel="foaf:name"):
 	if rel:

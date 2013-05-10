@@ -1,8 +1,9 @@
 {% extends "base.djhtml" %}
 {% block body %}
-    <h1 property="foaf:primaryTopic" typeof="foaf:person" about="{{data.link | linkhref}}#subject"><span property="foaf:name">{{data.name}}</span></h1>
+    <h1 property="foaf:primaryTopic" typeof="{{data | artist_type}}" about="{{data.link | linkhref}}#subject"><span property="foaf:name">{{data.name}}</span></h1>
     <div id="info" resource="{{data.link | linkhref}}#subject">
       <h2><label>Information</label></h2>
+      {% if data.birthdate -%}
       <div resource="{{data.link | linkhref}}#birthinfo" typeof="bio:birth">
         <span property="bio:principal" about="{{data.link | linkhref}}#subject"></span>
         <dl>
@@ -12,22 +13,39 @@
           <dd property="bio:place" content="{{data.birthplace}}">{{data.birthplace | or_unavailable}}</dd>
         </dl>
       </div>
+      {% endif -%}
+      {% if data.units and data.units is not empty -%}
       <dl>
         <dt>Bands and Groups</dt>
         <dd>
-          {% if data.units and data.units is not empty -%}
           <ul>
             {% for unit in data.units -%}
-            <li rev="foaf:member mo:member" rel="mo:member_of">
-              <span resource="{{unit.link | linkhref}}#subject" typeof="foaf:organization">
+            <li rev="foaf:member mo:member schema:musicGroupMember" rel="mo:member_of">
+              <span resource="{{unit.link | linkhref}}#subject" typeof="foaf:organization schema:MusicGroup">
                 {{ unit.name | link_artist(unit.link,None) }}
               </span>
             </li>
             {% endfor -%}
           </ul>
-          {% endif -%}
         </dd>
       </dl>
+      {% endif -%}
+      {% if data.members and data.members is not empty -%}
+      <dl>
+        <dt>Group Members</dt>
+        <dd>
+          <ul>
+            {% for member in data.members -%}
+            <li rel="foaf:member mo:member schema:musicGroupMember" rev="mo:member_of">
+              <span resource="{{member.link | linkhref}}#subject" typeof="foaf:Person" class="names">
+                {{ member.names | lang_names | link_artist(member.link,None) }}
+              </span>
+            </li>
+            {% endfor -%}
+          </ul>
+        </dd>
+      </dl>
+      {% endif -%}
       <div class="artist_websites">
         <dl>
           {% if data.websites and data.websites is not empty -%}
