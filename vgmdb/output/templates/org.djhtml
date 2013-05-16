@@ -1,0 +1,49 @@
+{% extends "base.djhtml" %}
+{% block body %}
+    <h1 typeof="foaf:Organization schema:Organization" about="{{data.link | linkhref}}#subject"><span property="foaf:name schema:name">{{data.name}}</span></h1>
+    <div id="info" resource="{{data.link | linkhref}}#subject">
+      <h2><label>Information</label></h2>
+      <dl>
+        <dt>Region</dt>
+        <dd>{{data.region}}</dd>
+        <dt>Type</dt>
+        <dd>{{data.type}}</dd>
+      </dl>
+      {% if data.staff and data.staff is not empty -%}
+      <dl>
+        <dt>Staff</dt>
+        <dd>
+          <ul>
+            {% for staff in data.staff -%}
+            <li rel="schema:member" rev="foaf:member schema:memberOf">
+              <span class="names" resource="{{staff.link | linkhref}}#subject" typeof="foaf:Person schema:Person schema:MusicGroup">
+                {{ staff.name | lang_names | link_artist(staff.link,None) }}
+              </span>
+            </li>
+            {% endfor -%}
+          </ul>
+        </dd>
+      </dl>
+      {% endif -%}
+      <div class="artist_websites">
+        <dl>
+          {% if data.websites and data.websites is not empty -%}
+          {% for websitetype,websites in data.websites.items() -%}
+          <dt>{{websitetype}} Websites</dt>
+          <dd>
+            <ul>
+              {% for website in websites -%}
+              <li><a rel="foaf:page" href="{{website.link}}">{{website.name}}</a></li>
+              {% endfor -%}
+            </ul>
+          </dd>
+         {% endfor -%}
+         {% endif -%}
+        </dl>
+      </div>
+    </div>
+    <div class="discography" resource="{{data.link | linkhref}}#subject">
+      <h2><label>Releases</label></h2>
+      {{ discography(data.releases, rel="mo:published", rev="mo:publisher", roles=['Publisher'] ) -}}
+    </div>
+{% endblock %}
