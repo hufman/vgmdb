@@ -21,6 +21,12 @@ def parse_org_page(html_source):
 
 	org_info['releases'] = _parse_org_releases(soup_table)
 
+	# Parse websites
+	soup_divs = soup_right_column.find_all('div', recursive=False)
+	if soup_divs[0].div and soup_divs[0].div.h3 and soup_divs[0].div.h3.string == 'Websites':
+		org_info['websites'] = _parse_websites(soup_divs[1].div)
+	org_info['meta'] = utils.parse_meta(soup_divs[-1].div)
+
 	return org_info
 
 def _parse_org_info(soup_profile_info):
@@ -110,4 +116,21 @@ def _parse_org_releases(table):
 		releases.append(release)
 	releases = sorted(releases, key=lambda e:"{[date]:0<14}".format(e))
 	return releases
+
+def _parse_websites(soup_websites):
+	""" Given an array of divs containing website information """
+	sites = {}
+	for soup_category in soup_websites.find_all('div', recursive=False):
+		category = soup_category.b.string
+		soup_links = soup_category.find_all('a', recursive=False)
+		links = []
+		for soup_link in soup_links:
+			link = soup_link['href']
+			name = soup_link.string
+			if link[0:9] == '/redirect':
+				slashpos = link.find('/', 10)
+				link = 'http://'+link[slashpos+1:]
+			links.append({"link":link,"name":name})
+		sites[category] = links
+	return sites
 
