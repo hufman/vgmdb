@@ -99,7 +99,10 @@ def format_date(date):
 			date = datetime.datetime.strptime(date, "%Y-%m-%d")
 			return date.strftime("%b %d, %Y")
 def format_interval(time):
-	return "PT" + time
+	if time:
+		return "PT" + time
+	else:
+		return ''
 
 def or_unavailable(data):
 	if data:
