@@ -1,6 +1,6 @@
 {% extends "base.djhtml" %}
 {% block body %}
-    <h1 property="foaf:primaryTopic" typeof="mo:Release schema:MusicAlbum" resource="{{data.link | linkhref}}#subject"><span class="names">{{data.name | lang_names(rel="dcterms:title")}}</span></h1>
+    <h1 typeof="mo:Release schema:MusicAlbum" resource="{{data.link | linkhref}}#subject"><span class="names">{{data.name | lang_names(rel="dcterms:title")}}</span></h1>
     <div id="info" resource="{{data.link | linkhref}}#subject">
       <div class="metadata">
         <div rel="mo:publication_of" rev="mo:published_as" resource="{{data.link | linkhref}}#musicalexpression" typeof="mo:Signal">

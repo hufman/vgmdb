@@ -1,6 +1,6 @@
 {% extends "base.djhtml" %}
 {% block body %}
-    <h1 property="foaf:primaryTopic" typeof="{{data | artist_type}}" about="{{data.link | linkhref}}#subject"><span property="foaf:name">{{data.name}}</span></h1>
+    <h1 typeof="{{data | artist_type}}" about="{{data.link | linkhref}}#subject"><span property="foaf:name">{{data.name}}</span></h1>
     <div id="info" resource="{{data.link | linkhref}}#subject">
       <h2><label>Information</label></h2>
       {% if data.birthdate -%}
