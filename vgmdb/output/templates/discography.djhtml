@@ -1,4 +1,4 @@
-{% macro discography(discography, rel="foaf:made schema:album", property=None, rev=None) -%}
+{% macro discography(discography, rel="foaf:made schema:album", property=None, rev=None, roles=[]) -%}
       <table>
         <thead>
           <tr>
@@ -19,6 +19,9 @@
             <td class="list">
               <ul>
                 {% for role in disc.roles -%}
+                <li>{{role}}</li>
+                {% endfor -%}
+                {% for role in roles -%}
                 <li>{{role}}</li>
                 {% endfor -%}
               </ul>
