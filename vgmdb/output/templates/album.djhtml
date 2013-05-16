@@ -16,6 +16,10 @@
       <dl>
         <dt>Release</dt>
         <dd property="dcterms:created schema:datePublished" content="{{data.release_date}}" datatype="xsd:date">{{data.release_date | format_date | or_unavailable}}</dd>
+        {% if data.event %}
+        <dt>Release Event</dt>
+        <dd property="mo:release" typeof="mo:Release" resource="{{data.event.link | linkhref}}#subject"><a href="{{data.event.link | linkhref}}">{{data.event.name}}</a></dd>
+        {% endif %}
         <dt>Publisher</dt>
         <dd rel="mo:publisher schema:publisher" class="names">{{data.publisher.name|lang_names|link(data.publisher.link)}}</dd>
         <dt>Games</dt>

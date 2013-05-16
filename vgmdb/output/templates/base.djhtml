@@ -23,7 +23,9 @@ td.list li:last-child:after {content: ""}
                 foaf: http://xmlns.com/foaf/0.1/
                 bio: http://purl.org/vocab/bio/0.1/
                 xsd: http://www.w3.org/2001/XMLSchema#
-                mo: http://purl.org/ontology/mo/" about="{{data.link | linkhref}}" property="foaf:primaryTopic" resource="{{data.link | linkhref}}#subject">
+                mo: http://purl.org/ontology/mo/
+                event: http://purl.org/NET/c4dm/event.owl#
+                tl: http://purl.org/NET/c4dm/timeline.owl#" about="{{data.link | linkhref}}" property="foaf:primaryTopic" resource="{{data.link | linkhref}}#subject">
 {% block body %}
 {% endblock %}
   </body>

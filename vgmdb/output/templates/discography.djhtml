@@ -1,31 +1,40 @@
-{% macro discography(discography, rel="foaf:made schema:album", property=None, rev=None, roles=[]) -%}
+{% macro discography(discography, rel="foaf:made schema:album", property=None, rev=None, include_roles=True, include_publisher=False) -%}
       <table>
         <thead>
           <tr>
             <td>Date</td>
             <td>Catalog</td>
             <td>Name</td>
+            {% if include_roles -%}
             <td>Roles</td>
+            {% endif -%}
+            {% if include_publisher -%}
+            <td>Publisher</td>
+            {% endif -%}
           </tr>
         </thead>
         <tbody{{(' rev="%s"'%rev)|safe if rev}}{{(' rel="%s"'%rel)|safe if rel}}>
           {% for disc in discography -%}
           <tr resource="{{disc.link | linkhref }}#subject" typeof="mo:Release schema:MusicAlbum"{{(' property="%s"'%property)|safe if property}}>
-            <td property="dcterms:created schema:datePublished" content="{{disc.date}}" datatype="xsd:date">{{ disc.date -}}</td>
+            <td property="dcterms:created schema:datePublished" content="{{disc.date or disc.release_date}}" datatype="xsd:date">{{ disc.date or disc.release_date -}}</td>
             <td property="mo:catalogue_number">{{ disc.catalog }}</td>
             <td class="names">
               {{ disc.titles|lang_names|link_album(disc.link) }}
             </td>
+            {% if include_roles -%}
             <td class="list">
               <ul>
                 {% for role in disc.roles -%}
                 <li>{{role}}</li>
                 {% endfor -%}
-                {% for role in roles -%}
-                <li>{{role}}</li>
-                {% endfor -%}
               </ul>
             </td>
+            {% endif -%}
+            {% if include_publisher -%}
+            <td class="names" rel="mo:publisher schema:publisher">
+              {{ disc.publisher.names | lang_names | link(disc.publisher.link)}}
+            </td>
+            {% endif -%}
           </tr>
           {% endfor -%}
         </tbody>

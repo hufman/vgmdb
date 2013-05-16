@@ -44,6 +44,6 @@
     </div>
     <div class="discography" resource="{{data.link | linkhref}}#subject">
       <h2><label>Releases</label></h2>
-      {{ discography(data.releases, rel="mo:published", rev="mo:publisher", roles=['Publisher'] ) -}}
+      {{ discography(data.releases, rel="mo:published", rev="mo:publisher", include_roles=False ) -}}
     </div>
 {% endblock %}
