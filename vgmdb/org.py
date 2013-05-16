@@ -45,7 +45,7 @@ def _parse_org_info(soup_profile_info):
 				value = []
 				for soup_child_link in soup_child.find_all('a', recursive=False):
 					item = {}
-					item['name'] = utils.parse_names(soup_child_link)
+					item['names'] = utils.parse_names(soup_child_link)
 					link = soup_child_link['href']
 					link = link[len("http://vgmdb.net"):] if link[0:7]=="http://" else link
 					item['link'] = link
