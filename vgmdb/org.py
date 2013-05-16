@@ -109,10 +109,10 @@ def _parse_org_releases(table):
 			link = soup_album.a['href']
 			link = link[len("http://vgmdb.net"):] if link[0:7]=="http://" else link
 			release['link'] = link
-			release['name'] = utils.parse_names(soup_album.a)
+			release['titles'] = utils.parse_names(soup_album.a)
 			release['type'] = soup_album.a['class'][1].split('-')[1]
 		else:
-			release['name'] = soup_album.string.strip()
+			release['titles'] = {"en":soup_album.string.strip()}
 		releases.append(release)
 	releases = sorted(releases, key=lambda e:"{[date]:0<14}".format(e))
 	return releases
