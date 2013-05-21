@@ -1,5 +1,6 @@
 {% extends "base.djhtml" %}
 {% block body %}
+{{ formats(data) }}
     <h1 typeof="schema:CreativeWork" about="{{data.link | linkhref}}#subject"><span property="foaf:name schema:name">{{data.name}}</span></h1>
     <div id="info" resource="{{data.link | linkhref}}#subject">
       <h2><label>Information</label></h2>

@@ -1,5 +1,6 @@
 {% from 'discography.djhtml' import discography -%}
 {% from 'common.djhtml' import list_names -%}
+{% from 'common.djhtml' import formats -%}
 <!DOCTYPE html>
 <html>
   <head>
@@ -16,6 +17,36 @@ td.list li {display: inline}
 td.list li:after {content: ", "}
 td.list li:last-child:after {content: ""}
 .artist_websites ul {padding:0; margin:0}
+
+.format_selector {
+	float: right;
+	display: block;
+}
+.format_selector li {
+	list-style: none;
+	display: inline-block;
+	padding: 1px 3px;
+	background: #EE8522;
+	border: 1px #444 solid;
+	line-height: 8pt;
+}
+.format_selector a {
+	color: white;
+	font-weight: bold;
+	text-decoration: none;
+	font-size: 8pt;
+	border: 0;
+}
+.format_selector .rdfa {
+	text-indent: -999999px;
+	background-image: url(http://www.w3.org/Icons/SW/Buttons/sw-rdfa-orange-v.svg);
+	background-size: auto auto;
+	width: 55pt;
+	padding: 0;
+	border: 0;
+	line-height: 10pt;
+}
+
     </style>
   </head>
   <body prefix="dcterms: http://purl.org/dc/terms/
@@ -27,6 +58,7 @@ td.list li:last-child:after {content: ""}
                 event: http://purl.org/NET/c4dm/event.owl#
                 tl: http://purl.org/NET/c4dm/timeline.owl#" about="{{data.link | linkhref}}" property="foaf:primaryTopic" resource="{{data.link | linkhref}}#subject">
 {% block body %}
+{{ formats(data) }}
 {% endblock %}
   </body>
 </html>

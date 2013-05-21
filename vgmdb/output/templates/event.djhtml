@@ -1,5 +1,6 @@
 {% extends "base.djhtml" %}
 {% block body %}
+{{ formats(data) }}
     <h1 typeof="mo:ReleaseEvent schema:MusicEvent" about="{{data.link | linkhref}}#subject"><span property="schema:name">{{data.name}}</span></h1>
     <div id="info" resource="{{data.link | linkhref}}#subject">
       <span class="metadata">
