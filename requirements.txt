@@ -1,4 +1,4 @@
 bottle
-unittest
+unittest2
 beautifulsoup4
-memcache
+python-memcached
