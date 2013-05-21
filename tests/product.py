@@ -24,7 +24,7 @@ class TestProducts(unittest.TestCase):
 		witcher_code = file(os.path.join(base, 'product_witcher.html'), 'r').read()
 		witcher = product.parse_product_page(witcher_code)
 		self.assertEqual(u"2011-05-17", witcher['release_date'])
-		self.assertEqual(u"The Witcher", witcher['franchises'][0]['name']['en'])
+		self.assertEqual(u"The Witcher", witcher['franchises'][0]['names']['en'])
 		self.assertEqual(u"The Witcher 2: Assassins of Kings", witcher['name'])
 		self.assertEqual(u"Wiedźmin 2: Zabójcy królów", witcher['name_real'])
 		self.assertEqual(0, len(witcher['releases']))
@@ -37,7 +37,8 @@ class TestProducts(unittest.TestCase):
 		self.assertEqual(u"Ar tonelico", at['name'])
 		self.assertEqual(u"アルトネリコ", at['name_real'])
 		self.assertEqual(4, len(at['titles']))
-		self.assertEqual(u"Ar tonelico: Melody of Elemia", at['titles'][0]['name']['en'])
+		self.assertEqual(u"Ar tonelico: Melody of Elemia", at['titles'][0]['names']['en'])
+		self.assertEqual(u"/product/566", at['titles'][0]['link'])
 		self.assertEqual(u"2010-12-26T03:20", at['meta']['added_date'])
 		two = [at['albums'][32], at['albums'][33]]
 		for thing in two:	# two albums released on the same date, hard to sort
