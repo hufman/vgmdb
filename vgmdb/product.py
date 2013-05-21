@@ -64,7 +64,7 @@ def _parse_product_info(soup_profile_info):
 				for soup_child_div in soup_child.find_all('div', recursive=False):
 					for soup_child_link in soup_child_div.find_all('a', recursive=False):
 						item = {}
-						item['name'] = utils.parse_names(soup_child_link)
+						item['names'] = utils.parse_names(soup_child_link)
 						item['link'] = soup_child_link['href']
 						value.append(item)
 			else:
@@ -94,7 +94,7 @@ def _parse_product_releases(soup_table):
 		soup_cells = soup_row.find_all('td', recursive=False)
 		release = {}
 		release['date'] = utils.normalize_dashed_date(soup_cells[0].span.string)
-		release['name'] = utils.parse_names(soup_cells[1].span)
+		release['names'] = utils.parse_names(soup_cells[1].span)
 		release['region'] = soup_cells[2].span.string
 		release['platform'] = soup_cells[3].span.string
 		releases.append(release)
@@ -112,7 +112,9 @@ def _parse_franchise_titles(soup_table):
 		soup_cells = soup_row.find_all('td', recursive=False)
 		title = {}
 		title['date'] = utils.normalize_dashed_date(soup_cells[0].span.string)
-		title['name'] = utils.parse_names(soup_cells[1].span)
+		title['names'] = utils.parse_names(soup_cells[1].span)
+		if soup_cells[1].a:
+			title['link'] = soup_cells[1].a['href']
 		titles.append(title)
 	titles = sorted(titles, key=lambda e:e['date'])
 	return titles
