@@ -1,3 +1,4 @@
+import urlparse
 import vgmdb.config
 import datetime
 
@@ -13,6 +14,7 @@ class outputter(object):
 		import jinja2
 		self._templates = jinja2.Environment(loader=jinja2.PackageLoader('vgmdb.output'), trim_blocks=True, autoescape=autoescape)
 		self._templates.filters['artist_type'] = artist_type
+		self._templates.filters['absolute_linkhref'] = absolute_linkhref
 		self._templates.filters['linkhref'] = linkhref
 		self._templates.filters['link'] = link
 		self._templates.filters['link_artist'] = link_artist
@@ -66,6 +68,8 @@ def linkhref(link):
 	if len(link)>0 and link[0] == '/':
 		link = link[1:]
 	return link
+def absolute_linkhref(link):
+	return urlparse.urljoin(vgmdb.config.BASE_URL, linkhref(link))
 
 def link_artist(name, href, typeof="foaf:Person"):
 	return link(name, href, typeof)

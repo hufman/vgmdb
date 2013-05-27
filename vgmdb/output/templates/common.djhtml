@@ -8,9 +8,10 @@
       </ul>
 {% endmacro -%}
 {% macro formats(data) -%}
-<ul class="format_selector">
-<li class="rdfa"><a href="{{data.link | linkhref}}?format=html">RDFa</a></li>
-<li class="json"><a href="{{data.link | linkhref}}?format=json">JSON</a></li>
-<li class="yaml"><a href="{{data.link | linkhref}}?format=yaml">YAML</a></li>
+<div class="infobox">
+<ul class="format selectors">
+<li class="rdfa"><a href="{{data.link | absolute_linkhref}}?format=html">RDFa</a></li>
+<li class="json"><a href="{{data.link | absolute_linkhref}}?format=json">JSON</a></li>
+<li class="yaml"><a href="{{data.link | absolute_linkhref}}?format=yaml">YAML</a></li>
 </ul>
 {% endmacro -%}
