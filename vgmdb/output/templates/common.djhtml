@@ -14,4 +14,10 @@
 <li class="json"><a href="{{data.link | absolute_linkhref}}?format=json">JSON</a></li>
 <li class="yaml"><a href="{{data.link | absolute_linkhref}}?format=yaml">YAML</a></li>
 </ul>
+<span>Validate:</span>
+<ul class="format validators">
+<li class="rdfa"><a href="http://www.w3.org/2012/pyRdfa/extract?uri={{data.link | absolute_linkhref}}%3fformat=html&validate=yes">RDFa</a></li>
+<li class="json"><a href="http://www.jsonlint.com/?json={{data.link | absolute_linkhref}}?format=json">JSON</a></li>
+</ul>
+</div>
 {% endmacro -%}
