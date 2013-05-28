@@ -2,7 +2,7 @@
 {% block body %}
 {{ formats(data) }}
     <h1 typeof="foaf:Organization schema:Organization" about="{{data.link | linkhref}}#subject"><span property="foaf:name schema:name">{{data.name}}</span></h1>
-    <div id="info" resource="{{data.link | linkhref}}#subject">
+    <div id="info" {{data.link | linkhref | resource_attr}}>
       <h2><label>Information</label></h2>
       <dl>
         <dt>Region</dt>
@@ -17,7 +17,7 @@
           <ul>
             {% for staff in data.staff -%}
             <li rel="schema:member" rev="foaf:member schema:memberOf">
-              <span class="names" resource="{{staff.link | linkhref}}#subject" typeof="foaf:Person schema:Person schema:MusicGroup">
+              <span class="names" {{staff.link | linkhref | resource_attr}} typeof="foaf:Person schema:Person schema:MusicGroup">
                 {{ staff.name | lang_names | link_artist(staff.link,None) }}
               </span>
             </li>
@@ -43,7 +43,7 @@
         </dl>
       </div>
     </div>
-    <div class="discography" resource="{{data.link | linkhref}}#subject">
+    <div class="discography" {{data.link | linkhref | resource_attr}}>
       <h2><label>Releases</label></h2>
       {{ discography(data.releases, rel="mo:published", rev="mo:publisher", include_roles=False ) -}}
     </div>

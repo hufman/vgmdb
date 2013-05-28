@@ -2,7 +2,7 @@
 {% block body %}
 {{ formats(data) }}
     <h1 typeof="schema:CreativeWork" about="{{data.link | linkhref}}#subject"><span property="foaf:name schema:name">{{data.name}}</span></h1>
-    <div id="info" resource="{{data.link | linkhref}}#subject">
+    <div id="info" {{data.link | linkhref | resource_attr}}>
       <h2><label>Information</label></h2>
       <dl>
         <dt>Type</dt>
@@ -41,7 +41,7 @@
         {% endif -%}
       </dl>
     </div>
-    <div class="discography" resource="{{data.link | linkhref}}#subject">
+    <div class="discography" {{data.link | linkhref | resource_attr}}>
       <h2><label>Album Releases</label></h2>
       {{ discography(data.albums, rel=None, rev="schema:about", include_roles=False ) -}}
     </div>

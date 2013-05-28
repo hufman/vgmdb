@@ -1,12 +1,12 @@
 {% extends "base.djhtml" %}
 {% block body %}
 {{ formats(data) }}
-    <h1 typeof="{{data | artist_type}}" about="{{data.link | linkhref}}#subject"><span property="foaf:name">{{data.name}}</span></h1>
-    <div id="info" resource="{{data.link | linkhref}}#subject">
+    <h1 typeof="{{data | artist_type}}" {{data.link | link_subject | resource_attr}}><span property="foaf:name">{{data.name}}</span></h1>
+    <div id="info" {{data.link | link_subject | resource_attr}}>
       <h2><label>Information</label></h2>
       {% if data.birthdate -%}
       <div resource="{{data.link | linkhref}}#birthinfo" typeof="bio:birth">
-        <span property="bio:principal" about="{{data.link | linkhref}}#subject"></span>
+        <span property="bio:principal" {{data.link | link_subject | resource_attr}}></span>
         <dl>
           <dt>Birthday</dt>
           <dd property="bio:date" content="{{data.birthdate}}" datatype="xsd:date">{{data.birthdate | format_date | or_unavailable}}</dd>
@@ -22,7 +22,7 @@
           <ul>
             {% for unit in data.units -%}
             <li rev="foaf:member mo:member schema:musicGroupMember" rel="mo:member_of">
-              <span resource="{{unit.link | linkhref}}#subject" typeof="foaf:organization schema:MusicGroup">
+              <span {{unit.link | link_subject | resource_attr}} typeof="foaf:organization schema:MusicGroup">
                 {{ unit.name | link_artist(unit.link,None) }}
               </span>
             </li>
@@ -38,7 +38,7 @@
           <ul>
             {% for member in data.members -%}
             <li rel="foaf:member mo:member schema:musicGroupMember" rev="mo:member_of">
-              <span resource="{{member.link | linkhref}}#subject" typeof="foaf:Person" class="names">
+              <span {{member.link | link_subject | resource_attr}} typeof="foaf:Person" class="names">
                 {{ member.names | lang_names | link_artist(member.link,None) }}
               </span>
             </li>
@@ -64,11 +64,11 @@
         </dl>
       </div>
     </div>
-    <div class="discography" resource="{{data.link | linkhref}}#subject">
+    <div class="discography" {{data.link | link_subject | resource_attr}}>
       <h2><label>Discography</label></h2>
       {{ discography(data.discography, rev="dc:creator schema:byArtist") -}}
     </div>
-    <div class="discography" resource="{{data.link | linkhref}}#subject">
+    <div class="discography" {{data.link | link_subject | resource_attr}}>
       <h2><label>Featured On</label></h2>
       {{ discography(data.featured_on, rel=None, rev="mo:tribute_to") -}}
     </div>

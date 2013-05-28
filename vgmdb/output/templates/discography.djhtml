@@ -15,7 +15,7 @@
         </thead>
         <tbody{{(' rev="%s"'%rev)|safe if rev}}{{(' rel="%s"'%rel)|safe if rel}}>
           {% for disc in discography -%}
-          <tr resource="{{disc.link | linkhref }}#subject" typeof="mo:Release schema:MusicAlbum"{{(' property="%s"'%property)|safe if property}}>
+          <tr {{disc.link | linkhref | resource_attr}} typeof="mo:Release schema:MusicAlbum"{{(' property="%s"'%property)|safe if property}}>
             <td property="dcterms:created schema:datePublished" content="{{disc.date or disc.release_date}}" datatype="xsd:date">{{ disc.date or disc.release_date -}}</td>
             <td property="mo:catalogue_number">{{ disc.catalog }}</td>
             <td class="names">
