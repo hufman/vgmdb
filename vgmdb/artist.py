@@ -165,7 +165,7 @@ def _promote_profile_info(profile_info):
 		for improper in profile_info[info_key]:
 			proper = {}
 			if isinstance(improper,basestring):
-				proper['name'] = improper
+				proper['names'] = {'en':improper}
 			else:
 				proper = improper
 			artist_info[promote_key].append(proper)

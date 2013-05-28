@@ -65,6 +65,6 @@ class TestArtists(unittest.TestCase):
 		ss = artist.parse_artist_page(ss_code)
 		self.assertEqual(u'Composer (as HAPPY-SYNTHESIZER)', ss['discography'][12]['roles'][0])
 		self.assertEqual(u'Arranger (as (S_S))', ss['discography'][13]['roles'][0])
-		self.assertEqual(u'HAPPY-SYNTHESIZER', ss['aliases'][1]['name'])
-		self.assertEqual(u'Takeshi Nagai', ss['members'][0]['name'])
+		self.assertEqual(u'HAPPY-SYNTHESIZER', ss['aliases'][1]['names']['en'])
+		self.assertEqual(u'Takeshi Nagai', ss['members'][0]['names']['en'])
 		self.assertEqual(u'2011-10-03T05:45', ss['meta']['edited_date'])
