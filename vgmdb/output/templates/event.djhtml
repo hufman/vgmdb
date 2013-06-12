@@ -11,7 +11,7 @@
       <h2><label>Information</label></h2>
       <dl>
         <dt>Date</dt>
-        <dd property="schema:startDate" datetype="xsd:date" content="{{data.date}}">{{data.date | format_date}}</dd>
+        <dd property="schema:startDate" datatype="xsd:date" content="{{data.date}}">{{data.date | format_date}}</dd>
         <dt>Description</dt>
         <dd>{{data.notes}}</dd>
       </dl>

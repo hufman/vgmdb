@@ -19,7 +19,7 @@
             <td property="dcterms:created schema:datePublished" content="{{disc.date or disc.release_date}}" datatype="xsd:date">{{ disc.date or disc.release_date -}}</td>
             <td property="mo:catalogue_number">{{ disc.catalog }}</td>
             <td class="names">
-              {{ disc.titles|lang_names|link_album(disc.link) }}
+              {{ disc.titles|lang_names(rel='dcterms:title schema:name')|link_album(disc.link) }}
             </td>
             {% if include_roles -%}
             <td class="list">
@@ -32,7 +32,7 @@
             {% endif -%}
             {% if include_publisher -%}
             <td class="names" rel="mo:publisher schema:publisher">
-              {{ disc.publisher.names | lang_names | link(disc.publisher.link)}}
+              {{ disc.publisher.names | lang_names | link(disc.publisher.link, typeof="foaf:Organization schema:Organization")}}
             </td>
             {% endif -%}
           </tr>

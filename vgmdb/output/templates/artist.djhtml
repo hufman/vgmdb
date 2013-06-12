@@ -1,12 +1,12 @@
 {% extends "base.djhtml" %}
 {% block body %}
 {{ formats(data) }}
-    <h1 typeof="{{data | artist_type}}" {{data.link | link_subject | resource_attr}}><span property="foaf:name">{{data.name}}</span></h1>
-    <div id="info" {{data.link | link_subject | resource_attr}}>
+    <h1 typeof="{{data | artist_type}}" resource="{{data.link | linkhref}}#subject"><span property="foaf:name">{{data.name}}</span></h1>
+    <div id="info" resource="{{data.link | linkhref}}#subject">
       <h2><label>Information</label></h2>
       {% if data.birthdate -%}
       <div resource="{{data.link | linkhref}}#birthinfo" typeof="bio:birth">
-        <span property="bio:principal" {{data.link | link_subject | resource_attr}}></span>
+        <span property="bio:principal" resource="{{data.link | linkhref}}#subject"></span>
         <dl>
           <dt>Birthday</dt>
           <dd property="bio:date" content="{{data.birthdate}}" datatype="xsd:date">{{data.birthdate | format_date | or_unavailable}}</dd>
@@ -79,11 +79,11 @@
         </dl>
       </div>
     </div>
-    <div class="discography" {{data.link | link_subject | resource_attr}}>
+    <div class="discography" resource="{{data.link | linkhref}}#subject">
       <h2><label>Discography</label></h2>
-      {{ discography(data.discography, rev="dc:creator schema:byArtist") -}}
+      {{ discography(data.discography, rev="dcterms:creator schema:byArtist") -}}
     </div>
-    <div class="discography" {{data.link | link_subject | resource_attr}}>
+    <div class="discography" resource="{{data.link | linkhref}}#subject">
       <h2><label>Featured On</label></h2>
       {{ discography(data.featured_on, rel=None, rev="mo:tribute_to") -}}
     </div>

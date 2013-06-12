@@ -85,10 +85,8 @@ def link_artist(name, href, typeof="foaf:Person"):
 	return link(name, href, typeof)
 def link(name, href, typeof=None):
 	text = name
-	if '<span' not in name:		# isn't full of nested language spans, add the name property
-		text = "<span property=\"foaf:name\">%s</span>"%name
 	if typeof:
-		typeof=" typeof="+typeof
+		typeof=" typeof=\"%s\""%typeof
 	else:
 		typeof=""
 	if len(href)>0 and href[0] == '/':

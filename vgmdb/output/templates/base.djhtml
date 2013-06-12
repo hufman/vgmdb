@@ -43,6 +43,7 @@ td.list li:last-child:after {content: ""}
 	font-size: 8pt;
 	border: 0;
 	display: inline-block;
+	text-transform: uppercase;
 }
 .format .rdfa {
 	display: inline-block;

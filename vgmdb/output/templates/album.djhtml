@@ -15,6 +15,8 @@
       </div>
       <h2><label>Information</label></h2>
       <dl>
+        <dt>Catalog Number</dt>
+        <dd><span property="mo:catalogue_number">{{data.catalog}}</span></dd>
         <dt>Release</dt>
         <dd property="dcterms:created schema:datePublished" content="{{data.release_date}}" datatype="xsd:date">{{data.release_date | format_date | or_unavailable}}</dd>
         {% if data.event %}
@@ -24,7 +26,7 @@
         <dt>Publisher</dt>
         <dd rel="mo:publisher schema:publisher" class="names">{{data.publisher.name|lang_names|link(data.publisher.link)}}</dd>
         <dt>Games</dt>
-        <dd class="names">{{list_names(data.products)}}</dd>
+        <dd class="names">{{list_names(data.products, rel="schema:about", name_rel="schema:CreativeWork")}}</dd>
         <dt>Classification</dt>
         <dd>{{data.classification}}</dd>
         <dt>Category</dt>
@@ -32,14 +34,15 @@
         <dt>Media Format</dt>
         <dd property="mo:media_type">{{data.media_format}}</dd>
         <dt>Rating</dt>
-        <dd property="schema:aggregateRating">{{data.rating}}</dd>
+        <dd property="schema:aggregateRating" typeof="schema:AggregateRating"><span property="schema:ratingValue">{{data.rating}}</span></dd>
         <dt>Re-releases</dt>
         <dd>
          <ul rel="mo:other_release_of">
           {% for reprint in data.reprints -%}
-          <li><a typeof="mo:Release" href="{{reprint.link | linkhref}}" about="{{reprint.link | linkhref}}#subject"><span property="mo:catalogue">{{reprint.catalog}}</span> ({{reprint.note}})</a></li>
+          <li><a typeof="mo:Release" href="{{reprint.link | linkhref}}" {{reprint.link | linkhref | resource_attr}}><span property="mo:catalogue_number">{{reprint.catalog}}</span> ({{reprint.note}})</a></li>
           {% endfor -%}
-        </ul>
+         </ul>
+        </dd>
       </dl>
       <dl>
         <dt>Composers</dt>
@@ -47,7 +50,7 @@
         <dt>Performers</dt>
         <dd resource="{{data.link | linkhref}}#performance" class="names">{{ list_names(data.performers, rel="mo:performer", rev="mo:performed") }}</dd>
         <dt>Lyricists</dt>
-        <dd resource="{{data.link | linkhref}}#lyrics" class="names">{{ list_names(data.lyricists, rel="foaf:made") }}</dd>
+        <dd resource="{{data.link | linkhref}}#lyrics" class="names">{{ list_names(data.lyricists, rev="foaf:made") }}</dd>
       </dl>
     </div>
     <div id="tracklist" resource="{{data.link | linkhref}}#subject">
