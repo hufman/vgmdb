@@ -1,5 +1,6 @@
 bottle
 unittest2
+lxml
 beautifulsoup4
 python-memcached
 Jinja2 >= 2.7
