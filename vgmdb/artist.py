@@ -123,7 +123,7 @@ def _parse_profile_info(soup_profile_left):
 						item_data['names'] = names
 					item_list.append(item_data)
 				if soup_item_data.name == 'div' and \
-				  soup_item_data.has_key('class') and \
+				  soup_item_data.has_attr('class') and \
 				  'star' in soup_item_data['class']:
 					total_stars = soup_item.find_all('div', 'star')
 					stars = soup_item.find_all('div', 'star_on')
@@ -134,7 +134,7 @@ def _parse_profile_info(soup_profile_left):
 					  soup_votes.contents[2].string + \
 					  soup_votes.contents[3]
 				if soup_item_data.name == 'span' and \
-				  soup_item_data.has_key('class') and \
+				  soup_item_data.has_attr('class') and \
 				  'time' in soup_item_data['class']:
 					item_list.append(soup_item_data.string + soup_item_data.next_sibling)
 					

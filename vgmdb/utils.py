@@ -114,7 +114,7 @@ def parse_names(soup_parent):
 	if not soup_parent.span:
 		info['en'] = soup_parent.string.strip()
 	for soup_name in soup_parent.find_all('span', recursive=False):
-		if not soup_name.has_key('lang'):
+		if not soup_name.has_attr('lang'):
 			continue
 		lang = soup_name['lang'].lower()
 		for child in soup_name.children:
@@ -169,7 +169,7 @@ def parse_discography(soup_disco_table, label_type='roles'):
 
 			reprint = False
 			for soup_tag in soup_cells[1].find_all('img', recursive=False):
-				if soup_tag.has_key('alt') and \
+				if soup_tag.has_attr('alt') and \
 				   soup_tag['alt'] == 'This album is a reprint':
 					reprint = True
 
