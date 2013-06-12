@@ -6,6 +6,8 @@ from vgmdb.config import AUTO_RELOAD
 import html
 import json
 import yaml
+import turtle
+import rdfxml
 
 # As output modules are loaded the name_outputters and
 # add_name_handler will be populated

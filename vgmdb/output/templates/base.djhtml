@@ -45,6 +45,21 @@ td.list li:last-child:after {content: ""}
 	display: inline-block;
 	text-transform: uppercase;
 }
+.format .rdfxml {
+	display: inline-block;
+	background-image: url(http://www.w3.org/Icons/SW/Buttons/sw-rdf-green-v.svg);
+	background-size: auto auto;
+	width: 73px;
+	padding: 0;
+	border: 0;
+	line-height: 10pt;
+	height: 14px;
+	color: rgba(0,0,0,0);
+}
+.format .rdfxml a {
+	display: inline-block;
+	width: 73px;
+}
 .format .rdfa {
 	display: inline-block;
 	background-image: url(http://www.w3.org/Icons/SW/Buttons/sw-rdfa-orange-v.svg);
