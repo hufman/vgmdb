@@ -1,4 +1,4 @@
-from bottle import route, response, request
+from bottle import route, response, request, static_file
 import urllib
 import json
 import vgmdb.artist
@@ -37,3 +37,6 @@ def info(type,id):
 	response.content_type = outputter.content_type
 	return outputter(type, info)
 
+@route('/static/<name:path>')
+def static(name):
+	return static_file(name, root='./static')
