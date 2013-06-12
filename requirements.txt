@@ -2,3 +2,7 @@ bottle
 unittest2
 beautifulsoup4
 python-memcached
+Jinja2 >= 2.7
+PyYAML
+json
+rdflib

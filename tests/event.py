@@ -23,4 +23,5 @@ class TestEvents(unittest.TestCase):
 		self.assertEqual(u'Diverse System', m3['releases'][1]['publisher']['names']['en'])
 		self.assertEqual(u'/org/331', m3['releases'][1]['publisher']['link'])
 		self.assertEqual(u'2012-10-28', m3['releases'][5]['release_date'])
+		self.assertEqual(39, len(m3['releases']))
 

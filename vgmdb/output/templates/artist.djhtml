@@ -1,0 +1,90 @@
+{% extends "base.djhtml" %}
+{% block body %}
+{{ formats(data) }}
+    <h1 typeof="{{data | artist_type}}" resource="{{data.link | linkhref}}#subject"><span property="foaf:name">{{data.name}}</span></h1>
+    <div id="info" resource="{{data.link | linkhref}}#subject">
+      <h2><label>Information</label></h2>
+      {% if data.birthdate -%}
+      <div resource="{{data.link | linkhref}}#birthinfo" typeof="bio:birth">
+        <span property="bio:principal" resource="{{data.link | linkhref}}#subject"></span>
+        <dl>
+          <dt>Birthday</dt>
+          <dd property="bio:date" content="{{data.birthdate}}" datatype="xsd:date">{{data.birthdate | format_date | or_unavailable}}</dd>
+          <dt>Birthplace</dt>
+          <dd property="bio:place" content="{{data.birthplace}}">{{data.birthplace | or_unavailable}}</dd>
+        </dl>
+      </div>
+      {% endif -%}
+      {% if data.units and data.units is not empty -%}
+      <dl>
+        <dt>Bands and Groups</dt>
+        <dd>
+          <ul>
+            {% for unit in data.units -%}
+            <li rev="foaf:member mo:member schema:musicGroupMember" rel="mo:member_of">
+              <span {{unit.link | link_subject | resource_attr}} typeof="foaf:organization schema:MusicGroup">
+                {{ unit.name | link_artist(unit.link,None) }}
+              </span>
+            </li>
+            {% endfor -%}
+          </ul>
+        </dd>
+      </dl>
+      {% endif -%}
+      {% if data.members and data.members is not empty -%}
+      <dl>
+        <dt>Group Members</dt>
+        <dd>
+          <ul>
+            {% for member in data.members -%}
+            <li rel="foaf:member mo:member schema:musicGroupMember" rev="mo:member_of">
+              <span {{member.link | link_subject | resource_attr}} typeof="foaf:Person" class="names">
+                {{ member.names | lang_names | link_artist(member.link,None) }}
+              </span>
+            </li>
+            {% endfor -%}
+          </ul>
+        </dd>
+      </dl>
+      {% endif -%}
+      <div class="artist_websites">
+        <dl>
+          {% if data.websites and data.websites is not empty -%}
+          {% for websitetype,websites in data.websites.items() -%}
+          <dt>{{websitetype}} Websites</dt>
+          <dd>
+            <ul>
+              {% for website in websites -%}
+              <li><a rel="foaf:page" href="{{website.link}}">{{website.name}}</a></li>
+              {% endfor -%}
+            </ul>
+          </dd>
+          {% endfor -%}
+          {% endif -%}
+          {% if data.twitter_names and data.twitter_names is not empty -%}
+          {% if data | length >1 -%}
+          <dt>Twitter handle</dt>
+          <dd rel="foaf:account" typeof="foaf:OnlineChatAccount"><span property="foaf:accountServiceHomepage" resource="http://www.twitter.com/"></span><span property="foaf:accountName">{{data.twitter_names[0]}}</span></dd>
+          {% else -%}
+          <dt>Twitter handles</dt>
+          <dd>
+            <ul>
+            {% for name in data.twitter_names -%}
+              <li rel="foaf:account" typeof="foaf:OnlineChatAccount"><span property="foaf:AccountServiceHomepage" content="http://www.twitter.com/"></span><span property="foaf:accountName">{{name}}</span></li>
+            {% endfor -%}
+            </ul>
+          </dd>
+          {% endif -%}
+          {% endif -%}
+        </dl>
+      </div>
+    </div>
+    <div class="discography" resource="{{data.link | linkhref}}#subject">
+      <h2><label>Discography</label></h2>
+      {{ discography(data.discography, rev="dcterms:creator schema:byArtist") -}}
+    </div>
+    <div class="discography" resource="{{data.link | linkhref}}#subject">
+      <h2><label>Featured On</label></h2>
+      {{ discography(data.featured_on, rel=None, rev="mo:tribute_to") -}}
+    </div>
+{% endblock %}

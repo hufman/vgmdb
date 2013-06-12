@@ -70,7 +70,7 @@ def _parse_org_info(soup_profile_info):
 				if soup_child.span:
 					org_info['description'] = soup_child.span.string
 				else:
-					org_value['description'] = value
+					org_info['description'] = value
 	return org_info
 
 def _parse_org_releases(table):

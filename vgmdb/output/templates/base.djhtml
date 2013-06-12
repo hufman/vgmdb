@@ -1,0 +1,93 @@
+{% from 'discography.djhtml' import discography -%}
+{% from 'common.djhtml' import list_names -%}
+{% from 'common.djhtml' import formats -%}
+<!DOCTYPE html>
+<html>
+  <head>
+    <base href="{{config.BASE_URL}}" />
+    <meta charset='utf-8'/>
+    <title>{{data.name.en | default(data.name)}}</title>
+    <style>
+.metadata {display: none}
+.names span {display: none}
+.names span:first-child {display: inline}
+dt {font-weight: bold}
+td.list ul {display: inline; padding:0}
+td.list li {display: inline}
+td.list li:after {content: ", "}
+td.list li:last-child:after {content: ""}
+.artist_websites ul {padding:0; margin:0}
+
+.infobox {
+	float: right;
+}
+.format {
+	display: block;
+	padding: 0;
+	margin: 0;
+}
+.format li {
+	list-style: none;
+	display: inline-block;
+	padding: 1px 3px;
+	background: #EE8522;
+	border: 1px #444 solid;
+	line-height: 8pt;
+	color: white;
+	height: 10px;
+}
+.format a {
+	color: inherit;
+	font-weight: bold;
+	text-decoration: none;
+	font-size: 8pt;
+	border: 0;
+	display: inline-block;
+	text-transform: uppercase;
+}
+.format .rdfxml {
+	display: inline-block;
+	background-image: url(http://www.w3.org/Icons/SW/Buttons/sw-rdf-green-v.svg);
+	background-size: auto auto;
+	width: 73px;
+	padding: 0;
+	border: 0;
+	line-height: 10pt;
+	height: 14px;
+	color: rgba(0,0,0,0);
+}
+.format .rdfxml a {
+	display: inline-block;
+	width: 73px;
+}
+.format .rdfa {
+	display: inline-block;
+	background-image: url(http://www.w3.org/Icons/SW/Buttons/sw-rdfa-orange-v.svg);
+	background-size: auto auto;
+	width: 73px;
+	padding: 0;
+	border: 0;
+	line-height: 10pt;
+	height: 14px;
+	color: rgba(0,0,0,0);
+}
+.format .rdfa a {
+	display: inline-block;
+	width: 73px;
+}
+
+    </style>
+  </head>
+  <body prefix="dcterms: http://purl.org/dc/terms/
+                schema: http://schema.org/
+                foaf: http://xmlns.com/foaf/0.1/
+                bio: http://purl.org/vocab/bio/0.1/
+                xsd: http://www.w3.org/2001/XMLSchema#
+                mo: http://purl.org/ontology/mo/
+                event: http://purl.org/NET/c4dm/event.owl#
+                tl: http://purl.org/NET/c4dm/timeline.owl#" about="{{data.link | linkhref}}" property="foaf:primaryTopic" resource="{{data.link | linkhref}}#subject">
+{% block body %}
+{{ formats(data) }}
+{% endblock %}
+  </body>
+</html>

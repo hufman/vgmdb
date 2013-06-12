@@ -1,0 +1,27 @@
+{% macro list_names(names, rel=None, property=None, rev=None, name_rel="foaf:Person") -%}
+      <ul{{(' rev="%s"'%rev)|safe if rev}}{{(' rel="%s"'%rel)|safe if rel}}>
+        {% for name in names -%}
+        <li>
+            {{ name.name|lang_names|link(name.link, name_rel) }}
+        </li>
+        {% endfor -%}
+      </ul>
+{% endmacro -%}
+{% macro formats(data) -%}
+<div class="infobox">
+<ul class="format selectors">
+<li class="rdfxml"><a href="{{data.link | absolute_linkhref}}?format=rdf">RDF</a></li>
+<li class="rdfa"><a href="{{data.link | absolute_linkhref}}?format=html">RDFa</a></li>
+<li class="json"><a href="{{data.link | absolute_linkhref}}?format=json">JSON</a></li>
+<li class="turtle"><a href="{{data.link | absolute_linkhref}}?format=turtle">Turtle</a></li>
+<li class="yaml"><a href="{{data.link | absolute_linkhref}}?format=yaml">YAML</a></li>
+</ul>
+<span>Validate:</span>
+<ul class="format validators">
+<li class="rdfxml"><a href="http://www.w3.org/RDF/Validator/rdfval?URI={{data.link | absolute_linkhref}}%3fformat=rdf&amp;PARSE=Parse+URI%3A+&amp;TRIPLES_AND_GRAPH=PRINT_TRIPLES&amp;FORMAT=PNG_EMBED">RDFa</a></li>
+<li class="rdfa"><a href="http://www.w3.org/2012/pyRdfa/extract?uri={{data.link | absolute_linkhref}}%3fformat=html&amp;validate=yes">RDFa</a></li>
+<li class="json"><a href="http://www.jsonlint.com/?json={{data.link | absolute_linkhref}}%3fformat=json">JSON</a></li>
+<li class="yaml"><a href="http://yaml-online-parser.appspot.com/?url={{data.link | absolute_linkhref}}%3fformat%3dyaml">YAML</a></li>
+</ul>
+</div>
+{% endmacro -%}

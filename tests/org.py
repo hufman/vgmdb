@@ -19,6 +19,7 @@ class TestOrgs(unittest.TestCase):
 		self.assertEqual(u"Nobuo Uematsu", dogear['staff'][0]['names']['en'])
 		self.assertEqual(u"Miyu", dogear['staff'][1]['names']['en'])
 		self.assertEqual(True, dogear['staff'][0]['owner'])
+		self.assertEqual(2, len(dogear['staff']))
 		self.assertEqual(u"No description available", dogear['description'])
 		self.assertEqual(28, len(dogear['releases']))
 		self.assertEqual(u"DERP-10001", dogear['releases'][0]['catalog'])
