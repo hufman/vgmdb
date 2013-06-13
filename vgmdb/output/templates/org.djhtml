@@ -1,20 +1,24 @@
 {% extends "base.djhtml" %}
-{% block body %}
-{{ formats(data) }}
+{% block title %}
     <h1 typeof="foaf:Organization schema:Organization" about="{{data.link | linkhref}}#subject"><span property="foaf:name schema:name">{{data.name}}</span></h1>
-    <div id="info" resource="{{data.link | linkhref}}#subject">
-      <h2><label>Information</label></h2>
-      <dl>
+{% endblock %}
+{% block quickinfo %}
+    <div class="boxsection">
+      <dl class="dl-horizontal">
         <dt>Region</dt>
         <dd>{{data.region}}</dd>
         <dt>Type</dt>
         <dd>{{data.type}}</dd>
       </dl>
+    </div>
+{% endblock %}
+{% block body %}
+    <div id="info" resource="{{data.link | linkhref}}#subject">
       {% if data.staff and data.staff is not empty -%}
       <dl>
         <dt>Staff</dt>
         <dd>
-          <ul>
+          <ul class="unstyled">
             {% for staff in data.staff -%}
             <li rel="schema:member" rev="foaf:member schema:memberOf">
               <span class="names" {{staff.link | linkhref | resource_attr}} typeof="foaf:Person schema:Person schema:MusicGroup">
@@ -26,25 +30,25 @@
         </dd>
       </dl>
       {% endif -%}
+      {% if data.websites and data.websites is not empty -%}
       <div class="artist_websites">
         <dl>
-          {% if data.websites and data.websites is not empty -%}
           {% for websitetype,websites in data.websites.items() -%}
           <dt>{{websitetype}} Websites</dt>
           <dd>
-            <ul>
+            <ul class="unstyled">
               {% for website in websites -%}
               <li><a rel="foaf:page" href="{{website.link}}">{{website.name}}</a></li>
               {% endfor -%}
             </ul>
           </dd>
          {% endfor -%}
-         {% endif -%}
         </dl>
       </div>
+     {% endif -%}
     </div>
     <div class="discography" resource="{{data.link | linkhref}}#subject">
-      <h2><label>Releases</label></h2>
+      <h2>Releases</h2>
       {{ discography(data.releases, rel="mo:published", rev="mo:publisher", include_roles=False ) -}}
     </div>
 {% endblock %}

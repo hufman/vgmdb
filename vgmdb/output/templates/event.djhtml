@@ -1,23 +1,26 @@
 {% extends "base.djhtml" %}
-{% block body %}
-{{ formats(data) }}
+{% block title %}
     <h1 typeof="mo:ReleaseEvent schema:MusicEvent" about="{{data.link | linkhref}}#subject"><span property="schema:name">{{data.name}}</span></h1>
+{% endblock %}
+{% block quickinfo %}
+    <div class="boxsection">
+      <dl>
+        <dt>Date</dt>
+        <dd property="schema:startDate" datatype="xsd:date" content="{{data.date}}">{{data.date | format_date}}</dd>
+     </dl>
+   </div>
+{% endblock %}
+{% block body %}
     <div id="info" resource="{{data.link | linkhref}}#subject">
       <span class="metadata">
         <span property="event:time" typeof="tl:Instant" resource="{{data.link | linkhref}}#release_event">
           <span property="tl:at" datatype="xsd:date" content="{{data.date}}"></span>
         </span>
       </span>
-      <h2><label>Information</label></h2>
-      <dl>
-        <dt>Date</dt>
-        <dd property="schema:startDate" datatype="xsd:date" content="{{data.date}}">{{data.date | format_date}}</dd>
-        <dt>Description</dt>
-        <dd>{{data.notes}}</dd>
-      </dl>
+      <span>{{data.notes}}</span>
     </div>
     <div class="discography" resource="{{data.link | linkhref}}#subject">
-      <h2><label>Releases</label></h2>
+      <h2>Releases</h2>
       {{ discography(data.releases, rel="mo:release", include_roles=False, include_publisher=True ) -}}
     </div>
 {% endblock %}

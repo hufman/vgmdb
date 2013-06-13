@@ -1,50 +1,54 @@
 {% extends "base.djhtml" %}
-{% block body %}
-{{ formats(data) }}
-    <h1 typeof="schema:CreativeWork" about="{{data.link | linkhref}}#subject"><span property="dcterms:title schema:name">{{data.name}}</span></h1>
-    <div id="info" resource="{{data.link | linkhref}}#subject">
-      <h2><label>Information</label></h2>
-      <dl>
-        <dt>Type</dt>
-        <dd>{{data.type}}</dd>
+{% block title %}
+    <h1 typeof="schema:CreativeWork" about="{{data.link | linkhref}}#subject"><span property="dcterms:title schema:name">{{data.name}}</span> <small>({{data.type}})</small></h1>
+{% endblock %}
+{% block quickinfo %}
+    <div class="boxsection">
+      {%- if data.release_date or data.franchises or data.releases -%}
+      <dl class="dl-horizontal">
         {% if data.release_date -%}
         <dt>Release Date</dt>
         <dd rel="dcterms:created schema:datePublished" datatype="xsd:date">{{data.release_date | format_date}}</dd>
         {% endif -%}
-        {% if data.releases and data.releases is not empty -%}
-        <dt>Releases</dt>
-        <dd>
-          <ul>
-          {% for release in data.releases -%}
-            <li><span class="names">{{ release.names | lang_names(rel=None) }}</span></li>
-          {% endfor -%}
-          </ul>
-        </dd>
-        {% endif -%}
         {% if data.franchises and data.franchises is not empty -%}
         <dt>Franchises</dt>
         <dd>
-          <ul>
+          <ul class="unstyled">
           {% for franchise in data.franchises -%}
             <li><span class="names">{{ franchise.names | lang_names(rel="dcterms:title schema:name") | link(franchise.link, typeof="schema:CreativeWork") }}</span></li>
           {% endfor -%}
           </ul>
         </dd>
         {% endif -%}
-        {% if data.titles and data.titles is not empty -%}
-        <dt>Titles</dt>
+        {% if data.releases and data.releases is not empty -%}
+        <dt>Releases</dt>
         <dd>
-          <ul>
-          {% for title in data.titles -%}
-            <li {{title.link | linkhref | resource_attr('about')}} typeof="schema:CreativeWork"><span class="names">{{ title.names | lang_names(rel="dcterms:title schema:name") | link (title.link) }}</span> (<span property="schema:datePublished dcterms:created" datatype="xsd:date" content="{{title.date}}">{{ title.date | format_date}}</span>)</li>
+          <ul class="unstyled">
+          {% for release in data.releases -%}
+            <li><span class="names">{{ release.names | lang_names(rel=None) }}</span></li>
           {% endfor -%}
           </ul>
         </dd>
         {% endif -%}
       </dl>
+      {%- endif -%}
+    </div>
+{% endblock %}
+{% block body %}
+    <div id="info" resource="{{data.link | linkhref}}#subject">
+      {%- if data.titles and data.titles is not empty -%}
+      <h2>Titles</h2>
+      <dd>
+        <ul class="unstyled">
+        {% for title in data.titles -%}
+          <li {{title.link | linkhref | resource_attr('about')}} typeof="schema:CreativeWork"><span class="names">{{ title.names | lang_names(rel="dcterms:title schema:name") | link (title.link) }}</span> (<span property="schema:datePublished dcterms:created" datatype="xsd:date" content="{{title.date}}">{{ title.date | format_date}}</span>)</li>
+        {% endfor -%}
+        </ul>
+      </dd>
+      {%- endif -%}
     </div>
     <div class="discography" resource="{{data.link | linkhref}}#subject">
-      <h2><label>Album Releases</label></h2>
+      <h2>Album Releases</h2>
       {{ discography(data.albums, rel=None, rev="schema:about", include_roles=False ) -}}
     </div>
 {% endblock %}
