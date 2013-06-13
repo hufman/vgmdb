@@ -15,7 +15,9 @@ def parse_event_page(html_source):
 	soup_name_sections = soup_sections[0].find_all('span', recursive=False)
 
 	event_info['name'] = soup_name_sections[1].string.strip()
-	event_info['date'] = utils.parse_date_time(soup_name_sections[2].string.strip())
+	date = soup_name_sections[2].string.strip()
+	date = date.split('to')[0]
+	event_info['date'] = utils.parse_date_time(date)
 
 	notes = ''
 	for soup_note in soup_sections[1].div.children:
