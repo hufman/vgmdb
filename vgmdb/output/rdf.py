@@ -210,9 +210,12 @@ def generate_album(config, data):
 				g.add((subject, r, person))
 			for r in rev:
 				g.add((person, r, subject))
-	add_people(g, composition, data['composers'], rel=[MO.composer], rev=[FOAF.made])
-	add_people(g, performance, data['performers'], rel=[MO.performer], rev=[MO.performed])
-	add_people(g, lyrics, data['lyricists'], rel=[], rev=[FOAF.made])
+	if data.has_key('composers'):
+		add_people(g, composition, data['composers'], rel=[MO.composer], rev=[FOAF.made])
+	if data.has_key('performers'):
+		add_people(g, performance, data['performers'], rel=[MO.performer], rev=[MO.performed])
+	if data.has_key('lyricists'):
+		add_people(g, lyrics, data['lyricists'], rel=[], rev=[FOAF.made])
 
 	for productdata in data['products']:
 		product = URIRef(link(productdata['link'])+"#subject") if productdata.has_key('link') else BNode()
