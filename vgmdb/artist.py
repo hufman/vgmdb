@@ -44,10 +44,11 @@ def parse_artist_page(html_source):
 	artist_info['notes'] = soup_notes.contents[0].string if isinstance(soup_notes.contents[0], bs4.Tag) else soup_notes.string
 
 	# Parse Discography
-	soup_disco_table = soup_profile_right.br.find_next_sibling('div').find_next_sibling('div').div.table
+	soup_separator = soup_profile_right.find('br', recursive=False)
+	soup_disco_table = soup_separator.find_next_sibling('div').find_next_sibling('div').div.table
 	if soup_disco_table:
 		artist_info['discography'] = utils.parse_discography(soup_disco_table, 'roles')
-	soup_featured_table = soup_profile_right.br.find_next_sibling('br').find_next_sibling('div').find_next_sibling('div').div.table
+	soup_featured_table = soup_separator.find_next_sibling('br').find_next_sibling('div').find_next_sibling('div').div.table
 	if soup_featured_table:
 		artist_info['featured_on'] = utils.parse_discography(soup_featured_table, 'roles')
 
