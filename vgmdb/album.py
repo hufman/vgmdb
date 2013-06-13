@@ -135,6 +135,9 @@ def _parse_album_info(soup_info):
 					link['link'] = soup_child['href']
 					link['name'] = utils.parse_names(soup_child)
 					value.append(link)
+				elif isinstance(soup_child, bs4.Tag):
+					# Skipping unknown tag
+					pass
 				else:
 					pieces = soup_child.string.split(',')
 					pieces = [a.strip() for a in pieces if len(a.strip())>0]
