@@ -196,10 +196,11 @@ def generate_album(config, data):
 		g.add((reprinturi, MO.catalogue_number, Literal(reprint['catalog'])))
 	g.add((subject, SCHEMA.genre, Literal(data['category'])))
 	g.add((subject, MO.media_type, Literal(data['media_format'])))
-	rating = BNode()
-	g.add((subject, SCHEMA.aggregateRating, rating))
-	g.add((rating, RDF.type, SCHEMA.AggregateRating))
-	g.add((rating, SCHEMA.ratingValue, Literal(str(data['rating']))))
+	if data.has_key('rating'):
+		rating = BNode()
+		g.add((subject, SCHEMA.aggregateRating, rating))
+		g.add((rating, RDF.type, SCHEMA.AggregateRating))
+		g.add((rating, SCHEMA.ratingValue, Literal(str(data['rating']))))
 
 	def add_people(g, subject, list, rel, rev):
 		for persondata in list:

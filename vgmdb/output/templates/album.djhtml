@@ -27,8 +27,10 @@
         <dd property="schema:genre">{{data.category}}</dd>
         <dt>Media Format</dt>
         <dd property="mo:media_type">{{data.media_format}}</dd>
+        {% if data.rating -%}
         <dt>Rating</dt>
         <dd property="schema:aggregateRating" typeof="schema:AggregateRating"><span property="schema:ratingValue">{{data.rating}}</span></dd>
+        {% endif -%}
         <dt>Re-releases</dt>
         <dd>
          <ul class="unstyled" rel="mo:other_release_of">
