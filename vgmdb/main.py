@@ -1,4 +1,4 @@
-from bottle import route, response, request, static_file
+from bottle import route, response, request, static_file, abort
 import urllib
 import json
 import vgmdb.artist
@@ -27,10 +27,13 @@ def info(type,id):
 		module = getattr(vgmdb, type)
 		parse_page = getattr(module, "parse_%s_page"%type)
 		info = parse_page(data)
-		info['link'] = "/%s/%s"%(type,id)
-		vgmdb.cache.set('vgmdb/%s/%s'%(type,id), info)
+		if info != None:
+			info['link'] = "/%s/%s"%(type,id)
+			vgmdb.cache.set('vgmdb/%s/%s'%(type,id), info)
 	else:
 		info = prevdata
+	if info == None:
+		abort(404, "Item not found")
 
 	requested_format = request.query.format or ''
 	outputter = vgmdb.output.get_outputter(requested_format, request.headers.get('Accept'))

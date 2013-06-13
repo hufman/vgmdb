@@ -7,6 +7,9 @@ def parse_event_page(html_source):
 	html_source = utils.fix_invalid_table(html_source)
 	soup = bs4.BeautifulSoup(html_source)
 	soup_innermain = soup.find(id='innermain')
+	if soup_profile == None:
+		return None	# info not found
+
 	soup_profile = soup_innermain.find_parent('div')
 	soup_sections = soup_profile.find_all('div', recursive=False)
 	soup_name_sections = soup_sections[0].find_all('span', recursive=False)

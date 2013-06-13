@@ -8,6 +8,8 @@ def parse_org_page(html_source):
 	soup = bs4.BeautifulSoup(html_source)
 	soup_profile = soup.find(id='innermain')
 	soup_right_column = soup.find(id='rightcolumn')
+	if soup_profile == None:
+		return None	# info not found
 
 	soup_divs = soup_profile.find_all('div', recursive=False)
 	soup_pic_div = soup_divs[0]

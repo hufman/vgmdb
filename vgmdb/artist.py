@@ -6,6 +6,8 @@ def parse_artist_page(html_source):
 	artist_info = {}
 	soup = bs4.BeautifulSoup(html_source)
 	soup_profile = soup.find(id='innermain')
+	if soup_profile == None:
+		return None	# info not found
 
 	soup_name = soup_profile.find_all('span', recursive=False)[1]
 	artist_info['name'] = soup_name.string.strip()

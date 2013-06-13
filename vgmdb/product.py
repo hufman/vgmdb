@@ -7,6 +7,8 @@ def parse_product_page(html_source):
 	soup = bs4.BeautifulSoup(html_source)
 	soup_profile = soup.find(id='innermain')
 	soup_right_column = soup.find(id='rightcolumn')
+	if soup_profile == None:
+		return None	# info not found
 
 	soup_name = soup_profile.h1
 	product_info['name'] = soup_name.span.string.strip()
