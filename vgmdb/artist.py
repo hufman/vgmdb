@@ -139,7 +139,8 @@ def _parse_profile_info(soup_profile_left):
 				if soup_item_data.name == 'span' and \
 				  soup_item_data.has_attr('class') and \
 				  'time' in soup_item_data['class']:
-					item_list.append(soup_item_data.string + soup_item_data.next_sibling)
+					if soup_item_data.next_sibling:
+						item_list.append(soup_item_data.string + soup_item_data.next_sibling)
 					
 
 			list_item_pre = list_item_pre.find_next_sibling('br')
