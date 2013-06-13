@@ -245,8 +245,10 @@ def generate_album(config, data):
 			g.add((track, RDF.type, SCHEMA.MusicRecording))
 			g.add((track, MO.track_number, Literal(trackno, datatype=XSD.int)))
 			add_lang_names(g, track, trackdata['name'])
-			interval = "PT" + trackdata['track_length']
-			g.add((track, SCHEMA.duration, Literal(interval, datatype=XSD.interval)))
+			if trackdata.has_key('track_length') and \
+			   trackdata['track_length']:
+				interval = "PT" + trackdata['track_length']
+				g.add((track, SCHEMA.duration, Literal(interval, datatype=XSD.interval)))
 
 	return g
 
