@@ -111,7 +111,7 @@ def generate_artist(config, data):
 			g.add((unitlink, FOAF.member, subject))
 			g.add((unitlink, MO.member, subject))
 			g.add((unitlink, SCHEMA.musicGroupMember, subject))
-			add_lang_names(g, unitlink, unit['name'], rel=[FOAF.name])
+			add_lang_names(g, unitlink, unit['names'], rel=[FOAF.name])
 	if data.has_key('members'):
 		for member in data['members']:
 			memberlink = URIRef(link(member['link'])) if member.has_key('link') else BNode()
