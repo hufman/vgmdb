@@ -181,7 +181,7 @@ def generate_album(config, data):
 		event = URIRef(link(data['event']['link']))
 		g.add((subject, MO.release, event))
 		g.add((event, RDF.type, MO.Release))
-		g.add((event, FOAF.name, data['event']['name']))
+		g.add((event, FOAF.name, Literal(data['event']['name'])))
 	if data.has_key('publisher'):
 		publisher = URIRef(link(data['publisher']['link'])+'#subject') if data['publisher'].has_key('link') else BNode()
 		g.add((subject, MO.publisher, publisher))
