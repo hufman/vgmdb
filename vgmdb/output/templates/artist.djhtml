@@ -14,9 +14,9 @@
           {% if data.twitter_names and data.twitter_names is not empty -%}
           <dt>Twitter</dt>
           <dd>
-            <ul class="unstyled">
+            <ul class="unstyled" resource="{{data.link | linkhref}}#subject">
             {% for name in data.twitter_names -%}
-              <li rel="foaf:account" typeof="foaf:OnlineChatAccount"><span property="foaf:AccountServiceHomepage" content="http://www.twitter.com/"></span><a href="https://twitter.com/{{name}}" property="foaf:accountName">{{name}}</a></li>
+              <li rel="foaf:account" typeof="foaf:OnlineChatAccount"><span property="foaf:accountServiceHomepage" resource="http://www.twitter.com/"></span><span property="foaf:accountName" content="{{name}}"><a href="https://twitter.com/{{name}}">{{name}}</a></span></li>
             {% endfor -%}
             </ul>
           </dd>
