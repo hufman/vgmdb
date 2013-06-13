@@ -100,19 +100,27 @@ def link(name, href, typeof=None):
 	return result
 
 def format_date(date):
+	def minyear(date):
+		if date.year < 1900:
+			date = date.replace(year=1900)
+		return date
 	if date:
+		year = date[0:4]
 		if date[0:4] == '0000':
 			date = datetime.datetime.strptime(date, "0000-%m-%d")
 			return date.strftime("%b %d")
 		elif len(date) == 4:	# only a year
 			date = datetime.datetime.strptime(date, "%Y")
-			return date.strftime("%Y")
+			date = minyear(date)
+			return date.strftime("%s"%year)
 		elif len(date) == 7:	# YYYY-MM
 			date = datetime.datetime.strptime(date, "%Y-%m")
-			return date.strftime("%b %Y")
+			date = minyear(date)
+			return date.strftime("%%b %s"%year)
 		elif len(date) == 10:	# YYYY-MM-DD
 			date = datetime.datetime.strptime(date, "%Y-%m-%d")
-			return date.strftime("%b %d, %Y")
+			date = minyear(date)
+			return date.strftime("%%b %%d, %s"%year)
 		else:
 			return date
 def format_interval(time):
