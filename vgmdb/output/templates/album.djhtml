@@ -15,8 +15,10 @@
         {% endif %}
         <dt>Publisher</dt>
         <dd rel="mo:publisher schema:publisher" class="names">{{data.publisher.name|lang_names|link(data.publisher.link)}}</dd>
+        {% if data.products %}
         <dt>Games</dt>
         <dd class="names">{{list_names(data.products, rel="schema:about", name_rel="schema:CreativeWork")}}</dd>
+        {% endif %}
       </dl>
     </div>
     <div class="boxsection">

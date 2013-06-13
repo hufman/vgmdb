@@ -220,11 +220,12 @@ def generate_album(config, data):
 	if data.has_key('lyricists'):
 		add_people(g, lyrics, data['lyricists'], rel=[], rev=[FOAF.made])
 
-	for productdata in data['products']:
-		product = URIRef(link(productdata['link'])+"#subject") if productdata.has_key('link') else BNode()
-		g.add((subject, SCHEMA.about, product))
-		g.add((product, RDF.type, SCHEMA.CreativeWork))
-		add_lang_names(g, product, productdata['name'])
+	if data.has_key('products'):
+		for productdata in data['products']:
+			product = URIRef(link(productdata['link'])+"#subject") if productdata.has_key('link') else BNode()
+			g.add((subject, SCHEMA.about, product))
+			g.add((product, RDF.type, SCHEMA.CreativeWork))
+			add_lang_names(g, product, productdata['name'])
 
 	g.add((subject, MO.record_count, Literal(len(data['discs']), datatype=XSD.int)))
 	index = 0
