@@ -7,6 +7,7 @@
     <base href="{{config.BASE_URL}}" />
     <meta charset='utf-8'/>
     <title>{{data.name.en | default(data.name)}}</title>
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
     <style>
 .metadata {display: none}
 .names span {display: none}
@@ -16,11 +17,99 @@ td.list ul {display: inline; padding:0}
 td.list li {display: inline}
 td.list li:after {content: ", "}
 td.list li:last-child:after {content: ""}
-.artist_websites ul {padding:0; margin:0}
 
-.infobox {
-	float: right;
+.content {
+	margin: 20px 50px;
 }
+.sidebar {
+	float: right;
+	width: 350px;
+	margin-top: 15px;
+	margin-left: 20px;
+}
+.box {
+	margin: 15px 0;
+	padding: 0;
+	border: 1px solid #ddd;
+	overflow: auto;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+.box > .boxsection {
+	padding: 0 19px 14px;
+	margin-top: 14px;
+	margin-bottom: 10px;
+	border-bottom: 1px solid #e2e2e2;
+	overflow: auto;
+	-webkit-border-radius: 0 0 4px 4px;
+	-moz-border-radius: 0 0 4px 4px;
+	border-radius: 0 0 4px 4px;
+}
+.box > .boxsection:last-child {
+	border-bottom: 0;
+}
+.box > .boxsection:empty {
+	margin: 0;
+	border: 0;
+	padding: 0;
+}
+.box dl {
+	margin: 0;
+}
+.box ul {
+	margin: 0;
+}
+@media (max-width: 767px) {
+	.dl-horizontal dt {
+		float: left;
+		clear: both;
+		text-align: right;
+	}
+}
+.dl-horizontal dt {
+	width: 110px;
+	margin-bottom: 5px;
+}
+.dl-horizontal dd {
+	margin-left: 125px;
+	width: 150px;
+	margin-bottom: 5px;
+}
+.table {
+	width: auto;
+	max-width: 1000px;
+}
+.discography .cell-date {
+	width: 60pt;
+}
+.discography .cell-catalog {
+	width: 90pt;
+}
+.discography .cell-name {
+	min-width: 200px;
+}
+
+.popup {
+	display: none;
+}
+*:hover + .popup {
+	display: block;
+	position: absolute;
+	margin-left: -20px;
+	background-color: rgba(240,240,240,0.9);
+	border: 1px #ddd solid;
+	border-radius: 5px;
+	z-index: 100;
+	padding: 7px;
+}
+
+#info:empty {
+	margin: 0;
+	border: 0;
+	padding: 0;
+}
+
 .format {
 	display: block;
 	padding: 0;
@@ -86,8 +175,21 @@ td.list li:last-child:after {content: ""}
                 mo: http://purl.org/ontology/mo/
                 event: http://purl.org/NET/c4dm/event.owl#
                 tl: http://purl.org/NET/c4dm/timeline.owl#" about="{{data.link | linkhref}}" property="foaf:primaryTopic" resource="{{data.link | linkhref}}#subject">
-{% block body %}
-{{ formats(data) }}
+    <div class="content">
+{% block title %}
+      <h1><span class="names">{{data.name | lang_names(rel=None)}}</span></h1>
 {% endblock %}
+      <div class="sidebar" resource="{{data.link | linkhref}}#subject">
+        <div class="box">
+{% block quickinfo %}
+{% endblock %}
+{% block metadata %}
+{% endblock %}
+{{ formats(data) }}
+        </div>
+      </div>
+{% block body %}
+{% endblock %}
+    </div>
   </body>
 </html>

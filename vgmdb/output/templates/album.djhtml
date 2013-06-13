@@ -1,21 +1,11 @@
 {% extends "base.djhtml" %}
-{% block body %}
-{{ formats(data) }}
+{% block title %}
     <h1 typeof="mo:Release schema:MusicAlbum" resource="{{data.link | linkhref}}#subject"><span class="names">{{data.name | lang_names(rel="dcterms:title")}}</span></h1>
-    <div id="info" resource="{{data.link | linkhref}}#subject">
-      <div class="metadata">
-        <div rel="mo:publication_of" rev="mo:published_as" resource="{{data.link | linkhref}}#musicalexpression" typeof="mo:Signal">
-          <div rel="mo:records" rev="mo:recorded_as" resource="{{data.link | linkhref}}#performance" typeof="mo:Performance">
-            <div rel="mo:performance_of" rev="mo:performed_in" resource="{{data.link | linkhref}}#musicalwork" typeof="mo:MusicalWork">
-              <div rel="mo:composed_in" rev="mo:produced_work" resource="{{data.link | linkhref}}#composition" typeof="mo:Composition"></div>
-              <div rel="mo:lyrics" resource="{{data.link | linkhref}}#lyrics" typeof="mo:Lyrics"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <h2><label>Information</label></h2>
-      <dl>
-        <dt>Catalog Number</dt>
+{% endblock %}
+{% block quickinfo %}
+    <div class="boxsection">
+      <dl class="dl-horizontal">
+        <dt>Catalog</dt>
         <dd><span property="mo:catalogue_number">{{data.catalog}}</span></dd>
         <dt>Release</dt>
         <dd property="dcterms:created schema:datePublished" content="{{data.release_date}}" datatype="xsd:date">{{data.release_date | format_date | or_unavailable}}</dd>
@@ -27,6 +17,10 @@
         <dd rel="mo:publisher schema:publisher" class="names">{{data.publisher.name|lang_names|link(data.publisher.link)}}</dd>
         <dt>Games</dt>
         <dd class="names">{{list_names(data.products, rel="schema:about", name_rel="schema:CreativeWork")}}</dd>
+      </dl>
+    </div>
+    <div class="boxsection">
+      <dl class="dl-horizontal">
         <dt>Classification</dt>
         <dd>{{data.classification}}</dd>
         <dt>Category</dt>
@@ -37,13 +31,28 @@
         <dd property="schema:aggregateRating" typeof="schema:AggregateRating"><span property="schema:ratingValue">{{data.rating}}</span></dd>
         <dt>Re-releases</dt>
         <dd>
-         <ul rel="mo:other_release_of">
+         <ul class="unstyled" rel="mo:other_release_of">
           {% for reprint in data.reprints -%}
-          <li><a typeof="mo:Release" href="{{reprint.link | linkhref}}" {{reprint.link | linkhref | resource_attr}}><span property="mo:catalogue_number">{{reprint.catalog}}</span> ({{reprint.note}})</a></li>
+          <li><a typeof="mo:Release" href="{{reprint.link | linkhref}}" {{reprint.link | linkhref | resource_attr}}><span property="mo:catalogue_number">{{reprint.catalog}}</span></a><span class="popup">{{reprint.note}}</span></li>
           {% endfor -%}
          </ul>
         </dd>
       </dl>
+    </div>
+{% endblock %}
+{% block body %}
+    <div id="info" resource="{{data.link | linkhref}}#subject">
+      <div class="metadata">
+        <div rel="mo:publication_of" rev="mo:published_as" resource="{{data.link | linkhref}}#musicalexpression" typeof="mo:Signal">
+          <div rel="mo:records" rev="mo:recorded_as" resource="{{data.link | linkhref}}#performance" typeof="mo:Performance">
+            <div rel="mo:performance_of" rev="mo:performed_in" resource="{{data.link | linkhref}}#musicalwork" typeof="mo:MusicalWork">
+              <div rel="mo:composed_in" rev="mo:produced_work" resource="{{data.link | linkhref}}#composition" typeof="mo:Composition"></div>
+              <div rel="mo:lyrics" resource="{{data.link | linkhref}}#lyrics" typeof="mo:Lyrics"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h2>People</h2>
       <dl>
         <dt>Composers</dt>
         <dd resource="{{data.link | linkhref}}#composition" class="names">{{ list_names(data.composers, rel="mo:composer", rev="foaf:made") }}</dd>
@@ -54,7 +63,7 @@
       </dl>
     </div>
     <div id="tracklist" resource="{{data.link | linkhref}}#subject">
-      <h2><label>Track List</label></h2>
+      <h2>Track List</h2>
       <span class="metadata">
         <span property="mo:record_count" content="{{data.discs | count}}" datatype="xsd:int"></span>
       </span>
@@ -65,12 +74,12 @@
           <span property="mo:track_count" content="{{disc.tracks | count}}" datatype="xsd:int"></span>
           <span property="schema:numTracks" content="{{disc.tracks | count}}" datatype="xsd:int"></span>
         </span>
-        <h3><label>{{disc.name}}</label></h3>
-        <ul>
+        <h3>{{disc.name}}</h3>
+        <ol class="unstyled">
           {% for track in disc.tracks %}
           <li rel="mo:track schema:track" typeof="mo:Track schema:MusicRecording"><span property="mo:track_number" datatype="xsd:int">{{loop.index}}</span> - <span class="names">{{track.name|lang_names}}</span> (<span property="schema:duration" content="{{track.track_length|format_interval}}" datatype="xsd:interval">{{track.track_length}}</span>)</li>
           {% endfor %}
-        </ul>
+        </ol>
         {% endfor %}
       </div>
     </div>

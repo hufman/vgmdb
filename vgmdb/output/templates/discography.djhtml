@@ -1,29 +1,29 @@
 {% macro discography(discography, rel="foaf:made schema:album", property=None, rev=None, include_roles=True, include_publisher=False) -%}
-      <table>
+      <table class="table table-condensed table-striped">
         <thead>
           <tr>
-            <td>Date</td>
-            <td>Catalog</td>
-            <td>Name</td>
+            <td class="cell-date">Date</td>
+            <td class="cell-catalog">Catalog</td>
+            <td class="cell-name">Name</td>
             {% if include_roles -%}
-            <td>Roles</td>
+            <td class="cell-roles">Roles</td>
             {% endif -%}
             {% if include_publisher -%}
-            <td>Publisher</td>
+            <td class="cell-publisher">Publisher</td>
             {% endif -%}
           </tr>
         </thead>
         <tbody{{(' rev="%s"'%rev)|safe if rev}}{{(' rel="%s"'%rel)|safe if rel}}>
           {% for disc in discography -%}
           <tr {{disc.link | linkhref | resource_attr}} typeof="mo:Release schema:MusicAlbum"{{(' property="%s"'%property)|safe if property}}>
-            <td property="dcterms:created schema:datePublished" content="{{disc.date or disc.release_date}}" datatype="xsd:date">{{ disc.date or disc.release_date -}}</td>
-            <td property="mo:catalogue_number">{{ disc.catalog }}</td>
-            <td class="names">
+            <td class="cell-date" property="dcterms:created schema:datePublished" content="{{disc.date or disc.release_date}}" datatype="xsd:date">{{ disc.date or disc.release_date -}}</td>
+            <td class="cell-catalog" property="mo:catalogue_number">{{ disc.catalog }}</td>
+            <td class="cell-name names">
               {{ disc.titles|lang_names(rel='dcterms:title schema:name')|link_album(disc.link) }}
             </td>
             {% if include_roles -%}
-            <td class="list">
-              <ul>
+            <td class="cell-roles list">
+              <ul class="unstyled">
                 {% for role in disc.roles -%}
                 <li>{{role}}</li>
                 {% endfor -%}
@@ -31,7 +31,7 @@
             </td>
             {% endif -%}
             {% if include_publisher -%}
-            <td class="names" rel="mo:publisher schema:publisher">
+            <td class="cell-publisher names" rel="mo:publisher schema:publisher">
               {{ disc.publisher.names | lang_names | link(disc.publisher.link, typeof="foaf:Organization schema:Organization")}}
             </td>
             {% endif -%}

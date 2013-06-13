@@ -1,5 +1,5 @@
 {% macro list_names(names, rel=None, property=None, rev=None, name_rel="foaf:Person") -%}
-      <ul{{(' rev="%s"'%rev)|safe if rev}}{{(' rel="%s"'%rel)|safe if rel}}>
+      <ul class="unstyled"{{(' rev="%s"'%rev)|safe if rev}}{{(' rel="%s"'%rel)|safe if rel}}>
         {% for name in names -%}
         <li>
             {{ name.name|lang_names|link(name.link, name_rel) }}
@@ -8,7 +8,8 @@
       </ul>
 {% endmacro -%}
 {% macro formats(data) -%}
-<div class="infobox">
+<div class="boxsection">
+<span>Formats:</span>
 <ul class="format selectors">
 <li class="rdfxml"><a href="{{data.link | absolute_linkhref}}?format=rdf">RDF</a></li>
 <li class="rdfa"><a href="{{data.link | absolute_linkhref}}?format=html">RDFa</a></li>
