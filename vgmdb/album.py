@@ -90,7 +90,8 @@ def _parse_album_info(soup_info):
 			soup_event = None
 			if soup_value.a:	# link to calendar
 				date = soup_value.a['href'].split('#')[1]
-				album_info['release_date'] = '%s-%s-%s'%(date[0:4], date[4:6], date[6:8])
+				if date.isdigit():
+					album_info['release_date'] = '%s-%s-%s'%(date[0:4], date[4:6], date[6:8])
 				soup_event = soup_value.a.find_next_sibling('a')
 			else:			# freeform text
 				album_info['release_date'] = soup_value.value
