@@ -107,14 +107,14 @@ def _parse_profile_info(soup_profile_left):
 				item_data = {}
 				if soup_item_data.name == 'a':
 					item_data['link'] = soup_item_data['href']
-					item_data['name'] = soup_item_data.string
+					item_data['names'] = {"en":soup_item_data.string}
 					pic_tag = soup_item_data.find_next_sibling('img')
 					if pic_tag:
 						if pic_tag['src'] == 'http://media.vgmdb.net/img/owner.gif':
 							item_data['owner'] = 'true'
 					soup_names = soup_item_data.find_all('span', "artistname")
 					if len(soup_names) > 0:
-						del item_data['name']
+						del item_data['names']
 						names = {}
 						for soup_name in soup_names:
 							lang = soup_name['lang']
