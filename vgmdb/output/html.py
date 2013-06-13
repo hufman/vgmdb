@@ -104,12 +104,17 @@ def format_date(date):
 		if date[0:4] == '0000':
 			date = datetime.datetime.strptime(date, "0000-%m-%d")
 			return date.strftime("%b %d")
-		if len(date) == 4:	# only a year
+		elif len(date) == 4:	# only a year
 			date = datetime.datetime.strptime(date, "%Y")
 			return date.strftime("%Y")
-		else:
+		elif len(date) == 7:	# YYYY-MM
+			date = datetime.datetime.strptime(date, "%Y-%m")
+			return date.strftime("%b %Y")
+		elif len(date) == 10:	# YYYY-MM-DD
 			date = datetime.datetime.strptime(date, "%Y-%m-%d")
 			return date.strftime("%b %d, %Y")
+		else:
+			return date
 def format_interval(time):
 	if time:
 		return "PT" + time
