@@ -136,6 +136,8 @@ def parse_discography(soup_disco_table, label_type='roles'):
 	On product pages, pass label_type='classification'
 	"""
 	albums = []
+	if soup_disco_table == None:
+		return albums
 	for soup_tbody in soup_disco_table.find_all("tbody", recursive=False):
 		soup_rows = soup_tbody.find_all("tr", recursive=False)
 		year = soup_rows[0].find('h3').string
