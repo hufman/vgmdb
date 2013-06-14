@@ -155,7 +155,10 @@ def _parse_tracklist(soup_tracklist):
 		"Japanese":"ja",
 		"Romaji":"ja-latn",
 		"English / Japanese":"en-ja",
-		"English / German":"en-de"
+		"English / German":"en-de",
+		"Italian/English/Japanese":"it-en-ja",
+		"Chinese (Traditional)":"zh-hant",
+		"Chinese (Simplified)":"zh-hans"
 	}
 	discs = []
 	soup_sections = soup_tracklist.find_all('div', recursive=False)
