@@ -4,6 +4,7 @@ language_codes = {
 	"English":"en",
 	"English (iTunes)":"en",
 	"English (Literal)":"en",
+	"English (U.S. Official)":"en",
 	"English (Official)":"en",
 	"English (Translated)":"en",
 	"English (Localized)":"en",
@@ -27,7 +28,8 @@ language_codes = {
 	"Japanese + Chinese":"ja-zh"
 }
 def normalize_language_codes(language):
+	language = language.replace('[','(').replace(']',')')
 	if language_codes.has_key(language):
 		return language_codes[language]
-	language = sub(r'[ /\+\(\[\[\)]', '', language)
+	language = sub(r'[ /\.\+\(\[\]\)]', '', language)
 	return language
