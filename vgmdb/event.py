@@ -20,11 +20,15 @@ def parse_event_page(html_source):
 	event_info['date'] = utils.parse_date_time(date)
 
 	notes = ''
+	squash = lambda s: s.replace('\r','').replace('\n','')
 	for soup_note in soup_sections[1].div.children:
 		if isinstance(soup_note, bs4.Tag):
-			notes += soup_note.string
+			if soup_note.name == 'br':
+				notes += '\n'
+			else:
+				notes += squash(soup_note.string)
 		else:
-			notes += unicode(soup_note)
+			notes += unicode(squash(soup_note))
 	event_info['notes'] = notes.strip()
 
 	event_info['releases'] = _parse_event_releases(soup_sections[2].table)
