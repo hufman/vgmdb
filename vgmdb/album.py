@@ -60,12 +60,12 @@ def _parse_album_info(soup_info):
 		                  'Lyrics by':'lyricists'}
 
 		if name == "Catalog Number":
-			if soup_value.span:
-				catalog = soup_value.span.a.string.strip()
-			elif soup_value.a:
-				catalog = soup_value.a.string.strip()
-			else:
-				catalog = soup_value.string.strip()
+			for child in soup_value.descendants:
+				if not isinstance(child, bs4.Tag):
+					text = child.string.strip()
+					if len(text) > 0:
+						catalog = text
+						break
 			reprints = []
 			for soup_reprint in soup_value.find_all('a'):
 				note = None
