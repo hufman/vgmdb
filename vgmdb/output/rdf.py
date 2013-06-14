@@ -287,7 +287,7 @@ def generate_product(config, data):
 			g.add((title, RDF.type, SCHEMA.CreativeWork))
 			g.add((title, SCHEMA.datePublished, Literal(titledata['date'], datatype=XSD.date)))
 			g.add((title, DCTERMS.created, Literal(titledata['date'], datatype=XSD.date)))
-			add_lang_names(g, franchise, titledata['names'], rel=[DCTERMS.title, SCHEMA.name])
+			add_lang_names(g, title, titledata['names'], rel=[DCTERMS.title, SCHEMA.name])
 	add_discography(g, subject, data['albums'], rel=[], rev=[SCHEMA.about])
 
 	return g
