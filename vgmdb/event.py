@@ -59,7 +59,7 @@ def _parse_event_releases(soup_table):
 			release['publisher'] = {
 				'link': soup_cells[4].a['href'],
 				'names': utils.parse_names(soup_cells[4].a)}
-		else:
+		elif soup_cells[4].string:
 			release['publisher'] = {
 				'names': {"en": soup_cells[4].string.strip()}}
 		releases.append(release)

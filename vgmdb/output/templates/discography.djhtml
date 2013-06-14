@@ -32,7 +32,9 @@
             {% endif -%}
             {% if include_publisher -%}
             <td class="cell-publisher names" rel="mo:publisher schema:publisher">
+              {% if disc.publisher -%}
               {{ disc.publisher.names | lang_names | link(disc.publisher.link, typeof="foaf:Organization schema:Organization")}}
+              {% endif -%}
             </td>
             {% endif -%}
           </tr>
