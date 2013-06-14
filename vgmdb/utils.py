@@ -56,6 +56,8 @@ def parse_date_time(time):
 	              'May', 'June', 'July', 'August', \
 	              'September', 'October', 'November', 'December']
 	time = time.strip()
+	if time == '0':
+		return None
 	if len(time) == 4:		# just a year
 		return time
 	space = time.find(' ')
