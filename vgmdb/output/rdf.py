@@ -174,9 +174,11 @@ def generate_album(config, data):
 	g.add((musicalwork, MO.lyrics, lyrics))
 
 	add_lang_names(g, subject, data['name'], rel=[DCTERMS.title])
-	g.add((subject, MO.catalogue_number, Literal(data['catalog'])))
-	g.add((subject, DCTERMS.created, Literal(data['release_date'], datatype=XSD.date)))
-	g.add((subject, SCHEMA.datePublished, Literal(data['release_date'], datatype=XSD.date)))
+	if data.has_key('catalog'):
+		g.add((subject, MO.catalogue_number, Literal(data['catalog'])))
+	if data.has_key('release_date'):
+		g.add((subject, DCTERMS.created, Literal(data['release_date'], datatype=XSD.date)))
+		g.add((subject, SCHEMA.datePublished, Literal(data['release_date'], datatype=XSD.date)))
 	if data.has_key('event'):
 		event = URIRef(link(data['event']['link']))
 		g.add((subject, MO.release, event))
