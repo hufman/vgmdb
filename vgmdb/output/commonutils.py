@@ -1,3 +1,4 @@
+from re import sub
 
 language_codes = {
 	"English":"en",
@@ -8,6 +9,7 @@ language_codes = {
 	"English (Localized)":"en",
 	"English PS1 Sound Test":"en",
 	"Japanese":"ja",
+	"German":"de",
 	"Romaji":"ja-latn",
 	"English / Japanese":"en-ja",
 	"English / German":"en-de",
@@ -27,5 +29,5 @@ language_codes = {
 def normalize_language_codes(language):
 	if language_codes.has_key(language):
 		return language_codes[language]
-	language = language.translate(None, ' /+([])')
+	language = sub(r'[ /\+\(\[\[\)]', '', language)
 	return language
