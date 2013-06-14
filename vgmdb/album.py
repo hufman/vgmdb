@@ -345,7 +345,10 @@ def _parse_section_covers(soup_covers):
 				medium_link = soup_cell.a['href']
 				full_link = medium_link.replace('-medium', '')
 				thumb_link = medium_link.replace('-medium', '-thumb')
-				name = soup_cell.a.h4.string.strip()
+				if soup_cell.a.h4.string:
+					name = soup_cell.a.h4.string.strip()
+				else:
+					name = ''
 				cover = {"name":name, "thumb":thumb_link, \
 				         "medium":medium_link, "full":full_link}
 				covers.append(cover)
