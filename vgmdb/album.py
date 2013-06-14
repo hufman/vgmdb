@@ -152,13 +152,28 @@ def _parse_album_info(soup_info):
 def _parse_tracklist(soup_tracklist):
 	language_codes = {
 		"English":"en",
+		"English (iTunes)":"en",
+		"English (Literal)":"en",
+		"English (Official)":"en",
+		"English (Translated)":"en",
+		"English (Localized)":"en",
+		"English PS1 Sound Test":"en",
 		"Japanese":"ja",
 		"Romaji":"ja-latn",
 		"English / Japanese":"en-ja",
 		"English / German":"en-de",
 		"Italian/English/Japanese":"it-en-ja",
 		"Chinese (Traditional)":"zh-hant",
-		"Chinese (Simplified)":"zh-hans"
+		"Chinese (Simplified)":"zh-hans",
+		"English Gaelic / Japanese":"gd-ja",
+		"English / Gaelic":"en-gd",
+		"English / Gaelic / Japanese":"en-gd-ja",
+		"English / Bahasa Indonesia":"id",
+		"English / French":"en-fr",
+		"Japanese/Russian":"ja-ru",
+		"German, English":"de-en",
+		"French / Japanese / Russian / Polish":"fr-ja-ru-pl",
+		"Japanese + Chinese":"ja-zh"
 	}
 	discs = []
 	soup_sections = soup_tracklist.find_all('div', recursive=False)
