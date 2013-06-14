@@ -17,7 +17,10 @@ def parse_org_page(html_source):
 	soup_table = soup_profile.table
 
 	soup_name = soup_profile.find_previous_sibling('div')
-	org_info['name'] = soup_name.h1.string.strip()
+	if soup_name.h1 and soup_name.h1.string:
+		org_info['name'] = soup_name.h1.string.strip()
+	else:
+		org_info['name'] = ''
 
 	org_info.update(_parse_org_info(soup_info_div.div.div.dl))
 
