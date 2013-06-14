@@ -60,6 +60,7 @@ def parse_date_time(time):
 		return time
 	space = time.find(' ')
 	month = time[0:space]
+	month = month[0:-1] if month[-1] == ',' else month
 	if month in months:
 		month = months.index(month) + 1
 	elif month in fullmonths:
