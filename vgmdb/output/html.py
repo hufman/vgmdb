@@ -1,3 +1,4 @@
+from .commonutils import normalize_language_codes
 import urlparse
 import vgmdb.config
 import datetime
@@ -47,6 +48,7 @@ def artist_type(artist_data):
 	return ' '.join(types)
 
 def span_name(lang, name, rel="foaf:name"):
+	lang = normalize_language_codes(lang)
 	if rel:
 		return '<span property="%s" lang="%s" xml:lang="%s">%s</span>'%(rel, lang, lang, escape(name))
 	else:

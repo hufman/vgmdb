@@ -1,3 +1,5 @@
+from .commonutils import normalize_language_codes
+
 import rdflib
 from rdflib import Graph, Namespace, Literal, BNode, URIRef
 from rdflib.namespace import NamespaceManager
@@ -41,13 +43,15 @@ def link(link):
 	return urljoin(base, link)
 
 def add_lang_names(g, subject, names, rel=[FOAF.name]):
+
 	if isinstance(names, str) or isinstance(names, unicode):
 		for r in rel:
 			g.add((subject, r, Literal(names, lang='en')))
 	else:
 		for lang in sorted(names.keys()):
 			for r in rel:
-				g.add((subject, r, Literal(names[lang], lang=lang)))
+				code = normalize_language_codes(lang)
+				g.add((subject, r, Literal(names[lang], lang=code)))
 
 def add_discography(g, subject, albums, rel=[FOAF.made, SCHEMA.album], rev=[]):
 	for album in albums:

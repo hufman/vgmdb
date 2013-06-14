@@ -150,31 +150,6 @@ def _parse_album_info(soup_info):
 	return album_info
 
 def _parse_tracklist(soup_tracklist):
-	language_codes = {
-		"English":"en",
-		"English (iTunes)":"en",
-		"English (Literal)":"en",
-		"English (Official)":"en",
-		"English (Translated)":"en",
-		"English (Localized)":"en",
-		"English PS1 Sound Test":"en",
-		"Japanese":"ja",
-		"Romaji":"ja-latn",
-		"English / Japanese":"en-ja",
-		"English / German":"en-de",
-		"Italian/English/Japanese":"it-en-ja",
-		"Chinese (Traditional)":"zh-hant",
-		"Chinese (Simplified)":"zh-hans",
-		"English Gaelic / Japanese":"gd-ja",
-		"English / Gaelic":"en-gd",
-		"English / Gaelic / Japanese":"en-gd-ja",
-		"English / Bahasa Indonesia":"id",
-		"English / French":"en-fr",
-		"Japanese/Russian":"ja-ru",
-		"German, English":"de-en",
-		"French / Japanese / Russian / Polish":"fr-ja-ru-pl",
-		"Japanese + Chinese":"ja-zh"
-	}
 	discs = []
 	soup_sections = soup_tracklist.find_all('div', recursive=False)
 	languages = [li.a.string for li in soup_sections[0].ul.find_all('li', recursive=False)]
@@ -183,8 +158,6 @@ def _parse_tracklist(soup_tracklist):
 	for soup_tab in soup_tabs:
 		tab_index += 1
 		tab_language = languages[tab_index]
-		if language_codes.has_key(tab_language):
-			tab_language = language_codes[tab_language]
 		index = 0
 		soup_cur = soup_tab.span
 		while soup_cur:

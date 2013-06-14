@@ -37,7 +37,7 @@ class TestAlbums(unittest.TestCase):
 		self.assertEqual(1, len(ff8['discs']))
 		self.assertEqual(13, len(ff8['discs'][0]['tracks']))
 		self.assertEqual(u"3:09", ff8['discs'][0]['tracks'][0]['track_length'])
-		self.assertEqual(u"Liberi Fatali", ff8['discs'][0]['tracks'][0]['name']['en'])
+		self.assertEqual(u"Liberi Fatali", ff8['discs'][0]['tracks'][0]['name']['English'])
 		self.assertEqual(u"64:16", ff8['discs'][0]['disc_length'])
 		self.assertEqual(4.47, ff8['rating'])
 		self.assertEqual(43, ff8['votes'])
@@ -64,7 +64,7 @@ class TestAlbums(unittest.TestCase):
 		self.assertEqual(u"Ar tonelico III Image CD Utau Oka~Ar=Ciel Ar=Dor~", arciel['name']['en'])
 		self.assertEqual(u"アルトネリコ3 イメージCD 謳う丘～Ar=Ciel Ar=Dor～", arciel['name']['ja'])
 		self.assertEqual(u"FCCM-0328", arciel['catalog'])
-		self.assertEqual(u"謳う丘 ～Ar=Ciel Ar=Dor～", arciel['discs'][0]['tracks'][0]['name']['ja'])
+		self.assertEqual(u"謳う丘 ～Ar=Ciel Ar=Dor～", arciel['discs'][0]['tracks'][0]['name']['Japanese'])
 		self.assertEqual(u"YesAsia", arciel['stores'][1]['name'])
 		self.assertTrue(u"Akiko Shikata" in arciel['notes'])
 
@@ -72,7 +72,7 @@ class TestAlbums(unittest.TestCase):
 		at3_code = file(os.path.join(base, 'album_at3.html'), 'r').read()
 		at3 = album.parse_album_page(at3_code)
 		self.assertEqual(2, len(at3['discs']))
-		self.assertEqual(u'EXEC_FLIP_FUSIONSPHERE/.', at3['discs'][1]['tracks'][3]['name']['ja-latn'])
+		self.assertEqual(u'EXEC_FLIP_FUSIONSPHERE/.', at3['discs'][1]['tracks'][3]['name']['Romaji'])
 	def test_viking(self):
 		viking_code = file(os.path.join(base, 'album_viking.html'), 'r').read()
 		viking = album.parse_album_page(viking_code)
