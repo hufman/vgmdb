@@ -10,6 +10,8 @@ language_codes = {
 	"English (Localized)":"en",
 	"English PS1 Sound Test":"en",
 	"Japanese":"ja",
+	"Japanese 1":"ja",
+	"Japanese 2":"ja",
 	"German":"de",
 	"Romaji":"ja-latn",
 	"English / Japanese":"en-ja",
@@ -31,5 +33,5 @@ def normalize_language_codes(language):
 	language = language.replace('[','(').replace(']',')')
 	if language_codes.has_key(language):
 		return language_codes[language]
-	language = sub(r'[ /\.\+\(\[\]\)]', '', language)
+	language = sub(r'[ /\.\+\(\[\]\)0-9]', '', language)
 	return language
