@@ -128,6 +128,7 @@ def _parse_album_info(soup_info):
 				album_info['distributor']['name'] = utils.parse_names(soup_links[1])
 		elif name in names_single.keys():
 			key = names_single[name]
+			soup_value = soup_value.contents[0]
 			value = soup_value.string.strip()
 			album_info[key] = value
 		elif name in names_multiple.keys():
