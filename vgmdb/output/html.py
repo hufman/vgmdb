@@ -103,8 +103,8 @@ def link(name, href, typeof=None):
 
 def format_date(date):
 	def minyear(date):
-		if date.year < 1900:
-			date = date.replace(year=1900)
+		while date.year < 1900:
+			date = date.replace(year=date.year+100)
 		return date
 	if date:
 		year = date[0:4]
