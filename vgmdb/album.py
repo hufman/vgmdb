@@ -88,14 +88,18 @@ def _parse_album_info(soup_info):
 			album_info['reprints'] = reprints
 		elif name == "Release Date":
 			soup_event = None
-			if soup_value.a:	# link to calendar
-				date = soup_value.a['href'].split('#')[1]
-				if date.isdigit():
-					album_info['release_date'] = '%s-%s-%s'%(date[0:4], date[4:6], date[6:8])
-				soup_event = soup_value.a.find_next_sibling('a')
-			else:			# freeform text
-				album_info['release_date'] = soup_value.value
-			if soup_event:
+			soup_children = soup_value.contents
+			if isinstance(soup_children[0], bs4.Tag):
+				if soup_children[0].name == 'a':	# link to calendar
+					date = soup_value.a['href'].split('#')[1]
+					if date.isdigit():
+						album_info['release_date'] = '%s-%s-%s'%(date[0:4], date[4:6], date[6:8])
+					soup_event = soup_value.a.find_next_sibling('a')
+				else:			# freeform text
+					album_info['release_date'] = soup_value.value
+			if len(soup_children) > 1 and \
+			   isinstance(soup_children[1], bs4.Tag):
+				soup_event = soup_children[1]
 				event = {}
 				event['name'] = soup_event['title']
 				event['shortname'] = soup_event.string
