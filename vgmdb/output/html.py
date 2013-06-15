@@ -108,7 +108,7 @@ def format_date(date):
 		return date
 	if date:
 		year = date[0:4]
-		if date[5:7] == '02' and int(date[8:10])>29:
+		if date[5:7] == '02' and len(date)>8 and int(date[8:10])>29:
 			date = date[0:8] + "28" + date[10:]
 		if date[0:4] == '0000':
 			date = datetime.datetime.strptime(date, "0000-%m-%d")
