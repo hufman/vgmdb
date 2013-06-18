@@ -27,6 +27,8 @@ class TestUtils(unittest.TestCase):
 		self.assertEqual("2011", utils.parse_date_time(date))
 		date = "Jan 7"
 		self.assertEqual("0000-01-07", utils.parse_date_time(date))
+		date = "Dec, 9"
+		self.assertEqual("0000-12-09", utils.parse_date_time(date))
 		date = "0"
 		self.assertEqual(None, utils.parse_date_time(date))
 
