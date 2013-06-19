@@ -3,6 +3,7 @@ import os
 import unittest
 
 from vgmdb import utils
+from vgmdb.output import commonutils as outpututils
 
 base = os.path.dirname(__file__)
 
@@ -63,3 +64,17 @@ class TestUtils(unittest.TestCase):
 		invalid = '<table><tr></tr></tr></table>'
 		correct = '<table><tr></tr></table>'
 		self.assertEqual(correct, utils.fix_invalid_table(invalid))
+
+	def test_languagecodes(self):
+		tests = {
+		    'Japanese':'ja',
+		    'Japanese 1':'ja',
+		    'Korean, Chinese':'ko-zd',
+		    'English':'en',
+		    'English iTunes':'en',
+		    'English Gaelic':'gd',
+		    'Gaelic':'gd'
+		}
+		for test,expected in tests.items():
+			got = outpututils.normalize_language_codes(test)
+			self.assertEqual(expected, got)
