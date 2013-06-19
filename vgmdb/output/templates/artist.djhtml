@@ -11,16 +11,29 @@
           <dd property="bio:date" content="{{data.birthdate}}" datatype="xsd:date">{{data.birthdate | format_date | or_unavailable}}</dd>
           <dt>Birthplace</dt>
           <dd property="bio:place" content="{{data.birthplace}}">{{data.birthplace | or_unavailable}}</dd>
-          {% if data.twitter_names and data.twitter_names is not empty -%}
+        </dl>
+      </div>
+      {% endif -%}
+      {% if data.deathdate -%}
+      <div class="boxsection" resource="{{data.link | linkhref}}#deathinfo" typeof="bio:death">
+        <span property="bio:principal" resource="{{data.link | linkhref}}#subject"></span>
+        <dl class="dl-horizontal">
+          <dt>Deceased</dt>
+          <dd property="bio:date" content="{{data.deathdate}}" datatype="xsd:date">{{data.deathdate | format_date }}</dd>
+        </dl>
+      </div>
+      {% endif -%}
+      {% if data.twitter_names and data.twitter_names is not empty -%}
+      <div class="boxsection">
+        <dl>
           <dt>Twitter</dt>
           <dd>
-            <ul class="unstyled" resource="{{data.link | linkhref}}#subject">
+            <ul class="unstyled">
             {% for name in data.twitter_names -%}
               <li rel="foaf:account" typeof="foaf:OnlineChatAccount"><span property="foaf:accountServiceHomepage" resource="http://www.twitter.com/"></span><span property="foaf:accountName" content="{{name}}"><a href="https://twitter.com/{{name}}">{{name}}</a></span></li>
             {% endfor -%}
             </ul>
           </dd>
-          {% endif -%}
         </dl>
       </div>
       {% endif -%}

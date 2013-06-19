@@ -106,6 +106,11 @@ def generate_artist(config, data):
 		g.add((birthinfo, BIO.date, Literal(data['birthdate'], datatype=XSD.date)))
 		if data.has_key('birthplace'):
 			g.add((birthinfo, BIO.place, Literal(data['birthplace'])))
+	if data.has_key('deathdate'):
+		deathinfo = URIRef(uri + "#deathinfo")
+		g.add((deathinfo, RDF.type, BIO.death))
+		g.add((deathinfo, BIO.principal, subject))
+		g.add((deathinfo, BIO.date, Literal(data['deathdate'], datatype=XSD.date)))
 	if data.has_key('units'):
 		for unit in data['units']:
 			unitlink = URIRef(link(unit['link'])) if unit.has_key('link') else BNode()

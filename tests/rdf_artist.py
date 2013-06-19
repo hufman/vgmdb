@@ -69,3 +69,23 @@ class TestArtistsRDF(TestRDF):
 	def test_ss_rdf(self):
 		graph = self.load_rdf_data('artist_ss.html')
 		self.run_ss_tests(graph)
+
+	def run_offenbach_tests(self, graph):
+		test_count_results = {
+			"select ?artist where { <@base#subject> rdf:type foaf:Person . }" : 1,
+			"select ?artist where { <@base#subject> rdf:type schema:MusicGroup . }" : 1
+		}
+		test_first_result = {
+			"select ?date where { ?birth bio:principal <@base#subject> . ?birth a bio:birth . ?birth bio:date ?date . }" : datetime.date(1819,6,20),
+			"select ?date where { ?death bio:principal <@base#subject> . ?death a bio:death . ?death bio:date ?date . }" : datetime.date(1880,10,05)
+		}
+
+		self.run_tests(graph, test_count_results, test_first_result)
+
+		return
+	def test_offenbach_rdfa(self):
+		graph = self.load_rdfa_data('artist_offenbach.html')
+		self.run_offenbach_tests(graph)
+	def test_offenbach_rdf(self):
+		graph = self.load_rdf_data('artist_offenbach.html')
+		self.run_offenbach_tests(graph)
