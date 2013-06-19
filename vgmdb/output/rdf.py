@@ -83,7 +83,7 @@ def add_discography(g, subject, albums, rel=[FOAF.made, SCHEMA.album], rev=[]):
 def generate_artist(config, data):
 	if data.has_key('link'):
 		doc = URIRef(link(data['link']))
-		uri = data['link']
+		uri = link(data['link'])
 	else:
 		doc = BNode()
 		uri = base
@@ -146,7 +146,7 @@ def generate_artist(config, data):
 def generate_album(config, data):
 	if data.has_key('link'):
 		doc = URIRef(link(data['link']))
-		uri = data['link']
+		uri = link(data['link'])
 	else:
 		doc = BNode()
 		uri = base
@@ -264,7 +264,7 @@ def generate_album(config, data):
 def generate_product(config, data):
 	if data.has_key('link'):
 		doc = URIRef(link(data['link']))
-		uri = data['link']
+		uri = link(data['link'])
 	else:
 		doc = BNode()
 		uri = base
@@ -295,7 +295,7 @@ def generate_product(config, data):
 def generate_org(config, data):
 	if data.has_key('link'):
 		doc = URIRef(link(data['link']))
-		uri = data['link']
+		uri = link(data['link'])
 	else:
 		doc = BNode()
 		uri = base
@@ -326,7 +326,7 @@ def generate_org(config, data):
 def generate_event(config, data):
 	if data.has_key('link'):
 		doc = URIRef(link(data['link']))
-		uri = data['link']
+		uri = link(data['link'])
 	else:
 		doc = BNode()
 		uri = base
