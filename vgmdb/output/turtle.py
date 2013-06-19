@@ -15,4 +15,4 @@ class outputter(object):
 		self._rdf = rdf
 
 	def __call__(self, type, data):
-		return self._rdf.generate(vgmdb.config, type, data).serialize(format="turtle")
+		return self._rdf.generate(vgmdb.config, type, data).serialize(format="turtle", base=vgmdb.config.BASE_URL)
