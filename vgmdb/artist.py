@@ -12,7 +12,7 @@ def parse_artist_page(html_source):
 	spans = soup_profile.find_all('span', recursive=False)
 	soup_name = spans[1]
 	artist_info['name'] = soup_name.string.strip()
-	if len(spans)>2 and 'deceased' in spans[2].string:
+	if len(spans)>2 and spans[2].string and 'deceased' in spans[2].string:
 		artist_info['deathdate'] = utils.parse_date_time(spans[2].string[10:])
 
 	soup_profile = soup_profile.div
