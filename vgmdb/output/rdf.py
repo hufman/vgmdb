@@ -177,7 +177,7 @@ def generate_album(config, data):
 	g.add((composition, MO.produced_work, musicalwork))
 	g.add((musicalwork, MO.lyrics, lyrics))
 
-	add_lang_names(g, subject, data['name'], rel=[DCTERMS.title])
+	add_lang_names(g, subject, data['name'], rel=[DCTERMS.title, SCHEMA.name])
 	if data.has_key('catalog'):
 		g.add((subject, MO.catalogue_number, Literal(data['catalog'])))
 	if data.has_key('release_date'):
@@ -253,7 +253,7 @@ def generate_album(config, data):
 			g.add((track, RDF.type, MO.Track))
 			g.add((track, RDF.type, SCHEMA.MusicRecording))
 			g.add((track, MO.track_number, Literal(trackno, datatype=XSD.int)))
-			add_lang_names(g, track, trackdata['name'])
+			add_lang_names(g, track, trackdata['name'], rel=[SCHEMA.name, DCTERMS.title])
 			if trackdata.has_key('track_length') and \
 			   trackdata['track_length']:
 				interval = "PT" + trackdata['track_length']

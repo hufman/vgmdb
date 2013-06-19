@@ -1,6 +1,6 @@
 {% extends "base.djhtml" %}
 {% block title %}
-    <h1 typeof="mo:Release schema:MusicAlbum" resource="{{data.link | linkhref}}#subject"><span class="names">{{data.name | lang_names(rel="dcterms:title")}}</span></h1>
+    <h1 typeof="mo:Release schema:MusicAlbum" resource="{{data.link | linkhref}}#subject"><span class="names">{{data.name | lang_names(rel="dcterms:title schema:name")}}</span></h1>
 {% endblock %}
 {% block quickinfo %}
     <div class="boxsection">
@@ -87,7 +87,7 @@
         <h3>{{disc.name}}</h3>
         <ol class="unstyled">
           {% for track in disc.tracks %}
-          <li rel="mo:track schema:track" typeof="mo:Track schema:MusicRecording"><span property="mo:track_number" datatype="xsd:int">{{loop.index}}</span> - <span class="names">{{track.name|lang_names}}</span> (<span property="schema:duration" content="{{track.track_length|format_interval}}" datatype="xsd:interval">{{track.track_length}}</span>)</li>
+          <li rel="mo:track schema:track" typeof="mo:Track schema:MusicRecording"><span property="mo:track_number" datatype="xsd:int">{{loop.index}}</span> - <span class="names">{{track.name|lang_names(rel="schema:name dcterms:title")}}</span> (<span property="schema:duration" content="{{track.track_length|format_interval}}" datatype="xsd:interval">{{track.track_length}}</span>)</li>
           {% endfor %}
         </ol>
         {% endfor %}
