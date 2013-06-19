@@ -68,3 +68,11 @@ class TestArtists(unittest.TestCase):
 		self.assertEqual(u'HAPPY-SYNTHESIZER', ss['aliases'][1]['names']['en'])
 		self.assertEqual(u'Takeshi Nagai', ss['members'][0]['names']['en'])
 		self.assertEqual(u'2011-10-03T05:45', ss['meta']['edited_date'])
+
+	def test_offenbach(self):
+		offenbach_code = file(os.path.join(base, 'artist_offenbach.html'), 'r').read()
+		offenbach = artist.parse_artist_page(offenbach_code)
+		self.assertEqual(u'Jacques Offenbach', offenbach['name'])
+		self.assertEqual(u'male', offenbach['sex'])
+		self.assertEqual('1819-06-20', offenbach['birthdate'])
+		self.assertEqual('1880-10-05', offenbach['deathdate'])
