@@ -47,8 +47,8 @@ def info(type,id):
 
 @route('/<type:re:(albumlist|artistlist)>/<id:re:[#A-Z]>')
 def list(type,id):
-	typeurls = {'albumlist': 'albums'}
-	typeurls = {'artistlist': 'artists'}
+	typeurls = {'albumlist': 'albums',
+	            'artistlist': 'artists'}
 	prevdata = vgmdb.cache.get('vgmdb/%s/%s'%(type,id))
 	if not prevdata:
 		data = urllib.urlopen('http://vgmdb.net/db/%s.php?ltr=%s&field=title&perpage=99999'%(typeurls[type],id)).read()
