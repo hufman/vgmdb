@@ -352,3 +352,10 @@ def generate_albumlist(config, data):
 	g = Graph('IOMemory', BNode())
 	add_discography(g, None, data['albums'], rel=[], rev=[])
 	return g
+def generate_artistlist(config, data):
+	g = Graph('IOMemory', BNode())
+	for artist_data in data['artists']:
+		artist = URIRef(link(artist_data['link'])+"#subject")
+		g.add((artist, FOAF.name, Literal(artist_data['name'])))
+		g.add((artist, RDF.type, SCHEMA.MusicGroup))
+	return g

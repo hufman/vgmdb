@@ -1,0 +1,27 @@
+{% extends "base.djhtml" %}
+{% block htmltitle %}
+<title>Browse Artist</title>
+{% endblock %}
+{% block title %}
+    <h1>Browse Artist</h1>
+{% endblock %}
+{% block quickinfo %}
+{% endblock %}
+{% block body %}
+  <div>
+    <ul class="inline">
+      {% for letter in data.letters -%}
+      <li><a href="wartistlist/{{letter | urlencode}}">{{letter}}</a></li>
+      {% endfor -%}
+    </ul>
+  </div>
+  <div>
+    <ul class="unstyled csscolumns-200 stripey">
+      {% for artist in data.artists -%}
+      <li><a about="{{artist.link|linkhref}}#subject" typeof="schema:MusicGroup" href="{{artist.link|linkhref}}"><span property="foaf:name">{{artist.name}}</span></a>
+      {%- if artist.name_real %} ({{artist.name_real}}){%- endif -%}
+      </li>
+      {% endfor -%}
+    </ul>
+  </div>
+{% endblock %}

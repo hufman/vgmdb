@@ -9,6 +9,7 @@ import vgmdb.event
 import vgmdb.org
 
 import vgmdb.albumlist
+import vgmdb.artistlist
 
 import vgmdb.cache
 import vgmdb.output
@@ -44,9 +45,10 @@ def info(type,id):
 	response.content_type = outputter.content_type
 	return outputter(type, info)
 
-@route('/<type:re:(albumlist)>/<id:re:[#A-Z]>')
+@route('/<type:re:(albumlist|artistlist)>/<id:re:[#A-Z]>')
 def list(type,id):
 	typeurls = {'albumlist': 'albums'}
+	typeurls = {'artistlist': 'artists'}
 	prevdata = vgmdb.cache.get('vgmdb/%s/%s'%(type,id))
 	if not prevdata:
 		data = urllib.urlopen('http://vgmdb.net/db/%s.php?ltr=%s&field=title&perpage=99999'%(typeurls[type],id)).read()

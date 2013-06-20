@@ -167,6 +167,24 @@ td.list li:last-child:after {content: ""}
 	width: 73px;
 }
 
+.csscolumns-200 {
+	column-width: 200px;
+	-webkit-column-width: 200px;
+	-moz-column-width: 200px;
+}
+.csscolumns-200 > * {
+	margin-left: 5px;
+	margin-right: 5px;
+}
+.stripey > * {
+	border-top: 1px solid #dddddd;
+	line-height: 20px;
+	padding: 4px 5px;
+}
+.stripey > *:nth-child(even) {
+	background-color: #f9f9f9;
+}
+
     </style>
   </head>
   <body prefix="dcterms: http://purl.org/dc/terms/
