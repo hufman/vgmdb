@@ -1,0 +1,21 @@
+{% extends "base.djhtml" %}
+{% block htmltitle %}
+<title>Browse Albums</title>
+{% endblock %}
+{% block title %}
+    <h1>Browse Albums</h1>
+{% endblock %}
+{% block quickinfo %}
+{% endblock %}
+{% block body %}
+  <div>
+    <ul class="inline">
+      {% for letter in data.letters -%}
+      <li><a href="albumlist/{{letter | urlencode}}">{{letter}}</a></li>
+      {% endfor -%}
+    </ul>
+  </div>
+  <div class="discography">
+    {{ discography(data.albums, rel=None, include_roles=False) }}
+  </div>
+{% endblock %}

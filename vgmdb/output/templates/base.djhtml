@@ -6,7 +6,9 @@
   <head>
     <base href="{{config.BASE_URL}}" />
     <meta charset='utf-8'/>
+{% block htmltitle %}
     <title>{{data.name.en | default(data.name)}}</title>
+{% endblock %}
     <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
     <style>
 .metadata {display: none}

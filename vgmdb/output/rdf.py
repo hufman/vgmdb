@@ -347,3 +347,8 @@ def generate_event(config, data):
 	add_discography(g, subject, data['releases'], rel=[MO.release], rev=[])
 
 	return g
+
+def generate_albumlist(config, data):
+	g = Graph('IOMemory', BNode())
+	add_discography(g, None, data['albums'], rel=[], rev=[])
+	return g
