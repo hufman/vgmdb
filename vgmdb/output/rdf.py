@@ -359,3 +359,11 @@ def generate_artistlist(config, data):
 		g.add((artist, FOAF.name, Literal(artist_data['name'])))
 		g.add((artist, RDF.type, SCHEMA.MusicGroup))
 	return g
+def generate_productlist(config, data):
+	g = Graph('IOMemory', BNode())
+	for product_data in data['products']:
+		product = URIRef(link(product_data['link'])+"#subject")
+		g.add((product, SCHEMA.name, Literal(product_data['name'])))
+		g.add((product, DCTERMS.title, Literal(product_data['name'])))
+		g.add((product, RDF.type, SCHEMA.CreativeWork))
+	return g

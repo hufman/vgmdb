@@ -1,0 +1,25 @@
+{% extends "base.djhtml" %}
+{% block htmltitle %}
+<title>Browse Products</title>
+{% endblock %}
+{% block title %}
+    <h1>Browse Products</h1>
+{% endblock %}
+{% block quickinfo %}
+{% endblock %}
+{% block body %}
+  <div>
+    <ul class="inline">
+      {% for letter in data.letters -%}
+      <li><a href="productlist/{{letter | urlencode}}">{{letter}}</a></li>
+      {% endfor -%}
+    </ul>
+  </div>
+  <div>
+    <ul class="unstyled">
+      {% for product in data.products -%}
+      <li resource="{{product.link | linkhref}}#subject" typeof="schema:CreativeWork"><span property="schema:name dcterms:title"><a href="{{product.link | linkhref}}">{{product.name}}</a></span> <small>{{product.type}}</small></li>
+      {% endfor -%}
+    </ul>
+  </div>
+{% endblock %}

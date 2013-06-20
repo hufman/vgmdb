@@ -10,6 +10,7 @@ import vgmdb.org
 
 import vgmdb.albumlist
 import vgmdb.artistlist
+import vgmdb.productlist
 
 import vgmdb.cache
 import vgmdb.output
@@ -45,13 +46,14 @@ def info(type,id):
 	response.content_type = outputter.content_type
 	return outputter(type, info)
 
-@route('/<type:re:(albumlist|artistlist)>/<id:re:[#A-Z]>')
+@route('/<type:re:(albumlist|artistlist|productlist)>/<id:re:[#A-Z]>')
 def list(type,id):
 	typeurls = {'albumlist': 'albums',
-	            'artistlist': 'artists'}
+	            'artistlist': 'artists',
+	            'productlist': 'product'}
 	prevdata = vgmdb.cache.get('vgmdb/%s/%s'%(type,id))
 	if not prevdata:
-		data = urllib.urlopen('http://vgmdb.net/db/%s.php?ltr=%s&field=title&perpage=99999'%(typeurls[type],id)).read()
+		data = urllib.urlopen('http://vgmdb.net/db/%s.php?ltr=%s&field=title&perpage=9999'%(typeurls[type],id)).read()
 		data = data.decode('utf-8', 'ignore')	# some pages have broken utf8
 		module = getattr(vgmdb, "%s"%type)
 		parse_page = getattr(module, "parse_%s_page"%type)
