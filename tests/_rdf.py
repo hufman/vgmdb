@@ -28,11 +28,11 @@ class TestRDF(unittest.TestCase):
 	def setUp(self):
 		pass
 
-	def load_data(self, filename, output_format, parse_format, **parse_kwargs):
+	def load_data(self, filename, output_format, parse_format, filterkey=None, **parse_kwargs):
 		code = file(os.path.join(base, filename), 'r').read()
 		data = self.data_parser(code)
 		outputter = output.get_outputter(output_format, None)
-		output_data = outputter(self.outputter_type, data)
+		output_data = outputter(self.outputter_type, data, filterkey=filterkey)
 		debugoutput = output_data
 		if isinstance(debugoutput, unicode):
 			debugoutput = output_data.encode('utf-8')
@@ -41,8 +41,8 @@ class TestRDF(unittest.TestCase):
 		graph.parse(data=output_data, format=parse_format, **parse_kwargs)
 		file('/tmp/rdftest.parsed.%s.%s'%(self.outputter_type,output_format),'w').write(graph.serialize(format='turtle'))
 		return graph
-	def load_rdfa_data(self, filename):
-		return self.load_data(filename, 'html', 'rdfa', media_type="text/html")
+	def load_rdfa_data(self, filename, filterkey=None):
+		return self.load_data(filename, 'html', 'rdfa', filterkey=filterkey, media_type="text/html")
 	def load_rdf_data(self, filename):
 		return self.load_data(filename, 'rdf', 'xml')
 	def run_tests(self, graph, test_count_results, test_first_result):

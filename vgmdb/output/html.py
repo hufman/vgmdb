@@ -32,9 +32,9 @@ class outputter(object):
 		Markup = jinja2.Markup
 		escape = jinja2.escape
 
-	def __call__(self, type, data):
+	def __call__(self, type, data, filterkey=None):
 		template = self._templates.get_template('%s.djhtml'%type)
-		return template.render(config=vgmdb.config, data=data)
+		return template.render(config=vgmdb.config, data=data, filterkey=filterkey)
 
 def artist_type(artist_data):
 	types = []

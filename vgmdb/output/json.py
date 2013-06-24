@@ -15,5 +15,5 @@ class outputter(object):
 		except:
 			pass
 
-	def __call__(self, type, data):
+	def __call__(self, type, data, filterkey=None):
 		return self._json.dumps(data, sort_keys=True, indent=4, separators=(',',': '), ensure_ascii=False)

@@ -24,7 +24,7 @@ except:
 def hello():
 	return "Hello!"
 
-def do_page(cache_key, page_type, url, link=None):
+def do_page(cache_key, page_type, url, link=None, filterkey=None):
 	"""
 	@param cache_key where to save the parsed data
 	@param page_type what parser and output to use
@@ -50,7 +50,7 @@ def do_page(cache_key, page_type, url, link=None):
 	requested_format = request.query.format or ''
 	outputter = vgmdb.output.get_outputter(requested_format, request.headers.get('Accept'))
 	response.content_type = outputter.content_type
-	return outputter(page_type, info)
+	return outputter(page_type, info, filterkey)
 
 @route('/<type:re:(artist|album|product|event|org)>/<id:int>')
 def info(type,id):

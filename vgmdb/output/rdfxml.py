@@ -14,5 +14,5 @@ class outputter(object):
 		import rdf
 		self._rdf = rdf
 
-	def __call__(self, type, data):
+	def __call__(self, type, data, filterkey=None):
 		return self._rdf.generate(vgmdb.config, type, data).serialize(format="xml")
