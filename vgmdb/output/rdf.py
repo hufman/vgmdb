@@ -367,3 +367,20 @@ def generate_productlist(config, data):
 		g.add((product, DCTERMS.title, Literal(product_data['name'])))
 		g.add((product, RDF.type, SCHEMA.CreativeWork))
 	return g
+def generate_orglist(config, data):
+	def add_org_tuple(g, org_data):
+		org = URIRef(link(org_data['link'])+"#subject")
+		g.add((org, SCHEMA.name, Literal(org_data['name'])))
+		g.add((org, FOAF.name, Literal(org_data['name'])))
+		g.add((org, RDF.type, SCHEMA.Organization))
+		g.add((org, RDF.type, FOAF.Organization))
+	g = Graph('IOMemory', BNode())
+	for letter in data['orgs'].keys():
+		for org_data in data['orgs'][letter]:
+			add_org_tuple(g, org_data)
+			for key in org_data.keys():
+				if key in ['link','name']:
+					continue
+				for org in org_data[key]:
+					add_org_tuple(g, org)
+	return g

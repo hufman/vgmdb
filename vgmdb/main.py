@@ -11,6 +11,7 @@ import vgmdb.org
 import vgmdb.albumlist
 import vgmdb.artistlist
 import vgmdb.productlist
+import vgmdb.orglist
 
 import vgmdb.cache
 import vgmdb.output
@@ -71,6 +72,16 @@ def list(type,id='A'):
 	page_type = type
 	url = 'http://vgmdb.net/db/%s.php?ltr=%s&field=title&perpage=9999'%(typeurls[type],id)
 	return do_page(cache_key, page_type, url)
+
+@route('/<type:re:(orglist)>/<filterkey:re:[#A-Z]>')
+@route('/<type:re:(orglist)>/')
+@route('/<type:re:(orglist)>')
+def singlelist(type,filterkey=None):
+	typeurls = {'orglist': 'org'}
+	cache_key = 'vgmdb/%s'%(type)
+	page_type = type
+	url = 'http://vgmdb.net/db/%s.php'%(typeurls[type])
+	return do_page(cache_key, page_type, url, filterkey=filterkey)
 
 @route('/static/<name:path>')
 def static(name):
