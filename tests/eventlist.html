@@ -1,0 +1,1213 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html dir="ltr" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Browse Events - VGMdb</title>
+
+
+
+
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="vBulletin 3.8.5" />
+
+
+<!-- CSS Stylesheet -->
+<style type="text/css" id="vbulletin_css">
+/**
+* vBulletin 3.8.5 CSS
+* Style: 'Default Style'; Style ID: 1
+*/
+body
+{
+	background: #001122;
+	color: #FFFFFF;
+	font: 10pt verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+	margin: 0px;
+	padding: 0px;
+}
+a:link, body_alink
+{
+	color: #B1E8FF;
+}
+a:visited, body_avisited
+{
+	color: #B1E8FF;
+}
+a:hover, a:active, body_ahover
+{
+	color: #87CEEB;
+}
+.page
+{
+	background: #001122;
+	color: #FFFFFF;
+	padding: 0px;
+}
+.page a:link, .page_alink
+{
+	color: #CEFFFF;
+	text-decoration: none;
+}
+.page a:visited, .page_avisited
+{
+	color: #CEFFFF;
+	text-decoration: none;
+}
+.page a:hover, .page a:active, .page_ahover
+{
+	text-decoration: underline;
+}
+td, th, p, li
+{
+	font: 10pt verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+}
+.tborder
+{
+	background: #001122;
+	color: #FFFFFF;
+	border: 1px solid #444465
+}
+.tcat
+{
+	background: #2F364F;
+	color: #788990;
+	font: bold 10pt verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+}
+.tcat a:link, .tcat_alink
+{
+	color: #788990;
+	text-decoration: none;
+}
+.tcat a:visited, .tcat_avisited
+{
+	color: #788990;
+	text-decoration: none;
+}
+.tcat a:hover, .tcat a:active, .tcat_ahover
+{
+	color: #FFFF66;
+	text-decoration: underline;
+}
+.thead
+{
+	background: #2F364F;
+	color: #FFFFFF;
+	font: bold 11px tahoma, verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+}
+.thead a:link, .thead_alink
+{
+	color: #FFFFFF;
+}
+.thead a:visited, .thead_avisited
+{
+	color: #FFFFFF;
+}
+.thead a:hover, .thead a:active, .thead_ahover
+{
+	color: #FFFF00;
+}
+.tfoot
+{
+	background: #2F364F;
+	color: #E0E0F6;
+}
+.tfoot a:link, .tfoot_alink
+{
+	color: #E0E0F6;
+}
+.tfoot a:visited, .tfoot_avisited
+{
+	color: #E0E0F6;
+}
+.tfoot a:hover, .tfoot a:active, .tfoot_ahover
+{
+	color: #FFFF66;
+}
+.alt1, .alt1Active
+{
+	background: #1B273D;
+	color: #FFFFFF;
+}
+.alt1 a:link, .alt1_alink, .alt1Active a:link, .alt1Active_alink
+{
+	color: #CEFFFF;
+	text-decoration: none;
+}
+.alt1 a:visited, .alt1_avisited, .alt1Active a:visited, .alt1Active_avisited
+{
+	color: #CEFFFF;
+	text-decoration: none;
+}
+.alt1 a:hover, .alt1 a:active, .alt1_ahover, .alt1Active a:hover, .alt1Active a:active, .alt1Active_ahover
+{
+	color: #87CEEB;
+	text-decoration: underline;
+}
+.alt2, .alt2Active
+{
+	background: #2F364F;
+	color: #FFFFFF;
+}
+.alt2 a:link, .alt2_alink, .alt2Active a:link, .alt2Active_alink
+{
+	color: #CEFFFF;
+	text-decoration: none;
+}
+.alt2 a:visited, .alt2_avisited, .alt2Active a:visited, .alt2Active_avisited
+{
+	color: #CEFFFF;
+	text-decoration: none;
+}
+.alt2 a:hover, .alt2 a:active, .alt2_ahover, .alt2Active a:hover, .alt2Active a:active, .alt2Active_ahover
+{
+	color: #87CEEB;
+	text-decoration: underline;
+}
+.inlinemod
+{
+	background: #3A5284;
+	color: #FFFFFF;
+}
+.wysiwyg
+{
+	background: #14194E;
+	color: #FFFFFF;
+	font: 10pt verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+}
+textarea, .bginput
+{
+	background: #14194E;
+	color: #FFFFFF;
+	font: 10pt verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+	border-left: 1px solid #3C405C;
+	border-top: 1px solid #3C405C;
+	border-right: 1px solid #666B72;
+	border-bottom: 1px solid #666B72;
+}
+.bginput option, .bginput optgroup
+{
+	font-size: 10pt;
+	font-family: verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+}
+.button
+{
+	background: #14194E;
+	color: #FFFFFF;
+	font: 11px verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+	border-left: 1px solid #666B72;
+	border-top: 1px solid #666B72;
+	border-right: 1px solid #3C405C;
+	border-bottom: 1px solid #3C405C;
+}
+select
+{
+	background: #14194E;
+	color: #FFFFFF;
+	font: 11px verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+	border-left: 1px solid #666B72;
+	border-top: 1px solid #666B72;
+	border-right: 1px solid #3C405C;
+	border-bottom: 1px solid #3C405C;
+}
+option, optgroup
+{
+	font-size: 11px;
+	font-family: verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+}
+.smallfont
+{
+	font: 11px verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+}
+.time
+{
+	color: #B0C4DE;
+}
+.navbar
+{
+	font: 11px verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+}
+.highlight
+{
+	font-weight: bold;
+	border-bottom: 1px dotted #B1E8FF;
+}
+.fjsel
+{
+	background: #3E5C92;
+	color: #E0E0F6;
+}
+.fjdpth0
+{
+	background: #F7F7F7;
+	color: #000000;
+}
+.panel
+{
+	background: #1B273D;
+	color: #FFFFFF;
+	padding: 10px;
+}
+.panelsurround
+{
+	background: #1B273D;
+	color: #FFFFFF;
+}
+legend
+{
+	color: #788990;
+	font: 11px tahoma, verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+}
+.vbmenu_control
+{
+	background: #2F364F;
+	color: #FFFFFF;
+	font: bold 11px tahoma, verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+	padding: 3px 6px 3px 6px;
+	white-space: nowrap;
+}
+.vbmenu_control a:link, .vbmenu_control_alink
+{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.vbmenu_control a:visited, .vbmenu_control_avisited
+{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.vbmenu_control a:hover, .vbmenu_control a:active, .vbmenu_control_ahover
+{
+	color: #FFFFFF;
+	text-decoration: underline;
+}
+.vbmenu_popup
+{
+	background: #FFFFFF;
+	color: #000000;
+	border: 1px solid #0B198C;
+}
+.vbmenu_option
+{
+	background: #BBC7CE;
+	color: #000000;
+	font: 11px verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+	white-space: nowrap;
+	cursor: pointer;
+}
+.vbmenu_option a:link, .vbmenu_option_alink
+{
+	color: #22229C;
+	text-decoration: none;
+}
+.vbmenu_option a:visited, .vbmenu_option_avisited
+{
+	color: #22229C;
+	text-decoration: none;
+}
+.vbmenu_option a:hover, .vbmenu_option a:active, .vbmenu_option_ahover
+{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.vbmenu_hilite
+{
+	background: #8A949E;
+	color: #FFFFFF;
+	font: 11px verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+	white-space: nowrap;
+	cursor: pointer;
+}
+.vbmenu_hilite a:link, .vbmenu_hilite_alink
+{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.vbmenu_hilite a:visited, .vbmenu_hilite_avisited
+{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.vbmenu_hilite a:hover, .vbmenu_hilite a:active, .vbmenu_hilite_ahover
+{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+/* ***** styling for 'big' usernames on postbit etc. ***** */
+.bigusername { font-size: 14pt; }
+
+/* ***** small padding on 'thead' elements ***** */
+td.thead, div.thead { padding: 4px; }
+
+/* ***** basic styles for multi-page nav elements */
+.pagenav a { text-decoration: none; }
+.pagenav td { padding: 2px 4px 2px 4px; }
+
+/* ***** define margin and font-size for elements inside panels ***** */
+.fieldset { margin-bottom: 6px; }
+.fieldset, .fieldset td, .fieldset p, .fieldset li { font-size: 11px; }
+
+fieldset { border: 1px solid #2F364F; padding: 6px; }
+
+/* .imgalpha { opacity:0.25; filter:alpha(opacity=25); -moz-opacity:0.25; } */
+
+/* ***** don't change the following ***** */
+form { display: inline; }
+.label { color: #788990; }
+</style>
+<link rel="stylesheet" type="text/css" href="http://vgmdb.net/forums/clientscript/vbulletin_important.css?v=385" />
+
+
+<link rel="stylesheet" type="text/css" href="http://vgmdb.net/db/vgmdb.css?20100801" />
+<link rel="stylesheet" type="text/css" href="http://media.vgmdb.net/css/vgmdb-colorcode-title.css" id="colorcode" />
+<link rel="stylesheet" type="text/css" href="http://vgmdb.net/db/jquery.autocomplete.css?20091023" />
+<link rel="stylesheet" type="text/css" href="http://vgmdb.net/db/jquery.twitter.css?20091005" />
+<link rel="stylesheet" type="text/css" href="http://vgmdb.net/db/jquery.jcarousel.css?20091124" />
+<link rel="stylesheet" type="text/css" href="http://vgmdb.net/db/highslide.css?080623" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" type="text/css" href="http://vgmdb.net/db/iepngfix.css" />
+<![endif]-->
+<!-- / CSS Stylesheet -->
+
+<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/yahoo-dom-event/yahoo-dom-event.js?v=385"></script>
+<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/connection/connection-min.js?v=385"></script>
+<script type="text/javascript">
+<!--
+var SESSIONURL = "s=07822caa77716d7794fa34670b051502&";
+var SECURITYTOKEN = "guest";
+var IMGDIR_MISC = "http://vgmdb.net/forums/images/misc";
+var vb_disable_ajax = parseInt("0", 10);
+// -->
+</script>
+<script type="text/javascript" src="http://vgmdb.net/forums/clientscript/vbulletin_global.js?v=385"></script>
+
+<link rel="alternate" type="application/rss+xml" title="VGMdb Forums RSS Feed" href="http://vgmdb.net/forums/external.php?type=RSS2" />
+
+<script type="text/javascript" src="http://media.vgmdb.net/js/jquery-1.4.min.js"></script>
+<script type="text/javascript" src="http://media.vgmdb.net/js/jquery.compressed.js"></script>
+<script type="text/javascript" src="http://media.vgmdb.net/js/jquery.tristate.js?20100420"></script>
+<script type="text/javascript" src="http://media.vgmdb.net/js/highslide.packed.js?080620"></script>
+<script type="text/javascript" src="http://media.vgmdb.net/js/vgmdb_global.js?0906"></script>
+<link rel="search" type="application/opensearchdescription+xml" title="Search VGMdb" href="http://vgmdb.net/db/search.xml" />
+<link rel="icon" href="http://vgmdb.net/favicon.ico" type="image/vnd.microsoft.icon" />
+<link rel="shortcut icon" href="http://vgmdb.net/favicon.ico" type="image/vnd.microsoft.icon" />
+<script language="javascript" type="text/javascript">
+$(document).ready(function() {
+	var ItemType = new Array;
+	ItemType["0"] = "Album";
+	ItemType["1"] = "Artist";
+	ItemType["2"] = "Organization";
+	hs.showCredits = false;
+	hs.allowMultipleInstances = false;
+	hs.graphicsDir = 'http://vgmdb.net/db/highslide/graphics/';
+	function formatItem(row) {
+		return "<span style='float: right; margin-left: 10px' class='tinyfont label'>" + ItemType[row[3]] + " #" + row[1] + "</span>" + row[0];
+	}
+	$('#navoptions a').click(function() {
+		if (!$('#pref_content form').length) {
+			$.ajax({
+				url: '/db/user.php?do=preferences',
+				beforeSend: function() {
+					$('#navoptions').css('visibility', 'hidden').parent('li').css('background', 'transparent url(http://media.vgmdb.net/img/ajax_loader_small.gif) center center no-repeat');
+				},
+				success: function(data) { 
+					$('#navoptions').css('visibility', 'visible').parent('li').css('background', 'transparent url(http://media.vgmdb.net/img/vgmdbsubnav2010.gif) -593px 0 no-repeat');
+					$('#pref_content').html(data.html);
+					$('#pref_content form label.tristate').tristate();
+					$('#pref_content form').ajaxForm({
+						beforeSubmit: function() {
+							$('#pref_content form input[type=submit]').css('visibility', 'hidden').parent('div').css('background', 'transparent url(http://media.vgmdb.net/img/ajax_loader_small.gif) center center no-repeat');
+						},
+						success: function() {
+							$('#pref').slideUp('fast');
+							$('#pref_content form input[type=submit]').css('visibility', 'visible').parent('div').css('background', 'none');
+							$('#navoptions a').blur();
+						}
+					});
+					$('#pref').slideDown('fast');
+				},
+				dataType: 'json'
+			});
+		}
+		else {
+			if ($('#pref').is(':visible')) {
+				$('#pref').slideUp('fast');
+				$('#navoptions a').blur();
+			}
+			else $('#pref').slideDown('fast');
+		}
+		return false;
+	});
+	$("#simplesearch").autocomplete('http://vgmdb.net/db/ajax-autocomplete.php', {
+		minChars: 3,
+		delay: 1000,
+		max: 150,
+		width: 500,
+		scrollHeight: 600,
+		selectFirst: false,
+		formatItem: formatItem
+	}).result(function(event, item) {
+		location.href = item[2];
+	});
+	$('label.tristate').tristate(); // 'sup IRA
+	
+	$('#chatClient').change(function() {
+		$(this).parents('form').attr('action', $(this).val());
+	});
+	$('#nav_chat a').click(function() {
+		var chatnick = 'CGI' + (Math.floor(Math.random()*901) + 100).toString();
+		var chatinterface = 'nonjs';
+		var usrAgent = navigator.userAgent.toLowerCase();
+		if (/msie/.test( usrAgent ) && !/opera/.test( usrAgent )) return true; // ie sucks
+		else if (/webkit/.test( usrAgent )) chatinterface = 'safari';
+		else if (/opera/.test( usrAgent )) chatinterface = 'opera';
+		else if (/mozilla/.test( usrAgent ) && !/(compatible|webkit)/.test( usrAgent )) chatinterface = 'mozilla';
+		else if (/konqueror/.test( usrAgent )) chatinterface = 'konqueror';
+		$('#chatNick').val(chatnick);
+		$('#chatInterface').val(chatinterface);
+		hs.htmlExpand(this, { contentId: 'chat-popup' }); return false;
+	});
+});</script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-4758350-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script');
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    ga.setAttribute('async', 'true');
+    document.documentElement.firstChild.appendChild(ga);
+  })();
+
+</script>
+<script type="text/javascript">var NREUMQ=NREUMQ||[];NREUMQ.push(["mark","firstbyte",new Date().getTime()]);</script>
+
+<meta name="keywords" content="VGM, Video Game Music, Game Music, Anime, Animation, OST, Soundtrack, Doujin, database, composer, arranger, discography" />
+<meta name="description" content="VGMdb provides media, tracklist and artist information for video game soundtracks and anime music." />
+
+
+
+
+<script language="javascript" type="text/javascript">
+$(document).ready(function() {
+	$('textarea.resizable:not(.processed), select.resizable:not(.processed)').TextAreaResizer();
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+        
+	
+	// shamelessly ripped from Digg
+	var cheatCode = '';
+	var maxCode = 40;
+	$(document).keypress(function(key) {
+		if (cheatCode.length < maxCode) {
+			var k = (key.keyCode == 0) ? key.charCode : key.keyCode;
+			cheatCode = cheatCode + String(k) + ' ';
+			switch (cheatCode) {
+				case '38 40 37 39 97 13 ':
+				window.location='../album/2072';
+				break;
+				case '38 38 40 40 37 39 37 39 98 97 13 ':
+				window.location='../album/3778';
+				break;
+				case '105 100 100 113 100 ':
+				window.location='../album/2950';
+				break;
+			}
+		}
+	});
+});
+</script>
+</head>
+<body style="padding: 0; margin: 0">
+<a name="top"></a>
+<div class="page" style="background-color: #1B273D; height: 100px; width: 100%;">
+<div style="float: right; margin-top: 10px; margin-right: 10px;">
+	<ul class="pipelist tinyfont">
+	
+	<li class="smallfont first-child"><span id="navlogin"><a href="#">Login</a><script type="text/javascript"> vBmenu.register('navlogin'); </script></span></li>
+	<li class="smallfont"><a title="Register a new account" href="/forums/register.php">Register</a></li>
+	
+	</ul>
+</div>
+<div style="white-space: nowrap;">
+<!-- logo -->
+<div style="height: 100px; float: left;"><a href="/db/main.php"><img src="http://media.vgmdb.net/img/vgmdblogo.png" alt="VGMdb" style="padding: 10px; width: 250px; height: 80px; border: 0" /></a></div>
+<!-- /logo -->
+<!-- top nav -->
+<div style="height: 100px; float: left; position: relative; margin-left: 1px;">
+<ul id="topnav">
+	<li id="nav_album"><a title="Official Albums, Enclosures, Doujins" href="/db/albums.php">Albums</a><a class="buttonSubmit" href="/album/new" title="Submit a new album"><img src="http://media.vgmdb.net/img/button-add-big.png" alt="" /></a></li>
+	<li id="nav_artist"><a title="Composers, Arrangers, Lyricists, Performers" href="/db/artists.php">Artists</a><a class="buttonSubmit" href="/db/artists-submit.php" title="Submit a new artist"><img src="http://media.vgmdb.net/img/button-add-big.png" alt="" /></a></li>
+	<!-- <li id="nav_track"><a title="Instrumentals, Vocals, Sound Effects, Voice Dramas" href="#">Tracks</a></li> -->
+	<li id="nav_label"><a title="Music Labels, Publishers, Organizations and Groups" href="/db/org.php">Labels</a><a class="buttonSubmit" href="/db/org-submit.php" title="Submit a new publisher"><img src="http://media.vgmdb.net/img/button-add-big.png" alt="" /></a></li>
+	<li id="nav_product"><a title="Games, Video, Radio/Drama Programs, Print Publications" href="/db/product.php">Products</a><a class="buttonSubmit" href="/db/product-submit.php" title="Submit a new product"><img src="http://media.vgmdb.net/img/button-add-big.png" alt="" /></a></li>
+	<li id="nav_event"><a title="Conventions, Gatherings and Shows" href="/db/events.php">Events</a></li>
+	<li id="nav_podcast"><a title="VGM Decibel, our bi-monthly podcast" href="/cast">Podcast</a></li>
+</ul>
+</div>
+<!-- / top nav -->
+</div>
+</div>
+<div class="label" style="clear: both; width: 100%; background-color: #2F364F; font-family: Arial">
+<ul id="subnav">
+	<li id="nav_search" style="width: 250px">
+		<form name="navsearch" action="/search" method="get">
+			<div><input type="text" class="bginput smallfont ac_input ac_default" name="q" id="simplesearch" maxlength="150" style="width: 236px;" /></div>
+		</form>
+	</li>
+	<li id="nav_advsearch"><a title="More search options" href="/search">Advanced Search</a></li>
+	<li id="nav_update"><a title="Latest submissions and edits" href="/db/recent.php">Updates</a></li>
+	<li id="nav_calendar"><a title="Release schedules" href="/db/calendar.php?year=2013&month=6">Calendar</a></li>
+	<li id="nav_forum"><a title="Community discussions" href="/forums/">Forums</a></li>
+	<li id="nav_market"><a title="Trade with other members" href="/db/marketplace.php?do=view">Marketplace</a></li>
+	<!-- <li id="nav_radio"><a title="Live streaming VGM" href="#" onclick="alert('Under Construction');">Radio</a></li> -->
+	<li id="nav_users"><a title="User collections" href="/db/collection.php">Users</a></li>
+	<li id="nav_chat"><a title="Real-time IRC chat" rel="nofollow" href="http://bigblah.net/cgi-bin/irc/irc.cgi" target="vgmdbirc">Chat</a></li>
+	<li id="nav_submit"><a title="Submit an album" href="/album/new">Submit Album</a></li>
+	<li id="nav_customize"><span id="navoptions"><a title="Edit your preferences" href="#">Customize</a></span></li>
+</ul>
+</div>
+
+
+	<!-- login form -->
+	<div class="vbmenu_popup" id="navlogin_menu" style="display:none;">
+	<table cellpadding="4" cellspacing="1" border="0"><tr><td style="background: #BBC7CE;">
+	<form action="/forums/login.php?do=login" method="post" onsubmit="md5hash(vb_login_password, vb_login_md5password, vb_login_md5password_utf, 0)">
+	<script type="text/javascript" src="/forums/clientscript/vbulletin_md5.js?v=385"></script>
+	<table cellpadding="0" cellspacing="3" border="0">
+	<tr>
+		<td class="smallfont"><label for="navbar_username">User Name</label></td>
+		<td><input type="text" class="bginput" style="font-size: 11px" name="vb_login_username" id="navbar_username" size="10" accesskey="u" tabindex="101" value="User Name" onfocus="if (this.value == 'User Name') this.value = '';" /></td>
+		<td class="smallfont" colspan="2" nowrap="nowrap"><label for="cb_cookieuser_navbar"><input type="checkbox" name="cookieuser" value="1" tabindex="103" id="cb_cookieuser_navbar" accesskey="c" />Remember</label></td>
+	</tr><tr>
+		<td class="smallfont"><label for="navbar_password">Password</label></td>
+		<td><input type="password" class="bginput" style="font-size: 11px" name="vb_login_password" id="navbar_password" size="10" tabindex="102" /></td>
+		<td><input type="submit" class="button" value="Log in" tabindex="104" title="Enter your username and password in the boxes provided to login, or click the 'register' button to create a profile for yourself." accesskey="s" /></td>
+	</tr>
+	</table>
+	<input type="hidden" name="s" value="07822caa77716d7794fa34670b051502" />
+	<input type="hidden" name="securitytoken" value="guest" />
+	<input type="hidden" name="do" value="login" />		
+	<input type="hidden" name="vb_login_md5password" />
+	<input type="hidden" name="vb_login_md5password_utf" />
+	</form>
+	</td></tr></table>
+	</div>
+	<!-- / login form -->
+
+
+<!-- content table -->
+<div class="page" style="padding:20px 20px 0 20px">
+
+<div id="pref" style="width: 100%; background-color:#1B273D; margin-bottom: 20px; display: none">
+	<b class="rtop"><b></b></b>
+	<div id="pref_content"></div>
+	<b class="rbot"><b></b></b>
+</div>
+
+
+
+<!-- main page contents -->
+<div style="width: 100%; background-color:#1B273D;">
+	<b class="rtop"><b></b></b>
+	<div id="innermain" style="padding: 6px 10px 6px 10px">
+		<h1>Browse Events</h1>
+		<div style="text-align: middle; background-color: #2F364F; margin: 10px"><b class="rtop"><b></b></b>
+		<table cellpadding="0" cellspacing="0" border="0" align="center"><tr>
+		<td valign="top" style="padding: 20px"><h3 class='label'>2013</h3>
+<ul class='index'><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/157" title='Comic Market 84'><span class="eventtitle" lang="en" style="display:inline">Comic Market 84</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>コミックマーケット８４</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Comic Market 84</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/157" title='Comic Market 84'><span class="label">C84</span></a>
+<div class="smallfont label">Aug 9, 2013 to Aug 11, 2013</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/159" title='Hakurei Shrine Reitaisai 10'><span class="eventtitle" lang="en" style="display:inline">Hakurei Shrine Reitaisai 10</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>第十回 博麗神社例大祭</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Hakurei Shrine Reitaisai 10</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/159" title='Hakurei Shrine Reitaisai 10'><span class="label">Reitaisai 10</span></a>
+<div class="smallfont label">May 25, 2013</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/158" title='M3-2013 Spring'><span class="eventtitle" lang="en" style="display:inline">M3-2013 Spring</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>M3-2013春</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>M3-2013 Spring</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/158" title='M3-2013 Spring'><span class="label">M3-31</span></a>
+<div class="smallfont label">Apr 28, 2013</div>
+</div></ul>
+<h3 class='label'>2012</h3>
+<ul class='index'><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/156" title='Comic Market 83'><span class="eventtitle" lang="en" style="display:inline">Comic Market 83</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>コミックマーケット８３</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Comic Market 83</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/156" title='Comic Market 83'><span class="label">C83</span></a>
+<div class="smallfont label">Dec 28, 2012 to Dec 30, 2012</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/152" title='M3-2012 Fall'><span class="eventtitle" lang="en" style="display:inline">M3-2012 Fall</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>M3-2012秋</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>M3-2012 Fall</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/152" title='M3-2012 Fall'><span class="label">M3-30</span></a>
+<div class="smallfont label">Oct 27, 2012</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/155" title='Touhou Kouroumu 8'><span class="eventtitle" lang="en" style="display:inline">Touhou Kouroumu 8</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>東方紅楼夢8</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Touhou Kouroumu 8</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/155" title='Touhou Kouroumu 8'><span class="label"></span></a>
+<div class="smallfont label">Oct 6, 2012</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/154" title='Tokyo Game Show 2012'><span class="eventtitle" lang="en" style="display:inline">Tokyo Game Show 2012</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>東京ゲームショウ2012</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Tokyo Game Show 2012</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/154" title='Tokyo Game Show 2012'><span class="label">TGS 2012</span></a>
+<div class="smallfont label">Sep 19, 2012 to Sep 23, 2012</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/153" title='Kyoukai kara Mieta Keshiki -Meguru-'><span class="eventtitle" lang="en" style="display:inline">Kyoukai kara Mieta Keshiki -Meguru-</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>境界から視えた外界-廻-</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Kyoukai kara Mieta Keshiki -Meguru-</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/153" title='Kyoukai kara Mieta Keshiki -Meguru-'><span class="label"></span></a>
+<div class="smallfont label">Sep 8, 2012</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/151" title='Comic Market 82'><span class="eventtitle" lang="en" style="display:inline">Comic Market 82</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>コミックマーケット８２</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Comic Market 82</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/151" title='Comic Market 82'><span class="label">C82</span></a>
+<div class="smallfont label">Aug 9, 2012 to Aug 11, 2012</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/149" title='Hakurei Shrine Reitaisai 9'><span class="eventtitle" lang="en" style="display:inline">Hakurei Shrine Reitaisai 9</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>博麗神社例大祭（第9回）</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Hakurei Shrine Reitaisai 9</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/149" title='Hakurei Shrine Reitaisai 9'><span class="label">Reitaisai 9</span></a>
+<div class="smallfont label">May 26, 2012</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/148" title='M3-2012 Spring'><span class="eventtitle" lang="en" style="display:inline">M3-2012 Spring</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>M3-2012春</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>M3-2012 Spring</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/148" title='M3-2012 Spring'><span class="label">M3-29</span></a>
+<div class="smallfont label">Apr 29, 2012</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/147" title='Magfest 10'><span class="eventtitle" lang="en" style="display:inline">Magfest 10</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em><i>Magfest 10</i></span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Magfest 10</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/147" title='Magfest 10'><span class="label"></span></a>
+<div class="smallfont label">Jan 5, 2012 to Jan 8, 2012</div>
+</div></ul>
+<h3 class='label'>2011</h3>
+<ul class='index'><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/146" title='Comic Market 81'><span class="eventtitle" lang="en" style="display:inline">Comic Market 81</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>コミックマーケット８１</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Comic Market 81</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/146" title='Comic Market 81'><span class="label">C81</span></a>
+<div class="smallfont label">Dec 28, 2011 to Dec 30, 2011</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/139" title='M3-2011 Fall'><span class="eventtitle" lang="en" style="display:inline">M3-2011 Fall</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>M3-2011秋</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>M3-2011 Fall</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/139" title='M3-2011 Fall'><span class="label">M3-28</span></a>
+<div class="smallfont label">Oct 29, 2011</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/144" title='Touhou Kouroumu 7'><span class="eventtitle" lang="en" style="display:inline">Touhou Kouroumu 7</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>東方紅楼夢7</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Touhou Kouroumu 7</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/144" title='Touhou Kouroumu 7'><span class="label"></span></a>
+<div class="smallfont label">Oct 15, 2011</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/138" title='Hakurei Shrine Reitaisai SP2'><span class="eventtitle" lang="en" style="display:inline">Hakurei Shrine Reitaisai SP2</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>博麗神社例大祭SP2</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Hakurei Shrine Reitaisai SP2</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/138" title='Hakurei Shrine Reitaisai SP2'><span class="label">Reitaisai SP2</span></a>
+<div class="smallfont label">Sep 10, 2011</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/134" title='Comic Market 80'><span class="eventtitle" lang="en" style="display:inline">Comic Market 80</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>コミックマーケット８０</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Comic Market 80</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/134" title='Comic Market 80'><span class="label">C80</span></a>
+<div class="smallfont label">Aug 11, 2011 to Aug 13, 2011</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/100" title='Hakurei Shrine Reitaisai 8'><span class="eventtitle" lang="en" style="display:inline">Hakurei Shrine Reitaisai 8</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>博麗神社例大祭（第8回）</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Hakurei Shrine Reitaisai 8</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/100" title='Hakurei Shrine Reitaisai 8'><span class="label">Reitaisai 8</span></a>
+<div class="smallfont label">May 7, 2011</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/102" title='M3-2011 Spring'><span class="eventtitle" lang="en" style="display:inline">M3-2011 Spring</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em><i>M3-2011 Spring</i></span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>M3-2011 Spring</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/102" title='M3-2011 Spring'><span class="label">M3-27</span></a>
+<div class="smallfont label">Apr 30, 2011</div>
+</div></ul>
+<h3 class='label'>2010</h3>
+<ul class='index'><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/98" title='Comic Market 79'><span class="eventtitle" lang="en" style="display:inline">Comic Market 79</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>コミックマーケット７９</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Comic Market 79</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/98" title='Comic Market 79'><span class="label">C79</span></a>
+<div class="smallfont label">Dec 28, 2010 to Dec 30, 2010</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/137" title='Kyoukai kara Mieta Keshiki'><span class="eventtitle" lang="en" style="display:inline">Kyoukai kara Mieta Keshiki</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>境界から視えた外界</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Kyoukai kara Mieta Keshiki</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/137" title='Kyoukai kara Mieta Keshiki'><span class="label"></span></a>
+<div class="smallfont label">Nov 27, 2010</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/97" title='M3-2010 Fall'><span class="eventtitle" lang="en" style="display:inline">M3-2010 Fall</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>M3-2010秋</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>M3-2010 Fall</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/97" title='M3-2010 Fall'><span class="label">M3-26</span></a>
+<div class="smallfont label">Oct 30, 2010</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/96" title='Touhou Kouroumu 6'><span class="eventtitle" lang="en" style="display:inline">Touhou Kouroumu 6</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>東方紅楼夢(第六回)</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Touhou Kouroumu 6</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/96" title='Touhou Kouroumu 6'><span class="label"></span></a>
+<div class="smallfont label">Oct 10, 2010</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/136" title='2010 Mishagujisai'><span class="eventtitle" lang="en" style="display:inline">2010 Mishagujisai</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>平成二十二年度 御射宮司祭</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>2010 Mishagujisai</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/136" title='2010 Mishagujisai'><span class="label"></span></a>
+<div class="smallfont label">Oct 8, 2010</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/94" title='Hakurei Shrine Reitaisai SP'><span class="eventtitle" lang="en" style="display:inline">Hakurei Shrine Reitaisai SP</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>博麗神社例大祭SP</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Hakurei Shrine Reitaisai SP</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/94" title='Hakurei Shrine Reitaisai SP'><span class="label">Reitaisai SP</span></a>
+<div class="smallfont label">Sep 18, 2010</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/95" title='Tokyo Game Show 2010'><span class="eventtitle" lang="en" style="display:inline">Tokyo Game Show 2010</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>東京ゲームショウ2010</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Tokyo Game Show 2010</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/95" title='Tokyo Game Show 2010'><span class="label">TGS 2010</span></a>
+<div class="smallfont label">Sep 15, 2010 to Sep 19, 2010</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/93" title='Cave Maturi 2010 Summer'><span class="eventtitle" lang="en" style="display:inline">Cave Maturi 2010 Summer</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>恐怖！ケケケのケイブ屋敷　こないと………呪ワレちゃうゾっ</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Cave Maturi 2010 Summer</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/93" title='Cave Maturi 2010 Summer'><span class="label">Cave Maturi</span></a>
+<div class="smallfont label">Aug 13, 2010</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/91" title='Comic Market 78'><span class="eventtitle" lang="en" style="display:inline">Comic Market 78</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>コミックマーケット７８</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Comic Market 78</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/91" title='Comic Market 78'><span class="label">C78</span></a>
+<div class="smallfont label">Aug 12, 2010 to Aug 14, 2010</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/115" title='Tsuki no Utage 3'><span class="eventtitle" lang="en" style="display:inline">Tsuki no Utage 3</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>月の宴3</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Tsuki no Utage 3</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/115" title='Tsuki no Utage 3'><span class="label"></span></a>
+<div class="smallfont label">Jul 18, 2010</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/126" title='Aka no Hiroba 4'><span class="eventtitle" lang="en" style="display:inline">Aka no Hiroba 4</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>紅のひろば4</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Aka no Hiroba 4</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/126" title='Aka no Hiroba 4'><span class="label"></span></a>
+<div class="smallfont label">Jul 17, 2010</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/140" title='Koi no Mahou wa Marisa ni Omakase! 2'><span class="eventtitle" lang="en" style="display:inline">Koi no Mahou wa Marisa ni Omakase! 2</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>恋のまほうは魔理沙におまかせ！2</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Koi no Mahou wa Marisa ni Omakase! 2</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/140" title='Koi no Mahou wa Marisa ni Omakase! 2'><span class="label"></span></a>
+<div class="smallfont label">Jul 17, 2010</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/141" title='Tora Matsuri 2010'><span class="eventtitle" lang="en" style="display:inline">Tora Matsuri 2010</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>とら祭り2010</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Tora Matsuri 2010</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/141" title='Tora Matsuri 2010'><span class="label"></span></a>
+<div class="smallfont label">Jun 19, 2010</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/121" title='Koharu Komichi'><span class="eventtitle" lang="en" style="display:inline">Koharu Komichi</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>小春小径</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Koharu Komichi</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/121" title='Koharu Komichi'><span class="label"></span></a>
+<div class="smallfont label">Jun 12, 2010</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/142" title='Touhou Sugei Matsuri'><span class="eventtitle" lang="en" style="display:inline">Touhou Sugei Matsuri</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>東方素芸祭</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Touhou Sugei Matsuri</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/142" title='Touhou Sugei Matsuri'><span class="label"></span></a>
+<div class="smallfont label">Jun 12, 2010</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/143" title='Touhou Suukeisai 4'><span class="eventtitle" lang="en" style="display:inline">Touhou Suukeisai 4</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>東方崇敬祭4</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Touhou Suukeisai 4</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/143" title='Touhou Suukeisai 4'><span class="label"></span></a>
+<div class="smallfont label">May 15, 2010</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/71" title='M3-2010 Spring'><span class="eventtitle" lang="en" style="display:inline">M3-2010 Spring</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>M3-2010春</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>M3-2010 Spring</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/71" title='M3-2010 Spring'><span class="label">M3-25</span></a>
+<div class="smallfont label">May 4, 2010</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/120" title='Yuumei Sakura'><span class="eventtitle" lang="en" style="display:inline">Yuumei Sakura</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>幽明櫻</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Yuumei Sakura</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/120" title='Yuumei Sakura'><span class="label"></span></a>
+<div class="smallfont label">May 3, 2010</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/105" title='Touhou Spiral Tea Party 2'><span class="eventtitle" lang="en" style="display:inline">Touhou Spiral Tea Party 2</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>第二季 東方螺茶会</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Touhou Spiral Tea Party 2</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/105" title='Touhou Spiral Tea Party 2'><span class="label"></span></a>
+<div class="smallfont label">Apr 28, 2010</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/109" title='COMIC1☆4'><span class="eventtitle" lang="en" style="display:inline">COMIC1☆4</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em><i>COMIC1☆4</i></span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>COMIC1☆4</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/109" title='COMIC1☆4'><span class="label"></span></a>
+<div class="smallfont label">Apr 28, 2010</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/110" title='Dai-Kyuu-Shuu Touhousai 2'><span class="eventtitle" lang="en" style="display:inline">Dai-Kyuu-Shuu Touhousai 2</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>大⑨州東方祭2</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Dai-Kyuu-Shuu Touhousai 2</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/110" title='Dai-Kyuu-Shuu Touhousai 2'><span class="label"></span></a>
+<div class="smallfont label">Apr 28, 2010</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/68" title='Hakurei Shrine Reitaisai 7'><span class="eventtitle" lang="en" style="display:inline">Hakurei Shrine Reitaisai 7</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>博麗神社例大祭（第7回）</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Hakurei Shrine Reitaisai 7</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/68" title='Hakurei Shrine Reitaisai 7'><span class="label">Reitaisai 7</span></a>
+<div class="smallfont label">Mar 13, 2010</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/117" title='Touhou Tokyousou 2'><span class="eventtitle" lang="en" style="display:inline">Touhou Tokyousou 2</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>東方杜郷想2</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Touhou Tokyousou 2</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/117" title='Touhou Tokyousou 2'><span class="label"></span></a>
+<div class="smallfont label">Feb 13, 2010</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/107" title='Sunshine Creation 46'><span class="eventtitle" lang="en" style="display:inline">Sunshine Creation 46</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em><i>Sunshine Creation 46</i></span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Sunshine Creation 46</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/107" title='Sunshine Creation 46'><span class="label"></span></a>
+<div class="smallfont label">Feb 6, 2010</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/125" title='Aka no Hiroba 3'><span class="eventtitle" lang="en" style="display:inline">Aka no Hiroba 3</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>紅のひろば3</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Aka no Hiroba 3</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/125" title='Aka no Hiroba 3'><span class="label"></span></a>
+<div class="smallfont label">Jan 16, 2010</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/49" title='MAGFest 8'><span class="eventtitle" lang="en" style="display:inline">MAGFest 8</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em><i>MAGFest 8</i></span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>MAGFest 8</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/49" title='MAGFest 8'><span class="label"></span></a>
+<div class="smallfont label">Dec 31, 2009 to Jan 4, 2010</div>
+</div></ul>
+<h3 class='label'>2009</h3>
+<ul class='index'><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/66" title='Comic Market 77'><span class="eventtitle" lang="en" style="display:inline">Comic Market 77</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>コミックマーケット77</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Comic Market 77</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/66" title='Comic Market 77'><span class="label">C77</span></a>
+<div class="smallfont label">Dec 28, 2009 to Dec 30, 2009</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/108" title='Touhou Suukeisai 3'><span class="eventtitle" lang="en" style="display:inline">Touhou Suukeisai 3</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>第三回 東方崇敬祭</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Touhou Suukeisai 3</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/108" title='Touhou Suukeisai 3'><span class="label"></span></a>
+<div class="smallfont label">Nov 28, 2009</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/90" title='Hell and Heaven Meltdown'><span class="eventtitle" lang="en" style="display:inline">Hell and Heaven Meltdown</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>地獄極楽メルトダウン</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Hell and Heaven Meltdown</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/90" title='Hell and Heaven Meltdown'><span class="label"></span></a>
+<div class="smallfont label">Nov 2, 2009</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/124" title='2009 Mishagujisai'><span class="eventtitle" lang="en" style="display:inline">2009 Mishagujisai</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>平成二十一年度 御射宮司祭</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>2009 Mishagujisai</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/124" title='2009 Mishagujisai'><span class="label"></span></a>
+<div class="smallfont label">Oct 24, 2009</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/52" title='M3-2009 Fall'><span class="eventtitle" lang="en" style="display:inline">M3-2009 Fall</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em><i>M3-2009 Fall</i></span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>M3-2009 Fall</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/52" title='M3-2009 Fall'><span class="label">M3-24</span></a>
+<div class="smallfont label">Oct 10, 2009</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/65" title='Touhou Kouroumu 5'><span class="eventtitle" lang="en" style="display:inline">Touhou Kouroumu 5</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>東方紅楼夢(第五回)</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Touhou Kouroumu 5</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/65" title='Touhou Kouroumu 5'><span class="label"></span></a>
+<div class="smallfont label">Oct 10, 2009</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/76" title='Sunshine Creation 45'><span class="eventtitle" lang="en" style="display:inline">Sunshine Creation 45</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em><i>Sunshine Creation 45</i></span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Sunshine Creation 45</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/76" title='Sunshine Creation 45'><span class="label"></span></a>
+<div class="smallfont label">Sep 26, 2009</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/62" title='Tokyo Game Show 2009'><span class="eventtitle" lang="en" style="display:inline">Tokyo Game Show 2009</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>東京ゲームショウ2009</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Tokyo Game Show 2009</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/62" title='Tokyo Game Show 2009'><span class="label">TGS 2009</span></a>
+<div class="smallfont label">Sep 23, 2009 to Sep 27, 2009</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/81" title='Aka no Hiroba 2'><span class="eventtitle" lang="en" style="display:inline">Aka no Hiroba 2</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>紅のひろば2</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Aka no Hiroba 2</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/81" title='Aka no Hiroba 2'><span class="label"></span></a>
+<div class="smallfont label">Sep 21, 2009</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/129" title='Tsuki no Utage 2'><span class="eventtitle" lang="en" style="display:inline">Tsuki no Utage 2</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>月の宴2</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Tsuki no Utage 2</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/129" title='Tsuki no Utage 2'><span class="label"></span></a>
+<div class="smallfont label">Sep 21, 2009</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/113" title='Comic Treasure 14'><span class="eventtitle" lang="en" style="display:inline">Comic Treasure 14</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>こみっく★トレジャー14</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Comic Treasure 14</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/113" title='Comic Treasure 14'><span class="label"></span></a>
+<div class="smallfont label">Sep 5, 2009</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/118" title='Touhou Sikokusai'><span class="eventtitle" lang="en" style="display:inline">Touhou Sikokusai</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>東方四国祭</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Touhou Sikokusai</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/118" title='Touhou Sikokusai'><span class="label"></span></a>
+<div class="smallfont label">Aug 29, 2009</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/74" title='Cave Maturi 2009 Summer'><span class="eventtitle" lang="en" style="display:inline">Cave Maturi 2009 Summer</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>監獄ケイブ祭り！来たら…逮捕しちゃうぞ</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Cave Maturi 2009 Summer</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/74" title='Cave Maturi 2009 Summer'><span class="label">Cave Matsuri</span></a>
+<div class="smallfont label">Aug 14, 2009</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/51" title='Comic Market 76'><span class="eventtitle" lang="en" style="display:inline">Comic Market 76</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>コミックマーケット76</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Comic Market 76</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/51" title='Comic Market 76'><span class="label">C76</span></a>
+<div class="smallfont label">Aug 13, 2009 to Aug 16, 2009</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/84" title='Touhou Suukeisai 2'><span class="eventtitle" lang="en" style="display:inline">Touhou Suukeisai 2</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>第二回東方崇敬祭</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Touhou Suukeisai 2</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/84" title='Touhou Suukeisai 2'><span class="label"></span></a>
+<div class="smallfont label">Jul 18, 2009</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/77" title='Touhou Suukeisai'><span class="eventtitle" lang="en" style="display:inline">Touhou Suukeisai</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>東方崇敬祭</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Touhou Suukeisai</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/77" title='Touhou Suukeisai'><span class="label"></span></a>
+<div class="smallfont label">Jun 20, 2009</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/119" title='Touhou Gengakusai 2'><span class="eventtitle" lang="en" style="display:inline">Touhou Gengakusai 2</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>東方幻楽祭2</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Touhou Gengakusai 2</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/119" title='Touhou Gengakusai 2'><span class="label"></span></a>
+<div class="smallfont label">Jun 6, 2009</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/79" title='Akatsuki no Utage 3'><span class="eventtitle" lang="en" style="display:inline">Akatsuki no Utage 3</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em><i>Akatsuki no Utage 3</i></span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Akatsuki no Utage 3</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/79" title='Akatsuki no Utage 3'><span class="label"></span></a>
+<div class="smallfont label">May 5, 2009</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/46" title='M3-2009 Spring'><span class="eventtitle" lang="en" style="display:inline">M3-2009 Spring</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em><i>M3-2009 Spring</i></span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>M3-2009 Spring</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/46" title='M3-2009 Spring'><span class="label">M3-23</span></a>
+<div class="smallfont label">May 4, 2009</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/87" title='Hakata Touhousai'><span class="eventtitle" lang="en" style="display:inline">Hakata Touhousai</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>博多東方祭</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Hakata Touhousai</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/87" title='Hakata Touhousai'><span class="label"></span></a>
+<div class="smallfont label">May 2, 2009</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/106" title='COMIC1☆3'><span class="eventtitle" lang="en" style="display:inline">COMIC1☆3</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em><i>COMIC1☆3</i></span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>COMIC1☆3</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/106" title='COMIC1☆3'><span class="label"></span></a>
+<div class="smallfont label">Apr 25, 2009</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/86" title='Touhou Fuhai Komachi 5'><span class="eventtitle" lang="en" style="display:inline">Touhou Fuhai Komachi 5</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>東方不敗小町5</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Touhou Fuhai Komachi 5</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/86" title='Touhou Fuhai Komachi 5'><span class="label"></span></a>
+<div class="smallfont label">Mar 20, 2009</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/114" title='Touhou Gengakusai'><span class="eventtitle" lang="en" style="display:inline">Touhou Gengakusai</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>東方幻楽祭</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Touhou Gengakusai</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/114" title='Touhou Gengakusai'><span class="label"></span></a>
+<div class="smallfont label">Mar 19, 2009</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/42" title='Hakurei Shrine Reitaisai 6'><span class="eventtitle" lang="en" style="display:inline">Hakurei Shrine Reitaisai 6</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>博麗神社例大祭（第6回）</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Hakurei Shrine Reitaisai 6</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/42" title='Hakurei Shrine Reitaisai 6'><span class="label">Reitaisai 6</span></a>
+<div class="smallfont label">Mar 7, 2009</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/82" title='Sunshine Creation 42'><span class="eventtitle" lang="en" style="display:inline">Sunshine Creation 42</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>サンシャインクリエイション42</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Sunshine Creation 42</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/82" title='Sunshine Creation 42'><span class="label"></span></a>
+<div class="smallfont label">Feb 7, 2009</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/7" title='MAGFest 7'><span class="eventtitle" lang="en" style="display:inline">MAGFest 7</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em><i>MAGFest 7</i></span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>MAGFest 7</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/7" title='MAGFest 7'><span class="label"></span></a>
+<div class="smallfont label">Jan 1, 2009 to Jan 4, 2009</div>
+</div></ul>
+</td>
+		<td valign="top" style="padding: 20px"><h3 class='label'>2008</h3>
+<ul class='index'><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/35" title='Comic Market 75'><span class="eventtitle" lang="en" style="display:inline">Comic Market 75</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>コミックマーケット75</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Comic Market 75</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/35" title='Comic Market 75'><span class="label">C75</span></a>
+<div class="smallfont label">Dec 27, 2008 to Dec 29, 2008</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/40" title='Cave Matsuri'><span class="eventtitle" lang="en" style="display:inline">Cave Matsuri</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em><i>Cave Matsuri</i></span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Cave Matsuri</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/40" title='Cave Matsuri'><span class="label"></span></a>
+<div class="smallfont label">Dec 26, 2008</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/161" title='M3 Festa'><span class="eventtitle" lang="en" style="display:inline">M3 Festa</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em><i>M3 Festa</i></span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>M3 Festa</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/161" title='M3 Festa'><span class="label"></span></a>
+<div class="smallfont label">Nov 23, 2008</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/38" title='Touhou Kouroumu 4'><span class="eventtitle" lang="en" style="display:inline">Touhou Kouroumu 4</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em><i>Touhou Kouroumu 4</i></span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Touhou Kouroumu 4</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/38" title='Touhou Kouroumu 4'><span class="label"></span></a>
+<div class="smallfont label">Nov 1, 2008</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/31" title='M3-2008 Fall'><span class="eventtitle" lang="en" style="display:inline">M3-2008 Fall</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em><i>M3-2008 Fall</i></span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>M3-2008 Fall</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/31" title='M3-2008 Fall'><span class="label">M3-22</span></a>
+<div class="smallfont label">Oct 12, 2008</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/32" title='DreamParty Tokyo 2008 Fall'><span class="eventtitle" lang="en" style="display:inline">DreamParty Tokyo 2008 Fall</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em><i>DreamParty Tokyo 2008 Fall</i></span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>DreamParty Tokyo 2008 Fall</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/32" title='DreamParty Tokyo 2008 Fall'><span class="label"></span></a>
+<div class="smallfont label">Oct 11, 2008</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/103" title='Sunshine Creation 41'><span class="eventtitle" lang="en" style="display:inline">Sunshine Creation 41</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>サンシャインクリエイション41</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Sunshine Creation 41</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/103" title='Sunshine Creation 41'><span class="label"></span></a>
+<div class="smallfont label">Oct 4, 2008</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/78" title='Comic Treasure 12'><span class="eventtitle" lang="en" style="display:inline">Comic Treasure 12</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em><i>Comic Treasure 12</i></span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Comic Treasure 12</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/78" title='Comic Treasure 12'><span class="label"></span></a>
+<div class="smallfont label">Sep 6, 2008</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/29" title='Comic Market 74'><span class="eventtitle" lang="en" style="display:inline">Comic Market 74</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>コミックマーケット74</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Comic Market 74</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/29" title='Comic Market 74'><span class="label">C74</span></a>
+<div class="smallfont label">Aug 14, 2008 to Aug 16, 2008</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/116" title='Tsuki no Utage'><span class="eventtitle" lang="en" style="display:inline">Tsuki no Utage</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>月の宴</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Tsuki no Utage</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/116" title='Tsuki no Utage'><span class="label"></span></a>
+<div class="smallfont label">Jul 6, 2008</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/8" title='Hakurei Shrine Reitaisai 5'><span class="eventtitle" lang="en" style="display:inline">Hakurei Shrine Reitaisai 5</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>博麗神社例大祭（第5回）</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Hakurei Shrine Reitaisai 5</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/8" title='Hakurei Shrine Reitaisai 5'><span class="label">Reitaisai 5</span></a>
+<div class="smallfont label">May 24, 2008</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/54" title='M3-2008 Spring'><span class="eventtitle" lang="en" style="display:inline">M3-2008 Spring</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>M3-2008春</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>M3-2008 Spring</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/54" title='M3-2008 Spring'><span class="label">M3-21</span></a>
+<div class="smallfont label">May 10, 2008</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/33" title='DreamParty Tokyo 2008 Spring'><span class="eventtitle" lang="en" style="display:inline">DreamParty Tokyo 2008 Spring</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em><i>DreamParty Tokyo 2008 Spring</i></span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>DreamParty Tokyo 2008 Spring</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/33" title='DreamParty Tokyo 2008 Spring'><span class="label"></span></a>
+<div class="smallfont label">May 2, 2008</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/112" title='COMIC1☆2'><span class="eventtitle" lang="en" style="display:inline">COMIC1☆2</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em><i>COMIC1☆2</i></span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>COMIC1☆2</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/112" title='COMIC1☆2'><span class="label"></span></a>
+<div class="smallfont label">Apr 26, 2008</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/75" title='Sunshine Creation 39'><span class="eventtitle" lang="en" style="display:inline">Sunshine Creation 39</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em><i>Sunshine Creation 39</i></span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Sunshine Creation 39</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/75" title='Sunshine Creation 39'><span class="label"></span></a>
+<div class="smallfont label">Apr 19, 2008</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/6" title='M3 Osaka'><span class="eventtitle" lang="en" style="display:inline">M3 Osaka</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em><i>M3 Osaka</i></span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>M3 Osaka</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/6" title='M3 Osaka'><span class="label"></span></a>
+<div class="smallfont label">Mar 7, 2008 to Mar 9, 2008</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/88" title='Ningyotsukai no Tea Party'><span class="eventtitle" lang="en" style="display:inline">Ningyotsukai no Tea Party</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>人形遣いのTea Party</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Ningyotsukai no Tea Party</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/88" title='Ningyotsukai no Tea Party'><span class="label"></span></a>
+<div class="smallfont label">Mar 1, 2008</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/89" title='Daitoshokan no Dokushokai'><span class="eventtitle" lang="en" style="display:inline">Daitoshokan no Dokushokai</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>大図書館の読書会</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Daitoshokan no Dokushokai</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/89" title='Daitoshokan no Dokushokai'><span class="label"></span></a>
+<div class="smallfont label">Mar 1, 2008</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/36" title='Mattari Sapporo Game Show #8'><span class="eventtitle" lang="en" style="display:inline">Mattari Sapporo Game Show #8</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em><i>Mattari Sapporo Game Show #8</i></span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Mattari Sapporo Game Show #8</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/36" title='Mattari Sapporo Game Show #8'><span class="label"></span></a>
+<div class="smallfont label">Feb 9, 2008</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/4" title='MAGFest 6'><span class="eventtitle" lang="en" style="display:inline">MAGFest 6</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em><i>MAGFest 6</i></span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>MAGFest 6</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/4" title='MAGFest 6'><span class="label"></span></a>
+<div class="smallfont label">Jan 3, 2008 to Jan 6, 2008</div>
+</div></ul>
+<h3 class='label'>2007</h3>
+<ul class='index'><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/2" title='Comic Market 73'><span class="eventtitle" lang="en" style="display:inline">Comic Market 73</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>コミックマーケット73</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Comic Market 73</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/2" title='Comic Market 73'><span class="label">C73</span></a>
+<div class="smallfont label">Dec 28, 2007 to Dec 30, 2007</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/83" title='Touhou Fuhai Komachi 4'><span class="eventtitle" lang="en" style="display:inline">Touhou Fuhai Komachi 4</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>東方不敗小町4</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Touhou Fuhai Komachi 4</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/83" title='Touhou Fuhai Komachi 4'><span class="label"></span></a>
+<div class="smallfont label">Nov 23, 2007</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/67" title='Touhou Kouroumu 3'><span class="eventtitle" lang="en" style="display:inline">Touhou Kouroumu 3</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em><i>Touhou Kouroumu 3</i></span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Touhou Kouroumu 3</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/67" title='Touhou Kouroumu 3'><span class="label"></span></a>
+<div class="smallfont label">Nov 3, 2007</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/48" title='M3-2007 Fall'><span class="eventtitle" lang="en" style="display:inline">M3-2007 Fall</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em><i>M3-2007 Fall</i></span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>M3-2007 Fall</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/48" title='M3-2007 Fall'><span class="label">M3-20</span></a>
+<div class="smallfont label">Oct 7, 2007</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/128" title='Sunshine Creation 37'><span class="eventtitle" lang="en" style="display:inline">Sunshine Creation 37</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>サンシャインクリエイション37</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Sunshine Creation 37</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/128" title='Sunshine Creation 37'><span class="label"></span></a>
+<div class="smallfont label">Oct 7, 2007</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/1" title='Comic Market 72'><span class="eventtitle" lang="en" style="display:inline">Comic Market 72</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>コミックマーケット72</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Comic Market 72</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/1" title='Comic Market 72'><span class="label">C72</span></a>
+<div class="smallfont label">Aug 16, 2007 to Aug 18, 2007</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/9" title='Hakurei Shrine Reitaisai 4'><span class="eventtitle" lang="en" style="display:inline">Hakurei Shrine Reitaisai 4</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>博麗神社例大祭（第4回）</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Hakurei Shrine Reitaisai 4</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/9" title='Hakurei Shrine Reitaisai 4'><span class="label">Reitaisai 4</span></a>
+<div class="smallfont label">May 19, 2007</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/64" title='DreamParty Tokyo 2007 Spring'><span class="eventtitle" lang="en" style="display:inline">DreamParty Tokyo 2007 Spring</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>DreamParty東京2007春</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>DreamParty Tokyo 2007 Spring</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/64" title='DreamParty Tokyo 2007 Spring'><span class="label"></span></a>
+<div class="smallfont label">May 2, 2007</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/47" title='M3-2007 Spring'><span class="eventtitle" lang="en" style="display:inline">M3-2007 Spring</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em><i>M3-2007 Spring</i></span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>M3-2007 Spring</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/47" title='M3-2007 Spring'><span class="label">M3-19</span></a>
+<div class="smallfont label">Apr 28, 2007</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/123" title='Touhou Fuhai Komachi 3'><span class="eventtitle" lang="en" style="display:inline">Touhou Fuhai Komachi 3</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>東方不敗小町3</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Touhou Fuhai Komachi 3</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/123" title='Touhou Fuhai Komachi 3'><span class="label"></span></a>
+<div class="smallfont label">Mar 20, 2007</div>
+</div></ul>
+<h3 class='label'>2006</h3>
+<ul class='index'><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/3" title='Comic Market 71'><span class="eventtitle" lang="en" style="display:inline">Comic Market 71</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>コミックマーケット71</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Comic Market 71</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/3" title='Comic Market 71'><span class="label">C71</span></a>
+<div class="smallfont label">Dec 28, 2006 to Dec 30, 2006</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/39" title='Touhou Kouroumu 2'><span class="eventtitle" lang="en" style="display:inline">Touhou Kouroumu 2</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em><i>Touhou Kouroumu 2</i></span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Touhou Kouroumu 2</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/39" title='Touhou Kouroumu 2'><span class="label"></span></a>
+<div class="smallfont label">Nov 11, 2006</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/63" title='M3-2006 Fall'><span class="eventtitle" lang="en" style="display:inline">M3-2006 Fall</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em><i>M3-2006 Fall</i></span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>M3-2006 Fall</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/63" title='M3-2006 Fall'><span class="label">M3-18</span></a>
+<div class="smallfont label">Oct 8, 2006</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/122" title='Touhou Fuhai Komachi 2'><span class="eventtitle" lang="en" style="display:inline">Touhou Fuhai Komachi 2</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>東方不敗小町2</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Touhou Fuhai Komachi 2</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/122" title='Touhou Fuhai Komachi 2'><span class="label"></span></a>
+<div class="smallfont label">Sep 23, 2006</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/80" title='Akatsuki no Utage'><span class="eventtitle" lang="en" style="display:inline">Akatsuki no Utage</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>紅月ノ宴</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Akatsuki no Utage</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/80" title='Akatsuki no Utage'><span class="label"></span></a>
+<div class="smallfont label">Sep 2, 2006</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/5" title='Comic Market 70'><span class="eventtitle" lang="en" style="display:inline">Comic Market 70</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>コミックマーケット70</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Comic Market 70</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/5" title='Comic Market 70'><span class="label">C70</span></a>
+<div class="smallfont label">Aug 10, 2006 to Aug 13, 2006</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/61" title='Comic Communication 10'><span class="eventtitle" lang="en" style="display:inline">Comic Communication 10</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>コミックコミュニケーション10</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Comic Communication 10</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/61" title='Comic Communication 10'><span class="label">ComiComi 10</span></a>
+<div class="smallfont label">Jun 10, 2006</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/10" title='Hakurei Shrine Reitaisai 3'><span class="eventtitle" lang="en" style="display:inline">Hakurei Shrine Reitaisai 3</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>博麗神社例大祭（第3回）</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Hakurei Shrine Reitaisai 3</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/10" title='Hakurei Shrine Reitaisai 3'><span class="label">Reitaisai 3</span></a>
+<div class="smallfont label">May 20, 2006</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/160" title='M3-2006 Spring'><span class="eventtitle" lang="en" style="display:inline">M3-2006 Spring</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em><i>M3-2006 Spring</i></span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>M3-2006 Spring</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/160" title='M3-2006 Spring'><span class="label">M3-17</span></a>
+<div class="smallfont label">Apr 28, 2006</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/111" title='Sunshine Creation 30'><span class="eventtitle" lang="en" style="display:inline">Sunshine Creation 30</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>サンシャインクリエイション30</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Sunshine Creation 30</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/111" title='Sunshine Creation 30'><span class="label"></span></a>
+<div class="smallfont label">Jan 28, 2006</div>
+</div></ul>
+</td>
+		<td valign="top" style="padding: 20px"><h3 class='label'>2005</h3>
+<ul class='index'><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/13" title='Comic Market 69'><span class="eventtitle" lang="en" style="display:inline">Comic Market 69</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>コミックマーケット69</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Comic Market 69</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/13" title='Comic Market 69'><span class="label">C69</span></a>
+<div class="smallfont label">Dec 28, 2005 to Dec 30, 2005</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/145" title='M3-2005 Fall'><span class="eventtitle" lang="en" style="display:inline">M3-2005 Fall</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em><i>M3-2005 Fall</i></span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>M3-2005 Fall</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/145" title='M3-2005 Fall'><span class="label">M3-16</span></a>
+<div class="smallfont label">Nov 12, 2005</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/72" title='Touhou Kouroumu'><span class="eventtitle" lang="en" style="display:inline">Touhou Kouroumu</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>東方紅楼夢</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Touhou Kouroumu</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/72" title='Touhou Kouroumu'><span class="label"></span></a>
+<div class="smallfont label">Sep 10, 2005</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/14" title='Comic Market 68'><span class="eventtitle" lang="en" style="display:inline">Comic Market 68</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>コミックマーケット68</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Comic Market 68</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/14" title='Comic Market 68'><span class="label">C68</span></a>
+<div class="smallfont label">Aug 11, 2005 to Aug 13, 2005</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/11" title='Hakurei Shrine Reitaisai 2'><span class="eventtitle" lang="en" style="display:inline">Hakurei Shrine Reitaisai 2</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>博麗神社例大祭（第2回）</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Hakurei Shrine Reitaisai 2</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/11" title='Hakurei Shrine Reitaisai 2'><span class="label">Reitaisai 2</span></a>
+<div class="smallfont label">May 3, 2005</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/127" title='M3-2005 Spring'><span class="eventtitle" lang="en" style="display:inline">M3-2005 Spring</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>M3-2005春</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>M3-2005 Spring</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/127" title='M3-2005 Spring'><span class="label">M3-15</span></a>
+<div class="smallfont label">Apr 30, 2005</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/85" title='Comiket Special 4'><span class="eventtitle" lang="en" style="display:inline">Comiket Special 4</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>コミケットスペシャル4</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Comiket Special 4</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/85" title='Comiket Special 4'><span class="label">CS4</span></a>
+<div class="smallfont label">Mar 20, 2005</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/60" title='Sunshine Creation 27'><span class="eventtitle" lang="en" style="display:inline">Sunshine Creation 27</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>サンシャインクリエイション27</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Sunshine Creation 27</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/60" title='Sunshine Creation 27'><span class="label"></span></a>
+<div class="smallfont label">Mar 12, 2005</div>
+</div></ul>
+<h3 class='label'>2004</h3>
+<ul class='index'><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/15" title='Comic Market 67'><span class="eventtitle" lang="en" style="display:inline">Comic Market 67</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>コミックマーケット67</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Comic Market 67</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/15" title='Comic Market 67'><span class="label">C67</span></a>
+<div class="smallfont label">Dec 28, 2004 to Dec 29, 2004</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/34" title='Comic Communication 7'><span class="eventtitle" lang="en" style="display:inline">Comic Communication 7</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em><i>Comic Communication 7</i></span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Comic Communication 7</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/34" title='Comic Communication 7'><span class="label"></span></a>
+<div class="smallfont label">Oct 9, 2004</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/135" title='M3-2004 Fall'><span class="eventtitle" lang="en" style="display:inline">M3-2004 Fall</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>M3-2004秋</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>M3-2004 Fall</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/135" title='M3-2004 Fall'><span class="label">M3-14</span></a>
+<div class="smallfont label">Oct 8, 2004</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/16" title='Comic Market 66'><span class="eventtitle" lang="en" style="display:inline">Comic Market 66</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>コミックマーケット66</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Comic Market 66</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/16" title='Comic Market 66'><span class="label">C66</span></a>
+<div class="smallfont label">Aug 12, 2004 to Aug 14, 2004</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/41" title='M3-2004 Spring'><span class="eventtitle" lang="en" style="display:inline">M3-2004 Spring</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>M3-2004春</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>M3-2004 Spring</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/41" title='M3-2004 Spring'><span class="label">M3-13</span></a>
+<div class="smallfont label">May 1, 2004</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/59" title='Comic Revolution 35'><span class="eventtitle" lang="en" style="display:inline">Comic Revolution 35</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>コミックレヴォリューション35</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Comic Revolution 35</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/59" title='Comic Revolution 35'><span class="label"></span></a>
+<div class="smallfont label">Apr 28, 2004</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/12" title='Hakurei Shrine Reitaisai 1'><span class="eventtitle" lang="en" style="display:inline">Hakurei Shrine Reitaisai 1</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>博麗神社例大祭（第1回）</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Hakurei Shrine Reitaisai 1</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/12" title='Hakurei Shrine Reitaisai 1'><span class="label">Reitaisai 1</span></a>
+<div class="smallfont label">Apr 17, 2004</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/58" title='Sunshine Creation 23'><span class="eventtitle" lang="en" style="display:inline">Sunshine Creation 23</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>サンシャインクリエイション23</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Sunshine Creation 23</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/58" title='Sunshine Creation 23'><span class="label"></span></a>
+<div class="smallfont label">Mar 13, 2004</div>
+</div></ul>
+<h3 class='label'>2003</h3>
+<ul class='index'><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/17" title='Comic Market 65'><span class="eventtitle" lang="en" style="display:inline">Comic Market 65</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>コミックマーケット65</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Comic Market 65</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/17" title='Comic Market 65'><span class="label">C65</span></a>
+<div class="smallfont label">Dec 27, 2003 to Dec 29, 2003</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/50" title='M3-2003 Fall'><span class="eventtitle" lang="en" style="display:inline">M3-2003 Fall</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>M3-2004秋</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>M3-2003 Fall</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/50" title='M3-2003 Fall'><span class="label">M3-12</span></a>
+<div class="smallfont label">Oct 10, 2003</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/57" title='Key Mix 5th'><span class="eventtitle" lang="en" style="display:inline">Key Mix 5th</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em><i>Key Mix 5th</i></span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Key Mix 5th</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/57" title='Key Mix 5th'><span class="label"></span></a>
+<div class="smallfont label">Sep 6, 2003</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/18" title='Comic Market 64'><span class="eventtitle" lang="en" style="display:inline">Comic Market 64</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>コミックマーケット64</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Comic Market 64</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/18" title='Comic Market 64'><span class="label">C64</span></a>
+<div class="smallfont label">Aug 14, 2003 to Aug 16, 2003</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/56" title='Sunshine Creation 19'><span class="eventtitle" lang="en" style="display:inline">Sunshine Creation 19</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>サンシャインクリエイション19</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Sunshine Creation 19</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/56" title='Sunshine Creation 19'><span class="label"></span></a>
+<div class="smallfont label">Mar 15, 2003</div>
+</div></ul>
+<h3 class='label'>2002</h3>
+<ul class='index'><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/19" title='Comic Market 63'><span class="eventtitle" lang="en" style="display:inline">Comic Market 63</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>コミックマーケット63</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Comic Market 63</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/19" title='Comic Market 63'><span class="label">C63</span></a>
+<div class="smallfont label">Dec 27, 2002 to Dec 29, 2002</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/55" title='M3-2002 Fall'><span class="eventtitle" lang="en" style="display:inline">M3-2002 Fall</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>M3-2002秋</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>M3-2002 Fall</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/55" title='M3-2002 Fall'><span class="label">M3-10</span></a>
+<div class="smallfont label">Oct 26, 2002</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/37" title='MAGFest'><span class="eventtitle" lang="en" style="display:inline">MAGFest</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em><i>MAGFest</i></span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>MAGFest</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/37" title='MAGFest'><span class="label"></span></a>
+<div class="smallfont label">Sep 26, 2002 to Sep 29, 2002</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/20" title='Comic Market 62'><span class="eventtitle" lang="en" style="display:inline">Comic Market 62</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>コミックマーケット62</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Comic Market 62</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/20" title='Comic Market 62'><span class="label">C62</span></a>
+<div class="smallfont label">Aug 8, 2002 to Aug 10, 2002</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/69" title='Comic Communication 3'><span class="eventtitle" lang="en" style="display:inline">Comic Communication 3</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>コミックコミュニケーション3</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Comic Communication 3</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/69" title='Comic Communication 3'><span class="label">ComiComi 3</span></a>
+<div class="smallfont label">Jun 29, 2002</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/150" title='Sunshine Creation 16'><span class="eventtitle" lang="en" style="display:inline">Sunshine Creation 16</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>サンシャインクリエイション16</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Sunshine Creation 16</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/150" title='Sunshine Creation 16'><span class="label">SC16</span></a>
+<div class="smallfont label">Jun 15, 2002</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/45" title='M3-2002 Spring'><span class="eventtitle" lang="en" style="display:inline">M3-2002 Spring</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>M3-2003春</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>M3-2002 Spring</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/45" title='M3-2002 Spring'><span class="label">M3-9</span></a>
+<div class="smallfont label">Apr 27, 2002</div>
+</div></ul>
+<h3 class='label'>2001</h3>
+<ul class='index'><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/21" title='Comic Market 61'><span class="eventtitle" lang="en" style="display:inline">Comic Market 61</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>コミックマーケット61</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Comic Market 61</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/21" title='Comic Market 61'><span class="label">C61</span></a>
+<div class="smallfont label">Dec 28, 2001 to Dec 29, 2001</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/22" title='Comic Market 60'><span class="eventtitle" lang="en" style="display:inline">Comic Market 60</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>コミックマーケット60</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Comic Market 60</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/22" title='Comic Market 60'><span class="label">C60</span></a>
+<div class="smallfont label">Aug 9, 2001 to Aug 11, 2001</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/44" title='BrightSeason9'><span class="eventtitle" lang="en" style="display:inline">BrightSeason9</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em><i>BrightSeason9</i></span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>BrightSeason9</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/44" title='BrightSeason9'><span class="label"></span></a>
+<div class="smallfont label">Jul 19, 2001</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/101" title='M3-2001 Spring'><span class="eventtitle" lang="en" style="display:inline">M3-2001 Spring</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>M3-2001春</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>M3-2001 Spring</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/101" title='M3-2001 Spring'><span class="label">M3-7</span></a>
+<div class="smallfont label">Apr 29, 2001</div>
+</div></ul>
+<h3 class='label'>2000</h3>
+<ul class='index'><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/23" title='Comic Market 59'><span class="eventtitle" lang="en" style="display:inline">Comic Market 59</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>コミックマーケット59</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Comic Market 59</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/23" title='Comic Market 59'><span class="label">C59</span></a>
+<div class="smallfont label">Dec 28, 2000 to Dec 29, 2000</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/43" title='M3-2000 Fall'><span class="eventtitle" lang="en" style="display:inline">M3-2000 Fall</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>M3-2000秋</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>M3-2000 Fall</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/43" title='M3-2000 Fall'><span class="label">M3-6</span></a>
+<div class="smallfont label">Nov 4, 2000</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/24" title='Comic Market 58'><span class="eventtitle" lang="en" style="display:inline">Comic Market 58</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>コミックマーケット58</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Comic Market 58</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/24" title='Comic Market 58'><span class="label">C58</span></a>
+<div class="smallfont label">Aug 10, 2000 to Aug 12, 2000</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/73" title='M3-2000 Spring'><span class="eventtitle" lang="en" style="display:inline">M3-2000 Spring</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>M3-2000春</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>M3-2000 Spring</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/73" title='M3-2000 Spring'><span class="label">M3-5</span></a>
+<div class="smallfont label">Apr 22, 2000</div>
+</div></ul>
+<h3 class='label'>1999</h3>
+<ul class='index'><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/25" title='Comic Market 57'><span class="eventtitle" lang="en" style="display:inline">Comic Market 57</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>コミックマーケット57</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Comic Market 57</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/25" title='Comic Market 57'><span class="label">C57</span></a>
+<div class="smallfont label">Dec 23, 1999 to Dec 25, 1999</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/26" title='Comic Market 56'><span class="eventtitle" lang="en" style="display:inline">Comic Market 56</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>コミックマーケット56</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Comic Market 56</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/26" title='Comic Market 56'><span class="label">C56</span></a>
+<div class="smallfont label">Aug 12, 1999 to Aug 14, 1999</div>
+</div></ul>
+<h3 class='label'>1998</h3>
+<ul class='index'><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/27" title='Comic Market 55'><span class="eventtitle" lang="en" style="display:inline">Comic Market 55</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>コミックマーケット55</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Comic Market 55</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/27" title='Comic Market 55'><span class="label">C55</span></a>
+<div class="smallfont label">Dec 28, 1998 to Dec 29, 1998</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/28" title='Comic Market 54'><span class="eventtitle" lang="en" style="display:inline">Comic Market 54</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em>コミックマーケット54</span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Comic Market 54</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/28" title='Comic Market 54'><span class="label">C54</span></a>
+<div class="smallfont label">Aug 13, 1998 to Aug 15, 1998</div>
+</div><div style="padding: 10px">
+<h3 style="display: inline"><a href="http://vgmdb.net/event/92" title='Tokyo Game Show 1998 Spring'><span class="eventtitle" lang="en" style="display:inline">Tokyo Game Show 1998 Spring</span><span class="eventtitle" lang="ja" style="display:none"><em> / </em><i>Tokyo Game Show 1998 Spring</i></span><span class="eventtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Tokyo Game Show 1998 Spring</i></span></a></h3> <a class="link_event" href="http://vgmdb.net/event/92" title='Tokyo Game Show 1998 Spring'><span class="label"></span></a>
+<div class="smallfont label">Mar 19, 1998 to Mar 21, 1998</div>
+</div></ul>
+</td>
+		</tr></table>
+		<b class="rbot"><b></b></b></div>
+	</div>
+	<b class="rbot"><b></b></b>
+</div>
+<!-- / main page contents -->
+
+</div>
+<!-- /content area table -->
+<div style="clear: both; height: 20px"></div>
+
+<!-- chat popup -->
+<div style="display: none; width: 500px; padding: 10px;" id="chat-popup">
+	<a class="buttonCancel" style="float: right" href="#" onclick="return hs.close(this)"><img title="Close" src="http://media.vgmdb.net/img/button-cancel.gif" alt="Close"></a>
+	<div>
+		<h3>Chat with us!</h3>
+		<p>Our official IRC channel is <b>#vgmdb</b> on <b>irc.psigenix.net</b></p>
+		<p>You may use any IRC client such as <a rel="nofollow" href="http://www.mirc.com/">mIRC</a> to connect. Alternatively you may chat in your browser window using the form below.</p>
+		<p class="smallfont">If you are unable to run Java applets, please choose CGI:IRC from the dropdown menu. Note that there is a limit to the number of connections allowed for this option.</p>
+		<form id="loginform" name="loginform" action="http://bigblah.net/irc/index.php" method="post" target="vgmdbirc">
+		<input id="chatInterface" type="hidden" name="interface" value="nonjs">
+		<span class="label">Nickname</span> <input id="chatNick" class="bginput" type="text" name="Nickname" value="CGI-IRC">
+		<select id="chatClient" class="bginput" name="client">
+		<option value="http://bigblah.net/irc/index.php">PJIRC</option>
+		<option value="http://bigblah.net/cgi-bin/irc/irc.cgi">CGI:IRC</option>
+		</select>
+		<input type="hidden" name="server" value="irc.psigenix.net">
+		<input type="hidden" name="channel" value="#vgmdb">
+		<input class="button" type="submit" name="submit" value="Connect"></form>
+	</div>
+</div>
+<!-- / chat popup -->
+
+<div class="alt1" style="width: 100%">
+<div id="footer">
+<div style="padding: 20px 10px 0 200px">
+
+
+
+	<div style="float: right; text-align: right; font-family: Arial;" class="label">
+		<a href="/about">About Us</a> &bull;
+		<a href="/faq">F.A.Q.</a> &bull;
+		<a href="/forums/sendmessage.php?s=07822caa77716d7794fa34670b051502" rel="nofollow" accesskey="9">Contact Us</a> &bull;
+		<a href="/db/statistics.php" rel="nofollow">Statistics</a> &bull;
+		<a href="http://vgmdb.net">Home</a>
+
+		<div class="smallfont" style="font-family: Arial; margin-top: 10px">
+		
+		
+		
+		<a href="/forums/archive/index.php">Archive</a> &bull;
+		
+		<a href="/privacy">Privacy Statement</a> &bull;
+		
+		<a href="#top" onclick="self.scrollTo(0, 0); return false;">Top</a>
+		</div>
+
+	<div style="margin-top: 10px"><form action="index.php" method="get">
+	
+	
+	
+
+	</form></div>
+	</div>
+
+	<div class="label">
+		<h3>VGMdb 0.15 (beta)</h3>
+		<div class="smallfont"><!-- Do not remove this copyright notice -->
+		Powered by vBulletin&reg; Version 3.8.5<br />Copyright &copy;2000 - 2013, Jelsoft Enterprises Ltd.
+		<!-- Do not remove this copyright notice --></div>
+		<div class="smallfont">Site code and design copyright VGMdb.net</div>
+		<div class="smallfont">Site material is property of their respective owners.</div>
+		<div class="smallfont">All times are GMT -8. The time now is <span class="time">04:34 PM</span>.</div>
+	</div>
+
+
+
+</div></div></div>
+
+
+<script type="text/javascript">
+<!--
+	// Main vBulletin Javascript Initialization
+	vBulletin_init();
+//-->
+</script>
+<script type="text/javascript">if(!NREUMQ.f){NREUMQ.f=function(){NREUMQ.push(["load",new Date().getTime()]);var e=document.createElement("script");e.type="text/javascript";e.src=(("http:"===document.location.protocol)?"http:":"https:")+"//"+"rpm-images.newrelic.com/42/eum/rum.js";document.body.appendChild(e);if(NREUMQ.a)NREUMQ.a();};NREUMQ.a=window.onload;window.onload=NREUMQ.f;};NREUMQ.push(["nrfj","beacon-1.newrelic.com","ae449e68e8","505396","NANSNkUDWUoCU0MNDA1JZRBeTVNbTFVBAQ0XFR4SXxI=",0,137,new Date().getTime(),"","","","",""]);</script>
+
+</body>
+</html>
