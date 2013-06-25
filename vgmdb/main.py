@@ -12,6 +12,7 @@ import vgmdb.albumlist
 import vgmdb.artistlist
 import vgmdb.productlist
 import vgmdb.orglist
+import vgmdb.eventlist
 
 import vgmdb.cache
 import vgmdb.output
@@ -82,6 +83,16 @@ def singlelist(type,filterkey=None):
 	page_type = type
 	url = 'http://vgmdb.net/db/%s.php'%(typeurls[type])
 	return do_page(cache_key, page_type, url, filterkey=filterkey)
+
+@route('/<type:re:(eventlist)>/<filterkey:int>')
+@route('/<type:re:(eventlist)>/')
+@route('/<type:re:(eventlist)>')
+def singlelist(type,filterkey=None):
+	typeurls = {'eventlist': 'events'}
+	cache_key = 'vgmdb/%s'%(type)
+	page_type = type
+	url = 'http://vgmdb.net/db/%s.php'%(typeurls[type])
+	return do_page(cache_key, page_type, url, filterkey=str(filterkey))
 
 @route('/static/<name:path>')
 def static(name):

@@ -384,3 +384,17 @@ def generate_orglist(config, data):
 				for org in org_data[key]:
 					add_org_tuple(g, org)
 	return g
+def generate_eventlist(config, data):
+	g = Graph('IOMemory', BNode())
+	for year in data['events'].keys():
+		for event_data in data['events'][year]:
+			event = URIRef(link(event_data['link'])+"#subject")
+			add_lang_names(g, event, event_data['names'], rel=[SCHEMA.name])
+			g.add((event, RDF.type, SCHEMA.MusicEvent))
+			g.add((event, RDF.type, MO.ReleaseEvent))
+			g.add((event, SCHEMA.startDate, Literal(event_data['startdate'], datatype=XSD.date)))
+			release_event = URIRef(link(event_data['link'])+"#release_event")
+			g.add((event, EVENT.time, release_event))
+			g.add((release_event, RDF.type, TL.Instant))
+			g.add((release_event, TL.at, Literal(event_data['startdate'], datatype=XSD.date)))
+	return g

@@ -1,0 +1,34 @@
+{% extends "base.djhtml" %}
+{% block htmltitle %}
+<title>Browse Events</title>
+{% endblock %}
+{% block title %}
+    <h1>Browse Events</h1>
+{% endblock %}
+{% block quickinfo %}
+{% endblock %}
+{% block body %}
+  <div>
+    <ul class="inline">
+      {% for year in data.years -%}
+      <li><a href="eventlist/{{year | urlencode}}">{{year}}</a></li>
+      {% endfor -%}
+    </ul>
+  </div>
+  <div>
+    <ul class="unstyled">
+      {% for year in data.years -%}
+      {% if filterkey == None or filterkey == year -%}
+      {% for event in data.events[year] -%}
+      <li resource="{{event.link | linkhref}}#subject" typeof="mo:ReleaseEvent schema:MusicEvent"><a href="{{event.link | linkhref}}#subject" class="names">{{event.names | lang_names(rel="schema:name")}}</a>
+        <span property="event:time" typeof="tl:Instant" resource="{{event.link | linkhref}}#release_event">
+          <span property="tl:at" datatype="xsd:date" content="{{event.startdate}}"></span>
+        </span>
+        <small><span property="schema:startDate" datatype="xsd:date" content="{{event.startdate}}">{{event.startdate|format_date}}</span></small>
+      </li>
+      {% endfor -%}
+      {% endif -%}
+      {% endfor -%}
+    </ul>
+  </div>
+{% endblock %}
