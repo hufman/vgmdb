@@ -64,8 +64,7 @@ def _parse_event(soup_event):
 
 def _parse_eventlink(soup_link):
 	event_link = soup_link['href']
-	if event_link[0:7]=="http://":
-		event_link = event_link[len("http://vgmdb.net"):]
+	event_link = utils.trim_absolute(event_link)
 	info = {'link': event_link,
 	        'names': utils.parse_names(soup_link)}
 	return info

@@ -128,6 +128,11 @@ def parse_names(soup_parent):
 		info[lang] = name
 	return info
 
+def trim_absolute(link):
+	if link[0:7]=="http://":
+		link = link[len("http://vgmdb.net"):]
+	return link
+
 def parse_discography(soup_disco_table, label_type='roles'):
 	"""
 	Parse a discography table

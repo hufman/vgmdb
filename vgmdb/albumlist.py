@@ -28,8 +28,7 @@ def parse_albumlist_page(html_source):
 		soup_link = soup_title.a
 		album_type = soup_link['class'][-1].split('-')[1]
 		album_link = soup_link['href']
-		if album_link[0:7]=="http://":
-			album_link = album_link[len("http://vgmdb.net"):]
+		album_link = utils.trim_absolute(album_link)
 		album_titles = utils.parse_names(soup_link)
 
 		# parse date

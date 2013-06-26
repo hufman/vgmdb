@@ -58,8 +58,7 @@ def _parse_org(soup_org):
 
 def _parse_orglink(soup_link):
 	org_link = soup_link['href']
-	if org_link[0:7]=="http://":
-		org_link = org_link[len("http://vgmdb.net"):]
+	org_link = utils.trim_absolute(org_link)
 	org_name = soup_link.string
 	return {'link': org_link,
 	        'name': org_name}

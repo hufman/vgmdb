@@ -47,8 +47,7 @@ def _parse_product(soup_row):
 	# parse title
 	soup_link = soup_name.a
 	product_link = soup_link['href']
-	if product_link[0:7]=="http://":
-		product_link = product_link[len("http://vgmdb.net"):]
+	product_link = utils.trim_absolute(product_link)
 	product_name = soup_link.string
 
 	return {'link':product_link,

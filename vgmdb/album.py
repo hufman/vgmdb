@@ -70,8 +70,7 @@ def _parse_album_info(soup_info):
 			for soup_reprint in soup_value.find_all('a'):
 				note = None
 				link = soup_reprint['href']
-				if link[:len("http://vgmdb.net/")] == 'http://vgmdb.net/':
-					link = link[len("http://vgmdb.net/"):]
+				link = utils.trim_absolute(link)
 				name = soup_reprint.string.strip()
 				if name.find('(') != -1:
 					left = name.find('(')
@@ -275,15 +274,13 @@ def _parse_section_related_albums(soup_div):
 			album_type = soup_rows[0].a['class'][-1].split('-')[1]
 			date = utils.parse_date_time(soup_rows[2].string.strip())
 			link = soup_rows[0].a['href']
-			if link[:len("http://vgmdb.net/")] == 'http://vgmdb.net/':
-				link = link[len("http://vgmdb.net/"):]
+			link = utils.trim_absolute(link)
 		else:
 			catalog = soup_album.span.string
 			names = utils.parse_names(soup_album.a)
 			album_type = soup_album.a['class'][-1].split('-')[1]
 			link = soup_album.a['href']
-			if link[:len("http://vgmdb.net/")] == 'http://vgmdb.net/':
-				link = link[len("http://vgmdb.net/"):]
+			link = utils.trim_absolute(link)
 
 		album = {}
 		album['catalog'] = catalog

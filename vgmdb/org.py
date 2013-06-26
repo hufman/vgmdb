@@ -52,7 +52,7 @@ def _parse_org_info(soup_profile_info):
 					item = {}
 					item['names'] = utils.parse_names(soup_child_link)
 					link = soup_child_link['href']
-					link = link[len("http://vgmdb.net"):] if link[0:7]=="http://" else link
+					link = utils.trim_absolute(link)
 					item['link'] = link
 
 					sibling = soup_child_link.next_sibling
@@ -112,7 +112,7 @@ def _parse_org_releases(table):
 		soup_album = soup_cells[3]
 		if soup_album.a:
 			link = soup_album.a['href']
-			link = link[len("http://vgmdb.net"):] if link[0:7]=="http://" else link
+			link = utils.trim_absolute(link)
 			release['link'] = link
 			release['titles'] = utils.parse_names(soup_album.a)
 			release['type'] = soup_album.a['class'][1].split('-')[1]
