@@ -44,7 +44,7 @@ def parse_artist_page(html_source):
 
 	# Parse Notes
 	soup_notes = soup_profile_right.div.find_next_sibling('div').div
-	artist_info['notes'] = soup_notes.contents[0].string if isinstance(soup_notes.contents[0], bs4.Tag) else soup_notes.string
+	artist_info['notes'] = utils.parse_string(soup_notes).strip()
 
 	# Parse Discography
 	soup_separator = soup_profile_right.find('br', recursive=False)

@@ -34,14 +34,7 @@ def parse_album_page(html_source):
 		soup_row = soup_row.find_next_sibling('tr')
 		if soup_row:	# has a notes row
 			soup_notes = soup_row.td.div.find_next_sibling('div').div
-			notes = ''
-			for child in soup_notes.children:
-				if isinstance(child, bs4.Tag):
-					if child.name == 'br':
-						notes += '\n'
-				else:
-					notes += child.string
-			album_info['notes'] = notes
+			album_info['notes'] = utils.parse_string(soup_notes).strip()
 
 	return album_info
 

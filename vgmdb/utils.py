@@ -114,19 +114,53 @@ def parse_names(soup_parent):
 	   and the value being the name in that language
 	"""
 	info = {}
-	if not soup_parent.span:
-		info['en'] = soup_parent.string.strip()
+	shallow_string = parse_shallow_string(soup_parent)
+	if len(shallow_string.strip())>0:
+		info['en'] = shallow_string.strip()
 	for soup_name in soup_parent.find_all('span', recursive=False):
 		if not soup_name.has_attr('lang'):
 			continue
 		lang = soup_name['lang'].lower()
-		for child in soup_name.children:
-			if not isinstance(child, bs4.Tag):
-				name = child.string.strip()
-		if soup_name.i:		# title has weird format
-			name = soup_name.i.string.strip()
-		info[lang] = name
+		name = parse_string(soup_name)
+		info[lang] = name.strip()
 	return info
+
+def parse_shallow_string(soup_element):
+	"""
+	Given an element, return the strings inside, but not inside nested elements
+	"""
+	if not isinstance(soup_element, bs4.Tag):
+		return soup_element.string
+	else:
+		bits = []
+		for child in soup_element.children:
+			if not isinstance(child, bs4.Tag):
+				bits.append(child.string)
+		return "".join(bits)
+	
+def parse_string(soup_element, _strip=True):
+	"""
+	Given an element, return the strings inside
+	Useful for getting all the text out of something, even if it has <span> tags
+	"""
+	import re
+	if not isinstance(soup_element, bs4.Tag):
+		ret = soup_element.string
+		ret = re.sub('\s+',' ', ret)
+		return ret
+	else:
+		if soup_element.name == 'br':
+			return '\n'
+		omitted = ['em']
+		if soup_element.name in omitted:
+			return ''
+		bits = []
+		for child in soup_element.children:
+			bits.append(parse_string(child, _strip=False))
+		ret = "".join(bits)
+		if _strip:
+			ret = re.sub('\s*\n+\s*','\n', ret)
+		return ret
 
 def trim_absolute(link):
 	if link[0:7]=="http://":
@@ -155,12 +189,7 @@ def parse_discography(soup_disco_table, label_type='roles'):
 			album_type = soup_album['class'][1].split('-')[1]
 			soup_album_info = soup_cells[1].find_all('span', recursive=False)
 			catalog = soup_album_info[0].string
-			roles_str = ''
-			for soup_node in soup_album_info[1].children:
-				if isinstance(soup_node, bs4.Tag):
-					roles_str += soup_node.string
-				else:
-					roles_str += unicode(soup_node)
+			roles_str = parse_string(soup_album_info[1])
 			roles = roles_str.split(',')
 			roles = [x.strip() for x in roles]
 			date = normalize_dotted_date("%s.%s"%(year, month_day))
