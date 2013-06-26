@@ -19,12 +19,15 @@ class TestEventRDF(TestRDF):
 			"select ?type where { <@base#subject> rdf:type mo:ReleaseEvent . }" : 1,
 			"select ?type where { <@base#subject> rdf:type schema:MusicEvent . }" : 1,
 			"select ?person where { <@base#subject> event:time <@base#release_event> . }" : 1,
-			"select ?date where { <@base#release_event> tl:at ?date . }" : 1,
+			"select ?date where { <@base#release_event> tl:start ?date . }" : 1,
+			"select ?date where { <@base#release_event> tl:end ?date . }" : 1,
 			"select ?album where { <@base#subject> mo:release ?album . }" : 39
 		}
 		test_first_result = {
-			"select ?date where { <@base#release_event> tl:at ?date . }" : datetime.date(2012,10,27),
+			"select ?date where { <@base#release_event> tl:start ?date . }" : datetime.date(2012,10,27),
+			"select ?date where { <@base#release_event> tl:end ?date . }" : datetime.date(2012,10,27),
 			"select ?date where { <@base#subject> schema:startDate ?date . }" : datetime.date(2012,10,27),
+			"select ?date where { <@base#subject> schema:endDate ?date . }" : datetime.date(2012,10,27),
 			"select ?catalog where { ?album mo:catalogue_number ?catalog . ?album schema:name ?title . ?album schema:name \"a Tale\"@en . }" : "N/A",
 			"select ?catalog where { ?album mo:catalogue_number ?catalog . ?album schema:name ?title . ?album schema:name \"AD:60\"@en . }" : "DVSP-0084",
 			"select ?release_date where { ?album dcterms:created ?release_date . ?album schema:name \"a Tale\"@en . }" : datetime.date(2012,10,28),
@@ -42,4 +45,29 @@ class TestEventRDF(TestRDF):
 	def test_m3_rdf(self):
 		graph = self.load_rdf_data('event_m3.html')
 		self.run_m3_tests(graph)
+
+	def run_cm54_tests(self, graph):
+		test_count_results = {
+			"select ?type where { <@base#subject> rdf:type mo:ReleaseEvent . }" : 1,
+			"select ?type where { <@base#subject> rdf:type schema:MusicEvent . }" : 1,
+			"select ?person where { <@base#subject> event:time <@base#release_event> . }" : 1,
+			"select ?date where { <@base#release_event> tl:start ?date . }" : 1,
+			"select ?date where { <@base#release_event> tl:end ?date . }" : 1,
+		}
+		test_first_result = {
+			"select ?date where { <@base#release_event> tl:start ?date . }" : datetime.date(1998,8,13),
+			"select ?date where { <@base#release_event> tl:end ?date . }" : datetime.date(1998,8,15),
+			"select ?date where { <@base#subject> schema:startDate ?date . }" : datetime.date(1998,8,13),
+			"select ?date where { <@base#subject> schema:endDate ?date . }" : datetime.date(1998,8,15),
+		}
+
+		self.run_tests(graph, test_count_results, test_first_result)
+
+		return
+	def test_cm54_rdfa(self):
+		graph = self.load_rdfa_data('event_cm54.html')
+		self.run_cm54_tests(graph)
+	def test_cm54_rdf(self):
+		graph = self.load_rdf_data('event_cm54.html')
+		self.run_cm54_tests(graph)
 

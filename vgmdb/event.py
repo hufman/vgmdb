@@ -16,8 +16,9 @@ def parse_event_page(html_source):
 
 	event_info['name'] = soup_name_sections[1].string.strip()
 	date = soup_name_sections[2].string.strip()
-	date = date.split('to')[0]
-	event_info['date'] = utils.parse_date_time(date)
+	date_pieces = date.split('to')
+	event_info['startdate'] = utils.parse_date_time(date_pieces[0])
+	event_info['enddate'] = utils.parse_date_time(date_pieces[-1])
 
 	notes = ''
 	squash = lambda s: s.replace('\r','').replace('\n','')

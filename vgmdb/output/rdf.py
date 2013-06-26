@@ -341,9 +341,11 @@ def generate_event(config, data):
 	g.add((subject, RDF.type, SCHEMA.MusicEvent))
 	release_event = URIRef(uri + "#release_event")
 	g.add((subject, EVENT.time, release_event))
-	g.add((release_event, RDF.type, TL.Instant))
-	g.add((release_event, TL.at, Literal(data['date'], datatype=XSD.date)))
-	g.add((subject, SCHEMA.startDate, Literal(data['date'], datatype=XSD.date)))
+	g.add((release_event, RDF.type, TL.Interval))
+	g.add((release_event, TL.start, Literal(data['startdate'], datatype=XSD.date)))
+	g.add((release_event, TL.end, Literal(data['enddate'], datatype=XSD.date)))
+	g.add((subject, SCHEMA.startDate, Literal(data['startdate'], datatype=XSD.date)))
+	g.add((subject, SCHEMA.endDate, Literal(data['enddate'], datatype=XSD.date)))
 	add_discography(g, subject, data['releases'], rel=[MO.release], rev=[])
 
 	return g

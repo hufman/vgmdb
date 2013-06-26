@@ -6,15 +6,17 @@
     <div class="boxsection">
       <dl>
         <dt>Date</dt>
-        <dd property="schema:startDate" datatype="xsd:date" content="{{data.date}}">{{data.date | format_date}}</dd>
+        <dd property="schema:startDate" datatype="xsd:date" content="{{data.startdate}}">{{data.startdate | format_date}}</dd>
+        <dd property="schema:endDate" datatype="xsd:date" content="{{data.enddate}}">{{data.enddate | format_date}}</dd>
      </dl>
    </div>
 {% endblock %}
 {% block body %}
     <div id="info" resource="{{data.link | linkhref}}#subject">
       <span class="metadata">
-        <span property="event:time" typeof="tl:Instant" resource="{{data.link | linkhref}}#release_event">
-          <span property="tl:at" datatype="xsd:date" content="{{data.date}}"></span>
+        <span property="event:time" typeof="tl:Interval" resource="{{data.link | linkhref}}#release_event">
+          <span property="tl:start" datatype="xsd:date" content="{{data.startdate}}"></span>
+          <span property="tl:end" datatype="xsd:date" content="{{data.enddate}}"></span>
         </span>
       </span>
       <span>{{data.notes}}</span>
