@@ -206,6 +206,14 @@ td.list li:last-child:after {content: ""}
         <div class="box">
           <div class="boxsection">
             <form method="get" action="search"><label for="search_query">Search: </label><input type="text" id="search_query" name="q" placeholder="{{data.query}}"/></form>
+            <label>Browse:</label>
+            <ul class="inline">
+              <li><a href="albumlist">Albums</a></li>
+              <li><a href="artistlist">Artists</a></li>
+              <li><a href="orglist">Labels</a></li>
+              <li><a href="eventlist">Events</a></li>
+              <li><a href="productlist">Games</a></li>
+            </ul>
           </div>
 {% block quickinfo %}
 {% endblock %}
