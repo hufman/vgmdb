@@ -47,12 +47,12 @@ def _parse_event_releases(soup_table):
 		if len(soup_class) == 2 and '-' in soup_class[1]:
 			release['album_type'] = soup_class[1].split('-')[1]
 		release['titles'] = utils.parse_names(soup_cells[3].a)
-		release['link'] = soup_cells[3].a['href']
+		release['link'] = utils.trim_absolute(soup_cells[3].a['href'])
 		release['release_date'] = utils.parse_date_time(soup_cells[5].span.string.strip())
 
 		if soup_cells[4].a:
 			release['publisher'] = {
-				'link': soup_cells[4].a['href'],
+				'link': utils.trim_absolute(soup_cells[4].a['href']),
 				'names': utils.parse_names(soup_cells[4].a)}
 		elif soup_cells[4].string:
 			release['publisher'] = {
