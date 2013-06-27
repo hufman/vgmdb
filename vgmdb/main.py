@@ -110,8 +110,9 @@ def eventlist(type,filterkey=None):
 
 @route('/search/<type:re:(albums|artists|orgs|products)>/<query>')
 @route('/search/<query>')
+@route('/search')
 def search(type=None, query=None):
-	file('/tmp/log','w').write("Found type %s"%type)
+	query = query or request.query['q']
 	cache_key = 'vgmdb/search/%s'%(query,)
 	page_type = 'search'
 	url = 'http://vgmdb.net/search?q=%s'%(urllib.quote(query))

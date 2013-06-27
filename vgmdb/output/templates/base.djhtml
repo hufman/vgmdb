@@ -204,6 +204,9 @@ td.list li:last-child:after {content: ""}
 {% endblock %}
       <div class="sidebar" resource="{{data.link | linkhref}}#subject">
         <div class="box">
+          <div class="boxsection">
+            <form method="get" action="search"><label for="search_query">Search: </label><input type="text" id="search_query" name="q" placeholder="{{data.query}}"/></form>
+          </div>
 {% block quickinfo %}
 {% endblock %}
 {% block metadata %}
