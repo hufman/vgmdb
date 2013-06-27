@@ -20,7 +20,7 @@
       {% for letter in data.letters -%}
       {% if filterkey == None or filterkey == letter -%}
       {% for org in data.orgs[letter] -%}
-      <li resource="{{org.link | linkhref}}#subject" typeof="foaf:Organization schema:Organization"><span property="schema:name foaf:name"><a href="{{org.link | linkhref}}">{{org.name}}</a></span>
+      <li resource="{{org.link | linkhref}}#subject" typeof="foaf:Organization schema:Organization"><a resource="{{org.link | linkhref}}#subject" href="{{org.link | linkhref}}" class="names">{{org.names | lang_names(rel='schema:name foaf:name')}}</a>
       {%- if org.formerly %}
       <div style="margin-left: 15px; font-size: 80%">Formerly: {{ list_names(org.formerly, name_rel="foaf:Organization schema:Organization") }}</div>
       {% endif -%}

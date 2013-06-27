@@ -41,7 +41,7 @@ def _parse_artist_info(soup_cell, append_target):
 		link = soup_artist['href']
 		name = soup_artist.string
 		artist_info = {'link':link,
-		               'name':name}
+		               'names':{'en':name}}
 		if soup_cell.span:
 			name_real = soup_cell.span.string
 			artist_info['name_real'] = name_real

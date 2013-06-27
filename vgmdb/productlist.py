@@ -52,5 +52,5 @@ def _parse_product(soup_row):
 
 	return {'link':product_link,
 	        'type': product_type,
-	        'name': product_name}
+	        'names': {'en':product_name}}
 

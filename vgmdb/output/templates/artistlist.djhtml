@@ -18,7 +18,7 @@
   <div>
     <ul class="unstyled csscolumns-200 stripey">
       {% for artist in data.artists -%}
-      <li><a about="{{artist.link|linkhref}}#subject" typeof="schema:MusicGroup" href="{{artist.link|linkhref}}"><span property="foaf:name">{{artist.name}}</span></a>
+      <li resource="{{artist.link|linkhref}}#subject" typeof="schema:MusicGroup"><a resource="{{artist.link|linkhref}}#subject" href="{{artist.link|linkhref}}" class="names">{{artist.names | lang_names(rel='foaf:name')}}</a>
       {%- if artist.name_real %} ({{artist.name_real}}){%- endif -%}
       </li>
       {% endfor -%}

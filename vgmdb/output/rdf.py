@@ -358,22 +358,20 @@ def generate_artistlist(config, data):
 	g = Graph('IOMemory', BNode())
 	for artist_data in data['artists']:
 		artist = URIRef(link(artist_data['link'])+"#subject")
-		g.add((artist, FOAF.name, Literal(artist_data['name'])))
+		add_lang_names(g, artist, artist_data['names'], rel=[FOAF.name])
 		g.add((artist, RDF.type, SCHEMA.MusicGroup))
 	return g
 def generate_productlist(config, data):
 	g = Graph('IOMemory', BNode())
 	for product_data in data['products']:
 		product = URIRef(link(product_data['link'])+"#subject")
-		g.add((product, SCHEMA.name, Literal(product_data['name'])))
-		g.add((product, DCTERMS.title, Literal(product_data['name'])))
+		add_lang_names(g, product, product_data['names'], rel=[SCHEMA.name, DCTERMS.title])
 		g.add((product, RDF.type, SCHEMA.CreativeWork))
 	return g
 def generate_orglist(config, data):
 	def add_org_tuple(g, org_data):
 		org = URIRef(link(org_data['link'])+"#subject")
-		g.add((org, SCHEMA.name, Literal(org_data['name'])))
-		g.add((org, FOAF.name, Literal(org_data['name'])))
+		add_lang_names(g, org, org_data['names'], rel=[FOAF.name, SCHEMA.name])
 		g.add((org, RDF.type, SCHEMA.Organization))
 		g.add((org, RDF.type, FOAF.Organization))
 	g = Graph('IOMemory', BNode())
@@ -381,7 +379,7 @@ def generate_orglist(config, data):
 		for org_data in data['orgs'][letter]:
 			add_org_tuple(g, org_data)
 			for key in org_data.keys():
-				if key in ['link','name']:
+				if key in ['link','names']:
 					continue
 				for org in org_data[key]:
 					add_org_tuple(g, org)

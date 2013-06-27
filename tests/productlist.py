@@ -15,6 +15,6 @@ class TestProductList(unittest.TestCase):
 		list = productlist.parse_productlist_page(list_code)
 
 		self.assertEqual(u"/product/856", list['products'][0]['link'])
-		self.assertEqual(u"Darius", list['products'][0]['name'])
+		self.assertEqual(u"Darius", list['products'][0]['names']['en'])
 		self.assertEqual(u"Franchise", list['products'][0]['type'])
 		self.assertEqual(30, len(list['products']))

@@ -61,4 +61,4 @@ def _parse_orglink(soup_link):
 	org_link = utils.trim_absolute(org_link)
 	org_name = soup_link.string
 	return {'link': org_link,
-	        'name': org_name}
+	        'names': {'en':org_name}}

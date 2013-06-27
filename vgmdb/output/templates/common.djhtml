@@ -2,7 +2,11 @@
       <ul class="unstyled"{{(' rev="%s"'%rev)|safe if rev}}{{(' rel="%s"'%rel)|safe if rel}}>
         {% for name in names -%}
         <li>
+            {% if name.names -%}
+            {{ name.names|lang_names|link(name.link, name_rel) }}
+            {% else -%}
             {{ name.name|lang_names|link(name.link, name_rel) }}
+            {% endif -%}
         </li>
         {% endfor -%}
       </ul>
