@@ -72,27 +72,40 @@ def list(type,id='A'):
 	cache_key = 'vgmdb/%s/%s'%(type,id)
 	page_type = type
 	url = 'http://vgmdb.net/db/%s.php?ltr=%s&field=title&perpage=9999'%(typeurls[type],id)
-	return do_page(cache_key, page_type, url)
+	if id:
+		link = '%s/%s'%(type, id)
+	else:
+		link = '%s'%(type,)
+	return do_page(cache_key, page_type, url, link=link)
 
 @route('/<type:re:(orglist)>/<filterkey:re:[#A-Z]>')
 @route('/<type:re:(orglist)>/')
 @route('/<type:re:(orglist)>')
-def singlelist(type,filterkey=None):
+def orglist(type,filterkey=None):
 	typeurls = {'orglist': 'org'}
-	cache_key = 'vgmdb/%s'%(type)
+	cache_key = 'vgmdb/%s'%(type,)
 	page_type = type
 	url = 'http://vgmdb.net/db/%s.php'%(typeurls[type])
-	return do_page(cache_key, page_type, url, filterkey=filterkey)
+	if filterkey:
+		link = '%s/%s'%(type, urllib.quote(filterkey))
+	else:
+		link = '%s'%(type,)
+	return do_page(cache_key, page_type, url, link=link, filterkey=filterkey)
 
 @route('/<type:re:(eventlist)>/<filterkey:int>')
 @route('/<type:re:(eventlist)>/')
 @route('/<type:re:(eventlist)>')
-def singlelist(type,filterkey=None):
+def eventlist(type,filterkey=None):
 	typeurls = {'eventlist': 'events'}
-	cache_key = 'vgmdb/%s'%(type)
+	cache_key = 'vgmdb/%s'%(type,)
 	page_type = type
 	url = 'http://vgmdb.net/db/%s.php'%(typeurls[type])
-	return do_page(cache_key, page_type, url, filterkey=str(filterkey))
+	if filterkey:
+		link = '%s/%s'%(type, filterkey)
+		filterkey = str(filterkey)
+	else:
+		link = '%s'%(type,)
+	return do_page(cache_key, page_type, url, link=link, filterkey=filterkey)
 
 @route('/static/<name:path>')
 def static(name):
