@@ -1,0 +1,66 @@
+{% extends "base.djhtml" %}
+{% block htmltitle %}
+<title>Search Results</title>
+{% endblock %}
+{% block title %}
+    <h1>Search Results</h1>
+    <h3>Searched for {{data.query}}</h3>
+{% endblock %}
+{% block quickinfo %}
+{% endblock %}
+{% block body %}
+  <div>
+    <ul class="inline">
+      {% for section in data.sections -%}
+      <li><a href="search/{{section | urlencode}}/{{data.query | urlencode}}">{{section}} ({{data.results[section] | count}} results)</a></li>
+      {% endfor -%}
+    </ul>
+  </div>
+  <div>
+    {% for section in data.sections -%}
+    {% if section == 'albums' and (filterkey == None or filterkey == section) -%}
+    <h3>{{data.results['albums'] | count}} album results</h3>
+    <div class="discography">
+    {{ discography(data.results['albums'], rel=None, rev=None, include_roles=False) -}}
+    </div>
+    {% endif -%}
+    {% if section == 'artists' and (filterkey == None or filterkey == section) -%}
+    <h3>{{data.results['artists'] | count}} artist results</h3>
+    <ul class="unstyled">
+      {% for artist in data.results['artists'] -%}
+      <li resource="{{artist.link | linkhref}}#subject" typeof="schema:MusicGroup">
+        <span class="names">{{artist.names | lang_names | link(artist.link)}}</span>
+        {% if artist.aliases -%}
+        <small><ul class="inline slashlist" style="display:inline">
+          {% for alias in artist.aliases -%}
+          <li>{{alias}}</li>
+          {% endfor -%}
+        </ul></small>
+        {% endif -%}
+      </li>
+      {% endfor -%}
+    </ul>
+    {% endif -%}
+    {% if section == 'orgs' and (filterkey == None or filterkey == section) -%}
+    <h3>{{data.results['orgs'] | count}} label results</h3>
+    <ul class="unstyled">
+      {% for org in data.results['orgs'] -%}
+      <li resource="{{org.link | linkhref}}#subject" typeof="foaf:Organization schema:Organization">
+        <span class="names">{{org.names | lang_names(rel="schema:name foaf:name") | link(org.link)}}</span>
+      </li>
+      {% endfor -%}
+    </ul>
+    {% endif -%}
+    {% if section == 'products' and (filterkey == None or filterkey == section) -%}
+    <h3>{{data.results['products'] | count}} product results</h3>
+    <ul class="unstyled">
+      {% for product in data.results['products'] -%}
+      <li resource="{{product.link | linkhref}}#subject" typeof="schema:CreativeWork">
+        <span class="names">{{product.names | lang_names(rel="schema:name dcterms:title") | link(product.link)}}</span>
+      </li>
+      {% endfor -%}
+    </ul>
+    {% endif -%}
+    {% endfor -%}
+  </div>
+{% endblock %}

@@ -408,3 +408,10 @@ def generate_eventlist(config, data):
 		g.add((release_event, RDF.type, TL.Instant))
 		g.add((release_event, TL.at, Literal(event_data['startdate'], datatype=XSD.date)))
 	return g
+def generate_search(config, data):
+	g = Graph('IOMemory', BNode())
+	for section in data['results'].keys():
+		generator = globals()['generate_%slist'%(section[:-1],)]
+		subg = generator(config, data['results'])
+		g += subg
+	return g

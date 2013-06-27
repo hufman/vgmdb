@@ -13,6 +13,7 @@ import vgmdb.artistlist
 import vgmdb.productlist
 import vgmdb.orglist
 import vgmdb.eventlist
+import vgmdb.search
 
 import vgmdb.cache
 import vgmdb.output
@@ -105,6 +106,20 @@ def eventlist(type,filterkey=None):
 		filterkey = str(filterkey)
 	else:
 		link = '%s'%(type,)
+	return do_page(cache_key, page_type, url, link=link, filterkey=filterkey)
+
+@route('/search/<type:re:(albums|artists|orgs|products)>/<query>')
+@route('/search/<query>')
+def search(type=None, query=None):
+	file('/tmp/log','w').write("Found type %s"%type)
+	cache_key = 'vgmdb/search/%s'%(query,)
+	page_type = 'search'
+	url = 'http://vgmdb.net/search?q=%s'%(urllib.quote(query))
+	if type:
+		link = 'search/%s/%s'%(type,urllib.quote(query))
+	else:
+		link = 'search/%s'%(urllib.quote(query),)
+	filterkey = type
 	return do_page(cache_key, page_type, url, link=link, filterkey=filterkey)
 
 @route('/static/<name:path>')
