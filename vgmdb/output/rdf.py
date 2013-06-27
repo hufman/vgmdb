@@ -375,26 +375,36 @@ def generate_orglist(config, data):
 		g.add((org, RDF.type, SCHEMA.Organization))
 		g.add((org, RDF.type, FOAF.Organization))
 	g = Graph('IOMemory', BNode())
-	for letter in data['orgs'].keys():
-		for org_data in data['orgs'][letter]:
-			add_org_tuple(g, org_data)
-			for key in org_data.keys():
-				if key in ['link','names']:
-					continue
-				for org in org_data[key]:
-					add_org_tuple(g, org)
+	if isinstance(data['orgs'], list):
+		orglist = data['orgs']
+	else:
+		orglist = []
+		for letter in data['orgs'].keys():
+			orglist.extend(data['orgs'][letter])
+	for org_data in orglist:
+		add_org_tuple(g, org_data)
+		for key in org_data.keys():
+			if key in ['link','names']:
+				continue
+			for extra_org in org_data[key]:
+				add_org_tuple(g, extra_org)
 	return g
 def generate_eventlist(config, data):
 	g = Graph('IOMemory', BNode())
-	for year in data['events'].keys():
-		for event_data in data['events'][year]:
-			event = URIRef(link(event_data['link'])+"#subject")
-			add_lang_names(g, event, event_data['names'], rel=[SCHEMA.name])
-			g.add((event, RDF.type, SCHEMA.MusicEvent))
-			g.add((event, RDF.type, MO.ReleaseEvent))
-			g.add((event, SCHEMA.startDate, Literal(event_data['startdate'], datatype=XSD.date)))
-			release_event = URIRef(link(event_data['link'])+"#release_event")
-			g.add((event, EVENT.time, release_event))
-			g.add((release_event, RDF.type, TL.Instant))
-			g.add((release_event, TL.at, Literal(event_data['startdate'], datatype=XSD.date)))
+	if isinstance(data['events'], list):
+		eventlist = data['events']
+	else:
+		eventlist = []
+		for year in data['events'].keys():
+			eventlist.extend(data['events'][year])
+	for event_data in eventlist:
+		event = URIRef(link(event_data['link'])+"#subject")
+		add_lang_names(g, event, event_data['names'], rel=[SCHEMA.name])
+		g.add((event, RDF.type, SCHEMA.MusicEvent))
+		g.add((event, RDF.type, MO.ReleaseEvent))
+		g.add((event, SCHEMA.startDate, Literal(event_data['startdate'], datatype=XSD.date)))
+		release_event = URIRef(link(event_data['link'])+"#release_event")
+		g.add((event, EVENT.time, release_event))
+		g.add((release_event, RDF.type, TL.Instant))
+		g.add((release_event, TL.at, Literal(event_data['startdate'], datatype=XSD.date)))
 	return g
