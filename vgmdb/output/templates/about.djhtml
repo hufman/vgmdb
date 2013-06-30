@@ -1,0 +1,33 @@
+{% extends "base.djhtml" %}
+{% block htmltitle %}
+<title>VGMdb</title>
+{% endblock %}
+{% block title %}
+    <h1>What Is This Then</h1>
+{% endblock %}
+{% block quickinfo %}
+{% endblock %}
+{% block body %}
+<p>
+VGMdb.net is an excellent resource, containing gigabytes of information about video game music. It documents the relationships between games, albums that represent games, and all the people that contributed to an album.
+</p>
+<p>
+However, VGMdb does not provide an API to access its information, which provides an obstacle to programs that want to use its information. This site is a way to programmatically access the information on VGMdb.net.
+</p>
+<p>
+VGMdb.net stores the information of each item at a friendly URL, such as <a href="http://vgmdb.net/album/79">album/79</a> or <a href="http://vgmdb.net/artist/137">artist/137</a>. This friendly url will work on this site, such as <a href="album/79">album/79</a> or <a href="artist/137">artist/137</a>. Once there, an overview of the item's information can be found, along with a few extra features.
+</p>
+<p>
+In the right sidebar, there are links to view the page's information in different formats. The raw information that has been parsed out of the original VGMdb.net item is available in JSON format by adding ?format=json to any URL. The YAML format is also available for this information, available by adding ?format=yaml.
+</p>
+<p>
+Additionally, an effort has been made to produce RDF tuples representing some of the information in VGMdb. The default HTML view of the data has RDFa encoded into it, allowing any RDFa library to parse the page. Additionally, RDF/XML and Turtle serialization formats are available.
+</p>
+<p>
+The page will produce the output format that most-closely matches the request's HTTP Accept header. A particular format can be forced by adding ?format=html, ?format=xml, or ?format=turtle arguments to the URL.
+</p>
+<p>
+There are also links to validation services, to verify that the page's data is in fact valid and parseable in the respective formats. This main page doesn't produce any other formats, but every other page does.
+</p>
+
+{% endblock %}

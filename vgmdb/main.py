@@ -123,6 +123,13 @@ def search(type=None, query=None):
 	filterkey = type
 	return do_page(cache_key, page_type, url, link=link, filterkey=filterkey)
 
+@route('/')
+@route('/about')
+def about():
+	outputter = vgmdb.output.get_outputter('html', None)
+	response.content_type = outputter.content_type
+	return outputter('about', {}, None)
+
 @route('/static/<name:path>')
 def static(name):
 	return static_file(name, root='./static')
