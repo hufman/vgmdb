@@ -19,6 +19,8 @@ class TestProducts(unittest.TestCase):
 		self.assertEqual(u"JPY (Japan)", skyrim['releases'][3]['region'])
 		self.assertEqual(u"Gaming Fantasy", skyrim['albums'][3]['titles']['en'])
 		self.assertEqual("2012-09-12T18:46", skyrim['meta']['added_date'])
+		self.assertEqual("http://vgmdb.net/db/assets/logos/1387-pr-1347504448.jpg", skyrim['picture_full'])
+		self.assertEqual("http://vgmdb.net/db/assets/logos-medium/1387-pr-1347504448.jpg", skyrim['picture_small'])
 
 	def test_witcher(self):
 		witcher_code = file(os.path.join(base, 'product_witcher.html'), 'r').read()
@@ -40,6 +42,7 @@ class TestProducts(unittest.TestCase):
 		self.assertEqual(u"Ar tonelico: Melody of Elemia", at['titles'][0]['names']['en'])
 		self.assertEqual(u"/product/566", at['titles'][0]['link'])
 		self.assertEqual(u"2010-12-26T03:20", at['meta']['added_date'])
+		self.assertTrue(not at.has_key('picture_full'))
 		two = [at['albums'][32], at['albums'][33]]
 		for thing in two:	# two albums released on the same date, hard to sort
 			if thing['link'] == '/album/20283':

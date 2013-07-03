@@ -28,6 +28,8 @@ class TestOrgs(unittest.TestCase):
 		self.assertEqual(u"2008-03-19", dogear['releases'][1]['date'])
 		self.assertEqual(u"Publisher", dogear['releases'][1]['role'])
 		self.assertEqual(True, dogear['releases'][19]['reprint'])
+		self.assertEqual(u"http://vgmdb.net/db/assets/logos-medium/135-1246205463.gif", dogear['picture_small'])
+		self.assertEqual(u"http://vgmdb.net/db/assets/logos/135-1246205463.gif", dogear['picture_full'])
 
 	def test_vagrancy(self):
 		vagrancy_code = file(os.path.join(base, 'org_vagrancy.html'), 'r').read()

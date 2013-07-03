@@ -48,6 +48,8 @@ class TestAlbums(unittest.TestCase):
 		self.assertEqual(u"PC", ff8['platforms'][0])
 		self.assertEqual(u"RPGFan's Review", ff8['websites']['Review'][0]['name'])
 		self.assertEqual(u"Front", ff8['covers'][0]['name'])
+		self.assertEqual(u"http://vgmdb.net/db/assets/covers-medium/7/9/79-1190730814.jpg", ff8['picture_small'])
+		self.assertEqual(u"http://vgmdb.net/db/assets/covers/7/9/79-1190730814.jpg", ff8['picture_full'])
 		self.assertEqual(u"http://vgmdb.net/db/assets/covers-thumb/7/9/79-1190730814.jpg", ff8['covers'][0]['thumb'])
 		self.assertEqual(u"http://vgmdb.net/db/assets/covers-medium/7/9/79-1190730814.jpg", ff8['covers'][0]['medium'])
 		self.assertEqual(u"http://vgmdb.net/db/assets/covers/7/9/79-1190730814.jpg", ff8['covers'][0]['full'])
