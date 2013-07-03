@@ -1,5 +1,6 @@
 
 import bs4
+import urlparse
 
 def fix_invalid_table(html_source):
 	# fix missing </table>
@@ -166,6 +167,8 @@ def trim_absolute(link):
 	if link[0:7]=="http://":
 		link = link[len("http://vgmdb.net"):]
 	return link
+def force_absolute(link):
+	return urlparse.urljoin('http://vgmdb.net/', link)
 
 def parse_discography(soup_disco_table, label_type='roles'):
 	"""

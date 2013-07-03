@@ -325,7 +325,7 @@ def _parse_section_covers(soup_covers):
 				soup_link = soup_cell.a
 				if not soup_link:
 					continue
-				medium_link = soup_cell.a['href']
+				medium_link = utils.force_absolute(soup_cell.a['href'])
 				full_link = medium_link.replace('-medium', '')
 				thumb_link = medium_link.replace('-medium', '-thumb')
 				if soup_cell.a.h4.string:
