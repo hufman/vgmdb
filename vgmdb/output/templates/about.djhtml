@@ -29,5 +29,8 @@ The page will produce the output format that most-closely matches the request's 
 <p>
 There are also links to validation services, to verify that the page's data is in fact valid and parseable in the respective formats. This main page doesn't produce any other formats, but every other page does.
 </p>
+<p>
+Hosted at <a href="https://github.com/hufman/vgmdb">GitHub</a> for your pleasure.
+</p>
 
 {% endblock %}
