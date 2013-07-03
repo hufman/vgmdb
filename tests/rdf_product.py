@@ -24,7 +24,10 @@ class TestProductRDF(TestRDF):
 			"select ?catalog where { ?album mo:catalogue_number \"JOY-552\" . ?album mo:catalogue_number ?catalog . } " : "JOY-552",
 			"select ?name where { ?album mo:catalogue_number \"JOY-552\" . ?album dcterms:title ?name . filter(lang(?name)='en') } " : "A Bard's Side Quest",
 			"select ?date where { ?album mo:catalogue_number \"JOY-552\" . ?album dcterms:created ?date . } " : datetime.date(2013,01,18),
-			"select ?about where { ?album mo:catalogue_number \"JOY-552\" . ?album schema:about ?about . } " : "<@base#subject>"
+			"select ?about where { ?album mo:catalogue_number \"JOY-552\" . ?album schema:about ?about . } " : "<@base#subject>",
+			"select ?image where { <@base#subject> foaf:depiction ?image . } " : "<http://vgmdb.net/db/assets/logos/1387-pr-1347504448.jpg>",
+			"select ?image where { ?image foaf:depicts <@base#subject> . } " : "<http://vgmdb.net/db/assets/logos/1387-pr-1347504448.jpg>",
+			"select ?thumb where { <@base#subject> foaf:depiction ?image . ?image foaf:thumbnail ?thumb . } " : "<http://vgmdb.net/db/assets/logos-medium/1387-pr-1347504448.jpg>"
 		}
 
 		self.run_tests(graph, test_count_results, test_first_result)

@@ -51,7 +51,10 @@ class TestAlbumsRDF(TestRDF):
 			"select ?composer where { <@base#composition> mo:composer ?composer . }" : "<@base/artist/77#subject>",
 			"select ?name where { <@base#composition> mo:composer ?composer . ?composer foaf:name ?name . filter(lang(?name)='en') }" : "Nobuo Uematsu",
 			"select ?composition where { <@base/artist/77#subject> foaf:made ?composition . }" : "<@base#composition>",
-			"select ?rating where { <@base#subject> schema:aggregateRating ?agg . ?agg schema:ratingValue ?rating . }" : "4.47"
+			"select ?rating where { <@base#subject> schema:aggregateRating ?agg . ?agg schema:ratingValue ?rating . }" : "4.47",
+			"select ?cover where { <@base#subject> foaf:depiction ?cover . }" : "<http://vgmdb.net/db/assets/covers/7/9/79-1190730814.jpg>",
+			"select ?cover where { ?cover foaf:depicts <@base#subject> . }" : "<http://vgmdb.net/db/assets/covers/7/9/79-1190730814.jpg>",
+			"select ?thumb where { <@base#subject> foaf:depiction ?cover . ?cover foaf:thumbnail ?thumb }" : "<http://vgmdb.net/db/assets/covers-medium/7/9/79-1190730814.jpg>"
 		}
 
 		self.run_tests(graph, test_count_results, test_first_result)
