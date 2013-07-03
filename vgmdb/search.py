@@ -1,5 +1,6 @@
 import bs4
 
+import re
 from . import utils
 
 def parse_search_page(html_source):
@@ -30,11 +31,9 @@ def parse_search_page(html_source):
 		search_info['results'][section_type] = parse(soup_section)
 
 	# parse the query
-	title = soup.find('title').string
-	left_index = title.find('"')
-	right_index = title.rfind('"')
-	query = title[left_index+1:right_index]
-	search_info['query'] = query
+	match = re.search(r'\$\("#simplesearch"\).val\(\'(.*)\'\);', html_source)
+	if match:
+		search_info['query'] = match.groups(1)[0]
 
 	# parse page meat
 	search_info['meta'] = {}
