@@ -3,6 +3,13 @@
     <h1 typeof="foaf:Organization schema:Organization" about="{{data.link | linkhref}}#subject"><span property="foaf:name schema:name">{{data.name}}</span></h1>
 {% endblock %}
 {% block quickinfo %}
+    {% if data.picture_full -%}
+    <div class="boxsection thumbnail-container">
+      <a class="thumbnail" rel="foaf:depiction" rev="foaf:depicts" typeof="foaf:Image" href="{{data.picture_full}}">
+        <img rel="foaf:thumbnail" src="{{data.picture_small}}" />
+      </a>
+    </div>
+    {% endif -%}
     <div class="boxsection">
       <dl class="dl-horizontal">
         <dt>Region</dt>

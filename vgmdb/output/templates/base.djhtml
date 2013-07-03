@@ -187,6 +187,12 @@ td.list li:last-child:after {content: ""}
 .slashlist li:before {
 	content: "/ "
 }
+.thumbnail-container {
+	text-align: center;
+}
+.thumbnail-container .thumbnail {
+	display: inline-block;
+}
 
     </style>
   </head>

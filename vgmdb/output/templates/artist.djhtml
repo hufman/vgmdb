@@ -3,6 +3,13 @@
     <h1 typeof="{{data | artist_type}}" resource="{{data.link | linkhref}}#subject"><span property="foaf:name">{{data.name}}</span></h1>
 {% endblock %}
 {% block quickinfo %}
+      {% if data.picture_full -%}
+      <div class="boxsection thumbnail-container">
+        <a class="thumbnail" rel="foaf:depiction" rev="foaf:depicts" typeof="foaf:Image" href="{{data.picture_full}}">
+          <img rel="foaf:thumbnail" src="{{data.picture_small}}" />
+        </a>
+      </div>
+      {% endif -%}
       {% if data.birthdate -%}
       <div class="boxsection" resource="{{data.link | linkhref}}#birthinfo" typeof="bio:birth">
         <span property="bio:principal" resource="{{data.link | linkhref}}#subject"></span>
