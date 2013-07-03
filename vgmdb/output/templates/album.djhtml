@@ -71,12 +71,22 @@
       </div>
       <h2>People</h2>
       <dl>
+        {% if data.composers -%}
         <dt>Composers</dt>
         <dd resource="{{data.link | linkhref}}#composition" class="names">{{ list_names(data.composers, rel="mo:composer", rev="foaf:made") }}</dd>
+        {% endif -%}
+        {% if data.performers -%}
         <dt>Performers</dt>
         <dd resource="{{data.link | linkhref}}#performance" class="names">{{ list_names(data.performers, rel="mo:performer", rev="mo:performed") }}</dd>
+        {% endif -%}
+        {% if data.lyricists -%}
         <dt>Lyricists</dt>
         <dd resource="{{data.link | linkhref}}#lyrics" class="names">{{ list_names(data.lyricists, rev="foaf:made") }}</dd>
+        {% endif -%}
+        {% if data.arrangers -%}
+        <dt>Arrangers</dt>
+        <dd class="names">{{ list_names(data.arrangers) }}</dd>
+        {% endif -%}
       </dl>
     </div>
     <div id="tracklist" resource="{{data.link | linkhref}}#subject">
