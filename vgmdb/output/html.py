@@ -75,13 +75,13 @@ def linkhref(link):
 def absolute_linkhref(link):
 	return urlparse.urljoin(vgmdb.config.BASE_URL, linkhref(link))
 
-def resource_attr(href, type='resource'):
+def resource_attr(href, type='resource', hash="subject"):
 	if href != None and len(href)>0:
-		return Markup("%s=\"%s\""%(type,link_subject(href)))
+		return Markup("%s=\"%s\""%(type,link_subject(href, hash)))
 	return ''
-def link_subject(href):
+def link_subject(href, hash="subject"):
 	if href != None and len(href)>0:
-		return linkhref(href) + "#subject"
+		return linkhref(href) + "#" + hash
 	return ''
 def link_artist(name, href, typeof="foaf:Person"):
 	return link(name, href, typeof)

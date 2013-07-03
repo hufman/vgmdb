@@ -79,6 +79,14 @@ def add_discography(g, subject, albums, rel=[FOAF.made, SCHEMA.album], rev=[]):
 			g.add((subject, pred, albumlink))
 		for pred in rev:
 			g.add((albumlink, pred, subject))
+		if 'Composer' in album['roles'] and album.has_key('link'):
+			g.add((subject, FOAF.made, URIRef(link(album['link'])+"#composition")))
+			g.add((URIRef(link(album['link'])+"#composition"), MO.composer, subject))
+		if 'Performer' in album['roles'] and album.has_key('link'):
+			g.add((subject, MO.performed, URIRef(link(album['link'])+"#performance")))
+			g.add((URIRef(link(album['link'])+"#performance"), MO.performer, subject))
+		if 'Lyricist' in album['roles'] and album.has_key('link'):
+			g.add((subject, FOAF.made, URIRef(link(album['link'])+"#lyrics")))
 
 def generate_artist(config, data):
 	if data.has_key('link'):

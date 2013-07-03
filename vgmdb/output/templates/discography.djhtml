@@ -1,4 +1,19 @@
 {% macro discography(discography, rel="foaf:made schema:album", property=None, rev=None, include_roles=True, include_publisher=False) -%}
+      {% if include_roles -%}
+      <div class="metadata">
+      {%- for disc in discography -%}
+      {%- for role in disc.roles -%}
+        {% if role == 'Composer' -%}
+        <div rel="foaf:made" rev="mo:composer"><div {{disc.link | linkhref | resource_attr(hash='composition')}} typeof="mo:Composition"></div></div>
+        {% elif role == 'Performer' -%}
+        <div rel="mo:performed" rev="mo:performer"><div {{disc.link | linkhref | resource_attr(hash='performance')}} typeof="mo:Performance"></div></div>
+        {% elif role == 'Lyricist' -%}
+        <div rel="foaf:made"><div {{disc.link | linkhref | resource_attr(hash='lyrics')}} typeof="mo:Lyrics"></div></div>
+        {% endif -%}
+      {%- endfor -%}
+      {%- endfor -%}
+      </div>
+      {%- endif -%}
       <table class="table table-condensed table-striped">
         <thead>
           <tr>
