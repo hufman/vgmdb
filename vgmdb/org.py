@@ -22,6 +22,11 @@ def parse_org_page(html_source):
 	else:
 		org_info['name'] = ''
 
+	if soup_pic_div.a and soup_pic_div.a.img:
+		full_link = soup_pic_div.a['href']
+		medium_link = soup_pic_div.a.img['src']
+		org_info['picture_full'] = utils.force_absolute(full_link)
+		org_info['picture_small'] = utils.force_absolute(medium_link)
 	org_info.update(_parse_org_info(soup_info_div.div.div.dl))
 
 	org_info['releases'] = _parse_org_releases(soup_table)

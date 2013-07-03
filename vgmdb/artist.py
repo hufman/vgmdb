@@ -34,9 +34,9 @@ def parse_artist_page(html_source):
 
 	# Parse picture
 	soup_picture = soup_profile_left.div.a
-	if soup_picture:
-		artist_info['picture_full'] = soup_picture['href']
-		artist_info['picture_small'] = soup_picture.img['src']
+	if soup_picture and soup_picture.img:
+		artist_info['picture_full'] = utils.force_absolute(soup_picture['href'])
+		artist_info['picture_small'] = utils.force_absolute(soup_picture.img['src'])
 
 	# Parse info
 	artist_info['info'] = _parse_profile_info(soup_profile_left)

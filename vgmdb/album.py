@@ -15,6 +15,14 @@ def parse_album_page(html_source):
 	soup_names = soup_profile.h1
 	album_info['name'] = utils.parse_names(soup_names)
 
+	# main cover
+	soup_cover = soup_profile.find(id='leftfloat').find('img')
+	if soup_cover:
+		medium_link = utils.force_absolute(soup_cover['src'])
+		full_link = medium_link.replace('-medium', '')
+		album_info['picture_small'] = medium_link
+		album_info['picture_full'] = full_link
+
 	# main info header
 	soup_info = soup_profile.find(id='rightfloat').div.div.table
 	album_info.update(_parse_album_info(soup_info))

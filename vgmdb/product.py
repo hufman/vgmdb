@@ -29,6 +29,13 @@ def parse_product_page(html_source):
 		soup_profile = soup_profile.find(id='innermain')
 	soup_profile_sections = soup_profile.find_all('div', recursive=False)
 
+	soup_pic_div = soup_profile_sections[0]
+	if soup_pic_div.a and soup_pic_div.a.img:
+		full_link = soup_pic_div.a['href']
+		medium_link = soup_pic_div.a.img['src']
+		product_info['picture_full'] = utils.force_absolute(full_link)
+		product_info['picture_small'] = utils.force_absolute(medium_link)
+
 	if soup_profile.find('h3').find_previous_sibling('div'):	# full profile
 		soup_profile_info = soup_profile_sections[1].div.dl
 		product_info.update(_parse_product_info(soup_profile_info))
