@@ -3,10 +3,6 @@
 
 import sys, os, bottle
 
-base = os.path.dirname(__file__)
-sys.path = [base] + sys.path
-os.chdir(base)
-
 import vgmdb.main
 application = bottle.default_app()
 
