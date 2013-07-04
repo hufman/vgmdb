@@ -53,6 +53,7 @@ def do_page(cache_key, page_type, url, link=None, filterkey=None):
 	requested_format = request.query.format or ''
 	outputter = vgmdb.output.get_outputter(requested_format, request.headers.get('Accept'))
 	response.content_type = outputter.content_type
+	response.set_header('Cache-Control', 'max-age:3600,public')
 	return outputter(page_type, info, filterkey)
 
 @route('/<type:re:(artist|album|product|event|org)>/<id:int>')
@@ -132,4 +133,5 @@ def about():
 
 @route('/static/<name:path>')
 def static(name):
+	response.set_header('Cache-Control', 'max-age:3600,public')
 	return static_file(name, root='./static')

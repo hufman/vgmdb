@@ -1,0 +1,183 @@
+.metadata {display: none}
+.names span {display: none}
+.names span:first-child {display: inline}
+dt {font-weight: bold}
+td.list ul {display: inline; padding:0}
+td.list li {display: inline}
+td.list li:after {content: ", "}
+td.list li:last-child:after {content: ""}
+
+.content {
+	margin: 20px 50px;
+}
+.sidebar {
+	float: right;
+	width: 350px;
+	margin-top: 15px;
+	margin-left: 20px;
+}
+.box {
+	margin: 15px 0;
+	padding: 0;
+	border: 1px solid #ddd;
+	overflow: auto;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+.box > .boxsection {
+	padding: 0 19px 14px;
+	margin-top: 14px;
+	margin-bottom: 10px;
+	border-bottom: 1px solid #e2e2e2;
+	overflow: auto;
+	-webkit-border-radius: 0 0 4px 4px;
+	-moz-border-radius: 0 0 4px 4px;
+	border-radius: 0 0 4px 4px;
+}
+.box > .boxsection:last-child {
+	border-bottom: 0;
+}
+.box > .boxsection:empty {
+	margin: 0;
+	border: 0;
+	padding: 0;
+}
+.box dl {
+	margin: 0;
+}
+.box ul {
+	margin: 0;
+}
+@media (max-width: 767px) {
+	.dl-horizontal dt {
+		float: left;
+		clear: both;
+		text-align: right;
+	}
+}
+.dl-horizontal dt {
+	width: 110px;
+	margin-bottom: 5px;
+}
+.dl-horizontal dd {
+	margin-left: 125px;
+	width: 150px;
+	margin-bottom: 5px;
+}
+.table {
+	width: auto;
+	max-width: 1000px;
+}
+.discography .cell-date {
+	width: 60pt;
+}
+.discography .cell-catalog {
+	width: 90pt;
+}
+.discography .cell-name {
+	min-width: 200px;
+}
+
+.popup {
+	display: none;
+}
+*:hover + .popup {
+	display: block;
+	position: absolute;
+	margin-left: -20px;
+	background-color: rgba(240,240,240,0.9);
+	border: 1px #ddd solid;
+	border-radius: 5px;
+	z-index: 100;
+	padding: 7px;
+}
+
+#info:empty {
+	margin: 0;
+	border: 0;
+	padding: 0;
+}
+
+.format {
+	display: block;
+	padding: 0;
+	margin: 0;
+}
+.format li {
+	list-style: none;
+	display: inline-block;
+	padding: 1px 3px;
+	background: #EE8522;
+	border: 1px #444 solid;
+	line-height: 8pt;
+	color: white;
+	height: 10px;
+}
+.format a {
+	color: inherit;
+	font-weight: bold;
+	text-decoration: none;
+	font-size: 8pt;
+	border: 0;
+	display: inline-block;
+	text-transform: uppercase;
+}
+.format .rdfxml {
+	display: inline-block;
+	background-image: url(http://www.w3.org/Icons/SW/Buttons/sw-rdf-green-v.svg);
+	background-size: auto auto;
+	width: 73px;
+	padding: 0;
+	border: 0;
+	line-height: 10pt;
+	height: 14px;
+	color: rgba(0,0,0,0);
+}
+.format .rdfxml a {
+	display: inline-block;
+	width: 73px;
+}
+.format .rdfa {
+	display: inline-block;
+	background-image: url(http://www.w3.org/Icons/SW/Buttons/sw-rdfa-orange-v.svg);
+	background-size: auto auto;
+	width: 73px;
+	padding: 0;
+	border: 0;
+	line-height: 10pt;
+	height: 14px;
+	color: rgba(0,0,0,0);
+}
+.format .rdfa a {
+	display: inline-block;
+	width: 73px;
+}
+
+.csscolumns-200 {
+	column-width: 200px;
+	-webkit-column-width: 200px;
+	-moz-column-width: 200px;
+}
+.csscolumns-200 > * {
+	margin-left: 5px;
+	margin-right: 5px;
+}
+.stripey > * {
+	border-top: 1px solid #dddddd;
+	line-height: 20px;
+	padding: 4px 5px;
+}
+.stripey > *:nth-child(even) {
+	background-color: #f9f9f9;
+}
+.slashlist li:before {
+	content: "/ "
+}
+.thumbnail-container {
+	text-align: center;
+}
+.thumbnail-container .thumbnail {
+	display: inline-block;
+}
+
