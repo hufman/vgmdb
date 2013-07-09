@@ -197,7 +197,7 @@ def generate_album(config, data):
 	g.add((composition, MO.produced_work, musicalwork))
 	g.add((musicalwork, MO.lyrics, lyrics))
 
-	add_lang_names(g, subject, data['name'], rel=[DCTERMS.title, SCHEMA.name])
+	add_lang_names(g, subject, data['names'], rel=[DCTERMS.title, SCHEMA.name])
 	if data.has_key('picture_full'):
 		img = URIRef(data['picture_full'])
 		thumb = URIRef(data['picture_small'])
@@ -218,7 +218,7 @@ def generate_album(config, data):
 		publisher = URIRef(link(data['publisher']['link'])+'#subject') if data['publisher'].has_key('link') else BNode()
 		g.add((subject, MO.publisher, publisher))
 		g.add((subject, SCHEMA.publisher, publisher))
-		add_lang_names(g, publisher, data['publisher']['name'])
+		add_lang_names(g, publisher, data['publisher']['names'])
 
 
 	for reprint in data['reprints']:
@@ -240,7 +240,7 @@ def generate_album(config, data):
 		for persondata in list:
 			person = URIRef(link(persondata['link'])+"#subject") if persondata.has_key('link') else BNode()
 			g.add((person, RDF.type, FOAF.Person))
-			add_lang_names(g, person, persondata['name'])
+			add_lang_names(g, person, persondata['names'])
 			for r in rel:
 				g.add((subject, r, person))
 			for r in rev:
@@ -257,7 +257,7 @@ def generate_album(config, data):
 			product = URIRef(link(productdata['link'])+"#subject") if productdata.has_key('link') else BNode()
 			g.add((subject, SCHEMA.about, product))
 			g.add((product, RDF.type, SCHEMA.CreativeWork))
-			add_lang_names(g, product, productdata['name'])
+			add_lang_names(g, product, productdata['names'])
 
 	g.add((subject, MO.record_count, Literal(len(data['discs']), datatype=XSD.int)))
 	index = 0
@@ -279,7 +279,7 @@ def generate_album(config, data):
 			g.add((track, RDF.type, MO.Track))
 			g.add((track, RDF.type, SCHEMA.MusicRecording))
 			g.add((track, MO.track_number, Literal(trackno, datatype=XSD.int)))
-			add_lang_names(g, track, trackdata['name'], rel=[SCHEMA.name, DCTERMS.title])
+			add_lang_names(g, track, trackdata['names'], rel=[SCHEMA.name, DCTERMS.title])
 			if trackdata.has_key('track_length') and \
 			   trackdata['track_length']:
 				interval = "PT" + trackdata['track_length']

@@ -13,7 +13,8 @@ def parse_album_page(html_source):
 
 	# parse names
 	soup_names = soup_profile.h1
-	album_info['name'] = utils.parse_names(soup_names)
+	album_info['names'] = utils.parse_names(soup_names)
+	album_info['name'] = album_info['names']['en']
 
 	# main cover
 	soup_cover = soup_profile.find(id='leftfloat').find('img')
@@ -117,15 +118,15 @@ def _parse_album_info(soup_info):
 		elif name == 'Published by':
 			soup_links = soup_value.find_all('a')
 			if len(soup_links) == 0:
-				album_info['publisher'] = {'name':soup_value.string.strip()}
+				album_info['publisher'] = {'names':{'en':soup_value.string.strip()}}
 			if len(soup_links) > 0:
 				album_info['publisher'] = {}
 				album_info['publisher']['link'] = soup_links[0]['href']
-				album_info['publisher']['name'] = utils.parse_names(soup_links[0])
+				album_info['publisher']['names'] = utils.parse_names(soup_links[0])
 			if len(soup_links) > 1:
 				album_info['distributor'] = {}
 				album_info['distributor']['link'] = soup_links[1]['href']
-				album_info['distributor']['name'] = utils.parse_names(soup_links[1])
+				album_info['distributor']['names'] = utils.parse_names(soup_links[1])
 		elif name in names_single.keys():
 			key = names_single[name]
 			soup_value = soup_value.contents[0]
@@ -138,7 +139,7 @@ def _parse_album_info(soup_info):
 				if isinstance(soup_child, bs4.Tag) and soup_child.name=='a':
 					link = {}
 					link['link'] = soup_child['href']
-					link['name'] = utils.parse_names(soup_child)
+					link['names'] = utils.parse_names(soup_child)
 					value.append(link)
 				elif isinstance(soup_child, bs4.Tag):
 					# Skipping unknown tag
@@ -146,7 +147,7 @@ def _parse_album_info(soup_info):
 				else:
 					pieces = soup_child.string.split(',')
 					pieces = [a.strip() for a in pieces if len(a.strip())>0]
-					names = [{'name':{'en':name}} for name in pieces]
+					names = [{'names':{'en':name}} for name in pieces]
 					value.extend(names)
 			album_info[key] = value
 		else:
@@ -183,8 +184,8 @@ def _parse_tracklist(soup_tracklist):
 				track_name = soup_cells[1].string
 				track_length = soup_cells[2].span.string
 				if len(discs[index]['tracks']) < track_no + 1:
-					discs[index]['tracks'].append({'name':{},'track_length':track_length})
-				discs[index]['tracks'][track_no]['name'][tab_language] = track_name
+					discs[index]['tracks'].append({'names':{},'track_length':track_length})
+				discs[index]['tracks'][track_no]['names'][tab_language] = track_name
 			soup_cur = soup_cur.find_next_sibling('span')
 			index += 1
 	return discs
@@ -252,13 +253,13 @@ def _parse_section_album_stats(soup_section):
 			for soup_product in soup_div.find_all('a', recursive=False):
 				product = {}
 				product['link'] = soup_product['href']
-				product['name'] = utils.parse_names(soup_product)
+				product['names'] = utils.parse_names(soup_product)
 				album_info['products'].append(product)
 			text = soup_div.find('br').next
 			if not isinstance(text, bs4.Tag):
 				for productname in [x.strip() for x in text.split(',') if len(x.strip())>0]:
 					product = {}
-					product['name'] = productname
+					product['names'] = {'en':productname}
 					album_info['products'].append(product)
 		if div_name == 'Platforms represented':
 			album_info['platforms'] = [plat.strip() for plat in div_value.split(',')]
@@ -287,7 +288,7 @@ def _parse_section_related_albums(soup_div):
 		album['catalog'] = catalog
 		album['link'] = link
 		album['type'] = album_type
-		album['name'] = names
+		album['names'] = names
 		if date:
 			album['date'] = date
 
