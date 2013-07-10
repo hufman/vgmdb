@@ -47,3 +47,11 @@ class TestProducts(unittest.TestCase):
 		for thing in two:	# two albums released on the same date, hard to sort
 			if thing['link'] == '/album/20283':
 				self.assertEqual(True, thing['reprint'])
+
+	def test_empty(self):
+		im_code = file(os.path.join(base, 'product_empty.html'), 'r').read()
+		im = product.parse_product_page(im_code)
+		self.assertEqual(u"PROJECT IM@S", im['name'])
+		self.assertEqual(u"プロジェクト・アイマス", im['name_real'])
+		self.assertEqual(0, len(im['titles']))
+		self.assertEqual(0, len(im['albums']))

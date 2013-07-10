@@ -101,6 +101,8 @@ def _parse_product_releases(soup_table):
 		return releases
 	for soup_row in soup_rows[1:]:
 		soup_cells = soup_row.find_all('td', recursive=False)
+		if len(soup_cells) < 4:
+			continue
 		release = {}
 		release['date'] = utils.normalize_dashed_date(soup_cells[0].span.string)
 		release['names'] = utils.parse_names(soup_cells[1].span)
@@ -119,6 +121,10 @@ def _parse_franchise_titles(soup_table):
 		return titles
 	for soup_row in soup_rows[1:]:
 		soup_cells = soup_row.find_all('td', recursive=False)
+		if len(soup_cells) < 2:
+			continue
+		if soup_cells[1].span.string == 'No titles found':
+			continue
 		title = {}
 		title['date'] = utils.normalize_dashed_date(soup_cells[0].span.string)
 		title['names'] = utils.parse_names(soup_cells[1].span)
