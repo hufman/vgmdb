@@ -2,6 +2,8 @@ import bs4
 
 from . import utils
 
+fetch_artistlist_page = utils.fetch_page
+
 def parse_artistlist_page(html_source):
 	artistlist_info = {}
 	artistlist_info['artists'] = []

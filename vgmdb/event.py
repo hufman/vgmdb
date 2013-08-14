@@ -2,6 +2,8 @@ import bs4
 
 from . import utils
 
+fetch_event_page = utils.fetch_page
+
 def parse_event_page(html_source):
 	event_info = {}
 	html_source = utils.fix_invalid_table(html_source)

@@ -6,8 +6,8 @@ import vgmdb.artist
 import json
 
 def parse_artist(artist):
-	data = urllib.urlopen('http://vgmdb.net/artist/%s'%artist).read()
-	data = data.decode('utf-8', 'ignore')
+	url = 'http://vgmdb.net/artist/%s'%artist
+	data = vgmdb.artist.fetch_artist_page(url)
 	artist_info = vgmdb.artist.parse_artist_page(data)
 	return json.dumps(artist_info, sort_keys=True, indent=4, separators=(',',': '), ensure_ascii=False)
 if __name__ == '__main__' and len(sys.argv) > 1:

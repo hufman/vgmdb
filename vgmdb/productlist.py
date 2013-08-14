@@ -2,6 +2,8 @@ import bs4
 
 from . import utils
 
+fetch_productlist_page = utils.fetch_page
+
 def parse_productlist_page(html_source):
 	productlist_info = {}
 	productlist_info['products'] = []

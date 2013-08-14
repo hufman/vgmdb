@@ -6,8 +6,8 @@ import vgmdb.eventlist
 import json
 
 def parse_eventlist():
-	data = urllib.urlopen('http://vgmdb.net/db/events.php').read()
-	data = data.decode('utf-8', 'ignore')
+	url = 'http://vgmdb.net/db/events.php'
+	data = vgmdb.eventlist.fetch_eventlist_page(url)
 	event_info = vgmdb.eventlist.parse_eventlist_page(data)
 	return json.dumps(event_info, sort_keys=True, indent=4, separators=(',',': '), ensure_ascii=False)
 if __name__ == '__main__':

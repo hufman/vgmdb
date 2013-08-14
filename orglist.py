@@ -6,8 +6,8 @@ import vgmdb.orglist
 import json
 
 def parse_orglist():
-	data = urllib.urlopen('http://vgmdb.net/db/org.php').read()
-	data = data.decode('utf-8', 'ignore')
+	url = 'http://vgmdb.net/db/org.php'
+	data = vgmdb.orglist.fetch_orglist_page(url)
 	org_info = vgmdb.orglist.parse_orglist_page(data)
 	return json.dumps(org_info, sort_keys=True, indent=4, separators=(',',': '), ensure_ascii=False)
 if __name__ == '__main__':

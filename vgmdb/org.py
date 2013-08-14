@@ -2,6 +2,8 @@ import bs4
 
 from . import utils
 
+fetch_org_page = utils.fetch_page
+
 def parse_org_page(html_source):
 	org_info = {}
 	html_source = utils.fix_invalid_table(html_source)

@@ -2,6 +2,8 @@ import bs4
 
 from . import utils
 
+fetch_albumlist_page = utils.fetch_page
+
 def parse_albumlist_page(html_source):
 	albumlist_info = {}
 	albumlist_info['albums'] = []

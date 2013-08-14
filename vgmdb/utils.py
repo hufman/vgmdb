@@ -1,6 +1,12 @@
 
 import bs4
+import urllib
 import urlparse
+
+def fetch_page(url):
+	data = urllib.urlopen(url).read()
+	data = data.decode('utf-8', 'ignore')
+	return data
 
 def fix_invalid_table(html_source):
 	# fix missing </table>

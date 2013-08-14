@@ -37,10 +37,10 @@ def do_page(cache_key, page_type, url, link=None, filterkey=None):
 	"""
 	prevdata = vgmdb.cache.get(cache_key)
 	if not prevdata:
-		data = urllib.urlopen(url).read()
-		data = data.decode('utf-8', 'ignore')	# some pages have broken utf8
 		module = getattr(vgmdb, page_type)
+		fetch_page = getattr(module, "fetch_%s_page"%page_type)
 		parse_page = getattr(module, "parse_%s_page"%page_type)
+		data = fetch_page(url)
 		info = parse_page(data)
 		if info != None:
 			if link:

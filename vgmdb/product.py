@@ -2,6 +2,8 @@ import bs4
 
 from . import utils
 
+fetch_product_page = utils.fetch_page
+
 def parse_product_page(html_source):
 	product_info = {}
 	soup = bs4.BeautifulSoup(html_source)

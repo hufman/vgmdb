@@ -2,6 +2,8 @@ import bs4
 
 from . import utils
 
+fetch_album_page = utils.fetch_page
+
 def parse_album_page(html_source):
 	album_info = {}
 	html_source = utils.fix_invalid_table(html_source)

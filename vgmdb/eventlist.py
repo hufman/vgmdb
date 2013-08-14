@@ -3,6 +3,8 @@ import bs4
 from operator import itemgetter
 from . import utils
 
+fetch_eventlist_page = utils.fetch_page
+
 def parse_eventlist_page(html_source):
 	eventlist_info = {}
 	eventlist_info['events'] = {}

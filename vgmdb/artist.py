@@ -2,6 +2,8 @@ import bs4
 
 from . import utils
 
+fetch_artist_page = utils.fetch_page
+
 def parse_artist_page(html_source):
 	artist_info = {}
 	soup = bs4.BeautifulSoup(html_source)
