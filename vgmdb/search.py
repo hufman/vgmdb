@@ -35,7 +35,7 @@ def parse_search_page(html_source):
 	# parse the query
 	match = re.search(r'\$\("#simplesearch"\).val\(\'(.*)\'\);', html_source)
 	if match:
-		search_info['query'] = match.groups(1)[0]
+		search_info['query'] = match.groups(1)[0].replace("\\'","'")
 
 	# parse page meat
 	search_info['meta'] = {}
