@@ -1,6 +1,7 @@
 from bottle import route, response, request, static_file, abort
 import urllib
 import json
+import base64
 
 import vgmdb.artist
 import vgmdb.album
@@ -114,7 +115,7 @@ def eventlist(type,filterkey=None):
 @route('/search')
 def search(type=None, query=None):
 	query = query or request.query['q']
-	cache_key = 'vgmdb/search/%s'%(query,)
+	cache_key = 'vgmdb/search/%s'%(base64.b64encode(query),)
 	page_type = 'search'
 	url = 'http://vgmdb.net/search?q=%s'%(urllib.quote(query))
 	if type:
