@@ -76,9 +76,9 @@ def list(type,id='A'):
 	page_type = type
 	url = 'http://vgmdb.net/db/%s.php?ltr=%s&field=title&perpage=9999'%(typeurls[type],id)
 	if id:
-		link = '%s/%s'%(type, id)
+		link = '/%s/%s'%(type, id)
 	else:
-		link = '%s'%(type,)
+		link = '/%s'%(type,)
 	return do_page(cache_key, page_type, url, link=link)
 
 @route('/<type:re:(orglist)>/<filterkey:re:[#A-Z]>')
@@ -90,9 +90,9 @@ def orglist(type,filterkey=None):
 	page_type = type
 	url = 'http://vgmdb.net/db/%s.php'%(typeurls[type])
 	if filterkey:
-		link = '%s/%s'%(type, urllib.quote(filterkey))
+		link = '/%s/%s'%(type, urllib.quote(filterkey))
 	else:
-		link = '%s'%(type,)
+		link = '/%s'%(type,)
 	return do_page(cache_key, page_type, url, link=link, filterkey=filterkey)
 
 @route('/<type:re:(eventlist)>/<filterkey:int>')
@@ -104,10 +104,10 @@ def eventlist(type,filterkey=None):
 	page_type = type
 	url = 'http://vgmdb.net/db/%s.php'%(typeurls[type])
 	if filterkey:
-		link = '%s/%s'%(type, filterkey)
+		link = '/%s/%s'%(type, filterkey)
 		filterkey = str(filterkey)
 	else:
-		link = '%s'%(type,)
+		link = '/%s'%(type,)
 	return do_page(cache_key, page_type, url, link=link, filterkey=filterkey)
 
 @route('/search/<type:re:(albums|artists|orgs|products)>/<query>')
@@ -119,9 +119,9 @@ def search(type=None, query=None):
 	page_type = 'search'
 	url = 'http://vgmdb.net/search?q=%s'%(urllib.quote(query))
 	if type:
-		link = 'search/%s/%s'%(type,urllib.quote(query))
+		link = '/search/%s/%s'%(type,urllib.quote(query))
 	else:
-		link = 'search/%s'%(urllib.quote(query),)
+		link = '/search/%s'%(urllib.quote(query),)
 	filterkey = type
 	return do_page(cache_key, page_type, url, link=link, filterkey=filterkey)
 
