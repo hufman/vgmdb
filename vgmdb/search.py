@@ -22,6 +22,8 @@ def parse_search_page(html_source):
 
 	# parse the section
 	for soup_section in soup_innermain.div.find_all('div'):
+		if not soup_section.has_attr('id'):
+			continue
 		section_type = soup_section['id']
 		if not section_types.has_key(section_type):
 			continue
