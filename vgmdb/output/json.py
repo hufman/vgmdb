@@ -6,7 +6,8 @@ name = 'json'
 class outputter(object):
 	content_type = 'application/json; charset=utf-8'
 
-	def __init__(self):
+	def __init__(self, config):
+		self._config = config
 		import json
 		self._json = json
 		try:

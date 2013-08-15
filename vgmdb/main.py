@@ -17,6 +17,7 @@ import vgmdb.eventlist
 import vgmdb.search
 
 import vgmdb.cache
+import vgmdb.config
 import vgmdb.output
 
 try:
@@ -52,7 +53,7 @@ def do_page(cache_key, page_type, url, link=None, filterkey=None):
 		abort(404, "Item not found")
 
 	requested_format = request.query.format or ''
-	outputter = vgmdb.output.get_outputter(requested_format, request.headers.get('Accept'))
+	outputter = vgmdb.output.get_outputter(vgmdb.config, requested_format, request.headers.get('Accept'))
 	response.content_type = outputter.content_type
 	response.set_header('Cache-Control', 'max-age:3600,public')
 	return outputter(page_type, info, filterkey)
@@ -128,7 +129,7 @@ def search(type=None, query=None):
 @route('/')
 @route('/about')
 def about():
-	outputter = vgmdb.output.get_outputter('html', None)
+	outputter = vgmdb.output.get_outputter(vgmdb.config, 'html', None)
 	response.content_type = outputter.content_type
 	return outputter('about', {}, None)
 

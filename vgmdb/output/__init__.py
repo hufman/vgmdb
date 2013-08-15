@@ -1,6 +1,6 @@
 import sys
 from vgmdb.accept import parse_accept_header
-from vgmdb.config import AUTO_RELOAD
+import vgmdb.config
 
 # import submodules
 import html
@@ -31,10 +31,10 @@ def load_module(module):
 	name = module.name
 	# try to create the outputter
 	# Skip the plugin if any errors happen
-	outputter = module.outputter()
+	test_outputter = module.outputter(vgmdb.config)
 	for type in module.mimetypes:
 		add_mime_name(type, name)
-	add_name_handler(name, outputter)
+	add_name_handler(name, module.outputter)
 	add_name_module(name, module)
 def reload_module(name):
 	global mime_names
@@ -78,10 +78,10 @@ def decide_format(forced, accept):
 		format = forced
 	return format
 
-def get_outputter(forced, accept):
+def get_outputter(config, forced, accept):
 	format = decide_format(forced, accept)
-	if AUTO_RELOAD:
+	if vgmdb.config.AUTO_RELOAD:
 		reload_module(format)
-	return name_outputters[format]
+	return name_outputters[format](config)
 
 load_plugins()

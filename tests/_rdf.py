@@ -31,7 +31,7 @@ class TestRDF(unittest.TestCase):
 	def load_data(self, filename, output_format, parse_format, filterkey=None, **parse_kwargs):
 		code = file(os.path.join(base, filename), 'r').read()
 		data = self.data_parser(code)
-		outputter = output.get_outputter(output_format, None)
+		outputter = output.get_outputter(config, output_format, None)
 		output_data = outputter(self.outputter_type, data, filterkey=filterkey)
 		debugoutput = output_data
 		if isinstance(debugoutput, unicode):
