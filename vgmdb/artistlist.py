@@ -2,7 +2,7 @@ import bs4
 
 from . import utils
 
-fetch_artistlist_page = utils.fetch_page
+fetch_artistlist_page = lambda id: utils.fetch_list_page('artists', id)
 
 def parse_artistlist_page(html_source):
 	artistlist_info = {}

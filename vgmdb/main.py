@@ -29,19 +29,20 @@ except:
 def hello():
 	return "Hello!"
 
-def do_page(cache_key, page_type, url, link=None, filterkey=None):
+def do_page(cache_key, page_type, id, link=None, filterkey=None):
 	"""
 	@param cache_key where to save the parsed data
 	@param page_type what parser and output to use
-	@param url what url to download the data from
+	@param id which particular data to request from the backend
 	@param link what short url to set as the data['link']
+	@param filterkey some pages have data that can be filtered in the output
 	"""
 	prevdata = vgmdb.cache.get(cache_key)
 	if not prevdata:
 		module = getattr(vgmdb, page_type)
 		fetch_page = getattr(module, "fetch_%s_page"%page_type)
 		parse_page = getattr(module, "parse_%s_page"%page_type)
-		data = fetch_page(url)
+		data = fetch_page(id)
 		info = parse_page(data)
 		if info != None:
 			if link:
@@ -62,54 +63,45 @@ def do_page(cache_key, page_type, url, link=None, filterkey=None):
 def info(type,id):
 	cache_key = 'vgmdb/%s/%s'%(type,id)
 	page_type = type
-	url = 'http://vgmdb.net/%s/%s?perpage=99999'%(type,id)
 	link = "/%s/%s"%(type,id)
-	return do_page(cache_key, page_type, url, link)
+	return do_page(cache_key, page_type, id, link)
 
 @route('/<type:re:(albumlist|artistlist|productlist)>/<id:re:[#A-Z]>')
 @route('/<type:re:(albumlist|artistlist|productlist)>/')
 @route('/<type:re:(albumlist|artistlist|productlist)>')
 def list(type,id='A'):
-	typeurls = {'albumlist': 'albums',
-	            'artistlist': 'artists',
-	            'productlist': 'product'}
 	cache_key = 'vgmdb/%s/%s'%(type,id)
 	page_type = type
-	url = 'http://vgmdb.net/db/%s.php?ltr=%s&field=title&perpage=9999'%(typeurls[type],id)
 	if id:
 		link = '/%s/%s'%(type, id)
 	else:
 		link = '/%s'%(type,)
-	return do_page(cache_key, page_type, url, link=link)
+	return do_page(cache_key, page_type, id, link=link)
 
 @route('/<type:re:(orglist)>/<filterkey:re:[#A-Z]>')
 @route('/<type:re:(orglist)>/')
 @route('/<type:re:(orglist)>')
 def orglist(type,filterkey=None):
-	typeurls = {'orglist': 'org'}
 	cache_key = 'vgmdb/%s'%(type,)
 	page_type = type
-	url = 'http://vgmdb.net/db/%s.php'%(typeurls[type])
 	if filterkey:
 		link = '/%s/%s'%(type, urllib.quote(filterkey))
 	else:
 		link = '/%s'%(type,)
-	return do_page(cache_key, page_type, url, link=link, filterkey=filterkey)
+	return do_page(cache_key, page_type, filterkey, link=link, filterkey=filterkey)
 
 @route('/<type:re:(eventlist)>/<filterkey:int>')
 @route('/<type:re:(eventlist)>/')
 @route('/<type:re:(eventlist)>')
 def eventlist(type,filterkey=None):
-	typeurls = {'eventlist': 'events'}
 	cache_key = 'vgmdb/%s'%(type,)
 	page_type = type
-	url = 'http://vgmdb.net/db/%s.php'%(typeurls[type])
 	if filterkey:
 		link = '/%s/%s'%(type, filterkey)
 		filterkey = str(filterkey)
 	else:
 		link = '/%s'%(type,)
-	return do_page(cache_key, page_type, url, link=link, filterkey=filterkey)
+	return do_page(cache_key, page_type, filterkey, link=link, filterkey=filterkey)
 
 @route('/search/<type:re:(albums|artists|orgs|products)>/<query>')
 @route('/search/<query>')
@@ -118,13 +110,12 @@ def search(type=None, query=None):
 	query = query or request.query['q']
 	cache_key = 'vgmdb/search/%s'%(base64.b64encode(query),)
 	page_type = 'search'
-	url = 'http://vgmdb.net/search?q=%s'%(urllib.quote(query))
 	if type:
 		link = '/search/%s/%s'%(type,urllib.quote(query))
 	else:
 		link = '/search/%s'%(urllib.quote(query),)
 	filterkey = type
-	return do_page(cache_key, page_type, url, link=link, filterkey=filterkey)
+	return do_page(cache_key, page_type, query, link=link, filterkey=filterkey)
 
 @route('/')
 @route('/about')

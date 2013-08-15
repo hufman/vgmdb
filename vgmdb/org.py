@@ -2,7 +2,7 @@ import bs4
 
 from . import utils
 
-fetch_org_page = utils.fetch_page
+fetch_org_page = lambda id: utils.fetch_info_page('org', id)
 
 def parse_org_page(html_source):
 	org_info = {}

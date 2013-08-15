@@ -2,7 +2,7 @@ import bs4
 
 from . import utils
 
-fetch_album_page = utils.fetch_page
+fetch_album_page = lambda id: utils.fetch_info_page('album', id)
 
 def parse_album_page(html_source):
 	album_info = {}

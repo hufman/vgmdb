@@ -8,6 +8,15 @@ def fetch_page(url):
 	data = data.decode('utf-8', 'ignore')
 	return data
 
+def fetch_info_page(type, id):
+	return fetch_page('http://vgmdb.net/%s/%s?perpage=99999'%(type,id))
+
+def fetch_list_page(type, id):
+	return fetch_page('http://vgmdb.net/db/%s.php?ltr=%s&field=title&perpage=9999'%(type,id))
+
+def fetch_singlelist_page(type):
+	return fetch_page('http://vgmdb.net/db/%s.php'%(type,))
+
 def fix_invalid_table(html_source):
 	# fix missing </table>
 	start = 0

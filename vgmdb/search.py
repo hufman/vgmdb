@@ -3,8 +3,9 @@ import bs4
 import re
 from . import utils
 
-def fetch_search_page(url):
+def fetch_search_page(query):
 	import urllib
+	url = 'http://vgmdb.net/search?q=%s'%(urllib.quote(query))
 	page = urllib.urlopen(url)
 	if page.geturl() == url:
 		data = page.read()

@@ -5,7 +5,7 @@ from . import utils
 import re
 islettermatcher = re.compile('[#A-Z]')
 
-fetch_orglist_page = utils.fetch_page
+fetch_orglist_page = lambda id=None: utils.fetch_singlelist_page('org')
 
 def parse_orglist_page(html_source):
 	orglist_info = {}

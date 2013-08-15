@@ -2,7 +2,7 @@ import bs4
 
 from . import utils
 
-fetch_productlist_page = utils.fetch_page
+fetch_productlist_page = lambda id: utils.fetch_list_page('product', id)
 
 def parse_productlist_page(html_source):
 	productlist_info = {}
