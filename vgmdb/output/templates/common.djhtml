@@ -13,6 +13,11 @@
 {% endmacro -%}
 {% macro formats(data) -%}
 <div class="boxsection">
+{% if data.vgmdb_link -%}
+<p>
+<a href="{{data.vgmdb_link}}">View on VGMdb.net</a>
+</p>
+{% endif -%}
 <span>Formats:</span>
 <ul class="format selectors">
 <li class="rdfa"><a href="{{data.link | absolute_linkhref}}?format=html">RDFa</a></li>
