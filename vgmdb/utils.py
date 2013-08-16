@@ -3,6 +3,10 @@ import bs4
 import urllib
 import urlparse
 
+class AppURLOpener(urllib.FancyURLopener):
+	version = "vgmdbapi/0.2 +http://vgmdb.info"
+urllib._urlopener = AppURLOpener()
+
 def fetch_page(url):
 	data = urllib.urlopen(url).read()
 	data = data.decode('utf-8', 'ignore')
