@@ -2,11 +2,12 @@ import bs4
 
 import re
 from . import utils
+import urllib
 
+def fetch_url(query):
+	return 'http://vgmdb.net/search?q=%s'%(urllib.quote(query))
 def fetch_page(query):
-	import urllib
-	url = 'http://vgmdb.net/search?q=%s'%(urllib.quote(query))
-	page = urllib.urlopen(url)
+	page = urllib.urlopen(fetch_url(query))
 	if page.geturl() == url:
 		data = page.read()
 		data = data.decode('utf-8', 'ignore')
@@ -14,7 +15,6 @@ def fetch_page(query):
 	return masquerade(url, page)
 
 def masquerade(url, page):
-	import urllib
 	import urlparse
 	import importlib
 	sections = {'albums':[],

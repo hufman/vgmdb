@@ -2,6 +2,7 @@ import bs4
 
 from . import utils
 
+fetch_url = lambda id: utils.url_info_page('event', id)
 fetch_page = lambda id: utils.fetch_info_page('event', id)
 
 def parse_page(html_source):

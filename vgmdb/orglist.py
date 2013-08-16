@@ -5,6 +5,7 @@ from . import utils
 import re
 islettermatcher = re.compile('[#A-Z]')
 
+fetch_url = lambda id=None: utils.url_singlelist_page('org')
 fetch_page = lambda id=None: utils.fetch_singlelist_page('org')
 
 def parse_page(html_source):

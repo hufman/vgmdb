@@ -3,6 +3,7 @@ import bs4
 from operator import itemgetter
 from . import utils
 
+fetch_url = lambda id=None: utils.url_singlelist_page('events')
 fetch_page = lambda id=None: utils.fetch_singlelist_page('events')
 
 def parse_page(html_source):
