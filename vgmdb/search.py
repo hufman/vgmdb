@@ -7,7 +7,8 @@ import urllib
 def fetch_url(query):
 	return 'http://vgmdb.net/search?q=%s'%(urllib.quote(query))
 def fetch_page(query):
-	page = urllib.urlopen(fetch_url(query))
+	url = fetch_url(query)
+	page = urllib.urlopen(url)
 	if page.geturl() == url:
 		data = page.read()
 		data = data.decode('utf-8', 'ignore')
