@@ -40,8 +40,8 @@ def do_page(cache_key, page_type, id, link=None, filterkey=None):
 	prevdata = vgmdb.cache.get(cache_key)
 	if not prevdata:
 		module = getattr(vgmdb, page_type)
-		fetch_page = getattr(module, "fetch_%s_page"%page_type)
-		parse_page = getattr(module, "parse_%s_page"%page_type)
+		fetch_page = getattr(module, "fetch_page")
+		parse_page = getattr(module, "parse_page")
 		data = fetch_page(id)
 		info = parse_page(data)
 		if info != None:

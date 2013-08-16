@@ -12,7 +12,7 @@ class TestSearchList(unittest.TestCase):
 
 	def test_search(self):
 		search_code = file(os.path.join(base, 'search.html'), 'r').read()
-		search = vgmdb.search.parse_search_page(search_code)
+		search = vgmdb.search.parse_page(search_code)
 
 		self.assertEqual(6, len(search['results']['albums']))
 		self.assertEqual(1, len(search['results']['artists']))
@@ -31,6 +31,6 @@ class TestSearchList(unittest.TestCase):
 
 	def test_search_quotes(self):
 		search_code = file(os.path.join(base, 'search_quotes.html'), 'r').read()
-		search = vgmdb.search.parse_search_page(search_code)
+		search = vgmdb.search.parse_page(search_code)
 
 		self.assertEqual("''Snake Eater'' song from METAL GEAR SOLID 3", search['query'])

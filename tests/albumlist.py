@@ -12,7 +12,7 @@ class TestAlbumList(unittest.TestCase):
 
 	def test_list(self):
 		list_code = file(os.path.join(base, 'albumlist.html'), 'r').read()
-		list = albumlist.parse_albumlist_page(list_code)
+		list = albumlist.parse_page(list_code)
 
 		self.assertEqual(u"/album/12991", list['albums'][0]['link'])
 		self.assertEqual(u"f", list['albums'][0]['titles']['en'])

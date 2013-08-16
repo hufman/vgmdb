@@ -12,7 +12,7 @@ class TestArtistList(unittest.TestCase):
 
 	def test_list(self):
 		list_code = file(os.path.join(base, 'artistlist.html'), 'r').read()
-		list = artistlist.parse_artistlist_page(list_code)
+		list = artistlist.parse_page(list_code)
 
 		self.assertEqual(99, len(list['artists']))
 		self.assertEqual(u"/artist/3535", list['artists'][0]['link'])

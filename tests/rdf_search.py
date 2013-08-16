@@ -9,7 +9,7 @@ from vgmdb.config import BASE_URL
 from urlparse import urljoin
 
 class TestSearchRDF(TestRDF):
-	data_parser = lambda self,x: search.parse_search_page(x)
+	data_parser = lambda self,x: search.parse_page(x)
 	outputter_type = 'search'
 	def setUp(self):
 		pass

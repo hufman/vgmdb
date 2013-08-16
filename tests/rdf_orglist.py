@@ -9,7 +9,7 @@ from vgmdb.config import BASE_URL
 from urlparse import urljoin
 
 class TestOrglistRDF(TestRDF):
-	data_parser = lambda self,x: orglist.parse_orglist_page(x)
+	data_parser = lambda self,x: orglist.parse_page(x)
 	outputter_type = 'orglist'
 	def setUp(self):
 		pass

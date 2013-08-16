@@ -12,7 +12,7 @@ class TestOrgList(unittest.TestCase):
 
 	def test_list(self):
 		list_code = file(os.path.join(base, 'eventlist.html'), 'r').read()
-		list = eventlist.parse_eventlist_page(list_code)
+		list = eventlist.parse_page(list_code)
 
 		self.assertEqual(16, len(list['events'].keys()))
 		self.assertEqual(u"/event/92", list['events']['1998'][0]['link'])

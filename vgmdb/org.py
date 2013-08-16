@@ -2,9 +2,9 @@ import bs4
 
 from . import utils
 
-fetch_org_page = lambda id: utils.fetch_info_page('org', id)
+fetch_page = lambda id: utils.fetch_info_page('org', id)
 
-def parse_org_page(html_source):
+def parse_page(html_source):
 	org_info = {}
 	html_source = utils.fix_invalid_table(html_source)
 	soup = bs4.BeautifulSoup(html_source)

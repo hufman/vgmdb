@@ -2,9 +2,9 @@ import bs4
 
 from . import utils
 
-fetch_product_page = lambda id: utils.fetch_info_page('product', id)
+fetch_page = lambda id: utils.fetch_info_page('product', id)
 
-def parse_product_page(html_source):
+def parse_page(html_source):
 	product_info = {}
 	soup = bs4.BeautifulSoup(html_source)
 	soup_profile = soup.find(id='innermain')

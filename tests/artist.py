@@ -12,7 +12,7 @@ class TestArtists(unittest.TestCase):
 
 	def test_nobuo(self):
 		nobuo_code = file(os.path.join(base, 'artist_nobuo.html'), 'r').read()
-		nobuo = artist.parse_artist_page(nobuo_code)
+		nobuo = artist.parse_page(nobuo_code)
 		self.assertEqual(u'Nobuo Uematsu', nobuo['name'])
 		self.assertEqual(u'male', nobuo['sex'])
 		self.assertEqual(u'Mar 21, 1959', nobuo['info']['Birthdate'])
@@ -64,7 +64,7 @@ class TestArtists(unittest.TestCase):
 
 	def test_ss(self):
 		ss_code = file(os.path.join(base, 'artist_ss.html'), 'r').read()
-		ss = artist.parse_artist_page(ss_code)
+		ss = artist.parse_page(ss_code)
 		self.assertEqual(u'Composer (as HAPPY-SYNTHESIZER)', ss['discography'][12]['roles'][0])
 		self.assertEqual(u'Arranger (as (S_S))', ss['discography'][13]['roles'][0])
 		self.assertEqual(u'HAPPY-SYNTHESIZER', ss['aliases'][1]['names']['en'])
@@ -73,7 +73,7 @@ class TestArtists(unittest.TestCase):
 
 	def test_offenbach(self):
 		offenbach_code = file(os.path.join(base, 'artist_offenbach.html'), 'r').read()
-		offenbach = artist.parse_artist_page(offenbach_code)
+		offenbach = artist.parse_page(offenbach_code)
 		self.assertEqual(u'Jacques Offenbach', offenbach['name'])
 		self.assertEqual(u'male', offenbach['sex'])
 		self.assertEqual('1819-06-20', offenbach['birthdate'])

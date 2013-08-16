@@ -3,9 +3,9 @@ import bs4
 from operator import itemgetter
 from . import utils
 
-fetch_eventlist_page = lambda id=None: utils.fetch_singlelist_page('events')
+fetch_page = lambda id=None: utils.fetch_singlelist_page('events')
 
-def parse_eventlist_page(html_source):
+def parse_page(html_source):
 	eventlist_info = {}
 	eventlist_info['events'] = {}
 	eventlist_info['years'] = []

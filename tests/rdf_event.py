@@ -9,7 +9,7 @@ from vgmdb import event
 base = os.path.dirname(__file__)
 
 class TestEventRDF(TestRDF):
-	data_parser = lambda self,x: event.parse_event_page(x)
+	data_parser = lambda self,x: event.parse_page(x)
 	outputter_type = 'event'
 	def setUp(self):
 		pass

@@ -2,9 +2,9 @@ import bs4
 
 from . import utils
 
-fetch_productlist_page = lambda id: utils.fetch_list_page('product', id)
+fetch_page = lambda id: utils.fetch_list_page('product', id)
 
-def parse_productlist_page(html_source):
+def parse_page(html_source):
 	productlist_info = {}
 	productlist_info['products'] = []
 	html_source = utils.fix_invalid_table(html_source)

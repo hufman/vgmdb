@@ -2,9 +2,9 @@ import bs4
 
 from . import utils
 
-fetch_event_page = lambda id: utils.fetch_info_page('event', id)
+fetch_page = lambda id: utils.fetch_info_page('event', id)
 
-def parse_event_page(html_source):
+def parse_page(html_source):
 	event_info = {}
 	html_source = utils.fix_invalid_table(html_source)
 	soup = bs4.BeautifulSoup(html_source)

@@ -9,7 +9,7 @@ from vgmdb import product
 base = os.path.dirname(__file__)
 
 class TestProductRDF(TestRDF):
-	data_parser = lambda self,x: product.parse_product_page(x)
+	data_parser = lambda self,x: product.parse_page(x)
 	outputter_type = 'product'
 	def setUp(self):
 		pass

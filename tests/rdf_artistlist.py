@@ -9,7 +9,7 @@ from vgmdb.config import BASE_URL
 from urlparse import urljoin
 
 class TestArtistlistRDF(TestRDF):
-	data_parser = lambda self,x: artistlist.parse_artistlist_page(x)
+	data_parser = lambda self,x: artistlist.parse_page(x)
 	outputter_type = 'artistlist'
 	def setUp(self):
 		pass

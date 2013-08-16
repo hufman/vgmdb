@@ -2,9 +2,9 @@ import bs4
 
 from . import utils
 
-fetch_artist_page = lambda id: utils.fetch_info_page('artist', id)
+fetch_page = lambda id: utils.fetch_info_page('artist', id)
 
-def parse_artist_page(html_source):
+def parse_page(html_source):
 	artist_info = {}
 	soup = bs4.BeautifulSoup(html_source)
 	soup_profile = soup.find(id='innermain')

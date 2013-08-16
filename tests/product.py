@@ -12,7 +12,7 @@ class TestProducts(unittest.TestCase):
 
 	def test_skyrim(self):
 		skyrim_code = file(os.path.join(base, 'product_skyrim.html'), 'r').read()
-		skyrim = product.parse_product_page(skyrim_code)
+		skyrim = product.parse_page(skyrim_code)
 		self.assertEqual(u"2011-11-11", skyrim['release_date'])
 		self.assertEqual(u"Bethesda Game Studios", skyrim['organizations'][0])
 		self.assertEqual(u"The Elder Scrolls V: Skyrim", skyrim['name'])
@@ -24,7 +24,7 @@ class TestProducts(unittest.TestCase):
 
 	def test_witcher(self):
 		witcher_code = file(os.path.join(base, 'product_witcher.html'), 'r').read()
-		witcher = product.parse_product_page(witcher_code)
+		witcher = product.parse_page(witcher_code)
 		self.assertEqual(u"2011-05-17", witcher['release_date'])
 		self.assertEqual(u"The Witcher", witcher['franchises'][0]['names']['en'])
 		self.assertEqual(u"The Witcher 2: Assassins of Kings", witcher['name'])
@@ -35,7 +35,7 @@ class TestProducts(unittest.TestCase):
 
 	def test_at(self):
 		at_code = file(os.path.join(base, 'product_at.html'), 'r').read()
-		at = product.parse_product_page(at_code)
+		at = product.parse_page(at_code)
 		self.assertEqual(u"Ar tonelico", at['name'])
 		self.assertEqual(u"アルトネリコ", at['name_real'])
 		self.assertEqual(4, len(at['titles']))
@@ -50,7 +50,7 @@ class TestProducts(unittest.TestCase):
 
 	def test_empty(self):
 		im_code = file(os.path.join(base, 'product_empty.html'), 'r').read()
-		im = product.parse_product_page(im_code)
+		im = product.parse_page(im_code)
 		self.assertEqual(u"PROJECT IM@S", im['name'])
 		self.assertEqual(u"プロジェクト・アイマス", im['name_real'])
 		self.assertEqual(0, len(im['titles']))

@@ -2,9 +2,9 @@ import bs4
 
 from . import utils
 
-fetch_albumlist_page = lambda id: utils.fetch_list_page('albums', id)
+fetch_page = lambda id: utils.fetch_list_page('albums', id)
 
-def parse_albumlist_page(html_source):
+def parse_page(html_source):
 	albumlist_info = {}
 	albumlist_info['albums'] = []
 	html_source = utils.fix_invalid_table(html_source)

@@ -12,7 +12,7 @@ class TestAlbums(unittest.TestCase):
 
 	def test_ff8(self):
 		ff8_code = file(os.path.join(base, 'album_ff8.html'), 'r').read()
-		ff8 = album.parse_album_page(ff8_code)
+		ff8 = album.parse_page(ff8_code)
 
 		self.assertEqual(u"FITHOS LUSEC WECOS VINOSEC: FINAL FANTASY VIII", ff8['names']['en'])
 		self.assertEqual(u"FITHOS LUSEC WECOS VINOSEC: FINAL FANTASY VIII", ff8['names']['ja'])
@@ -61,7 +61,7 @@ class TestAlbums(unittest.TestCase):
 
 	def test_arciel(self):
 		arciel_code = file(os.path.join(base, 'album_arciel.html'), 'r').read()
-		arciel = album.parse_album_page(arciel_code)
+		arciel = album.parse_page(arciel_code)
 
 		self.assertEqual(u"Ar tonelico III Image CD Utau Oka~Ar=Ciel Ar=Dor~", arciel['names']['en'])
 		self.assertEqual(u"アルトネリコ3 イメージCD 謳う丘～Ar=Ciel Ar=Dor～", arciel['names']['ja'])
@@ -72,12 +72,12 @@ class TestAlbums(unittest.TestCase):
 
 	def test_at3(self):
 		at3_code = file(os.path.join(base, 'album_at3.html'), 'r').read()
-		at3 = album.parse_album_page(at3_code)
+		at3 = album.parse_page(at3_code)
 		self.assertEqual(2, len(at3['discs']))
 		self.assertEqual(u'EXEC_FLIP_FUSIONSPHERE/.', at3['discs'][1]['tracks'][3]['names']['Romaji'])
 	def test_viking(self):
 		viking_code = file(os.path.join(base, 'album_viking.html'), 'r').read()
-		viking = album.parse_album_page(viking_code)
+		viking = album.parse_page(viking_code)
 
 		self.assertEqual('Free', viking['release_price']['price'])
 		self.assertEqual(500, viking['meta']['visitors'])
@@ -86,7 +86,7 @@ class TestAlbums(unittest.TestCase):
 
 	def test_blooming(self):
 		blooming_code = file(os.path.join(base, 'album_blooming.html'), 'r').read()
-		blooming = album.parse_album_page(blooming_code)
+		blooming = album.parse_page(blooming_code)
 
 		self.assertEqual('KMCA-65', blooming['related'][0]['catalog'])
 		self.assertEqual('2000-10-04', blooming['related'][1]['date'])
@@ -94,7 +94,7 @@ class TestAlbums(unittest.TestCase):
 
 	def test_istoria(self):
 		istoria_code = file(os.path.join(base, 'album_istoria.html'), 'r').read()
-		istoria = album.parse_album_page(istoria_code)
+		istoria = album.parse_page(istoria_code)
 
 		self.assertEqual(u'Tomoki Yamada', istoria['performers'][-1]['names']['en'])
 		self.assertEqual(u'Vocal, Original Work', istoria['classification'])

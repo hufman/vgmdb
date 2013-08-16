@@ -12,7 +12,7 @@ class TestOrgs(unittest.TestCase):
 
 	def test_dogear(self):
 		dogear_code = file(os.path.join(base, 'org_dogear.html'), 'r').read()
-		dogear = org.parse_org_page(dogear_code)
+		dogear = org.parse_page(dogear_code)
 		self.assertEqual(u"Dog Ear Records Co., Ltd.", dogear['name'])
 		self.assertEqual(u"Label / Imprint", dogear['type'])
 		self.assertEqual(u"Japan", dogear['region'])
@@ -33,7 +33,7 @@ class TestOrgs(unittest.TestCase):
 
 	def test_vagrancy(self):
 		vagrancy_code = file(os.path.join(base, 'org_vagrancy.html'), 'r').read()
-		vagrancy = org.parse_org_page(vagrancy_code)
+		vagrancy = org.parse_page(vagrancy_code)
 		self.assertEqual(u"VAGRANCY", vagrancy['name'])
 		self.assertEqual(u"Akiko Shikata", vagrancy['staff'][0]['names']['en'])
 		self.assertEqual(u"志方あきこ", vagrancy['staff'][0]['names']['ja'])

@@ -2,9 +2,9 @@ import bs4
 
 from . import utils
 
-fetch_album_page = lambda id: utils.fetch_info_page('album', id)
+fetch_page = lambda id: utils.fetch_info_page('album', id)
 
-def parse_album_page(html_source):
+def parse_page(html_source):
 	album_info = {}
 	html_source = utils.fix_invalid_table(html_source)
 	soup = bs4.BeautifulSoup(html_source)

@@ -2,9 +2,9 @@ import bs4
 
 from . import utils
 
-fetch_artistlist_page = lambda id: utils.fetch_list_page('artists', id)
+fetch_page = lambda id: utils.fetch_list_page('artists', id)
 
-def parse_artistlist_page(html_source):
+def parse_page(html_source):
 	artistlist_info = {}
 	artistlist_info['artists'] = []
 	html_source = utils.fix_invalid_table(html_source)

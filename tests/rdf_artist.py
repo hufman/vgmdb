@@ -9,7 +9,7 @@ from vgmdb import artist
 base = os.path.dirname(__file__)
 
 class TestArtistsRDF(TestRDF):
-	data_parser = lambda self,x: artist.parse_artist_page(x)
+	data_parser = lambda self,x: artist.parse_page(x)
 	outputter_type = 'artist'
 	def setUp(self):
 		pass

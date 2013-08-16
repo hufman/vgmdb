@@ -12,7 +12,7 @@ class TestProductList(unittest.TestCase):
 
 	def test_list(self):
 		list_code = file(os.path.join(base, 'productlist.html'), 'r').read()
-		list = productlist.parse_productlist_page(list_code)
+		list = productlist.parse_page(list_code)
 
 		self.assertEqual(u"/product/856", list['products'][0]['link'])
 		self.assertEqual(u"Darius", list['products'][0]['names']['en'])

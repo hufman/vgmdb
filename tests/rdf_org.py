@@ -9,7 +9,7 @@ from vgmdb import org
 base = os.path.dirname(__file__)
 
 class TestOrgRDF(TestRDF):
-	data_parser = lambda self,x: org.parse_org_page(x)
+	data_parser = lambda self,x: org.parse_page(x)
 	outputter_type = 'org'
 	def setUp(self):
 		pass
