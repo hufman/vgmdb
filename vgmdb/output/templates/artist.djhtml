@@ -53,7 +53,7 @@
         {% for unit in data.units -%}
         <li rev="foaf:member mo:member schema:musicGroupMember" rel="mo:member_of">
           <span {{unit.link | link_subject | resource_attr}} typeof="foaf:organization schema:MusicGroup">
-            {{ unit.name | link_artist(unit.link,None) }}
+            {{ unit.names | lang_names | link_artist(unit.link,None) }}
           </span>
         </li>
         {% endfor -%}
