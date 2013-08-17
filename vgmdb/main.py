@@ -139,8 +139,7 @@ def sellers(type,id):
 	cache_key = 'vgmdb/%s/%s/sellers'%(type,id)
 	sellers = vgmdb.cache.get(cache_key)
 	if not sellers:
-		link = "%s/%s"%(type,id)
-		sellers = vgmdb.sellers.search(link)
+		sellers = vgmdb.sellers.search(type, id)
 		vgmdb.cache.set(cache_key, sellers)
 	requested_format = request.query.format or ''
 	outputter = vgmdb.output.get_outputter(vgmdb.config.for_request(request), requested_format, request.headers.get('Accept'))

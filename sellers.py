@@ -5,7 +5,8 @@ import vgmdb.sellers
 import json
 
 def find_sellers(itemid):
-	data = vgmdb.sellers.search(itemid)
+	type,id = itemid.split('/')
+	data = vgmdb.sellers.search(type,id)
 	return json.dumps(data, sort_keys=True, indent=4, separators=(',',': '), ensure_ascii=False)
 
 if __name__ == '__main__' and len(sys.argv) > 1:

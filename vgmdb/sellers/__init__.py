@@ -6,14 +6,11 @@ from . import discogs
 
 search_modules = [discogs]
 
-def search(itemid):
+def search(type, id):
 	"""
 	itemid should be something like album/79 or artist/77
 	"""
-	pieces = itemid.split('/')
-	if pieces[0] in ['album','artist']:
-		type = pieces[0]
-		id = pieces[1]
+	if type in ['album','artist']:
 		module = globals()[type]
 		prevdata = cache.get("%s/%s"%(type,id))
 		if not prevdata:
@@ -26,7 +23,7 @@ def search(itemid):
 			info = prevdata
 		return search_all(type,info)
 	else:
-		return {}
+		return []
 
 def search_all(type,info):
 	results = []
