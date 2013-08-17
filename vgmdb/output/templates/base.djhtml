@@ -11,6 +11,7 @@
 {% endblock %}
     <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
     <link href="static/style.css" rel="stylesheet" type="text/css">
+    <script src="static/sellers.js" language="javascript" type="text/javascript"></script>
   </head>
   <body prefix="dcterms: http://purl.org/dc/terms/
                 schema: http://schema.org/
