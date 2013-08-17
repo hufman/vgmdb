@@ -16,6 +16,8 @@ import vgmdb.orglist
 import vgmdb.eventlist
 import vgmdb.search
 
+import vgmdb.sellers
+
 import vgmdb.cache
 import vgmdb.config
 import vgmdb.output
@@ -126,6 +128,20 @@ def about():
 	outputter = vgmdb.output.get_outputter(vgmdb.config.for_request(request), 'html', None)
 	response.content_type = outputter.content_type
 	return outputter('about', {}, None)
+
+@route('/<type:re:(album|artist)>/<id:int>/sellers')
+def sellers(type,id):
+	cache_key = 'vgmdb/%s/%s/sellers'%(type,id)
+	sellers = vgmdb.cache.get(cache_key)
+	if not sellers:
+		link = "%s/%s"%(type,id)
+		sellers = vgmdb.sellers.search(link)
+		vgmdb.cache.set(cache_key, sellers)
+	requested_format = request.query.format or ''
+	outputter = vgmdb.output.get_outputter(vgmdb.config.for_request(request), requested_format, request.headers.get('Accept'))
+	response.content_type = outputter.content_type
+	response.set_header('Cache-Control', 'max-age:3600,public')
+	return outputter('sellers', {'sellers':sellers})
 
 @route('/static/<name:path>')
 def static(name):

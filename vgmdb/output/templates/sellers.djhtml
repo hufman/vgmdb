@@ -1,0 +1,14 @@
+{% for seller in data['sellers'] -%}
+{% if seller['found'] -%}
+<div class="seller seller_found">
+{% else -%}
+<div class="seller seller_notfound">
+{% endif -%}
+<a href="{{seller['found'] or seller['search']}}">
+<img src="{{seller['icon']}}" alt="" />
+</a>
+<a href="{{seller['found'] or seller['search']}}">
+<span>{{seller['name']}}</span>
+</a>
+</div>
+{% endfor -%}
