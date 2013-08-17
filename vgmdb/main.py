@@ -57,11 +57,16 @@ def do_page(cache_key, page_type, id, link=None, filterkey=None):
 		info = prevdata
 	if info == None:
 		abort(404, "Item not found")
+	sellers = vgmdb.cache.get(cache_key+"/sellers")
+	if sellers:
+		info['sellers'] = sellers
+		response.set_header('Cache-Control', 'max-age:3600,public')
+	else:
+		response.set_header('Cache-Control', 'max-age:300,public')
 
 	requested_format = request.query.format or ''
 	outputter = vgmdb.output.get_outputter(vgmdb.config.for_request(request), requested_format, request.headers.get('Accept'))
 	response.content_type = outputter.content_type
-	response.set_header('Cache-Control', 'max-age:3600,public')
 	return outputter(page_type, info, filterkey)
 
 @route('/<type:re:(artist|album|product|event|org)>/<id:int>')

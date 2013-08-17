@@ -181,3 +181,13 @@ td.list li:last-child:after {content: ""}
 	display: inline-block;
 }
 
+.seller_notfound img {
+	zoom: 1;
+	opacity: 0.20;
+	filter: alpha(opacity=20);
+}
+.seller_notfound span {
+	zoom: 1;
+	opacity: 0.50;
+	filter: alpha(opacity=50);
+}

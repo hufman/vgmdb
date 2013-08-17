@@ -56,6 +56,11 @@
         </dd>
       </dl>
     </div>
+    <div class="boxsection sellers">
+    {%- if data.sellers -%}
+    {% include 'sellers.djhtml' -%}
+    {% endif -%}
+    </div>
 {% endblock %}
 {% block body %}
     <div id="info" resource="{{data.link | linkhref}}#subject">
