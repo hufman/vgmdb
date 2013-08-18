@@ -7,3 +7,4 @@ Jinja2 >= 2.7
 PyYAML
 simplejson
 rdflib
+python-amazon-product-api

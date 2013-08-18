@@ -3,8 +3,9 @@ from .. import artist
 from .. import cache
 
 from . import discogs
+from . import amazon
 
-search_modules = [discogs]
+search_modules = [discogs, amazon]
 
 def search(type, id):
 	"""
