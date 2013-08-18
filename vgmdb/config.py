@@ -1,4 +1,8 @@
 import os
+try:
+	from .config_private import *
+except:
+	pass
 
 BASE_URL = 'http://vgmdb.info/'
 AUTO_RELOAD = True
