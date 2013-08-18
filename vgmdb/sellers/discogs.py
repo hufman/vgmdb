@@ -1,14 +1,9 @@
 import urllib
 import urlparse
 import json
-import re
-import difflib
+from ._utils import squash_str,find_best_match
 
 SEARCH_API = 'http://api.discogs.com/database/search'
-
-notislettermatcher = re.compile('[^A-Za-z0-9]')
-def squash_str(value):
-	return notislettermatcher.sub(value.lower().strip(), '_')
 
 def search_album(info):
 	search_url = "http://www.discogs.com/search?q=%s&type=master"%(urllib.quote(info['name']),)
@@ -79,14 +74,3 @@ def search_artist_name(name):
 	found = find_best_match(squash_str(name), data['results'],
 	   threshold=0.7, key=lambda x:squash_str(x['title']))
 	return found
-
-def find_best_match(query, matches, threshold=0.7, key=lambda x:x):
-	best = 0
-	best_result = None
-	for result in matches:
-		s = difflib.SequenceMatcher(None, query, key(result))
-		score = s.ratio()
-		if score > best and score > threshold:
-			best = score
-			best_result = result
-	return best_result
