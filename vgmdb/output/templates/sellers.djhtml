@@ -5,8 +5,7 @@
 <div class="seller seller_notfound">
 {% endif -%}
 <a href="{{seller['found'] or seller['search']}}">
-<img src="{{seller['icon']}}" alt="" />
-</a>
+<img src="{{seller['icon']}}" alt="" /></a>
 <a href="{{seller['found'] or seller['search']}}">
 <span>{{seller['name']}}</span>
 </a>

@@ -181,6 +181,14 @@ td.list li:last-child:after {content: ""}
 	display: inline-block;
 }
 
+.seller {
+	padding-bottom: 4px;
+}
+.seller img {
+	width: 32px;
+	height: 32px;
+}
+
 .seller_notfound img {
 	zoom: 1;
 	opacity: 0.20;
