@@ -5,7 +5,7 @@ from .. import config
 from ._utils import squash_str,find_best_match
 from amazonproduct import api, errors
 
-SEARCH_PAGE = 'http://www.amazon.com/s/ref=nb_sb_noss_2?url=search-alias%%3Dpopular&SubscriptionId=%s&AssociateTag=%s'%(config.AMAZON_ACCESS_KEY_ID,config.AMAZON_ASSOCIATE_TAG)
+SEARCH_PAGE = 'http://www.amazon.com/s/?_encoding=UTF8&url=search-alias%%3Dpopular&SubscriptionId=%s&AssociateTag=%s&linkCode=ur2&tag=%s'%(config.AMAZON_ACCESS_KEY_ID,config.AMAZON_ASSOCIATE_TAG,config.AMAZON_ASSOCIATE_TAG)
 API = api.API(config.AMAZON_ACCESS_KEY_ID, config.AMAZON_SECRET_ACCESS_KEY, 'us', config.AMAZON_ASSOCIATE_TAG)
 
 def parse_results(roots):
