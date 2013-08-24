@@ -82,7 +82,7 @@ def search_album_name(info):
 	except errors.NoExactMatchesFound:
 		return None
 	found = find_best_match(squash_str(title), results,
-	   threshold=0.6, key=lambda x:squash_str(x['Title']))
+	   threshold=0.5, key=lambda x:squash_str(x['Title']))
 	return found
 
 def search_artist(info):
@@ -112,6 +112,6 @@ def search_artist_name(name):
 		if 'Creator' in item:
 			return item['Creator']
 	found = find_best_match(squash_str(name), results,
-	   threshold=0.5, key=lambda x:squash_str(get_artist(x)))
+	   threshold=0.7, key=lambda x:squash_str(get_artist(x)))
 	return found
 

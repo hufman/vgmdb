@@ -54,7 +54,7 @@ def search_artist_album_name(info):
 	webdata = urllib.urlopen(url).read()
 	data = json.loads(webdata)
 	found = find_best_match(squash_str(title), data['results'],
-	   threshold=0.7, key=lambda x:squash_str(x['title']))
+	   threshold=0.5, key=lambda x:squash_str(x['title']))
 	return found
 
 def search_album_name(info):
@@ -63,7 +63,7 @@ def search_album_name(info):
 	webdata = urllib.urlopen(url).read()
 	data = json.loads(webdata)
 	found = find_best_match(squash_str(title), data['results'],
-	   threshold=0.7, key=lambda x:squash_str(x['title']))
+	   threshold=0.5, key=lambda x:squash_str(x['title']))
 	return found
 
 def search_artist(info):
