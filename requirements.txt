@@ -8,3 +8,4 @@ PyYAML
 simplejson
 rdflib
 python-amazon-product-api
+futures

@@ -6,7 +6,34 @@ from . import discogs
 from . import amazon
 from . import cdjapan
 
+try:
+	from concurrent.futures import ThreadPoolExecutor
+except:
+	pass
+
 search_modules = [discogs, amazon, cdjapan]
+
+import time
+
+class Timer(object):
+	""" Absolutely brilliant idea from http://www.huyng.com/posts/python-performance-analysis/ """
+	def __init__(self, tag=None, verbose=False):
+		self.tag = tag
+		self.verbose = verbose
+
+	def __enter__(self):
+		self.start = time.time()
+		return self
+
+	def __exit__(self, *args):
+		self.end = time.time()
+		self.secs = self.end - self.start
+		self.msecs = self.secs * 1000  # millisecs
+		if self.verbose:
+			if self.tag:
+				print '%s - elapsed time: %f ms' % (self.tag, self.msecs)
+			else:
+				print 'elapsed time: %f ms' % self.msecs
 
 def search(type, id):
 	"""
@@ -23,16 +50,33 @@ def search(type, id):
 			cache.set("%s/%s"%(type,id), info)
 		else:
 			info = prevdata
-		return search_all(type,info)
+		if 'ThreadPoolExecutor' in globals():
+			return search_all_async(type,info)
+		else:
+			return search_all(type,info)
 	else:
 		return []
 
 def search_all(type,info):
 	results = []
 	for module in search_modules:
-		search = getattr(module, "search_%s"%(type,), None)
-		if search:
-			ret = search(info)
-			if ret:
-				results.append(ret)
+		with Timer(tag=module.__name__, verbose=False):
+			search = getattr(module, "search_%s"%(type,), None)
+			if search:
+				ret = search(info)
+				if ret:
+					results.append(ret)
+	return results
+
+def search_all_async(type,info):
+	def search_module(module):
+		with Timer(tag=module.__name__, verbose=False):
+			search = getattr(module, "search_%s"%(type,), None)
+			if search:
+				ret = search(info)
+				if ret:
+					return ret
+	executor = ThreadPoolExecutor(max_workers=5)
+	results = executor.map(search_module, search_modules, timeout=60)
+	results = filter(lambda x:x, results)
 	return results
