@@ -29,7 +29,7 @@ def parse_results(roots):
 	return results
 
 def search_album(info):
-	search_url = SEARCH_PAGE + "&field-artist=%s&field-title=%s"%(urllib.quote(info['composers'][0]['names']['en']), urllib.quote(info['name']))
+	search_url = SEARCH_PAGE + "&field-artist=%s&field-title=%s"%(urllib.quote(squash_str(info['composers'][0]['names']['en'])), urllib.quote(squash_str(info['name'])))
 	result = {"name":"Amazon",
 	          "icon":"https://upload.wikimedia.org/wikipedia/commons/b/b4/Amazon-icon.png",
 	          "search": search_url
@@ -51,7 +51,7 @@ def search_artist_album_name(info):
 	artist = info['composers'][0]['names']['en']
 	title = info['name']
 	try:
-		results = parse_results(API.item_search('Music', ResponseGroup='ItemAttributes', Artist=artist, Title=title))
+		results = parse_results(API.item_search('Music', ResponseGroup='ItemAttributes', Artist=squash_str(artist), Title=squash_str(title)))
 	except errors.NoExactMatchesFound:
 		return None
 	found = find_best_match(squash_str(title), results,
@@ -61,7 +61,7 @@ def search_artist_album_name(info):
 def search_album_name(info):
 	title = info['name']
 	try:
-		results = parse_results(API.item_search('Music', ResponseGroup='ItemAttributes', Title=title))
+		results = parse_results(API.item_search('Music', ResponseGroup='ItemAttributes', Title=squash_str(title)))
 	except errors.NoExactMatchesFound:
 		return None
 	found = find_best_match(squash_str(title), results,
@@ -69,7 +69,7 @@ def search_album_name(info):
 	return found
 
 def search_artist(info):
-	search_url = SEARCH_PAGE + "&field-artist=%s"%(urllib.quote(info['name']),)
+	search_url = SEARCH_PAGE + "&field-artist=%s"%(urllib.quote(squash_str(info['name'])),)
 	result = {"name":"Amazon",
 	          "icon":"https://upload.wikimedia.org/wikipedia/commons/b/b4/Amazon-icon.png",
 	          "search": search_url
@@ -82,7 +82,7 @@ def search_artist(info):
 
 def search_artist_name(name):
 	try:
-		results = parse_results(API.item_search('Music', ResponseGroup='ItemAttributes', Artist=name))
+		results = parse_results(API.item_search('Music', ResponseGroup='ItemAttributes', Artist=squash_str(name)))
 	except errors.NoExactMatchesFound:
 		return None
 	def get_artist(item):
