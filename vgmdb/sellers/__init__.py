@@ -5,13 +5,14 @@ from .. import cache
 from . import discogs
 from . import amazon
 from . import cdjapan
+from . import itunes
 
 try:
 	from concurrent.futures import ThreadPoolExecutor
 except:
 	pass
 
-search_modules = [discogs, amazon, cdjapan]
+search_modules = [discogs, amazon, cdjapan, itunes]
 
 import time
 
