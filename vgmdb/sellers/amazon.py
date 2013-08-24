@@ -74,5 +74,23 @@ def search_artist(info):
 	          "icon":"https://upload.wikimedia.org/wikipedia/commons/b/b4/Amazon-icon.png",
 	          "search": search_url
 	         }
-	# they don't have an artist page
+	found = search_artist_name(info['name'])
+	if found:
+		result['surity'] = 'results'
+		result['found'] = search_url
 	return result
+
+def search_artist_name(name):
+	try:
+		results = parse_results(API.item_search('Music', ResponseGroup='ItemAttributes', Artist=name))
+	except errors.NoExactMatchesFound:
+		return None
+	def get_artist(item):
+		if 'Artist' in item:
+			return item['Artist']
+		if 'Creator' in item:
+			return item['Creator']
+	found = find_best_match(squash_str(name), results,
+	   threshold=0.5, key=lambda x:squash_str(get_artist(x)))
+	return found
+
