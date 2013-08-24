@@ -4,10 +4,16 @@
 {% else -%}
 <div class="seller seller_notfound">
 {% endif -%}
+{% if seller['found'] or seller['search'] -%}
 <a href="{{seller['found'] or seller['search']}}">
+{% endif -%}
 <img src="{{seller['icon']}}" alt="" /></a>
+{% if seller['found'] or seller['search'] -%}
 <a href="{{seller['found'] or seller['search']}}">
+{% endif -%}
 <span>{{seller['name']}}</span>
+{% if seller['found'] or seller['search'] -%}
 </a>
+{% endif -%}
 </div>
 {% endfor -%}
