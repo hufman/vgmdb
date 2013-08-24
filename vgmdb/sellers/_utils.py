@@ -3,7 +3,7 @@ import difflib
 
 notislettermatcher = re.compile('[^A-Za-z0-9]')
 def squash_str(value):
-	return notislettermatcher.sub(value.lower().strip(), '_')
+	return notislettermatcher.sub(' ', value.lower().strip())
 
 def find_best_match(query, matches, threshold=0.7, key=lambda x:x):
 	best = 0
