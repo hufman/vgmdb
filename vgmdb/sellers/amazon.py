@@ -1,9 +1,17 @@
 import urllib
 import urlparse
 import json
+import logging
+
 from .. import config
 from ._utils import squash_str,find_best_match
 from amazonproduct import api, errors
+
+class NullHandler(logging.Handler):
+	def emit(self, record):
+		pass
+logger = logging.getLogger(__name__)
+logger.addHandler(NullHandler())
 
 if 'AMAZON_ASSOCIATE_TAG' in dir(config) and \
    config.AMAZON_ASSOCIATE_TAG:
@@ -52,7 +60,8 @@ def search_album(info):
 		if found:
 			result['found'] = found['DetailPageURL']
 	except:
-		pass
+		import traceback
+		logger.warning(traceback.format_exc())
 	return result
 
 def search_artist_album_name(info):
@@ -88,7 +97,8 @@ def search_artist(info):
 			result['surity'] = 'results'
 			result['found'] = search_url
 	except:
-		pass
+		import traceback
+		logger.warning(traceback.format_exc())
 	return result
 
 def search_artist_name(name):

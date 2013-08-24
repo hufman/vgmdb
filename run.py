@@ -1,5 +1,8 @@
 #!/usr/bin/python
 
+import logging
+logging.basicConfig(level=logging.DEBUG)
+
 from bottle import run
 
 from vgmdb import main

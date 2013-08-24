@@ -3,6 +3,9 @@
 
 import sys, os, bottle
 
+import logging
+logging.basicConfig(level=logging.ERROR)
+
 import vgmdb.main
 application = bottle.default_app()
 

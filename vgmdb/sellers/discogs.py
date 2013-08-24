@@ -1,9 +1,16 @@
 import urllib
 import urlparse
 import json
+import logging
 from ._utils import squash_str,find_best_match
 
 SEARCH_API = 'http://api.discogs.com/database/search'
+
+class NullHandler(logging.Handler):
+	def emit(self, record):
+		pass
+logger = logging.getLogger(__name__)
+logger.addHandler(NullHandler())
 
 def search_album(info):
 	search_url = "http://www.discogs.com/search?q=%s&type=master"%(urllib.quote(squash_str(info['name'])),)
@@ -28,7 +35,8 @@ def search_album(info):
 		if found:
 			result['found'] = urlparse.urljoin("http://discogs.com/",found['uri'])
 	except:
-		pass
+		import traceback
+		logger.warning(traceback.format_exc())
 	return result
 
 def search_album_catalog(catalog):
@@ -70,7 +78,8 @@ def search_artist(info):
 			result['surity'] = 'name'
 			result['found'] = urlparse.urljoin("http://discogs.com/",found['uri'])
 	except:
-		pass
+		import traceback
+		logger.warning(traceback.format_exc())
 	return result
 
 def search_artist_name(name):

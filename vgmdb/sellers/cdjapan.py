@@ -1,5 +1,12 @@
+import logging
 from cdjapan_parse import get_search_url, search
 from ._utils import squash_str,find_best_match
+
+class NullHandler(logging.Handler):
+	def emit(self, record):
+		pass
+logger = logging.getLogger(__name__)
+logger.addHandler(NullHandler())
 
 def search_album(info):
 	result = {"name":"CDJapan",
@@ -23,7 +30,8 @@ def search_album(info):
 		if found:
 			result['found'] = found['link']
 	except:
-		pass
+		import traceback
+		logger.warning(traceback.format_exc())
 	return result
 
 def search_album_catalog(catalog):
@@ -59,7 +67,8 @@ def search_artist(info):
 			result['surity'] = 'results'
 			result['found'] = get_search_url(info['name'])
 	except:
-		pass
+		import traceback
+		logger.warning(traceback.format_exc())
 	return result
 
 def search_artist_name(name):

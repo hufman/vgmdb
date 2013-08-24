@@ -3,6 +3,8 @@
 import sys
 import vgmdb.sellers
 import json
+import logging
+logging.basicConfig(level=logging.DEBUG)
 
 def find_sellers(itemid):
 	type,id = itemid.split('/')
