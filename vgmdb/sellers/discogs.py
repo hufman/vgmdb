@@ -6,7 +6,7 @@ from ._utils import squash_str,find_best_match
 SEARCH_API = 'http://api.discogs.com/database/search'
 
 def search_album(info):
-	search_url = "http://www.discogs.com/search?q=%s&type=master"%(urllib.quote(info['name']),)
+	search_url = "http://www.discogs.com/search?q=%s&type=master"%(urllib.quote(squash_str(info['name'])),)
 	result = {"name":"discogs",
 	          "icon":"http://s.pixogs.com/images/record32.ico",
 	          "search": search_url
@@ -29,7 +29,7 @@ def search_album(info):
 	return result
 
 def search_album_catalog(catalog):
-	url = SEARCH_API + '?type=master&catno=%s'%(urllib.quote(catalog),)
+	url = SEARCH_API + '?type=master&catno=%s'%(urllib.quote(squash_str(catalog)),)
 	webdata = urllib.urlopen(url).read()
 	data = json.loads(webdata)
 	found = find_best_match(squash_str(catalog), data['results'],
@@ -39,7 +39,7 @@ def search_album_catalog(catalog):
 def search_artist_album_name(info):
 	artist = info['composers'][0]['names']['en']
 	title = info['name']
-	url = SEARCH_API + "?type=master&artist=%s&release_title=%s"%(urllib.quote(artist),urllib.quote(title))
+	url = SEARCH_API + "?type=master&artist=%s&release_title=%s"%(urllib.quote(squash_str(artist)),urllib.quote(squash_str(title)))
 	webdata = urllib.urlopen(url).read()
 	data = json.loads(webdata)
 	found = find_best_match(squash_str(title), data['results'],
@@ -48,7 +48,7 @@ def search_artist_album_name(info):
 
 def search_album_name(info):
 	title = info['name']
-	url = SEARCH_API + "?type=master&release_title=%s"%(urllib.quote(title),)
+	url = SEARCH_API + "?type=master&release_title=%s"%(urllib.quote(squash_str(title)),)
 	webdata = urllib.urlopen(url).read()
 	data = json.loads(webdata)
 	found = find_best_match(squash_str(title), data['results'],
@@ -56,7 +56,7 @@ def search_album_name(info):
 	return found
 
 def search_artist(info):
-	search_url = "http://www.discogs.com/search?q=%s&type=master"%(urllib.quote(info['name']),)
+	search_url = "http://www.discogs.com/search?q=%s&type=master"%(urllib.quote(squash_str(info['name'])),)
 	result = {"name":"discogs",
 	          "icon":"http://s.pixogs.com/images/record32.ico",
 	          "search": search_url
@@ -68,7 +68,7 @@ def search_artist(info):
 	return result
 
 def search_artist_name(name):
-	url = SEARCH_API + "?type=artist&q=%s"%(urllib.quote(name))
+	url = SEARCH_API + "?type=artist&q=%s"%(urllib.quote(squash_str(name)))
 	webdata = urllib.urlopen(url).read()
 	data = json.loads(webdata)
 	found = find_best_match(squash_str(name), data['results'],
