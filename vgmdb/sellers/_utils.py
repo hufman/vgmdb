@@ -1,5 +1,8 @@
 import re
 import difflib
+import logging
+
+logger = logging.getLogger(__name__)
 
 notislettermatcher = re.compile('[^A-Za-z0-9]')
 def squash_str(value):
@@ -11,8 +14,11 @@ def find_best_match(query, matches, threshold=0.7, key=lambda x:x):
 	for result in matches:
 		s = difflib.SequenceMatcher(None, query, key(result))
 		score = s.ratio()
-		if score > best and score > threshold:
+		if score > best:
 			best = score
 			best_result = result
-	return best_result
+	if best > threshold:
+		return best_result
+	elif len(matches) > 0:
+		logger.debug("Closest match to %s was %s score %s"%(query, key(best_result), best))
 
