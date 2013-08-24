@@ -188,6 +188,16 @@ td.list li:last-child:after {content: ""}
 	width: 32px;
 	height: 32px;
 }
+.seller .search img {
+	width: 14px;
+	height: 14px;
+	opacity: 1;
+	filter: alpha(opacity=100);
+}
+.seller span.search {
+	opacity: 1;
+	filter: alpha(opacity=100);
+}
 
 .seller_notfound img {
 	zoom: 1;

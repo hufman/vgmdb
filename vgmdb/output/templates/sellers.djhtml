@@ -15,5 +15,8 @@
 {% if seller['found'] or seller['search'] -%}
 </a>
 {% endif -%}
+{% if seller['search'] -%}
+<span class="search"><a href="{{seller['search']}}"><img src="http://www.aphl.org/PublishingImages/Version2/Homepage%20Redesign/SearchIconTransparent.png" alt="Search" /></a></span>
+{% endif -%}
 </div>
 {% endfor -%}
