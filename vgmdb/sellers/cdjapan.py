@@ -6,21 +6,24 @@ def search_album(info):
 	          "icon":"static/cdjapan.gif",
 	          "search": get_search_url(squash_str(info['name']))
 	         }
-	found = None
-	if 'catalog' in info:
-		found = search_album_catalog(info['catalog'])
+	try:
+		found = None
+		if 'catalog' in info:
+			found = search_album_catalog(info['catalog'])
+			if found:
+				result['surity'] = 'catalog'
+		if not found:
+			found = search_artist_album_name(info)
+			if found:
+				result['surity'] = 'artist+album'
+		if not found:
+			found = search_album_name(info)
+			if found:
+				result['surity'] = 'album'
 		if found:
-			result['surity'] = 'catalog'
-	if not found:
-		found = search_artist_album_name(info)
-		if found:
-			result['surity'] = 'artist+album'
-	if not found:
-		found = search_album_name(info)
-		if found:
-			result['surity'] = 'album'
-	if found:
-		result['found'] = found['link']
+			result['found'] = found['link']
+	except:
+		pass
 	return result
 
 def search_album_catalog(catalog):
@@ -50,10 +53,13 @@ def search_artist(info):
 	          "icon":"static/cdjapan.gif",
 	          "search": get_search_url(squash_str(info['name']))
 	}
-	found = search_artist_name(info['name'])
-	if found:
-		result['surity'] = 'results'
-		result['found'] = get_search_url(info['name'])
+	try:
+		found = search_artist_name(info['name'])
+		if found:
+			result['surity'] = 'results'
+			result['found'] = get_search_url(info['name'])
+	except:
+		pass
 	return result
 
 def search_artist_name(name):

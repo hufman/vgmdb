@@ -11,21 +11,24 @@ def search_album(info):
 	          "icon":"http://s.pixogs.com/images/record32.ico",
 	          "search": search_url
 	         }
-	found = None
-	if 'catalog' in info:
-		found = search_album_catalog(info['catalog'])
+	try:
+		found = None
+		if 'catalog' in info:
+			found = search_album_catalog(info['catalog'])
+			if found:
+				result['surity'] = 'catalog'
+		if not found:
+			found = search_artist_album_name(info)
+			if found:
+				result['surity'] = 'artist+album'
+		if not found:
+			found = search_album_name(info)
+			if found:
+				result['surity'] = 'album'
 		if found:
-			result['surity'] = 'catalog'
-	if not found:
-		found = search_artist_album_name(info)
-		if found:
-			result['surity'] = 'artist+album'
-	if not found:
-		found = search_album_name(info)
-		if found:
-			result['surity'] = 'album'
-	if found:
-		result['found'] = urlparse.urljoin("http://discogs.com/",found['uri'])
+			result['found'] = urlparse.urljoin("http://discogs.com/",found['uri'])
+	except:
+		pass
 	return result
 
 def search_album_catalog(catalog):
@@ -61,10 +64,13 @@ def search_artist(info):
 	          "icon":"http://s.pixogs.com/images/record32.ico",
 	          "search": search_url
 	         }
-	found = search_artist_name(info['name'])
-	if found:
-		result['surity'] = 'name'
-		result['found'] = urlparse.urljoin("http://discogs.com/",found['uri'])
+	try:
+		found = search_artist_name(info['name'])
+		if found:
+			result['surity'] = 'name'
+			result['found'] = urlparse.urljoin("http://discogs.com/",found['uri'])
+	except:
+		pass
 	return result
 
 def search_artist_name(name):

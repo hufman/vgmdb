@@ -34,17 +34,20 @@ def search_album(info):
 	          "icon":"https://upload.wikimedia.org/wikipedia/commons/b/b4/Amazon-icon.png",
 	          "search": search_url
 	         }
-	found = None
-	if not found:
-		found = search_artist_album_name(info)
+	try:
+		found = None
+		if not found:
+			found = search_artist_album_name(info)
+			if found:
+				result['surity'] = 'artist+album'
+		if not found:
+			found = search_album_name(info)
+			if found:
+				result['surity'] = 'album'
 		if found:
-			result['surity'] = 'artist+album'
-	if not found:
-		found = search_album_name(info)
-		if found:
-			result['surity'] = 'album'
-	if found:
-		result['found'] = found['DetailPageURL']
+			result['found'] = found['DetailPageURL']
+	except:
+		pass
 	return result
 
 def search_artist_album_name(info):
@@ -74,10 +77,13 @@ def search_artist(info):
 	          "icon":"https://upload.wikimedia.org/wikipedia/commons/b/b4/Amazon-icon.png",
 	          "search": search_url
 	         }
-	found = search_artist_name(info['name'])
-	if found:
-		result['surity'] = 'results'
-		result['found'] = search_url
+	try:
+		found = search_artist_name(info['name'])
+		if found:
+			result['surity'] = 'results'
+			result['found'] = search_url
+	except:
+		pass
 	return result
 
 def search_artist_name(name):
