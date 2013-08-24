@@ -5,8 +5,13 @@ from .. import config
 from ._utils import squash_str,find_best_match
 from amazonproduct import api, errors
 
-SEARCH_PAGE = 'http://www.amazon.com/s/?_encoding=UTF8&url=search-alias%%3Dpopular&SubscriptionId=%s&AssociateTag=%s&linkCode=ur2&tag=%s'%(config.AMAZON_ACCESS_KEY_ID,config.AMAZON_ASSOCIATE_TAG,config.AMAZON_ASSOCIATE_TAG)
-API = api.API(config.AMAZON_ACCESS_KEY_ID, config.AMAZON_SECRET_ACCESS_KEY, 'us', config.AMAZON_ASSOCIATE_TAG)
+if 'AMAZON_ASSOCIATE_TAG' in dir(config) and \
+   config.AMAZON_ASSOCIATE_TAG:
+	SEARCH_PAGE = 'http://www.amazon.com/s/?_encoding=UTF8&url=search-alias%%3Dpopular&SubscriptionId=%s&AssociateTag=%s&linkCode=ur2&tag=%s'%(config.AMAZON_ACCESS_KEY_ID,config.AMAZON_ASSOCIATE_TAG,config.AMAZON_ASSOCIATE_TAG)
+	API = api.API(config.AMAZON_ACCESS_KEY_ID, config.AMAZON_SECRET_ACCESS_KEY, 'us', config.AMAZON_ASSOCIATE_TAG)
+else:
+	SEARCH_PAGE = 'http://www.amazon.com/s/?_encoding=UTF8&url=search-alias%%3Dpopular'
+	API = api.API(config.AMAZON_ACCESS_KEY_ID, config.AMAZON_SECRET_ACCESS_KEY, 'us', 'misconfigured%20vgmdb')
 
 def parse_results(roots):
 	results = []
