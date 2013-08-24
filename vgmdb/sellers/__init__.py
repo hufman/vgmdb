@@ -4,8 +4,9 @@ from .. import cache
 
 from . import discogs
 from . import amazon
+from . import cdjapan
 
-search_modules = [discogs, amazon]
+search_modules = [discogs, amazon, cdjapan]
 
 def search(type, id):
 	"""
