@@ -22,34 +22,36 @@ All of the information that is parsed out of vgmdb.net is exposed through JSON. 
 <h3>Searching</h3>
 <p>
 Searching the database is easy. You can search for everything, or just a specific category. Keywords shorter than 3 characters are ignored.<br/>
-<code>/search/&lt;query&gt;</code> - Search for matching items<br/>
-<code>/search?q=&lt;query&gt;</code> - Search for matching items<br/>
-<code>/search/albums/&lt;query&gt;</code> - Search for matching albums<br/>
-<code>/search/albums?q=&lt;query&gt;</code> - Search for matching albums<br/>
-<code>/search/artists/&lt;query&gt;</code> - Search for matching artists<br/>
-<code>/search/artists?q=&lt;query&gt;</code> - Search for matching artists<br/>
-<code>/search/orgs/&lt;query&gt;</code> - Search for matching organizations<br/>
-<code>/search/orgs?q=&lt;query&gt;</code> - Search for matching organizations<br/>
-<code>/search/products/&lt;query&gt;</code> - Search for matching products<br/>
-<code>/search/products?q=&lt;query&gt;</code> - Search for matching products<br/>
+<code><a href="search/vagran">/search/&lt;query&gt;</a></code> - Search for matching items<br/>
+<code><a href="search?q=vagran">/search?q=&lt;query&gt;</a></code> - Search for matching items<br/>
+<code><a href="search/albums/vagran">/search/albums/&lt;query&gt;</a></code> - Search for matching albums<br/>
+<code><a href="search/albums?q=vagran">/search/albums?q=&lt;query&gt;</a></code> - Search for matching albums<br/>
+<code><a href="search/artists/vagran">/search/artists/&lt;query&gt;</a></code> - Search for matching artists<br/>
+<code><a href="search/artists?q=vagran">/search/artists?q=&lt;query&gt;</a></code> - Search for matching artists<br/>
+<code><a href="search/orgs/vagran">/search/orgs/&lt;query&gt;</a></code> - Search for matching organizations<br/>
+<code><a href="search/orgs?q=vagran">/search/orgs?q=&lt;query&gt;</a></code> - Search for matching organizations<br/>
+<code><a href="search/products/vagran">/search/products/&lt;query&gt;</a></code> - Search for matching products<br/>
+<code><a href="search/products?q=vagran">/search/products?q=&lt;query&gt;</a></code> - Search for matching products<br/>
 </p>
 <h3>Browse Lists</h3>
 <p>
 An index of all items in each category is also available.<br/>
-<code>/albumlist/&lt;letter&gt;</code> - View all of the albums by letter<br/>
-<code>/artistlist/&lt;letter&gt;</code> - View all of the artists by letter<br/>
-<code>/orglist/&lt;letter&gt;</code> - View all of the organizations by letter<br/>
-<code>/eventlist/&lt;letter&gt;</code> - View all of the events by letter<br/>
-<code>/productlist/&lt;letter&gt;</code> - View all of the products by letter<br/>
+<code><a href="albumlist/A">/albumlist/&lt;letter&gt;</a></code> - View all of the albums by letter<br/>
+<code><a href="artistlist/A">/artistlist/&lt;letter&gt;</a></code> - View all of the artists by letter<br/>
+<code><a href="orglist">/orglist</a></code> - View all of the organizations<br/>
+<code><a href="orglist/A">/orglist/&lt;letter&gt;</a></code> - View all of the organizations by letter<br/>
+<code><a href="eventlist">/eventlist</a></code> - View all of the events<br/>
+<code><a href="eventlist/A">/eventlist/&lt;letter&gt;</a></code> - View all of the events by letter<br/>
+<code><a href="productlist/A">/productlist/&lt;letter&gt;</a></code> - View all of the products by letter<br/>
 </p>
 <h3>Information Pages</h3>
 <p>
 Each item in the database is represented with a unique URL, which follows this pattern:<br/>
-<code>/album/&lt;id&gt;</code> - Album information<br/>
-<code>/artist/&lt;id&gt;</code> - Artist information<br/>
-<code>/org/&lt;id&gt;</code> - Organization information<br/>
-<code>/event/&lt;id&gt;</code> - Event information<br/>
-<code>/product/&lt;id&gt;</code> - Product information<br/>
+<code><a href="album/79">/album/&lt;id&gt;</a></code> - Album information<br/>
+<code><a href="artist/77">/artist/&lt;id&gt;</a></code> - Artist information<br/>
+<code><a href="org/203">/org/&lt;id&gt;</a></code> - Organization information<br/>
+<code><a href="event/2">/event/&lt;id&gt;</a></code> - Event information<br/>
+<code><a href="product/1132">/product/&lt;id&gt;</a></code> - Product information<br/>
 </p>
 <h3>Format Selection</h3>
 <p>
@@ -65,11 +67,11 @@ This webservice will honor HTTP Accept headers. It will also produce a specific 
 <code>text/yaml</code> - YAML output<br/>
 <code>text/x-yaml</code> - YAML output
 <h5>Format Query String</h5>
-<code>html</code> - default HTML output<br/>
-<code>json</code> - JSON output<br/>
-<code>rdf</code> - RDF+XML output<br/>
-<code>turtle</code> - Turtle output<br/>
-<code>yaml</code> - YAML output<br/>
+<code><a href="album/79?format=html">html</a></code> - default HTML output<br/>
+<code><a href="album/79?format=json">json</a></code> - JSON output<br/>
+<code><a href="album/79?format=rdf">rdf</a></code> - RDF+XML output<br/>
+<code><a href="album/79?format=turtle">turtle</a></code> - Turtle output<br/>
+<code><a href="album/79?format=yaml">yaml</a></code> - YAML output<br/>
 </p>
 <h2>Open Source</h2>
 <p>
