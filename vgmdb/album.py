@@ -104,10 +104,11 @@ def _parse_album_info(soup_info):
 			if len(soup_children) > 1 and \
 			   isinstance(soup_children[1], bs4.Tag):
 				soup_event = soup_children[1]
+				link = utils.trim_absolute(soup_event['href'])
 				event = {}
 				event['name'] = soup_event['title']
 				event['shortname'] = soup_event.string
-				event['link'] = soup_event['href']
+				event['link'] = link
 				album_info['event'] = event
 		elif name == 'Release Price':
 			price = soup_value.contents[0].strip()
@@ -123,12 +124,16 @@ def _parse_album_info(soup_info):
 			if len(soup_links) == 0:
 				album_info['publisher'] = {'names':{'en':soup_value.string.strip()}}
 			if len(soup_links) > 0:
+				link = soup_links[0]['href']
+				link = utils.trim_absolute(link)
 				album_info['publisher'] = {}
-				album_info['publisher']['link'] = soup_links[0]['href']
+				album_info['publisher']['link'] = link
 				album_info['publisher']['names'] = utils.parse_names(soup_links[0])
 			if len(soup_links) > 1:
+				link = soup_links[1]['href']
+				link = utils.trim_absolute(link)
 				album_info['distributor'] = {}
-				album_info['distributor']['link'] = soup_links[1]['href']
+				album_info['distributor']['link'] = link
 				album_info['distributor']['names'] = utils.parse_names(soup_links[1])
 		elif name in names_single.keys():
 			key = names_single[name]
@@ -141,7 +146,7 @@ def _parse_album_info(soup_info):
 			for soup_child in soup_value.children:
 				if isinstance(soup_child, bs4.Tag) and soup_child.name=='a':
 					link = {}
-					link['link'] = soup_child['href']
+					link['link'] = utils.trim_absolute(soup_child['href'])
 					link['names'] = utils.parse_names(soup_child)
 					value.append(link)
 				elif isinstance(soup_child, bs4.Tag):
@@ -255,7 +260,7 @@ def _parse_section_album_stats(soup_section):
 			album_info['products'] = []
 			for soup_product in soup_div.find_all('a', recursive=False):
 				product = {}
-				product['link'] = soup_product['href']
+				product['link'] = utils.trim_absolute(soup_product['href'])
 				product['names'] = utils.parse_names(soup_product)
 				album_info['products'].append(product)
 			text = soup_div.find('br').next
@@ -308,7 +313,7 @@ def _parse_section_stores(soup_stores):
 		if link[0:9] == '/redirect':
 			slashpos = link.find('/', 10)
 			link = 'http://'+link[slashpos+1:]
-		links.append({"link":link,"name":name})
+		links.append({"link":utils.trim_absolute(link),"name":name})
 	return links
 
 def _parse_section_websites(soup_websites):
@@ -324,7 +329,7 @@ def _parse_section_websites(soup_websites):
 			if link[0:9] == '/redirect':
 				slashpos = link.find('/', 10)
 				link = 'http://'+link[slashpos+1:]
-			links.append({"link":link,"name":name})
+			links.append({"link":utils.trim_absolute(link),"name":name})
 		sites[category] = links
 	return sites
 

@@ -106,8 +106,10 @@ def _parse_org_releases(table):
 			release['reprint'] = True
 
 		if soup_cells[4].a:		# event link
+			link = soup_cells[4].a['href']
+			link = utils.trim_absolute(link)
 			event = {}
-			event['link'] = soup_cells[4].a['href']
+			event['link'] = link
 			event['name'] = soup_cells[4].a['title']
 			event['shortname'] = soup_cells[4].a.span.string
 			release['event'] = event
@@ -143,7 +145,7 @@ def _parse_websites(soup_websites):
 			if link[0:9] == '/redirect':
 				slashpos = link.find('/', 10)
 				link = 'http://'+link[slashpos+1:]
-			links.append({"link":link,"name":name})
+			links.append({"link":utils.trim_absolute(link),"name":name})
 		sites[category] = links
 	return sites
 

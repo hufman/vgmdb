@@ -32,7 +32,7 @@ def masquerade(url, page):
 			module = importlib.import_module('.'+type, 'vgmdb')
 			parse_page = getattr(module, "parse_page")
 			info = parse_page(data)
-			info['link'] = parsed.path
+			info['link'] = parsed.path[1:]
 			fake = generate_fakeresult(info)
 			sections[section].append(fake)
 	orig_parsed = urlparse.urlparse(url)

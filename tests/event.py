@@ -22,7 +22,7 @@ class TestEvents(unittest.TestCase):
 		self.assertEqual(u'AD:TECHNO', m3['releases'][2]['titles']['en'])
 		self.assertEqual(u'Clinochlore', m3['releases'][0]['publisher']['names']['en'])
 		self.assertEqual(u'Diverse System', m3['releases'][1]['publisher']['names']['en'])
-		self.assertEqual(u'/org/331', m3['releases'][1]['publisher']['link'])
+		self.assertEqual(u'org/331', m3['releases'][1]['publisher']['link'])
 		self.assertEqual(u'2012-10-28', m3['releases'][5]['release_date'])
 		self.assertEqual(39, len(m3['releases']))
 

@@ -15,7 +15,7 @@ class TestOrgList(unittest.TestCase):
 		list = eventlist.parse_page(list_code)
 
 		self.assertEqual(16, len(list['events'].keys()))
-		self.assertEqual(u"/event/92", list['events']['1998'][0]['link'])
+		self.assertEqual(u"event/92", list['events']['1998'][0]['link'])
 		self.assertEqual(u"Tokyo Game Show 1998 Spring", list['events']['1998'][0]['names']['en'])
 		self.assertEqual(u"コミックマーケット54", list['events']['1998'][1]['names']['ja'])
 		self.assertEqual(u"C55", list['events']['1998'][2]['shortname'])

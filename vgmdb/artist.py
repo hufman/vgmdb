@@ -115,7 +115,7 @@ def _parse_profile_info(soup_profile_left):
 			if isinstance(soup_item_data, bs4.Tag):
 				item_data = {}
 				if soup_item_data.name == 'a':
-					item_data['link'] = soup_item_data['href']
+					item_data['link'] = utils.trim_absolute(soup_item_data['href'])
 					item_data['names'] = {"en":soup_item_data.string}
 					pic_tag = soup_item_data.find_next_sibling('img')
 					if pic_tag:
