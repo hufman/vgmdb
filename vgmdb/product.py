@@ -77,7 +77,7 @@ def _parse_product_info(soup_profile_info):
 					for soup_child_link in soup_child_div.find_all('a', recursive=False):
 						item = {}
 						item['names'] = utils.parse_names(soup_child_link)
-						item['link'] = soup_child_link['href']
+						item['link'] = utils.trim_absolute(soup_child_link['href'])
 						value.append(item)
 			else:
 				value = soup_child.string
@@ -132,7 +132,7 @@ def _parse_franchise_titles(soup_table):
 		title['date'] = utils.normalize_dashed_date(soup_cells[0].span.string)
 		title['names'] = utils.parse_names(soup_cells[1].span)
 		if soup_cells[1].a:
-			title['link'] = soup_cells[1].a['href']
+			title['link'] = utils.trim_absolute(soup_cells[1].a['href'])
 		titles.append(title)
 	titles = sorted(titles, key=lambda e:e['date'])
 	return titles

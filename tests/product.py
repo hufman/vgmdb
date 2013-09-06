@@ -40,12 +40,12 @@ class TestProducts(unittest.TestCase):
 		self.assertEqual(u"アルトネリコ", at['name_real'])
 		self.assertEqual(4, len(at['titles']))
 		self.assertEqual(u"Ar tonelico: Melody of Elemia", at['titles'][0]['names']['en'])
-		self.assertEqual(u"/product/566", at['titles'][0]['link'])
+		self.assertEqual(u"product/566", at['titles'][0]['link'])
 		self.assertEqual(u"2010-12-26T03:20", at['meta']['added_date'])
 		self.assertTrue(not at.has_key('picture_full'))
 		two = [at['albums'][32], at['albums'][33]]
 		for thing in two:	# two albums released on the same date, hard to sort
-			if thing['link'] == '/album/20283':
+			if thing['link'] == 'album/20283':
 				self.assertEqual(True, thing['reprint'])
 
 	def test_empty(self):

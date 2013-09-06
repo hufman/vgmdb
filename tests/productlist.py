@@ -14,7 +14,7 @@ class TestProductList(unittest.TestCase):
 		list_code = file(os.path.join(base, 'productlist.html'), 'r').read()
 		list = productlist.parse_page(list_code)
 
-		self.assertEqual(u"/product/856", list['products'][0]['link'])
+		self.assertEqual(u"product/856", list['products'][0]['link'])
 		self.assertEqual(u"Darius", list['products'][0]['names']['en'])
 		self.assertEqual(u"Franchise", list['products'][0]['type'])
 		self.assertEqual(30, len(list['products']))

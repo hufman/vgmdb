@@ -19,7 +19,7 @@ class TestSearchList(unittest.TestCase):
 		self.assertEqual(1, len(search['results']['orgs']))
 		self.assertEqual(1, len(search['results']['products']))
 		self.assertEqual(u"vagran", search['query'])
-		self.assertEqual(u"/album/15634", search['results']['albums'][0]['link'])
+		self.assertEqual(u"album/15634", search['results']['albums'][0]['link'])
 		self.assertEqual(u"Vagrant Story Original Soundtrack", search['results']['albums'][1]['titles']['en'])
 		self.assertEqual(u"STEG-03027", search['results']['albums'][2]['catalog'])
 		self.assertEqual(u"2004", search['results']['albums'][1]['release_date'])
