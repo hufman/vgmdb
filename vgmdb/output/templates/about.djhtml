@@ -3,34 +3,79 @@
 <title>VGMdb</title>
 {% endblock %}
 {% block title %}
-    <h1>What Is This Then</h1>
+    <h1>VGMdb API</h1>
 {% endblock %}
 {% block quickinfo %}
 {% endblock %}
 {% block body %}
+<h2>What Is It?</h2>
 <p>
 VGMdb.net is an excellent resource, containing gigabytes of information about video game music. It documents the relationships between games, albums that represent games, and all the people that contributed to an album.
 </p>
 <p>
-However, VGMdb does not provide an API to access its information, which provides an obstacle to programs that want to use its information. This site is a way to programmatically access the information on VGMdb.net.
+However, VGMdb does not provide an API to access its information, which provides an obstacle to programs that want to use its information. This site is a way to programmatically access the information on VGMdb.net. The web interface provides an easy way to explore this API and discover how the links work. Format selectors on the right will show any page in a different format.
 </p>
+<h2>API</h2>
 <p>
-VGMdb.net stores the information of each item at a friendly URL, such as <a href="http://vgmdb.net/album/79">album/79</a> or <a href="http://vgmdb.net/artist/137">artist/137</a>. This friendly url will work on this site, such as <a href="album/79">album/79</a> or <a href="artist/137">artist/137</a>. Once there, an overview of the item's information can be found, along with a few extra features.
+All of the information that is parsed out of vgmdb.net is exposed through JSON. A subset of that information is also available in HTML+RDFa, RDF+XML, and Turtle. Send an HTTP Accept header to request a format, or append a ?format selector to the url.
 </p>
+<h3>Searching</h3>
 <p>
-In the right sidebar, there are links to view the page's information in different formats. The raw information that has been parsed out of the original VGMdb.net item is available in JSON format by adding ?format=json to any URL. The YAML format is also available for this information, available by adding ?format=yaml.
+Searching the database is easy. You can search for everything, or just a specific category. Keywords shorter than 3 characters are ignored.<br/>
+<code><a href="search/vagran">/search/&lt;query&gt;</a></code> - Search for matching items<br/>
+<code><a href="search?q=vagran">/search?q=&lt;query&gt;</a></code> - Search for matching items<br/>
+<code><a href="search/albums/vagran">/search/albums/&lt;query&gt;</a></code> - Search for matching albums<br/>
+<code><a href="search/albums?q=vagran">/search/albums?q=&lt;query&gt;</a></code> - Search for matching albums<br/>
+<code><a href="search/artists/vagran">/search/artists/&lt;query&gt;</a></code> - Search for matching artists<br/>
+<code><a href="search/artists?q=vagran">/search/artists?q=&lt;query&gt;</a></code> - Search for matching artists<br/>
+<code><a href="search/orgs/vagran">/search/orgs/&lt;query&gt;</a></code> - Search for matching organizations<br/>
+<code><a href="search/orgs?q=vagran">/search/orgs?q=&lt;query&gt;</a></code> - Search for matching organizations<br/>
+<code><a href="search/products/vagran">/search/products/&lt;query&gt;</a></code> - Search for matching products<br/>
+<code><a href="search/products?q=vagran">/search/products?q=&lt;query&gt;</a></code> - Search for matching products<br/>
 </p>
+<h3>Browse Lists</h3>
 <p>
-Additionally, an effort has been made to produce RDF tuples representing some of the information in VGMdb. The default HTML view of the data has RDFa encoded into it, allowing any RDFa library to parse the page. Additionally, RDF/XML and Turtle serialization formats are available.
+An index of all items in each category is also available.<br/>
+<code><a href="albumlist/A">/albumlist/&lt;letter&gt;</a></code> - View all of the albums by letter<br/>
+<code><a href="artistlist/A">/artistlist/&lt;letter&gt;</a></code> - View all of the artists by letter<br/>
+<code><a href="orglist">/orglist</a></code> - View all of the organizations<br/>
+<code><a href="orglist/A">/orglist/&lt;letter&gt;</a></code> - View all of the organizations by letter<br/>
+<code><a href="eventlist">/eventlist</a></code> - View all of the events<br/>
+<code><a href="eventlist/A">/eventlist/&lt;letter&gt;</a></code> - View all of the events by letter<br/>
+<code><a href="productlist/A">/productlist/&lt;letter&gt;</a></code> - View all of the products by letter<br/>
 </p>
+<h3>Information Pages</h3>
 <p>
-The page will produce the output format that most-closely matches the request's HTTP Accept header. A particular format can be forced by adding ?format=html, ?format=xml, or ?format=turtle arguments to the URL.
+Each item in the database is represented with a unique URL, which follows this pattern:<br/>
+<code><a href="album/79">/album/&lt;id&gt;</a></code> - Album information<br/>
+<code><a href="artist/77">/artist/&lt;id&gt;</a></code> - Artist information<br/>
+<code><a href="org/203">/org/&lt;id&gt;</a></code> - Organization information<br/>
+<code><a href="event/2">/event/&lt;id&gt;</a></code> - Event information<br/>
+<code><a href="product/1132">/product/&lt;id&gt;</a></code> - Product information<br/>
 </p>
+<h3>Format Selection</h3>
 <p>
-There are also links to validation services, to verify that the page's data is in fact valid and parseable in the respective formats. This main page doesn't produce any other formats, but every other page does.
+This webservice will honor HTTP Accept headers. It will also produce a specific format if a ?format=&lt;format&gt; option is added to the url.
+<h5>HTTP Accept types</h5>
+<code>text/html</code> - default HTML output<br/>
+<code>application/json</code> - JSON output<br/>
+<code>applications/rdf+xml</code> - RDF+XML output<br/>
+<code>application/x-turtle</code> - Turtle output<br/>
+<code>text/turtle</code> - Turtle output<br/>
+<code>application/yaml</code> - YAML output<br/>
+<code>application/x-yaml</code> - YAML output<br/>
+<code>text/yaml</code> - YAML output<br/>
+<code>text/x-yaml</code> - YAML output
+<h5>Format Query String</h5>
+<code><a href="album/79?format=html">html</a></code> - default HTML output<br/>
+<code><a href="album/79?format=json">json</a></code> - JSON output<br/>
+<code><a href="album/79?format=rdf">rdf</a></code> - RDF+XML output<br/>
+<code><a href="album/79?format=turtle">turtle</a></code> - Turtle output<br/>
+<code><a href="album/79?format=yaml">yaml</a></code> - YAML output<br/>
 </p>
+<h2>Open Source</h2>
 <p>
-Hosted at <a href="https://github.com/hufman/vgmdb">GitHub</a> for your pleasure.
+The code is hosted at <a href="https://github.com/hufman/vgmdb">GitHub</a> for your pleasure.
 </p>
 
 {% endblock %}
