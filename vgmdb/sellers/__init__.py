@@ -42,13 +42,13 @@ def search(type, id):
 	"""
 	if type in ['album','artist']:
 		module = globals()[type]
-		prevdata = cache.get("%s/%s"%(type,id))
+		prevdata = cache.get("vgmdb/%s/%s"%(type,id))
 		if not prevdata:
 			fetch_page = getattr(module, "fetch_page")
 			parse_page = getattr(module, "parse_page")
 			page = fetch_page(id)
 			info = parse_page(page)
-			cache.set("%s/%s"%(type,id), info)
+			cache.set("vgmdb/%s/%s"%(type,id), info)
 		else:
 			info = prevdata
 		if 'ThreadPoolExecutor' in globals():
