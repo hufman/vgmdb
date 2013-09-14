@@ -12,12 +12,15 @@ class NullHandler(logging.Handler):
 logger = logging.getLogger(__name__)
 logger.addHandler(NullHandler())
 
-def search_album(info):
+def empty_album(info):
 	search_url = "http://www.discogs.com/search?q=%s&type=master"%(urllib.quote(squash_str(info['name'])),)
 	result = {"name":"discogs",
 	          "icon":"http://s.pixogs.com/images/record32.ico",
 	          "search": search_url
 	         }
+	return result
+def search_album(info):
+	result = empty_album(info)
 	try:
 		found = None
 		if 'catalog' in info:
@@ -66,12 +69,15 @@ def search_album_name(info):
 	   threshold=0.5, key=lambda x:squash_str(x['title']))
 	return found
 
-def search_artist(info):
+def empty_artist(info):
 	search_url = "http://www.discogs.com/search?q=%s&type=artist"%(urllib.quote(squash_str(info['name'])),)
 	result = {"name":"discogs",
 	          "icon":"http://s.pixogs.com/images/record32.ico",
 	          "search": search_url
 	         }
+	return result
+def search_artist(info):
+	result = empty_artist(info)
 	try:
 		found = search_artist_name(info['name'])
 		if found:

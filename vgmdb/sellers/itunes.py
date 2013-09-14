@@ -38,11 +38,14 @@ def add_affiliate_id(link):
 		link = TD_URL % (TD_PROGRAM_ID, TD_WEBSITE_ID, urllib.quote(link))
 	return link
 
-def search_album(info):
+def empty_album(info):
 	search_url = SEARCH_API+'entity=album&term=%s'%(urllib.quote(squash_str(info['name'])),)
 	result = {"name":"iTunes",
 	          "icon":"https://upload.wikimedia.org/wikipedia/en/0/0c/ITunes_11_Logo.png"
 	         }
+	return result
+def search_album(info):
+	result = empty_album(info)
 	try:
 		found = None
 		found = search_album_name(info)
@@ -66,11 +69,14 @@ def search_album_name(info):
 	   threshold=0.5, key=lambda x:squash_str(x['collectionName']))
 	return found
 
-def search_artist(info):
+def empty_artist(info):
 	search_url = SEARCH_API+'entity=musicArtist&term=%s'%(urllib.quote(squash_str(info['name'])),)
 	result = {"name":"iTunes",
 	          "icon":"https://upload.wikimedia.org/wikipedia/en/0/0c/ITunes_11_Logo.png"
 	         }
+	return result
+def search_artist(info):
+	result = empty_artist(info)
 	try:
 		found = search_artist_name(info['name'])
 		if found:

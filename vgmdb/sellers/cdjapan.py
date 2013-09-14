@@ -8,11 +8,14 @@ class NullHandler(logging.Handler):
 logger = logging.getLogger(__name__)
 logger.addHandler(NullHandler())
 
-def search_album(info):
+def empty_album(info):
 	result = {"name":"CDJapan",
 	          "icon":"static/cdjapan.gif",
 	          "search": get_search_url(squash_str(info['name']))
 	         }
+	return result
+def search_album(info):
+	result = empty_album(info)
 	try:
 		found = None
 		if 'catalog' in info:
@@ -56,11 +59,14 @@ def search_album_name(info):
 	   threshold=0.5, key=lambda x:squash_str(x['title']))
 	return found
 
-def search_artist(info):
+def empty_artist(info):
 	result = {"name":"CDJapan",
 	          "icon":"static/cdjapan.gif",
 	          "search": get_search_url(squash_str(info['name']))
 	}
+	return result
+def search_artist(info):
+	result = empty_artist(info)
 	try:
 		found = search_artist_name(info['name'])
 		if found:

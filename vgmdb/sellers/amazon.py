@@ -41,12 +41,15 @@ def parse_results(roots):
 				pass
 	return results
 
-def search_album(info):
+def empty_album(info):
 	search_url = SEARCH_PAGE + "&field-keywords=%s"%(urllib.quote(squash_str(info['name'])))
 	result = {"name":"Amazon",
 	          "icon":"https://upload.wikimedia.org/wikipedia/commons/b/b4/Amazon-icon.png",
 	          "search": search_url
 	         }
+	return result
+def search_album(info):
+	result = empty_album(info)
 	try:
 		found = None
 		if not found:
@@ -85,12 +88,15 @@ def search_album_name(info):
 	   threshold=0.5, key=lambda x:squash_str(x['Title']))
 	return found
 
-def search_artist(info):
+def empty_artist(info):
 	search_url = SEARCH_PAGE + "&field-artist=%s"%(urllib.quote(squash_str(info['name'])),)
 	result = {"name":"Amazon",
 	          "icon":"https://upload.wikimedia.org/wikipedia/commons/b/b4/Amazon-icon.png",
 	          "search": search_url
 	         }
+	return result
+def search_artist(info):
+	result = empty_artist(info)
 	try:
 		found = search_artist_name(info['name'])
 		if found:
