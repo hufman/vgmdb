@@ -51,17 +51,17 @@ def search(type, id):
 			cache.set("vgmdb/%s/%s"%(type,id), info)
 		else:
 			info = prevdata
-		return search_info(type, info)
+		return search_info(type, id, info)
 	else:
 		return []
 
-def search_info(type, info):
+def search_info(type, id, info):
 	if 'ThreadPoolExecutor' in globals():
-		return _search_all_async(type,info)
+		return _search_all_async(type,id,info)
 	else:
-		return _search_all(type,info)
+		return _search_all(type,id,info)
 
-def _search_all_sync(type, info):
+def _search_all_sync(type, id, info):
 	results = []
 	for module in search_modules:
 		with Timer(tag=module.__name__, verbose=False):
@@ -72,7 +72,7 @@ def _search_all_sync(type, info):
 					results.append(ret)
 	return results
 
-def _search_all_async(type, info):
+def _search_all_async(type, id, info):
 	def search_module(module):
 		with Timer(tag=module.__name__, verbose=False):
 			search = getattr(module, "search_%s"%(type,), None)
