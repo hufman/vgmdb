@@ -1,6 +1,8 @@
 {% for seller in data['sellers'] -%}
 {% if seller['found'] -%}
 <div class="seller seller_found">
+{% elif seller['searching'] -%}
+<div class="seller seller_notfound seller_searching">
 {% else -%}
 <div class="seller seller_notfound">
 {% endif -%}
@@ -16,7 +18,10 @@
 </a>
 {% endif -%}
 {% if seller['search'] -%}
-<span class="search"><a href="{{seller['search']}}"><img src="http://www.aphl.org/PublishingImages/Version2/Homepage%20Redesign/SearchIconTransparent.png" alt="Search" /></a></span>
+<span class="search"><a href="{{seller['search']}}"><img src="static/search.png" alt="Search" /></a></span>
+{% endif -%}
+{% if seller['searching'] -%}
+<span><img src="static/throbber.gif" alt="Searching.." /></span>
 {% endif -%}
 </div>
 {% endfor -%}

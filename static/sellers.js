@@ -7,17 +7,24 @@ var sellerInfo = {
 		}
 	},
 	"init": function() {
-		if (!sellerInfo.isPresent()) {
+		if (sellerInfo.shouldUpdate()) {
 			sellerInfo.load();
 		}
 	},
-	"isPresent": function() {
+	"shouldUpdate": function() {
 		var elements = document.getElementsByClassName('sellers');
 		if (elements.length == 0)
-			return false;
+			return true;
 		var container = elements[0];
 		var sellers = container.getElementsByClassName('seller');
-		return sellers.length > 0;
+		var searching = false
+		for (var i=0; i<sellers.length; i++) {
+			var seller = sellers[i];
+			if (seller.className.indexOf('seller_searching') != -1) {
+				searching = true;
+			}
+		}
+		return searching;
 	},
 	"load": function() {
 		var httpRequest;
@@ -50,6 +57,11 @@ var sellerInfo = {
 			return false;
 		var container = elements[0];
 		container.innerHTML = data;
+		var refresh = httpRequest.getResponseHeader('Refresh')
+		if (refresh) {
+			var seconds = refresh.split(';')+0;
+			window.timeout(sellerInfo.load, seconds*1000);
+		}
 	},
 	"ajaxFailed":function(httpRequest) {
 		window.timeout(sellerInfo.load, 2000);

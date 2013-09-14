@@ -57,12 +57,16 @@ def do_page(cache_key, page_type, id, link=None, filterkey=None):
 		info = prevdata
 	if info == None:
 		abort(404, "Item not found")
-	sellers = vgmdb.cache.get(cache_key+"/sellers")
-	if sellers:
-		info['sellers'] = sellers
-		response.set_header('Cache-Control', 'max-age:3600,public')
+
+	# add in any seller information
+	sellers = vgmdb.sellers.search_info(page_type, id, info, start_search=True, wait=False)
+	info['sellers'] = sellers
+	not_searched = reduce(lambda any,item:any or 'not_searched' in item, sellers)
+	searching = reduce(lambda any,item:any or 'searching' in item, sellers)
+	if not_searched or searching:
+		response.set_header('Cache-Control', 'max-age:60,public')
 	else:
-		response.set_header('Cache-Control', 'max-age:300,public')
+		response.set_header('Cache-Control', 'max-age:3600,public')
 
 	requested_format = request.query.format or ''
 	outputter = vgmdb.output.get_outputter(vgmdb.config.for_request(request), requested_format, request.headers.get('Accept'))
@@ -136,15 +140,16 @@ def about():
 
 @route('/<type:re:(album|artist)>/<id:int>/sellers')
 def sellers(type,id):
-	cache_key = 'vgmdb/%s/%s/sellers'%(type,id)
-	sellers = vgmdb.cache.get(cache_key)
-	if not sellers:
-		sellers = vgmdb.sellers.search(type, id)
-		vgmdb.cache.set(cache_key, sellers)
+	sellers = vgmdb.sellers.search(type,id, start_search=True, wait=True)
+	searching = reduce(lambda any,item:any or 'searching' in item, sellers)
 	requested_format = request.query.format or ''
 	outputter = vgmdb.output.get_outputter(vgmdb.config.for_request(request), requested_format, request.headers.get('Accept'))
 	response.content_type = outputter.content_type
-	response.set_header('Cache-Control', 'max-age:3600,public')
+	if searching:
+		response.set_header('Cache-Control', 'max-age:1,public')
+		response.set_header('Refresh', '1')
+	else:
+		response.set_header('Cache-Control', 'max-age:3600,public')
 	return outputter('sellers', {'sellers':sellers})
 
 @route('/static/<name:path>')
