@@ -51,12 +51,15 @@ def search(type, id):
 			cache.set("vgmdb/%s/%s"%(type,id), info)
 		else:
 			info = prevdata
-		if 'ThreadPoolExecutor' in globals():
-			return search_all_async(type,info)
-		else:
-			return search_all(type,info)
+		return search_info(type, info)
 	else:
 		return []
+
+def search_info(type, info):
+	if 'ThreadPoolExecutor' in globals():
+		return search_all_async(type,info)
+	else:
+		return search_all(type,info)
 
 def search_all(type,info):
 	results = []
