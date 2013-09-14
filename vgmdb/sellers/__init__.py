@@ -57,11 +57,11 @@ def search(type, id):
 
 def search_info(type, info):
 	if 'ThreadPoolExecutor' in globals():
-		return search_all_async(type,info)
+		return _search_all_async(type,info)
 	else:
-		return search_all(type,info)
+		return _search_all(type,info)
 
-def search_all(type,info):
+def _search_all_sync(type, info):
 	results = []
 	for module in search_modules:
 		with Timer(tag=module.__name__, verbose=False):
@@ -72,7 +72,7 @@ def search_all(type,info):
 					results.append(ret)
 	return results
 
-def search_all_async(type,info):
+def _search_all_async(type, info):
 	def search_module(module):
 		with Timer(tag=module.__name__, verbose=False):
 			search = getattr(module, "search_%s"%(type,), None)
