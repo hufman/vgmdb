@@ -38,7 +38,6 @@ def parse_search_result(soup_row):
 		return None
 	soup_cell_pic = soup_cells[0]
 	soup_cell_desc = soup_cells[1]
-	soup_cell_form = soup_cells[2]
 
 	soup_link = soup_cell_pic.find('a')
 	info['link'] = urlparse.urljoin(BASE_URL, soup_link['href'])
@@ -52,11 +51,10 @@ def parse_search_result(soup_row):
 	info['artist'] = soup_artist.string
 	soup_caption = soup_parts[1]
 	info['caption'] = soup_caption.string
-
-	soup_form = soup_cell_form.form
-	soup_form_parts = soup_form.find_all('input', recursive=False)
-	soup_prodkey = soup_form_parts[0]
-	info['product_key'] = soup_prodkey['value']
+	link = soup_title['href']
+	parms = urlparse.parse_qs(urlparse.urlparse(link).query)
+	if 'KEY' in parms:
+		info['product_key'] = parms['KEY']
 
 	return info
 
