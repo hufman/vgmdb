@@ -83,24 +83,30 @@ def _search_all_sync(type, id, info):
 	for module in search_modules:
 		with Timer(tag=module.__name__, verbose=False):
 			search = getattr(module, "search_%s"%(type,), None)
+			empty = getattr(module, "empty_%s"%(type,), None)
 			prev = cache.get("vgmdb/%s/%s/sellers/%s"%(type,id,module.__name__))
 			if search and not prev:
 				ret = search(info)
 				if ret:
 					cache.set("vgmdb/%s/%s/sellers/%s"%(type,id,module.__name__), ret)
 					results.append(ret)
+				else:
+					results.append(empty(info))
 	return results
 
 def _search_all_async(type, id, info):
 	def search_module(module):
 		with Timer(tag=module.__name__, verbose=False):
 			search = getattr(module, "search_%s"%(type,), None)
+			empty = getattr(module, "empty_%s"%(type,), None)
 			prev = cache.get("vgmdb/%s/%s/sellers/%s"%(type,id,module.__name__))
 			if search and not prev:
 				ret = search(info)
 				if ret:
 					cache.set("vgmdb/%s/%s/sellers/%s"%(type,id,module.__name__), ret)
 					return ret
+				else:
+					return empty(info)
 			return prev
 	executor = ThreadPoolExecutor(max_workers=5)
 	results = executor.map(search_module, search_modules, timeout=60)

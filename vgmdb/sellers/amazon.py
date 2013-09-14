@@ -65,6 +65,7 @@ def search_album(info):
 	except:
 		import traceback
 		logger.warning(traceback.format_exc())
+		result = None
 	return result
 
 def search_artist_album_name(info):
@@ -105,6 +106,7 @@ def search_artist(info):
 	except:
 		import traceback
 		logger.warning(traceback.format_exc())
+		result = None
 	return result
 
 def search_artist_name(name):
