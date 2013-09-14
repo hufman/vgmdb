@@ -36,7 +36,7 @@ class Timer(object):
 			else:
 				print 'elapsed time: %f ms' % self.msecs
 
-def search(type, id):
+def search(type, id, start_search=True, wait=True):
 	"""
 	itemid should be something like album/79 or artist/77
 	"""
@@ -51,15 +51,32 @@ def search(type, id):
 			cache.set("vgmdb/%s/%s"%(type,id), info)
 		else:
 			info = prevdata
-		return search_info(type, id, info)
+		return search_info(type, id, info, start_search, wait)
 	else:
 		return []
 
-def search_info(type, id, info):
-	if 'ThreadPoolExecutor' in globals():
-		return _search_all_async(type,id,info)
+def search_info(type, id, info, start_search=True, wait=True):
+	"""
+	Search for sellers for this info item
+	if start_search is True and wait is True, attempt to start a search
+	If start_search is True but wait is False, it will return the current search results
+		Any unfinished search results will say they are searching
+	"""
+	results = []
+	if start_search:
+		if wait and 'ThreadPoolExecutor' in globals():
+			return _search_all_async(type,id,info)
+		elif wait:
+			return _search_all_sync(type,id,info)
+		else:
+			results = get_results(type,id,info)
 	else:
-		return _search_all(type,id,info)
+		results = get_results(type,id,info)
+
+	if start_search:
+		for result in results:
+			result['searching'] = 'not_searched' in result
+	return results
 
 def _search_all_sync(type, id, info):
 	results = []
@@ -88,4 +105,15 @@ def _search_all_async(type, id, info):
 	executor = ThreadPoolExecutor(max_workers=5)
 	results = executor.map(search_module, search_modules, timeout=60)
 	results = filter(lambda x:x, results)
+	return results
+
+def get_results(type, id, info):
+	results = []
+	for module in search_modules:
+		module_results = cache.get("vgmdb/%s/%s/sellers/%s"%(type,id,module.__name__))
+		empty_results = getattr(module, "empty_%s"%(type,))
+		if not module_results:
+			module_results = empty_results(info)
+			module_results['not_searched'] = True
+		results.append(module_results)
 	return results
