@@ -9,3 +9,4 @@ simplejson
 rdflib
 python-amazon-product-api
 futures
+celery
