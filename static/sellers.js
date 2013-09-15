@@ -59,12 +59,12 @@ var sellerInfo = {
 		container.innerHTML = data;
 		var refresh = httpRequest.getResponseHeader('Refresh')
 		if (refresh) {
-			var seconds = refresh.split(';')+0;
-			window.timeout(sellerInfo.load, seconds*1000);
+			var seconds = parseInt(refresh.split(';'));
+			window.setTimeout(sellerInfo.load, seconds*1000);
 		}
 	},
 	"ajaxFailed":function(httpRequest) {
-		window.timeout(sellerInfo.load, 2000);
+		window.setTimeout(sellerInfo.load, 2000);
 	}
 };
 
