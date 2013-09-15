@@ -31,7 +31,11 @@ def parse_results(roots):
 		                         namespaces={'aws':nspace})
 		for xml_result in xml_results:
 			try:
-				result = {"DetailPageURL":xml_result.DetailPageURL.text}
+				url = xml_result.DetailPageURL.text
+				if '%3F' in url or '%ef' in url:
+					url = urllib.unquote(url)
+				result = {"DetailPageURL":url}
+
 				for child in xml_result.ItemAttributes.getchildren():
 					name = child.tag.split("}")[-1]
 					value = child.text
