@@ -61,8 +61,8 @@ def do_page(cache_key, page_type, id, link=None, filterkey=None):
 	# add in any seller information
 	sellers = vgmdb.sellers.search_info(page_type, id, info, start_search=True, wait=False)
 	info['sellers'] = sellers
-	not_searched = reduce(lambda any,item:any or 'not_searched' in item, sellers)
-	searching = reduce(lambda any,item:any or 'searching' in item, sellers)
+	not_searched = any(['not_searched' in item for item in sellers])
+	searching = any(['searching' in item for item in sellers])
 	if not_searched or searching:
 		response.set_header('Cache-Control', 'max-age:60,public')
 	else:
@@ -140,8 +140,9 @@ def about():
 
 @route('/<type:re:(album|artist)>/<id:int>/sellers')
 def sellers(type,id):
-	sellers = vgmdb.sellers.search(type,id, start_search=True, wait=True)
-	searching = reduce(lambda any,item:any or 'searching' in item, sellers)
+	allow_partial = False or request.query.get('allow_partial')
+	sellers = vgmdb.sellers.search(type,id, start_search=True, wait=True, allow_partial=allow_partial)
+	searching = any(['searching' in item for item in sellers])
 	requested_format = request.query.format or ''
 	outputter = vgmdb.output.get_outputter(vgmdb.config.for_request(request), requested_format, request.headers.get('Accept'))
 	response.content_type = outputter.content_type

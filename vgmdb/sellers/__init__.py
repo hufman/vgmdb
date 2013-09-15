@@ -1,6 +1,7 @@
 from .. import album
 from .. import artist
 from .. import cache
+from .. import config
 
 from . import discogs
 from . import amazon
@@ -36,7 +37,7 @@ class Timer(object):
 			else:
 				print 'elapsed time: %f ms' % self.msecs
 
-def search(type, id, start_search=True, wait=True):
+def search(type, id, start_search=True, wait=True, allow_partial=False):
 	"""
 	itemid should be something like album/79 or artist/77
 	"""
@@ -51,19 +52,24 @@ def search(type, id, start_search=True, wait=True):
 			cache.set("vgmdb/%s/%s"%(type,id), info)
 		else:
 			info = prevdata
-		return search_info(type, id, info, start_search, wait)
+		return search_info(type, id, info, start_search, wait, allow_partial)
 	else:
 		return []
 
-def search_info(type, id, info, start_search=True, wait=True):
+def search_info(type, id, info, start_search=True, wait=True, allow_partial=False):
 	"""
 	Search for sellers for this info item
-	if start_search is True and wait is True, attempt to start a search
+	If start_search is True, attempt to start a search
+		If the worker method is available, it will start a search
+		Otherwise it will only search if wait is True
+		With the worker method, allow_partial will let it return after submitting the tasks
 	If start_search is True but wait is False, it will return the current search results
 		Any unfinished search results will say they are searching
 	"""
 	results = []
 	if start_search:
+		if hasattr(config, 'CELERY_BROKER'):
+			return _search_all_workers(type,id,info,wait and not allow_partial)
 		if wait and 'ThreadPoolExecutor' in globals():
 			return _search_all_async(type,id,info)
 		elif wait:
@@ -96,14 +102,15 @@ def _search_all_sync(type, id, info):
 
 def _search_all_async(type, id, info):
 	def search_module(module):
+		cache_key = "vgmdb/%s/%s/sellers/%s"%(type,id,module.__name__)
 		with Timer(tag=module.__name__, verbose=False):
 			search = getattr(module, "search_%s"%(type,), None)
 			empty = getattr(module, "empty_%s"%(type,), None)
-			prev = cache.get("vgmdb/%s/%s/sellers/%s"%(type,id,module.__name__))
+			prev = cache.get(cache_key)
 			if search and not prev:
 				ret = search(info)
 				if ret:
-					cache.set("vgmdb/%s/%s/sellers/%s"%(type,id,module.__name__), ret)
+					cache.set(cache_key, ret)
 					return ret
 				else:
 					return empty(info)
@@ -111,6 +118,30 @@ def _search_all_async(type, id, info):
 	executor = ThreadPoolExecutor(max_workers=5)
 	results = executor.map(search_module, search_modules, timeout=60)
 	results = filter(lambda x:x, results)
+	return results
+
+def _search_all_workers(type, id, info, wait):
+	from . import _tasks
+	active = []
+	for module in search_modules:
+		cache_key = "vgmdb/%s/%s/sellers/%s"%(type,id,module.__name__)
+		prev = cache.get(cache_key)
+		if not prev:
+			name = module.__name__.split('.')[-1]
+			task = getattr(_tasks, name)
+			active.append(task.delay(type, id))
+	if wait:
+		try:
+			for task in active:
+				task.wait()
+		except:
+			pass
+	results = get_results(type, id, info)
+	for result in results:
+		if 'not_searched' in result:
+			if not wait:
+				result['searching'] = result['not_searched']
+			del result['not_searched']
 	return results
 
 def get_results(type, id, info):

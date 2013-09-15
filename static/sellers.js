@@ -45,7 +45,7 @@ var sellerInfo = {
 			}
 		};
 		var loc = window.location;
-		var url = loc.protocol+'//'+loc.host+loc.pathname+'/sellers';
+		var url = loc.protocol+'//'+loc.host+loc.pathname+'/sellers?allow_partial=true';
 		httpRequest.open('GET', url, true);
 		httpRequest.setRequestHeader('Accept', 'text/html');
 		httpRequest.send(null);
