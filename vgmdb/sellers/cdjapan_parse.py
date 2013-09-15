@@ -54,7 +54,7 @@ def parse_search_result(soup_row):
 	link = soup_title['href']
 	parms = urlparse.parse_qs(urlparse.urlparse(link).query)
 	if 'KEY' in parms:
-		info['product_key'] = parms['KEY']
+		info['product_key'] = parms['KEY'][0]
 
 	return info
 
