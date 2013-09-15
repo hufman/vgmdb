@@ -14,6 +14,7 @@ except:
 	pass
 
 search_modules = [discogs, amazon, cdjapan, itunes]
+search_types = ['album', 'artist']
 
 import time
 
@@ -41,7 +42,7 @@ def search(type, id, start_search=True, wait=True, allow_partial=False):
 	"""
 	itemid should be something like album/79 or artist/77
 	"""
-	if type in ['album','artist']:
+	if type in search_types:
 		module = globals()[type]
 		prevdata = cache.get("vgmdb/%s/%s"%(type,id))
 		if not prevdata:
@@ -66,6 +67,8 @@ def search_info(type, id, info, start_search=True, wait=True, allow_partial=Fals
 	If start_search is True but wait is False, it will return the current search results
 		Any unfinished search results will say they are searching
 	"""
+	if type not in search_types:
+		return []
 	results = []
 	if start_search:
 		if hasattr(config, 'CELERY_BROKER'):
