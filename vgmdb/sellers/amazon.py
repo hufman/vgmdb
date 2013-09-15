@@ -102,7 +102,7 @@ def search_artist(info):
 		found = search_artist_name(info['name'])
 		if found:
 			result['surity'] = 'results'
-			result['found'] = search_url
+			result['found'] = result['search']
 	except:
 		import traceback
 		logger.warning(traceback.format_exc())
