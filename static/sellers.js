@@ -13,10 +13,13 @@ var sellerInfo = {
 	},
 	"shouldUpdate": function() {
 		var elements = document.getElementsByClassName('sellers');
-		if (elements.length == 0)
-			return true;
+		if (elements.length != 1)
+			return false;
 		var container = elements[0];
 		var sellers = container.getElementsByClassName('seller');
+		if (sellers.length == 0) {
+			return true;
+		}
 		var searching = false
 		for (var i=0; i<sellers.length; i++) {
 			var seller = sellers[i];
@@ -52,6 +55,9 @@ var sellerInfo = {
 	},
 	"ajaxLoaded":function(httpRequest) {
 		var data = httpRequest.responseText;
+		// remove the pretty html wrapper
+		data = data.replace(/^[\s\S]*<\s*body\s*>\s*([\s\S]*)\s*<\s*\/body\s*>[\s\S]*$/i, '$1');
+
 		var elements = document.getElementsByClassName('sellers');
 		if (elements.length == 0)
 			return false;

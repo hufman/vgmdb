@@ -1,3 +1,10 @@
+<html>
+  <head>
+    <base href="{{config.BASE_URL}}" />
+    <meta charset='utf-8'/>
+    <link href="static/style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
 {% for seller in data['sellers'] -%}
 {% if seller['found'] -%}
 <div class="seller seller_found">
@@ -25,3 +32,5 @@
 {% endif -%}
 </div>
 {% endfor -%}
+  </body>
+</html>
