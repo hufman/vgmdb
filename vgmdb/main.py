@@ -58,18 +58,24 @@ def do_page(cache_key, page_type, id, link=None, filterkey=None):
 	if info == None:
 		abort(404, "Item not found")
 
+	# figure out what format the user wants
+	requested_format = request.query.format or ''
+	outputter = vgmdb.output.get_outputter(vgmdb.config.for_request(request), requested_format, request.headers.get('Accept'))
+
 	# add in any seller information
-	sellers = vgmdb.sellers.search_info(page_type, id, info, start_search=True, wait=False)
-	info['sellers'] = sellers
-	not_searched = any(['not_searched' in item for item in sellers])
-	searching = any(['searching' in item for item in sellers])
-	if not_searched or searching:
-		response.set_header('Cache-Control', 'max-age:60,public')
+	if False and outputter.content_type[:9] == 'text/html':
+		sellers = vgmdb.sellers.search_info(page_type, id, info, start_search=True, wait=False)
+		info['sellers'] = sellers
+		not_searched = any(['not_searched' in item for item in sellers])
+		searching = any(['searching' in item for item in sellers])
+		if not_searched or searching:
+			response.set_header('Cache-Control', 'max-age:60,public')
+		else:
+			response.set_header('Cache-Control', 'max-age:3600,public')
 	else:
 		response.set_header('Cache-Control', 'max-age:3600,public')
 
-	requested_format = request.query.format or ''
-	outputter = vgmdb.output.get_outputter(vgmdb.config.for_request(request), requested_format, request.headers.get('Accept'))
+	# output
 	response.content_type = outputter.content_type
 	return outputter(page_type, info, filterkey)
 
