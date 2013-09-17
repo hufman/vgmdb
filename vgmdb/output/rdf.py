@@ -33,7 +33,13 @@ for name,namespace in namespaces:
 def generate(config, type, data):
 	global base
 	base = config.BASE_URL
-	graph = globals()['generate_%s'%type](config, data)
+	func_name = 'generate_%s'%type
+	if func_name in globals():
+		graph = globals()['generate_%s'%type](config, data)
+	else:
+		doc = BNode()
+		uri = base
+		graph = Graph('IOMemory', doc)
 	graph.namespace_manager = ns
 	return graph
 
