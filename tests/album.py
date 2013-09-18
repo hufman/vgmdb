@@ -110,3 +110,11 @@ class TestAlbums(unittest.TestCase):
 		self.assertEqual('artist/293', zwei['composers'][0]['link'])
 		self.assertEqual(u'Atsushi Shirakawa', zwei['composers'][1]['names']['en'])
 
+	def test_bootleg(self):
+		bootleg_code = file(os.path.join(base, 'album_bootleg.html'), 'r').read()
+		bootleg = album.parse_page(bootleg_code)
+		self.assertEqual('GAME-119', bootleg['catalog'])
+		self.assertEqual(True, bootleg['bootleg'])
+		self.assertEqual('album/722', bootleg['bootleg_of']['link'])
+		self.assertEqual('N30D-021', bootleg['bootleg_of']['catalog'])
+

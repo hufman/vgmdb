@@ -46,6 +46,15 @@
         <dt>Rating</dt>
         <dd property="schema:aggregateRating" typeof="schema:AggregateRating"><span property="schema:ratingValue">{{data.rating}}</span></dd>
         {% endif -%}
+        {% if data.bootleg_of -%}
+        <dt>Bootleg Of</dt>
+        <dd>
+         <span rel="mo:other_release_of">
+          <a typeof="mo:Release" href="{{data.bootleg_of.link | linkhref}}" {{data.bootleg_of.link | linkhref | resource_attr}}><span property="mo:catalogue_number">{{data.bootleg_of.catalog}}</span></a>
+         </span>
+        </dd>
+        {% endif -%}
+        {% if data.reprints -%}
         <dt>Re-releases</dt>
         <dd>
          <ul class="unstyled" rel="mo:other_release_of">
@@ -54,6 +63,7 @@
           {% endfor -%}
          </ul>
         </dd>
+        {% endif -%}
       </dl>
     </div>
     <div class="boxsection sellers">

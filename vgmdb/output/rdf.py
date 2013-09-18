@@ -232,6 +232,11 @@ def generate_album(config, data):
 		g.add((subject, MO.other_release_of, reprinturi))
 		g.add((reprinturi, RDF.type, MO.Release))
 		g.add((reprinturi, MO.catalogue_number, Literal(reprint['catalog'])))
+	if data.has_key('bootleg_of'):
+		reprinturi = URIRef(link(data['bootleg_of']['link']))
+		g.add((subject, MO.other_release_of, reprinturi))
+		g.add((reprinturi, RDF.type, MO.Release))
+		g.add((reprinturi, MO.catalogue_number, Literal(data['bootleg_of']['catalog'])))
 	if data.has_key('category'):
 		g.add((subject, SCHEMA.genre, Literal(data['category'])))
 	if data.has_key('media_format'):

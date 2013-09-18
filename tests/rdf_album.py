@@ -65,3 +65,17 @@ class TestAlbumsRDF(TestRDF):
 		graph = self.load_rdf_data('album_ff8.html')
 		self.run_ff8_tests(graph)
 
+	def run_bootleg_tests(self, graph):
+		test_count_results = {
+		}
+		test_first_result = {
+			"select ?catalog where { <@base#subject> mo:catalogue_number ?catalog . } order by desc(?catalog)" : "GAME-119",
+			"select ?catalog where { <@base#subject> mo:other_release_of ?release . ?release mo:catalogue_number ?catalog . } order by desc(?catalog)" : "N30D-021"
+		}
+		self.run_tests(graph, test_count_results, test_first_result)
+	def test_bootleg_rdfa(self):
+		graph = self.load_rdfa_data('album_bootleg.html')
+		self.run_bootleg_tests(graph)
+	def test_bootleg_rdf(self):
+		graph = self.load_rdf_data('album_bootleg.html')
+		self.run_bootleg_tests(graph)
