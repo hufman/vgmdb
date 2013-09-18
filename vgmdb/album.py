@@ -52,6 +52,9 @@ def parse_page(html_source):
 
 def _parse_album_info(soup_info):
 	album_info = {}
+	if 'class' in soup_info.attrs and \
+	   soup_info['class'][0] == 'bootleg':
+		album_info['bootleg'] = True
 	soup_info_rows = soup_info.find_all('tr', recursive=False)
 	for soup_row in soup_info_rows:
 		name = soup_row.td.find('b').string
@@ -71,6 +74,7 @@ def _parse_album_info(soup_info):
 					if len(text) > 0:
 						catalog = text
 						break
+			catalog = catalog.split('(')[0].strip()
 			reprints = []
 			for soup_reprint in soup_value.find_all('a'):
 				note = None
@@ -89,7 +93,10 @@ def _parse_album_info(soup_info):
 					reprint_info['note']  = note
 				reprints.append(reprint_info)
 			album_info['catalog'] = catalog
-			album_info['reprints'] = reprints
+			if 'bootleg' in album_info:
+				album_info['bootleg_of'] = reprints[0]
+			else:
+				album_info['reprints'] = reprints
 		elif name == "Release Date":
 			soup_event = None
 			soup_children = soup_value.contents
