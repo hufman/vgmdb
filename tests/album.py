@@ -102,3 +102,11 @@ class TestAlbums(unittest.TestCase):
 		self.assertEqual(u'C81', istoria['event']['shortname'])
 		self.assertEqual(u'event/146', istoria['event']['link'])
 
+	def test_zwei(self):
+		zwei_code = file(os.path.join(base, 'album_zwei.html'), 'r').read()
+		zwei = album.parse_page(zwei_code)
+		self.assertEqual(5, len(zwei['composers']))
+		self.assertEqual(u'Falcom Sound Team jdk', zwei['composers'][0]['names']['en'])
+		self.assertEqual('artist/293', zwei['composers'][0]['link'])
+		self.assertEqual(u'Atsushi Shirakawa', zwei['composers'][1]['names']['en'])
+

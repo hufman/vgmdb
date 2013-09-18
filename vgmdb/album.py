@@ -153,7 +153,9 @@ def _parse_album_info(soup_info):
 					# Skipping unknown tag
 					pass
 				else:
-					pieces = soup_child.string.split(',')
+					snippet = soup_child.string
+					snippet = snippet.strip('()')
+					pieces = snippet.split(',')
 					pieces = [a.strip() for a in pieces if len(a.strip())>0]
 					names = [{'names':{'en':name}} for name in pieces]
 					value.extend(names)
