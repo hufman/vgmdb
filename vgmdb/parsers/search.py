@@ -29,7 +29,7 @@ def masquerade(url, page):
 		type = section[:-1]
 		prefix = '/%s/'%type
 		if parsed.path[:len(prefix)] == prefix:
-			module = importlib.import_module('.'+type, 'vgmdb')
+			module = importlib.import_module('.parsers.'+type, 'vgmdb')
 			parse_page = getattr(module, "parse_page")
 			info = parse_page(data)
 			info['link'] = parsed.path[1:]
