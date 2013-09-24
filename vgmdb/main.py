@@ -124,9 +124,14 @@ def eventlist(type,filterkey=None):
 	return do_page(cache_key, page_type, filterkey, link=link, filterkey=filterkey)
 
 @route('/search/<type:re:(albums|artists|orgs|products)>/<query>')
+@route('/search/<type:re:(albums|artists|orgs|products)>')
 @route('/search/<query>')
 @route('/search')
 def search(type=None, query=None):
+	# Handle the case of /search/albums?q=
+	if query in ['albums','artists','orgs','products']:
+		type = query
+		query = None
 	query = query or request.query['q']
 	cache_key = 'vgmdb/search/%s'%(base64.b64encode(query),)
 	page_type = 'search'
