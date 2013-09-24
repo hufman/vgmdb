@@ -2,7 +2,7 @@
 import os
 import unittest
 
-from vgmdb import orglist
+from vgmdb.parsers import orglist
 
 base = os.path.dirname(__file__)
 

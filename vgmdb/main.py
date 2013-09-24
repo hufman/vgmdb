@@ -3,18 +3,18 @@ import urllib
 import json
 import base64
 
-import vgmdb.artist
-import vgmdb.album
-import vgmdb.product
-import vgmdb.event
-import vgmdb.org
+import vgmdb.parsers.artist
+import vgmdb.parsers.album
+import vgmdb.parsers.product
+import vgmdb.parsers.event
+import vgmdb.parsers.org
 
-import vgmdb.albumlist
-import vgmdb.artistlist
-import vgmdb.productlist
-import vgmdb.orglist
-import vgmdb.eventlist
-import vgmdb.search
+import vgmdb.parsers.albumlist
+import vgmdb.parsers.artistlist
+import vgmdb.parsers.productlist
+import vgmdb.parsers.orglist
+import vgmdb.parsers.eventlist
+import vgmdb.parsers.search
 
 import vgmdb.sellers
 
@@ -41,7 +41,7 @@ def do_page(cache_key, page_type, id, link=None, filterkey=None):
 	"""
 	prevdata = vgmdb.cache.get(cache_key)
 	if not prevdata:
-		module = getattr(vgmdb, page_type)
+		module = getattr(vgmdb.parsers, page_type)
 		fetch_url = getattr(module, "fetch_url")
 		fetch_page = getattr(module, "fetch_page")
 		parse_page = getattr(module, "parse_page")

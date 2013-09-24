@@ -1,5 +1,5 @@
-from .. import album
-from .. import artist
+from ..parsers import album
+from ..parsers import artist
 from .. import cache
 from .. import config
 

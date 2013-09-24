@@ -2,7 +2,7 @@
 import os
 import unittest
 
-from vgmdb import utils
+from vgmdb.parsers import utils
 from vgmdb.output import commonutils as outpututils
 
 base = os.path.dirname(__file__)

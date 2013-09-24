@@ -4,7 +4,7 @@ import datetime
 import unittest
 
 from ._rdf import TestRDF
-from vgmdb import orglist
+from vgmdb.parsers import orglist
 from vgmdb.config import BASE_URL
 from urlparse import urljoin
 

@@ -4,7 +4,7 @@ import datetime
 import unittest
 
 from ._rdf import TestRDF
-from vgmdb import artist
+from vgmdb.parsers import artist
 
 base = os.path.dirname(__file__)
 

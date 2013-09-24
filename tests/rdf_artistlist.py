@@ -4,7 +4,7 @@ import datetime
 import unittest
 
 from ._rdf import TestRDF
-from vgmdb import artistlist
+from vgmdb.parsers import artistlist
 from vgmdb.config import BASE_URL
 from urlparse import urljoin
 

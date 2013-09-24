@@ -4,7 +4,7 @@ import datetime
 import unittest
 
 from ._rdf import TestRDF
-from vgmdb import org
+from vgmdb.parsers import org
 
 base = os.path.dirname(__file__)
 

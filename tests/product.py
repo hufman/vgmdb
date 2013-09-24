@@ -2,7 +2,7 @@
 import os
 import unittest
 
-from vgmdb import product
+from vgmdb.parsers import product
 
 base = os.path.dirname(__file__)
 

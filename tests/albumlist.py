@@ -2,7 +2,7 @@
 import os
 import unittest
 
-from vgmdb import albumlist
+from vgmdb.parsers import albumlist
 
 base = os.path.dirname(__file__)
 

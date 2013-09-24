@@ -2,7 +2,7 @@
 import os
 import unittest
 
-from vgmdb import event
+from vgmdb.parsers import event
 
 base = os.path.dirname(__file__)
 

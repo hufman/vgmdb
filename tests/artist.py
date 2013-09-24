@@ -2,7 +2,7 @@
 import os
 import unittest
 
-from vgmdb import artist
+from vgmdb.parsers import artist
 
 base = os.path.dirname(__file__)
 
