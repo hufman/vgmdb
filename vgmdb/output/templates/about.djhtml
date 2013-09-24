@@ -41,7 +41,7 @@ An index of all items in each category is also available.<br/>
 <code><a href="orglist">/orglist</a></code> - View all of the organizations<br/>
 <code><a href="orglist/A">/orglist/&lt;letter&gt;</a></code> - View all of the organizations by letter<br/>
 <code><a href="eventlist">/eventlist</a></code> - View all of the events<br/>
-<code><a href="eventlist/A">/eventlist/&lt;letter&gt;</a></code> - View all of the events by letter<br/>
+<code><a href="eventlist/2001">/eventlist/&lt;year&gt;</a></code> - View all of the events by year<br/>
 <code><a href="productlist/A">/productlist/&lt;letter&gt;</a></code> - View all of the products by letter<br/>
 </p>
 <h3>Information Pages</h3>
