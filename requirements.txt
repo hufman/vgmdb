@@ -1,12 +1,22 @@
-bottle
-unittest2
-lxml
-beautifulsoup4
-python-memcached
-Jinja2 >= 2.7
-PyYAML
-simplejson
-rdflib
-python-amazon-product-api
-futures
-celery
+bottle==0.11.6
+unittest2==0.5.1
+
+# Parsing
+beautifulsoup4==4.3.1
+lxml==3.2.3
+
+# Output
+Jinja2==2.7.1
+PyYAML==3.10
+rdflib==4.0.1
+
+# Speed optimization
+python-memcached==1.53
+simplejson==3.3.0
+
+# Only needed for amazon seller provider
+python-amazon-product-api==0.2.6
+
+# Seller optimizations
+futures==2.1.4
+celery==3.0.23
