@@ -17,6 +17,13 @@ search_modules = [discogs, amazon, cdjapan, itunes]
 search_types = ['album', 'artist']
 
 import time
+import logging
+
+class NullHandler(logging.Handler):
+	def emit(self, record):
+		pass
+logger = logging.getLogger(__name__)
+logger.addHandler(NullHandler())
 
 class Timer(object):
 	""" Absolutely brilliant idea from http://www.huyng.com/posts/python-performance-analysis/ """
@@ -72,7 +79,10 @@ def search_info(type, id, info, start_search=True, wait=True, allow_partial=Fals
 	results = []
 	if start_search:
 		if hasattr(config, 'CELERY_BROKER'):
-			return _search_all_workers(type,id,info,wait and not allow_partial)
+			try:
+				return _search_all_workers(type,id,info,wait and not allow_partial)
+			except:
+				logger.warning("Celery unreachable!")
 		if wait and 'ThreadPoolExecutor' in globals():
 			return _search_all_async(type,id,info)
 		elif wait:
@@ -88,6 +98,7 @@ def search_info(type, id, info, start_search=True, wait=True, allow_partial=Fals
 	return results
 
 def _search_all_sync(type, id, info):
+	logger.debug("Searching for sellers for %s/%s synchronously"%(type, id))
 	results = []
 	for module in search_modules:
 		with Timer(tag=module.__name__, verbose=False):
@@ -104,6 +115,7 @@ def _search_all_sync(type, id, info):
 	return results
 
 def _search_all_async(type, id, info):
+	logger.debug("Searching for sellers for %s/%s asynchronously"%(type, id))
 	def search_module(module):
 		cache_key = "vgmdb/%s/%s/sellers/%s"%(type,id,module.__name__)
 		with Timer(tag=module.__name__, verbose=False):
@@ -124,6 +136,7 @@ def _search_all_async(type, id, info):
 	return results
 
 def _search_all_workers(type, id, info, wait):
+	logger.debug("Searching for sellers for %s/%s with Celery"%(type, id))
 	from . import _tasks
 	active = []
 	for module in search_modules:
