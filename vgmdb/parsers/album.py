@@ -93,7 +93,7 @@ def _parse_album_info(soup_info):
 					reprint_info['note']  = note
 				reprints.append(reprint_info)
 			album_info['catalog'] = catalog
-			if 'bootleg' in album_info:
+			if 'bootleg' in album_info and len(reprints)>0:
 				album_info['bootleg_of'] = reprints[0]
 				album_info['reprints'] = []
 			else:
