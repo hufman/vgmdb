@@ -1,60 +1,21 @@
 from bottle import route, response, request, static_file, abort
 import urllib
-import json
-import base64
 
-import vgmdb.parsers.artist
-import vgmdb.parsers.album
-import vgmdb.parsers.product
-import vgmdb.parsers.event
-import vgmdb.parsers.org
-
-import vgmdb.parsers.albumlist
-import vgmdb.parsers.artistlist
-import vgmdb.parsers.productlist
-import vgmdb.parsers.orglist
-import vgmdb.parsers.eventlist
-import vgmdb.parsers.search
-
+import vgmdb.request
 import vgmdb.sellers
 
-import vgmdb.cache
 import vgmdb.config
 import vgmdb.output
-
-try:
-	import simplejson as json
-except:
-	pass
 
 @route('/hello')
 def hello():
 	return "Hello!"
 
-def do_page(cache_key, page_type, id, link=None, filterkey=None):
+def do_page(page_type, info, filterkey=None):
 	"""
-	@param cache_key where to save the parsed data
-	@param page_type what parser and output to use
-	@param id which particular data to request from the backend
-	@param link what short url to set as the data['link']
+	@param info is what data to output
 	@param filterkey some pages have data that can be filtered in the output
 	"""
-	prevdata = vgmdb.cache.get(cache_key)
-	if not prevdata:
-		module = getattr(vgmdb.parsers, page_type)
-		fetch_url = getattr(module, "fetch_url")
-		fetch_page = getattr(module, "fetch_page")
-		parse_page = getattr(module, "parse_page")
-		data = fetch_page(id)
-		info = parse_page(data)
-		if info != None:
-			if link:
-				info['link'] = link
-			if fetch_url:
-				info['vgmdb_link'] = fetch_url(id)
-			vgmdb.cache.set(cache_key, info)
-	else:
-		info = prevdata
 	if info == None:
 		abort(404, "Item not found")
 
@@ -81,47 +42,20 @@ def do_page(cache_key, page_type, id, link=None, filterkey=None):
 
 @route('/<type:re:(artist|album|product|event|org)>/<id:int>')
 def info(type,id):
-	cache_key = 'vgmdb/%s/%s'%(type,id)
-	page_type = type
-	link = "%s/%s"%(type,id)
-	return do_page(cache_key, page_type, id, link)
+	return do_page(type, vgmdb.request.info(type,id))
 
 @route('/<type:re:(albumlist|artistlist|productlist)>/<id:re:[#A-Z]>')
 @route('/<type:re:(albumlist|artistlist|productlist)>/')
 @route('/<type:re:(albumlist|artistlist|productlist)>')
 def list(type,id='A'):
-	cache_key = 'vgmdb/%s/%s'%(type,id)
-	page_type = type
-	if id:
-		link = '%s/%s'%(type, id)
-	else:
-		link = '%s'%(type,)
-	return do_page(cache_key, page_type, id, link=link)
+	return do_page(type, vgmdb.request.list(type,id))
 
 @route('/<type:re:(orglist)>/<filterkey:re:[#A-Z]>')
-@route('/<type:re:(orglist)>/')
-@route('/<type:re:(orglist)>')
-def orglist(type,filterkey=None):
-	cache_key = 'vgmdb/%s'%(type,)
-	page_type = type
-	if filterkey:
-		link = '%s/%s'%(type, urllib.quote(filterkey))
-	else:
-		link = '%s'%(type,)
-	return do_page(cache_key, page_type, filterkey, link=link, filterkey=filterkey)
-
 @route('/<type:re:(eventlist)>/<filterkey:int>')
-@route('/<type:re:(eventlist)>/')
-@route('/<type:re:(eventlist)>')
-def eventlist(type,filterkey=None):
-	cache_key = 'vgmdb/%s'%(type,)
-	page_type = type
-	if filterkey:
-		link = '%s/%s'%(type, filterkey)
-		filterkey = str(filterkey)
-	else:
-		link = '%s'%(type,)
-	return do_page(cache_key, page_type, filterkey, link=link, filterkey=filterkey)
+@route('/<type:re:(orglist|eventlist)>/')
+@route('/<type:re:(orglist|eventlist)>')
+def singlelist(type,filterkey=None):
+	return do_page(type, vgmdb.request.list(type, filterkey), filterkey=filterkey)
 
 @route('/search/<type:re:(albums|artists|orgs|products)>/<query>')
 @route('/search/<type:re:(albums|artists|orgs|products)>')
@@ -133,14 +67,7 @@ def search(type=None, query=None):
 		type = query
 		query = None
 	query = query or request.query['q']
-	cache_key = 'vgmdb/search/%s'%(base64.b64encode(query),)
-	page_type = 'search'
-	if type:
-		link = 'search/%s/%s'%(type,urllib.quote(query))
-	else:
-		link = 'search/%s'%(urllib.quote(query),)
-	filterkey = type
-	return do_page(cache_key, page_type, query, link=link, filterkey=filterkey)
+	return do_page('search', vgmdb.request.search(type, query), filterkey=type)
 
 @route('/')
 @route('/about')
