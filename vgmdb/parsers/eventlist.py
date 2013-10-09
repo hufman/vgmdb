@@ -21,7 +21,7 @@ def parse_page(html_source):
 	soup_table = soup_innermain.find('table')
 	for soup_cell in soup_table.find_all('td'):
 		for soup_year in soup_cell.find_all('h3', recursive=False):
-			year = soup_year.string
+			year = unicode(soup_year.string)
 			if year not in eventlist_info['years']:
 				eventlist_info['years'].append(year)
 			if not eventlist_info['events'].has_key(year):
@@ -54,7 +54,7 @@ def _parse_event(soup_event):
 	info = _parse_eventlink(soup_link)
 	soup_short = soup_event.find('a', recursive=False)	# optional shorttag
 	if soup_short:
-		info['shortname'] = soup_short.span.string
+		info['shortname'] = unicode(soup_short.span.string)
 	soup_date = soup_event.div
 	if soup_date:
 		dates = soup_date.string.split('to')

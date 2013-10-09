@@ -23,7 +23,7 @@ def parse_page(html_source):
 	soup_table = soup_innermain.find('table')
 	for soup_cell in soup_table.find_all('td'):
 		for soup_letter in soup_cell.find_all('h3'):
-			letter = soup_letter.string
+			letter = unicode(soup_letter.string)
 			if not letter or \
 			   not islettermatcher.match(letter):
 				letter = '#'
@@ -62,6 +62,6 @@ def _parse_org(soup_org):
 def _parse_orglink(soup_link):
 	org_link = soup_link['href']
 	org_link = utils.trim_absolute(org_link)
-	org_name = soup_link.string
+	org_name = unicode(soup_link.string)
 	return {'link': org_link,
 	        'names': {'en':org_name}}

@@ -29,11 +29,11 @@ def parse_page(html_source):
 	artistlist_info['meta'] = {}
 	soup_navbar = soup_innermain.parent.div
 	soup_metadata = soup_navbar.div
-	artistlist_info['meta']['time'] = soup_metadata.b.string
+	artistlist_info['meta']['time'] = unicode(soup_metadata.b.string)
 	soup_letters = soup_navbar.ul
 	artistlist_info['letters'] = []
 	for soup_letter in soup_letters.find_all('li'):
-		letter = soup_letter.a.h3.string
+		letter = unicode(soup_letter.a.h3.string)
 		artistlist_info['letters'].append(letter)
 
 	return artistlist_info
@@ -42,10 +42,10 @@ def _parse_artist_info(soup_cell, append_target):
 	if soup_cell.a:
 		soup_artist = soup_cell.a
 		link = soup_artist['href']
-		name = soup_artist.string
+		name = unicode(soup_artist.string)
 		artist_info = {'link':utils.trim_absolute(link),
 		               'names':{'en':name}}
 		if soup_cell.span:
-			name_real = soup_cell.span.string
+			name_real = unicode(soup_cell.span.string)
 			artist_info['name_real'] = name_real
 		append_target.append(artist_info)

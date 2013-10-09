@@ -115,7 +115,7 @@ def _parse_albums(soup_section):
 	return list
 def _parse_album(soup_row):
 	soup_cells = soup_row.find_all('td', recursive=False)
-	catalog = soup_cells[0].span.string
+	catalog = unicode(soup_cells[0].span.string)
 	special = soup_cells[1].img
 	soup_album = soup_cells[2]
 	link = soup_album.a['href']

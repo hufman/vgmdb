@@ -58,6 +58,7 @@ def _parse_album_info(soup_info):
 	soup_info_rows = soup_info.find_all('tr', recursive=False)
 	for soup_row in soup_info_rows:
 		name = soup_row.td.find('b').string
+		name = unicode(name)
 		soup_value = soup_row.td.find_next_sibling('td')
 		names_single = {'Publish Format':'publish_format',
 		                'Media Format':'media_format',
@@ -115,7 +116,7 @@ def _parse_album_info(soup_info):
 				link = utils.trim_absolute(soup_event['href'])
 				event = {}
 				event['name'] = soup_event['title']
-				event['shortname'] = soup_event.string
+				event['shortname'] = unicode(soup_event.string)
 				event['link'] = link
 				album_info['event'] = event
 		elif name == 'Release Price':
@@ -176,7 +177,7 @@ def _parse_album_info(soup_info):
 def _parse_tracklist(soup_tracklist):
 	discs = []
 	soup_sections = soup_tracklist.find_all('div', recursive=False)
-	languages = [li.a.string for li in soup_sections[0].ul.find_all('li', recursive=False)]
+	languages = [unicode(li.a.string) for li in soup_sections[0].ul.find_all('li', recursive=False)]
 	soup_tabs = soup_sections[1].div.find_all('span', recursive=False)
 	tab_index = -1
 	for soup_tab in soup_tabs:
@@ -185,10 +186,10 @@ def _parse_tracklist(soup_tracklist):
 		index = 0
 		soup_cur = soup_tab.span
 		while soup_cur:
-			disc_name = soup_cur.b.string
+			disc_name = unicode(soup_cur.b.string)
 			soup_tracklist = soup_cur.find_next_sibling('table')
 			soup_cur = soup_tracklist.find_next_sibling('span')
-			disc_length = soup_cur.find_all('span')[-1].string
+			disc_length = unicode(soup_cur.find_all('span')[-1].string)
 			if len(discs) < index+1:
 				discs.append({})
 			discs[index]['name'] = disc_name
@@ -199,8 +200,8 @@ def _parse_tracklist(soup_tracklist):
 			for soup_track in soup_tracklist.find_all('tr', recursive=False):
 				track_no += 1
 				soup_cells = soup_track.find_all('td')
-				track_name = soup_cells[1].string
-				track_length = soup_cells[2].span.string
+				track_name = unicode(soup_cells[1].string)
+				track_length = unicode(soup_cells[2].span.string)
 				if len(discs[index]['tracks']) < track_no + 1:
 					discs[index]['tracks'].append({'names':{},'track_length':track_length})
 				discs[index]['tracks'][track_no]['names'][tab_language] = track_name
@@ -214,7 +215,7 @@ def _parse_right_column(soup_right_column):
 	while soup_div:
 		soup_section = soup_div.find_next_sibling('div')
 		if soup_div.div.h3:
-			section_title = soup_div.div.h3.string
+			section_title = unicode(soup_div.div.h3.string)
 			if section_title == 'Album Stats':
 				album_info.update(_parse_section_album_stats(soup_section.div))
 			if section_title == 'Related Albums':
@@ -296,7 +297,7 @@ def _parse_section_related_albums(soup_div):
 			link = soup_rows[0].a['href']
 			link = utils.trim_absolute(link)
 		else:
-			catalog = soup_album.span.string
+			catalog = unicode(soup_album.span.string)
 			names = utils.parse_names(soup_album.a)
 			album_type = soup_album.a['class'][-1].split('-')[1]
 			link = soup_album.a['href']
@@ -319,7 +320,7 @@ def _parse_section_stores(soup_stores):
 	links = []
 	for soup_link in soup_links:
 		link = soup_link['href']
-		name = soup_link.string
+		name = unicode(soup_link.string)
 		if link[0:9] == '/redirect':
 			slashpos = link.find('/', 10)
 			link = 'http://'+link[slashpos+1:]
@@ -330,12 +331,12 @@ def _parse_section_websites(soup_websites):
 	""" Given an array of divs containing website information """
 	sites = {}
 	for soup_category in soup_websites.find_all('div', recursive=False):
-		category = soup_category.b.string
+		category = unicode(soup_category.b.string)
 		soup_links = soup_category.find_all('a', recursive=False)
 		links = []
 		for soup_link in soup_links:
 			link = soup_link['href']
-			name = soup_link.string
+			name = unicode(soup_link.string)
 			if link[0:9] == '/redirect':
 				slashpos = link.find('/', 10)
 				link = 'http://'+link[slashpos+1:]

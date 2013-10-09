@@ -44,8 +44,8 @@ def _parse_event_releases(soup_table):
 		if len(soup_cells)<5:
 			continue
 
-		release['release_type'] = soup_cells[0].span.string
-		release['catalog'] = soup_cells[1].span.string
+		release['release_type'] = unicode(soup_cells[0].span.string)
+		release['catalog'] = unicode(soup_cells[1].span.string)
 		soup_class = soup_cells[1].span['class']
 		if len(soup_class) == 2 and '-' in soup_class[1]:
 			release['album_type'] = soup_class[1].split('-')[1]

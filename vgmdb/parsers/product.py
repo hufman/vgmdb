@@ -19,9 +19,9 @@ def parse_page(html_source):
 	if soup_real_name:
 		soup_real_name = soup_real_name.span
 		if len(soup_real_name.contents) == 1:
-			product_info['name_real'] = soup_real_name.string
+			product_info['name_real'] = unicode(soup_real_name.string)
 		elif len(soup_real_name.contents) > 1:
-			product_info['name_real'] = soup_real_name.contents[0].string
+			product_info['name_real'] = unicode(soup_real_name.contents[0].string)
 
 	soup_type = soup_name.find_next_sibling('span')
 	if soup_type:
@@ -45,7 +45,7 @@ def parse_page(html_source):
 
 	soup_section_heads = soup_profile.find_all('h3', recursive=False)
 	for soup_section_head in soup_section_heads:
-		section_name = soup_section_head.string
+		section_name = unicode(soup_section_head.string)
 		soup_section = soup_section_head.find_next_sibling('div')
 		if section_name == 'Titles':
 			product_info['titles'] = _parse_franchise_titles(soup_section.div.table)
@@ -68,7 +68,7 @@ def _parse_product_info(soup_profile_info):
 		if not isinstance(soup_child, bs4.Tag):
 			continue
 		if soup_child.name == 'dt':
-		   	name = soup_child.b.string
+			name = unicode(soup_child.b.string)
 			value = None
 		if soup_child.name == 'dd':
 			if soup_child.div:
@@ -80,7 +80,7 @@ def _parse_product_info(soup_profile_info):
 						item['link'] = utils.trim_absolute(soup_child_link['href'])
 						value.append(item)
 			else:
-				value = soup_child.string
+				value = unicode(soup_child.string)
 
 			if name == 'Franchises' and isinstance(value, list):
 				product_info['franchises'] = value
@@ -109,8 +109,8 @@ def _parse_product_releases(soup_table):
 		release = {}
 		release['date'] = utils.normalize_dashed_date(soup_cells[0].span.string)
 		release['names'] = utils.parse_names(soup_cells[1].span)
-		release['region'] = soup_cells[2].span.string
-		release['platform'] = soup_cells[3].span.string
+		release['region'] = unicode(soup_cells[2].span.string)
+		release['platform'] = unicode(soup_cells[3].span.string)
 		releases.append(release)
 	releases = sorted(releases, key=lambda e:e['date'])
 	return releases

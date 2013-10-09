@@ -156,7 +156,7 @@ def parse_shallow_string(soup_element):
 	Given an element, return the strings inside, but not inside nested elements
 	"""
 	if not isinstance(soup_element, bs4.Tag):
-		return soup_element.string
+		return unicode(soup_element.string)
 	else:
 		bits = []
 		for child in soup_element.children:
@@ -209,16 +209,16 @@ def parse_discography(soup_disco_table, label_type='roles'):
 		return albums
 	for soup_tbody in soup_disco_table.find_all("tbody", recursive=False):
 		soup_rows = soup_tbody.find_all("tr", recursive=False)
-		year = soup_rows[0].find('h3').string
+		year = unicode(soup_rows[0].find('h3').string)
 		for soup_album_tr in soup_rows[1:]:
 			soup_cells = soup_album_tr.find_all('td')
-			month_day = soup_cells[0].string
+			month_day = unicode(soup_cells[0].string)
 			soup_album = soup_cells[1].a
 			link = soup_album['href']
 			link = trim_absolute(link)
 			album_type = soup_album['class'][1].split('-')[1]
 			soup_album_info = soup_cells[1].find_all('span', recursive=False)
-			catalog = soup_album_info[0].string
+			catalog = unicode(soup_album_info[0].string)
 			roles_str = parse_string(soup_album_info[1])
 			roles = roles_str.split(',')
 			roles = [x.strip() for x in roles]

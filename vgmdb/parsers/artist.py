@@ -116,7 +116,7 @@ def _parse_profile_info(soup_profile_left):
 				item_data = {}
 				if soup_item_data.name == 'a':
 					item_data['link'] = utils.trim_absolute(soup_item_data['href'])
-					item_data['names'] = {"en":soup_item_data.string}
+					item_data['names'] = {"en":unicode(soup_item_data.string)}
 					pic_tag = soup_item_data.find_next_sibling('img')
 					if pic_tag:
 						if pic_tag['src'] == 'http://media.vgmdb.net/img/owner.gif':
@@ -127,7 +127,7 @@ def _parse_profile_info(soup_profile_left):
 						names = {}
 						for soup_name in soup_names:
 							lang = soup_name['lang']
-							name = soup_name.string
+							name = unicode(soup_name.string)
 							names[lang] = name
 						item_data['names'] = names
 					item_list.append(item_data)
@@ -142,11 +142,13 @@ def _parse_profile_info(soup_profile_left):
 					  soup_votes.contents[1] + \
 					  soup_votes.contents[2].string + \
 					  soup_votes.contents[3]
+					ret['Album Votes'] = unicode(ret['Album Votes'])
 				if soup_item_data.name == 'span' and \
 				  soup_item_data.has_attr('class') and \
 				  'time' in soup_item_data['class']:
 					if soup_item_data.next_sibling:
-						item_list.append(soup_item_data.string + soup_item_data.next_sibling)
+						item_list.append(unicode(soup_item_data.string) + \
+						                 soup_item_data.next_sibling)
 					
 
 			list_item_pre = list_item_pre.find_next_sibling('br')
@@ -185,12 +187,12 @@ def _parse_websites(soup_websites):
 	""" Given an array of divs containing website information """
 	sites = {}
 	for soup_category in soup_websites.find_all('div', recursive=False):
-		category = soup_category.b.string
+		category = unicode(soup_category.b.string)
 		soup_links = soup_category.find_all('a', recursive=False)
 		links = []
 		for soup_link in soup_links:
 			link = soup_link['href']
-			name = soup_link.string
+			name = unicode(soup_link.string)
 			if link[0:9] == '/redirect':
 				slashpos = link.find('/', 10)
 				link = 'http://'+link[slashpos+1:]
