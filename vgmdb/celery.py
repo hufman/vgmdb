@@ -10,7 +10,7 @@ cache = config.CELERY_CACHE_BACKEND
 celery = Celery('vgmdb.celery',
                 broker=broker,
                 backend=result,
-                include=['vgmdb.sellers._tasks'])
+                include=['vgmdb._tasks', 'vgmdb.sellers._tasks'])
 celery.conf.update(
 	CELERY_CACHE_BACKEND=cache
 )
