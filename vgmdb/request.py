@@ -1,5 +1,5 @@
-import urllib
-import base64
+import urllib as _urllib
+import base64 as _base64
 
 import vgmdb.parsers.artist
 import vgmdb.parsers.album
@@ -17,6 +17,9 @@ import vgmdb.parsers.search
 import vgmdb.cache
 import vgmdb.config
 
+_vgmdb = vgmdb
+del vgmdb
+
 def _request_page(cache_key, page_type, id, link=None, use_cache=True):
 	""" Generic function to handle general vgmdb requests
 
@@ -29,9 +32,9 @@ def _request_page(cache_key, page_type, id, link=None, use_cache=True):
 	info = None
 	prevdata = None
 	if use_cache:
-		vgmdb.cache.get(cache_key)
+		_vgmdb.cache.get(cache_key)
 	if not prevdata:
-		module = getattr(vgmdb.parsers, page_type)
+		module = getattr(_vgmdb.parsers, page_type)
 		fetch_url = getattr(module, "fetch_url")
 		fetch_page = getattr(module, "fetch_page")
 		parse_page = getattr(module, "parse_page")
@@ -42,7 +45,7 @@ def _request_page(cache_key, page_type, id, link=None, use_cache=True):
 				info['link'] = link
 			if fetch_url:
 				info['vgmdb_link'] = fetch_url(id)
-			vgmdb.cache.set(cache_key, info)
+			_vgmdb.cache.set(cache_key, info)
 	else:
 		info = prevdata
 	return info
@@ -55,12 +58,14 @@ def info(page_type, id, use_cache=True):
 	@param id is which specific item to load
 	@param use_cache can be set to False to ignore any cached data
 	"""
-	cache_key = 'vgmdb/%s/%s'%(page_type,urllib.quote(str(id)))
+	cache_key = 'vgmdb/%s/%s'%(page_type,_urllib.quote(str(id)))
 	link = '%s/%s'%(page_type,id)
 	return _request_page(cache_key, page_type, id, link, use_cache)
 _info_aliaser = lambda name: lambda id,use_cache=True: info(name, id, use_cache)
 for name in ['artist','album','product','event','org']:
-	locals()[name] = _info_aliaser(name)
+	func = _info_aliaser(name)
+	func.__name__ = name
+	locals()[name] = func
 
 def list(page_type, id, use_cache=True):
 	""" Loads an information list page
@@ -75,13 +80,15 @@ def list(page_type, id, use_cache=True):
 	if page_type in ['orglist', 'eventlist']:	# complete pages
 		cache_key = 'vgmdb/%s'%(page_type,)
 	if id:
-		link = '%s/%s'%(page_type, urllib.quote(str(id)))
+		link = '%s/%s'%(page_type, _urllib.quote(str(id)))
 	else:
 		link = '%s'%(page_type,)
 	return _request_page(cache_key, page_type, id, link, use_cache)
 _list_aliaser = lambda name: lambda id,use_cache=True: list(name, id, use_cache)
 for name in ['albumlist','artistlist','productlist','orglist','eventlist']:
-	locals()[name] = _list_aliaser(name)
+	func = _list_aliaser(name)
+	func.__name__ = name
+	locals()[name] = func
 
 def search(page_type, query, use_cache=True):
 	""" Loads an search page
@@ -94,13 +101,22 @@ def search(page_type, query, use_cache=True):
 	@param query is what to search for
 	@param use_cache can be set to False to ignore any cached data
 	"""
-	cache_key = 'vgmdb/search/%s'%(base64.b64encode(query),)
-	link = 'search/%s'%(urllib.quote(query),)
+	cache_key = 'vgmdb/search/%s'%(_base64.b64encode(query),)
+	link = 'search/%s'%(_urllib.quote(query),)
 	data = _request_page(cache_key, 'search', query, link, use_cache)
 	if page_type:
-		data['link'] = 'search/%s/%s'%(page_type,urllib.quote(query))
+		data['link'] = 'search/%s/%s'%(page_type,_urllib.quote(query))
 	return data
 _search_aliaser = lambda name: lambda query,use_cache=True: search(name, query, use_cache)
 for name in ['albums','artists','orgs','products']:
-	locals()['search_%s'%(name,)] = _search_aliaser(name)
+	func_name = 'search_%s'%(name,)
+	func = _search_aliaser(name)
+	func.__name__ = func_name
+	locals()[func_name] = func
 
+del _info_aliaser
+del _list_aliaser
+del _search_aliaser
+del name
+del func_name
+del func
