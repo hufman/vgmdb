@@ -32,7 +32,7 @@ def _request_page(cache_key, page_type, id, link=None, use_cache=True):
 	info = None
 	prevdata = None
 	if use_cache:
-		_vgmdb.cache.get(cache_key)
+		prevdata = _vgmdb.cache.get(cache_key)
 	if not prevdata:
 		module = getattr(_vgmdb.parsers, page_type)
 		fetch_url = getattr(module, "fetch_url")
