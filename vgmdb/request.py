@@ -67,13 +67,14 @@ for name in ['artist','album','product','event','org']:
 	func.__name__ = name
 	locals()[name] = func
 
-def list(page_type, id, use_cache=True):
+def list(page_type, id='A', use_cache=True):
 	""" Loads an information list page
 
 	@param page_type says which specific type of page
 		albumlist artistlist
 		productlist orglist eventlist
 	@param id is which specific item to load
+		id will default to 'A' if not passed
 	@param use_cache can be set to False to ignore any cached data
 	"""
 	cache_key = 'vgmdb/%s/%s'%(page_type,id)
@@ -84,7 +85,7 @@ def list(page_type, id, use_cache=True):
 	else:
 		link = '%s'%(page_type,)
 	return _request_page(cache_key, page_type, id, link, use_cache)
-_list_aliaser = lambda name: lambda id,use_cache=True: list(name, id, use_cache)
+_list_aliaser = lambda name: lambda id='A',use_cache=True: list(name, id, use_cache)
 for name in ['albumlist','artistlist','productlist','orglist','eventlist']:
 	func = _list_aliaser(name)
 	func.__name__ = name
