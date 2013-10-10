@@ -61,7 +61,7 @@ def info(page_type, id, use_cache=True):
 	cache_key = 'vgmdb/%s/%s'%(page_type,_urllib.quote(str(id)))
 	link = '%s/%s'%(page_type,id)
 	return _request_page(cache_key, page_type, id, link, use_cache)
-_info_aliaser = lambda name: lambda id,use_cache=True: info(name, id, use_cache)
+_info_aliaser = lambda page_type: lambda id,use_cache=True: info(page_type, id, use_cache)
 for name in ['artist','album','product','event','org']:
 	func = _info_aliaser(name)
 	func.__name__ = name
@@ -71,9 +71,10 @@ def list(page_type, id='A', use_cache=True):
 	""" Loads an information list page
 
 	@param page_type says which specific type of page
-		albumlist artistlist
-		productlist orglist eventlist
+		albumlist artistlist productlist
+		orglist eventlist
 	@param id is which specific item to load
+		orglist and eventlist ignore the id
 		id will default to 'A' if not passed
 	@param use_cache can be set to False to ignore any cached data
 	"""
@@ -85,7 +86,7 @@ def list(page_type, id='A', use_cache=True):
 	else:
 		link = '%s'%(page_type,)
 	return _request_page(cache_key, page_type, id, link, use_cache)
-_list_aliaser = lambda name: lambda id='A',use_cache=True: list(name, id, use_cache)
+_list_aliaser = lambda page_type: lambda id='A',use_cache=True: list(page_type, id, use_cache)
 for name in ['albumlist','artistlist','productlist','orglist','eventlist']:
 	func = _list_aliaser(name)
 	func.__name__ = name
@@ -108,7 +109,7 @@ def search(page_type, query, use_cache=True):
 	if page_type:
 		data['link'] = 'search/%s/%s'%(page_type,_urllib.quote(query))
 	return data
-_search_aliaser = lambda name: lambda query,use_cache=True: search(name, query, use_cache)
+_search_aliaser = lambda page_type: lambda query,use_cache=True: search(page_type, query, use_cache)
 for name in ['albums','artists','orgs','products']:
 	func_name = 'search_%s'%(name,)
 	func = _search_aliaser(name)
