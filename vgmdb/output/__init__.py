@@ -8,6 +8,7 @@ import json
 import yaml
 import turtle
 import rdfxml
+import jsonp
 
 # As output modules are loaded the name_outputters and
 # add_name_handler will be populated
