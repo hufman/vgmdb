@@ -63,10 +63,11 @@ Artists and Albums have an additional endpoint to get information about a few on
 </p>
 <h3>Format Selection</h3>
 <p>
-This webservice will honor HTTP Accept headers. It will also produce a specific format if a ?format=&lt;format&gt; option is added to the url.
+This webservice will honor HTTP Accept headers. It will also produce a specific format if a ?format=&lt;format&gt; option is added to the url. The jsonp format requires a &amp;callback=&lt;function_name&gt; option for the padding.
 <h5>HTTP Accept types</h5>
 <code>text/html</code> - default HTML output<br/>
 <code>application/json</code> - JSON output<br/>
+<code>application/javascript</code> - JSONP output<br/>
 <code>applications/rdf+xml</code> - RDF+XML output<br/>
 <code>application/x-turtle</code> - Turtle output<br/>
 <code>text/turtle</code> - Turtle output<br/>
@@ -77,6 +78,7 @@ This webservice will honor HTTP Accept headers. It will also produce a specific 
 <h5>Format Query String</h5>
 <code><a href="album/79?format=html">html</a></code> - default HTML output<br/>
 <code><a href="album/79?format=json">json</a></code> - JSON output<br/>
+<code><a href="album/79?format=jsonp&callback=yourcallback">jsonp</a></code> - JSONP output<br/>
 <code><a href="album/79?format=rdf">rdf</a></code> - RDF+XML output<br/>
 <code><a href="album/79?format=turtle">turtle</a></code> - Turtle output<br/>
 <code><a href="album/79?format=yaml">yaml</a></code> - YAML output<br/>
