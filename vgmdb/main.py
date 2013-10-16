@@ -1,4 +1,4 @@
-from bottle import route, response, request, static_file, abort
+from bottle import route, response, request, static_file, abort, hook, error
 import urllib
 
 import vgmdb.request
@@ -10,6 +10,22 @@ import vgmdb.output
 @route('/hello')
 def hello():
 	return "Hello!"
+
+@hook('after_request')
+def add_cors_headers():
+	response.set_header('Access-Control-Allow-Origin', '*')
+	response.set_header('Access-Control-Allow-Methods', 'GET, HEAD, OPTIONS')
+	headers = request.headers.get('Access-Control-Request-Headers')
+	if not headers:
+		headers = 'Origin, User-Agent, If-Modified-Since, Cache-Control'
+	response.set_header('Access-Control-Allow-Headers', headers)
+
+@error(405)
+def method_unsupported(error):
+	if request.method == 'OPTIONS':
+		response.status = 200
+		add_cors_headers()
+		return 'Of course, this API is free for everyone!'
 
 def do_page(page_type, info, filterkey=None):
 	"""
