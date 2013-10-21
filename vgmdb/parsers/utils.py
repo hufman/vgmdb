@@ -295,3 +295,15 @@ def parse_meta(soup_meta_section):
 				pass	# who puts a not-number in a page counter?
 	return meta_info
 
+# conversion between category and type
+_category_type = {
+	"Game": "game", "Animation": "anime",
+	"Publication": "print", "Audio Drama": "drama",
+	"Demo Scene": "demo", "Other Works": "works",
+	"Enclosure/Promo": "bonus", "Doujin/Fanmade": "doujin",
+	"Delayed/Cancelled": "cancel", "Bootleg": "bootleg"
+}
+_type_category = dict((v,k) for (k,v) in _category_type.iteritems())
+
+category_type = lambda k: _category_type.get(k)
+type_category = lambda k: _type_category.get(k)
