@@ -191,10 +191,12 @@ def parse_string(soup_element, _strip=True):
 def trim_absolute(link):
 	if link[0:17]=="http://vgmdb.net/":
 		link = link[len("http://vgmdb.net/"):]
-	if link[0] == '/':
+	if len(link) > 0 and link[0] == '/':
 		link = link[1:]
 	return link
 def force_absolute(link):
+	if link == 'http://':
+		return link
 	return urlparse.urljoin('http://vgmdb.net/', link)
 
 def parse_discography(soup_disco_table, label_type='roles'):

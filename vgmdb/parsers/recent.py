@@ -242,6 +242,8 @@ def _parse_title_cell(type, color_codes, soup_cell):
 	if type == 'artists':
 		name_key = 'names'
 	if soup_link:
+		if not soup_link.string and not soup_link.contents:
+			soup_title = soup_link
 		if soup_link.string:
 			soup_title = soup_link
 		if soup_link.span and soup_link.span.has_attr('lang'):
@@ -267,7 +269,6 @@ def _parse_title_cell(type, color_codes, soup_cell):
 	# check for media format
 	style = None
 	color = None
-	info['debug'] = type
 		# find the style tag
 	if soup_link.has_attr('style'):
 		style = soup_link['style']
@@ -296,7 +297,7 @@ def _parse_title_cell(type, color_codes, soup_cell):
 	if type == 'links':
 		info['link_data'] = {
 			'link': utils.force_absolute(soup_link['href']),
-			'title': unicode(soup_link.string)
+			'title': unicode(soup_link.string or '')
 		}
 	else:
 		info['link'] = utils.trim_absolute(soup_link['href'])

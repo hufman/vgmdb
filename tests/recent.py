@@ -157,7 +157,10 @@ class TestRecent(unittest.TestCase):
 		self.assertEqual(u'album/42367', up[0]['link'])
 		self.assertEqual(u'N/A', up[0]['catalog'])
 		self.assertEqual(u'Crossfade Demo', up[0]['link_data']['title'])
-		self.assertEqual(u'http://cool-create.cc/cccd26.html', up[3]['link_data']['link'])
+		self.assertEqual(u'http://vgmdb.net/redirect/65785/www.amazon.co.jp/dp/B00FXMYERU/', up[1]['link_data']['link'])
+		self.assertEqual(u'amazon.co.jp', up[1]['link_data']['title'])
+		self.assertEqual(u'http://', up[3]['link_data']['link'])
+		self.assertEqual(u'', up[3]['link_data']['title'])
 
 		self.assertEqual(u'ritsukai', up[0]['contributor']['name'])
 		self.assertEqual(u'http://vgmdb.net/forums/member.php?u=606', up[0]['contributor']['link'])

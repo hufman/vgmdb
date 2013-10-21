@@ -85,6 +85,11 @@ def search(type=None, query=None):
 	query = query or request.query['q']
 	return do_page('search', vgmdb.request.search(type, query), filterkey=type)
 
+@route('/recent/<type:re:(albums|media|tracklists|scans|artists|products|labels|links|ratings)>')
+@route('/recent')
+def recent(type='albums'):
+	return do_page('recent', vgmdb.request.recent(type))
+
 @route('/')
 @route('/about')
 def about():

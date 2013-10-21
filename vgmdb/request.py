@@ -14,6 +14,8 @@ import vgmdb.parsers.orglist
 import vgmdb.parsers.eventlist
 import vgmdb.parsers.search
 
+import vgmdb.parsers.recent
+
 import vgmdb.cache
 import vgmdb.config
 
@@ -116,9 +118,27 @@ for name in ['albums','artists','orgs','products']:
 	func.__name__ = func_name
 	locals()[func_name] = func
 
+def recent(page_type, use_cache=True):
+	""" Loads a list of recent edits
+
+	@param page_type says which specific type of page
+	"""
+	cache_key = 'vgmdb/recent/%s'%(page_type,)
+	link = 'recent/%s'%(_urllib.quote(page_type),)
+	return _request_page(cache_key, 'recent', page_type, link, use_cache)
+_recent_aliaser = lambda page_type: lambda use_cache=True: recent(page_type, use_cache)
+for name in ['albums', 'media', 'tracklists', 'scans', 'artists', \
+             'products', 'labels', 'links', 'ratings']:
+	func_name = 'recent_%s'%(name,)
+	func = _recent_aliaser(name)
+	func.__name__ = name
+	locals()[func_name] = func
+
+# Cleaup temporary variables
 del _info_aliaser
 del _list_aliaser
 del _search_aliaser
+del _recent_aliaser
 del name
 del func_name
 del func
