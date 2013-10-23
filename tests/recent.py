@@ -146,7 +146,7 @@ class TestRecent(unittest.TestCase):
 		self.assertEqual(u'Klang-Gear', up[-4]['titles']['en'])
 		self.assertFalse(u'new' in up[-4])
 		self.assertEqual(u'artist/14980', up[-4]['linked']['link'])
-		self.assertEqual(u'Martin', up[-4]['linked']['name'])
+		self.assertEqual(u'Martin', up[-4]['linked']['names']['en'])
 
 	def test_links(self):
 		html = file(os.path.join(base, 'recent_links.html'), 'r').read()

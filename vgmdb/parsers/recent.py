@@ -141,7 +141,7 @@ def _parse_table_labels(color_codes, soup_cells):
 		soup_link = soup_cells[0].a
 		info['linked'] = {
 			"link": utils.trim_absolute(soup_link['href']),
-			"name": unicode(soup_link.string)
+			"names": {'en':unicode(soup_link.string)}
 		}
 	return info
 
