@@ -44,6 +44,19 @@ An index of all items in each category is also available.<br/>
 <code><a href="eventlist/2001">/eventlist/&lt;year&gt;</a></code> - View all of the events by year<br/>
 <code><a href="productlist/A">/productlist/&lt;letter&gt;</a></code> - View all of the products by letter<br/>
 </p>
+<h3>Recent Changes</h3>
+<p>
+A list of recent changes is available.<br/>
+<code><a href="recent/albums">/recent/albums</a></code> - View recent album changes<br/>
+<code><a href="recent/media">/recent/media</a></code> - View recent album media changes<br/>
+<code><a href="recent/tracklists">/recent/tracklists</a></code> - View recent album tracklist changes<br/>
+<code><a href="recent/scans">/recent/scans</a></code> - View recent album scanned covers<br/>
+<code><a href="recent/artists">/recent/artists</a></code> - View recent artist changes<br/>
+<code><a href="recent/products">/recent/products</a></code> - View recent product changes<br/>
+<code><a href="recent/labels">/recent/labels</a></code> - View recent label organization changes<br/>
+<code><a href="recent/links">/recent/links</a></code> - View recent album and artist links changes<br/>
+<code><a href="recent/ratings">/recent/ratings</a></code> - View recent album rating changes<br/>
+</p>
 <h3>Information Pages</h3>
 <p>
 Each item in the database is represented with a unique URL, which follows this pattern:<br/>
