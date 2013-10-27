@@ -1,0 +1,59 @@
+{% extends "base.djhtml" %}
+{% block htmltitle %}
+<title>Recent {{data.section}}</title>
+{% endblock %}
+{% block title %}
+    <h1>Recent {{data.section}}</h1>
+{% endblock %}
+{% block quickinfo %}
+{% endblock %}
+{% block body %}
+  <div>
+    <ul class="inline">
+      {% for section in data.sections -%}
+      <li><a href="recent/{{section | urlencode}}">{{section}}</a></li>
+      {% endfor -%}
+    </ul>
+  </div>
+  <div>
+    {% for update in data.updates -%}
+    {% if update.link is linktype 'album' -%}
+    <div class="update" resource="{{update.link | linkhref}}#subject" typeof="mo:Release schema:MusicAlbum">
+    {% elif update.link is linktype 'artist' -%}
+    <div class="update" resource="{{update.link | linkhref}}#subject" typeof="schema:MusicGroup">
+    {% elif update.link is linktype 'org' -%}
+    <div class="update" resource="{{update.link | linkhref}}#subject" typeof="foaf:Organization schema:Organization">
+    {% elif update.link is linktype 'product' -%}
+    <div class="update" resource="{{update.link | linkhref}}#subject" typeof="schema:CreativeWork">
+    {% elif update.link is linktype 'event' -%}
+    <div class="update" resource="{{update.link | linkhref}}#subject" typeof="mo:ReleaseEvent schema:MusicEvent">
+    {% else -%}
+    <div typeof="rdfs:Resource">
+    {% endif -%}
+      {% if update.link -%}
+      <a href="{{update.link}}" about="{{update.link}}#subject">
+      {% endif -%}
+      {% if update.names -%}
+      <span class="names">{{update.names | lang_names(rel="schema:name")}}</span>
+      {% endif -%}
+      {% if update.titles -%}
+      <span class="names">{{update.titles | lang_names(rel="schema:name dcterms:title")}}</span>
+      {% endif -%}
+      {% if update.catalog -%}
+      <span property="mo:catalogue_number" class="small-catalog">{{update.catalog}}</span>
+      {% endif -%}
+      </a>
+      {% if update.linked -%}
+      <span resource="{{update.linked.link | linkhref}}#subject"> linked to <a href="{{update.linked.link}}">
+      {% if update.linked.names %}<span class="names">{{update.linked.names | lang_names(rel="schema:name")}}{% endif -%}
+      {% if update.linked.titles %}<span class="names">{{update.linked.titles | lang_names(rel="schema:name dcterms:title")}}{% endif -%}
+      {% if update.linked.catalog %}<span class="small-catalog">{{update.linked.catalog}}</span>{% endif -%}
+      </span>
+      {% endif -%}
+      {% if update.link -%}
+      </a>
+      {% endif -%}
+    </div>
+    {% endfor -%}
+  </div>
+{% endblock %}

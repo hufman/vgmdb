@@ -24,6 +24,9 @@ def parse_page(html_source):
 	color_codes = _parse_color_codes(soup_codes)
 	recent_info['updates'] = _parse_table(cur_section, color_codes, soup_innermain.find('table'))
 
+	# add what recent page this is
+	recent_info['section'] = cur_section
+
 	return recent_info
 
 def _determine_section(soup_sections):

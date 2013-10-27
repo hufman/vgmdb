@@ -75,6 +75,10 @@ td.list li:last-child:after {content: ""}
 .discography .cell-catalog {
 	width: 90pt;
 }
+.small-catalog {
+	font-size: 80%;
+	color: #444;
+}
 .discography .cell-name {
 	min-width: 200px;
 }

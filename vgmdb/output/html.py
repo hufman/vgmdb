@@ -27,6 +27,7 @@ class outputter(object):
 		self._templates.filters['format_interval'] = self.format_interval
 		self._templates.filters['or_unavailable'] = self.or_unavailable
 		self._templates.tests['empty'] = lambda x:len(x)==0
+		self._templates.tests['linktype'] = self.linktype
 		self._Markup = jinja2.Markup
 		self._escape = jinja2.escape
 
@@ -140,3 +141,9 @@ class outputter(object):
 				result = self._Markup(result)
 		return result
 
+	def linktype(self, link, is_type):
+		qual_type = is_type + "/"
+		if len(link) > len(qual_type) and \
+		   link[:len(qual_type)] == qual_type:
+			return True
+		return False

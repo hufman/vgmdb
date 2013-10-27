@@ -19,7 +19,7 @@ def turtle_patched_startDocument(self):
 turtle.TurtleSerializer.startDocument = turtle_patched_startDocument
 
 # Namespaces in use
-from rdflib.namespace import RDF, XSD, DCTERMS, FOAF
+from rdflib.namespace import RDF, RDFS, XSD, DCTERMS, FOAF
 BIO = Namespace("http://purl.org/vocab/bio/0.1/")
 SCHEMA = Namespace("http://schema.org/")
 MO = Namespace("http://purl.org/ontology/mo/")
@@ -47,6 +47,13 @@ def link(link):
 	if len(link)>0 and link[0] == '/':
 		link = link[1:]
 	return urljoin(base, link)
+
+def linktype(link, is_type):
+	qual_type = is_type + "/"
+	if len(link) > len(qual_type) and \
+	   link[:len(qual_type)] == qual_type:
+		return True
+	return False
 
 def add_lang_names(g, subject, names, rel=[FOAF.name]):
 
@@ -458,4 +465,42 @@ def generate_search(config, data):
 		generator = globals()['generate_%slist'%(section[:-1],)]
 		subg = generator(config, data['results'])
 		g += subg
+	return g
+
+def generate_recent(config, data):
+	g = Graph('IOMemory', BNode())
+	for update in data['updates']:
+		if 'link' in update:
+			subject = URIRef(link(update['link'])+"#subject")
+			if linktype(update['link'], 'album'):
+				g.add((subject, RDF.type, MO.Release))
+				g.add((subject, RDF.type, SCHEMA.MusicAlbum))
+			elif linktype(update['link'], 'artist'):
+				g.add((subject, RDF.type, SCHEMA.MusicGroup))
+			elif linktype(update['link'], 'org'):
+				g.add((subject, RDF.type, FOAF.Organization))
+				g.add((subject, RDF.type, SCHEMA.Organization))
+			elif linktype(update['link'], 'product'):
+				g.add((subject, RDF.type, SCHEMA.CreativeWork))
+			elif linktype(update['link'], 'event'):
+				g.add((subject, RDF.type, MO.ReleaseEvent))
+				g.add((subject, RDF.type, SCHEMA.MusicEvent))
+			else:
+				g.add((subject, RDF.type, RDFS.Resource))
+		else:
+			subject = BNode()
+			g.add((subject, RDF.type, RDFS.Resource))
+		if 'names' in update:
+			add_lang_names(g, subject, update['names'], rel=[SCHEMA.name])
+		if 'titles' in update:
+			add_lang_names(g, subject, update['titles'], rel=[SCHEMA.name, DCTERMS.title])
+		if 'catalog' in update:
+			g.add((subject, MO.catalogue_number, Literal(update['catalog'])))
+		if 'linked' in update:
+			linked_data = update['linked']
+			linked = URIRef(link(linked_data['link'])+"#subject")
+			if 'names' in linked_data:
+				add_lang_names(g, subject, linked_data['names'], rel=[SCHEMA.name])
+			if 'titles' in linked_data:
+				add_lang_names(g, subject, linked_data['titles'], rel=[SCHEMA.name, DCTERMS.title])
 	return g
