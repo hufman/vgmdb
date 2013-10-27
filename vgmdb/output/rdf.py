@@ -252,7 +252,8 @@ def generate_album(config, data):
 		rating = BNode()
 		g.add((subject, SCHEMA.aggregateRating, rating))
 		g.add((rating, RDF.type, SCHEMA.AggregateRating))
-		g.add((rating, SCHEMA.ratingValue, Literal(str(data['rating']))))
+		g.add((rating, SCHEMA.ratingValue, Literal(data['rating'], datatype=XSD.decimal)))
+		g.add((rating, SCHEMA.bestRating, Literal(5, datatype=XSD.decimal)))
 
 	def add_people(g, subject, list, rel, rev):
 		for persondata in list:
@@ -277,7 +278,7 @@ def generate_album(config, data):
 			g.add((product, RDF.type, SCHEMA.CreativeWork))
 			add_lang_names(g, product, productdata['names'])
 
-	g.add((subject, MO.record_count, Literal(len(data['discs']), datatype=XSD.int)))
+	g.add((subject, MO.record_count, Literal(len(data['discs']), datatype=XSD.integer)))
 	index = 0
 	for discdata in data['discs']:
 		index += 1
@@ -285,9 +286,9 @@ def generate_album(config, data):
 		g.add((subject, MO.record, record))
 		g.add((record, RDF.type, MO.Record))
 		g.add((record, RDF.type, SCHEMA.MusicPlaylist))
-		g.add((record, MO.record_name, Literal(index, datatype=XSD.int)))
-		g.add((record, MO.track_count, Literal(len(discdata['tracks']), datatype=XSD.int)))
-		g.add((record, SCHEMA.numTracks, Literal(len(discdata['tracks']), datatype=XSD.int)))
+		g.add((record, MO.record_name, Literal(index, datatype=XSD.integer)))
+		g.add((record, MO.track_count, Literal(len(discdata['tracks']), datatype=XSD.integer)))
+		g.add((record, SCHEMA.numTracks, Literal(len(discdata['tracks']), datatype=XSD.integer)))
 		trackno = 0
 		for trackdata in discdata['tracks']:
 			trackno += 1
@@ -296,7 +297,7 @@ def generate_album(config, data):
 			g.add((record, SCHEMA.track, track))
 			g.add((track, RDF.type, MO.Track))
 			g.add((track, RDF.type, SCHEMA.MusicRecording))
-			g.add((track, MO.track_number, Literal(trackno, datatype=XSD.int)))
+			g.add((track, MO.track_number, Literal(trackno, datatype=XSD.integer)))
 			add_lang_names(g, track, trackdata['names'], rel=[SCHEMA.name, DCTERMS.title])
 			if trackdata.has_key('track_length') and \
 			   trackdata['track_length']:

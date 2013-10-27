@@ -44,7 +44,7 @@
         {% endif -%}
         {% if data.rating -%}
         <dt>Rating</dt>
-        <dd property="schema:aggregateRating" typeof="schema:AggregateRating"><span property="schema:ratingValue">{{data.rating}}</span></dd>
+        <dd property="schema:aggregateRating" typeof="schema:AggregateRating"><span property="schema:ratingValue" datatype="xsd:decimal">{{data.rating}}</span> / <span property="schema:bestRating" datatype="xsd:decimal">5</span></dd>
         {% endif -%}
         {% if data.bootleg_of -%}
         <dt>Bootleg Of</dt>
@@ -107,19 +107,19 @@
     <div id="tracklist" resource="{{data.link | linkhref}}#subject">
       <h2>Track List</h2>
       <span class="metadata">
-        <span property="mo:record_count" content="{{data.discs | count}}" datatype="xsd:int"></span>
+        <span property="mo:record_count" content="{{data.discs | count}}" datatype="xsd:integer"></span>
       </span>
       {% for disc in data.discs %}
       <div rel="mo:record" typeof="mo:Record schema:MusicPlaylist">
         <span class="metadata">
-          <span property="mo:record_number" content="{{loop.index}}" datatype="xsd:int"></span>
-          <span property="mo:track_count" content="{{disc.tracks | count}}" datatype="xsd:int"></span>
-          <span property="schema:numTracks" content="{{disc.tracks | count}}" datatype="xsd:int"></span>
+          <span property="mo:record_number" content="{{loop.index}}" datatype="xsd:integer"></span>
+          <span property="mo:track_count" content="{{disc.tracks | count}}" datatype="xsd:integer"></span>
+          <span property="schema:numTracks" content="{{disc.tracks | count}}" datatype="xsd:integer"></span>
         </span>
         <h3>{{disc.name}}</h3>
         <ol class="unstyled">
           {% for track in disc.tracks %}
-          <li rel="mo:track schema:track" typeof="mo:Track schema:MusicRecording"><span property="mo:track_number" datatype="xsd:int">{{loop.index}}</span> - <span class="names">{{track.names|lang_names(rel="schema:name dcterms:title")}}</span> (<span property="schema:duration" content="{{track.track_length|format_interval}}" datatype="xsd:interval">{{track.track_length}}</span>)</li>
+          <li rel="mo:track schema:track" typeof="mo:Track schema:MusicRecording"><span property="mo:track_number" datatype="xsd:integer">{{loop.index}}</span> - <span class="names">{{track.names|lang_names(rel="schema:name dcterms:title")}}</span> (<span property="schema:duration" content="{{track.track_length|format_interval}}" datatype="xsd:interval">{{track.track_length}}</span>)</li>
           {% endfor %}
         </ol>
         {% endfor %}
