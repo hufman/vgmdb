@@ -52,6 +52,9 @@
       {% endif -%}
       {% if update.link -%}
       </a>
+      {% if update.rating -%}
+      <span property="schema:review" typeof="schema:Review"><span property="schema:reviewRating" typeof="schema:Rating"><span property="schema:ratingValue" datatype="xsd:integer">{{update.rating}}</span> / <span property="schema:bestRating" datatype="xsd:integer">5</span></span></span>
+      {% endif -%}
       {% endif -%}
     </div>
     {% endfor -%}

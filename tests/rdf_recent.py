@@ -168,6 +168,8 @@ class TestRecentRDF(TestRDF):
 		}
 		test_first_result = {
 			"select ?catalog where { <@basealbum/38376#subject> mo:catalogue_number ?catalog . }" : "WM-0701~2",
+			"select ?value where { <@basealbum/38376#subject> schema:review ?review . ?review schema:reviewRating ?rating . ?rating schema:ratingValue ?value . }" : 5,
+			"select ?value where { <@basealbum/38376#subject> schema:review ?review . ?review schema:reviewRating ?rating . ?rating schema:bestRating ?value . }" : 5,
 			"select ?name where { <@basealbum/38376#subject> dcterms:title ?name . FILTER(lang(?name)='en') }" : "Mahou Daisakusen Original Soundtrack",
 			"select ?name where { <@basealbum/38376#subject> schema:name ?name . FILTER(lang(?name)='en') }" : "Mahou Daisakusen Original Soundtrack",
 			"select ?name where { <@basealbum/38376#subject> dcterms:title ?name . FILTER(lang(?name)='ja-latn') }" : "Mahou Daisakusen Original Soundtrack",

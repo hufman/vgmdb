@@ -496,6 +496,15 @@ def generate_recent(config, data):
 			add_lang_names(g, subject, update['titles'], rel=[SCHEMA.name, DCTERMS.title])
 		if 'catalog' in update:
 			g.add((subject, MO.catalogue_number, Literal(update['catalog'])))
+		if 'rating' in update:
+			review = BNode()
+			rating = BNode()
+			g.add((review, RDF.type, SCHEMA.Review))
+			g.add((rating, RDF.type, SCHEMA.RATING))
+			g.add((subject, SCHEMA.review, review))
+			g.add((review, SCHEMA.reviewRating, rating))
+			g.add((rating, SCHEMA.ratingValue, Literal(update['rating'], datatype=XSD.decimal)))
+			g.add((rating, SCHEMA.bestRating, Literal(5, datatype=XSD.decimal)))
 		if 'linked' in update:
 			linked_data = update['linked']
 			linked = URIRef(link(linked_data['link'])+"#subject")
