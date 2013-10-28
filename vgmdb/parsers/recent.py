@@ -27,6 +27,10 @@ def parse_page(html_source):
 	# add what recent page this is
 	recent_info['section'] = cur_section
 
+	# add the modification time
+	edited_date = sorted([u['date'] for u in recent_info['updates']])[-1]
+	recent_info['meta'] = {'edited_date':edited_date}
+
 	return recent_info
 
 def _determine_section(soup_sections):

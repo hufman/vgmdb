@@ -15,7 +15,11 @@ class TestRecent(unittest.TestCase):
 		data = recent.parse_page(html)
 		up = data['updates']
 
+		self.assertTrue('meta' in data)
+		self.assertTrue('edited_date' in data['meta'])
+		self.assertEqual(u'2013-10-20T15:40', data['meta']['edited_date'])
 		self.assertEqual(u'albums', data['section'])
+
 		self.assertTrue(up[0]['deleted'])
 		self.assertTrue(up[1]['deleted'])
 		self.assertEqual(u'deleted', up[0]['edit'])
@@ -39,7 +43,11 @@ class TestRecent(unittest.TestCase):
 		data = recent.parse_page(html)
 		up = data['updates']
 
+		self.assertTrue('meta' in data)
+		self.assertTrue('edited_date' in data['meta'])
+		self.assertEqual(u'2013-10-20T15:11', data['meta']['edited_date'])
 		self.assertEqual(u'media', data['section'])
+
 		self.assertEqual(u'new', up[0]['edit'])
 		self.assertEqual(u'N/A', up[0]['catalog'])
 		self.assertEqual(u'album/42368', up[0]['link'])
@@ -58,7 +66,11 @@ class TestRecent(unittest.TestCase):
 		data = recent.parse_page(html)
 		up = data['updates']
 
+		self.assertTrue('meta' in data)
+		self.assertTrue('edited_date' in data['meta'])
+		self.assertEqual(u'2013-10-20T15:17', data['meta']['edited_date'])
 		self.assertEqual(u'tracklists', data['section'])
+
 		self.assertEqual(u'new', up[0]['edit'])
 		self.assertEqual(u'N/A', up[0]['catalog'])
 		self.assertEqual(u'album/42368', up[0]['link'])
@@ -78,7 +90,11 @@ class TestRecent(unittest.TestCase):
 		data = recent.parse_page(html)
 		up = data['updates']
 
+		self.assertTrue('meta' in data)
+		self.assertTrue('edited_date' in data['meta'])
+		self.assertEqual(u'2013-10-20T15:43', data['meta']['edited_date'])
 		self.assertEqual(u'scans', data['section'])
+
 		self.assertEqual(u'deleted', up[0]['edit'])
 		self.assertEqual(u'AICL-2608', up[0]['catalog'])
 		self.assertEqual(u'album/41585', up[0]['link'])
@@ -98,7 +114,11 @@ class TestRecent(unittest.TestCase):
 		data = recent.parse_page(html)
 		up = data['updates']
 
+		self.assertTrue('meta' in data)
+		self.assertTrue('edited_date' in data['meta'])
+		self.assertEqual(u'2013-10-20T14:57', data['meta']['edited_date'])
 		self.assertEqual(u'artists', data['section'])
+
 		self.assertEqual(u'YSCD-0023', up[0]['linked']['catalog'])
 		self.assertEqual(u'album/29823', up[0]['linked']['link'])
 		self.assertTrue(up[0]['deleted'])
@@ -115,7 +135,11 @@ class TestRecent(unittest.TestCase):
 		data = recent.parse_page(html)
 		up = data['updates']
 
+		self.assertTrue('meta' in data)
+		self.assertTrue('edited_date' in data['meta'])
+		self.assertEqual(u'2013-10-19T06:50', data['meta']['edited_date'])
 		self.assertEqual(u'products', data['section'])
+
 		self.assertEqual(u'Album Linkup', up[0]['edit'])
 		self.assertEqual(u'product/1143', up[0]['link'])
 		self.assertEqual(u'Guild Wars 2', up[0]['titles']['en'])
@@ -131,7 +155,11 @@ class TestRecent(unittest.TestCase):
 		data = recent.parse_page(html)
 		up = data['updates']
 
+		self.assertTrue('meta' in data)
+		self.assertTrue('edited_date' in data['meta'])
+		self.assertEqual(u'2013-10-20T10:57', data['meta']['edited_date'])
 		self.assertEqual(u'labels', data['section'])
+
 		self.assertEqual(u'Album Linkup', up[0]['edit'])
 		self.assertEqual(u'org/1022', up[0]['link'])
 		self.assertEqual(u'Varèse Sarabande', up[0]['titles']['en'])
@@ -160,7 +188,11 @@ class TestRecent(unittest.TestCase):
 		data = recent.parse_page(html)
 		up = data['updates']
 
+		self.assertTrue('meta' in data)
+		self.assertTrue('edited_date' in data['meta'])
+		self.assertEqual(u'2013-10-20T15:28', data['meta']['edited_date'])
 		self.assertEqual(u'links', data['section'])
+
 		self.assertEqual(u'Album Link', up[0]['link_type'])
 		self.assertEqual(u'album/42367', up[0]['link'])
 		self.assertEqual(u'N/A', up[0]['catalog'])
@@ -187,7 +219,11 @@ class TestRecent(unittest.TestCase):
 		data = recent.parse_page(html)
 		up = data['updates']
 
+		self.assertTrue('meta' in data)
+		self.assertTrue('edited_date' in data['meta'])
+		self.assertEqual(u'2013-10-20T13:34', data['meta']['edited_date'])
 		self.assertEqual(u'ratings', data['section'])
+
 		self.assertEqual(u'WM-0701~2', up[0]['catalog'])
 		self.assertEqual(u'2013-04-24', up[0]['release_date'])
 		self.assertEqual(u'album/38376', up[0]['link'])
