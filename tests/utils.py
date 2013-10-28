@@ -14,6 +14,8 @@ class TestUtils(unittest.TestCase):
 	def test_date_parse(self):
 		date = "Aug 3, 2006 01:33 AM"
 		self.assertEqual("2006-08-03T01:33", utils.parse_date_time(date))
+		date = "Aug 3, 2006 12:33 PM"
+		self.assertEqual("2006-08-03T12:33", utils.parse_date_time(date))
 		date = "Oct 04, 2000"
 		self.assertEqual("2000-10-04", utils.parse_date_time(date))
 		date = "November 11, 2011"

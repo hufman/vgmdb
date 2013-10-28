@@ -112,7 +112,7 @@ def parse_date_time(time):
 		hour = int(time[timepos:timepos+2])
 		minute = int(time[timepos+3:timepos+5])
 		ampm = time[timepos+6:timepos+8]
-		if ampm == 'PM':
+		if ampm == 'PM' and hour < 12:
 			hour += 12
 		return "%04d-%02d-%02dT%02d:%02d"%(year,month,day,hour,minute)
 
