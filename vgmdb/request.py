@@ -146,7 +146,9 @@ def recent(page_type, use_cache=True):
 	"""
 	cache_key = 'vgmdb/recent/%s'%(page_type,)
 	link = 'recent/%s'%(_urllib.quote(page_type),)
-	return _request_page(cache_key, 'recent', page_type, link, use_cache)
+	info = _request_page(cache_key, 'recent', page_type, link, use_cache)
+	_clear_recent_cache(info)
+	return info
 _recent_aliaser = lambda page_type: lambda use_cache=True: recent(page_type, use_cache)
 for name in ['albums', 'media', 'tracklists', 'scans', 'artists', \
              'products', 'labels', 'links', 'ratings']:
@@ -154,6 +156,23 @@ for name in ['albums', 'media', 'tracklists', 'scans', 'artists', \
 	func = _recent_aliaser(name)
 	func.__name__ = name
 	locals()[func_name] = func
+
+def _clear_recent_cache(recent_info):
+	edited_date = None
+	for update in recent_info['updates']:
+		if 'date' in update:
+			edited_date = update['date']
+		else:
+			continue
+
+		if 'link' in update:
+			cache_key = "vgmdb/%s"%(update['link'],)
+			prevdata = _vgmdb.cache.get(cache_key)
+			if prevdata and \
+			   'meta' in prevdata and \
+			   'edited_date' in prevdata['meta'] and \
+			   prevdata['meta']['edited_date'] < edited_date:
+				_vgmdb.cache.delete(cache_key)
 
 # Cleaup temporary variables
 del _info_aliaser
