@@ -1,6 +1,8 @@
 import urllib as _urllib
 import base64 as _base64
 
+from datetime import datetime as _datetime
+
 import vgmdb.parsers.artist
 import vgmdb.parsers.album
 import vgmdb.parsers.product
@@ -47,10 +49,29 @@ def _request_page(cache_key, page_type, id, link=None, use_cache=True):
 				info['link'] = link
 			if fetch_url:
 				info['vgmdb_link'] = fetch_url(id)
+			_calculate_ttl(info)
 			_vgmdb.cache.set(cache_key, info)
 	else:
 		info = prevdata
 	return info
+
+def _calculate_ttl(info):
+	ttl = 24 * 60 * 60	# 1 day default
+	if 'meta' in info and 'edited_date' in info['meta']:
+		try:
+			edited_date = _datetime.strptime(info['meta']['edited_date'], '%Y%m%dT%H%M')
+			date_diff = _datetime.now() - edited_date
+			if date_diff.total_seconds() < 7 * 24 * 60 * 60:	# 1 week
+				ttl = 60 * 60	# 1 hour
+			if date_diff.total_seconds() < 7 * 24 * 60 * 60:	# 1 week
+				ttl = 60 * 60	# 1 hour
+			if date_diff.total_seconds() < 24 * 60 * 60:	# 1 day
+				ttl = 5 * 60	# 5 minutes
+			if date_diff.total_seconds() < 1 * 60 * 60:	# 1 hour
+				ttl = 60	# 1 minute
+		except:
+			pass
+		info['meta']['ttl'] = ttl
 
 def info(page_type, id, use_cache=True):
 	""" Loads an information page

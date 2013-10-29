@@ -1,6 +1,9 @@
 from bottle import route, response, request, static_file, abort, hook, error
 import urllib
 
+from datetime import datetime
+import email.utils
+
 import vgmdb.request
 import vgmdb.sellers
 
@@ -39,6 +42,17 @@ def do_page(page_type, info, filterkey=None):
 	requested_format = request.query.format or ''
 	outputter = vgmdb.output.get_outputter(vgmdb.config.for_request(request), requested_format, request.headers.get('Accept'))
 
+	# figure out the cache ttl
+	edited_date = None
+	ttl = 24 * 60 * 60	# 1 day default
+	if 'meta' in info and 'edited_date' in info['meta']:
+		try:
+			edited_date = datetime.strptime(info['meta']['edited_date'], '%Y-%m-%dT%H:%M')
+			if 'ttl' in info['meta']:
+				ttl = info['meta']['ttl']
+		except:
+			pass
+
 	# add in any seller information
 	if False and outputter.content_type[:9] == 'text/html':
 		sellers = vgmdb.sellers.search_info(page_type, id, info, start_search=True, wait=False)
@@ -46,14 +60,19 @@ def do_page(page_type, info, filterkey=None):
 		not_searched = any(['not_searched' in item for item in sellers])
 		searching = any(['searching' in item for item in sellers])
 		if not_searched or searching:
-			response.set_header('Cache-Control', 'max-age:60,public')
+			response.set_header('Cache-Control', 'max-age:%s,public'%(ttl,))
 		else:
-			response.set_header('Cache-Control', 'max-age:3600,public')
+			response.set_header('Cache-Control', 'max-age:%s,public'%(ttl,))
 	else:
-		response.set_header('Cache-Control', 'max-age:3600,public')
+		response.set_header('Cache-Control', 'max-age:%s,public'%(ttl,))
 
 	# output
 	response.content_type = outputter.content_type
+	if edited_date:
+		epoch = datetime(1970,1,1)
+		unix_time = (edited_date - epoch).total_seconds()
+		out_time = email.utils.formatdate(timeval=unix_time, localtime=True, usegmt=True)
+		response.set_header('Last-Modified', out_time)
 	return outputter(page_type, info, filterkey)
 
 @route('/<type:re:(artist|album|product|event|org)>/<id:int>')
