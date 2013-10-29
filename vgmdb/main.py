@@ -54,7 +54,7 @@ def do_page(page_type, info, filterkey=None):
 			pass
 
 	# add in any seller information
-	if False and outputter.content_type[:9] == 'text/html':
+	if outputter.content_type[:9] == 'text/html':
 		sellers = vgmdb.sellers.search_info(page_type, id, info, start_search=True, wait=False)
 		info['sellers'] = sellers
 		not_searched = any(['not_searched' in item for item in sellers])
