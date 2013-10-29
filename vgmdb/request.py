@@ -63,8 +63,6 @@ def _calculate_ttl(info):
 			date_diff = _datetime.now() - edited_date
 			if date_diff.total_seconds() < 7 * 24 * 60 * 60:	# 1 week
 				ttl = 60 * 60	# 1 hour
-			if date_diff.total_seconds() < 7 * 24 * 60 * 60:	# 1 week
-				ttl = 60 * 60	# 1 hour
 			if date_diff.total_seconds() < 24 * 60 * 60:	# 1 day
 				ttl = 5 * 60	# 5 minutes
 			if date_diff.total_seconds() < 1 * 60 * 60:	# 1 hour
