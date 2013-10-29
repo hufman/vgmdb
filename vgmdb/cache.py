@@ -39,8 +39,12 @@ class MemcacheCache(object):
 			return None
 		return value
 	def __setitem__(self, key, value):
+		ttl = 86400
+		if 'meta' in value and \
+		   'ttl' in value['meta']:
+			ttl = value['meta']['ttl']
 		try:
-			self._memcache.set(key, json.dumps(value), time=86400)
+			self._memcache.set(key, json.dumps(value), time=ttl)
 		except:
 			pass
 
@@ -57,8 +61,12 @@ class GaeCache(object):
 			return None
 		return value
 	def __setitem__(self, key, value):
+		ttl = 86400
+		if 'meta' in value and \
+		   'ttl' in value['meta']:
+			ttl = value['meta']['ttl']
 		try:
-			self._gaecache.set(key, json.dumps(value), time=86400)
+			self._gaecache.set(key, json.dumps(value), time=ttl)
 		except:
 			pass
 
