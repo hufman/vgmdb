@@ -25,6 +25,8 @@ class NullCache(object):
 		return None
 	def __setitem__(self, key, value):
 		pass
+	def __delitem__(self, key):
+		pass
 
 class MemcacheCache(object):
 	def __init__(self, addresses):
@@ -45,6 +47,11 @@ class MemcacheCache(object):
 			ttl = value['meta']['ttl']
 		try:
 			self._memcache.set(key, json.dumps(value), time=ttl)
+		except:
+			pass
+	def __delitem__(self, key):
+		try:
+			self._memcache.delete(key)
 		except:
 			pass
 
@@ -69,6 +76,11 @@ class GaeCache(object):
 			self._gaecache.set(key, json.dumps(value), time=ttl)
 		except:
 			pass
+	def __delitem__(self, key):
+		try:
+			self._gaecache.delete(key)
+		except:
+			pass
 
 cache = NullCache()
 if memcache:
@@ -86,3 +98,5 @@ def get(key):
 	return cache[key]
 def set(key, value):
 	cache[key] = value
+def delete(key):
+	del cache[key]
