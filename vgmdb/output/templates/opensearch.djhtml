@@ -6,5 +6,5 @@
 http://vgmdb.net/favicon.ico
     </Image>
     <Url type="text/html"
-         template="{{config.BASE_URL}}search/{searchTerms}"/>
+         template="{{config.BASE_URL}}search?q={searchTerms}"/>
 </OpenSearchDescription>
