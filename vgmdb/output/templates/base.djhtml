@@ -10,6 +10,7 @@
     <title>{{data.name.en | default(data.name)}}</title>
 {% endblock %}
     <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+    <link rel="search" type="application/opensearchdescription+xml" title="VGMDB Search" href="opensearch.xml">
     <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
     <link href="static/style.css" rel="stylesheet" type="text/css">
     <script src="static/sellers.js" language="javascript" type="text/javascript"></script>

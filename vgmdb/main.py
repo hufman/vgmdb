@@ -132,6 +132,13 @@ def sellers(type,id):
 		response.set_header('Cache-Control', 'max-age:3600,public')
 	return outputter('sellers', {'sellers':sellers})
 
+@route('/opensearch.xml')
+def opensearch():
+	#response.set_header('Cache-Control', 'max-age:86400,public')
+	outputter = vgmdb.output.get_outputter(vgmdb.config.for_request(request), 'html', None)
+	response.content_type = "application/opensearchdescription+xml"
+	return outputter('opensearch', {}, None)
+
 @route('/static/<name:path>')
 def static(name):
 	response.set_header('Cache-Control', 'max-age:3600,public')
