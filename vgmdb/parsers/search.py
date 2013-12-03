@@ -4,6 +4,10 @@ import re
 from . import utils
 import urllib
 
+class AppURLOpener(urllib.FancyURLopener):
+	version = "vgmdbapi/0.2 +http://vgmdb.info"
+urllib._urlopener = AppURLOpener()
+
 def fetch_url(query):
 	return 'http://vgmdb.net/search?q=%s'%(urllib.quote(query))
 def fetch_page(query):
