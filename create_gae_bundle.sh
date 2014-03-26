@@ -21,7 +21,7 @@ except ImportError:
 EOF
 }
 
-deps="bottle.py bs4 isodate jinja2 rdflib simplejson yaml"
+deps="bottle.py bs4 isodate jinja2 rdflib simplejson yaml amazonproduct concurrent"
 for dep in $deps; do
 	depdir=$(find_module $dep)
 	[ -z "$depdir" ] && echo "Failed to find $dep" && continue
