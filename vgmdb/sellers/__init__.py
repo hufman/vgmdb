@@ -1,7 +1,6 @@
-from ..parsers import album
-from ..parsers import artist
 from .. import cache
 from .. import config
+from .. import request
 
 from . import discogs
 from . import amazon
@@ -47,19 +46,10 @@ class Timer(object):
 
 def search(type, id, start_search=True, wait=True, allow_partial=False):
 	"""
-	itemid should be something like album/79 or artist/77
+	type should be either album or artist
 	"""
 	if type in search_types:
-		module = globals()[type]
-		prevdata = cache.get("vgmdb/%s/%s"%(type,id))
-		if not prevdata:
-			fetch_page = getattr(module, "fetch_page")
-			parse_page = getattr(module, "parse_page")
-			page = fetch_page(id)
-			info = parse_page(page)
-			cache.set("vgmdb/%s/%s"%(type,id), info)
-		else:
-			info = prevdata
+		info = request.info(type, id)
 		return search_info(type, id, info, start_search, wait, allow_partial)
 	else:
 		return []
