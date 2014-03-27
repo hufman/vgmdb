@@ -9,6 +9,7 @@ AUTO_RELOAD = False
 CELERY_BROKER = 'amqp://guest@127.0.0.1//'
 CELERY_RESULT_BACKEND = 'cache'
 CELERY_CACHE_BACKEND = 'memcached://127.0.0.1:11211/'
+CELERY_PING = True
 
 
 if os.environ.has_key('GAE_BASEURL'):
