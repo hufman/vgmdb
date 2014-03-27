@@ -13,4 +13,4 @@ class outputter(object):
 		self._yaml = yaml
 
 	def __call__(self, type, data, filterkey=None):
-		return self._yaml.dump(data, allow_unicode=True, default_flow_style=False)
+		return self._yaml.safe_dump(data, allow_unicode=True, default_flow_style=False)
