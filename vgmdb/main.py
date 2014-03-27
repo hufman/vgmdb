@@ -57,7 +57,6 @@ def do_page(page_type, info, filterkey=None):
 	if outputter.content_type[:9] == 'text/html':
 		sellers = vgmdb.sellers.search_info(page_type, info['link'].split('/')[-1], info, start_search=True, wait=False)
 		info['sellers'] = sellers
-		print(sellers)
 		not_searched = any(['not_searched' in item for item in sellers])
 		searching = any(['searching' in item for item in sellers])
 		if not_searched or searching:
