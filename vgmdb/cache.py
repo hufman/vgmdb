@@ -10,6 +10,10 @@ try:
 except:
 	pass
 try:
+	import bmemcached as memcache
+except:
+	pass
+try:
 	import pylibmc as memcache
 except:
 	pass
