@@ -1,0 +1,15 @@
+#!/usr/bin/env python
+import os
+import sys
+
+if 'OPENSHIFT_REPO_DIR' in os.environ:
+	os.chdir(os.path.join(os.environ['OPENSHIFT_REPO_DIR'], 'wsgi'))
+	sys.path.append(os.path.join(os.environ['OPENSHIFT_REPO_DIR'], 'wsgi'))
+
+import logging
+logging.basicConfig(level=logging.ERROR)
+
+import bottle
+import vgmdb.main
+application = bottle.default_app()
+
