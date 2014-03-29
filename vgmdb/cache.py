@@ -1,3 +1,4 @@
+import os
 import json
 try:
 	import simplejson as json
@@ -33,8 +34,8 @@ class NullCache(object):
 		pass
 
 class MemcacheCache(object):
-	def __init__(self, addresses):
-		self._memcache = memcache.Client(addresses)
+	def __init__(self, addresses, **kwargs):
+		self._memcache = memcache.Client(addresses, **kwargs)
 	def __getitem__(self, key):
 		# returns the value or None
 		try:
@@ -91,6 +92,16 @@ if memcache:
 	try:
 		cache = MemcacheCache(['127.0.0.1:11211'])
 	except:
+		pass
+if 'OPENSHIFT_MEMCACHED_HOST' in os.environ and \
+   'OPENSHIFT_MEMCACHED_PORT' in os.environ:
+	try:
+		cache = MemcacheCache(['%s:%s'%(
+		    os.environ['OPENSHIFT_MEMCACHED_HOST'],
+		    os.environ['OPENSHIFT_MEMCACHED_PORT'])],
+		    username =os.environ['OPENSHIFT_MEMCACHED_USERNAME'],
+		    password = os.environ['OPENSHIFT_MEMCACHED_PASSWORD'])
+	except Exception as e:
 		pass
 if gaecache:
 	try:
