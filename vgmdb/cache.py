@@ -19,6 +19,12 @@ try:
 except:
 	pass
 
+import pickle
+try:
+	import cPickle as pickle
+except:
+	pass
+
 gaecache = None
 try:
 	from google.appengine.api import memcache as gaecache
@@ -41,7 +47,7 @@ class MemcacheCache(object):
 		try:
 			value = self._memcache.get(key)
 			if value:
-				value = json.loads(value)
+				value = pickle.loads(value)
 		except:
 			return None
 		return value
@@ -51,7 +57,7 @@ class MemcacheCache(object):
 		   'ttl' in value['meta']:
 			ttl = value['meta']['ttl']
 		try:
-			self._memcache.set(key, json.dumps(value), time=ttl)
+			self._memcache.set(key, pickle.dumps(value,-1), time=ttl)
 		except:
 			pass
 	def __delitem__(self, key):
@@ -68,7 +74,7 @@ class GaeCache(object):
 		try:
 			value = self._gaecache.get(key)
 			if value:
-				value = json.loads(value)
+				value = pickle.loads(value)
 		except:
 			return None
 		return value
@@ -78,7 +84,7 @@ class GaeCache(object):
 		   'ttl' in value['meta']:
 			ttl = value['meta']['ttl']
 		try:
-			self._gaecache.set(key, json.dumps(value), time=ttl)
+			self._gaecache.set(key, pickle.dumps(value,-1), time=ttl)
 		except:
 			pass
 	def __delitem__(self, key):
