@@ -13,13 +13,16 @@ class NullHandler(logging.Handler):
 logger = logging.getLogger(__name__)
 logger.addHandler(NullHandler())
 
-if 'AMAZON_ASSOCIATE_TAG' in dir(config) and \
-   config.AMAZON_ASSOCIATE_TAG:
+if hasattr(config, 'AMAZON_ASSOCIATE_TAG') and config.AMAZON_ASSOCIATE_TAG:
 	SEARCH_PAGE = 'http://www.amazon.com/s/?_encoding=UTF8&url=search-alias%%3Dpopular&SubscriptionId=%s&AssociateTag=%s&linkCode=ur2&tag=%s'%(config.AMAZON_ACCESS_KEY_ID,config.AMAZON_ASSOCIATE_TAG,config.AMAZON_ASSOCIATE_TAG)
-	API = api.API(config.AMAZON_ACCESS_KEY_ID, config.AMAZON_SECRET_ACCESS_KEY, 'us', config.AMAZON_ASSOCIATE_TAG)
 else:
 	SEARCH_PAGE = 'http://www.amazon.com/s/?_encoding=UTF8&url=search-alias%%3Dpopular'
-	API = api.API(config.AMAZON_ACCESS_KEY_ID, config.AMAZON_SECRET_ACCESS_KEY, 'us', 'misconfigured%20vgmdb')
+
+if hasattr(config, 'AMAZON_ACCESS_KEY_ID') and config.AMAZON_ACCESS_KEY_ID and \
+   hasattr(config, 'AMAZON_SECRET_ACCESS_KEY') and config.AMAZON_SECRET_ACCESS_KEY:
+	API = api.API(config.AMAZON_ACCESS_KEY_ID, config.AMAZON_SECRET_ACCESS_KEY, 'us', getattr(config, 'AMAZON_ASSOCIATE_TAG', 'vgmdb'))
+else:
+	API = None
 
 def parse_results(roots):
 	results = []
@@ -73,6 +76,8 @@ def search_album(info):
 	return result
 
 def search_artist_album_name(info):
+	if not API:
+		return None
 	artist = info['composers'][0]['names']['en']
 	title = info['name']
 	try:
@@ -84,6 +89,8 @@ def search_artist_album_name(info):
 	return found
 
 def search_album_name(info):
+	if not API:
+		return None
 	title = info['name']
 	try:
 		results = parse_results(API.item_search('Music', ResponseGroup='ItemAttributes', Title=squash_str(title)))
@@ -114,6 +121,8 @@ def search_artist(info):
 	return result
 
 def search_artist_name(name):
+	if not API:
+		return None
 	try:
 		results = parse_results(API.item_search('Music', ResponseGroup='ItemAttributes', Artist=squash_str(name)))
 	except errors.NoExactMatchesFound:
