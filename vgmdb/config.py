@@ -3,6 +3,13 @@ try:
 	from .config_private import *
 except:
 	pass
+private_keys = [
+  'AMAZON_ACCESS_KEY_ID', 'AMAZON_SECRET_ACCESS_KEY', 'AMAZON_ASSOCIATE_TAG',
+  'ITUNES_AFFILIATE_ID', 'ITUNES_TD_PROGRAM_ID', 'ITUNES_TD_WEBSITE_ID'
+]
+for key in private_keys:
+	if key in os.environ:
+		globals()[key] = os.environ[key]
 
 BASE_URL = 'http://vgmdb.info/'
 AUTO_RELOAD = False
