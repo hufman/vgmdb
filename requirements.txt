@@ -2,8 +2,8 @@ bottle==0.11.6
 unittest2==0.5.1
 
 # Parsing
-beautifulsoup4==4.3.1
-lxml==3.2.3
+beautifulsoup4==4.2.1
+lxml==3.3.5
 
 # Output
 Jinja2==2.7.1
