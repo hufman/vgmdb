@@ -24,7 +24,7 @@ def add_name_module(name, module):
 	name_modules[name] = module
 def unload_module(name):
 	global mime_names
-	new_mime_names = {k:mime_names[k] for k in mime_names.keys() if mime_names[k] != name}
+	new_mime_names = dict([(k,mime_names[k]) for k in mime_names.keys() if mime_names[k] != name])
 	mime_names = new_mime_names
 	del name_outputters[name]
 	del name_modules[name]
