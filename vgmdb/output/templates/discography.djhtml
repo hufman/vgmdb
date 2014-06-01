@@ -1,18 +1,24 @@
 {% macro discography(discography, rel="foaf:made schema:album", property=None, rev=None, include_roles=True, include_publisher=False) -%}
       {% if include_roles -%}
-      <div class="metadata">
+      <meta class="metadata">
       {%- for disc in discography -%}
+        <div {{disc.link | linkhref | resource_attr(hash='composition')}} typeof="mo:Composition">{{ disc.titles|lang_names(rel='dcterms:title schema:name') }}</div>
+        <div {{disc.link | linkhref | resource_attr(hash='performance')}} typeof="mo:Performance">{{ disc.titles|lang_names(rel='dcterms:title schema:name') }}</div>
+        <div {{disc.link | linkhref | resource_attr(hash='lyrics')}} typeof="mo:Lyrics"></div>
       {%- for role in disc.roles -%}
         {% if role == 'Composer' -%}
-        <div rel="foaf:made" rev="mo:composer"><div {{disc.link | linkhref | resource_attr(hash='composition')}} typeof="mo:Composition"></div></div>
+        <div rel="foaf:made" rev="mo:composer schema:creator dcterms:creator"><div {{disc.link | linkhref | resource_attr(hash='composition')}}></div></div>
+        <div rel="foaf:made" rev="schema:creator dcterms:creator"><div {{disc.link | linkhref | resource_attr(hash='subject')}}></div></div>
         {% elif role == 'Performer' -%}
-        <div rel="mo:performed" rev="mo:performer"><div {{disc.link | linkhref | resource_attr(hash='performance')}} typeof="mo:Performance"></div></div>
+        <div rel="mo:performed" rev="mo:performer schema:byArtist"><div {{disc.link | linkhref | resource_attr(hash='performance')}}></div></div>
+        <div rev="schema:byArtist"><div {{disc.link | linkhref | resource_attr(hash='subject')}}></div></div>
         {% elif role == 'Lyricist' -%}
         <div rel="foaf:made"><div {{disc.link | linkhref | resource_attr(hash='lyrics')}} typeof="mo:Lyrics"></div></div>
+        <div rel="foaf:made"><div {{disc.link | linkhref | resource_attr(hash='subject')}}></div></div>
         {% endif -%}
       {%- endfor -%}
       {%- endfor -%}
-      </div>
+      </meta>
       {%- endif -%}
       <table class="table table-condensed table-striped">
         <thead>

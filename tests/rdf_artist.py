@@ -20,17 +20,27 @@ class TestArtistsRDF(TestRDF):
 			"select ?artist where { <@base#subject> rdf:type schema:Person . }" : 1,
 			"select ?artist where { <@base#subject> rdf:type schema:MusicGroup . }" : 1,
 			"select ?name where { ?person rdf:type foaf:Person . ?person foaf:name ?name . }" : 1,
-			"select ?album where { ?person foaf:made ?album . ?album rdf:type schema:MusicAlbum }" : 316,
+			"select ?album where { <@base#subject> foaf:made ?album . ?album rdf:type schema:MusicAlbum }" : 652,
 			"select ?group where { ?person mo:member_of ?group . }" : 4,
 			"select ?artist where { ?artist foaf:page <http://www.dogearrecords.com/> . }" : 1,
 			"select ?site where { <@base#subject> foaf:page ?site . }" : 29,
 			# discography
-			"select ?album where { ?album dcterms:creator ?artist . }" : 316,
-			"select ?album where { ?album schema:byArtist ?artist . }" : 316,
+			"select ?album where { ?album dcterms:creator <@base#subject> . }" : 1304, # includes composition and so on
+			"select ?album where { ?album schema:byArtist <@base#subject> . }" : 332,
+			"select ?album where { <@basealbum/79#composition> dcterms:title ?name . }" : 1,
+			"select ?album where { <@basealbum/79#composition> schema:name ?name . }" : 1,
+			"select ?album where { <@basealbum/108#performance> dcterms:title ?name . }" : 2,
+			"select ?album where { <@basealbum/108#performance> schema:name ?name . }" : 2,
+			"select ?album where { <@basealbum/79#subject> dcterms:title ?name . }" : 1,
+			"select ?album where { <@basealbum/79#subject> schema:name ?name . }" : 1,
 			"select ?album where { <@base#subject> foaf:made <@basealbum/79#composition> . }" : 1,
+			"select ?album where { <@basealbum/79#subject> schema:byArtist <@base#subject> . }" : 1,
+			"select ?album where { <@basealbum/79#subject> dcterms:creator <@base#subject> . }" : 1,
 			"select ?album where { <@basealbum/79#composition> mo:composer <@base#subject> . }" : 1,
+			"select ?album where { <@basealbum/79#composition> schema:creator <@base#subject> . }" : 1,
 			"select ?album where { <@base#subject> mo:performed <@basealbum/1858#performance> . }" : 1,
 			"select ?album where { <@basealbum/1858#performance> mo:performer <@base#subject> . }" : 1,
+			"select ?album where { <@basealbum/1858#performance> schema:byArtist <@base#subject> . }" : 1,
 			"select ?album where { <@base#subject> foaf:made <@basealbum/1858#lyrics> . }" : 1,
 			# featured
 			"select ?album where { ?album mo:tribute_to ?artist . }" : 336,
@@ -38,6 +48,7 @@ class TestArtistsRDF(TestRDF):
 		}
 		test_first_result = {
 			"select ?name where { <@base#subject> foaf:name ?name . }" : "Nobuo Uematsu",
+			"select ?name where { <@base#subject> schema:name ?name . }" : "Nobuo Uematsu",
 			"select ?name where { ?person rdf:type foaf:Person . ?person foaf:name ?name . }" : u'Nobuo Uematsu',
 			"select ?birthdate where { ?birth rdf:type bio:birth . ?birth bio:date ?birthdate . }" : datetime.date(1959,03,21),
 			"select ?name where { ?album rdf:type schema:MusicAlbum . <@base#subject> foaf:made ?album . ?album dcterms:title ?name . ?album schema:datePublished ?date . filter(lang(?name) = 'en')  } order by ?date" : 'CRUISE CHASER BLASSTY',

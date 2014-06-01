@@ -57,6 +57,7 @@ class outputter(object):
 		if isinstance(names, str) or isinstance(names, unicode):
 			segments.append(self.span_name('en', names, rel))
 		else:
+			names = dict(names)
 			if names.has_key('en'):
 				segments.append(self.span_name('en', names['en'], rel))
 				del names['en']

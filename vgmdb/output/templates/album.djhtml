@@ -74,17 +74,25 @@
 {% endblock %}
 {% block body %}
     <div id="info" resource="{{data.link | linkhref}}#subject">
-      <div class="metadata">
+      <meta class="metadata">
         <div rel="mo:publication_of" rev="mo:published_as" resource="{{data.link | linkhref}}#musicalexpression" typeof="mo:Signal">
-          <div rel="mo:records" rev="mo:recorded_as" resource="{{data.link | linkhref}}#performance" typeof="mo:Performance">
-            <div rel="mo:performance_of" rev="mo:performed_in" resource="{{data.link | linkhref}}#musicalwork" typeof="mo:MusicalWork">
-              <div rel="mo:composed_in" rev="mo:produced_work" resource="{{data.link | linkhref}}#composition" typeof="mo:Composition"></div>
+          <div rel="mo:records" rev="mo:recorded_as" resource="{{data.link | linkhref}}#performance" typeof="mo:Performance schema:Event">
+            <meta>{{data.names | lang_names(rel="dcterms:title schema:name")}}</meta>
+            <div rel="mo:performance_of" rev="mo:performed_in" resource="{{data.link | linkhref}}#musicalwork" typeof="mo:MusicalWork schema:CreativeWork">
+              <div rel="mo:composed_in" rev="mo:produced_work" resource="{{data.link | linkhref}}#composition" typeof="mo:Composition schema:CreativeWork">
+                <meta>{{data.names | lang_names(rel="dcterms:title schema:name")}}</meta>
+              </div>
               <div rel="mo:lyrics" resource="{{data.link | linkhref}}#lyrics" typeof="mo:Lyrics"></div>
             </div>
           </div>
         </div>
-      </div>
+      </meta>
       <h2>People</h2>
+      <meta>
+       {{ list_names(data.composers, rel="", rev="dcterms:creator foaf:made") }}
+       {{ list_names(data.performers, rel="schema:byArtist") }}
+       {{ list_names(data.lyricists, rev="foaf:made") }}
+      </meta>
       <dl>
         {% if data.composers -%}
         <dt>Composers</dt>
@@ -92,7 +100,7 @@
         {% endif -%}
         {% if data.performers -%}
         <dt>Performers</dt>
-        <dd resource="{{data.link | linkhref}}#performance" class="names">{{ list_names(data.performers, rel="mo:performer", rev="mo:performed") }}</dd>
+        <dd resource="{{data.link | linkhref}}#performance" class="names">{{ list_names(data.performers, rel="mo:performer schema:byArtist", rev="mo:performed") }}</dd>
         {% endif -%}
         {% if data.lyricists -%}
         <dt>Lyricists</dt>
@@ -115,11 +123,12 @@
           <span property="mo:record_number" content="{{loop.index}}" datatype="xsd:integer"></span>
           <span property="mo:track_count" content="{{disc.tracks | count}}" datatype="xsd:integer"></span>
           <span property="schema:numTracks" content="{{disc.tracks | count}}" datatype="xsd:integer"></span>
+          <span property="schema:duration" content="{{disc.disc_length | format_interval}}" datatype="xsd:interval"></span>
         </span>
         <h3>{{disc.name}}</h3>
         <ol class="unstyled">
           {% for track in disc.tracks %}
-          <li rel="mo:track schema:track" typeof="mo:Track schema:MusicRecording"><span property="mo:track_number" datatype="xsd:integer">{{loop.index}}</span> - <span class="names">{{track.names|lang_names(rel="schema:name dcterms:title")}}</span> (<span property="schema:duration" content="{{track.track_length|format_interval}}" datatype="xsd:interval">{{track.track_length}}</span>)</li>
+          <li rel="mo:track schema:track" rev="schema:inPlaylist" typeof="mo:Track schema:MusicRecording"><span property="mo:track_number" datatype="xsd:integer">{{loop.index}}</span> - <span class="names">{{track.names|lang_names(rel="schema:name dcterms:title")}}</span> (<span property="schema:duration" content="{{track.track_length|format_interval}}" datatype="xsd:interval">{{track.track_length}}</span>)</li>
           {% endfor %}
         </ol>
         {% endfor %}

@@ -69,9 +69,18 @@ def add_lang_names(g, subject, names, rel=[FOAF.name]):
 def add_discography(g, subject, albums, rel=[FOAF.made, SCHEMA.album], rev=[]):
 	for album in albums:
 		albumlink = URIRef(link(album['link'])+"#subject") if album.has_key('link') else BNode()
+		perflink = URIRef(link(album['link'])+"#performance") if album.has_key('link') else BNode()
+		complink = URIRef(link(album['link'])+"#composition") if album.has_key('link') else BNode()
+		lyricslink = URIRef(link(album['link'])+"#lyrics") if album.has_key('link') else BNode()
+		g.add((perflink, RDF.type, MO.Performance))
+		g.add((complink, RDF.type, MO.Composition))
+		g.add((lyricslink, RDF.type, MO.Lyrics))
+
 		g.add((albumlink, RDF.type, MO.Release))
 		g.add((albumlink, RDF.type, SCHEMA.MusicAlbum))
 		add_lang_names(g, albumlink, album['titles'], rel=[DCTERMS.title, SCHEMA.name])
+		add_lang_names(g, perflink, album['titles'], rel=[DCTERMS.title, SCHEMA.name])
+		add_lang_names(g, complink, album['titles'], rel=[DCTERMS.title, SCHEMA.name])
 		if album.has_key('date'):
 			g.add((albumlink, DCTERMS.created, Literal(album['date'], datatype=XSD.date)))
 			g.add((albumlink, SCHEMA.datePublished, Literal(album['date'], datatype=XSD.date)))
@@ -94,13 +103,21 @@ def add_discography(g, subject, albums, rel=[FOAF.made, SCHEMA.album], rev=[]):
 			g.add((albumlink, pred, subject))
 		if album.has_key('link') and album.has_key('roles'):
 			if 'Composer' in album['roles']:
-				g.add((subject, FOAF.made, URIRef(link(album['link'])+"#composition")))
-				g.add((URIRef(link(album['link'])+"#composition"), MO.composer, subject))
+				g.add((subject, FOAF.made, albumlink))
+				g.add((subject, FOAF.made, complink))
+				g.add((albumlink, DCTERMS.creator, subject))
+				g.add((albumlink, SCHEMA.creator, subject))
+				g.add((complink, DCTERMS.creator, subject))
+				g.add((complink, SCHEMA.creator, subject))
+				g.add((complink, MO.composer, subject))
 			if 'Performer' in album['roles']:
-				g.add((subject, MO.performed, URIRef(link(album['link'])+"#performance")))
-				g.add((URIRef(link(album['link'])+"#performance"), MO.performer, subject))
+				g.add((subject, MO.performed, perflink))
+				g.add((perflink, MO.performer, subject))
+				g.add((perflink, SCHEMA.byArtist, subject))
+				g.add((albumlink, SCHEMA.byArtist, subject))
 			if 'Lyricist' in album['roles']:
-				g.add((subject, FOAF.made, URIRef(link(album['link'])+"#lyrics")))
+				g.add((subject, FOAF.made, albumlink))
+				g.add((subject, FOAF.made, lyricslink))
 
 def generate_artist(config, data):
 	if data.has_key('link'):
@@ -121,10 +138,12 @@ def generate_artist(config, data):
 		g.add((subject, RDF.type, SCHEMA.Person))
 		g.add((subject, RDF.type, SCHEMA.MusicGroup))
 	g.add((subject, FOAF.name, Literal(data['name'])))
+	g.add((subject, SCHEMA.name, Literal(data['name'])))
 	if data.has_key('picture_full'):
 		img = URIRef(data['picture_full'])
 		thumb = URIRef(data['picture_small'])
 		g.add((subject, FOAF.depiction, img))
+		g.add((img, RDF.type, FOAF.Image))
 		g.add((img, FOAF.depicts, subject))
 		g.add((img, FOAF.thumbnail, thumb))
 	if data.has_key('birthdate'):
@@ -141,7 +160,7 @@ def generate_artist(config, data):
 		g.add((deathinfo, BIO.date, Literal(data['deathdate'], datatype=XSD.date)))
 	if data.has_key('units'):
 		for unit in data['units']:
-			unitlink = URIRef(link(unit['link'])) if unit.has_key('link') else BNode()
+			unitlink = URIRef(link(unit['link']+"#subject")) if unit.has_key('link') else BNode()
 			g.add((unitlink, RDF.type, FOAF.organization))
 			g.add((unitlink, RDF.type, SCHEMA.MusicGroup))
 			g.add((subject, MO.member_of, unitlink))
@@ -151,7 +170,7 @@ def generate_artist(config, data):
 			add_lang_names(g, unitlink, unit['names'], rel=[FOAF.name])
 	if data.has_key('members'):
 		for member in data['members']:
-			memberlink = URIRef(link(member['link'])) if member.has_key('link') else BNode()
+			memberlink = URIRef(link(member['link']+"#subject")) if member.has_key('link') else BNode()
 			g.add((memberlink, RDF.type, FOAF.person))
 			g.add((subject, FOAF.member, memberlink))
 			g.add((subject, MO.member, memberlink))
@@ -196,8 +215,11 @@ def generate_album(config, data):
 	g.add((subject, RDF.type, SCHEMA.MusicAlbum))
 	g.add((musicalexpression, RDF.type, MO.Signal))
 	g.add((performance, RDF.type, MO.Performance))
+	g.add((performance, RDF.type, SCHEMA.Event))
 	g.add((musicalwork, RDF.type, MO.MusicalWork))
+	g.add((musicalwork, RDF.type, SCHEMA.CreativeWork))
 	g.add((composition, RDF.type, MO.Composition))
+	g.add((composition, RDF.type, SCHEMA.CreativeWork))
 	g.add((lyrics, RDF.type, MO.Lyrics))
 
 	g.add((subject, MO.publication_of, musicalexpression))
@@ -205,12 +227,15 @@ def generate_album(config, data):
 	g.add((musicalexpression, MO.records, performance))
 	g.add((performance, MO.recorded_as, musicalexpression))
 	g.add((performance, MO.performance_of, musicalwork))
+	g.add((performance, SCHEMA.workPerformed, musicalwork))
 	g.add((musicalwork, MO.performed_in, performance))
 	g.add((musicalwork, MO.composed_in, composition))
 	g.add((composition, MO.produced_work, musicalwork))
 	g.add((musicalwork, MO.lyrics, lyrics))
 
 	add_lang_names(g, subject, data['names'], rel=[DCTERMS.title, SCHEMA.name])
+	add_lang_names(g, performance, data['names'], rel=[DCTERMS.title, SCHEMA.name])
+	add_lang_names(g, composition, data['names'], rel=[DCTERMS.title, SCHEMA.name])
 	if data.has_key('picture_full'):
 		img = URIRef(data['picture_full'])
 		thumb = URIRef(data['picture_small'])
@@ -265,10 +290,13 @@ def generate_album(config, data):
 			for r in rev:
 				g.add((person, r, subject))
 	if data.has_key('composers'):
+		add_people(g, subject, data['composers'], rel=[], rev=[DCTERMS.creator, FOAF.made])
 		add_people(g, composition, data['composers'], rel=[MO.composer], rev=[FOAF.made])
 	if data.has_key('performers'):
-		add_people(g, performance, data['performers'], rel=[MO.performer], rev=[MO.performed])
+		add_people(g, subject, data['performers'], rel=[SCHEMA.byArtist], rev=[])
+		add_people(g, performance, data['performers'], rel=[MO.performer, SCHEMA.byArtist], rev=[MO.performed])
 	if data.has_key('lyricists'):
+		add_people(g, subject, data['lyricists'], rel=[], rev=[FOAF.made])
 		add_people(g, lyrics, data['lyricists'], rel=[], rev=[FOAF.made])
 
 	if data.has_key('products'):
@@ -289,12 +317,16 @@ def generate_album(config, data):
 		g.add((record, MO.record_name, Literal(index, datatype=XSD.integer)))
 		g.add((record, MO.track_count, Literal(len(discdata['tracks']), datatype=XSD.integer)))
 		g.add((record, SCHEMA.numTracks, Literal(len(discdata['tracks']), datatype=XSD.integer)))
+		if discdata.has_key('disc_length') and discdata['disc_length']:
+			interval = "PT" + discdata['disc_length']
+			g.add((record, SCHEMA.duration, Literal(interval, datatype=XSD.interval)))
 		trackno = 0
 		for trackdata in discdata['tracks']:
 			trackno += 1
 			track = BNode()
 			g.add((record, MO.track, track))
 			g.add((record, SCHEMA.track, track))
+			g.add((track, SCHEMA.inPlaylist, record))
 			g.add((track, RDF.type, MO.Track))
 			g.add((track, RDF.type, SCHEMA.MusicRecording))
 			g.add((track, MO.track_number, Literal(trackno, datatype=XSD.integer)))
