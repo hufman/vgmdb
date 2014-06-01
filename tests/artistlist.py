@@ -20,3 +20,7 @@ class TestArtistList(unittest.TestCase):
 		self.assertEqual(u"artist/11699", list['artists'][96]['link'])
 		self.assertEqual(u"A BONE", list['artists'][0]['names']['en'])
 		self.assertEqual(u"アービー", list['artists'][3]['name_real'])
+
+
+if __name__ == '__main__':
+	unittest.main()

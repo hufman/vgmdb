@@ -30,3 +30,7 @@ class TestDummyOutput(unittest.TestCase):
 		self.assertEqual("json", output.decide_format("invalid", "text/json,text/html"))
 		self.assertEqual("turtle", output.decide_format("invalid", "text/x-turtle,text/html"))
 		self.assertEqual("rdf", output.decide_format("invalid", "text/x-turtle,text/rdf+xml;q=2"))
+
+
+if __name__ == '__main__':
+	unittest.main()

@@ -18,3 +18,7 @@ class TestProductList(unittest.TestCase):
 		self.assertEqual(u"Darius", list['products'][0]['names']['en'])
 		self.assertEqual(u"Franchise", list['products'][0]['type'])
 		self.assertEqual(30, len(list['products']))
+
+
+if __name__ == '__main__':
+	unittest.main()

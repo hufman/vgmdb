@@ -65,3 +65,6 @@ class TestOrglistRDF(TestRDF):
 		graph = self.load_rdf_data('eventlist.html')
 		self.run_list_tests(graph)
 
+
+if __name__ == '__main__':
+	unittest.main()

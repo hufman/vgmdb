@@ -40,3 +40,7 @@ class TestOrgs(unittest.TestCase):
 		self.assertEqual(u"2012-11", vagrancy['releases'][-2]['date'])
 		self.assertEqual(u"Comic Market 67", vagrancy['releases'][4]['event']['name'])
 		self.assertEqual(u"event/15", vagrancy['releases'][4]['event']['link'])
+
+
+if __name__ == '__main__':
+	unittest.main()

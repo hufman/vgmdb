@@ -236,3 +236,7 @@ class TestRecent(unittest.TestCase):
 		self.assertEqual(u'Jodo Kast', up[0]['contributor']['name'])
 		self.assertEqual(u'http://vgmdb.net/forums/member.php?u=1254', up[0]['contributor']['link'])
 		self.assertEqual(u'2013-10-20T13:34', up[0]['date'])
+
+
+if __name__ == '__main__':
+	unittest.main()

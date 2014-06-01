@@ -71,3 +71,6 @@ class TestEventRDF(TestRDF):
 		graph = self.load_rdf_data('event_cm54.html')
 		self.run_cm54_tests(graph)
 
+
+if __name__ == '__main__':
+	unittest.main()

@@ -54,3 +54,7 @@ class TestOrgRDF(TestRDF):
 	def test_dogear_rdf(self):
 		graph = self.load_rdf_data('org_dogear.html')
 		self.run_dogear_tests(graph)
+
+
+if __name__ == '__main__':
+	unittest.main()

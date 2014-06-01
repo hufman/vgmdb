@@ -111,3 +111,7 @@ class TestArtistsRDF(TestRDF):
 	def test_offenbach_rdf(self):
 		graph = self.load_rdf_data('artist_offenbach.html')
 		self.run_offenbach_tests(graph)
+
+
+if __name__ == '__main__':
+	unittest.main()

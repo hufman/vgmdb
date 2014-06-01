@@ -26,3 +26,7 @@ class TestOrgList(unittest.TestCase):
 		self.assertEqual("A'zip Music", list['orgs']['W'][3]['imprints'][0]['names']['en'])
 		self.assertEqual("org/95", list['orgs']['W'][3]['subsidiaries'][0]['link'])
 		self.assertEqual("org/13", list['orgs']['W'][3]['formerly'][0]['link'])
+
+
+if __name__ == '__main__':
+	unittest.main()

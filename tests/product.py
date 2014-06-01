@@ -55,3 +55,7 @@ class TestProducts(unittest.TestCase):
 		self.assertEqual(u"プロジェクト・アイマス", im['name_real'])
 		self.assertEqual(0, len(im['titles']))
 		self.assertEqual(0, len(im['albums']))
+
+
+if __name__ == '__main__':
+	unittest.main()

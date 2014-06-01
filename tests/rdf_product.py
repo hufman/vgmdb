@@ -64,3 +64,7 @@ class TestProductRDF(TestRDF):
 	def test_witcher_rdf(self):
 		graph = self.load_rdf_data('product_witcher.html')
 		self.run_witcher_tests(graph)
+
+
+if __name__ == '__main__':
+	unittest.main()

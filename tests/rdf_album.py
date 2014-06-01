@@ -97,3 +97,7 @@ class TestAlbumsRDF(TestRDF):
 	def test_bootleg_rdf(self):
 		graph = self.load_rdf_data('album_bootleg.html')
 		self.run_bootleg_tests(graph)
+
+
+if __name__ == '__main__':
+	unittest.main()

@@ -184,3 +184,6 @@ class TestRecentRDF(TestRDF):
 		graph = self.load_rdf_data('recent_ratings.html')
 		self.run_ratings_tests(graph)
 
+
+if __name__ == '__main__':
+	unittest.main()

@@ -33,3 +33,7 @@ class TestEvents(unittest.TestCase):
 		self.assertEqual(u'1998-08-13', cm54['startdate'])
 		self.assertEqual(u'1998-08-15', cm54['enddate'])
 		self.assertEqual(6, len(cm54['releases']))
+
+
+if __name__ == '__main__':
+	unittest.main()

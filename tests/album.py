@@ -118,3 +118,6 @@ class TestAlbums(unittest.TestCase):
 		self.assertEqual('album/722', bootleg['bootleg_of']['link'])
 		self.assertEqual('N30D-021', bootleg['bootleg_of']['catalog'])
 
+
+if __name__ == '__main__':
+	unittest.main()

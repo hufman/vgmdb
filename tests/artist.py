@@ -78,3 +78,7 @@ class TestArtists(unittest.TestCase):
 		self.assertEqual(u'male', offenbach['sex'])
 		self.assertEqual('1819-06-20', offenbach['birthdate'])
 		self.assertEqual('1880-10-05', offenbach['deathdate'])
+
+
+if __name__ == '__main__':
+	unittest.main()

@@ -34,3 +34,7 @@ class TestSearchList(unittest.TestCase):
 		search = vgmdb.parsers.search.parse_page(search_code)
 
 		self.assertEqual("''Snake Eater'' song from METAL GEAR SOLID 3", search['query'])
+
+
+if __name__ == '__main__':
+	unittest.main()

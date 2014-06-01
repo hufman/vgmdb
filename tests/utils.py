@@ -80,3 +80,7 @@ class TestUtils(unittest.TestCase):
 		for test,expected in tests.items():
 			got = outpututils.normalize_language_codes(test)
 			self.assertEqual(expected, got)
+
+
+if __name__ == '__main__':
+	unittest.main()
