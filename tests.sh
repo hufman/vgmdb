@@ -12,4 +12,4 @@ for i in tests/*.py; do
 done
 cd "$oldpwd"
 [ $failed -eq 0 ] && echo "All tests pass" || echo "FAILURES DETECTED"
-return $failed
+exit $failed
