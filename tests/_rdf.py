@@ -28,6 +28,12 @@ class TestRDF(unittest.TestCase):
 	def setUp(self):
 		pass
 
+	def assertGreater(self, a, b, msg=None):
+		self.assertTrue(a > b, msg)
+
+	def assertGreaterEqual(self, a, b, msg=None):
+		self.assertTrue(a >= b, msg)
+
 	def load_data(self, filename, output_format, parse_format, filterkey=None, **parse_kwargs):
 		code = file(os.path.join(base, filename), 'r').read()
 		data = self.data_parser(code)
