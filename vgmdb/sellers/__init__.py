@@ -95,8 +95,12 @@ def _search_all_sync(type, id, info):
 			search = getattr(module, "search_%s"%(type,), None)
 			empty = getattr(module, "empty_%s"%(type,), None)
 			prev = cache.get("vgmdb/%s/%s/sellers/%s"%(type,id,module.__name__))
+			ret = None
 			if search and not prev:
-				ret = search(info)
+				try:
+					ret = search(info)
+				except Exception as e:
+					logger.error("Exception while searching %s for %s/%s: %s"%(module, type, id, e))
 				if ret:
 					cache.set("vgmdb/%s/%s/sellers/%s"%(type,id,module.__name__), ret)
 					results.append(ret)
@@ -112,8 +116,12 @@ def _search_all_async(type, id, info):
 			search = getattr(module, "search_%s"%(type,), None)
 			empty = getattr(module, "empty_%s"%(type,), None)
 			prev = cache.get(cache_key)
+			ret = None
 			if search and not prev:
-				ret = search(info)
+				try:
+					ret = search(info)
+				except Exception as e:
+					logger.error("Exception while searching %s for %s/%s: %s"%(module, type, id, e))
 				if ret:
 					cache.set(cache_key, ret)
 					return ret
