@@ -61,7 +61,7 @@ A list of recent changes is available.<br/>
 <p>
 Each item in the database is represented with a unique URL, which follows this pattern:<br/>
 <code><a href="album/79">/album/&lt;id&gt;</a></code> - Album information<br/>
-<code><a href="artist/77">/artist/&lt;id&gt;</a></code> - Artist information<br/>
+<code><a href="artist/1935">/artist/&lt;id&gt;</a></code> - Artist information<br/>
 <code><a href="org/203">/org/&lt;id&gt;</a></code> - Organization information<br/>
 <code><a href="event/2">/event/&lt;id&gt;</a></code> - Event information<br/>
 <code><a href="product/1132">/product/&lt;id&gt;</a></code> - Product information<br/>
@@ -70,9 +70,9 @@ Each item in the database is represented with a unique URL, which follows this p
 <p>
 Artists and Albums have an additional endpoint to get information about a few online stores where their products are available. The main /sellers endpoint will wait until the information is completely available. The /sellers?allow_partial=true option may return results that are not yet complete, with a Refresh header to check back for new search results.<br/>
 <code><a href="album/79/sellers">/album/&lt;id&gt;/sellers</a></code> - Album sellers<br/>
-<code><a href="artist/77/sellers">/artist/&lt;id&gt;/sellers</a></code> - Artist sellers<br/>
+<code><a href="artist/1935/sellers">/artist/&lt;id&gt;/sellers</a></code> - Artist sellers<br/>
 <code><a href="album/79/sellers?allow_partial=true">/album/&lt;id&gt;/sellers?allow_partial=true</a></code> - Partial album sellers with Refresh header<br/>
-<code><a href="artist/77/sellers?allow_partial=true">/artist/&lt;id&gt;/sellers?allow_partial=true</a></code> - Partial artist sellers with Refresh header<br/>
+<code><a href="artist/1935/sellers?allow_partial=true">/artist/&lt;id&gt;/sellers?allow_partial=true</a></code> - Partial artist sellers with Refresh header<br/>
 </p>
 <h3>Format Selection</h3>
 <p>
