@@ -106,6 +106,8 @@ def _search_all_sync(type, id, info):
 					results.append(ret)
 				else:
 					results.append(empty(info))
+			if search and prev:
+				results.append(prev)
 	return results
 
 def _search_all_async(type, id, info):
