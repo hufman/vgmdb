@@ -57,7 +57,7 @@ def parse_accept_header(accept):
                 media_params.append(('vendor', vnd))
                 # and re-write media_type to something like application/json so
                 # it can be used usefully when looking up emitters
-                media_type = '{}/{}'.format(typ, extra)
+                media_type = '{0}/{1}'.format(typ, extra)
         q = 1.0
         for part in parts:
             (key, value) = part.lstrip().split("=", 1)

@@ -129,7 +129,7 @@ def _parse_org_releases(table):
 		else:
 			release['titles'] = {"en":soup_album.string.strip()}
 		releases.append(release)
-	releases = sorted(releases, key=lambda e:"{[date]:0<14}".format(e))
+	releases = sorted(releases, key=lambda e:"{0[date]:0<14}".format(e))
 	return releases
 
 def _parse_websites(soup_websites):
