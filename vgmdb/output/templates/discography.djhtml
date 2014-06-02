@@ -1,6 +1,6 @@
 {% macro discography(discography, rel="foaf:made schema:album", property=None, rev=None, include_roles=True, include_publisher=False) -%}
       {% if include_roles -%}
-      <meta class="metadata">
+      <div class="metadata">
       {%- for disc in discography -%}
         <div {{disc.link | linkhref | resource_attr(hash='composition')}} typeof="mo:Composition">{{ disc.titles|lang_names(rel='dcterms:title schema:name') }}</div>
         <div {{disc.link | linkhref | resource_attr(hash='performance')}} typeof="mo:Performance">{{ disc.titles|lang_names(rel='dcterms:title schema:name') }}</div>
@@ -18,7 +18,7 @@
         {% endif -%}
       {%- endfor -%}
       {%- endfor -%}
-      </meta>
+      </div>
       {%- endif -%}
       <table class="table table-condensed table-striped">
         <thead>

@@ -74,25 +74,25 @@
 {% endblock %}
 {% block body %}
     <div id="info" resource="{{data.link | linkhref}}#subject">
-      <meta class="metadata">
+      <div class="metadata">
         <div rel="mo:publication_of" rev="mo:published_as" resource="{{data.link | linkhref}}#musicalexpression" typeof="mo:Signal">
           <div rel="mo:records" rev="mo:recorded_as" resource="{{data.link | linkhref}}#performance" typeof="mo:Performance schema:Event">
-            <meta>{{data.names | lang_names(rel="dcterms:title schema:name")}}</meta>
+            <div class="names">{{data.names | lang_names(rel="dcterms:title schema:name")}}</div>
             <div rel="mo:performance_of" rev="mo:performed_in" resource="{{data.link | linkhref}}#musicalwork" typeof="mo:MusicalWork schema:CreativeWork">
               <div rel="mo:composed_in" rev="mo:produced_work" resource="{{data.link | linkhref}}#composition" typeof="mo:Composition schema:CreativeWork">
-                <meta>{{data.names | lang_names(rel="dcterms:title schema:name")}}</meta>
+                <div class="names">{{data.names | lang_names(rel="dcterms:title schema:name")}}</div>
               </div>
               <div rel="mo:lyrics" resource="{{data.link | linkhref}}#lyrics" typeof="mo:Lyrics"></div>
             </div>
           </div>
         </div>
-      </meta>
+      </div>
       <h2>People</h2>
-      <meta>
+      <div class="metadata">
        {{ list_names(data.composers, rel="", rev="dcterms:creator foaf:made") }}
        {{ list_names(data.performers, rel="schema:byArtist") }}
        {{ list_names(data.lyricists, rev="foaf:made") }}
-      </meta>
+      </div>
       <dl>
         {% if data.composers -%}
         <dt>Composers</dt>
