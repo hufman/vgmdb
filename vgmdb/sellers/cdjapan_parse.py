@@ -1,63 +1,52 @@
 import urllib
 import urlparse
-import bs4
+import json
 
 
-BASE_URL = 'http://www.cdjapan.co.jp/search3.html?q=%s&media=cd&r=any&step=20&order=score'
-
-def search(query):
-	html = load_search_html(query)
-	data = parse_search_html(html)
-	return data
+BASE_URL = 'http://www.cdjapan.co.jp/products?q=%s&term.media_format=cd'
+API_SEARCH_ARTIST = 'http://www.cdjapan.co.jp/api/products/facet/person/json?q=%s&term.media_format=cd&facet_limit=5'
+API_SEARCH_SERIES = 'http://www.cdjapan.co.jp/api/products/facet/series/json?q=%s&term.media_format=cd&facet_limit=5'
+API_SEARCH_PRODUCTS = 'http://www.cdjapan.co.jp/api/products/json?q=%s'
+ARTIST_INFO = 'http://www.cdjapan.co.jp/person/%s'
+SERIES_INFO = 'http://www.cdjapan.co.jp/series/%s'
+PRODUCT_INFO = 'http://www.cdjapan.co.jp/series/%s'
 
 def get_search_url(query):
 	return BASE_URL%(urllib.quote(query),)
 
-def load_search_html(query):
-	url = get_search_url(query)
-	return urllib.urlopen(url).read()
+def search_artists(query):
+	link = API_SEARCH_ARTIST % (urllib.quote(query),)
+	return parse_facets(ARTIST_INFO, fetch(link))
 
-def parse_search_html(html):
-	soup = bs4.BeautifulSoup(html)
-	soup_results = soup.find('table', class_='result')
-	results = parse_search_results(soup_results)
-	return results
+def search_series(query):
+	link = API_SEARCH_SERIES % (urllib.quote(query),)
+	return parse_facets(SERIES_INFO, fetch(link))
 
-def parse_search_results(soup_results):
-	results = []
-	for soup_row in soup_results.find_all('tr', recursive=False):
-		result = parse_search_result(soup_row)
-		if result:
-			results.append(result)
-	return results
+def search_products(query):
+	link = API_SEARCH_PRODUCTS % (urllib.quote(query),)
+	return parse_records(fetch(link))
 
-def parse_search_result(soup_row):
-	info = {}
-	soup_cells = soup_row.find_all('td', recursive=False)
-	if len(soup_cells)<3:
-		return None
-	soup_cell_pic = soup_cells[0]
-	soup_cell_desc = soup_cells[1]
+def fetch(link):
+	return json.load(urllib.urlopen(link))
 
-	soup_link = soup_cell_pic.find('a')
-	info['link'] = urlparse.urljoin(BASE_URL, soup_link['href'])
-	soup_image = soup_link.find('img')
-	info['image'] = urlparse.urljoin(BASE_URL, soup_image['src'])
+def parse_facets(info_link, data):
+	if data:
+		return [{'link': info_link % (f['id'],),
+		         'name': f['ename'],
+		         'jname': f['name']}
+		        for f in data['facet']]
+		return data['facet'][0]
 
-	soup_parts = soup_cell_desc.find_all('div', recursive=False)
-	soup_title = soup_cell_desc.h2.a
-	info['title'] = soup_title.string
-	soup_artist = soup_parts[0]
-	info['artist'] = soup_artist.string
-	soup_caption = soup_parts[1]
-	info['caption'] = soup_caption.string
-	link = soup_title['href']
-	parms = urlparse.parse_qs(urlparse.urlparse(link).query)
-	if 'KEY' in parms:
-		info['product_key'] = parms['KEY'][0]
+def parse_records(data):
+	if data:
+		return [{'link': PRODUCT_INFO % (p['prodkey'],),
+		         'title': p['title'],
+		         'product_key': p['prodkey']}
+		        for p in data['record']]
 
-	return info
 
 if __name__ == "__main__":
 	import pprint
-	pprint.pprint(search('nobuo uematsu'))
+	pprint.pprint(search_artists('nobuo uematsu'))
+	pprint.pprint(search_series('final fantasy'))
+	pprint.pprint(search_products('fithos lusec'))
