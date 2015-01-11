@@ -23,8 +23,10 @@ def parse_page(html_source):
 	soup_table = soup_innermain.find('table')
 	for soup_cell in soup_table.find_all('td'):
 		for soup_letter in soup_cell.find_all('h3'):
-			letter = unicode(soup_letter.string)
-			if not letter or \
+			heading = soup_letter.string   # might be None
+			letter = unicode(heading)   # might be u'None'
+			if not heading or \
+			   not letter or \
 			   not islettermatcher.match(letter):
 				letter = '#'
 			if letter not in orglist_info['letters']:
