@@ -165,23 +165,26 @@ def _parse_table_links(color_codes, soup_cells):
 			"catalog": unicode(soup_link.string)
 		})
 	if 'link_type' in info and info['link_type'] in \
-	   ['Artist Link', 'Organization Link']:
+	   ['Artist Link']:
 		soup_link = soup_cells[0].a
 		info.update({
 			"link": utils.trim_absolute(soup_link['href']),
 			"names": {'en':unicode(soup_link.string)}
 		})
 	if 'link_type' in info and info['link_type'] in \
-	   ['Product Link']:
+	   ['Organization Link', 'Product Link']:
 		soup_link = soup_cells[0].a
-		product_link = utils.trim_absolute(soup_link['href'])
-		parsed_link = urlparse.urlparse(product_link)
+		item_link = utils.trim_absolute(soup_link['href'])
+		parsed_link = urlparse.urlparse(item_link)
 		parsed_qs = urlparse.parse_qs(parsed_link[4])
-		product_id = parsed_qs.get('id', None)
-		if product_id:
-			product_link = 'product/' + product_id[0]
+		item_id = parsed_qs.get('id', None)
+		if item_id:
+			if info['link_type'] == 'Organization Link':
+				item_link = 'org/' + item_id[0]
+			if info['link_type'] == 'Product Link':
+				item_link = 'product/' + item_id[0]
 		info.update({
-			"link": product_link,
+			"link": item_link,
 			"names": {'en':unicode(soup_link.string)}
 		})
 	return info
