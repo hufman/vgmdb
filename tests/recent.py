@@ -214,6 +214,10 @@ class TestRecent(unittest.TestCase):
 		self.assertEqual(u'artist/2277', up[6]['link'])
 		self.assertEqual(u'Tainokobone', up[6]['names']['en'])
 
+		self.assertEqual(u'Product Link', up[-1]['link_type'])
+		self.assertEqual(u'product/3282', up[-1]['link'])
+		self.assertEqual(u'Assassination Classroom', up[-1]['names']['en'])
+
 	def test_ratings(self):
 		html = file(os.path.join(base, 'recent_ratings.html'), 'r').read()
 		data = recent.parse_page(html)

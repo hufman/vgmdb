@@ -1,6 +1,7 @@
 import bs4
 
 from . import utils
+import urlparse
 
 fetch_url = lambda type: "http://vgmdb.net/db/recent.php?do=view_%s"%(type,)
 fetch_page = lambda type: utils.fetch_page(fetch_url(type))
@@ -164,10 +165,23 @@ def _parse_table_links(color_codes, soup_cells):
 			"catalog": unicode(soup_link.string)
 		})
 	if 'link_type' in info and info['link_type'] in \
-	   ['Artist Link', 'Organization Link', 'Product Link']:
+	   ['Artist Link', 'Organization Link']:
 		soup_link = soup_cells[0].a
 		info.update({
 			"link": utils.trim_absolute(soup_link['href']),
+			"names": {'en':unicode(soup_link.string)}
+		})
+	if 'link_type' in info and info['link_type'] in \
+	   ['Product Link']:
+		soup_link = soup_cells[0].a
+		product_link = utils.trim_absolute(soup_link['href'])
+		parsed_link = urlparse.urlparse(product_link)
+		parsed_qs = urlparse.parse_qs(parsed_link[4])
+		product_id = parsed_qs.get('id', None)
+		if product_id:
+			product_link = 'product/' + product_id[0]
+		info.update({
+			"link": product_link,
 			"names": {'en':unicode(soup_link.string)}
 		})
 	return info
