@@ -32,7 +32,7 @@
         <dd>
           <ul class="unstyled">
           {% for release in data.releases -%}
-            <li><span class="names">{{ release.names | lang_names(rel=None) }}</span></li>
+            <li><span class="names">{{ release.names | lang_names(rel=None) | link(release.link, hide_empty_link=True) }} ({{ release.platform }})</span></li>
           {% endfor -%}
           </ul>
         </dd>

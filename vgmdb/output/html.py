@@ -85,8 +85,10 @@ class outputter(object):
 		return ''
 	def link_artist(self, name, href, typeof="foaf:Person"):
 		return self.link(name, href, typeof)
-	def link(self, name, href, typeof=None):
+	def link(self, name, href, typeof=None, hide_empty_link=False):
 		text = name
+		if hide_empty_link and not href:
+			return text
 		if typeof:
 			typeof=" typeof=\"%s\""%typeof
 		else:
