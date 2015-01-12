@@ -271,7 +271,7 @@ def _parse_section_album_stats(soup_section):
 			album_info['products'] = []
 			for soup_product in soup_div.find_all('a', recursive=False):
 				product = {}
-				product['link'] = utils.trim_absolute(soup_product['href'])
+				product['link'] = utils.parse_vgmdb_link(soup_product['href'])
 				product['names'] = utils.parse_names(soup_product)
 				album_info['products'].append(product)
 			text = soup_div.find('br').next

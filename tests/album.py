@@ -118,6 +118,13 @@ class TestAlbums(unittest.TestCase):
 		self.assertEqual('album/722', bootleg['bootleg_of']['link'])
 		self.assertEqual('N30D-021', bootleg['bootleg_of']['catalog'])
 
+	def test_brokennight(self):
+		# has a linked release
+		night_code = file(os.path.join(base, 'album_brokennight.html'), 'r').read()
+		night = album.parse_page(night_code)
+		self.assertEqual('DFCL-2101~2', night['catalog'])
+		self.assertEqual('Sony PlayStation Vita', night['platforms'][0])
+		self.assertEqual('release/3993', night['products'][0]['link'])
 
 if __name__ == '__main__':
 	unittest.main()
