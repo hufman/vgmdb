@@ -1,7 +1,10 @@
 
 import bs4
+import re
 import urllib
 import urlparse
+
+db_parser = re.compile(r'db/([a-z]+)\.php')
 
 class AppURLOpener(urllib.FancyURLopener):
 	version = "vgmdbapi/0.2 +http://vgmdb.info"
@@ -195,9 +198,27 @@ def trim_absolute(link):
 		link = link[1:]
 	return link
 def force_absolute(link):
-	if link == 'http://':
+	if link.startswith('http://'):
 		return link
 	return urlparse.urljoin('http://vgmdb.net/', link)
+
+def parse_vgmdb_link(link):
+	vgmdb_link_types = {}
+
+	link = trim_absolute(link)
+	parsed_link = urlparse.urlparse(link)
+	maybe_db = db_parser.match(parsed_link[2])
+	if maybe_db:
+		db_type = maybe_db.group(1)
+		item_type = vgmdb_link_types.get(db_type, db_type)
+		parsed_qs = urlparse.parse_qs(parsed_link[4])
+		item_ids = parsed_qs.get('id', None)
+		if item_ids:
+			return "%s/%s"%(item_type, item_ids[0])
+		else:
+			return item_type
+	else:
+		return link
 
 def parse_discography(soup_disco_table, label_type='roles'):
 	"""

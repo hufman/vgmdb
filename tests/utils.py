@@ -81,6 +81,18 @@ class TestUtils(unittest.TestCase):
 			got = outpututils.normalize_language_codes(test)
 			self.assertEqual(expected, got)
 
+class TestLinks(unittest.TestCase):
+	def test_trim_absolute(self):
+		self.assertEqual('album/29', utils.trim_absolute('http://vgmdb.net/album/29'))
+		self.assertEqual('http://wikipedia.org/album/29', utils.trim_absolute('http://wikipedia.org/album/29'))
+
+	def test_force_absolute(self):
+		self.assertEqual('http://vgmdb.net/album/29', utils.force_absolute('album/29'))
+		self.assertEqual('http://wikipedia.org/album/29', utils.force_absolute('http://wikipedia.org/album/29'))
+
+	def test_parse_vgmdb_link(self):
+		self.assertEqual('album/29', utils.parse_vgmdb_link('album/29'))
+		self.assertEqual('release/29', utils.parse_vgmdb_link('db/release.php?id=29'))
 
 if __name__ == '__main__':
 	unittest.main()
