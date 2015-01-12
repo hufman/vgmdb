@@ -108,7 +108,11 @@ def _parse_product_releases(soup_table):
 			continue
 		release = {}
 		release['date'] = utils.normalize_dashed_date(soup_cells[0].span.string)
-		release['names'] = utils.parse_names(soup_cells[1].span)
+		if soup_cells[1].find('a', recursive=False):
+			release['link'] = utils.parse_vgmdb_link(soup_cells[1].a['href'])
+			release['names'] = utils.parse_names(soup_cells[1].a)
+		else:
+			release['names'] = utils.parse_names(soup_cells[1].span)
 		release['region'] = unicode(soup_cells[2].span.string)
 		release['platform'] = unicode(soup_cells[3].span.string)
 		releases.append(release)

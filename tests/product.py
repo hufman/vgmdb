@@ -17,6 +17,7 @@ class TestProducts(unittest.TestCase):
 		self.assertEqual(u"Bethesda Game Studios", skyrim['organizations'][0])
 		self.assertEqual(u"The Elder Scrolls V: Skyrim", skyrim['name'])
 		self.assertEqual(u"JPY (Japan)", skyrim['releases'][3]['region'])
+		self.assertFalse('link' in skyrim['releases'][3])
 		self.assertEqual(u"Gaming Fantasy", skyrim['albums'][3]['titles']['en'])
 		self.assertEqual("2012-09-12T18:46", skyrim['meta']['added_date'])
 		self.assertEqual("http://vgmdb.net/db/assets/logos/1387-pr-1347504448.jpg", skyrim['picture_full'])
@@ -55,6 +56,17 @@ class TestProducts(unittest.TestCase):
 		self.assertEqual(u"プロジェクト・アイマス", im['name_real'])
 		self.assertEqual(0, len(im['titles']))
 		self.assertEqual(0, len(im['albums']))
+
+	def test_ataraxia(self):
+		at_code = file(os.path.join(base, 'product_hollowataraxia.html'), 'r').read()
+		at = product.parse_page(at_code)
+		self.assertEqual(u"Fate/hollow ataraxia", at['name'])
+		self.assertEqual(27, len(at['albums']))
+		self.assertEqual(2, len(at['releases']))
+		self.assertEqual(u"2005-10-28", at['releases'][0]['date'])
+		self.assertEqual(u"Fate/hollow ataraxia", at['releases'][0]['names']['en'])
+		self.assertEqual(u"Fate/hollow ataraxia", at['releases'][0]['names']['ja'])
+		self.assertEqual(u"release/2652", at['releases'][0]['link'])
 
 
 if __name__ == '__main__':
