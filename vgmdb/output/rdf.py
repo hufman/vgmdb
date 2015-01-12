@@ -375,6 +375,37 @@ def generate_product(config, data):
 
 	return g
 
+def generate_release(config, data):
+	if data.has_key('link'):
+		doc = URIRef(link(data['link']))
+		uri = link(data['link'])
+	else:
+		doc = BNode()
+		uri = base
+	g = Graph('IOMemory', doc)
+	subject = URIRef(uri + "#subject")
+	g.add((subject, RDF.type, SCHEMA.CreativeWork))
+	g.add((subject, DCTERMS.title, Literal(data['name'])))
+	g.add((subject, SCHEMA.name, Literal(data['name'])))
+	if data.has_key('picture_full'):
+		img = URIRef(data['picture_full'])
+		thumb = URIRef(data['picture_small'])
+		g.add((subject, FOAF.depiction, img))
+		g.add((img, FOAF.depicts, subject))
+		g.add((img, FOAF.thumbnail, thumb))
+	if data.has_key('release_date'):
+		g.add((subject, DCTERMS.created, Literal(data['release_date'], datatype=XSD.date)))
+		g.add((subject, SCHEMA.datePublished, Literal(data['release_date'], datatype=XSD.date)))
+	if data.has_key('products'):
+		for productdata in data['products']:
+			product = URIRef(link(productdata['link'])+"#subject") if productdata.has_key('link') else BNode()
+			g.add((product, RDF.type, SCHEMA.CreativeWork))
+			add_lang_names(g, product, productdata['names'], rel=[DCTERMS.title, SCHEMA.name])
+	add_discography(g, subject, data['release_albums'], rel=[], rev=[SCHEMA.about])
+	add_discography(g, subject, data['product_albums'], rel=[], rev=[SCHEMA.about])
+
+	return g
+
 def generate_org(config, data):
 	if data.has_key('link'):
 		doc = URIRef(link(data['link']))

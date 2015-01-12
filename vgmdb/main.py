@@ -75,7 +75,7 @@ def do_page(page_type, info, filterkey=None):
 		response.set_header('Last-Modified', out_time)
 	return outputter(page_type, info, filterkey)
 
-@route('/<type:re:(artist|album|product|event|org)>/<id:int>')
+@route('/<type:re:(artist|album|product|release|event|org)>/<id:int>')
 def info(type,id):
 	return do_page(type, vgmdb.request.info(type,id))
 

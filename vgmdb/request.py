@@ -6,6 +6,7 @@ from datetime import datetime as _datetime
 import vgmdb.parsers.artist
 import vgmdb.parsers.album
 import vgmdb.parsers.product
+import vgmdb.parsers.release
 import vgmdb.parsers.event
 import vgmdb.parsers.org
 
@@ -83,7 +84,7 @@ def info(page_type, id, use_cache=True):
 	link = '%s/%s'%(page_type,id)
 	return _request_page(cache_key, page_type, id, link, use_cache)
 _info_aliaser = lambda page_type: lambda id,use_cache=True: info(page_type, id, use_cache)
-for name in ['artist','album','product','event','org']:
+for name in ['artist','album','product','release','event','org']:
 	func = _info_aliaser(name)
 	func.__name__ = name
 	locals()[name] = func

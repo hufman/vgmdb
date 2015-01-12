@@ -1,0 +1,43 @@
+{% extends "base.djhtml" %}
+{% block title %}
+    <h1 typeof="schema:CreativeWork" about="{{data.link | linkhref}}#subject"><span property="dcterms:title schema:name">{{data.name}}</span> <small>({{data.type}})</small></h1>
+{% endblock %}
+{% block quickinfo %}
+    {% if data.picture_full -%}
+    <div class="boxsection thumbnail-container">
+      <a class="thumbnail" rel="foaf:depiction" rev="foaf:depicts" typeof="foaf:Image" href="{{data.picture_full}}">
+        <img rel="foaf:thumbnail" src="{{data.picture_small}}" />
+      </a>
+    </div>
+    {% endif -%}
+    <div class="boxsection">
+      {%- if data.release_date or data.products -%}
+      <dl class="dl-horizontal">
+        {% if data.release_date -%}
+        <dt>Release Date</dt>
+        <dd rel="dcterms:created schema:datePublished" datatype="xsd:date">{{data.release_date | format_date}}</dd>
+        {% endif -%}
+        {% if data.products and data.products is not empty -%}
+        <dt>Products</dt>
+        <dd>
+          <ul class="unstyled">
+          {% for product in data.products -%}
+            <li><span class="names">{{ product.names | lang_names(rel="dcterms:title schema:name") | link(product.link, typeof="schema:CreativeWork") }}</span></li>
+          {% endfor -%}
+          </ul>
+        </dd>
+        {% endif -%}
+      </dl>
+      {%- endif -%}
+    </div>
+{% endblock %}
+{% block body %}
+    <div id="info" resource="{{data.link | linkhref}}#subject">
+    </div>
+    <div class="discography" resource="{{data.link | linkhref}}#subject">
+      <h2>Albums Specific to This Release</h2>
+      {{ discography(data.release_albums, rel=None, rev="schema:about", include_roles=False ) -}}
+      <h2>Albums Common with All Releases</h2>
+      {{ discography(data.product_albums, rel=None, rev="schema:about", include_roles=False ) -}}
+    </div>
+{% endblock %}
