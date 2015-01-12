@@ -91,6 +91,7 @@ class TestLinks(unittest.TestCase):
 		self.assertEqual('http://wikipedia.org/album/29', utils.force_absolute('http://wikipedia.org/album/29'))
 
 	def test_parse_vgmdb_link(self):
+		self.assertEqual('album/29', utils.parse_vgmdb_link('/album/29'))
 		self.assertEqual('album/29', utils.parse_vgmdb_link('album/29'))
 		self.assertEqual('release/29', utils.parse_vgmdb_link('db/release.php?id=29'))
 

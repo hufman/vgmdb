@@ -191,6 +191,18 @@ def parse_string(soup_element, _strip=True):
 			ret = re.sub('\s*\n+\s*','\n', ret)
 		return ret
 
+def next_tag(soup_element):
+	next_element = soup_element.next_element
+	while next_element and not isinstance(next_element, bs4.Tag):
+		next_element = next_element.next_element
+	return next_element
+
+def next_sibling_tag(soup_element):
+	next_element = soup_element.next_sibling
+	while next_element and not isinstance(next_element, bs4.Tag):
+		next_element = next_element.next_sibling
+	return next_element
+
 def trim_absolute(link):
 	if link[0:17]=="http://vgmdb.net/":
 		link = link[len("http://vgmdb.net/"):]
@@ -246,7 +258,6 @@ def parse_discography(soup_disco_table, label_type='roles'):
 			roles = roles_str.split(',')
 			roles = [x.strip() for x in roles]
 			date = normalize_dotted_date("%s.%s"%(year, month_day))
-
 			titles = {}
 			for soup_title in soup_album.find_all('span', recursive=False):
 				title_lang = soup_title['lang'].lower()
