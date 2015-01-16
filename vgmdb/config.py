@@ -18,6 +18,13 @@ CELERY_RESULT_BACKEND = 'cache'
 CELERY_CACHE_BACKEND = 'memcached://127.0.0.1:11211/'
 CELERY_PING = True
 
+env_keys = [
+  'BASE_URL', 'CELERY_BROKER', 'CELERY_RESULT_BACKEND', 'CELERY_CACHE_BACKEND'
+]
+for key in env_keys:
+	if key in os.environ:
+		globals()[key] = os.environ[key]
+
 
 if os.environ.has_key('GAE_BASEURL'):
 	BASE_URL = os.environ['GAE_BASEURL']
