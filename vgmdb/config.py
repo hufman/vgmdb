@@ -38,6 +38,8 @@ def for_request(request):
 		settings.BASE_URL = 'http://%s/'%(request.get_header('Host'),)
 	if request.get_header('base_url'):
 		settings.BASE_URL = request.get_header('base_url')
+	if request.get_header('base-url'):
+		settings.BASE_URL = request.get_header('base-url')
 	if request.query.get('callback'):
 		settings.jsonp_callback = request.query.get('callback')
 	return settings
