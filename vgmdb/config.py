@@ -18,6 +18,17 @@ CELERY_RESULT_BACKEND = 'cache'
 CELERY_CACHE_BACKEND = 'memcached://127.0.0.1:11211/'
 CELERY_PING = True
 
+# load cloud settings for defaults
+if 'AMQP_PORT_5672_TCP' in os.environ:
+	CELERY_BROKER = 'amqp://guest@%s//' % (
+	    os.environ['AMQP_PORT_5672_TCP_ADDR']
+	)
+if 'MEMCACHED_PORT_11211_TCP' in os.environ:
+	CELERY_CACHE_BACKEND = 'memcached://%s:%s/' % (
+	    os.environ['MEMCACHED_PORT_11211_TCP_ADDR'],
+	    os.environ['MEMCACHED_PORT_11211_TCP_PORT']
+	)
+
 env_keys = [
   'BASE_URL', 'CELERY_BROKER', 'CELERY_RESULT_BACKEND', 'CELERY_CACHE_BACKEND'
 ]
