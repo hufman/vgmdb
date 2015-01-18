@@ -99,16 +99,28 @@ if memcache:
 		cache = MemcacheCache(['127.0.0.1:11211'])
 	except:
 		pass
-if 'OPENSHIFT_MEMCACHED_HOST' in os.environ and \
-   'OPENSHIFT_MEMCACHED_PORT' in os.environ:
-	try:
-		cache = MemcacheCache(['%s:%s'%(
-		    os.environ['OPENSHIFT_MEMCACHED_HOST'],
-		    os.environ['OPENSHIFT_MEMCACHED_PORT'])],
-		    username =os.environ['OPENSHIFT_MEMCACHED_USERNAME'],
-		    password = os.environ['OPENSHIFT_MEMCACHED_PASSWORD'])
-	except Exception as e:
-		pass
+
+	# detect openshift
+	if 'OPENSHIFT_MEMCACHED_HOST' in os.environ and \
+	   'OPENSHIFT_MEMCACHED_PORT' in os.environ:
+		try:
+			cache = MemcacheCache(['%s:%s'%(
+			    os.environ['OPENSHIFT_MEMCACHED_HOST'],
+			    os.environ['OPENSHIFT_MEMCACHED_PORT'])],
+			    username =os.environ['OPENSHIFT_MEMCACHED_USERNAME'],
+			    password = os.environ['OPENSHIFT_MEMCACHED_PASSWORD'])
+		except Exception as e:
+			pass
+
+	# detect docker cache
+	if 'MEMCACHED_PORT_11211_TCP' in os.environ:
+		try:
+			cache = MemcacheCache(['%s:%s'%(
+			    os.environ['MEMCACHED_PORT_11211_TCP_ADDR'],
+			    os.environ['MEMCACHED_PORT_11211_TCP_PORT'])])
+		except Exception as e:
+			pass
+
 if gaecache:
 	try:
 		cache = GaeCache()
