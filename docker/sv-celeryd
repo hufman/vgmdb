@@ -1,0 +1,2 @@
+#!/bin/sh
+exec su -s /bin/sh www-data -c "/usr/local/bin/celeryd --time-limit=300 --concurrency=2 --app=vgmdb --loglevel=DEBUG --workdir=/ --config=celery"
