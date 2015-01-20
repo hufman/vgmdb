@@ -98,9 +98,9 @@ def parse_page(html_source):
 		if not section_types.has_key(section_type):
 			continue
 		section_type = section_types[section_type]
-		parse = globals()['_parse_'+section_type]
+		parse_item = globals()['_parse_'+section_type[:-1]]
 		search_info['sections'].append(section_type)
-		search_info['results'][section_type] = parse(soup_section)
+		search_info['results'][section_type] = _parse_list(soup_section, parse_item)
 
 	# parse the query
 	match = re.search(r'\$\("#simplesearch"\).val\(\'(.*)\'\);', html_source)
@@ -112,11 +112,31 @@ def parse_page(html_source):
 	
 	return search_info
 
-def _parse_albums(soup_section):
+def _parse_list(soup_section, item_parser):
 	list = []
 	for soup_row in soup_section.find_all('tr', recursive=True)[1:]:
-		list.append(_parse_album(soup_row))
+		item = item_parser(soup_row)
+		if item:
+			list.append(item)
 	return list
+
+def _parse_listitem(soup_row):
+	soup_cells = soup_row.find_all('td', recursive=False)
+	soup_link = soup_cells[0].a
+	names = utils.parse_names(soup_link)
+	link = soup_link['href']
+	link = utils.trim_absolute(link)
+	info = {'link':link,
+	        'names':names
+	}
+	# aliases could be aliases or name_trans, dunno
+	soup_aliases = soup_cells[0].span
+	if soup_aliases:
+		aliases = utils.parse_string(soup_aliases)
+		aliases = [piece.strip() for piece in aliases.split('/') if piece.strip()!='']
+		info['aliases'] = aliases
+	return info
+
 def _parse_album(soup_row):
 	soup_cells = soup_row.find_all('td', recursive=False)
 	catalog = unicode(soup_cells[0].span.string)
@@ -132,34 +152,33 @@ def _parse_album(soup_row):
 	        'release_date':date
 	}
 	return info
-
-def _parse_list(soup_section):
-	list = []
-	for soup_row in soup_section.find_all('tr', recursive=True)[1:]:
-		item = _parse_listitem(soup_row)
-		if item:
-			list.append(item)
-	return list
-
-def _parse_listitem(soup_row):
+_parse_artist = _parse_listitem
+_parse_org = _parse_listitem
+def _parse_product(soup_row):
+	product_colors = {
+		'#CEFFFF': 'Game',
+		'yellowgreen': 'Animation',
+		'silver': 'Radio & Drama',
+		'white': 'Print Publication',
+		'violet': 'Goods',
+		'yellow': 'Franchise'
+	}
 	soup_cells = soup_row.find_all('td', recursive=False)
-	if len(soup_cells) < 1:
-		import ipdb; ipdb.set_trace()
 	soup_link = soup_cells[0].a
-	names = utils.parse_names(soup_link)
+	names = utils.parse_names(soup_link.span.span)
 	link = soup_link['href']
 	link = utils.trim_absolute(link)
-	info = {'link':link,
-	        'names':names
-	}
+	info = {'link':link}
 	# aliases could be aliases or name_trans, dunno
-	soup_aliases = soup_cells[0].span
-	if soup_aliases:
-		aliases = utils.parse_string(soup_aliases)
-		aliases = [piece.strip() for piece in aliases.split('/') if piece.strip()!='']
-		info['aliases'] = aliases
+	soup_color = soup_cells[0].span
+	if soup_color:
+		style = soup_color['style']
+		if 'color:' in style:
+			color = style.split(':')[1]
+			if color in product_colors:
+				info['type'] = product_colors[color]
+		soup_names = soup_color.span
+		if soup_names:
+			names = utils.parse_names(soup_names)
+			info['names'] = names
 	return info
-_parse_artists = _parse_list
-_parse_orgs = _parse_list
-_parse_products = _parse_list
-
