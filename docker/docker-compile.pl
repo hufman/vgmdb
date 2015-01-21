@@ -1,5 +1,5 @@
 #!/usr/bin/env perl
-# from http://3ofcoins.net/2013/09/22/flat-docker-images/
+# Modified from http://3ofcoins.net/2013/09/22/flat-docker-images/
  
 use feature 'switch';
 use strict;
@@ -10,18 +10,23 @@ use File::Basename;
 use File::Copy;
 use File::Path qw/make_path/;
 use File::Temp qw/tempdir/;
+use Getopt::Long;
  
 use JSON;
  
-our ( $from, $author, %metadata, @commands, $tmpdir, $tmpcount, $prefix );
+our ( $from, $author, %metadata, @commands, $tmpdir, $tmpcount, $prefix, $tag, $filename );
  
 $tmpdir = tempdir(CLEANUP => !$ENV{LEAVE_TMPDIR});
 $tmpcount = 0;
 $prefix = '';
+
+$metadata{Cmd} = ["/bin/bash"];
+$filename = 'Dockerfile';
+GetOptions ('t=s' => \$tag,'f=s' => \$filename);
  
 print "*** Working directory: $tmpdir\n" if $ENV{LEAVE_TMPDIR};
  
-open DOCKERFILE, '<Dockerfile' or die;
+open DOCKERFILE, "<$filename" or die;
 while ( <DOCKERFILE> ) {
   chomp;
  
@@ -121,8 +126,9 @@ our $cid = <CID>;
 close CID;
  
 our @commit = ( 'docker', 'commit' );
-push @commit, "-author=$author" if defined $author;
-push @commit, "-run=" . encode_json(\%metadata) if %metadata;
+push @commit, "--author=$author" if defined $author;
+push @commit, "--run=" . encode_json(\%metadata) if %metadata;
 push @commit, $cid;
+push @commit, $tag if defined $tag;
 print "*** ", join(' ', @commit), "\n";
 exec(@commit);
