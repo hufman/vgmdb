@@ -79,6 +79,14 @@ class TestArtists(unittest.TestCase):
 		self.assertEqual('1819-06-20', offenbach['birthdate'])
 		self.assertEqual('1880-10-05', offenbach['deathdate'])
 
+	def test_key(self):
+		key_code = file(os.path.join(base, 'artist_key.html'), 'r').read()
+		key = artist.parse_page(key_code)
+		self.assertEqual(u'Jun Maeda', key['name'])
+		self.assertEqual(u'male', key['sex'])
+		self.assertEqual(1, len(key['aliases']))
+		self.assertEqual(u'KEY', key['aliases'][0]['names']['en'])
+
 
 if __name__ == '__main__':
 	unittest.main()

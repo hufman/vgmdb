@@ -154,7 +154,8 @@ def _parse_profile_info(soup_profile_left):
 			list_item_pre = list_item_pre.find_next_sibling('br')
 		if len(item_list) == 0:
 			continue
-		if len(item_list) == 1 and isinstance(item_list[0], unicode):
+		if len(item_list) == 1 and isinstance(item_list[0], unicode) and \
+		   item_name not in ['Aliases']:
 			ret[item_name] = item_list[0]
 		else:
 			ret[item_name] = item_list
