@@ -142,3 +142,11 @@ def opensearch():
 def static(name):
 	response.set_header('Cache-Control', 'max-age:3600,public')
 	return static_file(name, root='./static')
+
+@route('/raml/<name:path>')
+def static(name):
+	response.set_header('Cache-Control', 'max-age:3600,public')
+	mimetype = "application/raml+yaml"
+	if 'text/html' in request.headers.get('Accept', ''):  # browser
+		mimetype = "text/plain"
+	return static_file(name, root='./raml', mimetype=mimetype)

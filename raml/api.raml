@@ -1,0 +1,227 @@
+#%RAML 0.8
+title: VGMdb api
+version: 1
+baseUri: http://vgmdb.info
+mediaType: application/json
+
+resourceTypes:
+  - infoitem:
+      usage: Any single item on vgmdb, supports content negotiation
+      get:
+        queryParameters:
+          callback:
+            type: string
+            required: false
+            description: What function should be called as the JSON-P callback to receive the data. Defaults to `callback`
+        responses:
+          200:
+            description: Information about this item
+            body:
+              text/html:
+              application/json:
+              application/javascript:
+              application/x-yaml:
+              #text/yaml:
+              #text/x-yaml:
+              #application/yaml:
+              application/rdf+xml:
+              text/turtle:
+              #application/x-turtle:
+  - infolist:
+      usage: A list of items on vgmdb, supports content negotiation
+      get:
+        queryParameters:
+          callback:
+            type: string
+            required: false
+            description: What function should be called as the JSON-P callback to receive the data. Defaults to `callback`
+        responses:
+          200:
+            description: Information about this item
+            body:
+              text/html:
+              application/json:
+              application/javascript:
+              application/x-yaml:
+              #text/yaml:
+              #text/x-yaml:
+              #application/yaml:
+              application/rdf+xml:
+              text/turtle:
+              #application/x-turtle:
+
+/hello:
+  displayName: Hello test url
+  get:
+    responses:
+      200:
+        body:
+          text/html:
+            example:
+              Hello!
+/about:
+  displayName: Shows an informational page about the site in general
+  get:
+    responses:
+      200:
+        body:
+          text/html:
+
+# Information pages
+/artist/{id}:
+  type: infoitem
+  displayName: Artist info
+  uriParameters:
+    id:
+      displayName: Artist ID
+      type: integer
+/album/{id}:
+  type: infoitem
+  displayName: Album info
+  uriParameters:
+    id:
+      displayName: Album ID
+      type: integer
+/product/{id}:
+  type: infoitem
+  displayName: Product info
+  uriParameters:
+    id:
+      displayName: Product ID
+      type: integer
+/release/{id}:
+  type: infoitem
+  displayName: Release info
+  uriParameters:
+    id:
+      displayName: Release ID
+      type: integer
+/event/{id}:
+  type: infoitem
+  displayName: Event info
+  uriParameters:
+    id:
+      displayName: Event ID
+      type: integer
+/org/{id}:
+  type: infoitem
+  displayName: Org info
+  uriParameters:
+    id:
+      displayName: Org ID
+      type: integer
+
+# List pages
+/albumlist/{letter}:
+  type: infolist
+  displayName: Album List
+  uriParameters:
+    letter:
+      type: string
+      pattern: ^[#A-Z]$
+/artistlist/{letter}:
+  type: infolist
+  displayName: Artist List
+  uriParameters:
+    letter:
+      type: string
+      pattern: ^[#A-Z]$
+/productlist/{letter}:
+  type: infolist
+  displayName: Product List
+  uriParameters:
+    letter:
+      type: string
+      pattern: ^[#A-Z]$
+/orglist:
+  type: infolist
+  displayName: Org List
+/eventlist:
+  type: infolist
+  displayName: Event List
+/orglist/{letter}:
+  type: infolist
+  displayName: Org List
+  uriParameters:
+    letter:
+      displayName: Show organizations starting with the given letter
+      type: string
+      pattern: ^[#A-Z]$
+/eventlist/{year}:
+  type: infolist
+  displayName: Event List
+  uriParameters:
+    year:
+      displayName: What year to show events from
+      type: integer
+
+# search page
+/search:
+  type: infolist
+  displayName: Search all item types for the given query
+  get:
+    queryParameters:
+      query:
+        required: true
+        type: string
+        description: The query to search for
+/search/{query}:
+  type: infolist
+  displayName: Search all item types for the given query
+  uriParameters:
+    query:
+      type: string
+      description: The query to search for
+/search/{type}:
+  type: infolist
+  displayName: Search all item types for the given query
+  uriParameters:
+    type:
+      description: What type of item to search for
+      type: string
+      enum:
+        - albums
+        - artists
+        - orgs
+        - products
+  get:
+    queryParameters:
+      query:
+        required: true
+        type: string
+        description: The query to search for
+/search/{type}/{query}:
+  type: infolist
+  displayName: Search all item types for the given query
+  uriParameters:
+    type:
+      description: What type of item to search for
+      type: string
+      enum:
+        - albums
+        - artists
+        - orgs
+        - products
+    query:
+      description: The query to search for
+      type: string
+
+# recent
+/recent/{type}:
+  type: infolist
+  displayName: Show recent changes to the information
+  uriParameters:
+    type:
+      required: false
+      description: What type of item to show changes about, defaults to albums
+      type: string
+      enum:
+        - albums
+        - media
+        - tracklists
+        - scans
+        - artists
+        - products
+        - labels
+        - links
+        - ratings
