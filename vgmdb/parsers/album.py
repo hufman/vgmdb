@@ -290,14 +290,14 @@ def _parse_section_related_albums(soup_div):
 		date = None
 		if soup_album.ul:		# if there are thumbnails
 			soup_rows = soup_album.ul.find_all('li', recursive=False)
-			catalog = soup_rows[1].span.string.strip()
+			catalog = soup_rows[1].find('span', recursive=False).string.strip()
 			names = utils.parse_names(soup_rows[0].a)
 			album_type = soup_rows[0].a['class'][-1].split('-')[1]
 			date = utils.parse_date_time(soup_rows[2].string.strip())
 			link = soup_rows[0].a['href']
 			link = utils.trim_absolute(link)
 		else:
-			catalog = unicode(soup_album.span.string)
+			catalog = unicode(soup_album.find('span', recursive=False).string)
 			names = utils.parse_names(soup_album.a)
 			album_type = soup_album.a['class'][-1].split('-')[1]
 			link = soup_album.a['href']

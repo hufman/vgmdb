@@ -54,6 +54,8 @@ class TestAlbums(unittest.TestCase):
 		self.assertEqual(u"http://vgmdb.net/db/assets/covers-medium/7/9/79-1190730814.jpg", ff8['covers'][0]['medium'])
 		self.assertEqual(u"http://vgmdb.net/db/assets/covers/7/9/79-1190730814.jpg", ff8['covers'][0]['full'])
 		self.assertEqual(u"EYES ON ME: featured in FINAL FANTASY VIII", ff8['related'][0]['names']['en'])
+		self.assertEqual(u"PRT-8429", ff8['related'][0]['catalog'])
+		self.assertEqual(u"bonus", ff8['related'][0]['type'])
 		self.assertEqual(u"2006-08-03T01:33", ff8['meta']['added_date'])
 		self.assertEqual(u"2012-08-12T19:55", ff8['meta']['edited_date'])
 		self.assertEqual(5484, ff8['meta']['visitors'])
