@@ -179,6 +179,6 @@ def _parse_product(soup_row):
 				info['type'] = product_colors[color]
 		soup_names = soup_color.span
 		if soup_names:
-			names = utils.parse_names(soup_names)
+			names = utils.parse_names(soup_color)
 			info['names'] = names
 	return info

@@ -28,6 +28,8 @@ class TestSearchList(unittest.TestCase):
 		self.assertEqual(u"The Vagrance", search['results']['artists'][0]['aliases'][0])
 		self.assertEqual(u"VAGRANCY", search['results']['orgs'][0]['names']['en'])
 		self.assertEqual(u"Vagrant Story", search['results']['products'][0]['names']['en'])
+		self.assertEqual(u"ベイグラントストーリー", search['results']['products'][0]['names']['ja'])
+		self.assertEqual(u"Vagrant Story", search['results']['products'][0]['names']['ja-latn'])
 		self.assertEqual(u"Game", search['results']['products'][0]['type'])
 
 	def test_search_quotes(self):
