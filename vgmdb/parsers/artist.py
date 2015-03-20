@@ -104,6 +104,7 @@ def _parse_profile_info(soup_profile_left):
 		list_item_pre = soup_item.br
 		while list_item_pre:
 			soup_item_data = list_item_pre.next
+			# plain text entry in the section
 			if isinstance(soup_item_data, bs4.NavigableString):
 				texts = []
 				while isinstance(soup_item_data, bs4.NavigableString):
@@ -112,6 +113,7 @@ def _parse_profile_info(soup_profile_left):
 				text = ''.join(texts).strip()
 				if len(text) > 0:
 					item_list.append(text)
+			# link entry
 			if isinstance(soup_item_data, bs4.Tag):
 				item_data = {}
 				if soup_item_data.name == 'a':
@@ -131,6 +133,7 @@ def _parse_profile_info(soup_profile_left):
 							names[lang] = name
 						item_data['names'] = names
 					item_list.append(item_data)
+				# rating stars
 				if soup_item_data.name == 'div' and \
 				  soup_item_data.has_attr('class') and \
 				  'star' in soup_item_data['class']:
@@ -154,11 +157,25 @@ def _parse_profile_info(soup_profile_left):
 			list_item_pre = list_item_pre.find_next_sibling('br')
 		if len(item_list) == 0:
 			continue
+		# what item headings indicate people, and should have names
+		people_lists = ['Aliases', 'Former Members', 'Members', 'Units', 'Organizations']
+		# detect if there is a single text item
 		if len(item_list) == 1 and isinstance(item_list[0], unicode) and \
-		   item_name not in ['Aliases']:
+		   item_name not in people_lists:
 			ret[item_name] = item_list[0]
 		else:
 			ret[item_name] = item_list
+		# make sure all the items from people have names
+		for people_type in people_lists:
+			if not ret.has_key(people_type):
+				continue
+			proper = []
+			for improper in ret[people_type]:
+				if isinstance(improper,basestring):
+					proper.append({'names': {'en':improper}})
+				else:
+					proper.append(improper)
+			ret[people_type] = proper
 	return ret
 
 def _promote_profile_info(profile_info):
@@ -174,14 +191,7 @@ def _promote_profile_info(profile_info):
 	for promote_key, info_key in promote_types.items():
 		if not profile_info.has_key(info_key):
 			continue
-		artist_info[promote_key] = []
-		for improper in profile_info[info_key]:
-			proper = {}
-			if isinstance(improper,basestring):
-				proper['names'] = {'en':improper}
-			else:
-				proper = improper
-			artist_info[promote_key].append(proper)
+		artist_info[promote_key] = profile_info[info_key]
 	return artist_info
 
 def _parse_websites(soup_websites):

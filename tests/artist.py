@@ -87,6 +87,18 @@ class TestArtists(unittest.TestCase):
 		self.assertEqual(1, len(key['aliases']))
 		self.assertEqual(u'KEY', key['aliases'][0]['names']['en'])
 
+	def test_rookies(self):
+		rookies_code = file(os.path.join(base, 'artist_rookies.html'), 'r').read()
+		rookies = artist.parse_page(rookies_code)
+		self.assertEqual(u"ROOKiEZ is PUNK'D", rookies['name'])
+		self.assertEqual(3, len(rookies['info']['Members']))
+		self.assertFalse('link' in rookies['info']['Members'][0])
+		self.assertEqual(u'RYOTA', rookies['info']['Members'][0]['names']['en'])
+		self.assertEqual(u'artist/15569', rookies['info']['Members'][2]['link'])
+		self.assertEqual(u'SHiNNOSUKE', rookies['info']['Members'][2]['names']['en'])
+		self.assertFalse('link' in rookies['info']['Former Members'][0])
+		self.assertEqual(u'2RASH', rookies['info']['Former Members'][0]['names']['en'])
+
 
 if __name__ == '__main__':
 	unittest.main()
