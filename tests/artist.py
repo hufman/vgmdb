@@ -21,6 +21,7 @@ class TestArtists(unittest.TestCase):
 		self.assertEqual(1, len(nobuo['organizations']))
 		self.assertEqual(u'Dog Ear Records', nobuo['info']['Organizations'][0]['names']['en'])
 		self.assertEqual(u'Dog Ear Records', nobuo['organizations'][0]['names']['en'])
+		self.assertEqual(u'Individual', nobuo['type'])
 		self.assertEqual(u'Earthbound Papas', nobuo['units'][0]['names']['en'])
 		self.assertEqual(u'CRUISE CHASER BLASSTY', nobuo['discography'][0]['titles']['en'])
 		self.assertEqual(u'album/11113', nobuo['discography'][0]['link'])
@@ -70,12 +71,14 @@ class TestArtists(unittest.TestCase):
 		self.assertEqual(u'HAPPY-SYNTHESIZER', ss['aliases'][1]['names']['en'])
 		self.assertEqual(u'Takeshi Nagai', ss['members'][0]['names']['en'])
 		self.assertEqual(u'2011-10-03T05:45', ss['meta']['edited_date'])
+		self.assertEqual(u'Unit', ss['type'])
 
 	def test_offenbach(self):
 		offenbach_code = file(os.path.join(base, 'artist_offenbach.html'), 'r').read()
 		offenbach = artist.parse_page(offenbach_code)
 		self.assertEqual(u'Jacques Offenbach', offenbach['name'])
 		self.assertEqual(u'male', offenbach['sex'])
+		self.assertEqual(u'Individual', offenbach['type'])
 		self.assertEqual('1819-06-20', offenbach['birthdate'])
 		self.assertEqual('1880-10-05', offenbach['deathdate'])
 
@@ -83,6 +86,7 @@ class TestArtists(unittest.TestCase):
 		key_code = file(os.path.join(base, 'artist_key.html'), 'r').read()
 		key = artist.parse_page(key_code)
 		self.assertEqual(u'Jun Maeda', key['name'])
+		self.assertEqual(u'Individual', key['type'])
 		self.assertEqual(u'male', key['sex'])
 		self.assertEqual(1, len(key['aliases']))
 		self.assertEqual(u'KEY', key['aliases'][0]['names']['en'])
@@ -92,6 +96,7 @@ class TestArtists(unittest.TestCase):
 		rookies = artist.parse_page(rookies_code)
 		self.assertEqual(u"ROOKiEZ is PUNK'D", rookies['name'])
 		self.assertEqual(3, len(rookies['info']['Members']))
+		self.assertEqual(u'Unit', rookies['type'])
 		self.assertFalse('link' in rookies['info']['Members'][0])
 		self.assertEqual(u'RYOTA', rookies['info']['Members'][0]['names']['en'])
 		self.assertEqual(u'artist/15569', rookies['info']['Members'][2]['link'])

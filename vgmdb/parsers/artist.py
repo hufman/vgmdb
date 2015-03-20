@@ -15,6 +15,14 @@ def parse_page(html_source):
 	spans = soup_profile.find_all('span', recursive=False)
 	soup_name = spans[1]
 	artist_info['name'] = soup_name.string.strip()
+	artist_info['type'] = 'Individual'
+	if len(spans)>2 and spans[2]['class'] and 'time' in spans[2]['class']:   # artist type (unit)
+		artist_type = unicode(spans[2].string)
+		if len(artist_type) > 0 and artist_type[0] == '(':
+			artist_type = artist_type[1:]
+		if len(artist_type) > 0 and artist_type[-1] == ')':
+			artist_type = artist_type[:-1]
+		artist_info['type'] = artist_type
 	if len(spans)>2 and spans[2].string and 'deceased' in spans[2].string:
 		artist_info['deathdate'] = utils.parse_date_time(spans[2].string[10:])
 
