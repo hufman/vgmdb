@@ -36,8 +36,6 @@ def parse_page(html_source):
 		artist_info['sex'] = 'male'
 	elif soup_profile_sex_image['src'] == '/db/icons/female.png':
 		artist_info['sex'] = 'female'
-	else:
-		artist_info['sex'] = ''
 
 	# Parse japanese name
 	japan_name = soup_profile_left.span.string.strip()
