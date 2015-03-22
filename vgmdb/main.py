@@ -143,8 +143,12 @@ def static(name):
 	response.set_header('Cache-Control', 'max-age:3600,public')
 	return static_file(name, root='./static')
 
+@route('/schema/<name:path>')
+def schema(name):
+	#response.set_header('Cache-Control', 'max-age:3600,public')
+	return static_file(name, root='./schema', mimetype='application/json')
 @route('/raml/<name:path>')
-def static(name):
+def raml(name):
 	response.set_header('Cache-Control', 'max-age:3600,public')
 	mimetype = "application/raml+yaml"
 	if 'text/html' in request.headers.get('Accept', ''):  # browser
