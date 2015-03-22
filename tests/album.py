@@ -127,6 +127,8 @@ class TestAlbums(unittest.TestCase):
 		self.assertEqual('DFCL-2101~2', night['catalog'])
 		self.assertEqual('Sony PlayStation Vita', night['platforms'][0])
 		self.assertEqual('release/3993', night['products'][0]['link'])
+		self.assertEqual('Unknown', night['discs'][1]['tracks'][0]['track_length'])
+		self.assertEqual('Unknown', night['discs'][1]['disc_length'])
 
 if __name__ == '__main__':
 	unittest.main()

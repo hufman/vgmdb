@@ -189,7 +189,11 @@ def _parse_tracklist(soup_tracklist):
 			disc_name = unicode(soup_cur.b.string)
 			soup_tracklist = soup_cur.find_next_sibling('table')
 			soup_cur = soup_tracklist.find_next_sibling('span')
-			disc_length = unicode(soup_cur.find_all('span')[-1].string)
+			maybe_disc_length = soup_cur.find_all('span')[-1].string
+			if maybe_disc_length:
+				disc_length = unicode(maybe_disc_length)
+			else:
+				disc_length = u'Unknown'
 			if len(discs) < index+1:
 				discs.append({})
 			discs[index]['name'] = disc_name
@@ -201,7 +205,11 @@ def _parse_tracklist(soup_tracklist):
 				track_no += 1
 				soup_cells = soup_track.find_all('td')
 				track_name = unicode(soup_cells[1].string)
-				track_length = unicode(soup_cells[2].span.string)
+				maybe_track_length = soup_cells[2].span.string
+				if maybe_track_length:
+					track_length = unicode(maybe_track_length)
+				else:
+					track_length = u'Unknown'
 				if len(discs[index]['tracks']) < track_no + 1:
 					discs[index]['tracks'].append({'names':{},'track_length':track_length})
 				discs[index]['tracks'][track_no]['names'][tab_language] = track_name
