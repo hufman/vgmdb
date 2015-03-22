@@ -23,3 +23,5 @@ futures==2.1.4
 celery==3.0.23
 
 oauth2==1.5.211
+
+jsonschema==2.4.0

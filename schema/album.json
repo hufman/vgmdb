@@ -1,0 +1,111 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"definitions": {
+		"discDuration": {
+			"title": "A duration used in a disc length, format of hh:mm",
+			"type": "string",
+			"pattern": "^([0-9]+):([0-5][0-9])|Unknown$"
+		},
+		"trackDuration": {
+			"title": "A duration used in a track length, format of mmm:ss",
+			"type": "string",
+			"pattern": "^([0-9]+):([0-5][0-9])|Unknown$"
+		},
+		"track": {
+			"title": "A track, with some translated names and a track length",
+			"type": "object",
+			"properties": {
+				"names": { "$ref": "common.json#/definitions/trackNames" },
+				"track_length": { "$ref": "#/definitions/trackDuration" }
+			},
+			"required": ["names", "track_length"],
+			"additionalProperties": false
+		},
+		"disc": {
+			"title": "Information about an audio disc",
+			"type": "object",
+			"properties": {
+				"disc_length": { "$ref": "#/definitions/discDuration" },
+				"name": { "title": "The name of the disc", "type": "string"},
+				"tracks": {
+					"type": "array",
+					"items": { "$ref": "#/definitions/track" }
+				}
+			},
+			"required": ["disc_length", "name", "tracks"],
+			"additionalProperties": false
+		},
+		"meta": {
+			"allOf": [
+				{
+					"$ref": "common.json#/definitions/meta"
+				},
+				{
+					"properties": {
+					"freedb": { "title": "How many visitors arrived from freedb", "type": "integer" }
+					}
+				}
+			]
+		}
+	},
+
+	"title": "Information about an album",
+	"type": "object",
+	"properties": {
+		"arrangers": { "$ref": "common.json#/definitions/listOfNamedItems" },
+		"catalog": { "$ref": "common.json#/definitions/catalog" },
+		"category": { "$ref": "common.json#/definitions/albumCategory" },
+		"classification": { "type": "string" },
+		"composers": { "$ref": "common.json#/definitions/listOfNamedItems" },
+		"covers": { "type": "array", "items": { "$ref": "common.json#/definitions/albumArt" } },
+		"discs": { "type": "array", "items": { "$ref": "#/definitions/disc" } },
+		"distributor": { "$ref": "common.json#/definitions/namedItem" },
+		"link": { "$ref": "common.json#/definitions/link" },
+		"lyricists": { "$ref": "common.json#/definitions/listOfNamedItems" },
+		"media_format": { "type": "string" },
+		"meta": { "$ref": "#/definitions/meta" },
+		"name": { "type": "string" },
+		"names": { "$ref": "common.json#/definitions/names" },
+		"notes": { "type": "string" },
+		"performers": { "$ref": "common.json#/definitions/listOfNamedItems" },
+		"picture_full": { "$ref": "common.json#/definitions/url" },
+		"picture_small": { "$ref": "common.json#/definitions/url" },
+		"platforms": { "title": "What platforms this game is from", "type": "array", "items": { "type": "string" } },
+		"products": { "title": "What games this album represents", "$ref": "common.json#/definitions/listOfNamedItems" },
+		"publish_format": { "type": "string" },
+		"publisher": { "$ref": "common.json#/definitions/namedItem" },
+		"rating": { "type": "number" },
+		"related": { "type": "array", "items": { "$ref": "common.json#/definitions/linkedAlbum" } },
+		"release_date": { "$ref": "common.json#/definitions/rfc3339" },
+		"release_price": {
+			"type": "object",
+			"properties": {
+				"currency": { "type": "string" },
+				"price": { "oneOf": [
+					{ "type": "string", "enum": ["Free", "Unknown"] },
+					{ "type": "number" }
+				] }
+			},
+			"required": ["price"],
+			"additionalProperties": false
+		},
+		"reprints": { "type": "array", "items": { "$ref": "common.json#/definitions/reprintedAlbum" } },
+		"stores": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"link": { "title": "Link to the vgmdb.net marketplace for this item", "type": "string" },
+					"name": { "type": "string" }
+				},
+				"required": [ "link", "name" ],
+				"additionalProperties": false
+			}
+		},
+		"vgmdb_link": { "title": "Link to the source vgmdb.net page", "$ref": "common.json#/definitions/url" },
+		"votes": { "title": "The number of votes for the rating", "type": "integer" },
+		"websites": { "$ref": "common.json#/definitions/itemWebsites" }
+	},
+	"required": ["name", "names", "discs", "meta", "votes"]
+}
+

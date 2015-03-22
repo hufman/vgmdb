@@ -1,0 +1,157 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"definitions": {
+		"names": {
+			"title": "Language-specific names",
+			"type": "object",
+			"patternProperties": {
+				"^[a-z]+(-[a-z]+)?$": {"title": "The name in this language", "type":"string"}
+			},
+			"additionalProperties": false
+		},
+		"albumType": {
+			"title": "The different types an album can be",
+			"type": "string",
+			"enum": [
+				"game", "anime", "print", "drama", "demo",
+				"works", "bonus", "doujin", "cancel", "bootleg"
+			]
+		},
+		"albumCategory": {
+			"title": "The different categories an album can be",
+			"type": "string",
+			"enum": [
+				"Game", "Animations", "Publication", "Audio Drama",
+				"Demo Scene", "Other Works", "Enclosure/Promo",
+				"Doujin/Fanmade", "Delayed/Cancelled", "Bootleg"
+			]
+		},
+		"trackNames": {
+			"title": "Language-specific names, with full names from the tracklist tabs",
+			"type": "object",
+			"patternProperties": {
+				"^[a-zA-Z /]+$": {"title": "The name of the track in this language", "type":"string"}
+			},
+			"additionalProperties": false
+		},
+		"namedItem": {
+			"title": "A data item that has names and might have a link",
+			"type": "object",
+			"properties": {
+				"link": { "$ref": "#/definitions/link" },
+				"names": {"$ref": "#/definitions/names"}
+			},
+			"required": ["names"]
+		},
+		"listOfNamedItems": {
+			"title": "A list of named items, which might have links",
+			"type": "array",
+			"items": { "$ref": "#/definitions/namedItem" }
+		},
+		"linkedAlbum": {
+			"title": "A link object to an album",
+			"type": "object",
+			"allOf": [
+				{
+					"$ref": "#/definitions/namedItem"
+				},
+				{
+					"properties": {
+						"catalog": {"$ref": "#/definitions/catalog"},
+						"type": {"$ref":"#/definitions/albumType"}
+					},
+					"required": ["catalog", "type"]
+				}
+			]
+		},
+		"artistAlbum": {
+			"title": "A link object to an album from an artist's discography",
+			"type": "object",
+			"properties": {
+				"link": { "$ref": "#/definitions/link" },
+				"date": {"type":"string"},
+				"titles": {"$ref":"#/definitions/names"},
+				"catalog": {"$ref": "#/definitions/catalog"},
+				"type": {"$ref":"#/definitions/albumType"},
+				"roles": {"type":"array","items":{"type":"string"}}
+			},
+			"required": ["link", "catalog", "titles", "roles"]
+		},
+		"reprintedAlbum": {
+			"title": "A link object to a reprint of an album",
+			"type": "object",
+			"properties": {
+				"link": { "$ref": "#/definitions/link" },
+				"catalog": {"$ref": "#/definitions/catalog"},
+				"note": {"type":"string"}
+			},
+			"required": ["link", "catalog", "note"],
+			"additionalProperties": false
+		},
+		"catalog": {
+			"title": "A catalog number",
+			"type": "string",
+			"example": "AN-235",
+			"pattern": "^([A-Za-z0-9]+-[0-9~]+|[A-Za-z]+[0-9]+|N/A)$"
+		},
+		"url": {
+			"title": "An absolute url, such as proto://server:port/path",
+			"type": "string",
+			"example": "http://vgmdb.net/fifty",
+			"pattern": "^([a-z]+)://([a-zA-Z0-9-.]+)(?::([0-9]+))?(/.*)$"
+		},
+		"link": {
+			"title": "A relative link to another vgmdb page",
+			"type": "string",
+			"pattern": "^[a-z]+/[0-9]+"
+		},
+		"rfc3339": {
+			"title": "RFC 3339 Date and Time format",
+			"type": "string",
+			"pattern": "^([0-9]{4})-([0-1][0-9])-([0-3][0-9])(?:T([0-2][0-9]):([0-5][0-9])(?::([0-5][0-9]))?)?$"
+		},
+		"meta": {
+			"title": "Basic information about the information, like last updated time",
+			"type": "object",
+			"properties": {
+				"added_date": { "$ref": "#/definitions/rfc3339" },
+				"edited_date": { "$ref": "#/definitions/rfc3339" },
+				"ttl": { "title": "How many seconds this page can be cached", "type": "integer" },
+				"visitors": { "title": "How many visitors have been to this page", "type": "integer" }
+			},
+			"required": ["added_date", "edited_date", "ttl", "visitors"]
+		},
+		"albumArt": {
+			"title": "Various album art pictures",
+			"type": "object",
+			"properties": {
+				"name": {"type":"string"},
+				"full": {"$ref": "#/definitions/url"},
+				"medium": {"$ref": "#/definitions/url"},
+				"thumb": {"$ref": "#/definitions/url"}
+			},
+			"required": ["name", "full", "medium", "thumb"],
+			"additionalProperties": false
+		},
+		"externalWebsite": {
+			"type": "object",
+			"properties": {
+				"name": { "type": "string" },
+				"link": { "$ref": "#/definitions/url" }
+			},
+			"required": [ "name", "link" ],
+			"additionalProperties": false
+		},
+		"itemWebsites": {
+			"title": "Collection of external websites about the item",
+			"type": "object",
+			"patternProperties": {
+				".": {
+					"type": "array",
+					"items": { "$ref": "#/definitions/externalWebsite" }
+				}
+			},
+			"additionalProperties": false
+		}
+	}
+}
