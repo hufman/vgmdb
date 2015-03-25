@@ -74,9 +74,12 @@ class TestAlbumsRDF(TestRDF):
 			"select ?rating where { <@base#subject> schema:aggregateRating ?agg . ?agg schema:ratingValue ?rating . }" : decimal.Decimal("4.47"),
 			"select ?rating where { <@base#subject> schema:aggregateRating ?agg . ?agg schema:ratingCount ?rating . }" : 43,
 			"select ?rating where { <@base#subject> schema:aggregateRating ?agg . ?agg schema:bestRating ?rating . }" : 5,
-			"select ?cover where { <@base#subject> foaf:depiction ?cover . }" : "<http://vgmdb.net/db/assets/covers/7/9/79-1190730814.jpg>",
+			"select ?cover where { <@base#subject> foaf:depiction ?cover . ?cover a foaf:Image }" : "<http://vgmdb.net/db/assets/covers/7/9/79-1190730814.jpg>",
+			"select ?cover where { <@base#subject> schema:image ?cover . ?cover a schema:ImageObject }" : "<http://vgmdb.net/db/assets/covers/7/9/79-1190730814.jpg>",
 			"select ?cover where { ?cover foaf:depicts <@base#subject> . }" : "<http://vgmdb.net/db/assets/covers/7/9/79-1190730814.jpg>",
-			"select ?thumb where { <@base#subject> foaf:depiction ?cover . ?cover foaf:thumbnail ?thumb }" : "<http://vgmdb.net/db/assets/covers-medium/7/9/79-1190730814.jpg>"
+			"select ?cover where { ?cover schema:about <@base#subject> . }" : "<http://vgmdb.net/db/assets/covers/7/9/79-1190730814.jpg>",
+			"select ?thumb where { <@base#subject> foaf:depiction ?cover . ?cover foaf:thumbnail ?thumb . ?thumb a foaf:Image }" : "<http://vgmdb.net/db/assets/covers-medium/7/9/79-1190730814.jpg>",
+			"select ?thumb where { <@base#subject> schema:image ?cover . ?cover schema:thumbnailUrl ?thumb . ?thumb a schema:ImageObject }" : "<http://vgmdb.net/db/assets/covers-medium/7/9/79-1190730814.jpg>"
 		}
 
 		self.run_tests(graph, test_count_results, test_first_result)

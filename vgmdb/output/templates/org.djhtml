@@ -5,8 +5,8 @@
 {% block quickinfo %}
     {% if data.picture_full -%}
     <div class="boxsection thumbnail-container">
-      <a class="thumbnail" rel="foaf:depiction" rev="foaf:depicts" typeof="foaf:Image" href="{{data.picture_full}}">
-        <img rel="foaf:thumbnail" src="{{data.picture_small}}" />
+      <a class="thumbnail" rel="schema:image foaf:depiction" rev="schema:about foaf:depicts" typeof="schema:ImageObject foaf:Image" href="{{data.picture_full}}">
+        <img rel="schema:thumbnailUrl foaf:thumbnail" typeof="schema:ImageObject foaf:Image" src="{{data.picture_small}}" />
       </a>
     </div>
     {% endif -%}

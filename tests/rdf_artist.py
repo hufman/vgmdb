@@ -57,9 +57,13 @@ class TestArtistsRDF(TestRDF):
 			"select ?date where { ?album rdf:type mo:Release . ?artist foaf:made ?album . ?album dcterms:created ?date . } order by ?date" : datetime.date(1986,04,26),
 			"select ?catalog where { ?album mo:catalogue_number ?catalog . ?album dcterms:title \"SYMPHONIC SUITE FINAL FANTASY\"@en . }" : "H28X-10007",
 			"select ?handle where { ?person foaf:account ?account . ?account foaf:accountServiceHomepage <http://www.twitter.com/> . ?account foaf:accountName ?handle . }" : "UematsuNobuo",
-			"select ?image where { <@base#subject> foaf:depiction ?image }" : "<http://vgmdb.net/db/assets/portraits/77-1345913713.jpg>",
+			"select ?image where { <@base#subject> foaf:depiction ?image . ?image a foaf:Image }" : "<http://vgmdb.net/db/assets/portraits/77-1345913713.jpg>",
+			"select ?image where { <@base#subject> foaf:img ?image }" : "<http://vgmdb.net/db/assets/portraits/77-1345913713.jpg>",
+			"select ?image where { <@base#subject> schema:image ?image . ?image a schema:ImageObject }" : "<http://vgmdb.net/db/assets/portraits/77-1345913713.jpg>",
 			"select ?image where { ?image foaf:depicts <@base#subject> }" : "<http://vgmdb.net/db/assets/portraits/77-1345913713.jpg>",
-			"select ?thumb where { <@base#subject> foaf:depiction ?image . ?image foaf:thumbnail ?thumb }" : "<http://vgmdb.net/db/assets/portraits-medium/77-1345913713.jpg>"
+			"select ?image where { ?image schema:about <@base#subject> }" : "<http://vgmdb.net/db/assets/portraits/77-1345913713.jpg>",
+			"select ?thumb where { <@base#subject> foaf:depiction ?image . ?image foaf:thumbnail ?thumb . ?thumb a foaf:Image }" : "<http://vgmdb.net/db/assets/portraits-medium/77-1345913713.jpg>",
+			"select ?thumb where { <@base#subject> schema:image ?image . ?image schema:thumbnailUrl ?thumb . ?thumb a schema:ImageObject }" : "<http://vgmdb.net/db/assets/portraits-medium/77-1345913713.jpg>"
 		}
 
 		self.run_tests(graph, test_count_results, test_first_result)

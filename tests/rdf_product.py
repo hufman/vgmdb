@@ -25,9 +25,12 @@ class TestProductRDF(TestRDF):
 			"select ?name where { ?album mo:catalogue_number \"JOY-552\" . ?album dcterms:title ?name . filter(lang(?name)='en') } " : "A Bard's Side Quest",
 			"select ?date where { ?album mo:catalogue_number \"JOY-552\" . ?album dcterms:created ?date . } " : datetime.date(2013,01,18),
 			"select ?about where { ?album mo:catalogue_number \"JOY-552\" . ?album schema:about ?about . } " : "<@base#subject>",
-			"select ?image where { <@base#subject> foaf:depiction ?image . } " : "<http://vgmdb.net/db/assets/logos/1387-pr-1347504448.jpg>",
+			"select ?image where { <@base#subject> foaf:depiction ?image . ?image a foaf:Image } " : "<http://vgmdb.net/db/assets/logos/1387-pr-1347504448.jpg>",
+			"select ?image where { <@base#subject> schema:image ?image . ?image a schema:ImageObject } " : "<http://vgmdb.net/db/assets/logos/1387-pr-1347504448.jpg>",
 			"select ?image where { ?image foaf:depicts <@base#subject> . } " : "<http://vgmdb.net/db/assets/logos/1387-pr-1347504448.jpg>",
-			"select ?thumb where { <@base#subject> foaf:depiction ?image . ?image foaf:thumbnail ?thumb . } " : "<http://vgmdb.net/db/assets/logos-medium/1387-pr-1347504448.jpg>"
+			"select ?image where { ?image schema:about <@base#subject> . ?image a schema:ImageObject } " : "<http://vgmdb.net/db/assets/logos/1387-pr-1347504448.jpg>",
+			"select ?thumb where { <@base#subject> foaf:depiction ?image . ?image foaf:thumbnail ?thumb . ?thumb a foaf:Image } " : "<http://vgmdb.net/db/assets/logos-medium/1387-pr-1347504448.jpg>",
+			"select ?thumb where { <@base#subject> schema:image ?image . ?image schema:thumbnailUrl ?thumb . ?thumb a schema:ImageObject } " : "<http://vgmdb.net/db/assets/logos-medium/1387-pr-1347504448.jpg>"
 		}
 
 		self.run_tests(graph, test_count_results, test_first_result)
@@ -47,7 +50,7 @@ class TestProductRDF(TestRDF):
 			"select ?thing where { ?thing rdf:type schema:CreativeWork . }" : 2,
 			"select ?name where { ?product schema:name \"The Witcher\"@en . }" : 1,
 			"select ?name where { ?product schema:name \"Wiedźmin\"@ja . }" : 1,
-			"select ?album where { ?album schema:about <@base#subject> . }" : 8
+			"select ?album where { ?album schema:about <@base#subject> . ?album a schema:MusicAlbum }" : 8
 		}
 		test_first_result = {
 			"select ?name where { <@base#subject> dcterms:title ?name . }" : "The Witcher 2: Assassins of Kings",

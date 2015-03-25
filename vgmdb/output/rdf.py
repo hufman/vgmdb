@@ -119,6 +119,20 @@ def add_discography(g, subject, albums, rel=[FOAF.made, SCHEMA.album], rev=[]):
 				g.add((subject, FOAF.made, albumlink))
 				g.add((subject, FOAF.made, lyricslink))
 
+def add_depiction(g, subject, image, thumb):
+	image = URIRef(image)
+	thumb = URIRef(thumb)
+	g.add((subject, FOAF.depiction, image))
+	g.add((subject, SCHEMA.image, image))
+	g.add((image, RDF.type, SCHEMA.ImageObject))
+	g.add((image, RDF.type, FOAF.Image))
+	g.add((image, FOAF.depicts, subject))
+	g.add((image, SCHEMA.about, subject))
+	g.add((image, FOAF.thumbnail, thumb))
+	g.add((image, SCHEMA.thumbnailUrl, thumb))
+	g.add((thumb, RDF.type, SCHEMA.ImageObject))
+	g.add((thumb, RDF.type, FOAF.Image))
+
 def generate_artist(config, data):
 	if data.has_key('link'):
 		doc = URIRef(link(data['link']))
@@ -140,12 +154,11 @@ def generate_artist(config, data):
 	g.add((subject, FOAF.name, Literal(data['name'])))
 	g.add((subject, SCHEMA.name, Literal(data['name'])))
 	if data.has_key('picture_full'):
-		img = URIRef(data['picture_full'])
-		thumb = URIRef(data['picture_small'])
-		g.add((subject, FOAF.depiction, img))
-		g.add((img, RDF.type, FOAF.Image))
-		g.add((img, FOAF.depicts, subject))
-		g.add((img, FOAF.thumbnail, thumb))
+		img = data['picture_full']
+		thumb = data['picture_small']
+		add_depiction(g, subject, img, thumb)
+		img = URIRef(img)
+		g.add((subject, FOAF.img, img))
 	if data.has_key('birthdate'):
 		birthinfo = URIRef(uri + "#birthinfo")
 		g.add((birthinfo, RDF.type, BIO.Birth))
@@ -238,11 +251,9 @@ def generate_album(config, data):
 	add_lang_names(g, performance, data['names'], rel=[DCTERMS.title, SCHEMA.name])
 	add_lang_names(g, composition, data['names'], rel=[DCTERMS.title, SCHEMA.name])
 	if data.has_key('picture_full'):
-		img = URIRef(data['picture_full'])
-		thumb = URIRef(data['picture_small'])
-		g.add((subject, FOAF.depiction, img))
-		g.add((img, FOAF.depicts, subject))
-		g.add((img, FOAF.thumbnail, thumb))
+		img = data['picture_full']
+		thumb = data['picture_small']
+		add_depiction(g, subject, img, thumb)
 	if data.has_key('catalog'):
 		g.add((subject, MO.catalogue_number, Literal(data['catalog'])))
 	if data.has_key('release_date'):
@@ -354,11 +365,9 @@ def generate_product(config, data):
 	g.add((subject, DCTERMS.title, Literal(data['name'])))
 	g.add((subject, SCHEMA.name, Literal(data['name'])))
 	if data.has_key('picture_full'):
-		img = URIRef(data['picture_full'])
-		thumb = URIRef(data['picture_small'])
-		g.add((subject, FOAF.depiction, img))
-		g.add((img, FOAF.depicts, subject))
-		g.add((img, FOAF.thumbnail, thumb))
+		img = data['picture_full']
+		thumb = data['picture_small']
+		add_depiction(g, subject, img, thumb)
 	if data.has_key('release_date'):
 		g.add((subject, DCTERMS.created, Literal(data['release_date'], datatype=XSD.date)))
 		g.add((subject, SCHEMA.datePublished, Literal(data['release_date'], datatype=XSD.date)))
@@ -391,11 +400,9 @@ def generate_release(config, data):
 	g.add((subject, DCTERMS.title, Literal(data['name'])))
 	g.add((subject, SCHEMA.name, Literal(data['name'])))
 	if data.has_key('picture_full'):
-		img = URIRef(data['picture_full'])
-		thumb = URIRef(data['picture_small'])
-		g.add((subject, FOAF.depiction, img))
-		g.add((img, FOAF.depicts, subject))
-		g.add((img, FOAF.thumbnail, thumb))
+		img = data['picture_full']
+		thumb = data['picture_small']
+		add_depiction(g, subject, img, thumb)
 	if data.has_key('release_date'):
 		g.add((subject, DCTERMS.created, Literal(data['release_date'], datatype=XSD.date)))
 		g.add((subject, SCHEMA.datePublished, Literal(data['release_date'], datatype=XSD.date)))
@@ -423,11 +430,9 @@ def generate_org(config, data):
 	g.add((subject, FOAF.name, Literal(data['name'])))
 	g.add((subject, SCHEMA.name, Literal(data['name'])))
 	if data.has_key('picture_full'):
-		img = URIRef(data['picture_full'])
-		thumb = URIRef(data['picture_small'])
-		g.add((subject, FOAF.depiction, img))
-		g.add((img, FOAF.depicts, subject))
-		g.add((img, FOAF.thumbnail, thumb))
+		img = data['picture_full']
+		thumb = data['picture_small']
+		add_depiction(g, subject, img, thumb)
 	if data.has_key('staff'):
 		for staffdata in data['staff']:
 			staff = URIRef(link(staffdata['link'])+"#subject") if staffdata.has_key('link') else BNode()
