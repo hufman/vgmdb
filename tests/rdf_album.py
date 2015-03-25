@@ -48,6 +48,8 @@ class TestAlbumsRDF(TestRDF):
 			"select ?work where { <@base#composition> mo:produced_work ?work . }" : "<@base#musicalwork>",
 			"select ?lyrics where { <@base#musicalwork> mo:lyrics ?lyrics . }" : "<@base#lyrics>",
 			"select ?about where { <@base#subject> schema:about ?about . } " : "<@baseproduct/189#subject>",
+			"select ?name where { <@base#subject> schema:about ?about . ?about schema:name ?name . filter(lang(?name)='en')} " : u'Final Fantasy VIII',
+			"select ?name where { <@base#subject> schema:about ?about . ?about schema:name ?name . filter(lang(?name)='ja')} " : u'ファイナルファンタジーVIII',
 			"select ?name where { ?album rdf:type mo:Release . ?album dcterms:title ?name . }" : u'FITHOS LUSEC WECOS VINOSEC: FINAL FANTASY VIII',
 			"select ?name where { ?album rdf:type mo:Release . ?album schema:name ?name . }" : u'FITHOS LUSEC WECOS VINOSEC: FINAL FANTASY VIII',
 			"select ?name where { ?album rdf:type mo:Performance . ?album schema:name ?name . }" : u'FITHOS LUSEC WECOS VINOSEC: FINAL FANTASY VIII',

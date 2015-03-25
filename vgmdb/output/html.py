@@ -46,13 +46,13 @@ class outputter(object):
 			types.append('schema:MusicGroup')
 		return ' '.join(types)
 
-	def span_name(self, lang, name, rel="foaf:name"):
+	def span_name(self, lang, name, rel="foaf:name schema:name"):
 		lang = normalize_language_codes(lang)
 		if rel:
 			return '<span property="%s" lang="%s" xml:lang="%s">%s</span>'%(rel, lang, lang, self._escape(name))
 		else:
 			return '<span lang="%s" xml:lang="%s">%s</span>'%(lang, lang, self._escape(name))
-	def lang_names(self, names, rel="foaf:name"):
+	def lang_names(self, names, rel="foaf:name schema:name"):
 		segments = []
 		if isinstance(names, str) or isinstance(names, unicode):
 			segments.append(self.span_name('en', names, rel))

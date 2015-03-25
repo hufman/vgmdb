@@ -55,7 +55,7 @@ def linktype(link, is_type):
 		return True
 	return False
 
-def add_lang_names(g, subject, names, rel=[FOAF.name]):
+def add_lang_names(g, subject, names, rel=[FOAF.name, SCHEMA.name]):
 
 	if isinstance(names, str) or isinstance(names, unicode):
 		for r in rel:
