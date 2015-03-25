@@ -1,6 +1,6 @@
 {% extends "base.djhtml" %}
 {% block title %}
-    <h1 typeof="mo:Release schema:MusicAlbum" resource="{{data.link | linkhref}}#subject"><span class="names">{{data.names | lang_names(rel="dcterms:title schema:name")}}</span></h1>
+    <h1 typeof="schema:MusicAlbum mo:Release" resource="{{data.link | linkhref}}#subject"><span class="names">{{data.names | lang_names(rel="dcterms:title schema:name")}}</span></h1>
 {% endblock %}
 {% block quickinfo %}
     {% if data.picture_full -%}
@@ -76,10 +76,10 @@
     <div id="info" resource="{{data.link | linkhref}}#subject">
       <div class="metadata">
         <div rel="mo:publication_of" rev="mo:published_as" resource="{{data.link | linkhref}}#musicalexpression" typeof="mo:Signal">
-          <div rel="mo:records" rev="mo:recorded_as" resource="{{data.link | linkhref}}#performance" typeof="mo:Performance schema:Event">
+          <div rel="mo:records" rev="mo:recorded_as" resource="{{data.link | linkhref}}#performance" typeof="schema:Event mo:Performance">
             <div class="names">{{data.names | lang_names(rel="dcterms:title schema:name")}}</div>
-            <div rel="mo:performance_of" rev="mo:performed_in" resource="{{data.link | linkhref}}#musicalwork" typeof="mo:MusicalWork schema:CreativeWork">
-              <div rel="mo:composed_in" rev="mo:produced_work" resource="{{data.link | linkhref}}#composition" typeof="mo:Composition schema:CreativeWork">
+            <div rel="mo:performance_of" rev="mo:performed_in" resource="{{data.link | linkhref}}#musicalwork" typeof="schema:CreativeWork mo:MusicalWork">
+              <div rel="mo:composed_in" rev="mo:produced_work" resource="{{data.link | linkhref}}#composition" typeof="schema:CreativeWork mo:Composition">
                 <div class="names">{{data.names | lang_names(rel="dcterms:title schema:name")}}</div>
               </div>
               <div rel="mo:lyrics" resource="{{data.link | linkhref}}#lyrics" typeof="mo:Lyrics"></div>
@@ -118,7 +118,7 @@
         <span property="mo:record_count" content="{{data.discs | count}}" datatype="xsd:integer"></span>
       </span>
       {% for disc in data.discs %}
-      <div rel="mo:record" typeof="mo:Record schema:MusicPlaylist">
+      <div rel="mo:record" typeof="schema:MusicPlaylist mo:Record">
         <span class="metadata">
           <span property="mo:record_number" content="{{loop.index}}" datatype="xsd:integer"></span>
           <span property="mo:track_count" content="{{disc.tracks | count}}" datatype="xsd:integer"></span>
@@ -128,7 +128,7 @@
         <h3>{{disc.name}}</h3>
         <ol class="unstyled">
           {% for track in disc.tracks %}
-          <li rel="mo:track schema:track" rev="schema:inPlaylist" typeof="mo:Track schema:MusicRecording"><span property="mo:track_number" datatype="xsd:integer">{{loop.index}}</span> - <span class="names">{{track.names|lang_names(rel="schema:name dcterms:title")}}</span> (<span property="schema:duration" content="{{track.track_length|format_interval}}" datatype="xsd:interval">{{track.track_length}}</span>)</li>
+          <li rel="mo:track schema:track" rev="schema:inPlaylist" typeof="schema:MusicRecording mo:Track"><span property="mo:track_number" datatype="xsd:integer">{{loop.index}}</span> - <span class="names">{{track.names|lang_names(rel="schema:name dcterms:title")}}</span> (<span property="schema:duration" content="{{track.track_length|format_interval}}" datatype="xsd:interval">{{track.track_length}}</span>)</li>
           {% endfor %}
         </ol>
         {% endfor %}

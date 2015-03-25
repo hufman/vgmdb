@@ -76,8 +76,8 @@ def add_discography(g, subject, albums, rel=[FOAF.made, SCHEMA.album], rev=[]):
 		g.add((complink, RDF.type, MO.Composition))
 		g.add((lyricslink, RDF.type, MO.Lyrics))
 
-		g.add((albumlink, RDF.type, MO.Release))
 		g.add((albumlink, RDF.type, SCHEMA.MusicAlbum))
+		g.add((albumlink, RDF.type, MO.Release))
 		add_lang_names(g, albumlink, album['titles'], rel=[DCTERMS.title, SCHEMA.name])
 		add_lang_names(g, perflink, album['titles'], rel=[DCTERMS.title, SCHEMA.name])
 		add_lang_names(g, complink, album['titles'], rel=[DCTERMS.title, SCHEMA.name])
@@ -94,8 +94,8 @@ def add_discography(g, subject, albums, rel=[FOAF.made, SCHEMA.album], rev=[]):
 			publisher = URIRef(link(pubdata['link'])+"#subject") if pubdata.has_key('link') else BNode()
 			g.add((albumlink, MO.publisher, publisher))
 			g.add((albumlink, SCHEMA.publisher, publisher))
-			g.add((publisher, RDF.type, FOAF.Organization))
 			g.add((publisher, RDF.type, SCHEMA.Organization))
+			g.add((publisher, RDF.type, FOAF.Organization))
 			add_lang_names(g, publisher, pubdata['names'])
 		for pred in rel:
 			g.add((subject, pred, albumlink))
@@ -131,12 +131,12 @@ def generate_artist(config, data):
 	g.add((doc, FOAF.primaryTopic, subject))
 
 	if data.has_key('members') and len(data['members'])>0:
-		g.add((subject, RDF.type, FOAF.Organization))
 		g.add((subject, RDF.type, SCHEMA.MusicGroup))
+		g.add((subject, RDF.type, FOAF.Organization))
 	else:
-		g.add((subject, RDF.type, FOAF.Person))
 		g.add((subject, RDF.type, SCHEMA.Person))
 		g.add((subject, RDF.type, SCHEMA.MusicGroup))
+		g.add((subject, RDF.type, FOAF.Person))
 	g.add((subject, FOAF.name, Literal(data['name'])))
 	g.add((subject, SCHEMA.name, Literal(data['name'])))
 	if data.has_key('picture_full'):
@@ -161,8 +161,8 @@ def generate_artist(config, data):
 	if data.has_key('units'):
 		for unit in data['units']:
 			unitlink = URIRef(link(unit['link']+"#subject")) if unit.has_key('link') else BNode()
-			g.add((unitlink, RDF.type, FOAF.organization))
 			g.add((unitlink, RDF.type, SCHEMA.MusicGroup))
+			g.add((unitlink, RDF.type, FOAF.Organization))
 			g.add((subject, MO.member_of, unitlink))
 			g.add((unitlink, FOAF.member, subject))
 			g.add((unitlink, MO.member, subject))
@@ -212,15 +212,15 @@ def generate_album(config, data):
 	lyrics = URIRef(uri + "#lyrics")
 	g.add((doc, FOAF.primaryTopic, subject))
 
-	g.add((subject, RDF.type, MO.Release))
 	g.add((subject, RDF.type, SCHEMA.MusicAlbum))
+	g.add((subject, RDF.type, MO.Release))
 	g.add((musicalexpression, RDF.type, MO.Signal))
-	g.add((performance, RDF.type, MO.Performance))
 	g.add((performance, RDF.type, SCHEMA.Event))
-	g.add((musicalwork, RDF.type, MO.MusicalWork))
+	g.add((performance, RDF.type, MO.Performance))
 	g.add((musicalwork, RDF.type, SCHEMA.CreativeWork))
-	g.add((composition, RDF.type, MO.Composition))
+	g.add((musicalwork, RDF.type, MO.MusicalWork))
 	g.add((composition, RDF.type, SCHEMA.CreativeWork))
+	g.add((composition, RDF.type, MO.Composition))
 	g.add((lyrics, RDF.type, MO.Lyrics))
 
 	g.add((subject, MO.publication_of, musicalexpression))
@@ -251,12 +251,12 @@ def generate_album(config, data):
 	if data.has_key('event'):
 		event = URIRef(link(data['event']['link']))
 		g.add((subject, MO.release, event))
+		g.add((event, SCHEMA.name, Literal(data['event']['name'])))
 		g.add((event, RDF.type, MO.Release))
-		g.add((event, FOAF.name, Literal(data['event']['name'])))
 	if data.has_key('publisher'):
 		publisher = URIRef(link(data['publisher']['link'])+'#subject') if data['publisher'].has_key('link') else BNode()
-		g.add((subject, MO.publisher, publisher))
 		g.add((subject, SCHEMA.publisher, publisher))
+		g.add((subject, MO.publisher, publisher))
 		add_lang_names(g, publisher, data['publisher']['names'])
 
 
@@ -285,8 +285,8 @@ def generate_album(config, data):
 	def add_people(g, subject, list, rel, rev):
 		for persondata in list:
 			person = URIRef(link(persondata['link'])+"#subject") if persondata.has_key('link') else BNode()
-			g.add((person, RDF.type, FOAF.Person))
 			g.add((person, RDF.type, SCHEMA.Person))
+			g.add((person, RDF.type, FOAF.Person))
 			add_lang_names(g, person, persondata['names'])
 			for r in rel:
 				g.add((subject, r, person))
@@ -305,8 +305,8 @@ def generate_album(config, data):
 	if data.has_key('products'):
 		for productdata in data['products']:
 			product = URIRef(link(productdata['link'])+"#subject") if productdata.has_key('link') else BNode()
-			g.add((subject, SCHEMA.about, product))
 			g.add((product, RDF.type, SCHEMA.CreativeWork))
+			g.add((subject, SCHEMA.about, product))
 			add_lang_names(g, product, productdata['names'])
 
 	g.add((subject, MO.record_count, Literal(len(data['discs']), datatype=XSD.integer)))
@@ -315,8 +315,8 @@ def generate_album(config, data):
 		index += 1
 		record = BNode()
 		g.add((subject, MO.record, record))
-		g.add((record, RDF.type, MO.Record))
 		g.add((record, RDF.type, SCHEMA.MusicPlaylist))
+		g.add((record, RDF.type, MO.Record))
 		g.add((record, MO.record_name, Literal(index, datatype=XSD.integer)))
 		g.add((record, MO.track_count, Literal(len(discdata['tracks']), datatype=XSD.integer)))
 		g.add((record, SCHEMA.numTracks, Literal(len(discdata['tracks']), datatype=XSD.integer)))
@@ -330,8 +330,8 @@ def generate_album(config, data):
 			g.add((record, MO.track, track))
 			g.add((record, SCHEMA.track, track))
 			g.add((track, SCHEMA.inPlaylist, record))
-			g.add((track, RDF.type, MO.Track))
 			g.add((track, RDF.type, SCHEMA.MusicRecording))
+			g.add((track, RDF.type, MO.Track))
 			g.add((track, MO.track_number, Literal(trackno, datatype=XSD.integer)))
 			add_lang_names(g, track, trackdata['names'], rel=[SCHEMA.name, DCTERMS.title])
 			if trackdata.has_key('track_length') and \
@@ -418,8 +418,8 @@ def generate_org(config, data):
 		uri = base
 	g = Graph('IOMemory', doc)
 	subject = URIRef(uri + "#subject")
-	g.add((subject, RDF.type, FOAF.Organization))
 	g.add((subject, RDF.type, SCHEMA.Organization))
+	g.add((subject, RDF.type, FOAF.Organization))
 	g.add((subject, FOAF.name, Literal(data['name'])))
 	g.add((subject, SCHEMA.name, Literal(data['name'])))
 	if data.has_key('picture_full'):
@@ -434,9 +434,9 @@ def generate_org(config, data):
 			g.add((subject, SCHEMA.member, staff))
 			g.add((staff, FOAF.member, subject))
 			g.add((staff, SCHEMA.memberOf, subject))
-			g.add((staff, RDF.type, FOAF.Person))
 			g.add((staff, RDF.type, SCHEMA.Person))
 			g.add((staff, RDF.type, SCHEMA.MusicGroup))
+			g.add((staff, RDF.type, FOAF.Person))
 			add_lang_names(g, staff, staffdata['names'], rel=[FOAF.name])
 	if data.has_key('websites'):
 		for websitetype, websites in data['websites'].items():
@@ -455,8 +455,8 @@ def generate_event(config, data):
 		uri = base
 	g = Graph('IOMemory', doc)
 	subject = URIRef(uri + "#subject")
-	g.add((subject, RDF.type, MO.ReleaseEvent))
 	g.add((subject, RDF.type, SCHEMA.MusicEvent))
+	g.add((subject, RDF.type, MO.ReleaseEvent))
 	release_event = URIRef(uri + "#release_event")
 	g.add((subject, EVENT.time, release_event))
 	g.add((release_event, RDF.type, TL.Interval))
@@ -540,18 +540,18 @@ def generate_recent(config, data):
 		if 'link' in update:
 			subject = URIRef(link(update['link'])+"#subject")
 			if linktype(update['link'], 'album'):
-				g.add((subject, RDF.type, MO.Release))
 				g.add((subject, RDF.type, SCHEMA.MusicAlbum))
+				g.add((subject, RDF.type, MO.Release))
 			elif linktype(update['link'], 'artist'):
 				g.add((subject, RDF.type, SCHEMA.MusicGroup))
 			elif linktype(update['link'], 'org'):
-				g.add((subject, RDF.type, FOAF.Organization))
 				g.add((subject, RDF.type, SCHEMA.Organization))
+				g.add((subject, RDF.type, FOAF.Organization))
 			elif linktype(update['link'], 'product'):
 				g.add((subject, RDF.type, SCHEMA.CreativeWork))
 			elif linktype(update['link'], 'event'):
-				g.add((subject, RDF.type, MO.ReleaseEvent))
 				g.add((subject, RDF.type, SCHEMA.MusicEvent))
+				g.add((subject, RDF.type, MO.ReleaseEvent))
 			else:
 				g.add((subject, RDF.type, RDFS.Resource))
 		else:

@@ -20,7 +20,7 @@
       {% for year in data.years -%}
       {% if filterkey == None or filterkey == year -%}
       {% for event in data.events[year] -%}
-      <li resource="{{event.link | linkhref}}#subject" typeof="mo:ReleaseEvent schema:MusicEvent"><a href="{{event.link | linkhref}}#subject" class="names">{{event.names | lang_names(rel="schema:name")}}</a>
+      <li resource="{{event.link | linkhref}}#subject" typeof="schema:MusicEvent mo:ReleaseEvent"><a href="{{event.link | linkhref}}#subject" class="names">{{event.names | lang_names(rel="schema:name")}}</a>
         <span property="event:time" typeof="tl:Instant" resource="{{event.link | linkhref}}#release_event">
           <span property="tl:at" datatype="xsd:date" content="{{event.startdate}}"></span>
         </span>

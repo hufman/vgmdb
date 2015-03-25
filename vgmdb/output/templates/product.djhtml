@@ -15,14 +15,14 @@
       <dl class="dl-horizontal">
         {% if data.release_date -%}
         <dt>Release Date</dt>
-        <dd rel="dcterms:created schema:datePublished" datatype="xsd:date">{{data.release_date | format_date}}</dd>
+        <dd rel="schema:datePublished dcterms:created" datatype="xsd:date">{{data.release_date | format_date}}</dd>
         {% endif -%}
         {% if data.franchises and data.franchises is not empty -%}
         <dt>Franchises</dt>
         <dd>
           <ul class="unstyled">
           {% for franchise in data.franchises -%}
-            <li><span class="names">{{ franchise.names | lang_names(rel="dcterms:title schema:name") | link(franchise.link, typeof="schema:CreativeWork") }}</span></li>
+            <li><span class="names">{{ franchise.names | lang_names(rel="schema:name dcterms:title") | link(franchise.link, typeof="schema:CreativeWork") }}</span></li>
           {% endfor -%}
           </ul>
         </dd>
@@ -48,7 +48,7 @@
       <dd>
         <ul class="unstyled">
         {% for title in data.titles -%}
-          <li {{title.link | linkhref | resource_attr('about')}} typeof="schema:CreativeWork"><span class="names">{{ title.names | lang_names(rel="dcterms:title schema:name") | link (title.link) }}</span> (<span property="schema:datePublished dcterms:created" datatype="xsd:date" content="{{title.date}}">{{ title.date | format_date}}</span>)</li>
+          <li {{title.link | linkhref | resource_attr('about')}} typeof="schema:CreativeWork"><span class="names">{{ title.names | lang_names(rel="schema:name dcterms:title") | link (title.link) }}</span> (<span property="schema:datePublished dcterms:created" datatype="xsd:date" content="{{title.date}}">{{ title.date | format_date}}</span>)</li>
         {% endfor -%}
         </ul>
       </dd>

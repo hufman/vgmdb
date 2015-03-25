@@ -1,4 +1,4 @@
-{% macro discography(discography, rel="foaf:made schema:album", property=None, rev=None, include_roles=True, include_publisher=False) -%}
+{% macro discography(discography, rel="schema:album foaf:made", property=None, rev=None, include_roles=True, include_publisher=False) -%}
       {% if include_roles -%}
       <div class="metadata">
       {%- for disc in discography -%}
@@ -7,10 +7,10 @@
         <div {{disc.link | linkhref | resource_attr(hash='lyrics')}} typeof="mo:Lyrics"></div>
       {%- for role in disc.roles -%}
         {% if role == 'Composer' -%}
-        <div rel="foaf:made" rev="mo:composer schema:creator dcterms:creator"><div {{disc.link | linkhref | resource_attr(hash='composition')}}></div></div>
+        <div rel="foaf:made" rev="schema:creator mo:composer dcterms:creator"><div {{disc.link | linkhref | resource_attr(hash='composition')}}></div></div>
         <div rel="foaf:made" rev="schema:creator dcterms:creator"><div {{disc.link | linkhref | resource_attr(hash='subject')}}></div></div>
         {% elif role == 'Performer' -%}
-        <div rel="mo:performed" rev="mo:performer schema:byArtist"><div {{disc.link | linkhref | resource_attr(hash='performance')}}></div></div>
+        <div rel="mo:performed" rev="schema:byArtist mo:performer"><div {{disc.link | linkhref | resource_attr(hash='performance')}}></div></div>
         <div rev="schema:byArtist"><div {{disc.link | linkhref | resource_attr(hash='subject')}}></div></div>
         {% elif role == 'Lyricist' -%}
         <div rel="foaf:made"><div {{disc.link | linkhref | resource_attr(hash='lyrics')}} typeof="mo:Lyrics"></div></div>
@@ -36,11 +36,11 @@
         </thead>
         <tbody{{(' rev="%s"'%rev)|safe if rev}}{{(' rel="%s"'%rel)|safe if rel}}>
           {% for disc in discography -%}
-          <tr {{disc.link | linkhref | resource_attr}} typeof="mo:Release schema:MusicAlbum"{{(' property="%s"'%property)|safe if property}}>
-            <td class="cell-date" property="dcterms:created schema:datePublished" content="{{disc.date or disc.release_date}}" datatype="xsd:date">{{ disc.date or disc.release_date -}}</td>
+          <tr {{disc.link | linkhref | resource_attr}} typeof="schema:MusicAlbum mo:Release"{{(' property="%s"'%property)|safe if property}}>
+            <td class="cell-date" property="schema:datePublished dcterms:created" content="{{disc.date or disc.release_date}}" datatype="xsd:date">{{ disc.date or disc.release_date -}}</td>
             <td class="cell-catalog" property="mo:catalogue_number">{{ disc.catalog }}</td>
             <td class="cell-name names">
-              {{ disc.titles|lang_names(rel='dcterms:title schema:name')|link_album(disc.link) }}
+              {{ disc.titles|lang_names(rel='schema:name dcterms:title')|link_album(disc.link) }}
             </td>
             {% if include_roles -%}
             <td class="cell-roles list">
@@ -52,9 +52,9 @@
             </td>
             {% endif -%}
             {% if include_publisher -%}
-            <td class="cell-publisher names" rel="mo:publisher schema:publisher">
+            <td class="cell-publisher names" rel="schema:publisher mo:publisher">
               {% if disc.publisher -%}
-              {{ disc.publisher.names | lang_names | link(disc.publisher.link, typeof="foaf:Organization schema:Organization")}}
+              {{ disc.publisher.names | lang_names | link(disc.publisher.link, typeof="schema:Organization foaf:Organization")}}
               {% endif -%}
             </td>
             {% endif -%}

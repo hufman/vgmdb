@@ -38,21 +38,21 @@ class outputter(object):
 	def artist_type(self, artist_data):
 		types = []
 		if artist_data.has_key('members') and len(artist_data['members']) > 0:
-			types.append('foaf:Organization')
 			types.append('schema:MusicGroup')
+			types.append('foaf:Organization')
 		else:
-			types.append('foaf:Person')
 			types.append('schema:Person')
 			types.append('schema:MusicGroup')
+			types.append('foaf:Person')
 		return ' '.join(types)
 
-	def span_name(self, lang, name, rel="foaf:name schema:name"):
+	def span_name(self, lang, name, rel="schema:name foaf:name"):
 		lang = normalize_language_codes(lang)
 		if rel:
 			return '<span property="%s" lang="%s" xml:lang="%s">%s</span>'%(rel, lang, lang, self._escape(name))
 		else:
 			return '<span lang="%s" xml:lang="%s">%s</span>'%(lang, lang, self._escape(name))
-	def lang_names(self, names, rel="foaf:name schema:name"):
+	def lang_names(self, names, rel="schema:name foaf:name"):
 		segments = []
 		if isinstance(names, str) or isinstance(names, unicode):
 			segments.append(self.span_name('en', names, rel))
@@ -83,7 +83,7 @@ class outputter(object):
 		if href != None and len(href)>0:
 			return self.linkhref(href) + "#" + hash
 		return ''
-	def link_artist(self, name, href, typeof="foaf:Person"):
+	def link_artist(self, name, href, typeof="schema:Person foaf:Person"):
 		return self.link(name, href, typeof)
 	def link(self, name, href, typeof=None, hide_empty_link=False):
 		text = name

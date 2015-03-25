@@ -1,6 +1,6 @@
 {% extends "base.djhtml" %}
 {% block title %}
-    <h1 typeof="foaf:Organization schema:Organization" about="{{data.link | linkhref}}#subject"><span property="foaf:name schema:name">{{data.name}}</span></h1>
+    <h1 typeof="schema:Organization foaf:Organization" about="{{data.link | linkhref}}#subject"><span property="schema:name foaf:name">{{data.name}}</span></h1>
 {% endblock %}
 {% block quickinfo %}
     {% if data.picture_full -%}
@@ -27,8 +27,8 @@
         <dd>
           <ul class="unstyled">
             {% for staff in data.staff -%}
-            <li rel="schema:member" rev="foaf:member schema:memberOf">
-              <span class="names" {{staff.link | linkhref | resource_attr}} typeof="foaf:Person schema:Person schema:MusicGroup">
+            <li rel="schema:member" rev="schema:memberOf foaf:member">
+              <span class="names" {{staff.link | linkhref | resource_attr}} typeof="schema:Person schema:MusicGroup foaf:Person">
                 {{ staff.names | lang_names | link_artist(staff.link,None) }}
               </span>
             </li>
@@ -56,6 +56,6 @@
     </div>
     <div class="discography" resource="{{data.link | linkhref}}#subject">
       <h2>Releases</h2>
-      {{ discography(data.releases, rel="mo:published", rev="mo:publisher", include_roles=False ) -}}
+      {{ discography(data.releases, rel="mo:published", rev="mo:publisher", include_roles=False) -}}
     </div>
 {% endblock %}

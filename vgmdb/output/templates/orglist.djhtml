@@ -20,15 +20,15 @@
       {% for letter in data.letters -%}
       {% if filterkey == None or filterkey == letter -%}
       {% for org in data.orgs[letter] -%}
-      <li resource="{{org.link | linkhref}}#subject" typeof="foaf:Organization schema:Organization"><a resource="{{org.link | linkhref}}#subject" href="{{org.link | linkhref}}" class="names">{{org.names | lang_names(rel='schema:name foaf:name')}}</a>
+      <li resource="{{org.link | linkhref}}#subject" typeof="schema:Organization foaf:Organization"><a resource="{{org.link | linkhref}}#subject" href="{{org.link | linkhref}}" class="names">{{org.names | lang_names(rel='schema:name foaf:name')}}</a>
       {%- if org.formerly %}
-      <div style="margin-left: 15px; font-size: 80%">Formerly: {{ list_names(org.formerly, name_rel="foaf:Organization schema:Organization") }}</div>
+      <div style="margin-left: 15px; font-size: 80%">Formerly: {{ list_names(org.formerly, name_rel="schema:Organization foaf:Organization") }}</div>
       {% endif -%}
       {%- if org.subsidiaries %}
-      <div style="margin-left: 15px; font-size: 80%">Subsidiaries: {{ list_names(org.subsidiaries, name_rel="foaf:Organization schema:Organization") }}</div>
+      <div style="margin-left: 15px; font-size: 80%">Subsidiaries: {{ list_names(org.subsidiaries, name_rel="schema:Organization foaf:Organization") }}</div>
       {% endif -%}
       {%- if org.imprints %}
-      <div style="margin-left: 15px; font-size: 80%">Imprints: {{ list_names(org.imprints, name_rel="foaf:Organization schema:Organization") }}</div>
+      <div style="margin-left: 15px; font-size: 80%">Imprints: {{ list_names(org.imprints, name_rel="schema:Organization foaf:Organization") }}</div>
       {% endif -%}
       </li>
       {% endfor -%}

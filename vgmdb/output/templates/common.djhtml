@@ -1,4 +1,4 @@
-{% macro list_names(names, rel=None, property=None, rev=None, name_rel="foaf:Person schema:Person") -%}
+{% macro list_names(names, rel=None, property=None, rev=None, name_rel="schema:Person foaf:Person") -%}
       <ul class="unstyled"{{(' rev="%s"'%rev)|safe if rev}}{{(' rel="%s"'%rel)|safe if rel}}>
         {% for name in names -%}
         <li>

@@ -57,7 +57,7 @@
       <ul class="unstyled">
         {% for unit in data.units -%}
         <li rev="foaf:member mo:member schema:musicGroupMember" rel="mo:member_of">
-          <span {{unit.link | resource_attr}} typeof="foaf:organization schema:MusicGroup">
+          <span {{unit.link | resource_attr}} typeof="schema:MusicGroup foaf:organization">
             {{ unit.names | lang_names | link_artist(unit.link,None) }}
           </span>
         </li>
@@ -68,7 +68,7 @@
       <h2>Members</h2>
       <ul class="unstyled">
         {% for member in data.members -%}
-        <li rel="foaf:member mo:member schema:musicGroupMember" rev="mo:member_of">
+        <li rel="schema:musicGroupMember foaf:member mo:member" rev="mo:member_of">
           <span {{member.link | resource_attr}} typeof="schema:Person foaf:Person" class="names">
             {{ member.names | lang_names | link_artist(member.link,None) }}
           </span>
@@ -97,7 +97,7 @@
     {% if data.discography is not empty -%}
     <div class="discography" resource="{{data.link | linkhref}}#subject">
       <h2>Discography</h2>
-      {{ discography(data.discography, rev="dcterms:creator schema:byArtist") -}}
+      {{ discography(data.discography, rev="schema:byArtist dcterms:creator") -}}
     </div>
     {% endif -%}
     {% if data.featured_on is not empty -%}
