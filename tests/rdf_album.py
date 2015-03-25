@@ -59,6 +59,7 @@ class TestAlbumsRDF(TestRDF):
 			"select ?date where { ?album rdf:type schema:MusicAlbum . ?album dcterms:created ?date . }" : datetime.date(1999,11,20),
 			"select ?name where { <@base#performance> mo:performer ?person . ?person foaf:name ?name . filter(lang(?name)='en')} order by ?name" : "Chie Sasakura",
 			"select ?name where { <@base#performance> schema:byArtist ?person . ?person foaf:name ?name . filter(lang(?name)='en')} order by ?name" : "Chie Sasakura",
+			"select ?name where { <@base#performance> schema:byArtist ?person . ?person rdf:type schema:Person . ?person foaf:name ?name . filter(lang(?name)='en')} order by ?name" : "Chie Sasakura",
 			"select ?name where { ?person mo:performed <@base#performance> . ?person foaf:name ?name . filter(lang(?name)='en')} order by ?name" : "Chie Sasakura",
 			"select ?records where { <@base#subject> mo:record_count ?records . }" : 1,
 			"select ?tracks where { <@base#subject> mo:record ?record . ?record mo:track_count ?tracks . }" : 13,

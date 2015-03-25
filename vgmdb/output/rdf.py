@@ -284,6 +284,7 @@ def generate_album(config, data):
 		for persondata in list:
 			person = URIRef(link(persondata['link'])+"#subject") if persondata.has_key('link') else BNode()
 			g.add((person, RDF.type, FOAF.Person))
+			g.add((person, RDF.type, SCHEMA.Person))
 			add_lang_names(g, person, persondata['names'])
 			for r in rel:
 				g.add((subject, r, person))
