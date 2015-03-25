@@ -279,6 +279,7 @@ def generate_album(config, data):
 		g.add((rating, RDF.type, SCHEMA.AggregateRating))
 		g.add((rating, SCHEMA.ratingValue, Literal(data['rating'], datatype=XSD.decimal)))
 		g.add((rating, SCHEMA.bestRating, Literal(5, datatype=XSD.decimal)))
+		g.add((rating, SCHEMA.ratingCount, Literal(data['votes'], datatype=XSD.integer)))
 
 	def add_people(g, subject, list, rel, rev):
 		for persondata in list:

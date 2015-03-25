@@ -44,7 +44,7 @@
         {% endif -%}
         {% if data.rating -%}
         <dt>Rating</dt>
-        <dd property="schema:aggregateRating" typeof="schema:AggregateRating"><span property="schema:ratingValue" datatype="xsd:decimal">{{data.rating}}</span> / <span property="schema:bestRating" datatype="xsd:decimal">5</span></dd>
+        <dd property="schema:aggregateRating" typeof="schema:AggregateRating"><span property="schema:ratingValue" datatype="xsd:decimal">{{data.rating}}</span> / <span property="schema:bestRating" datatype="xsd:decimal">5</span> (<span property="schema:ratingCount" datatype="xsd:integer">{{data.votes}}</span>)</dd>
         {% endif -%}
         {% if data.bootleg_of -%}
         <dt>Bootleg Of</dt>
