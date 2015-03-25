@@ -9,7 +9,7 @@ API_SEARCH_SERIES = 'http://www.cdjapan.co.jp/api/products/facet/series/json?q=%
 API_SEARCH_PRODUCTS = 'http://www.cdjapan.co.jp/api/products/json?q=%s'
 ARTIST_INFO = 'http://www.cdjapan.co.jp/person/%s'
 SERIES_INFO = 'http://www.cdjapan.co.jp/series/%s'
-PRODUCT_INFO = 'http://www.cdjapan.co.jp/series/%s'
+PRODUCT_INFO = 'http://www.cdjapan.co.jp/product/%s'
 
 def get_search_url(query):
 	return BASE_URL%(urllib.quote(query),)
