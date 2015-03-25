@@ -54,8 +54,23 @@ def parse_page(html_source):
 		if section_name == 'Albums | Credits':
 			product_info['albums'] = utils.parse_discography(soup_section.div.table, 'classifications')
 
-	soup_divs = soup_right_column.find_all('div', recursive=False)
-	product_info['meta'] = utils.parse_meta(soup_divs[-1].div)
+	soup_right_divs = soup_right_column.find_all('div', recursive=False)
+	for soup_right_section in soup_right_divs[:-1]:
+		if 'rtop' in soup_right_section.find('b', recursive=False)['class']:
+			section_head = unicode(soup_right_section.div.h3.string)
+		if 'rbot' in soup_right_section.find('b', recursive=False)['class']:
+			soup_section_body = soup_right_section.div
+			if section_head == 'Websites':
+				product_info['websites'] = {}
+				for soup_website_section in soup_section_body.find_all('div', recursive=False):
+					website_type = unicode(soup_website_section.b.string)
+					websites = []
+					for soup_site in soup_website_section.find_all('a', recursive=False):
+						link = utils.strip_redirect(soup_site['href'])
+						name = unicode(soup_site.string)
+						websites.append({"link":link,"name":name})
+					product_info['websites'][website_type] = websites
+	product_info['meta'] = utils.parse_meta(soup_right_divs[-1].div)
 
 	return product_info
 

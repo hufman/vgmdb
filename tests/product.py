@@ -68,6 +68,16 @@ class TestProducts(unittest.TestCase):
 		self.assertEqual(u"Fate/hollow ataraxia", at['releases'][0]['names']['ja'])
 		self.assertEqual(u"release/2652", at['releases'][0]['link'])
 
+	def test_clannad(self):
+		cl_code = file(os.path.join(base, 'product_clannad.html')).read()
+		cl = product.parse_page(cl_code)
+		self.assertEqual('CLANNAD', cl['name'])
+		self.assertTrue('websites' in cl)
+		self.assertTrue('Official' in cl['websites'])
+		self.assertTrue('Reference' in cl['websites'])
+		self.assertEqual(1, len(cl['websites']['Reference']))
+		self.assertEqual(u'MobyGames', cl['websites']['Reference'][0]['name'])
+		self.assertEqual(u'http://www.mobygames.com/game/clannad', cl['websites']['Reference'][0]['link'])
 
 if __name__ == '__main__':
 	unittest.main()
