@@ -95,5 +95,10 @@ class TestLinks(unittest.TestCase):
 		self.assertEqual('album/29', utils.parse_vgmdb_link('album/29'))
 		self.assertEqual('release/29', utils.parse_vgmdb_link('db/release.php?id=29'))
 
+	def test_strip_redirect(self):
+		self.assertEqual('http://www.mobygames.com/game/clannad', utils.strip_redirect('http://vgmdb.net/redirect/43446/www.mobygames.com/game/clannad'))
+		self.assertEqual('http://www.mobygames.com/game/clannad', utils.strip_redirect('/redirect/43446/www.mobygames.com/game/clannad'))
+		self.assertEqual('http://www.mobygames.com/game/clannad', utils.strip_redirect('/redirect/0/www.mobygames.com/game/clannad'))
+
 if __name__ == '__main__':
 	unittest.main()

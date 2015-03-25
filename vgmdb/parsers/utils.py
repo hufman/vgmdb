@@ -232,6 +232,14 @@ def parse_vgmdb_link(link):
 	else:
 		return link
 
+def strip_redirect(link):
+	if link.startswith('http://vgmdb.net/redirect'):
+		index = link.find('/', len('http://vgmdb.net/redirect/'))
+		return 'http://' + link[index+1:]
+	if link.startswith('/redirect'):
+		index = link.find('/', len('/redirect/'))
+		return 'http://' + link[index+1:]
+
 def parse_discography(soup_disco_table, label_type='roles'):
 	"""
 	Parse a discography table
