@@ -40,7 +40,7 @@ def do_page(page_type, info, filterkey=None):
 
 	# figure out what format the user wants
 	requested_format = request.query.format or ''
-	outputter = vgmdb.output.get_outputter(vgmdb.config.for_request(request), requested_format, request.headers.get('Accept'))
+	outputter = vgmdb.output.get_outputter(vgmdb.config.for_request(request), requested_format, request.headers.get('Accept'), request.headers.get('User-Agent'))
 
 	# figure out the cache ttl
 	edited_date = None

@@ -16,6 +16,8 @@ name_outputters = {}	# store a list of outputter objects
 name_modules = {}	# store a list of outputter modules
 mime_names = {}		# map mimetypes to names
 
+html_agents = ['gecko', 'khtml', 'mozilla', 'trident', 'webkit']
+
 def add_mime_name(mime, name):
 	mime_names[mime] = name
 def add_name_handler(name, outputter):
@@ -68,8 +70,11 @@ def load_plugins():
 				# couldn't load plugin
 				sys.stderr.write("Couldn't create outputter %s: %s\n"%(module.name, sys.exc_info()[1]))
 
-def decide_format(forced, accept):
+def decide_format(forced, accept, useragent=''):
 	format = "json"
+	useragent = useragent.lower()
+	if any((agent in useragent for agent in html_agents)):
+		format = "html"
 	all_accepts = parse_accept_header(accept) or []
 	for accepts in all_accepts:
 		if accepts[0] in mime_names.keys():
@@ -79,8 +84,8 @@ def decide_format(forced, accept):
 		format = forced
 	return format
 
-def get_outputter(config, forced, accept):
-	format = decide_format(forced, accept)
+def get_outputter(config, forced, accept, useragent=''):
+	format = decide_format(forced, accept, useragent)
 	if vgmdb.config.AUTO_RELOAD:
 		reload_module(format)
 	return name_outputters[format](config)
