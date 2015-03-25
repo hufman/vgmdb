@@ -11,7 +11,7 @@
       </div>
       {% endif -%}
       {% if data.birthdate -%}
-      <div class="boxsection" resource="{{data.link | linkhref}}#birthinfo" typeof="bio:birth">
+      <div class="boxsection" resource="{{data.link | linkhref}}#birthinfo" typeof="bio:Birth">
         <span property="bio:principal" resource="{{data.link | linkhref}}#subject"></span>
         <dl class="dl-horizontal">
           <dt>Birthday</dt>
@@ -22,7 +22,7 @@
       </div>
       {% endif -%}
       {% if data.deathdate -%}
-      <div class="boxsection" resource="{{data.link | linkhref}}#deathinfo" typeof="bio:death">
+      <div class="boxsection" resource="{{data.link | linkhref}}#deathinfo" typeof="bio:Death">
         <span property="bio:principal" resource="{{data.link | linkhref}}#subject"></span>
         <dl class="dl-horizontal">
           <dt>Deceased</dt>

@@ -148,14 +148,14 @@ def generate_artist(config, data):
 		g.add((img, FOAF.thumbnail, thumb))
 	if data.has_key('birthdate'):
 		birthinfo = URIRef(uri + "#birthinfo")
-		g.add((birthinfo, RDF.type, BIO.birth))
+		g.add((birthinfo, RDF.type, BIO.Birth))
 		g.add((birthinfo, BIO.principal, subject))
 		g.add((birthinfo, BIO.date, Literal(data['birthdate'], datatype=XSD.date)))
 		if data.has_key('birthplace'):
 			g.add((birthinfo, BIO.place, Literal(data['birthplace'])))
 	if data.has_key('deathdate'):
 		deathinfo = URIRef(uri + "#deathinfo")
-		g.add((deathinfo, RDF.type, BIO.death))
+		g.add((deathinfo, RDF.type, BIO.Death))
 		g.add((deathinfo, BIO.principal, subject))
 		g.add((deathinfo, BIO.date, Literal(data['deathdate'], datatype=XSD.date)))
 	if data.has_key('units'):
