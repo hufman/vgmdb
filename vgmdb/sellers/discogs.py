@@ -1,10 +1,21 @@
 import urllib
+import urllib2
 import urlparse
 import json
 import logging
 from ._utils import squash_str,find_best_match
+from .. import config
 
-SEARCH_API = 'http://api.discogs.com/database/search'
+SEARCH_API = 'https://api.discogs.com/database/search'
+
+def search(query):
+	url = SEARCH_API + '?' + query
+	request = urllib2.Request(url)
+	request.add_header('User-Agent', 'VGMdb/1.0 vgmdb.info')
+	if hasattr(config, 'DISCOGS_KEY') and hasattr(config, 'DISCOGS_SECRET'):
+		request.add_header('Authorization', 'Discogs key=%s, secret=%s'%(config.DISCOGS_KEY, config.DISCOGS_SECRET))
+	opener = urllib2.build_opener()
+	return opener.open(request).read()
 
 class NullHandler(logging.Handler):
 	def emit(self, record):
@@ -44,8 +55,7 @@ def search_album(info):
 	return result
 
 def search_album_catalog(catalog):
-	url = SEARCH_API + '?type=master&catno=%s'%(urllib.quote(squash_str(catalog)),)
-	webdata = urllib.urlopen(url).read()
+	webdata = search('type=master&catno=%s'%(urllib.quote(squash_str(catalog)),))
 	data = json.loads(webdata)
 	found = find_best_match(squash_str(catalog), data['results'],
 	   threshold=0.9, key=lambda x:squash_str(x['catno']))
@@ -54,8 +64,7 @@ def search_album_catalog(catalog):
 def search_artist_album_name(info):
 	artist = info['composers'][0]['names']['en']
 	title = info['name']
-	url = SEARCH_API + "?type=master&artist=%s&release_title=%s"%(urllib.quote(squash_str(artist)),urllib.quote(squash_str(title)))
-	webdata = urllib.urlopen(url).read()
+	webdata = search("type=master&artist=%s&release_title=%s"%(urllib.quote(squash_str(artist)),urllib.quote(squash_str(title))))
 	data = json.loads(webdata)
 	found = find_best_match(squash_str(title), data['results'],
 	   threshold=0.5, key=lambda x:squash_str(x['title']))
@@ -63,8 +72,7 @@ def search_artist_album_name(info):
 
 def search_album_name(info):
 	title = info['name']
-	url = SEARCH_API + "?type=master&release_title=%s"%(urllib.quote(squash_str(title)),)
-	webdata = urllib.urlopen(url).read()
+	webdata = search("type=master&release_title=%s"%(urllib.quote(squash_str(title)),))
 	data = json.loads(webdata)
 	found = find_best_match(squash_str(title), data['results'],
 	   threshold=0.5, key=lambda x:squash_str(x['title']))
@@ -91,8 +99,7 @@ def search_artist(info):
 	return result
 
 def search_artist_name(name):
-	url = SEARCH_API + "?type=artist&q=%s"%(urllib.quote(squash_str(name)))
-	webdata = urllib.urlopen(url).read()
+	webdata = search("type=artist&q=%s"%(urllib.quote(squash_str(name))))
 	data = json.loads(webdata)
 	found = find_best_match(squash_str(name), data['results'],
 	   threshold=0.7, key=lambda x:squash_str(x['title']))
