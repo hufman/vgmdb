@@ -171,7 +171,8 @@ def generate_artist(config, data):
 	if data.has_key('members'):
 		for member in data['members']:
 			memberlink = URIRef(link(member['link']+"#subject")) if member.has_key('link') else BNode()
-			g.add((memberlink, RDF.type, FOAF.person))
+			g.add((memberlink, RDF.type, SCHEMA.Person))
+			g.add((memberlink, RDF.type, FOAF.Person))
 			g.add((subject, FOAF.member, memberlink))
 			g.add((subject, MO.member, memberlink))
 			g.add((subject, SCHEMA.musicGroupMember, memberlink))

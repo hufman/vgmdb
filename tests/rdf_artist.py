@@ -77,6 +77,8 @@ class TestArtistsRDF(TestRDF):
 			"select ?artist where { <@base#subject> rdf:type foaf:Organization . }" : 1,
 			"select ?artist where { <@base#subject> rdf:type schema:MusicGroup . }" : 1,
 			"select ?name where { ?person schema:musicGroupMember ?member . ?member foaf:name ?name . }" : 2,
+			"select ?name where { ?person schema:musicGroupMember ?member . ?member rdf:type schema:Person . }" : 2,
+			"select ?name where { ?person schema:musicGroupMember ?member . ?member rdf:type foaf:Person . }" : 2
 		}
 		test_first_result = {
 			"select ?name where { ?group schema:album ?album . ?album dcterms:title ?name . ?album schema:datePublished ?date . filter(lang(?name)='en') } order by ?date" : u'Square Enix Music Powered Vol.1'

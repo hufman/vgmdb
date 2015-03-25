@@ -69,7 +69,7 @@
       <ul class="unstyled">
         {% for member in data.members -%}
         <li rel="foaf:member mo:member schema:musicGroupMember" rev="mo:member_of">
-          <span {{member.link | resource_attr}} typeof="foaf:Person" class="names">
+          <span {{member.link | resource_attr}} typeof="schema:Person foaf:Person" class="names">
             {{ member.names | lang_names | link_artist(member.link,None) }}
           </span>
         </li>
