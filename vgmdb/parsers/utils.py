@@ -2,6 +2,7 @@
 import bs4
 import re
 import urllib
+import urllib2
 import urlparse
 
 db_parser = re.compile(r'db/([a-z]+)\.php')
@@ -11,7 +12,7 @@ class AppURLOpener(urllib.FancyURLopener):
 urllib._urlopener = AppURLOpener()
 
 def fetch_page(url):
-	data = urllib.urlopen(url).read()
+	data = urllib2.urlopen(url, None, 30).read()
 	data = data.decode('utf-8', 'ignore')
 	return data
 
