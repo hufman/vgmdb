@@ -41,7 +41,7 @@ def add_affiliate_id(link):
 def empty_album(info):
 	search_url = SEARCH_API+'entity=album&term=%s'%(urllib.quote(squash_str(info['name'])),)
 	result = {"name":"iTunes",
-	          "icon":"http://www.wired.com/images_blogs/gadgetlab/2010/09/iTunes10.png"
+	          "icon":"static/itunes.png"
 	         }
 	return result
 def search_album(info):
@@ -73,7 +73,7 @@ def search_album_name(info):
 def empty_artist(info):
 	search_url = SEARCH_API+'entity=musicArtist&term=%s'%(urllib.quote(squash_str(info['name'])),)
 	result = {"name":"iTunes",
-	          "icon":"https://upload.wikimedia.org/wikipedia/en/0/0c/ITunes_11_Logo.png"
+	          "icon":"static/itunes.png"
 	         }
 	return result
 def search_artist(info):

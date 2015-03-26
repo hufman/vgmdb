@@ -51,7 +51,7 @@ def parse_results(roots):
 def empty_album(info):
 	search_url = SEARCH_PAGE + "&field-keywords=%s"%(urllib.quote(squash_str(info['name'])))
 	result = {"name":"Amazon",
-	          "icon":"https://upload.wikimedia.org/wikipedia/commons/b/b4/Amazon-icon.png",
+	          "icon":"static/amazon.png",
 	          "search": search_url
 	         }
 	return result
@@ -103,7 +103,7 @@ def search_album_name(info):
 def empty_artist(info):
 	search_url = SEARCH_PAGE + "&field-artist=%s"%(urllib.quote(squash_str(info['name'])),)
 	result = {"name":"Amazon",
-	          "icon":"https://upload.wikimedia.org/wikipedia/commons/b/b4/Amazon-icon.png",
+	          "icon":"static/amazon.png",
 	          "search": search_url
 	         }
 	return result

@@ -24,7 +24,7 @@ logger.addHandler(NullHandler())
 def empty_album(info):
 	search_url = "https://play.spotify.com/search/%s%%3Aalbums"%(urllib.quote(squash_str(info['name'])),)
 	result = {"name":"Spotify",
-	          "icon":"http://www.carlsednaoui.com/images/posts/spotify-1.png",
+	          "icon":"static/spotify.png",
 	          "search": search_url
 	         }
 	return result
@@ -68,7 +68,7 @@ def search_album_name(info):
 def empty_artist(info):
 	search_url = "https://play.spotify.com/search/%s%%3Aartists"%(urllib.quote(squash_str(info['name'])),)
 	result = {"name":"Spotify",
-	          "icon":"http://www.carlsednaoui.com/images/posts/spotify-1.png",
+	          "icon":"static/spotify.png",
 	          "search": search_url
 	         }
 	return result

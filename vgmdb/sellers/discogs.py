@@ -26,7 +26,7 @@ logger.addHandler(NullHandler())
 def empty_album(info):
 	search_url = "http://www.discogs.com/search?q=%s&type=master"%(urllib.quote(squash_str(info['name'])),)
 	result = {"name":"discogs",
-	          "icon":"http://s.pixogs.com/images/record32.ico",
+	          "icon":"static/discogs.ico",
 	          "search": search_url
 	         }
 	return result
@@ -81,7 +81,7 @@ def search_album_name(info):
 def empty_artist(info):
 	search_url = "http://www.discogs.com/search?q=%s&type=artist"%(urllib.quote(squash_str(info['name'])),)
 	result = {"name":"discogs",
-	          "icon":"http://s.pixogs.com/images/record32.ico",
+	          "icon":"static/discogs.ico",
 	          "search": search_url
 	         }
 	return result
