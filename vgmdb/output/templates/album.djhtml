@@ -1,6 +1,7 @@
 {% extends "base.djhtml" %}
+{% block bodyattrs %}typeof="schema:MusicAlbum mo:Release" resource="{{data.link | linkhref}}#subject"{% endblock %}
 {% block title %}
-    <h1 typeof="schema:MusicAlbum mo:Release" resource="{{data.link | linkhref}}#subject"><span class="names">{{data.names | lang_names(rel="dcterms:title schema:name")}}</span></h1>
+    <h1><span class="names">{{data.names | lang_names(rel="dcterms:title schema:name")}}</span></h1>
 {% endblock %}
 {% block quickinfo %}
     {% if data.picture_full -%}

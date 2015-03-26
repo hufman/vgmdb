@@ -1,6 +1,7 @@
 {% extends "base.djhtml" %}
+{% block bodyattrs %}typeof="schema:CreativeWork" resource="{{data.link | linkhref}}#subject"{% endblock %}
 {% block title %}
-    <h1 typeof="schema:CreativeWork" about="{{data.link | linkhref}}#subject"><span property="dcterms:title schema:name">{{data.name}}</span> <small>({{data.type}})</small></h1>
+    <h1><span property="dcterms:title schema:name">{{data.name}}</span> <small>({{data.type}})</small></h1>
 {% endblock %}
 {% block quickinfo %}
     {% if data.picture_full -%}

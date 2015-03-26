@@ -1,6 +1,7 @@
 {% extends "base.djhtml" %}
+{% block bodyattrs %}typeof="schema:Organization foaf:Organization" resource="{{data.link | linkhref}}#subject"{% endblock %}
 {% block title %}
-    <h1 typeof="schema:Organization foaf:Organization" about="{{data.link | linkhref}}#subject"><span property="schema:name foaf:name">{{data.name}}</span></h1>
+    <h1><span property="schema:name foaf:name">{{data.name}}</span></h1>
 {% endblock %}
 {% block quickinfo %}
     {% if data.picture_full -%}

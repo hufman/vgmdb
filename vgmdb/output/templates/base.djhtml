@@ -5,7 +5,9 @@
 <html>
   <head>
     <base href="{{config.BASE_URL}}" />
-    <meta charset='utf-8'/>
+    <meta charset='utf-8' />
+    <meta about="{{data.link | linkhref}}" property="foaf:primaryTopic" resource="{{data.link | linkhref}}#subject" />
+
 {% block htmltitle %}
     <title>{{data.name.en | default(data.name)}}</title>
 {% endblock %}
@@ -22,7 +24,8 @@
                 xsd: http://www.w3.org/2001/XMLSchema#
                 mo: http://purl.org/ontology/mo/
                 event: http://purl.org/NET/c4dm/event.owl#
-                tl: http://purl.org/NET/c4dm/timeline.owl#" about="{{data.link | linkhref}}" property="foaf:primaryTopic" resource="{{data.link | linkhref}}#subject">
+                tl: http://purl.org/NET/c4dm/timeline.owl#"
+{% block bodyattrs %}{% endblock %}>
     <div class="content">
 {% block title %}
       <h1><span class="names">{{data.name | lang_names(rel=None)}}</span></h1>

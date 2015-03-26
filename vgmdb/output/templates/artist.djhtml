@@ -1,6 +1,7 @@
 {% extends "base.djhtml" %}
+{% block bodyattrs %}typeof="{{data | artist_type}}" resource="{{data.link | linkhref}}#subject"{% endblock %}
 {% block title %}
-    <h1 typeof="{{data | artist_type}}" resource="{{data.link | linkhref}}#subject"><span property="foaf:name schema:name">{{data.name}}</span></h1>
+    <h1><span property="foaf:name schema:name">{{data.name}}</span></h1>
 {% endblock %}
 {% block quickinfo %}
       {% if data.picture_full -%}
