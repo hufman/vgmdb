@@ -3,7 +3,6 @@ import urllib2
 import urlparse
 import json
 import logging
-import oauth2 as oauth
 from ._utils import squash_str, find_best_match
 from .. import config
 
@@ -30,6 +29,9 @@ def url_search_album(name):
 	return "%s%s/albums/" % (BASE_SEARCH_URL, quote_search(name))
 
 def api(args={}):
+	# import oauth2 here, instead of at the top, to
+	# make it crash on runtime, not startup
+	import oauth2 as oauth
 	body = urllib.urlencode(args)
 	headers = {
 		'User-Agent': 'VGMdb/1.0 vgmdb.info',
