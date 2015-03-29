@@ -7,13 +7,14 @@ from . import amazon
 from . import cdjapan
 from . import itunes
 from . import spotify
+from . import rdio
 
 try:
 	from concurrent.futures import ThreadPoolExecutor
 except:
 	pass
 
-search_modules = [discogs, amazon, cdjapan, itunes, spotify]
+search_modules = [discogs, amazon, cdjapan, itunes, spotify, rdio]
 search_types = ['album', 'artist']
 
 import time

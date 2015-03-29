@@ -21,3 +21,5 @@ python-amazon-product-api==0.2.6
 # Seller optimizations
 futures==2.1.4
 celery==3.0.23
+
+oauth2==1.5.211
