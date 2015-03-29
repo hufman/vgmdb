@@ -259,10 +259,10 @@ def generate_album(config, data):
 	if data.has_key('release_date'):
 		g.add((subject, DCTERMS.created, Literal(data['release_date'], datatype=XSD.date)))
 		g.add((subject, SCHEMA.datePublished, Literal(data['release_date'], datatype=XSD.date)))
-	if data.has_key('event'):
-		event = URIRef(link(data['event']['link']))
+	for release_event in data['release_events']:
+		event = URIRef(link(release_event['link']))
 		g.add((subject, MO.release, event))
-		g.add((event, SCHEMA.name, Literal(data['event']['name'])))
+		g.add((event, SCHEMA.name, Literal(release_event['name'])))
 		g.add((event, RDF.type, MO.Release))
 	if data.has_key('publisher'):
 		publisher = URIRef(link(data['publisher']['link'])+'#subject') if data['publisher'].has_key('link') else BNode()

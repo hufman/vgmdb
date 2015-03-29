@@ -100,9 +100,9 @@ class TestAlbums(unittest.TestCase):
 
 		self.assertEqual(u'Tomoki Yamada', istoria['performers'][-1]['names']['en'])
 		self.assertEqual(u'Vocal, Original Work', istoria['classification'])
-		self.assertEqual(u'Comic Market 81', istoria['event']['name'])
-		self.assertEqual(u'C81', istoria['event']['shortname'])
-		self.assertEqual(u'event/146', istoria['event']['link'])
+		self.assertEqual(u'Comic Market 81', istoria['release_events'][0]['name'])
+		self.assertEqual(u'C81', istoria['release_events'][0]['shortname'])
+		self.assertEqual(u'event/146', istoria['release_events'][0]['link'])
 
 	def test_zwei(self):
 		zwei_code = file(os.path.join(base, 'album_zwei.html'), 'r').read()
@@ -129,6 +129,19 @@ class TestAlbums(unittest.TestCase):
 		self.assertEqual('release/3993', night['products'][0]['link'])
 		self.assertEqual('Unknown', night['discs'][1]['tracks'][0]['track_length'])
 		self.assertEqual('Unknown', night['discs'][1]['disc_length'])
+
+	def test_touhou(self):
+		# has multiple releases
+		touhou_code = file(os.path.join(base, 'album_touhou.html'), 'r').read()
+		touhou = album.parse_page(touhou_code)
+		self.assertEqual('IO-0212', touhou['catalog'])
+		self.assertEqual(2, len(touhou['release_events']))
+		self.assertEqual('event/155', touhou['release_events'][0]['link'])
+		self.assertEqual('Touhou Kouroumu 8', touhou['release_events'][0]['shortname'])
+		self.assertEqual('Touhou Kouroumu 8', touhou['release_events'][0]['name'])
+		self.assertEqual('event/152', touhou['release_events'][1]['link'])
+		self.assertEqual('M3-30', touhou['release_events'][1]['shortname'])
+		self.assertEqual('M3-2012 Fall', touhou['release_events'][1]['name'])
 
 if __name__ == '__main__':
 	unittest.main()

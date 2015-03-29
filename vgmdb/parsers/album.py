@@ -100,7 +100,7 @@ def _parse_album_info(soup_info):
 			else:
 				album_info['reprints'] = reprints
 		elif name == "Release Date":
-			soup_event = None
+			soup_events = []
 			soup_children = soup_value.contents
 			if isinstance(soup_children[0], bs4.Tag):
 				if soup_children[0].name == 'a':	# link to calendar
@@ -110,15 +110,15 @@ def _parse_album_info(soup_info):
 					soup_event = soup_value.a.find_next_sibling('a')
 				else:			# freeform text
 					album_info['release_date'] = soup_value.value
-			if len(soup_children) > 1 and \
-			   isinstance(soup_children[1], bs4.Tag):
-				soup_event = soup_children[1]
+			for soup_event in soup_children[1:]:
+				if not isinstance(soup_event, bs4.Tag): continue
 				link = utils.trim_absolute(soup_event['href'])
 				event = {}
 				event['name'] = soup_event['title']
 				event['shortname'] = unicode(soup_event.string)
 				event['link'] = link
-				album_info['event'] = event
+				soup_events.append(event)
+			album_info['release_events'] = soup_events
 		elif name == 'Release Price':
 			price = soup_value.contents[0].strip()
 			album_info['release_price'] = {"price":price}
