@@ -32,6 +32,7 @@ class outputter(object):
 		self._escape = jinja2.escape
 
 	def __call__(self, type, data, filterkey=None):
+		data['type'] = type
 		template = self._templates.get_template('%s.djhtml'%type)
 		return template.render(config=self._config, data=data, filterkey=filterkey)
 

@@ -30,7 +30,7 @@
 <ul class="format validators">
 <li class="rdfa"><a href="http://www.w3.org/2012/pyRdfa/extract?uri={{data.link | absolute_linkhref}}%3fformat=html&amp;validate=yes">RDFa</a></li>
 <li class="rdfxml"><a href="http://www.w3.org/RDF/Validator/rdfval?URI={{data.link | absolute_linkhref}}%3fformat=rdf&amp;PARSE=Parse+URI%3A+&amp;TRIPLES_AND_GRAPH=PRINT_TRIPLES&amp;FORMAT=PNG_EMBED">RDFa</a></li>
-<li class="json"><a href="http://www.jsonlint.com/?json={{data.link | absolute_linkhref}}%3fformat=json">JSON</a></li>
+<li class="json"><a href="http://jsonschematalint.com/?schemata={{("schema/" + data.type + ".json") | absolute_linkhref | urlencode}}&schemata={{"schema/common.json" | absolute_linkhref | urlencode}}&data={{data.link | absolute_linkhref | urlencode}}%3fformat=json">JSON</a></li>
 <li class="yaml"><a href="http://yaml-online-parser.appspot.com/?url={{data.link | absolute_linkhref}}%3fformat%3dyaml">YAML</a></li>
 </ul>
 </div>
