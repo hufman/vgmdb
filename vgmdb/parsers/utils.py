@@ -1,5 +1,7 @@
 
 import bs4
+import string
+import unicodedata
 import re
 import urllib
 import urllib2
@@ -71,6 +73,20 @@ def fix_invalid_table(html_source):
 			html_source = html_source[:prevtag_start] + html_source[prevtag_end+1:]
 			start = prevtag_end
 	return html_source
+
+def is_english(text):
+	""" Given a string, perhaps someone's name
+	    guess whether the string is entirely English or probably Japanese
+	"""
+	def is_english_char(char):
+		return char in string.ascii_letters
+	def is_letter(char):
+		return unicodedata.category(char)[0] == 'L'
+	decomposed = unicodedata.normalize('NFD', text)   # split off accent chars
+	trimmed = filter(is_letter, decomposed)
+	count = len(trimmed)
+	count_english = len(filter(is_english_char, trimmed))
+	return (count_english / count) > 0.8
 
 def parse_date_time(time):
 	"""
@@ -146,7 +162,10 @@ def parse_names(soup_parent):
 	info = {}
 	shallow_string = parse_shallow_string(soup_parent)
 	if len(shallow_string.strip())>0:
-		info['en'] = shallow_string.strip()
+		langcode = 'en'
+		if not is_english(shallow_string.strip()):
+			langcode = 'ja'
+		info[langcode] = shallow_string.strip()
 	for soup_name in soup_parent.find_all('span', recursive=False):
 		if not soup_name.has_attr('lang'):
 			continue

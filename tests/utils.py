@@ -11,6 +11,13 @@ class TestUtils(unittest.TestCase):
 	def setUp(self):
 		pass
 
+	def test_is_english(self):
+		self.assertTrue(utils.is_english(u"This is a test"))
+		self.assertTrue(utils.is_english(u"Th!s 1s 4 test"))
+		self.assertTrue(utils.is_english(u"Varèse Sarabande"))
+		self.assertFalse(utils.is_english(u"白河ことり"))
+		self.assertFalse(utils.is_english(u"東方人 -TOHO BEAT-"))
+
 	def test_date_parse(self):
 		date = "Aug 3, 2006 01:33 AM"
 		self.assertEqual("2006-08-03T01:33", utils.parse_date_time(date))

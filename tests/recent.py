@@ -25,7 +25,7 @@ class TestRecent(unittest.TestCase):
 		self.assertEqual(u'deleted', up[0]['edit'])
 		self.assertEqual(u'Deleted/Inactive Album', up[0]['titles']['en'])
 		self.assertEqual(u'rejected', up[1]['edit'])
-		self.assertEqual(u'東方人 -TOHO BEAT-', up[1]['titles']['en'])
+		self.assertEqual(u'東方人 -TOHO BEAT-', up[1]['titles']['ja'])
 		self.assertEqual(u'new', up[5]['edit'])
 		self.assertTrue(u'new' in up[5])
 		self.assertFalse(u'catalog' in up[0])

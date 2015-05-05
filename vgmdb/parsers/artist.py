@@ -178,7 +178,10 @@ def _parse_profile_info(soup_profile_left):
 			proper = []
 			for improper in ret[people_type]:
 				if isinstance(improper,basestring):
-					proper.append({'names': {'en':improper}})
+					langcode = 'en'
+					if not utils.is_english(improper):
+						langcode = 'ja'
+					proper.append({'names': {langcode:improper}})
 				else:
 					proper.append(improper)
 			ret[people_type] = proper

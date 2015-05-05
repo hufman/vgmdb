@@ -108,7 +108,7 @@ class TestArtists(unittest.TestCase):
 		horie_code = file(os.path.join(base, 'artist_horie.html'), 'r').read()
 		horie = artist.parse_page(horie_code)
 		self.assertEqual(1, len(horie['info']['Variations']))
-		self.assertEqual(u'白河ことり', horie['info']['Variations'][0]['names']['en'])
+		self.assertEqual(u'白河ことり', horie['info']['Variations'][0]['names']['ja'])
 
 if __name__ == '__main__':
 	unittest.main()
