@@ -129,21 +129,31 @@ def _parse_album_info(soup_info):
 			except:
 				pass
 		elif name == 'Published by':
+			def addOrganization(info, role='publisher'):
+				if not 'organizations' in album_info:
+					album_info['organizations'] = []
+				album_info['organizations'].append(dict(info))
+				album_info['organizations'][-1]['role'] = role
+				if role == 'publisher' and 'publisher' not in album_info:
+					album_info['publisher'] = info
+				if role == 'distributor' and 'distributor' not in album_info:
+					album_info['distributor'] = info
 			soup_links = soup_value.find_all('a')
 			if len(soup_links) == 0:
-				album_info['publisher'] = {'names':{'en':soup_value.string.strip()}}
-			if len(soup_links) > 0:
-				link = soup_links[0]['href']
-				link = utils.trim_absolute(link)
-				album_info['publisher'] = {}
-				album_info['publisher']['link'] = link
-				album_info['publisher']['names'] = utils.parse_names(soup_links[0])
-			if len(soup_links) > 1:
-				link = soup_links[1]['href']
-				link = utils.trim_absolute(link)
-				album_info['distributor'] = {}
-				album_info['distributor']['link'] = link
-				album_info['distributor']['names'] = utils.parse_names(soup_links[1])
+				addOrganization({'names':{'en':soup_value.string.strip()}}, 'publisher')
+			separator = utils.parse_shallow_string(soup_value)
+			role = 'publisher'
+			for soup_child in soup_value.children:
+				if isinstance(soup_child, bs4.Tag) and soup_child.name == 'a':
+					link = soup_child['href']
+					link = utils.trim_absolute(link)
+					info = {}
+					info['link'] = link
+					info['names'] = utils.parse_names(soup_child)
+					addOrganization(info, role)
+				else:
+					if 'distribut' in unicode(soup_child.string).lower():
+						role = 'distributor'
 		elif name in names_single.keys():
 			key = names_single[name]
 			soup_value = soup_value.contents[0]
