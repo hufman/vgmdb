@@ -164,7 +164,7 @@ def _parse_profile_info(soup_profile_left):
 		if len(item_list) == 0:
 			continue
 		# what item headings indicate people, and should have names
-		people_lists = ['Aliases', 'Former Members', 'Members', 'Units', 'Organizations']
+		people_lists = ['Aliases', 'Former Members', 'Members', 'Units', 'Organizations', 'Variations']
 		# detect if there is a single text item
 		if len(item_list) == 1 and isinstance(item_list[0], unicode) and \
 		   item_name not in people_lists:
