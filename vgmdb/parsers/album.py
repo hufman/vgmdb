@@ -48,6 +48,11 @@ def parse_page(html_source):
 			soup_notes = soup_row.td.div.find_next_sibling('div').div
 			album_info['notes'] = utils.parse_string(soup_notes).strip()
 
+	# add any required properties
+	required_lists = ['arrangers', 'composers', 'covers', 'lyricists', 'organizations', 'performers']
+	for key in required_lists:
+		if not key in album_info:
+			album_info[key] = []
 	return album_info
 
 def _parse_album_info(soup_info):

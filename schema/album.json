@@ -82,7 +82,7 @@
 			"properties": {
 				"currency": { "type": "string" },
 				"price": { "oneOf": [
-					{ "type": "string", "enum": ["Free", "Unknown"] },
+					{ "type": "string", "enum": ["Free", "Unknown", "Not for Sale"] },
 					{ "type": "number" }
 				] }
 			},
@@ -106,6 +106,6 @@
 		"votes": { "title": "The number of votes for the rating", "type": "integer" },
 		"websites": { "$ref": "common.json#/definitions/itemWebsites" }
 	},
-	"required": ["name", "names", "discs", "meta", "votes"]
+	"required": ["link", "name", "names", "arrangers", "covers", "catalog", "classification", "composers", "lyricists", "notes", "discs", "media_format", "meta", "performers", "picture_full", "picture_small", "publish_format", "publisher", "vgmdb_link", "votes"]
 }
 
