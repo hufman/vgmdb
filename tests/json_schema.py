@@ -29,6 +29,8 @@ class TestJsonSchemaMeta(type):
 				logging.info('Validating json schema %s with file %s' % (schema, filename))
 				code = file(filename, 'r').read()
 				data = parser.parse_page(code)
+				data['link'] = 'unknown/1'
+				data['vgmdb_link'] = 'http://vgmdb.net/unknown/1'
 				vgmdb.request._calculate_ttl(data)
 				validator = get_draft4_validator(schema)
 				validator.validate(data)
