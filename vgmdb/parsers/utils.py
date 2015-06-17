@@ -1,4 +1,4 @@
-
+# coding=utf-8
 import bs4
 import string
 import unicodedata
@@ -78,15 +78,20 @@ def is_english(text):
 	""" Given a string, perhaps someone's name
 	    guess whether the string is entirely English or probably Japanese
 	"""
+	def extra_normalize(char):
+		if char == u'ł':
+			return 'l'
+		return char
 	def is_english_char(char):
 		return char in string.ascii_letters
 	def is_letter(char):
 		return unicodedata.category(char)[0] == 'L'
 	decomposed = unicodedata.normalize('NFD', text)   # split off accent chars
 	trimmed = filter(is_letter, decomposed)
+	trimmed = [extra_normalize(char) for char in trimmed]
 	count = len(trimmed)
 	count_english = len(filter(is_english_char, trimmed))
-	return (count_english / count) > 0.8
+	return (count_english / count) > 0.5
 
 def parse_date_time(time):
 	"""
