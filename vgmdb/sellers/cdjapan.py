@@ -1,6 +1,6 @@
 import logging
 import cdjapan_parse as parser
-from ._utils import squash_str,find_best_match
+from ._utils import squash_str,find_best_match, primary_name
 
 class NullHandler(logging.Handler):
 	def emit(self, record):
@@ -47,7 +47,7 @@ def search_album_catalog(catalog):
 	return found
 
 def search_artist_album_name(info):
-	artist = info['composers'][0]['names']['en']
+	artist = primary_name(info['composers'][0]['names'])
 	title = info['name']
 	results = parser.search_products(squash_str(artist+" "+title))
 	found = find_best_match(squash_str(title), results,

@@ -4,7 +4,7 @@ import json
 import logging
 
 from .. import config
-from ._utils import squash_str,find_best_match
+from ._utils import squash_str,find_best_match, primary_name
 from amazonproduct import api, errors
 
 class NullHandler(logging.Handler):
@@ -78,7 +78,7 @@ def search_album(info):
 def search_artist_album_name(info):
 	if not API:
 		return None
-	artist = info['composers'][0]['names']['en']
+	artist = primary_name(info['composers'][0]['names'])
 	title = info['name']
 	try:
 		results = parse_results(API.item_search('Music', ResponseGroup='ItemAttributes', Artist=squash_str(artist), Title=squash_str(title)))

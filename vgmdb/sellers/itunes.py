@@ -2,7 +2,7 @@ import urllib
 import urlparse
 import json
 import logging
-from ._utils import squash_str,find_best_match
+from ._utils import squash_str, find_best_match
 from .. import config
 
 SEARCH_API = 'https://itunes.apple.com/search?media=music&'

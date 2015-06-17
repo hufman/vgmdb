@@ -22,3 +22,9 @@ def find_best_match(query, matches, threshold=0.7, key=lambda x:x):
 	elif len(matches) > 0:
 		logger.debug("Closest match to %s was %s score %s"%(query, key(best_result), best))
 
+def primary_name(names):
+	""" Given a dict of lang->names, return a default one """
+	langs = names.keys()
+	if 'en' in langs:
+		return names['en']
+	return names[langs[0]]

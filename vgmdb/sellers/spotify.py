@@ -3,7 +3,7 @@ import urllib2
 import urlparse
 import json
 import logging
-from ._utils import squash_str,find_best_match
+from ._utils import squash_str, find_best_match, primary_name
 from .. import config
 
 SEARCH_API = 'https://api.spotify.com/v1/search'
@@ -49,7 +49,7 @@ def search_album(info):
 	return result
 
 def search_artist_album_name(info):
-	artist = info['composers'][0]['names']['en']
+	artist = primary_name(info['composers'][0]['names'])
 	title = info['name']
 	webdata = search("q=artist:%s+album:%s&type=album"%(urllib.quote(squash_str(artist)),urllib.quote(squash_str(title))))
 	data = json.loads(webdata)

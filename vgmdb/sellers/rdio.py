@@ -3,7 +3,7 @@ import urllib2
 import urlparse
 import json
 import logging
-from ._utils import squash_str, find_best_match
+from ._utils import squash_str, find_best_match, primary_name
 from .. import config
 
 class NullHandler(logging.Handler):
@@ -32,6 +32,7 @@ def api(args={}):
 	# import oauth2 here, instead of at the top, to
 	# make it crash on runtime, not startup
 	import oauth2 as oauth
+	args = dict([(k, v.encode('utf-8')) for k,v in args.items()])
 	body = urllib.urlencode(args)
 	headers = {
 		'User-Agent': 'VGMdb/1.0 vgmdb.info',
@@ -79,8 +80,8 @@ def empty_artist(info):
 	result['search'] = url_search_artist(info['name'])
 	return result
 def search_artist(info):
-	result = empty_artist(info)
 	try:
+		result = empty_artist(info)
 		found = search_artist_name(info['name'])
 		if found:
 			result['surity'] = 'name'
@@ -93,15 +94,15 @@ def search_artist(info):
 
 def empty_album(info):
 	result = dict(result_template)
-	artist_name = info['composers'][0]['names']['en']
+	artist_name = primary_name(info['composers'][0]['names'])
 	album_name = info['name']
 	result['search'] = url_search_album("%s %s"%(artist_name, album_name))
 	return result
 def search_album(info):
-	result = empty_album(info)
-	artist_name = info['composers'][0]['names']['en']
-	album_name = info['name']
 	try:
+		result = empty_album(info)
+		artist_name = primary_name(info['composers'][0]['names'])
+		album_name = info['name']
 		found = search_album_name(artist_name, album_name)
 		if found:
 			result['surity'] = 'name'

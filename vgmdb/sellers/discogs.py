@@ -3,7 +3,7 @@ import urllib2
 import urlparse
 import json
 import logging
-from ._utils import squash_str,find_best_match
+from ._utils import squash_str,find_best_match, primary_name
 from .. import config
 
 SEARCH_API = 'https://api.discogs.com/database/search'
@@ -62,7 +62,7 @@ def search_album_catalog(catalog):
 	return found
 
 def search_artist_album_name(info):
-	artist = info['composers'][0]['names']['en']
+	artist = primary_name(info['composers'][0]['names'])
 	title = info['name']
 	webdata = search("type=master&artist=%s&release_title=%s"%(urllib.quote(squash_str(artist)),urllib.quote(squash_str(title))))
 	data = json.loads(webdata)
