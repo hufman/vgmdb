@@ -1,0 +1,79 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"definitions": {
+		"discography": {
+			"title": "An artist's discography",
+			"type": "array",
+			"items": { "$ref": "common.json#/definitions/artistAlbum" }
+		},
+		"sex": {
+			"type": "string",
+			"enum": ["male", "female"]
+		},
+		"artistType": {
+			"type": "string",
+			"enum": ["Individual", "Unit"]
+		},
+		"artistInfo": {
+			"title": "Quick summary of an artist",
+			"type": "object",
+			"properties": {
+				"Album Votes": {
+					"title": "Total number of votes for this artist's albums",
+					"example": "7 votes for 3 albums",
+					"pattern": "^([0-9]+) votes for ([0-9]+) albums$"
+				},
+				"Birthplace": {
+					"title": "Where this artist was born"
+				},
+				"Credited works": {
+					"title": "Summary of artist contributions",
+					"type": "array",
+					"items": {
+						"type": "string",
+						"oneOf": [
+							{
+								"example": "4 albums in database",
+								"pattern": "^([0-9]+) albums in database$"
+							},
+							{
+								"example": "4 composer credits",
+								"pattern": "^([0-9]+) ([^ ]+) credits$"
+							}
+						]
+					}
+				},
+				"Weighted album rating": {
+					"title": "Total votes",
+					"type": "string",
+					"example": "8/10",
+					"pattern": "^([0-9]+)/([0-9]+)$"
+				}
+			}
+		}
+	},
+	"title": "Information about an artist",
+	"type": "object",
+	"properties": {
+		"birthday": { "$ref": "common.json#/definitions/rfc3339" },
+		"deathdate": { "$ref": "common.json#/definitions/rfc3339" },
+		"discography": { "$ref": "#/definitions/discography" },
+		"featured_on": { "$ref": "#/definitions/discography" },
+		"info": { "$ref": "#/definitions/artistInfo" },
+		"link": { "$ref": "common.json#/definitions/link" },
+		"meta": { "$ref": "common.json#/definitions/meta" },
+		"name": { "type": "string" },
+		"notes": { "type": "string" },
+		"picture_full": { "$ref": "common.json#/definitions/url" },
+		"picture_small": { "$ref": "common.json#/definitions/url" },
+		"sex": { "$ref": "#/definitions/sex" },
+		"twitter_names": { "type": "array", "items": { "type": "string" } },
+		"type": { "$ref": "#/definitions/artistType" },
+		"vgmdb_link": { "$ref": "common.json#/definitions/url" },
+		"websites": { "$ref":  "common.json#/definitions/itemWebsites" }
+	},
+	"required": [
+		"discography", "featured_on", "info", "link", "meta", "notes",
+		"type", "vgmdb_link", "websites"
+	]
+}

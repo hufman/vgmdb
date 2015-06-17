@@ -60,14 +60,20 @@ def parse_page(html_source):
 	soup_disco_table = soup_separator.find_next_sibling('div').find_next_sibling('div').div.table
 	if soup_disco_table:
 		artist_info['discography'] = utils.parse_discography(soup_disco_table, 'roles')
+	else:
+		artist_info['discography'] = []
 	soup_featured_table = soup_separator.find_next_sibling('br').find_next_sibling('div').find_next_sibling('div').div.table
 	if soup_featured_table:
 		artist_info['featured_on'] = utils.parse_discography(soup_featured_table, 'roles')
+	else:
+		artist_info['featured_on'] = []
 
 	# Parse for Websites
 	soup_divs = soup_right_column.find_all('div', recursive=False)
 	if soup_divs[0].div and soup_divs[0].div.h3 and soup_divs[0].div.h3.string == 'Websites':
 		artist_info['websites'] = _parse_websites(soup_divs[1].div)
+	else:
+		artist_info['websites'] = {}
 	artist_info['meta'] = utils.parse_meta(soup_divs[-1].div)
 
 	# Parse for twitter handle
@@ -145,7 +151,7 @@ def _parse_profile_info(soup_profile_left):
 				  'star' in soup_item_data['class']:
 					total_stars = soup_item.find_all('div', 'star')
 					stars = soup_item.find_all('div', 'star_on')
-					item_list.append('%s/%s'%(len(stars),len(total_stars)))
+					item_list.append(u'%s/%s'%(len(stars),len(total_stars)))
 					soup_votes = soup_item.find_all('div')[-1]
 					ret['Album Votes'] = soup_votes.contents[0].string + \
 					  soup_votes.contents[1] + \
