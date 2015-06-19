@@ -90,6 +90,23 @@
 			},
 			"required": ["link", "catalog", "titles", "role"]
 		},
+		"productAlbum": {
+			"title": "A link object to an album related to a product",
+			"type": "object",
+			"properties": {
+				"link": { "$ref": "#/definitions/link" },
+				"classifications": {
+					"type": "array",
+					"items": { "type": "string" }
+				},
+				"date": {"$ref": "#/definitions/rfc3339"},
+				"titles": {"$ref": "#/definitions/names"},
+				"catalog": {"$ref": "#/definitions/catalog"},
+				"type": {"$ref": "#/definitions/albumType"},
+				"reprint": {"type": "boolean"}
+			},
+			"required": ["link", "date", "catalog", "titles", "type", "reprint"]
+		},
 		"reprintedAlbum": {
 			"title": "A link object to a reprint of an album",
 			"type": "object",

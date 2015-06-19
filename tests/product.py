@@ -14,7 +14,7 @@ class TestProducts(unittest.TestCase):
 		skyrim_code = file(os.path.join(base, 'product_skyrim.html'), 'r').read()
 		skyrim = product.parse_page(skyrim_code)
 		self.assertEqual(u"2011-11-11", skyrim['release_date'])
-		self.assertEqual(u"Bethesda Game Studios", skyrim['organizations'][0])
+		self.assertEqual(u"Bethesda Game Studios", skyrim['organizations'][0]['names']['en'])
 		self.assertEqual(u"The Elder Scrolls V: Skyrim", skyrim['name'])
 		self.assertEqual(u"JPY (Japan)", skyrim['releases'][3]['region'])
 		self.assertFalse('link' in skyrim['releases'][3])
@@ -33,6 +33,7 @@ class TestProducts(unittest.TestCase):
 		self.assertEqual(0, len(witcher['releases']))
 		self.assertEqual(u"KK25", witcher['albums'][0]['catalog'])
 		self.assertEqual(u"Efendija", witcher['meta']['edited_user'])
+		self.assertEqual(0, len(witcher['organizations']))
 
 	def test_at(self):
 		at_code = file(os.path.join(base, 'product_at.html'), 'r').read()

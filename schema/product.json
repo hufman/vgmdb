@@ -1,0 +1,37 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"definitions": {
+		"productTitles": {
+			"title": "The list of sub products in a franchise",
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"date": { "$ref": "common.json#/definitions/rfc3339" },
+					"link": { "$ref": "common.json#/definitions/link" },
+					"names": { "$ref": "common.json#/definitions/names" }
+				}
+			}
+		}
+	},
+	"title": "Information about a product",
+	"type": "object",
+	"properties": {
+		"link": { "$ref": "common.json#/definitions/link" },
+		"type": { "type": "string" },
+		"name": { "type": "string" },
+		"name_real": { "type": "string" },
+		"description": { "type": "string" },
+		"release_date": { "$ref": "common.json#/definitions/rfc3339" },
+		"meta": { "$ref": "common.json#/definitions/meta" },
+		"albums": { "type": "array", "items": { "$ref": "common.json#/definitions/productAlbum" }},
+		"franchises": { "type": "array", "items": { "$ref": "common.json#/definitions/namedItem" }},
+		"titles": { "$ref": "#/definitions/productTitles" },
+		"organizations": { "type": "array", "items": { "$ref": "common.json#/definitions/namedItem" }},
+		"vgmdb_link": { "$ref": "common.json#/definitions/url" },
+		"websites": { "$ref": "common.json#/definitions/itemWebsites" }
+	},
+	"required": [
+		"link", "name", "description", "meta", "albums", "type", "vgmdb_link", "websites"
+	]
+}

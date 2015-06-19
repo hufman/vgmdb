@@ -72,6 +72,11 @@ def parse_page(html_source):
 					product_info['websites'][website_type] = websites
 	product_info['meta'] = utils.parse_meta(soup_right_divs[-1].div)
 
+	# make sure required things are in place
+	if "description" not in product_info:
+		product_info['description'] = ''
+	if 'websites' not in product_info:
+		product_info['websites'] = {}
 	return product_info
 
 def _parse_product_info(soup_profile_info):
@@ -95,7 +100,8 @@ def _parse_product_info(soup_profile_info):
 						item['link'] = utils.trim_absolute(soup_child_link['href'])
 						value.append(item)
 			else:
-				value = unicode(soup_child.string)
+				if soup_child.string:
+					value = unicode(soup_child.string)
 
 			if name == 'Franchises' and isinstance(value, list):
 				product_info['franchises'] = value
@@ -106,8 +112,20 @@ def _parse_product_info(soup_profile_info):
 					product_info['organizations'] = value
 				else:
 					product_info['organizations'] = [value]
+				# Turn them into named items
 			if name == 'Description' and value != None:
 				product_info['description'] = value
+	required_arrays = ['franchises', 'organizations']
+	for key in required_arrays:
+		if not key in product_info:
+			product_info[key] = []
+		named_array = []
+		for item in product_info[key]:
+			if isinstance(item, dict):
+				named_array.append(item)
+			else:
+				named_array.append({"names": {"en": item}})
+		product_info[key] = named_array
 	return product_info
 
 def _parse_product_releases(soup_table):
