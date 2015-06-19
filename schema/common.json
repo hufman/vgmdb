@@ -69,11 +69,11 @@
 			"type": "object",
 			"properties": {
 				"link": { "$ref": "#/definitions/link" },
-				"date": {"type":"string"},
-				"titles": {"$ref":"#/definitions/names"},
+				"date": {"$ref": "#/definitions/rfc3339"},
+				"titles": {"$ref": "#/definitions/names"},
 				"catalog": {"$ref": "#/definitions/catalog"},
-				"type": {"$ref":"#/definitions/albumType"},
-				"roles": {"type":"array","items":{"type":"string"}}
+				"type": {"$ref": "#/definitions/albumType"},
+				"roles": {"type": "array", "items": {"type":"string"}}
 			},
 			"required": ["link", "catalog", "titles", "roles"]
 		},
@@ -83,7 +83,7 @@
 			"properties": {
 				"link": { "$ref": "#/definitions/link" },
 				"catalog": {"$ref": "#/definitions/catalog"},
-				"note": {"type":"string"}
+				"note": {"type": "string"}
 			},
 			"required": ["link", "catalog", "note"],
 			"additionalProperties": false
@@ -108,7 +108,7 @@
 		"rfc3339": {
 			"title": "RFC 3339 Date and Time format",
 			"type": "string",
-			"pattern": "^([0-9]{4})-([0-1][0-9])-([0-3][0-9])(?:T([0-2][0-9]):([0-5][0-9])(?::([0-5][0-9]))?)?$"
+			"pattern": "^([0-9]{4})(?:-([0-1][0-9])(?:-([0-3][0-9]))?)?(?:T([0-2][0-9]):([0-5][0-9])(?::([0-5][0-9]))?)?$"
 		},
 		"meta": {
 			"title": "Basic information about the information, like last updated time",
