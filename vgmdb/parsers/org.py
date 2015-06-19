@@ -62,6 +62,7 @@ def _parse_org_info(soup_profile_info):
 					link = soup_child_link['href']
 					link = utils.trim_absolute(link)
 					item['link'] = link
+					item['owner'] = False
 
 					sibling = soup_child_link.next_sibling
 					if sibling and not isinstance(sibling, bs4.Tag):

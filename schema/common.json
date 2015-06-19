@@ -77,6 +77,19 @@
 			},
 			"required": ["link", "catalog", "titles", "roles"]
 		},
+		"publisherAlbum": {
+			"title": "A link object to an album from an org's release list",
+			"type": "object",
+			"properties": {
+				"link": { "$ref": "#/definitions/link" },
+				"date": {"$ref": "#/definitions/rfc3339"},
+				"titles": {"$ref": "#/definitions/names"},
+				"catalog": {"$ref": "#/definitions/catalog"},
+				"type": {"$ref": "#/definitions/albumType"},
+				"role": {"type": "string"}
+			},
+			"required": ["link", "catalog", "titles", "role"]
+		},
 		"reprintedAlbum": {
 			"title": "A link object to a reprint of an album",
 			"type": "object",

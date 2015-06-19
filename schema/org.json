@@ -1,0 +1,34 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"title": "Information about an organization",
+	"definitions": {
+		"orgStaff": {
+			"title": "A member of an organization",
+			"type": "object",
+			"properties": {
+				"link": { "$ref": "common.json#/definitions/link" },
+				"names": { "$ref": "common.json#/definitions/names" },
+				"owner": { "type": "boolean" }
+			},
+			"required": ["link", "names", "owner"]
+		}
+	},
+	"type": "object",
+	"properties": {
+		"description": { "type": "string" },
+		"link": { "$ref": "common.json#/definitions/link" },
+		"meta": { "$ref": "common.json#/definitions/meta" },
+		"name": { "type": "string" },
+		"picture_full": { "$ref": "common.json#/definitions/url" },
+		"picture_small": { "$ref": "common.json#/definitions/url" },
+		"region": { "type": "string" },
+		"releases": { "type": "array", "items": {"$ref": "common.json#/definitions/publisherAlbum" }},
+		"staff": { "type": "array", "items": { "$ref": "#/definitions/orgStaff" }},
+		"type": { "type": "string" },
+		"vgmdb_link": { "$ref": "common.json#/definitions/url" },
+		"websites": { "$ref": "common.json#/definitions/itemWebsites" }
+	},
+	"required": [
+		"description", "link", "meta", "name", "region", "releases", "staff", "type", "vgmdb_link", "websites"
+	]
+}
