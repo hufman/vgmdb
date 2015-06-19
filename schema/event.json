@@ -1,0 +1,31 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"definitions": {
+		"albumRelease": {
+			"type": "object",
+			"properties": {
+				"album_type": { "$ref": "common.json#/definitions/albumType" },
+				"catalog": { "$ref": "common.json#/definitions/catalog" },
+				"link": { "$ref": "common.json#/definitions/link" },
+				"publisher": { "$ref": "common.json#/definitions/namedItem" },
+				"release_date": { "$ref": "common.json#/definitions/rfc3339" },
+				"release_type": { "type": "string" },
+				"titles": { "$ref": "common.json#/definitions/names" }
+			}
+		}
+	},
+	"title": "Information about an event",
+	"type": "object",
+	"properties": {
+		"link": { "$ref": "common.json#/definitions/link" },
+		"name": { "type": "string" },
+		"notes": { "type": "string" },
+		"vgmdb_link": { "$ref": "common.json#/definitions/url" },
+		"startdate": { "$ref": "common.json#/definitions/rfc3339" },
+		"enddate": { "$ref": "common.json#/definitions/rfc3339" },
+		"releases": { "type": "array", "items": { "$ref": "#/definitions/albumRelease" }}
+	},
+	"required": [
+		"link", "name", "notes", "vgmdb_link", "startdate", "enddate", "releases"
+	]
+}

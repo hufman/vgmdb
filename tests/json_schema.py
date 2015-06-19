@@ -62,5 +62,11 @@ class TestJsonOrgs(unittest.TestCase):
 	glob_path = "%s/org_*html" % base
 	import vgmdb.parsers.org as parser_module
 
+class TestJsonEvents(unittest.TestCase):
+	__metaclass__ = TestJsonSchemaMeta
+	schema_path = os.path.join(project, "schema", "event.json")
+	glob_path = "%s/event_*html" % base
+	import vgmdb.parsers.event as parser_module
+
 if __name__ == '__main__':
 	unittest.main()
