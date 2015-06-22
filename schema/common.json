@@ -133,7 +133,7 @@
 		"link": {
 			"title": "A relative link to another vgmdb page",
 			"type": "string",
-			"pattern": "^[a-z]+/[0-9]+"
+			"pattern": "^([a-z]+)/(.+)$"
 		},
 		"rfc3339": {
 			"title": "RFC 3339 Date and Time format",

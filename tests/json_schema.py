@@ -74,5 +74,11 @@ class TestJsonProducts(unittest.TestCase):
 	glob_path = "%s/product_*html" % base
 	import vgmdb.parsers.product as parser_module
 
+class TestJsonSearch(unittest.TestCase):
+	__metaclass__ = TestJsonSchemaMeta
+	schema_path = os.path.join(project, "schema", "search.json")
+	glob_path = "%s/search*html" % base
+	import vgmdb.parsers.search as parser_module
+
 if __name__ == '__main__':
 	unittest.main()

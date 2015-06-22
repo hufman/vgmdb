@@ -1,0 +1,70 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"definitions": {
+		"resultAlbum": {
+			"title": "An album search result",
+			"type": "object",
+			"properties": {
+				"catalog": { "$ref": "common.json#/definitions/catalog" },
+				"link": { "$ref": "common.json#/definitions/link" },
+				"release_date": { "$ref": "common.json#/definitions/rfc3339" },
+				"titles": { "$ref": "common.json#/definitions/names"}
+			},
+			"required": ["catalog", "link", "release_date", "titles"]
+		},
+		"resultArtist": {
+			"title": "An artist search result",
+			"type": "object",
+			"properties": {
+				"aliases": { "type": "array", "items": { "type": "string" }},
+				"link": { "$ref": "common.json#/definitions/link" },
+				"names": { "$ref": "common.json#/definitions/names" }
+			},
+			"required": ["link", "names"]
+		},
+		"resultOrg": {
+			"title": "An organization search result",
+			"type": "object",
+			"properties": {
+				"link": { "$ref": "common.json#/definitions/link" },
+				"names": { "$ref": "common.json#/definitions/names" }
+			},
+			"required": ["link", "names"]
+		},
+		"resultProduct": {
+			"title": "A product search result",
+			"type": "object",
+			"properties": {
+				"link": { "$ref": "common.json#/definitions/link" },
+				"names": { "$ref": "common.json#/definitions/names" },
+				"type": { "$ref": "common.json#/definitions/albumCategory" }
+			},
+			"required": ["link", "names", "type"]
+		}
+	},
+
+	"title": "The list of search results for a specific keyword",
+	"type": "object",
+	"properties": {
+		"link": { "$ref": "common.json#/definitions/link" },
+		"meta": {},
+		"query": { "type": "string" },
+		"results": {
+			"type": "object",
+			"properties": {
+				"albums": { "type": "array", "items": { "$ref": "#/definitions/resultAlbum" }},
+				"artists": { "type": "array", "items": { "$ref": "#/definitions/resultArtist" }},
+				"orgs": { "type": "array", "items": { "$ref": "#/definitions/resultOrg" }},
+				"products": { "type": "array", "items": { "$ref": "#/definitions/resultProduct" }}
+			},
+			"required": [ "albums", "artists", "orgs", "products" ]
+		},
+		"sections": {
+			"title": "The list of subsections of query results",
+			"type": "array",
+			"items": { "type": "string", "enum": [ "albums", "artists", "orgs", "products" ]}
+		},
+		"vgmdb_link": { "$ref" : "common.json#/definitions/url" }
+	},
+	"required": [ "link", "query", "results", "sections" ]
+}
