@@ -23,6 +23,7 @@ class TestOrgList(unittest.TestCase):
 		self.assertEqual(u"1998-03-21", list['events']['1998'][0]['enddate'])
 		self.assertEqual(u"2000-04-22", list['events']['2000'][0]['startdate'])
 		self.assertEqual(u"2000-04-22", list['events']['2000'][0]['enddate'])
+		self.assertFalse("shortname" in list['events']['1998'][0])
 
 
 if __name__ == '__main__':

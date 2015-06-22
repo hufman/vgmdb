@@ -53,7 +53,7 @@ def _parse_event(soup_event):
 	soup_link = soup_event.h3.a
 	info = _parse_eventlink(soup_link)
 	soup_short = soup_event.find('a', recursive=False)	# optional shorttag
-	if soup_short:
+	if soup_short and soup_short.span and soup_short.span.string:
 		info['shortname'] = unicode(soup_short.span.string)
 	soup_date = soup_event.div
 	if soup_date:
