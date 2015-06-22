@@ -13,6 +13,17 @@ resourceTypes:
             type: string
             required: false
             description: What function should be called as the JSON-P callback to receive the data. Defaults to `callback`
+          format:
+            type: string
+            required: false
+            description: Force a specific output format
+            enum:
+              - html
+              - json
+              - jsonp
+              - rdf
+              - turtle
+              - yaml
         responses:
           200:
             description: Information about this item
@@ -35,6 +46,17 @@ resourceTypes:
             type: string
             required: false
             description: What function should be called as the JSON-P callback to receive the data. Defaults to `callback`
+          format:
+            type: string
+            required: false
+            description: Force a specific output format
+            enum:
+              - html
+              - json
+              - jsonp
+              - rdf
+              - turtle
+              - yaml
         responses:
           200:
             description: Information about this item
