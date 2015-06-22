@@ -26,6 +26,14 @@
 				"Doujin/Fanmade", "Delayed/Cancelled", "Bootleg"
 			]
 		},
+		"productType": {
+			"title": "The type of product",
+			"type": "string",
+			"enum": [
+				"Video", "Franchise", "Game", "Radio & Drama",
+				"Print Publication", "Other"
+			]
+		},
 		"trackNames": {
 			"title": "Language-specific names, with full names from the tracklist tabs",
 			"type": "object",
