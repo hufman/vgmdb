@@ -1,0 +1,55 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"definitions": {
+		"section": {
+			"type": "string",
+			"enum": [
+				"albums", "media", "tracklists", "scans",
+				"artists", "products", "labels", "links", "ratings"
+			]
+		},
+		"contributor": {
+			"type": "object",
+			"properties": {
+				"link": { "$ref": "common.json#/definitions/url" },
+				"name": { "type": "string" }
+			},
+			"required": [ "link", "name" ]
+		},
+		"update": {
+			"title": "An update to VGMdb",
+			"type": "object",
+			"properties": {
+				"link": { "$ref": "common.json#/definitions/link" },
+				"contributor": { "$ref": "#/definitions/contributor" },
+				"date": { "$ref": "common.json#/definitions/rfc3339" }
+			},
+			"required": ["catalog", "link", "release_date", "titles"]
+		}
+	},
+
+	"title": "The list of recent site updates",
+	"type": "object",
+	"properties": {
+		"link": { "$ref": "common.json#/definitions/link" },
+		"meta": {},
+		"section": { "$ref": "#/definitions/section" },
+		"updates": {
+			"type": "array",
+			"properties": {
+				"albums": { "type": "array", "items": { "$ref": "#/definitions/recentAlbum" }},
+				"artists": { "type": "array", "items": { "$ref": "#/definitions/recentArtist" }},
+				"orgs": { "type": "array", "items": { "$ref": "#/definitions/recentOrg" }},
+				"products": { "type": "array", "items": { "$ref": "#/definitions/recentProduct" }}
+			},
+			"required": [ "albums", "artists", "orgs", "products" ]
+		},
+		"sections": {
+			"title": "The list of subsections of query results",
+			"type": "array",
+			"items": { "$ref": "#definitions/section" }
+		},
+		"vgmdb_link": { "$ref" : "common.json#/definitions/url" }
+	},
+	"required": [ "link", "section", "updates", "sections" ]
+}
