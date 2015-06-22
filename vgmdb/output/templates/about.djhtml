@@ -19,6 +19,10 @@ However, VGMdb does not provide an API to access its information, which provides
 <p>
 All of the information that is parsed out of vgmdb.net is exposed through JSON. A subset of that information is also available in HTML+RDFa, RDF+XML, and Turtle. Send an HTTP Accept header to request a format, or append a ?format selector to the url.
 </p>
+<h3>Documentation</h3>
+<p>
+The API is documented using RAML, available <a href="raml/api.raml">here</a>. The JSON responses are documented with JSON Schema, and each info page has a validation link for verification against the respective schema.
+</p>
 <h3>Searching</h3>
 <p>
 Searching the database is easy. You can search for everything, or just a specific category. Keywords shorter than 3 characters are ignored.<br/>
