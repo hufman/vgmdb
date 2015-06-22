@@ -1,0 +1,35 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"definitions": {
+		"orgSummary": {
+			"title": "An org list summary",
+			"type": "object",
+			"properties": {
+				"link": { "$ref": "common.json#/definitions/link" },
+				"names": { "$ref": "common.json#/definitions/names" },
+				"imprints": { "type": "array", "items": { "$ref": "#/definitions/orgSummary" }},
+				"subsidiaries": { "type": "array", "items": { "$ref": "#/definitions/orgSummary" }},
+				"formerly": { "type": "array", "items": { "$ref": "#/definitions/orgSummary" }}
+			},
+			"required": ["link", "names"]
+		}
+	},
+
+	"title": "A list of organizations in VGMdb",
+	"type": "object",
+	"properties": {
+		"orgs": {
+			"type": "object",
+			"patternProperties": {
+				"^[#A-Z]$": { "type": "array", "items": {
+					"$ref": "#/definitions/orgSummary"
+				}}
+			}
+		},
+		"letters": { "type": "array", "items": { "type": "string", "pattern": "^[#A-Z]$" }},
+		"link": { "$ref": "common.json#/definitions/link" },
+		"meta": {},
+		"vgmdb_link": { "$ref": "common.json#/definitions/url" }
+	},
+	"required": [ "orgs", "letters", "link", "meta", "vgmdb_link" ]
+}
