@@ -1,0 +1,29 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"definitions": {
+		"artistSummary": {
+			"title": "An artist list summary",
+			"type": "object",
+			"properties": {
+				"link": { "$ref": "common.json#/definitions/link" },
+				"names": { "$ref": "common.json#/definitions/names" },
+				"name_real": { "type": "string" }
+			},
+			"required": ["link", "names"]
+		}
+	},
+
+	"title": "A list of artists in VGMdb",
+	"type": "object",
+	"properties": {
+		"artists": { "type": "array", "items": { "$ref": "#/definitions/artistSummary" }},
+		"letters": { "type": "array", "items": { "type": "string", "enum": [
+			"#", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M",
+			"N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"
+		]}},
+		"link": { "$ref": "common.json#/definitions/link" },
+		"meta": {},
+		"vgmdb_link": { "$ref": "common.json#/definitions/url" }
+	},
+	"required": [ "artists", "letters", "link", "meta", "vgmdb_link" ]
+}
