@@ -1,0 +1,35 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"definitions": {
+		"eventSummary": {
+			"title": "An event list summary",
+			"type": "object",
+			"properties": {
+				"link": { "$ref": "common.json#/definitions/link" },
+				"names": { "$ref": "common.json#/definitions/names" },
+				"shortname": { "type": "string" },
+				"startdate": { "$ref": "common.json#/definitions/rfc3339" },
+				"enddate": { "$ref": "common.json#/definitions/rfc3339" }
+			},
+			"required": ["link", "names", "startdate", "enddate"]
+		}
+	},
+
+	"title": "A list of release events in VGMdb",
+	"type": "object",
+	"properties": {
+		"events": {
+			"type": "object",
+			"patternProperties": {
+				"^[0-9]{4}$": { "type": "array", "items": {
+					"$ref": "#/definitions/eventSummary"
+				}}
+			}
+		},
+		"years": { "type": "array", "items": { "type": "string", "pattern": "^[0-9]{4}$" }},
+		"link": { "$ref": "common.json#/definitions/link" },
+		"meta": {},
+		"vgmdb_link": { "$ref": "common.json#/definitions/url" }
+	},
+	"required": [ "events", "years", "link", "meta", "vgmdb_link" ]
+}
