@@ -80,5 +80,11 @@ class TestJsonSearch(unittest.TestCase):
 	glob_path = "%s/search*html" % base
 	import vgmdb.parsers.search as parser_module
 
+class TestJsonAlbumList(unittest.TestCase):
+	__metaclass__ = TestJsonSchemaMeta
+	schema_path = os.path.join(project, "schema", "albumlist.json")
+	glob_path = "%s/albumlist.html" % base
+	import vgmdb.parsers.albumlist as parser_module
+
 if __name__ == '__main__':
 	unittest.main()

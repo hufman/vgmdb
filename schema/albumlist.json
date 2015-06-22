@@ -1,0 +1,31 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"definitions": {
+		"albumSummary": {
+			"title": "An album list summary",
+			"type": "object",
+			"properties": {
+				"catalog": { "$ref": "common.json#/definitions/catalog" },
+				"link": { "$ref": "common.json#/definitions/link" },
+				"release_date": { "$ref": "common.json#/definitions/rfc3339" },
+				"titles": { "$ref": "common.json#/definitions/names" },
+				"type": { "$ref": "common.json#/definitions/albumType" }
+			},
+			"required": ["catalog", "link", "release_date", "titles", "type"]
+		}
+	},
+
+	"title": "A list of albums in VGMdb",
+	"type": "object",
+	"properties": {
+		"albums": { "type": "array", "items": { "$ref": "#/definitions/albumSummary" }},
+		"letters": { "type": "array", "items": { "type": "string", "enum": [
+			"#", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M",
+			"N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"
+		]}},
+		"link": { "$ref": "common.json#/definitions/link" },
+		"meta": {},
+		"vgmdb_link": { "$ref": "common.json#/definitions/url" }
+	},
+	"required": [ "albums", "letters", "link", "meta", "vgmdb_link" ]
+}
