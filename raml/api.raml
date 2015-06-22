@@ -4,6 +4,22 @@ version: 1
 baseUri: http://vgmdb.info
 mediaType: application/json
 
+schemas:
+  - album: !include http://vgmdb.info/schema/album.json
+  - artist: !include http://vgmdb.info/schema/artist.json
+  - event: !include http://vgmdb.info/schema/event.json
+  - org: !include http://vgmdb.info/schema/org.json
+  - product: !include http://vgmdb.info/schema/product.json
+  - release: !include http://vgmdb.info/schema/release.json
+  - albumlist: !include http://vgmdb.info/schema/albumlist.json
+  - artistlist: !include http://vgmdb.info/schema/artistlist.json
+  - eventlist: !include http://vgmdb.info/schema/eventlist.json
+  - orglist: !include http://vgmdb.info/schema/orglist.json
+  - productlist: !include http://vgmdb.info/schema/productlist.json
+  - search: !include http://vgmdb.info/schema/search.json
+  - sellers: !include http://vgmdb.info/schema/sellers.json
+  - recent: !include http://vgmdb.info/schema/recent.json
+
 resourceTypes:
   - infoitem:
       usage: Any single item on vgmdb, supports content negotiation
@@ -97,6 +113,12 @@ resourceTypes:
     id:
       displayName: Artist ID
       type: integer
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            schema: artist
 /artist/{id}/sellers:
   type: infoitem
   displayName: Artist album sellers
@@ -110,6 +132,11 @@ resourceTypes:
         type: boolean
         required: false
         description: Whether the sellers search should return partial results or wait until everything is finished
+    responses:
+      200:
+        body:
+          application/json:
+            schema: sellers
 /album/{id}:
   type: infoitem
   displayName: Album info
@@ -117,6 +144,12 @@ resourceTypes:
     id:
       displayName: Album ID
       type: integer
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            schema: album
 /album/{id}/sellers:
   type: infoitem
   displayName: Album sellers info
@@ -130,6 +163,11 @@ resourceTypes:
         type: boolean
         required: false
         description: Whether the sellers search should return partial results or wait until everything is finished
+    responses:
+      200:
+        body:
+          application/json:
+            schema: sellers
 /product/{id}:
   type: infoitem
   displayName: Product info
@@ -137,6 +175,12 @@ resourceTypes:
     id:
       displayName: Product ID
       type: integer
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            schema: product
 /release/{id}:
   type: infoitem
   displayName: Release info
@@ -144,6 +188,12 @@ resourceTypes:
     id:
       displayName: Release ID
       type: integer
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            schema: release
 /event/{id}:
   type: infoitem
   displayName: Event info
@@ -151,6 +201,12 @@ resourceTypes:
     id:
       displayName: Event ID
       type: integer
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            schema: event
 /org/{id}:
   type: infoitem
   displayName: Org info
@@ -158,6 +214,12 @@ resourceTypes:
     id:
       displayName: Org ID
       type: integer
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            schema: org
 
 # List pages
 /albumlist/{letter}:
@@ -167,6 +229,12 @@ resourceTypes:
     letter:
       type: string
       pattern: ^[#A-Z]$
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            schema: albumlist
 /artistlist/{letter}:
   type: infolist
   displayName: Artist List
@@ -174,6 +242,12 @@ resourceTypes:
     letter:
       type: string
       pattern: ^[#A-Z]$
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            schema: artistlist
 /productlist/{letter}:
   type: infolist
   displayName: Product List
@@ -181,12 +255,30 @@ resourceTypes:
     letter:
       type: string
       pattern: ^[#A-Z]$
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            schema: productlist
 /orglist:
   type: infolist
-  displayName: Org List
+  displayName: Complete Org List
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            schema: orglist
 /eventlist:
   type: infolist
-  displayName: Event List
+  displayName: Complete Event List
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            schema: eventlist
 /orglist/{letter}:
   type: infolist
   displayName: Org List
@@ -195,6 +287,12 @@ resourceTypes:
       displayName: Show organizations starting with the given letter
       type: string
       pattern: ^[#A-Z]$
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            schema: orglist
 /eventlist/{year}:
   type: infolist
   displayName: Event List
@@ -202,6 +300,12 @@ resourceTypes:
     year:
       displayName: What year to show events from
       type: integer
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            schema: eventlist
 
 # search page
 /search:
@@ -213,6 +317,11 @@ resourceTypes:
         required: true
         type: string
         description: The query to search for
+    responses:
+      200:
+        body:
+          application/json:
+            schema: search
 /search/{query}:
   type: infolist
   displayName: Search all item types for the given query
@@ -220,6 +329,12 @@ resourceTypes:
     query:
       type: string
       description: The query to search for
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            schema: search
 /search/{type}:
   type: infolist
   displayName: Search all item types for the given query
@@ -238,6 +353,11 @@ resourceTypes:
         required: true
         type: string
         description: The query to search for
+    responses:
+      200:
+        body:
+          application/json:
+            schema: search
 /search/{type}/{query}:
   type: infolist
   displayName: Search all item types for the given query
@@ -253,6 +373,12 @@ resourceTypes:
     query:
       description: The query to search for
       type: string
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            schema: search
 
 # recent
 /recent/{type}:
@@ -273,3 +399,9 @@ resourceTypes:
         - labels
         - links
         - ratings
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            schema: recent
