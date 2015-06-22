@@ -98,5 +98,11 @@ class TestJsonOrgList(unittest.TestCase):
 	glob_path = "%s/orglist.html" % base
 	import vgmdb.parsers.orglist as parser_module
 
+class TestJsonProductList(unittest.TestCase):
+	__metaclass__ = TestJsonSchemaMeta
+	schema_path = os.path.join(project, "schema", "productlist.json")
+	glob_path = "%s/productlist.html" % base
+	import vgmdb.parsers.productlist as parser_module
+
 if __name__ == '__main__':
 	unittest.main()
