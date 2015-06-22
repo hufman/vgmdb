@@ -1,0 +1,27 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"definitions": {
+	},
+	"title": "Information about a specific release of a product on a platform",
+	"type": "object",
+	"properties": {
+		"link": { "$ref": "common.json#/definitions/link" },
+		"type": { "$ref": "common.json#/definitions/productType" },
+		"name": { "type": "string" },
+		"name_real": { "type": "string" },
+		"catalog": { "type": "string" },
+		"upc": { "type": "string" },
+		"platform": { "type": "string" },
+		"region": { "type": "string" },
+		"release_date": { "$ref": "common.json#/definitions/rfc3339" },
+		"release_type": { "type": "string" },
+		"release_albums": { "type": "array", "items": { "$ref": "common.json#/definitions/productAlbum" }},
+		"product_albums": { "type": "array", "items": { "$ref": "common.json#/definitions/productAlbum" }},
+		"meta": { "$ref": "common.json#/definitions/meta" },
+		"vgmdb_link": { "$ref": "common.json#/definitions/url" }
+	},
+	"required": [
+		"link", "name", "meta", "product_albums", "release_albums", "type", "vgmdb_link",
+		"platform", "region", "catalog", "upc", "release_date", "release_type"
+	]
+}

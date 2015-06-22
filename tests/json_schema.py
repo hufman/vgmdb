@@ -74,6 +74,12 @@ class TestJsonProducts(unittest.TestCase):
 	glob_path = "%s/product_*html" % base
 	import vgmdb.parsers.product as parser_module
 
+class TestJsonReleases(unittest.TestCase):
+	__metaclass__ = TestJsonSchemaMeta
+	schema_path = os.path.join(project, "schema", "release.json")
+	glob_path = "%s/release_*html" % base
+	import vgmdb.parsers.release as parser_module
+
 class TestJsonSearch(unittest.TestCase):
 	__metaclass__ = TestJsonSchemaMeta
 	schema_path = os.path.join(project, "schema", "search.json")
