@@ -97,6 +97,19 @@ resourceTypes:
     id:
       displayName: Artist ID
       type: integer
+/artist/{id}/sellers:
+  type: infoitem
+  displayName: Artist album sellers
+  uriParameters:
+    id:
+      displayName: Artist ID
+      type: integer
+  get:
+    queryParameters:
+      allow_partial:
+        type: boolean
+        required: false
+        description: Whether the sellers search should return partial results or wait until everything is finished
 /album/{id}:
   type: infoitem
   displayName: Album info
@@ -104,6 +117,19 @@ resourceTypes:
     id:
       displayName: Album ID
       type: integer
+/album/{id}/sellers:
+  type: infoitem
+  displayName: Album sellers info
+  uriParameters:
+    id:
+      displayName: Album ID
+      type: integer
+  get:
+    queryParameters:
+      allow_partial:
+        type: boolean
+        required: false
+        description: Whether the sellers search should return partial results or wait until everything is finished
 /product/{id}:
   type: infoitem
   displayName: Product info
