@@ -1,0 +1,30 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"definitions": {
+		"surity": {
+			"title": "How confident the result matches the search",
+			"type": "string",
+			"enum": [ "name", "album", "artist+album", "catalog" ]
+		}
+	},
+
+	"title": "A list of sellers for an album or artist",
+	"type": "object",
+	"properties": {
+		"sellers": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"found": { "title": "A link to the search result, if found", "$ref": "common.json#/definitions/url" },
+					"icon": { "title": "A link to the search provider icon", "$ref": "common.json#/definitions/link" },
+					"name": { "title": "The name of the search provider", "type": "string" },
+					"search": { "title": "A link to the search provider's search page, if it exists", "$ref": "common.json#/definitions/url" },
+					"surity": { "title": "Confidence about the search result", "$ref": "#/definitions/surity" }
+				},
+				"required": [ "icon", "name" ]
+			}
+		}
+	},
+	"required": [ "sellers" ]
+}
