@@ -26,7 +26,7 @@ import vgmdb.config
 _vgmdb = vgmdb
 del vgmdb
 
-def _request_page(cache_key, page_type, id, link=None):
+def request_page(cache_key, page_type, id, link=None):
 	""" Generic function to handle general vgmdb requests
 
 	@param cache_key is where the data should be stored in the cache
@@ -75,7 +75,7 @@ def info(page_type, id):
 	"""
 	cache_key = 'vgmdb/%s/%s'%(page_type,_urllib.quote(str(id)))
 	link = '%s/%s'%(page_type,id)
-	return _request_page(cache_key, page_type, id, link)
+	return request_page(cache_key, page_type, id, link)
 _info_aliaser = lambda page_type: lambda id: info(page_type, id)
 for name in ['artist','album','product','release','event','org']:
 	func = _info_aliaser(name)
@@ -99,7 +99,7 @@ def list(page_type, id='A'):
 		link = '%s/%s'%(page_type, _urllib.quote(str(id)))
 	else:
 		link = '%s'%(page_type,)
-	return _request_page(cache_key, page_type, id, link)
+	return request_page(cache_key, page_type, id, link)
 _list_aliaser = lambda page_type: lambda id='A': list(page_type, id)
 for name in ['albumlist','artistlist','productlist','orglist','eventlist']:
 	func = _list_aliaser(name)
@@ -118,7 +118,7 @@ def search(page_type, query):
 	"""
 	cache_key = 'vgmdb/search/%s'%(_base64.b64encode(query),)
 	link = 'search/%s'%(_urllib.quote(query),)
-	data = _request_page(cache_key, 'search', query, link)
+	data = request_page(cache_key, 'search', query, link)
 	if page_type:
 		data['link'] = 'search/%s/%s'%(page_type,_urllib.quote(query))
 	return data
@@ -136,7 +136,7 @@ def recent(page_type):
 	"""
 	cache_key = 'vgmdb/recent/%s'%(page_type,)
 	link = 'recent/%s'%(_urllib.quote(page_type),)
-	info = _request_page(cache_key, 'recent', page_type, link)
+	info = request_page(cache_key, 'recent', page_type, link)
 	_clear_recent_cache(info)
 	return info
 _recent_aliaser = lambda page_type: lambda : recent(page_type)

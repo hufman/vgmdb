@@ -5,6 +5,7 @@ import urllib as _urllib
 import base64 as _base64
 
 import vgmdb.data
+import vgmdb._tasks
 
 import vgmdb.cache
 import vgmdb.config
@@ -26,7 +27,12 @@ def _fetch_page(cache_key, page_type, id, link=None, use_cache=True):
 	if use_cache:
 		prevdata = _vgmdb.cache.get(cache_key)
 	if not prevdata:
-		info = _vgmdb.data._request_page(cache_key, page_type, id, link)
+		if _vgmdb.config.DATA_BACKGROUND:
+			task = _vgmdb._tasks.request_page
+			running = task.delay(cache_key, page_type, id, link)
+			info = running.wait()
+		else:
+			info = _vgmdb.data.request_page(cache_key, page_type, id, link)
 	else:
 		info = prevdata
 	return info
