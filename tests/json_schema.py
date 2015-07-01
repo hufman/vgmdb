@@ -5,7 +5,7 @@ import glob
 import unittest
 import json
 import jsonschema
-import vgmdb.request
+import vgmdb.data
 import vgmdb.parsers
 
 base = os.path.dirname(__file__)
@@ -31,7 +31,7 @@ class TestJsonSchemaMeta(type):
 				data = parser.parse_page(code)
 				data['link'] = 'unknown/1'
 				data['vgmdb_link'] = 'http://vgmdb.net/unknown/1'
-				vgmdb.request._calculate_ttl(data)
+				vgmdb.data._calculate_ttl(data)
 				validator = get_draft4_validator(schema)
 				validator.validate(data)
 			return test

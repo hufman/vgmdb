@@ -4,7 +4,7 @@ import urllib
 from datetime import datetime
 import email.utils
 
-import vgmdb.request
+import vgmdb.fetch
 import vgmdb.sellers
 
 import vgmdb.config
@@ -77,20 +77,20 @@ def do_page(page_type, info, filterkey=None):
 
 @route('/<type:re:(artist|album|product|release|event|org)>/<id:int>')
 def info(type,id):
-	return do_page(type, vgmdb.request.info(type,id))
+	return do_page(type, vgmdb.fetch.info(type,id))
 
 @route('/<type:re:(albumlist|artistlist|productlist)>/<id:re:[#A-Z]>')
 @route('/<type:re:(albumlist|artistlist|productlist)>/')
 @route('/<type:re:(albumlist|artistlist|productlist)>')
 def list(type,id='A'):
-	return do_page(type, vgmdb.request.list(type,id))
+	return do_page(type, vgmdb.fetch.list(type,id))
 
 @route('/<type:re:(orglist)>/<filterkey:re:[#A-Z]>')
 @route('/<type:re:(eventlist)>/<filterkey:int>')
 @route('/<type:re:(orglist|eventlist)>/')
 @route('/<type:re:(orglist|eventlist)>')
 def singlelist(type,filterkey=None):
-	return do_page(type, vgmdb.request.list(type, filterkey), filterkey=filterkey)
+	return do_page(type, vgmdb.fetch.list(type, filterkey), filterkey=filterkey)
 
 @route('/search/<type:re:(albums|artists|orgs|products)>/<query>')
 @route('/search/<type:re:(albums|artists|orgs|products)>')
@@ -102,12 +102,12 @@ def search(type=None, query=None):
 		type = query
 		query = None
 	query = query or request.query['q']
-	return do_page('search', vgmdb.request.search(type, query), filterkey=type)
+	return do_page('search', vgmdb.fetch.search(type, query), filterkey=type)
 
 @route('/recent/<type:re:(albums|media|tracklists|scans|artists|products|labels|links|ratings)>')
 @route('/recent')
 def recent(type='albums'):
-	return do_page('recent', vgmdb.request.recent(type))
+	return do_page('recent', vgmdb.fetch.recent(type))
 
 @route('/')
 @route('/about')

@@ -1,6 +1,6 @@
 from .. import cache
 from .. import config
-from .. import request
+from .. import fetch
 
 from . import discogs
 from . import amazon
@@ -51,7 +51,7 @@ def search(type, id, start_search=True, wait=True, allow_partial=False):
 	type should be either album or artist
 	"""
 	if type in search_types:
-		info = request.info(type, id)
+		info = fetch.info(type, id)
 		return search_info(type, id, info, start_search, wait, allow_partial)
 	else:
 		return []

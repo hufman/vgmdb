@@ -1,23 +1,10 @@
+""" Frontend to fetching vgmdb data
+    Will load from cache, or from synchronous request module, or async celery
+"""
 import urllib as _urllib
 import base64 as _base64
 
-from datetime import datetime as _datetime
-
-import vgmdb.parsers.artist
-import vgmdb.parsers.album
-import vgmdb.parsers.product
-import vgmdb.parsers.release
-import vgmdb.parsers.event
-import vgmdb.parsers.org
-
-import vgmdb.parsers.albumlist
-import vgmdb.parsers.artistlist
-import vgmdb.parsers.productlist
-import vgmdb.parsers.orglist
-import vgmdb.parsers.eventlist
-import vgmdb.parsers.search
-
-import vgmdb.parsers.recent
+import vgmdb.data
 
 import vgmdb.cache
 import vgmdb.config
@@ -25,7 +12,7 @@ import vgmdb.config
 _vgmdb = vgmdb
 del vgmdb
 
-def _request_page(cache_key, page_type, id, link=None, use_cache=True):
+def _fetch_page(cache_key, page_type, id, link=None, use_cache=True):
 	""" Generic function to handle general vgmdb requests
 
 	@param cache_key is where the data should be stored in the cache
@@ -39,38 +26,10 @@ def _request_page(cache_key, page_type, id, link=None, use_cache=True):
 	if use_cache:
 		prevdata = _vgmdb.cache.get(cache_key)
 	if not prevdata:
-		module = getattr(_vgmdb.parsers, page_type)
-		fetch_url = getattr(module, "fetch_url")
-		fetch_page = getattr(module, "fetch_page")
-		parse_page = getattr(module, "parse_page")
-		data = fetch_page(id)
-		info = parse_page(data)
-		if info != None:
-			if link:
-				info['link'] = link
-			if fetch_url:
-				info['vgmdb_link'] = fetch_url(id)
-			_calculate_ttl(info)
-			_vgmdb.cache.set(cache_key, info)
+		info = _vgmdb.data._request_page(cache_key, page_type, id, link)
 	else:
 		info = prevdata
 	return info
-
-def _calculate_ttl(info):
-	ttl = 24 * 60 * 60	# 1 day default
-	if 'meta' in info and 'edited_date' in info['meta']:
-		try:
-			edited_date = _datetime.strptime(info['meta']['edited_date'], '%Y%m%dT%H%M')
-			date_diff = _datetime.now() - edited_date
-			if date_diff.total_seconds() < 7 * 24 * 60 * 60:	# 1 week
-				ttl = 60 * 60	# 1 hour
-			if date_diff.total_seconds() < 24 * 60 * 60:	# 1 day
-				ttl = 5 * 60	# 5 minutes
-			if date_diff.total_seconds() < 1 * 60 * 60:	# 1 hour
-				ttl = 60	# 1 minute
-		except:
-			pass
-		info['meta']['ttl'] = ttl
 
 def info(page_type, id, use_cache=True):
 	""" Loads an information page
@@ -82,7 +41,7 @@ def info(page_type, id, use_cache=True):
 	"""
 	cache_key = 'vgmdb/%s/%s'%(page_type,_urllib.quote(str(id)))
 	link = '%s/%s'%(page_type,id)
-	return _request_page(cache_key, page_type, id, link, use_cache)
+	return _fetch_page(cache_key, page_type, id, link, use_cache)
 _info_aliaser = lambda page_type: lambda id,use_cache=True: info(page_type, id, use_cache)
 for name in ['artist','album','product','release','event','org']:
 	func = _info_aliaser(name)
@@ -107,7 +66,7 @@ def list(page_type, id='A', use_cache=True):
 		link = '%s/%s'%(page_type, _urllib.quote(str(id)))
 	else:
 		link = '%s'%(page_type,)
-	return _request_page(cache_key, page_type, id, link, use_cache)
+	return _fetch_page(cache_key, page_type, id, link, use_cache)
 _list_aliaser = lambda page_type: lambda id='A',use_cache=True: list(page_type, id, use_cache)
 for name in ['albumlist','artistlist','productlist','orglist','eventlist']:
 	func = _list_aliaser(name)
@@ -127,7 +86,7 @@ def search(page_type, query, use_cache=True):
 	"""
 	cache_key = 'vgmdb/search/%s'%(_base64.b64encode(query),)
 	link = 'search/%s'%(_urllib.quote(query),)
-	data = _request_page(cache_key, 'search', query, link, use_cache)
+	data = _fetch_page(cache_key, 'search', query, link, use_cache)
 	if page_type:
 		data['link'] = 'search/%s/%s'%(page_type,_urllib.quote(query))
 	return data
@@ -145,7 +104,7 @@ def recent(page_type, use_cache=True):
 	"""
 	cache_key = 'vgmdb/recent/%s'%(page_type,)
 	link = 'recent/%s'%(_urllib.quote(page_type),)
-	info = _request_page(cache_key, 'recent', page_type, link, use_cache)
+	info = _fetch_page(cache_key, 'recent', page_type, link, use_cache)
 	_clear_recent_cache(info)
 	return info
 _recent_aliaser = lambda page_type: lambda use_cache=True: recent(page_type, use_cache)
