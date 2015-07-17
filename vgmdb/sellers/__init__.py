@@ -73,8 +73,8 @@ def search_info(type, id, info, start_search=True, wait=True, allow_partial=Fals
 		if hasattr(config, 'CELERY_BROKER'):
 			try:
 				return _search_all_workers(type,id,info,wait and not allow_partial)
-			except:
-				logger.warning("Celery unreachable!")
+			except Exception as e:
+				logger.warning("Celery unreachable! (%s)" % (e,))
 		if wait and 'ThreadPoolExecutor' in globals():
 			return _search_all_async(type,id,info)
 		elif wait:
@@ -138,12 +138,12 @@ def _search_all_async(type, id, info):
 	return results
 
 def _search_all_workers(type, id, info, wait):
+	from . import _tasks
 	if getattr(config, 'CELERY_PING', False):
 		alive = _tasks.celery.control.inspect(timeout=0.1).stats()
 		if not alive:
 			return IOError("No Celery workers")
 	logger.debug("Searching for sellers for %s/%s with Celery"%(type, id))
-	from . import _tasks
 	active = []
 	for module in search_modules:
 		cache_key = "vgmdb/%s/%s/sellers/%s"%(type,id,module.__name__)
