@@ -1,5 +1,6 @@
 import urllib
 import urllib2
+import base64
 import urlparse
 import json
 import logging
@@ -14,7 +15,8 @@ logger = logging.getLogger(__name__)
 logger.addHandler(NullHandler())
 
 BASE_SEARCH_URL = 'http://www.rdio.com/search/'
-BASE_SEARCH_API = 'http://api.rdio.com/1/'
+API_URL = 'https://services.rdio.com/api/1/'
+TOKEN_URL = 'https://services.rdio.com/oauth2/token'
 
 result_template = {
 	'name': 'Rdio',
@@ -28,20 +30,35 @@ def url_search_artist(name):
 def url_search_album(name):
 	return "%s%s/albums/" % (BASE_SEARCH_URL, quote_search(name))
 
+def request_token():
+	auth = base64.standard_b64encode('%s:%s' % (config.RDIO_KEY, config.RDIO_SECRET))
+	headers = {'Authorization': 'Basic %s' % (auth,)}
+	data = 'grant_type=client_credentials'
+	req = urllib2.Request(TOKEN_URL, data, headers)
+	try:
+		result = urllib2.urlopen(req)
+	except urllib2.HTTPError as e:
+		logger.error('Bad status code while getting access token (%s): %s' % (e.code, e.read()))
+		raise e
+	parsed = json.load(result)
+	return parsed['access_token']
+
 def api(args={}):
-	# import oauth2 here, instead of at the top, to
-	# make it crash on runtime, not startup
-	import oauth2 as oauth
+	access_token = request_token()
 	args = dict([(k, v.encode('utf-8')) for k,v in args.items()])
 	body = urllib.urlencode(args)
 	headers = {
 		'User-Agent': 'VGMdb/1.0 vgmdb.info',
-		'Content-Type': 'application/x-www-form-urlencoded'
+		'Content-Type': 'application/x-www-form-urlencoded',
+		'Authorization': 'Bearer %s' % (access_token, )
 	}
-	consumer = oauth.Consumer(config.RDIO_KEY, config.RDIO_SECRET)
-	client = oauth.Client(consumer)
-	response, content = client.request(BASE_SEARCH_API, 'POST', body, headers)
-	return json.loads(content)
+	req = urllib2.Request(API_URL, body, headers)
+	try:
+		result = urllib2.urlopen(req)
+	except urllib2.HTTPError as e:
+		logger.error('Bad status code while searching (%s): %s' % (e.code, e.read()))
+		raise e
+	return json.load(result)
 
 def api_search_artist(name):
 	data = {
