@@ -17,7 +17,7 @@ python-memcached==1.53
 simplejson==3.3.0
 
 # Only needed for amazon seller provider
-python-amazon-product-api==0.2.6
+python-amazon-product-api==0.2.8
 
 # Seller optimizations
 futures==2.1.4

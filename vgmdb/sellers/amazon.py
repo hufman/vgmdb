@@ -2,10 +2,11 @@ import urllib
 import urlparse
 import json
 import logging
+import time
 
 from .. import config
 from ._utils import squash_str,find_best_match, primary_name
-from amazonproduct import api, errors
+import amazonproduct
 
 class NullHandler(logging.Handler):
 	def emit(self, record):
@@ -20,17 +21,22 @@ else:
 
 if hasattr(config, 'AMAZON_ACCESS_KEY_ID') and config.AMAZON_ACCESS_KEY_ID and \
    hasattr(config, 'AMAZON_SECRET_ACCESS_KEY') and config.AMAZON_SECRET_ACCESS_KEY:
-	API = api.API(config.AMAZON_ACCESS_KEY_ID, config.AMAZON_SECRET_ACCESS_KEY, 'us', getattr(config, 'AMAZON_ASSOCIATE_TAG', 'vgmdb'))
+	api_config = {
+		'access_key': config.AMAZON_ACCESS_KEY_ID,
+		'secret_key': config.AMAZON_SECRET_ACCESS_KEY,
+		'locale': 'us',
+		'associate_tag': getattr(config, 'AMAZON_ASSOCIATE_TAG', 'vgmdb')
+	}
+	#API = api.API(config.AMAZON_ACCESS_KEY_ID, config.AMAZON_SECRET_ACCESS_KEY, 'us', getattr(config, 'AMAZON_ASSOCIATE_TAG', 'vgmdb'))
+	API = amazonproduct.API(cfg=api_config)
 else:
 	API = None
 
 def parse_results(roots):
 	results = []
 	for root in roots:
-		if root.Items.Request.ItemSearchRequest.ItemPage.pyval != 1:
-			break
 		nspace = root.nsmap.get(None, '')
-		xml_results = root.xpath('//aws:Items/aws:Item',
+		xml_results = root.xpath('//aws:Item',
 		                         namespaces={'aws':nspace})
 		for xml_result in xml_results:
 			try:
@@ -81,8 +87,10 @@ def search_artist_album_name(info):
 	artist = primary_name(info['composers'][0]['names'])
 	title = info['name']
 	try:
-		results = parse_results(API.item_search('Music', ResponseGroup='ItemAttributes', Artist=squash_str(artist), Title=squash_str(title)))
-	except errors.NoExactMatchesFound:
+		results = parse_results(API.item_search('Music', limit=1, ResponseGroup='ItemAttributes', Artist=squash_str(artist), Title=squash_str(title)))
+	except amazonproduct.errors.TooManyRequests:
+		time.sleep(2)
+	except amazonproduct.errors.NoExactMatchesFound:
 		return None
 	found = find_best_match(squash_str(title), results,
 	   threshold=0.5, key=lambda x:squash_str(x['Title']))
@@ -93,8 +101,10 @@ def search_album_name(info):
 		return None
 	title = info['name']
 	try:
-		results = parse_results(API.item_search('Music', ResponseGroup='ItemAttributes', Title=squash_str(title)))
-	except errors.NoExactMatchesFound:
+		results = parse_results(API.item_search('Music', limit=1, ResponseGroup='ItemAttributes', Title=squash_str(title)))
+	except amazonproduct.errors.TooManyRequests:
+		time.sleep(2)
+	except amazonproduct.errors.NoExactMatchesFound:
 		return None
 	found = find_best_match(squash_str(title), results,
 	   threshold=0.5, key=lambda x:squash_str(x['Title']))
@@ -124,8 +134,10 @@ def search_artist_name(name):
 	if not API:
 		return None
 	try:
-		results = parse_results(API.item_search('Music', ResponseGroup='ItemAttributes', Artist=squash_str(name)))
-	except errors.NoExactMatchesFound:
+		results = parse_results(API.item_search('Music', limit=1, ResponseGroup='ItemAttributes', Artist=squash_str(name)))
+	except amazonproduct.errors.TooManyRequests:
+		time.sleep(2)
+	except amazonproduct.errors.NoExactMatchesFound:
 		return None
 	def get_artist(item):
 		if 'Artist' in item:
