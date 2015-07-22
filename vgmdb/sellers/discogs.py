@@ -62,6 +62,8 @@ def search_album_catalog(catalog):
 	return found
 
 def search_artist_album_name(info):
+	if not ('composers' in info and len(info['composers']) > 0):
+		return None
 	artist = primary_name(info['composers'][0]['names'])
 	title = info['name']
 	webdata = search("type=master&artist=%s&release_title=%s"%(urllib.quote(squash_str(artist)),urllib.quote(squash_str(title))))
