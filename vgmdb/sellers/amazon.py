@@ -90,6 +90,7 @@ def search_artist_album_name(info):
 		results = parse_results(API.item_search('Music', limit=1, ResponseGroup='ItemAttributes', Artist=squash_str(artist), Title=squash_str(title)))
 	except amazonproduct.errors.TooManyRequests:
 		time.sleep(2)
+		return None
 	except amazonproduct.errors.NoExactMatchesFound:
 		return None
 	found = find_best_match(squash_str(title), results,
@@ -104,6 +105,7 @@ def search_album_name(info):
 		results = parse_results(API.item_search('Music', limit=1, ResponseGroup='ItemAttributes', Title=squash_str(title)))
 	except amazonproduct.errors.TooManyRequests:
 		time.sleep(2)
+		return None
 	except amazonproduct.errors.NoExactMatchesFound:
 		return None
 	found = find_best_match(squash_str(title), results,

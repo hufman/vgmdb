@@ -49,8 +49,10 @@ def search_album(info):
 	return result
 
 def search_artist_album_name(info):
-	artist = primary_name(info['composers'][0]['names'])
+	if not( 'composers' in info and len(info['composers']) > 0):
+		return None
 	title = info['name']
+	artist = primary_name(info['composers'][0]['names'])
 	webdata = search("q=artist:%s+album:%s&type=album"%(urllib.quote(squash_str(artist)),urllib.quote(squash_str(title))))
 	data = json.loads(webdata)
 	found = find_best_match(squash_str(title), data['albums']['items'],

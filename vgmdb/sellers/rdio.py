@@ -111,14 +111,20 @@ def search_artist(info):
 
 def empty_album(info):
 	result = dict(result_template)
-	artist_name = primary_name(info['composers'][0]['names'])
+	if 'composers' in info and len(info['composers']) > 0:
+		artist_name = primary_name(info['composers'][0]['names'])
+	else:
+		artist_name = ''
 	album_name = info['name']
 	result['search'] = url_search_album("%s %s"%(artist_name, album_name))
 	return result
 def search_album(info):
 	try:
 		result = empty_album(info)
-		artist_name = primary_name(info['composers'][0]['names'])
+		if 'composers' in info and len(info['composers']) > 0:
+			artist_name = primary_name(info['composers'][0]['names'])
+		else:
+			artist_name = ''
 		album_name = info['name']
 		found = search_album_name(artist_name, album_name)
 		if found:

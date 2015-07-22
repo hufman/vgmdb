@@ -47,6 +47,8 @@ def search_album_catalog(catalog):
 	return found
 
 def search_artist_album_name(info):
+	if not ('composers' in info and len(info['composers']) > 0):
+		return None
 	artist = primary_name(info['composers'][0]['names'])
 	title = info['name']
 	results = parser.search_products(squash_str(artist+" "+title))
