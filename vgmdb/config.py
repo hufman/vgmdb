@@ -12,7 +12,6 @@ for key in private_keys:
 		globals()[key] = os.environ[key]
 
 BASE_URL = 'http://vgmdb.info/'
-USE_GEVENT = True
 AUTO_RELOAD = False
 CELERY_BROKER = 'amqp://guest@127.0.0.1//'
 CELERY_RESULT_BACKEND = 'cache'
