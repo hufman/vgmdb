@@ -1,5 +1,6 @@
 import os
 import json
+import logging
 try:
 	import simplejson as json
 except:
@@ -31,6 +32,8 @@ try:
 except:
 	pass
 
+logger = logging.getLogger(__name__)
+
 class NullCache(object):
 	def __getitem__(self, key):
 		return None
@@ -48,7 +51,8 @@ class MemcacheCache(object):
 			value = self._memcache.get(key)
 			if value:
 				value = pickle.loads(value)
-		except:
+		except Exception as e:
+			logger.warning("Failed to load %s from cache: %s"% (key, e))
 			return None
 		return value
 	def __setitem__(self, key, value):
@@ -58,8 +62,8 @@ class MemcacheCache(object):
 			ttl = value['meta']['ttl']
 		try:
 			self._memcache.set(key, pickle.dumps(value,-1), time=ttl)
-		except:
-			pass
+		except Exception as e:
+			logger.warning("Failed to set %s in cache: %s"% (key, e))
 	def __delitem__(self, key):
 		try:
 			self._memcache.delete(key)

@@ -3,6 +3,7 @@
 """
 import urllib as _urllib
 import base64 as _base64
+import logging as _logging
 
 import vgmdb.data
 import vgmdb._tasks
@@ -12,6 +13,8 @@ import vgmdb.config
 
 _vgmdb = vgmdb
 del vgmdb
+
+_logger = _logging.getLogger(__name__)
 
 def _fetch_page(cache_key, page_type, id, link=None, use_cache=True):
 	""" Generic function to handle general vgmdb requests

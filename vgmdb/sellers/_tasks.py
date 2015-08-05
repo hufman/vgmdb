@@ -1,3 +1,6 @@
+import logging
+logger = logging.getLogger(__name__)
+
 from .. import config
 from .. import cache
 from .. import celery
@@ -22,6 +25,8 @@ def do_search(type, id, sellername):
 		result = search(info)
 		if result:
 			cache.set(cache_key, result)
+	else:
+		logger.warning("Failed to fetch data for vgmdb/%s/%s"%(type,id))
 	return True
 
 @celery.task(default_retry_delay=5)

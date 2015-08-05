@@ -23,6 +23,9 @@ import vgmdb.parsers.recent
 import vgmdb.cache
 import vgmdb.config
 
+import logging
+logger = logging.getLogger(__name__)
+
 _vgmdb = vgmdb
 del vgmdb
 
@@ -64,8 +67,8 @@ def _calculate_ttl(info):
 				ttl = 5 * 60	# 5 minutes
 			if date_diff.total_seconds() < 1 * 60 * 60:	# 1 hour
 				ttl = 60	# 1 minute
-		except:
-			pass
+		except Exception as e:
+			logger.warning("Failed to update data ttl for %s: %s" % (info.get('link'), e))
 		info['meta']['ttl'] = ttl
 
 def info(page_type, id):
