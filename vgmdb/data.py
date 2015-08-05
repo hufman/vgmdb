@@ -54,8 +54,10 @@ def _calculate_ttl(info):
 	ttl = 24 * 60 * 60	# 1 day default
 	if 'meta' in info and 'edited_date' in info['meta']:
 		try:
-			edited_date = _datetime.strptime(info['meta']['edited_date'], '%Y%m%dT%H%M')
-			date_diff = _datetime.now() - edited_date
+			fetched_date = _datetime.now()
+			info['meta']['fetched_date'] = fetched_date.strftime('%Y-%m-%dT%H:%M')
+			edited_date = _datetime.strptime(info['meta']['edited_date'], '%Y-%m-%dT%H:%M')
+			date_diff = fetched_date - edited_date
 			if date_diff.total_seconds() < 7 * 24 * 60 * 60:	# 1 week
 				ttl = 60 * 60	# 1 hour
 			if date_diff.total_seconds() < 24 * 60 * 60:	# 1 day

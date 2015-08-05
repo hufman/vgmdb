@@ -154,6 +154,7 @@
 			"properties": {
 				"added_date": { "$ref": "#/definitions/rfc3339" },
 				"edited_date": { "$ref": "#/definitions/rfc3339" },
+				"fetched_date": { "$ref": "#/definitions/rfc3339" },
 				"ttl": { "title": "How many seconds this page can be cached", "type": "integer" },
 				"visitors": { "title": "How many visitors have been to this page", "type": "integer" }
 			},
