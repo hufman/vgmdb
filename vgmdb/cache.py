@@ -56,7 +56,7 @@ class MemcacheCache(object):
 			return None
 		return value
 	def __setitem__(self, key, value):
-		ttl = 86400 * 300  # 300 days
+		ttl = 86400 * 29  # 29 days
 		try:
 			self._memcache.set(key, pickle.dumps(value,-1), time=ttl)
 		except Exception as e:
@@ -80,7 +80,7 @@ class GaeCache(object):
 			return None
 		return value
 	def __setitem__(self, key, value):
-		ttl = 86400 * 300  # 300 days
+		ttl = 86400 * 29  # 29 days
 		try:
 			self._gaecache.set(key, pickle.dumps(value,-1), time=ttl)
 		except:
