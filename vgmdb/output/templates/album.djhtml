@@ -27,8 +27,10 @@
         <dd property="mo:release" typeof="mo:Release" {{event.link | linkhref | resource_attr}}><a href="{{event.link | linkhref}}">{{event.name}}</a></dd>
         {% endfor %}
         {% endif %}
+        {% if data.publisher %}
         <dt>Publisher</dt>
         <dd rel="mo:publisher schema:publisher" class="names">{{data.publisher.names|lang_names|link(data.publisher.link)}}</dd>
+        {% endif %}
         {% if data.products %}
         <dt>Games</dt>
         <dd class="names">{{list_names(data.products, rel="schema:about", name_rel="schema:CreativeWork")}}</dd>
