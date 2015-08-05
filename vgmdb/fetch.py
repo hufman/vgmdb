@@ -3,6 +3,7 @@
 """
 import urllib as _urllib
 import base64 as _base64
+import datetime as _datetime
 import logging as _logging
 
 import vgmdb.data
@@ -29,16 +30,37 @@ def _fetch_page(cache_key, page_type, id, link=None, use_cache=True):
 	prevdata = None
 	if use_cache:
 		prevdata = _vgmdb.cache.get(cache_key)
-	if not prevdata:
+	if prevdata:
+		info = prevdata
+		if not _is_info_current(info):
+			task = _vgmdb._tasks.request_page
+			running = task.delay(cache_key, page_type, id, link)
+	else:
 		if _vgmdb.config.DATA_BACKGROUND:
 			task = _vgmdb._tasks.request_page
 			running = task.delay(cache_key, page_type, id, link)
 			info = running.wait()
 		else:
 			info = _vgmdb.data.request_page(cache_key, page_type, id, link)
-	else:
-		info = prevdata
 	return info
+
+def _is_info_current(info):
+	info_current = True
+	fetched_date = info.get('meta', {}).get('fetched_date', None)
+	ttl = info.get('meta', {}).get('ttl', 86400)
+	if fetched_date:
+		try:
+			fetched_date = _datetime.datetime.strptime(fetched_date, '%Y-%m-%dT%H:%M')
+		except ValueError as e:
+			_logger.warning('Could not load fetched_date from %s: %s' % (info.get('link', None), e))
+			fetched_date = None
+	else:
+		_logger.warning('Missing fetched_date on %s' % (info.get('link', None),))
+	if fetched_date:
+		age = _datetime.datetime.now() - fetched_date
+		if age > _datetime.timedelta(seconds=ttl):
+			info_current = False
+	return info_current
 
 def info(page_type, id, use_cache=True):
 	""" Loads an information page
