@@ -16,6 +16,10 @@ AMAZON_ASSOCIATE_TAG = None
 ITUNES_AFFILIATE_ID = None
 ITUNES_TD_PROGRAM_ID = None
 ITUNES_TD_WEBSITE_ID = None
+DISCOGS_KEY = None
+DISCOGS_SECRET = None
+RDIO_KEY = None
+RDIO_SECRET = None
 
 import logging
 logger = logging.getLogger(__name__)
