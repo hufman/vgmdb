@@ -13,7 +13,7 @@ ADD docker/sv-nginx /etc/service/nginx/run
 ADD docker/nginx-site.conf /etc/nginx/sites-enabled/default
 
 # install vgmdb software
-RUN apt-get install -y python-dev python-pip libxml2-dev libxslt1-dev zlib1g-dev
+RUN apt-get install -y python-dev python-pip libxml2-dev libxslt1-dev zlib1g-dev git
 ADD requirements.txt /requirements.txt
 ADD vgmdb /vgmdb
 ADD wsgi.py /wsgi.py
