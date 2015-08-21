@@ -1,6 +1,8 @@
 import os
 import json
 import logging
+logger = logging.getLogger(__name__)
+
 try:
 	import simplejson as json
 except:
@@ -13,10 +15,15 @@ except:
 	pass
 try:
 	import bmemcached as memcache
+	logger.info("Loaded binary memcache support, SASL authentication available")
 except:
 	pass
 try:
-	import pylibmc as memcache
+	import socket
+	if socket.socket.__module__ != "gevent.socket":
+		import pylibmc as memcache
+	else:
+		logger.info("Skipping pylibmc detection because gevent is active")
 except:
 	pass
 
@@ -29,10 +36,9 @@ except:
 gaecache = None
 try:
 	from google.appengine.api import memcache as gaecache
+	logger.info("Google App Engine detected")
 except:
 	pass
-
-logger = logging.getLogger(__name__)
 
 from . import config
 
@@ -97,17 +103,20 @@ cache = None
 
 if not cache and gaecache:
 	try:
+		logger.info("Connecting GAE Cache")
 		cache = GaeCache()
-	except:
-		pass
+	except Exception as e:
+		logger.warning("Failed to create GAEcache client: %s" % (e, ))
 
 if not cache and memcache:
 	try:
+		logger.info("Connecting Memcache client to %s with args %s" % (config.MEMCACHE_SERVERS, config.MEMCACHE_ARGS))
 		cache = MemcacheCache(config.MEMCACHE_SERVERS, **config.MEMCACHE_ARGS)
-	except:
-		pass
+	except Exception as e:
+		logger.warning("Failed to create Memcache client: %s" % (e, ))
 
 if not cache:
+	logger.info("Failing back to null cache")
 	cache = NullCache()
 
 def get(key):

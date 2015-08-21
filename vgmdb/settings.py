@@ -17,11 +17,13 @@ ITUNES_AFFILIATE_ID = None
 ITUNES_TD_PROGRAM_ID = None
 ITUNES_TD_WEBSITE_ID = None
 
+import logging
+logger = logging.getLogger(__name__)
 try:
 	from .autoload_settings import *
-except:
-	pass
+except Exception as e:
+	logging.warning("Could not load autoload_settings: %s" % (e,))
 try:
 	from .local_settings import *
-except:
-	pass
+except Exception as e:
+	logging.warning("Could not load local_settings: %s" % (e,))

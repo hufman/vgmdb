@@ -1,4 +1,7 @@
 import os
+import logging
+
+logger = logging.getLogger(__name__)
 
 # load cloud settings for defaults
 if 'AMQP_PORT_5672_TCP' in os.environ or 'AMQP_HOST' in os.environ:
@@ -12,6 +15,7 @@ if 'AMQP_PORT_5672_TCP' in os.environ or 'AMQP_HOST' in os.environ:
 	CELERY_BROKER = 'amqp://%s:%s@%s:%s/%s' % (
 		amqp_user, amqp_pass, amqp_ip, amqp_port, amqp_vhost
 	)
+	logger.info("Docker AMQP link detected, guessing %s" % (CELERY_BROKER,))
 
 # detect docker links
 if 'MEMCACHED_PORT_11211_TCP' in os.environ:
@@ -19,6 +23,7 @@ if 'MEMCACHED_PORT_11211_TCP' in os.environ:
 	    os.environ['MEMCACHED_PORT_11211_TCP_ADDR'],
 	    os.environ['MEMCACHED_PORT_11211_TCP_PORT']
 	)]
+	logger.info("Docker Memcache link detected, guessing %s" % (MEMCACHE_SERVERS,))
 
 # detect openshift
 if 'OPENSHIFT_MEMCACHED_HOST' in os.environ and \
@@ -31,15 +36,19 @@ if 'OPENSHIFT_MEMCACHED_HOST' in os.environ and \
 	  'username': os.environ['OPENSHIFT_MEMCACHED_USERNAME'],
 	  'password': os.environ['OPENSHIFT_MEMCACHED_PASSWORD']
 	}
+	logger.info("Openshift Memcache link detected, guessing %s" % (MEMCACHE_SERVERS,))
 
 # some fancy processing
 if os.environ.has_key('GAE_BASEURL'):
 	BASE_URL = os.environ['GAE_BASEURL']
+	logger.info("Loading BASE_URL from GAE: %s" % (BASE_URL,))
 if os.environ.has_key('MEMCACHE_SERVER'):
 	MEMCACHE_SERVERS = [os.environ['MEMCACHE_SERVER']]
+	logger.info("Loading MEMCACHE_SERVER from environ: %s" % (MEMCACHE_SERVERS[0],))
 if os.environ.has_key('MEMCACHE_SERVERS'):
 	MEMCACHE_SERVERS = os.environ['MEMCACHE_SERVERS'].split(',')
 	MEMCACHE_SERVERS = [s.strip() for s in MEMCACHE_SERVERS]
+	logger.info("Loading MEMCACHE_SERVERS from environ: %s" % (MEMCACHE_SERVERS,))
 
 # make sure the memcache servers have ports
 if 'MEMCACHE_SERVERS' in globals():
@@ -52,6 +61,7 @@ if 'MEMCACHE_SERVERS' in globals():
 # guess the final celery cache string based on the discovered MEMCACHE_SERVERS
 if 'MEMCACHE_SERVERS' in globals():
 	CELERY_CACHE_BACKEND = 'memcached://%s/' % (';'.join(MEMCACHE_SERVERS), )
+	logger.info("Guessing Celery cache backend at: %s" % (CELERY_CACHE_BACKEND,))
 
 # try to load some keys from environment
 env_keys = [
@@ -63,3 +73,4 @@ env_keys = [
 for key in env_keys:
 	if key in os.environ:
 		globals()[key] = os.environ[key]
+		logger.info("Loading %s from environ: %s" % (key, os.environ[key]))
