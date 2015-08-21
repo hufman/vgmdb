@@ -1,4 +1,4 @@
 *.pyc
 gae_bundle
-vgmdb/config_private.py
+vgmdb/local_settings.py
 
