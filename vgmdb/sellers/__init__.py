@@ -142,7 +142,7 @@ def _search_all_workers(type, id, info, wait):
 	if getattr(config, 'CELERY_PING', False):
 		alive = _tasks.celery.control.inspect(timeout=0.1).stats()
 		if not alive:
-			return IOError("No Celery workers")
+			raise IOError("No Celery workers")
 	logger.debug("Searching for sellers for %s/%s with Celery"%(type, id))
 	active = []
 	for module in search_modules:
