@@ -13,21 +13,53 @@ if 'AMQP_PORT_5672_TCP' in os.environ or 'AMQP_HOST' in os.environ:
 		amqp_user, amqp_pass, amqp_ip, amqp_port, amqp_vhost
 	)
 
+# detect docker links
 if 'MEMCACHED_PORT_11211_TCP' in os.environ:
-	CELERY_CACHE_BACKEND = 'memcached://%s:%s/' % (
+	MEMCACHE_SERVERS = ["%s:%s" % (
 	    os.environ['MEMCACHED_PORT_11211_TCP_ADDR'],
 	    os.environ['MEMCACHED_PORT_11211_TCP_PORT']
-	)
+	)]
+
+# detect openshift
+if 'OPENSHIFT_MEMCACHED_HOST' in os.environ and \
+   'OPENSHIFT_MEMCACHED_PORT' in os.environ:
+	MEMCACHE_SERVERS = ["%s:%s" % (
+	    os.environ['OPENSHIFT_MEMCACHED_HOST'],
+	    os.environ['OPENSHIFT_MEMCACHED_PORT']
+	)]
+	MEMCACHE_ARGS = {
+	  'username': os.environ['OPENSHIFT_MEMCACHED_USERNAME'],
+	  'password': os.environ['OPENSHIFT_MEMCACHED_PASSWORD']
+	}
+
+# some fancy processing
+if os.environ.has_key('GAE_BASEURL'):
+	BASE_URL = os.environ['GAE_BASEURL']
+if os.environ.has_key('MEMCACHE_SERVER'):
+	MEMCACHE_SERVERS = [os.environ['MEMCACHE_SERVER']]
+if os.environ.has_key('MEMCACHE_SERVERS'):
+	MEMCACHE_SERVERS = os.environ['MEMCACHE_SERVERS'].split(',')
+	MEMCACHE_SERVERS = [s.strip() for s in MEMCACHE_SERVERS]
+
+# make sure the memcache servers have ports
+if 'MEMCACHE_SERVERS' in globals():
+	def add_port(host, port):
+		if ':' not in host:
+			return "%s:%s" % (host, port)
+		return host
+	MEMCACHE_SERVERS = [add_port(s, '11211') for s in MEMCACHE_SERVERS]
+
+# guess the final celery cache string based on the discovered MEMCACHE_SERVERS
+if 'MEMCACHE_SERVERS' in globals():
+	CELERY_CACHE_BACKEND = 'memcached://%s/' % (';'.join(MEMCACHE_SERVERS), )
 
 # try to load some keys from environment
 env_keys = [
-  'BASE_URL', 'CELERY_BROKER', 'CELERY_RESULT_BACKEND', 'CELERY_CACHE_BACKEND',
+  'BASE_URL',
+  'CELERY_BROKER', 'CELERY_RESULT_BACKEND', 'CELERY_CACHE_BACKEND',
   'AMAZON_ACCESS_KEY_ID', 'AMAZON_SECRET_ACCESS_KEY', 'AMAZON_ASSOCIATE_TAG',
   'ITUNES_AFFILIATE_ID', 'ITUNES_TD_PROGRAM_ID', 'ITUNES_TD_WEBSITE_ID'
 ]
 for key in env_keys:
 	if key in os.environ:
 		globals()[key] = os.environ[key]
-
-if os.environ.has_key('GAE_BASEURL'):
-	BASE_URL = os.environ['GAE_BASEURL']

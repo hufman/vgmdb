@@ -34,6 +34,8 @@ except:
 
 logger = logging.getLogger(__name__)
 
+from . import config
+
 class NullCache(object):
 	def __getitem__(self, key):
 		return None
@@ -91,39 +93,22 @@ class GaeCache(object):
 		except:
 			pass
 
-cache = NullCache()
-if memcache:
-	try:
-		cache = MemcacheCache(['127.0.0.1:11211'])
-	except:
-		pass
+cache = None
 
-	# detect openshift
-	if 'OPENSHIFT_MEMCACHED_HOST' in os.environ and \
-	   'OPENSHIFT_MEMCACHED_PORT' in os.environ:
-		try:
-			cache = MemcacheCache(['%s:%s'%(
-			    os.environ['OPENSHIFT_MEMCACHED_HOST'],
-			    os.environ['OPENSHIFT_MEMCACHED_PORT'])],
-			    username =os.environ['OPENSHIFT_MEMCACHED_USERNAME'],
-			    password = os.environ['OPENSHIFT_MEMCACHED_PASSWORD'])
-		except Exception as e:
-			pass
-
-	# detect docker cache
-	if 'MEMCACHED_PORT_11211_TCP' in os.environ:
-		try:
-			cache = MemcacheCache(['%s:%s'%(
-			    os.environ['MEMCACHED_PORT_11211_TCP_ADDR'],
-			    os.environ['MEMCACHED_PORT_11211_TCP_PORT'])])
-		except Exception as e:
-			pass
-
-if gaecache:
+if not cache and gaecache:
 	try:
 		cache = GaeCache()
 	except:
 		pass
+
+if not cache and memcache:
+	try:
+		cache = MemcacheCache(config.MEMCACHE_SERVERS, **config.MEMCACHE_ARGS)
+	except:
+		pass
+
+if not cache:
+	cache = NullCache()
 
 def get(key):
 	return cache[key]

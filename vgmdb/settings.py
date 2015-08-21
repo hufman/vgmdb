@@ -1,6 +1,8 @@
 # base settings
 BASE_URL = 'http://vgmdb.info/'
 AUTO_RELOAD = False
+MEMCACHE_SERVERS = ['127.0.0.1:11211']
+MEMCACHE_ARGS = {}
 CELERY_BROKER = 'amqp://guest@127.0.0.1//'
 CELERY_RESULT_BACKEND = 'cache'
 CELERY_CACHE_BACKEND = 'memcached://127.0.0.1:11211/'
