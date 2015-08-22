@@ -14,5 +14,5 @@ docker run --cidfile=cid.celery --entrypoint=/bin/sh "$IMAGE" -c "rm -r /etc/ser
 
 NEWIMAGE=`echo "${IMAGE}" | sed -E 's/(:|$)/_celery\1/'`
 #docker commit --change="ENTRYPOINT" --change="CMD=/sbin/my_init" `cat cid` "${NEWIMAGE}
-docker commit --run='{"Cmd":'$Cmd',"PortSpecs":'$Ports',"Entrypoint":[]}' `cat cid.celery` "${NEWIMAGE}"
+docker commit --run='{"Cmd":'$Cmd',"Entrypoint":[]}' `cat cid.celery` "${NEWIMAGE}"
 [ -e cid.celery ] && rm cid.celery || true
