@@ -129,7 +129,7 @@ td.list li:last-child:after {content: ""}
 }
 .format .rdfxml {
 	display: inline-block;
-	background-image: url(http://www.w3.org/Icons/SW/Buttons/sw-rdf-green-v.svg);
+	background-image: url(//www.w3.org/Icons/SW/Buttons/sw-rdf-green-v.svg);
 	background-size: auto auto;
 	width: 73px;
 	padding: 0;
@@ -144,7 +144,7 @@ td.list li:last-child:after {content: ""}
 }
 .format .rdfa {
 	display: inline-block;
-	background-image: url(http://www.w3.org/Icons/SW/Buttons/sw-rdfa-orange-v.svg);
+	background-image: url(//www.w3.org/Icons/SW/Buttons/sw-rdfa-orange-v.svg);
 	background-size: auto auto;
 	width: 73px;
 	padding: 0;

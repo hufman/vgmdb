@@ -13,7 +13,7 @@ def get_defaults():
 def for_request(request):
 	settings = get_defaults()
 	if request.get_header('Host'):
-		settings.BASE_URL = 'http://%s/'%(request.get_header('Host'),)
+		settings.BASE_URL = '//%s/'%(request.get_header('Host'),)
 	if request.get_header('base_url'):
 		settings.BASE_URL = request.get_header('base_url')
 	if request.get_header('base-url'):

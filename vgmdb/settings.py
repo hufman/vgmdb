@@ -1,5 +1,5 @@
 # base settings
-BASE_URL = 'http://vgmdb.info/'
+BASE_URL = '//vgmdb.info/'
 AUTO_RELOAD = False
 MEMCACHE_SERVERS = ['127.0.0.1:11211']
 MEMCACHE_ARGS = {}
