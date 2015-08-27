@@ -91,7 +91,10 @@ def is_english(text):
 	trimmed = [extra_normalize(char) for char in trimmed]
 	count = len(trimmed)
 	count_english = len(filter(is_english_char, trimmed))
-	return (count_english / count) > 0.5
+	if (count == 0):
+		return True	# by default
+	else:
+		return (count_english / count) > 0.5
 
 def parse_date_time(time):
 	"""
