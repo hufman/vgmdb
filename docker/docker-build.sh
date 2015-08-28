@@ -8,7 +8,11 @@ PROJECT_DIR=`dirname "$DOCKER_DIR"`
 PROJECT=vgmdb
 [ -n "$REV" ] || REV=latest
 get_reqs_id() {
-  md5sum "$PROJECT_DIR"/requirements.txt | cut -c1-6
+  cat "$PROJECT_DIR"/requirements.txt \
+      "$PROJECT_DIR"/Dockerfile.reqs \
+      "$PROJECT_DIR"/docker/nginx-site.conf \
+      "$PROJECT_DIR"/docker/sv-nginx \
+  | md5sum | cut -c1-6
 }
 
 # Build the requirements image, if necessary
