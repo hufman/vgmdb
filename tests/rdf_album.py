@@ -50,10 +50,10 @@ class TestAlbumsRDF(TestRDF):
 			"select ?about where { <@base#subject> schema:about ?about . } " : "<@baseproduct/189#subject>",
 			"select ?name where { <@base#subject> schema:about ?about . ?about schema:name ?name . filter(lang(?name)='en')} " : u'Final Fantasy VIII',
 			"select ?name where { <@base#subject> schema:about ?about . ?about schema:name ?name . filter(lang(?name)='ja')} " : u'ファイナルファンタジーVIII',
-			"select ?name where { ?album rdf:type mo:Release . ?album dcterms:title ?name . }" : u'FITHOS LUSEC WECOS VINOSEC: FINAL FANTASY VIII',
-			"select ?name where { ?album rdf:type mo:Release . ?album schema:name ?name . }" : u'FITHOS LUSEC WECOS VINOSEC: FINAL FANTASY VIII',
-			"select ?name where { ?album rdf:type mo:Performance . ?album schema:name ?name . }" : u'FITHOS LUSEC WECOS VINOSEC: FINAL FANTASY VIII',
-			"select ?name where { ?album rdf:type mo:Composition . ?album schema:name ?name . }" : u'FITHOS LUSEC WECOS VINOSEC: FINAL FANTASY VIII',
+			"select ?name where { ?album rdf:type mo:Release . ?album dcterms:title ?name . }" : u'FITHOS LUSEC WECOS VINOSEC: FINAL FANTASY VIII [Limited Edition]',
+			"select ?name where { ?album rdf:type mo:Release . ?album schema:name ?name . }" : u'FITHOS LUSEC WECOS VINOSEC: FINAL FANTASY VIII [Limited Edition]',
+			"select ?name where { ?album rdf:type mo:Performance . ?album schema:name ?name . }" : u'FITHOS LUSEC WECOS VINOSEC: FINAL FANTASY VIII [Limited Edition]',
+			"select ?name where { ?album rdf:type mo:Composition . ?album schema:name ?name . }" : u'FITHOS LUSEC WECOS VINOSEC: FINAL FANTASY VIII [Limited Edition]',
 			"select ?catalog where { <@base#subject> mo:catalogue_number ?catalog . }" : "SSCX-10037",
 			"select ?catalog where { <@base#subject> mo:other_release_of ?release . ?release mo:catalogue_number ?catalog . } order by desc(?catalog)" : "SQEX-10025",
 			"select ?date where { ?album rdf:type schema:MusicAlbum . ?album dcterms:created ?date . }" : datetime.date(1999,11,20),
@@ -71,15 +71,15 @@ class TestAlbumsRDF(TestRDF):
 			"select ?name where { <@base#subject> schema:publisher ?publisher . ?publisher foaf:name ?name . filter(lang(?name)='en') }" : "DigiCube",
 			"select ?composer where { <@base#composition> mo:composer ?composer . }" : "<@base/artist/77#subject>",
 			"select ?name where { <@base#composition> mo:composer ?composer . ?composer foaf:name ?name . filter(lang(?name)='en') }" : "Nobuo Uematsu",
-			"select ?rating where { <@base#subject> schema:aggregateRating ?agg . ?agg schema:ratingValue ?rating . }" : decimal.Decimal("4.47"),
-			"select ?rating where { <@base#subject> schema:aggregateRating ?agg . ?agg schema:ratingCount ?rating . }" : 43,
+			"select ?rating where { <@base#subject> schema:aggregateRating ?agg . ?agg schema:ratingValue ?rating . }" : decimal.Decimal("4.46"),
+			"select ?rating where { <@base#subject> schema:aggregateRating ?agg . ?agg schema:ratingCount ?rating . }" : 50,
 			"select ?rating where { <@base#subject> schema:aggregateRating ?agg . ?agg schema:bestRating ?rating . }" : 5,
-			"select ?cover where { <@base#subject> foaf:depiction ?cover . ?cover a foaf:Image }" : "<http://vgmdb.net/db/assets/covers/7/9/79-1190730814.jpg>",
-			"select ?cover where { <@base#subject> schema:image ?cover . ?cover a schema:ImageObject }" : "<http://vgmdb.net/db/assets/covers/7/9/79-1190730814.jpg>",
-			"select ?cover where { ?cover foaf:depicts <@base#subject> . }" : "<http://vgmdb.net/db/assets/covers/7/9/79-1190730814.jpg>",
-			"select ?cover where { ?cover schema:about <@base#subject> . }" : "<http://vgmdb.net/db/assets/covers/7/9/79-1190730814.jpg>",
-			"select ?thumb where { <@base#subject> foaf:depiction ?cover . ?cover foaf:thumbnail ?thumb . ?thumb a foaf:Image }" : "<http://vgmdb.net/db/assets/covers-medium/7/9/79-1190730814.jpg>",
-			"select ?thumb where { <@base#subject> schema:image ?cover . ?cover schema:thumbnailUrl ?thumb . ?thumb a schema:ImageObject }" : "<http://vgmdb.net/db/assets/covers-medium/7/9/79-1190730814.jpg>"
+			"select ?cover where { <@base#subject> foaf:depiction ?cover . ?cover a foaf:Image }" : "<http://media.vgm.io/albums/97/79/79-1264618929.png>",
+			"select ?cover where { <@base#subject> schema:image ?cover . ?cover a schema:ImageObject }" : "<http://media.vgm.io/albums/97/79/79-1264618929.png>",
+			"select ?cover where { ?cover foaf:depicts <@base#subject> . }" : "<http://media.vgm.io/albums/97/79/79-1264618929.png>",
+			"select ?cover where { ?cover schema:about <@base#subject> . }" : "<http://media.vgm.io/albums/97/79/79-1264618929.png>",
+			"select ?thumb where { <@base#subject> foaf:depiction ?cover . ?cover foaf:thumbnail ?thumb . ?thumb a foaf:Image }" : "<http://medium.media.vgm.io/albums/97/79/79-1264618929.png>",
+			"select ?thumb where { <@base#subject> schema:image ?cover . ?cover schema:thumbnailUrl ?thumb . ?thumb a schema:ImageObject }" : "<http://medium.media.vgm.io/albums/97/79/79-1264618929.png>"
 		}
 
 		self.run_tests(graph, test_count_results, test_first_result)

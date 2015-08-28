@@ -4,7 +4,7 @@
 <title>IO-0212 | Touhou Eternal Fantasia - VGMdb</title>
 
 
-<link href="http://vgmdb.net/album/35753/feed" rel="alternate" type="application/rss+xml" title="Album RSS Feed" />
+<link href="/album/35753/feed" rel="alternate" type="application/rss+xml" title="Album RSS Feed" />
 
 
 
@@ -359,13 +359,13 @@ form { display: inline; }
 <link rel="stylesheet" type="text/css" href="http://vgmdb.net/forums/clientscript/vbulletin_important.css?v=385" />
 
 
-<link rel="stylesheet" type="text/css" href="http://vgmdb.net/db/vgmdb.css?20100801" />
+<link rel="stylesheet" type="text/css" href="/db/vgmdb.css?20100803" />
 <link rel="stylesheet" type="text/css" href="http://media.vgmdb.net/css/vgmdb-colorcode-title.css" id="colorcode" />
-<link rel="stylesheet" type="text/css" href="http://vgmdb.net/db/jquery.autocomplete.css?20091023" />
-<link rel="stylesheet" type="text/css" href="http://vgmdb.net/db/jquery.jcarousel.css?20091124" />
-<link rel="stylesheet" type="text/css" href="http://vgmdb.net/db/highslide.css?080623" />
+<link rel="stylesheet" type="text/css" href="/db/jquery.autocomplete.css?20091023" />
+<link rel="stylesheet" type="text/css" href="/db/jquery.jcarousel.css?20091124" />
+<link rel="stylesheet" type="text/css" href="/db/highslide.css?080623" />
 <!--[if lte IE 6]>
-<link rel="stylesheet" type="text/css" href="http://vgmdb.net/db/iepngfix.css" />
+<link rel="stylesheet" type="text/css" href="/db/iepngfix.css" />
 <![endif]-->
 <!-- / CSS Stylesheet -->
 
@@ -373,15 +373,15 @@ form { display: inline; }
 <script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/connection/connection-min.js?v=385"></script>
 <script type="text/javascript">
 <!--
-var SESSIONURL = "s=62d0f040acacd5d6ff12e28ea21a3315&";
+var SESSIONURL = "s=8d900d2e514ed8b842074faf948879ba&";
 var SECURITYTOKEN = "guest";
-var IMGDIR_MISC = "http://vgmdb.net/forums/images/misc";
+var IMGDIR_MISC = "/forums/images/misc";
 var vb_disable_ajax = parseInt("0", 10);
 // -->
 </script>
-<script type="text/javascript" src="http://vgmdb.net/forums/clientscript/vbulletin_global.js?v=385"></script>
+<script type="text/javascript" src="/forums/clientscript/vbulletin_global.js?v=385"></script>
 
-<link rel="alternate" type="application/rss+xml" title="VGMdb Forums RSS Feed" href="http://vgmdb.net/forums/external.php?type=RSS2" />
+<link rel="alternate" type="application/rss+xml" title="VGMdb Forums RSS Feed" href="/forums/external.php?type=RSS2" />
 
 <script type="text/javascript" src="http://media.vgmdb.net/js/jquery-1.4.min.js"></script>
 <script type="text/javascript" src="http://media.vgmdb.net/js/jquery.compressed.js"></script>
@@ -399,7 +399,7 @@ $(document).ready(function() {
 	ItemType["2"] = "Organization";
 	hs.showCredits = false;
 	hs.allowMultipleInstances = false;
-	hs.graphicsDir = 'http://vgmdb.net/db/highslide/graphics/';
+	hs.graphicsDir = '/db/highslide/graphics/';
 	function formatItem(row) {
 		return "<span style='float: right; margin-left: 10px' class='tinyfont label'>" + ItemType[row[3]] + " #" + row[1] + "</span>" + row[0];
 	}
@@ -438,7 +438,7 @@ $(document).ready(function() {
 		}
 		return false;
 	});
-	$("#simplesearch").autocomplete('http://vgmdb.net/db/ajax-autocomplete.php', {
+	$("#simplesearch").autocomplete('/db/ajax-autocomplete.php', {
 		minChars: 3,
 		delay: 1000,
 		max: 150,
@@ -581,7 +581,7 @@ $(document).ready(function() {
 	</li>
 	<li id="nav_advsearch"><a title="More search options" href="/search">Advanced Search</a></li>
 	<li id="nav_update"><a title="Latest submissions and edits" href="/db/recent.php">Updates</a></li>
-	<li id="nav_calendar"><a title="Release schedules" href="/db/calendar.php?year=2015&month=3">Calendar</a></li>
+	<li id="nav_calendar"><a title="Release schedules" href="/db/calendar.php?year=2015&month=8">Calendar</a></li>
 	<li id="nav_forum"><a title="Community discussions" href="/forums/">Forums</a></li>
 	<li id="nav_market"><a title="Trade with other members" href="/db/marketplace.php?do=view">Marketplace</a></li>
 	<!-- <li id="nav_radio"><a title="Live streaming VGM" href="#" onclick="alert('Under Construction');">Radio</a></li> -->
@@ -609,7 +609,7 @@ $(document).ready(function() {
 		<td><input type="submit" class="button" value="Log in" tabindex="104" title="Enter your username and password in the boxes provided to login, or click the 'register' button to create a profile for yourself." accesskey="s" /></td>
 	</tr>
 	</table>
-	<input type="hidden" name="s" value="62d0f040acacd5d6ff12e28ea21a3315" />
+	<input type="hidden" name="s" value="8d900d2e514ed8b842074faf948879ba" />
 	<input type="hidden" name="securitytoken" value="guest" />
 	<input type="hidden" name="do" value="login" />		
 	<input type="hidden" name="vb_login_md5password" />
@@ -635,7 +635,7 @@ $(document).ready(function() {
 <table width="100%" cellpadding="0" cellspacing="0" border="0" align="left"><tr><td width="100%" style="background-color: #1B273D;" valign="top">
 	<b class="rtop"><b></b></b>
 	<div id="innermain" style="padding: 6px 10px 0px 10px">
-		<span style="float:right;" class="label smallfont"><a href="http://vgmdb.net/db/albums-discuss.php?id=35753">Discuss</a> | <span id="albumtools"><a href="#">Edit</a><script type="text/javascript"> vBmenu.register('albumtools'); </script></span> | <a class="smallfont" href="http://vgmdb.net/album/35753/feed" title="Activity RSS Feed">Feed <img class="inlineimg" border="0" src="http://vgmdb.net/db/img/rss.png" height="16" width="16" alt="" /></a></span>
+		<span style="float:right;" class="label smallfont"><a href="/db/albums-discuss.php?id=35753">Discuss</a> | <span id="albumtools"><a href="#">Edit</a><script type="text/javascript"> vBmenu.register('albumtools'); </script></span> | <a class="smallfont" href="/album/35753/feed" title="Activity RSS Feed">Feed <img class="inlineimg" border="0" src="/db/img/rss.png" height="16" width="16" alt="" /></a></span>
 
 		<h1><span class="albumtitle" lang="en" style="display:inline">Touhou Eternal Fantasia</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>東方Eternal Fantasia</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Touhou Eternal Fantasia</i></span> </h1>
 
@@ -644,7 +644,7 @@ $(document).ready(function() {
 <div style="width: 250px; height: 250px; overflow: hidden">
 <table cellpadding="0" cellspacing="0" border="0" align="left" width="250">
 <tr><td align="center" valign="middle" style="height: 250px; width:250px">
-<img id="coverart" src='/db/assets/covers-medium/35753-1349978115.jpg' width='250' height='250' alt="IO-0212" border="0" />
+<div id="coverart" style="background-image: url('http://medium.media.vgm.io/albums/35/35753/35753-1349978115.jpg')" title="IO-0212"></div>
 </td></tr></table></div></div>
 
 <div id="rightfloat" style="margin-left: 270px;">
@@ -769,8 +769,8 @@ $(document).ready(function() {
 <div style="width: 250px; background-color: #2F364F;">
 <div class="smallfont" style="padding: 10px 10px 6px 10px">
 
-<div style="margin-bottom: 10px;"><span style="float: left; margin-right: 6px"><img src="http://vgmdb.net/db/img/arrowbit.gif" alt="" /> <b class="label">Avg. rating</b> </span>
-<form method="post" action="http://vgmdb.net/db/ratings.php" rel="rating" id="rating-album-35753">
+<div style="margin-bottom: 10px;"><span style="float: left; margin-right: 6px"><img src="/db/img/arrowbit.gif" alt="" /> <b class="label">Avg. rating</b> </span>
+<form method="post" action="/db/ratings.php" rel="rating" id="rating-album-35753">
 <div class="star star_on"><span title="0.5">1</span></div>
 <div class="star star_on"><span class="even" title="1.0">2</span></div>
 <div class="star star_on"><span title="1.5">3</span></div>
@@ -786,19 +786,19 @@ $(document).ready(function() {
 <span rel="rating" id="ratingmsg-album-35753" class="time">Rated 5.00 by 2 people</span>
 </div>
 
-<div style="margin-bottom: 10px;"><img src="http://vgmdb.net/db/img/arrowbit.gif" alt="" /> <b class="label">Contained in</b> 3 collections<br />
+<div style="margin-bottom: 10px;"><img src="/db/img/arrowbit.gif" alt="" /> <b class="label">Contained in</b> 3 collections<br />
 </div>
 
-<div style="margin-bottom: 10px;"><img src="http://vgmdb.net/db/img/arrowbit.gif" alt="" /> <b class="label">Contained in</b> 0 wish lists<br />
+<div style="margin-bottom: 10px;"><img src="/db/img/arrowbit.gif" alt="" /> <b class="label">Contained in</b> 0 wish lists<br />
 </div>
 
-<div style="margin-bottom: 10px;"><img src="http://vgmdb.net/db/img/arrowbit.gif" alt="" /> <b class="label">Category</b><br />
+<div style="margin-bottom: 10px;"><img src="/db/img/arrowbit.gif" alt="" /> <b class="label">Category</b><br />
 Game </div>
 
-<div style="margin-bottom: 10px;"><img src="http://vgmdb.net/db/img/arrowbit.gif" alt="" /> <b class="label">Products represented</b><br />
+<div style="margin-bottom: 10px;"><img src="/db/img/arrowbit.gif" alt="" /> <b class="label">Products represented</b><br />
 <a href="/product/22"><span class="productname" lang="en" style="display:inline">Touhou Youyoumu ~ Perfect Cherry Blossom.</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja" style="display:none">東方妖々夢　～ Perfect Cherry Blossom.</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja-Latn" style="display:none">Touhou Youyoumu ~ Perfect Cherry Blossom.</span></a><br /><a href="/product/33"><span class="productname" lang="en" style="display:inline">Touhou Fuujinroku ~ Mountain of Faith.</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja" style="display:none">東方風神録　～ Mountain of Faith.</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja-Latn" style="display:none">Touhou Fuujinroku ~ Mountain of Faith.</span></a><br /><a href="/product/27"><span class="productname" lang="en" style="display:inline">Touhou Eiyashou ~ Imperishable Night.</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja" style="display:none">東方永夜抄　～ Imperishable Night.</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja-Latn" style="display:none">Touhou Eiyashou ~ Imperishable Night.</span></a><br /><a href="/product/20"><span class="productname" lang="en" style="display:inline">Touhou Koumakyou ~ the Embodiment of Scarlet Devil.</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja" style="display:none">東方紅魔郷　～ the Embodiment of Scarlet Devil.</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja-Latn" style="display:none">Touhou Koumakyou ~ the Embodiment of Scarlet Devil.</span></a><br /><a href="/product/51"><span class="productname" lang="en" style="display:inline">Touhou Seirensen ~ Undefined Fantastic Object.</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja" style="display:none">東方星蓮船　～ Undefined Fantastic Object.</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja-Latn" style="display:none">Touhou Seirensen ~ Undefined Fantastic Object.</span></a> </div>
 
-<div><img src="http://vgmdb.net/db/img/arrowbit.gif" alt="" /> <b class="label">Platforms represented</b><br />
+<div><img src="/db/img/arrowbit.gif" alt="" /> <b class="label">Platforms represented</b><br />
 PC </div>
 
 <div id="preview"></div>
@@ -817,7 +817,7 @@ PC </div>
 </div>
 <div style="width: 250px; background-color: #2F364F;">
 <div class="smallfont" style="padding: 10px 10px 0px 10px">
-<div style="margin-bottom: 10px"><img src="http://vgmdb.net/db/img/arrowbit.gif" alt="" /> <b class="label">Official</b><br />
+<div style="margin-bottom: 10px"><img src="/db/img/arrowbit.gif" alt="" /> <b class="label">Official</b><br />
 <a class='link_doc' rel='nofollow' href='/redirect/52418/www.iosysos.com/cd/tohogt5/'>東方Eternal Fantasia</a>
 </div>
 
@@ -840,21 +840,21 @@ PC </div>
 
 <div class="covertab" id="cover_gallery"><table border='0' width='100%'><tr>
 <td width='33%' align='center' valign='top'>
-<a id="thumb_158757" href="/db/assets/covers-medium/35753-1349978115.jpg" class="highslide" rel="highslide"><div  style="background-color: #001122; background-image: url('/db/assets/covers-thumb/35753-1349978115.jpg'); background-repeat: no-repeat; background-position: center center; border: solid 1px #40557E; height: 60px; width: 60px;">&nbsp;</div><h4 class="label" style="font-weight: normal">Insert Front</h4></a>
+<a id="thumb_158757" href="http://medium.media.vgm.io/albums/35/35753/35753-1349978115.jpg" class="highslide" rel="highslide"><div  style="background-color: #001122; background-image: url('http://thumb.media.vgm.io/albums/35/35753/35753-1349978115.jpg'); background-repeat: no-repeat; background-position: center center; border: solid 1px #40557E; height: 60px; width: 60px;">&nbsp;</div><h4 class="label" style="font-weight: normal">Insert Front</h4></a>
 <div class='highslide-caption'><div class="smallfont">Submitted <!--- by <b>Fimbulwinter</b> ---> on Oct 11, 2012 <span class="time">09:55 AM</span></div><div class="smallfont"></div></div>
 </td><td width='33%' align='center' valign='top'>
-<a id="thumb_158760" href="/db/assets/covers-medium/35753-1349978124.jpg" class="highslide" rel="highslide"><div  style="background-color: #001122; background-image: url('/db/assets/covers-thumb/35753-1349978124.jpg'); background-repeat: no-repeat; background-position: center center; border: solid 1px #40557E; height: 60px; width: 60px;">&nbsp;</div><h4 class="label" style="font-weight: normal">Back</h4></a>
+<a id="thumb_158760" href="http://medium.media.vgm.io/albums/35/35753/35753-1349978124.jpg" class="highslide" rel="highslide"><div  style="background-color: #001122; background-image: url('http://thumb.media.vgm.io/albums/35/35753/35753-1349978124.jpg'); background-repeat: no-repeat; background-position: center center; border: solid 1px #40557E; height: 60px; width: 60px;">&nbsp;</div><h4 class="label" style="font-weight: normal">Back</h4></a>
 <div class='highslide-caption'><div class="smallfont">Submitted <!--- by <b>Fimbulwinter</b> ---> on Oct 11, 2012 <span class="time">09:55 AM</span></div><div class="smallfont"></div></div>
 </td><td width='33%' align='center' valign='top'>
-<a id="thumb_158758" href="/db/assets/covers-medium/35753-1349978118.jpg" class="highslide" rel="highslide"><div  style="background-color: #001122; background-image: url('/db/assets/covers-thumb/35753-1349978118.jpg'); background-repeat: no-repeat; background-position: center center; border: solid 1px #40557E; height: 60px; width: 60px;">&nbsp;</div><h4 class="label" style="font-weight: normal">Insert Back</h4></a>
+<a id="thumb_158758" href="http://medium.media.vgm.io/albums/35/35753/35753-1349978118.jpg" class="highslide" rel="highslide"><div  style="background-color: #001122; background-image: url('http://thumb.media.vgm.io/albums/35/35753/35753-1349978118.jpg'); background-repeat: no-repeat; background-position: center center; border: solid 1px #40557E; height: 60px; width: 60px;">&nbsp;</div><h4 class="label" style="font-weight: normal">Insert Back</h4></a>
 <div class='highslide-caption'><div class="smallfont">Submitted <!--- by <b>Fimbulwinter</b> ---> on Oct 11, 2012 <span class="time">09:55 AM</span></div><div class="smallfont"></div></div>
 </td></tr>
 <table border='0' width='100%'><tr>
 <td width='33%' align='center' valign='top'>
-<a id="thumb_158762" href="/db/assets/covers-medium/35753-1349978130.jpg" class="highslide" rel="highslide"><div  style="background-color: #001122; background-image: url('/db/assets/covers-thumb/35753-1349978130.jpg'); background-repeat: no-repeat; background-position: center center; border: solid 1px #40557E; height: 60px; width: 60px;">&nbsp;</div><h4 class="label" style="font-weight: normal">Obi Back</h4></a>
+<a id="thumb_158762" href="http://medium.media.vgm.io/albums/35/35753/35753-1349978130.jpg" class="highslide" rel="highslide"><div  style="background-color: #001122; background-image: url('http://thumb.media.vgm.io/albums/35/35753/35753-1349978130.jpg'); background-repeat: no-repeat; background-position: center center; border: solid 1px #40557E; height: 60px; width: 60px;">&nbsp;</div><h4 class="label" style="font-weight: normal">Obi Back</h4></a>
 <div class='highslide-caption'><div class="smallfont">Submitted <!--- by <b>Fimbulwinter</b> ---> on Oct 11, 2012 <span class="time">09:55 AM</span></div><div class="smallfont"></div></div>
 </td><td width='33%' align='center' valign='top'>
-<a id="thumb_158761" href="/db/assets/covers-medium/35753-1349978127.jpg" class="highslide" rel="highslide"><div  style="background-color: #001122; background-image: url('/db/assets/covers-thumb/35753-1349978127.jpg'); background-repeat: no-repeat; background-position: center center; border: solid 1px #40557E; height: 60px; width: 60px;">&nbsp;</div><h4 class="label" style="font-weight: normal">Obi Front</h4></a>
+<a id="thumb_158761" href="http://medium.media.vgm.io/albums/35/35753/35753-1349978127.jpg" class="highslide" rel="highslide"><div  style="background-color: #001122; background-image: url('http://thumb.media.vgm.io/albums/35/35753/35753-1349978127.jpg'); background-repeat: no-repeat; background-position: center center; border: solid 1px #40557E; height: 60px; width: 60px;">&nbsp;</div><h4 class="label" style="font-weight: normal">Obi Front</h4></a>
 <div class='highslide-caption'><div class="smallfont">Submitted <!--- by <b>Fimbulwinter</b> ---> on Oct 11, 2012 <span class="time">09:55 AM</span></div><div class="smallfont"></div></div>
 </td><td width='33%'>&nbsp;</td></tr></table>
 </div>
@@ -886,19 +886,19 @@ PC </div>
 <b class="rtop"><b></b></b>
 
 <div class="smallfont" style="padding: 6px 10px 6px 10px">
-<div style="margin-bottom: 10px;"><img src="http://vgmdb.net/db/img/arrowbit.gif" alt="" /> <b class="label">Added</b><br />
+<div style="margin-bottom: 10px;"><img src="/db/img/arrowbit.gif" alt="" /> <b class="label">Added</b><br />
 Oct 11, 2012 <span class="time">09:48 AM</span></div>
 
-<div style="margin-bottom: 10px;"><img src="http://vgmdb.net/db/img/arrowbit.gif" alt="" border = "0" /> <b class="label">Edited</b><br />
+<div style="margin-bottom: 10px;"><img src="/db/img/arrowbit.gif" alt="" border = "0" /> <b class="label">Edited</b><br />
 Oct 11, 2012 <span class="time">10:27 AM</span></div>
 
-<div style="margin-bottom: 10px;"><img src="http://vgmdb.net/db/img/arrowbit.gif" alt="" /> <b class="label">Page traffic</b><br />
-<span class="time">1712</span> visitors<br />
+<div style="margin-bottom: 10px;"><img src="/db/img/arrowbit.gif" alt="" /> <b class="label">Page traffic</b><br />
+<span class="time">1904</span> visitors<br />
 <span class="time" style="word-break:break-all">3</span> freedb<br />
 <!----></div>
 
-<div><img src="http://vgmdb.net/db/img/arrowbit.gif" alt="" /> <b class="label">Page built in</b><br />
-<span class="time">0.21</span> seconds</div>
+<div><img src="/db/img/arrowbit.gif" alt="" /> <b class="label">Page built in</b><br />
+<span class="time">0.22</span> seconds</div>
 </div>
 
 <b class="rbot"><b></b></b>
@@ -975,7 +975,7 @@ Oct 11, 2012 <span class="time">10:27 AM</span></div>
 	<div style="float: right; text-align: right; font-family: Arial;" class="label">
 		<a href="/about">About Us</a> &bull;
 		<a href="/faq">F.A.Q.</a> &bull;
-		<a href="/forums/sendmessage.php?s=62d0f040acacd5d6ff12e28ea21a3315" rel="nofollow" accesskey="9">Contact Us</a> &bull;
+		<a href="/forums/sendmessage.php?s=8d900d2e514ed8b842074faf948879ba" rel="nofollow" accesskey="9">Contact Us</a> &bull;
 		<a href="/db/statistics.php" rel="nofollow">Statistics</a> &bull;
 		<a href="http://vgmdb.net">Home</a>
 
@@ -1005,7 +1005,7 @@ Oct 11, 2012 <span class="time">10:27 AM</span></div>
 		<!-- Do not remove this copyright notice --></div>
 		<div class="smallfont">Site code and design copyright VGMdb.net</div>
 		<div class="smallfont">Site material is property of their respective owners.</div>
-		<div class="smallfont">All times are GMT -8. The time now is <span class="time">08:18 PM</span>.</div>
+		<div class="smallfont">All times are GMT -8. The time now is <span class="time">11:19 PM</span>.</div>
 	</div>
 
 

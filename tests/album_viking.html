@@ -4,7 +4,7 @@
 <title>Erik The Viking - VGMdb</title>
 
 
-<link href="http://vgmdb.net/album/16160/feed" rel="alternate" type="application/rss+xml" title="Album RSS Feed" />
+<link href="/album/16160/feed" rel="alternate" type="application/rss+xml" title="Album RSS Feed" />
 
 
 
@@ -359,14 +359,13 @@ form { display: inline; }
 <link rel="stylesheet" type="text/css" href="http://vgmdb.net/forums/clientscript/vbulletin_important.css?v=385" />
 
 
-<link rel="stylesheet" type="text/css" href="http://vgmdb.net/db/vgmdb.css?20100801" />
+<link rel="stylesheet" type="text/css" href="/db/vgmdb.css?20100803" />
 <link rel="stylesheet" type="text/css" href="http://media.vgmdb.net/css/vgmdb-colorcode-title.css" id="colorcode" />
-<link rel="stylesheet" type="text/css" href="http://vgmdb.net/db/jquery.autocomplete.css?20091023" />
-<link rel="stylesheet" type="text/css" href="http://vgmdb.net/db/jquery.twitter.css?20091005" />
-<link rel="stylesheet" type="text/css" href="http://vgmdb.net/db/jquery.jcarousel.css?20091124" />
-<link rel="stylesheet" type="text/css" href="http://vgmdb.net/db/highslide.css?080623" />
+<link rel="stylesheet" type="text/css" href="/db/jquery.autocomplete.css?20091023" />
+<link rel="stylesheet" type="text/css" href="/db/jquery.jcarousel.css?20091124" />
+<link rel="stylesheet" type="text/css" href="/db/highslide.css?080623" />
 <!--[if lte IE 6]>
-<link rel="stylesheet" type="text/css" href="http://vgmdb.net/db/iepngfix.css" />
+<link rel="stylesheet" type="text/css" href="/db/iepngfix.css" />
 <![endif]-->
 <!-- / CSS Stylesheet -->
 
@@ -374,15 +373,15 @@ form { display: inline; }
 <script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/connection/connection-min.js?v=385"></script>
 <script type="text/javascript">
 <!--
-var SESSIONURL = "s=1dd24f5b6c9b3724241c56ddbd756a1d&";
+var SESSIONURL = "s=8d900d2e514ed8b842074faf948879ba&";
 var SECURITYTOKEN = "guest";
-var IMGDIR_MISC = "http://vgmdb.net/forums/images/misc";
+var IMGDIR_MISC = "/forums/images/misc";
 var vb_disable_ajax = parseInt("0", 10);
 // -->
 </script>
-<script type="text/javascript" src="http://vgmdb.net/forums/clientscript/vbulletin_global.js?v=385"></script>
+<script type="text/javascript" src="/forums/clientscript/vbulletin_global.js?v=385"></script>
 
-<link rel="alternate" type="application/rss+xml" title="VGMdb Forums RSS Feed" href="http://vgmdb.net/forums/external.php?type=RSS2" />
+<link rel="alternate" type="application/rss+xml" title="VGMdb Forums RSS Feed" href="/forums/external.php?type=RSS2" />
 
 <script type="text/javascript" src="http://media.vgmdb.net/js/jquery-1.4.min.js"></script>
 <script type="text/javascript" src="http://media.vgmdb.net/js/jquery.compressed.js"></script>
@@ -400,7 +399,7 @@ $(document).ready(function() {
 	ItemType["2"] = "Organization";
 	hs.showCredits = false;
 	hs.allowMultipleInstances = false;
-	hs.graphicsDir = 'http://vgmdb.net/db/highslide/graphics/';
+	hs.graphicsDir = '/db/highslide/graphics/';
 	function formatItem(row) {
 		return "<span style='float: right; margin-left: 10px' class='tinyfont label'>" + ItemType[row[3]] + " #" + row[1] + "</span>" + row[0];
 	}
@@ -439,7 +438,7 @@ $(document).ready(function() {
 		}
 		return false;
 	});
-	$("#simplesearch").autocomplete('http://vgmdb.net/db/ajax-autocomplete.php', {
+	$("#simplesearch").autocomplete('/db/ajax-autocomplete.php', {
 		minChars: 3,
 		delay: 1000,
 		max: 150,
@@ -483,6 +482,7 @@ $(document).ready(function() {
   })();
 
 </script>
+<script type="text/javascript">var NREUMQ=NREUMQ||[];NREUMQ.push(["mark","firstbyte",new Date().getTime()]);</script>
 
 
 <meta name="keywords" content="Neil Baldwin, Erik The Viking, NES (Famicom), album, ost, soundtrack, tracklist, scans, covers, vgm, translation" />
@@ -581,7 +581,7 @@ $(document).ready(function() {
 	</li>
 	<li id="nav_advsearch"><a title="More search options" href="/search">Advanced Search</a></li>
 	<li id="nav_update"><a title="Latest submissions and edits" href="/db/recent.php">Updates</a></li>
-	<li id="nav_calendar"><a title="Release schedules" href="/db/calendar.php?year=2013&month=4">Calendar</a></li>
+	<li id="nav_calendar"><a title="Release schedules" href="/db/calendar.php?year=2015&month=8">Calendar</a></li>
 	<li id="nav_forum"><a title="Community discussions" href="/forums/">Forums</a></li>
 	<li id="nav_market"><a title="Trade with other members" href="/db/marketplace.php?do=view">Marketplace</a></li>
 	<!-- <li id="nav_radio"><a title="Live streaming VGM" href="#" onclick="alert('Under Construction');">Radio</a></li> -->
@@ -609,7 +609,7 @@ $(document).ready(function() {
 		<td><input type="submit" class="button" value="Log in" tabindex="104" title="Enter your username and password in the boxes provided to login, or click the 'register' button to create a profile for yourself." accesskey="s" /></td>
 	</tr>
 	</table>
-	<input type="hidden" name="s" value="1dd24f5b6c9b3724241c56ddbd756a1d" />
+	<input type="hidden" name="s" value="8d900d2e514ed8b842074faf948879ba" />
 	<input type="hidden" name="securitytoken" value="guest" />
 	<input type="hidden" name="do" value="login" />		
 	<input type="hidden" name="vb_login_md5password" />
@@ -635,7 +635,7 @@ $(document).ready(function() {
 <table width="100%" cellpadding="0" cellspacing="0" border="0" align="left"><tr><td width="100%" style="background-color: #1B273D;" valign="top">
 	<b class="rtop"><b></b></b>
 	<div id="innermain" style="padding: 6px 10px 0px 10px">
-		<span style="float:right;" class="label smallfont"><a href="http://vgmdb.net/db/albums-discuss.php?id=16160">Discuss</a> | <span id="albumtools"><a href="#">Edit</a><script type="text/javascript"> vBmenu.register('albumtools'); </script></span> | <a class="smallfont" href="http://vgmdb.net/album/16160/feed" title="Activity RSS Feed">Feed <img class="inlineimg" border="0" src="http://vgmdb.net/db/img/rss.png" height="16" width="16" alt="" /></a></span>
+		<span style="float:right;" class="label smallfont"><a href="/db/albums-discuss.php?id=16160">Discuss</a> | <span id="albumtools"><a href="#">Edit</a><script type="text/javascript"> vBmenu.register('albumtools'); </script></span> | <a class="smallfont" href="/album/16160/feed" title="Activity RSS Feed">Feed <img class="inlineimg" border="0" src="/db/img/rss.png" height="16" width="16" alt="" /></a></span>
 
 		<h1><span class="albumtitle" lang="en" style="display:inline">Erik The Viking</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>Erik The Viking</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Erik The Viking</i></span> </h1>
 
@@ -644,7 +644,7 @@ $(document).ready(function() {
 <div style="width: 250px; height: 250px; overflow: hidden">
 <table cellpadding="0" cellspacing="0" border="0" align="left" width="250">
 <tr><td align="center" valign="middle" style="height: 250px; width:250px">
-<img id="coverart" src='/db/assets/covers-medium/1/6/1/6/0/16160-1257289094.png' width='171' height='250' alt="N/A" border="0" />
+<div id="coverart" style="background-image: url('http://medium.media.vgm.io/albums/06/16160/16160-1257289094.png')" title="N/A"></div>
 </td></tr></table></div></div>
 
 <div id="rightfloat" style="margin-left: 270px;">
@@ -711,7 +711,8 @@ $(document).ready(function() {
 			<div style="background-color: #2F364F; clear: both">
 			<b class="rtop"><b></b></b>
 			<div style="padding: 6px 10px 10px 10px" id="tracklist"><span class="tl" id="tl23232">
-	<!-- / tracklist tools menu --><span style="font-size:8pt"><b>Disc 1</b></span>
+	<!-- / tracklist tools menu -->
+<span style="font-size:8pt"><b>Disc 1</b></span>
 <br /><br />
 <table cellpadding="1" cellspacing="0" border="0">
 <tr>
@@ -776,8 +777,13 @@ $(document).ready(function() {
 <td style="border-bottom: 1px solid #3C405C; padding-left: 6px" class="smallfont" align="right" nowrap="nowrap"><span class="time">0:10</span></td>
 </tr>
 </table>
-<span style="float: right; margin: 1px;"><span class="smallfont" style="color: #606978">Disc length</span> <span class="time">21:17</span></span>
-<br style="clear: both" /><h4 class="label" style="font-weight: normal">
+<span style="float: right; margin: 1px;">
+  <span class="smallfont" style="color: #606978">Disc length</span> 
+  <span class="time">21:17</span>
+</span>
+<br style="clear: both" />
+
+<h4 class="label" style="font-weight: normal">
 
 
 </h4></span>
@@ -798,8 +804,8 @@ $(document).ready(function() {
 <div style="width: 250px; background-color: #2F364F;">
 <div class="smallfont" style="padding: 10px 10px 6px 10px">
 
-<div style="margin-bottom: 10px;"><span style="float: left; margin-right: 6px"><img src="http://vgmdb.net/db/img/arrowbit.gif" alt="" /> <b class="label">Avg. rating</b> </span>
-<form method="post" action="http://vgmdb.net/db/ratings.php" rel="rating" id="rating-album-16160">
+<div style="margin-bottom: 10px;"><span style="float: left; margin-right: 6px"><img src="/db/img/arrowbit.gif" alt="" /> <b class="label">Avg. rating</b> </span>
+<form method="post" action="/db/ratings.php" rel="rating" id="rating-album-16160">
 <div class="star"><span title="0.5">1</span></div>
 <div class="star"><span class="even" title="1.0">2</span></div>
 <div class="star"><span title="1.5">3</span></div>
@@ -815,19 +821,19 @@ $(document).ready(function() {
 <span rel="rating" id="ratingmsg-album-16160" class="time">Nobody has rated this album yet.</span>
 </div>
 
-<div style="margin-bottom: 10px;"><img src="http://vgmdb.net/db/img/arrowbit.gif" alt="" /> <b class="label">Contained in</b> 2 collections<br />
+<div style="margin-bottom: 10px;"><img src="/db/img/arrowbit.gif" alt="" /> <b class="label">Contained in</b> 2 collections<br />
 </div>
 
-<div style="margin-bottom: 10px;"><img src="http://vgmdb.net/db/img/arrowbit.gif" alt="" /> <b class="label">Contained in</b> 0 wish lists<br />
+<div style="margin-bottom: 10px;"><img src="/db/img/arrowbit.gif" alt="" /> <b class="label">Contained in</b> 0 wish lists<br />
 </div>
 
-<div style="margin-bottom: 10px;"><img src="http://vgmdb.net/db/img/arrowbit.gif" alt="" /> <b class="label">Category</b><br />
+<div style="margin-bottom: 10px;"><img src="/db/img/arrowbit.gif" alt="" /> <b class="label">Category</b><br />
 Game </div>
 
-<div style="margin-bottom: 10px;"><img src="http://vgmdb.net/db/img/arrowbit.gif" alt="" /> <b class="label">Products represented</b><br />
+<div style="margin-bottom: 10px;"><img src="/db/img/arrowbit.gif" alt="" /> <b class="label">Products represented</b><br />
 Erik The Viking </div>
 
-<div><img src="http://vgmdb.net/db/img/arrowbit.gif" alt="" /> <b class="label">Platforms represented</b><br />
+<div><img src="/db/img/arrowbit.gif" alt="" /> <b class="label">Platforms represented</b><br />
 NES (Famicom) </div>
 
 <div id="preview"></div>
@@ -840,6 +846,24 @@ NES (Famicom) </div>
 
 
 
+<div style="width: 250px; background-color: #1B273D">
+<b class="rtop"><b></b></b>
+<div style="padding: 6px 10px 0px 10px"><h3>Websites</h3></div>
+</div>
+<div style="width: 250px; background-color: #2F364F;">
+<div class="smallfont" style="padding: 10px 10px 0px 10px">
+
+
+<div style="margin-bottom: 10px"><img src="/db/img/arrowbit.gif" alt="" /> <b class="label">Review</b><br />
+<a class='link_doc' rel='nofollow' href='/redirect/75573/bestwesterngamesoundtracks.com/soundtracks/erik-the-viking-soundtrack/'>The Best Western Game Soundtracks (1984-2013)</a>
+</div>
+
+
+</div>
+<b class="rbot"><b></b></b>
+</div>
+
+<br style="clear: left" />
 
 
 
@@ -864,18 +888,18 @@ NES (Famicom) </div>
 <b class="rtop"><b></b></b>
 
 <div class="smallfont" style="padding: 6px 10px 6px 10px">
-<div style="margin-bottom: 10px;"><img src="http://vgmdb.net/db/img/arrowbit.gif" alt="" /> <b class="label">Added</b><br />
+<div style="margin-bottom: 10px;"><img src="/db/img/arrowbit.gif" alt="" /> <b class="label">Added</b><br />
 Nov 3, 2009 <span class="time">01:57 PM</span></div>
 
-<div style="margin-bottom: 10px;"><img src="http://vgmdb.net/db/img/arrowbit.gif" alt="" border = "0" /> <b class="label">Edited</b><br />
+<div style="margin-bottom: 10px;"><img src="/db/img/arrowbit.gif" alt="" border = "0" /> <b class="label">Edited</b><br />
 Nov 3, 2009 <span class="time">01:57 PM</span></div>
 
-<div style="margin-bottom: 10px;"><img src="http://vgmdb.net/db/img/arrowbit.gif" alt="" /> <b class="label">Page traffic</b><br />
-<span class="time">500</span> visitors<br />
-<span class="time">1</span> freedb<br />
+<div style="margin-bottom: 10px;"><img src="/db/img/arrowbit.gif" alt="" /> <b class="label">Page traffic</b><br />
+<span class="time">1188</span> visitors<br />
+<span class="time" style="word-break:break-all">1</span> freedb<br />
 <!----></div>
 
-<div><img src="http://vgmdb.net/db/img/arrowbit.gif" alt="" /> <b class="label">Page built in</b><br />
+<div><img src="/db/img/arrowbit.gif" alt="" /> <b class="label">Page built in</b><br />
 <span class="time">0.01</span> seconds</div>
 </div>
 
@@ -953,7 +977,7 @@ Nov 3, 2009 <span class="time">01:57 PM</span></div>
 	<div style="float: right; text-align: right; font-family: Arial;" class="label">
 		<a href="/about">About Us</a> &bull;
 		<a href="/faq">F.A.Q.</a> &bull;
-		<a href="/forums/sendmessage.php?s=1dd24f5b6c9b3724241c56ddbd756a1d" rel="nofollow" accesskey="9">Contact Us</a> &bull;
+		<a href="/forums/sendmessage.php?s=8d900d2e514ed8b842074faf948879ba" rel="nofollow" accesskey="9">Contact Us</a> &bull;
 		<a href="/db/statistics.php" rel="nofollow">Statistics</a> &bull;
 		<a href="http://vgmdb.net">Home</a>
 
@@ -979,11 +1003,11 @@ Nov 3, 2009 <span class="time">01:57 PM</span></div>
 	<div class="label">
 		<h3>VGMdb 0.15 (beta)</h3>
 		<div class="smallfont"><!-- Do not remove this copyright notice -->
-		Powered by vBulletin&reg; Version 3.8.5<br />Copyright &copy;2000 - 2013, Jelsoft Enterprises Ltd.
+		Powered by vBulletin&reg; Version 3.8.5<br />Copyright &copy;2000 - 2015, Jelsoft Enterprises Ltd.
 		<!-- Do not remove this copyright notice --></div>
 		<div class="smallfont">Site code and design copyright VGMdb.net</div>
 		<div class="smallfont">Site material is property of their respective owners.</div>
-		<div class="smallfont">All times are GMT -8. The time now is <span class="time">05:31 PM</span>.</div>
+		<div class="smallfont">All times are GMT -8. The time now is <span class="time">11:19 PM</span>.</div>
 	</div>
 
 
@@ -997,6 +1021,7 @@ Nov 3, 2009 <span class="time">01:57 PM</span></div>
 	vBulletin_init();
 //-->
 </script>
+<script type="text/javascript">if(!NREUMQ.f){NREUMQ.f=function(){NREUMQ.push(["load",new Date().getTime()]);var e=document.createElement("script");e.type="text/javascript";e.src=(("http:"===document.location.protocol)?"http:":"https:")+"//"+"js-agent.newrelic.com/nr-100.js";document.body.appendChild(e);if(NREUMQ.a)NREUMQ.a();};NREUMQ.a=window.onload;window.onload=NREUMQ.f;};NREUMQ.push(["nrfj","beacon-3.newrelic.com","ae449e68e8","505396","NANSNkUDWUoCU0MNDA1JZRBeTVNbTFFbBhYOFR4SXxI=",0,15,new Date().getTime(),"","","","",""]);</script>
 
 </body>
 </html>

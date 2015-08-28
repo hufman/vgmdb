@@ -4,7 +4,7 @@
 <title>GAME-119 | secret of mana + - VGMdb</title>
 
 
-<link href="http://vgmdb.net/album/11705/feed" rel="alternate" type="application/rss+xml" title="Album RSS Feed" />
+<link href="/album/11705/feed" rel="alternate" type="application/rss+xml" title="Album RSS Feed" />
 
 
 
@@ -359,14 +359,13 @@ form { display: inline; }
 <link rel="stylesheet" type="text/css" href="http://vgmdb.net/forums/clientscript/vbulletin_important.css?v=385" />
 
 
-<link rel="stylesheet" type="text/css" href="http://vgmdb.net/db/vgmdb.css?20100801" />
+<link rel="stylesheet" type="text/css" href="/db/vgmdb.css?20100803" />
 <link rel="stylesheet" type="text/css" href="http://media.vgmdb.net/css/vgmdb-colorcode-title.css" id="colorcode" />
-<link rel="stylesheet" type="text/css" href="http://vgmdb.net/db/jquery.autocomplete.css?20091023" />
-<link rel="stylesheet" type="text/css" href="http://vgmdb.net/db/jquery.twitter.css?20091005" />
-<link rel="stylesheet" type="text/css" href="http://vgmdb.net/db/jquery.jcarousel.css?20091124" />
-<link rel="stylesheet" type="text/css" href="http://vgmdb.net/db/highslide.css?080623" />
+<link rel="stylesheet" type="text/css" href="/db/jquery.autocomplete.css?20091023" />
+<link rel="stylesheet" type="text/css" href="/db/jquery.jcarousel.css?20091124" />
+<link rel="stylesheet" type="text/css" href="/db/highslide.css?080623" />
 <!--[if lte IE 6]>
-<link rel="stylesheet" type="text/css" href="http://vgmdb.net/db/iepngfix.css" />
+<link rel="stylesheet" type="text/css" href="/db/iepngfix.css" />
 <![endif]-->
 <!-- / CSS Stylesheet -->
 
@@ -374,15 +373,15 @@ form { display: inline; }
 <script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/connection/connection-min.js?v=385"></script>
 <script type="text/javascript">
 <!--
-var SESSIONURL = "s=5be7ac6b99d8472d257a2f6a61eba371&";
+var SESSIONURL = "s=8d900d2e514ed8b842074faf948879ba&";
 var SECURITYTOKEN = "guest";
-var IMGDIR_MISC = "http://vgmdb.net/forums/images/misc";
+var IMGDIR_MISC = "/forums/images/misc";
 var vb_disable_ajax = parseInt("0", 10);
 // -->
 </script>
-<script type="text/javascript" src="http://vgmdb.net/forums/clientscript/vbulletin_global.js?v=385"></script>
+<script type="text/javascript" src="/forums/clientscript/vbulletin_global.js?v=385"></script>
 
-<link rel="alternate" type="application/rss+xml" title="VGMdb Forums RSS Feed" href="http://vgmdb.net/forums/external.php?type=RSS2" />
+<link rel="alternate" type="application/rss+xml" title="VGMdb Forums RSS Feed" href="/forums/external.php?type=RSS2" />
 
 <script type="text/javascript" src="http://media.vgmdb.net/js/jquery-1.4.min.js"></script>
 <script type="text/javascript" src="http://media.vgmdb.net/js/jquery.compressed.js"></script>
@@ -400,7 +399,7 @@ $(document).ready(function() {
 	ItemType["2"] = "Organization";
 	hs.showCredits = false;
 	hs.allowMultipleInstances = false;
-	hs.graphicsDir = 'http://vgmdb.net/db/highslide/graphics/';
+	hs.graphicsDir = '/db/highslide/graphics/';
 	function formatItem(row) {
 		return "<span style='float: right; margin-left: 10px' class='tinyfont label'>" + ItemType[row[3]] + " #" + row[1] + "</span>" + row[0];
 	}
@@ -439,7 +438,7 @@ $(document).ready(function() {
 		}
 		return false;
 	});
-	$("#simplesearch").autocomplete('http://vgmdb.net/db/ajax-autocomplete.php', {
+	$("#simplesearch").autocomplete('/db/ajax-autocomplete.php', {
 		minChars: 3,
 		delay: 1000,
 		max: 150,
@@ -576,7 +575,7 @@ $(document).ready(function() {
 	</li>
 	<li id="nav_advsearch"><a title="More search options" href="/search">Advanced Search</a></li>
 	<li id="nav_update"><a title="Latest submissions and edits" href="/db/recent.php">Updates</a></li>
-	<li id="nav_calendar"><a title="Release schedules" href="/db/calendar.php?year=2013&month=9">Calendar</a></li>
+	<li id="nav_calendar"><a title="Release schedules" href="/db/calendar.php?year=2015&month=8">Calendar</a></li>
 	<li id="nav_forum"><a title="Community discussions" href="/forums/">Forums</a></li>
 	<li id="nav_market"><a title="Trade with other members" href="/db/marketplace.php?do=view">Marketplace</a></li>
 	<!-- <li id="nav_radio"><a title="Live streaming VGM" href="#" onclick="alert('Under Construction');">Radio</a></li> -->
@@ -604,7 +603,7 @@ $(document).ready(function() {
 		<td><input type="submit" class="button" value="Log in" tabindex="104" title="Enter your username and password in the boxes provided to login, or click the 'register' button to create a profile for yourself." accesskey="s" /></td>
 	</tr>
 	</table>
-	<input type="hidden" name="s" value="5be7ac6b99d8472d257a2f6a61eba371" />
+	<input type="hidden" name="s" value="8d900d2e514ed8b842074faf948879ba" />
 	<input type="hidden" name="securitytoken" value="guest" />
 	<input type="hidden" name="do" value="login" />		
 	<input type="hidden" name="vb_login_md5password" />
@@ -630,7 +629,7 @@ $(document).ready(function() {
 <table width="100%" cellpadding="0" cellspacing="0" border="0" align="left"><tr><td width="100%" style="background-color: #1B273D;" valign="top">
 	<b class="rtop"><b></b></b>
 	<div id="innermain" style="padding: 6px 10px 0px 10px">
-		<span style="float:right;" class="label smallfont"><a href="http://vgmdb.net/db/albums-discuss.php?id=11705">Discuss</a> | <span id="albumtools"><a href="#">Edit</a><script type="text/javascript"> vBmenu.register('albumtools'); </script></span> | <a class="smallfont" href="http://vgmdb.net/album/11705/feed" title="Activity RSS Feed">Feed <img class="inlineimg" border="0" src="http://vgmdb.net/db/img/rss.png" height="16" width="16" alt="" /></a></span>
+		<span style="float:right;" class="label smallfont"><a href="/db/albums-discuss.php?id=11705">Discuss</a> | <span id="albumtools"><a href="#">Edit</a><script type="text/javascript"> vBmenu.register('albumtools'); </script></span> | <a class="smallfont" href="/album/11705/feed" title="Activity RSS Feed">Feed <img class="inlineimg" border="0" src="/db/img/rss.png" height="16" width="16" alt="" /></a></span>
 
 		<h1><span class="albumtitle" lang="en" style="display:inline">secret of mana +</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>聖剣伝説2　シークレット オブ マナ</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>secret of mana +</i></span> </h1>
 
@@ -639,7 +638,7 @@ $(document).ready(function() {
 <div style="width: 250px; height: 250px; overflow: hidden">
 <table cellpadding="0" cellspacing="0" border="0" align="left" width="250">
 <tr><td align="center" valign="middle" style="height: 250px; width:250px">
-<img id="coverart" src='/db/assets/covers-medium/1/1/7/0/5/11705-1232199290.jpg' width='250' height='250' alt="GAME-119" border="0" />
+<div id="coverart" style="background-image: url('http://medium.media.vgm.io/albums/50/11705/11705-1232199290.jpg')" title="GAME-119"></div>
 </td></tr></table></div></div>
 
 <div id="rightfloat" style="margin-left: 270px;">
@@ -709,7 +708,8 @@ $(document).ready(function() {
 			<div style="background-color: #2F364F; clear: both">
 			<b class="rtop"><b></b></b>
 			<div style="padding: 6px 10px 10px 10px" id="tracklist"><span class="tl" id="tl4526">
-	<!-- / tracklist tools menu --><span style="font-size:8pt"><b>Disc 1</b></span>
+	<!-- / tracklist tools menu -->
+<span style="font-size:8pt"><b>Disc 1</b></span>
 <br /><br />
 <table cellpadding="1" cellspacing="0" border="0">
 <tr>
@@ -718,8 +718,13 @@ $(document).ready(function() {
 <td style="border-bottom: 1px solid #3C405C; padding-left: 6px" class="smallfont" align="right" nowrap="nowrap"><span class="time">49:26</span></td>
 </tr>
 </table>
-<span style="float: right; margin: 1px;"><span class="smallfont" style="color: #606978">Disc length</span> <span class="time">49:26</span></span>
-<br style="clear: both" /><h4 class="label" style="font-weight: normal">
+<span style="float: right; margin: 1px;">
+  <span class="smallfont" style="color: #606978">Disc length</span> 
+  <span class="time">49:26</span>
+</span>
+<br style="clear: both" />
+
+<h4 class="label" style="font-weight: normal">
 
 
 </h4></span>
@@ -740,8 +745,8 @@ $(document).ready(function() {
 <div style="width: 250px; background-color: #2F364F;">
 <div class="smallfont" style="padding: 10px 10px 6px 10px">
 
-<div style="margin-bottom: 10px;"><span style="float: left; margin-right: 6px"><img src="http://vgmdb.net/db/img/arrowbit.gif" alt="" /> <b class="label">Avg. rating</b> </span>
-<form method="post" action="http://vgmdb.net/db/ratings.php" rel="rating" id="rating-album-722">
+<div style="margin-bottom: 10px;"><span style="float: left; margin-right: 6px"><img src="/db/img/arrowbit.gif" alt="" /> <b class="label">Avg. rating</b> </span>
+<form method="post" action="/db/ratings.php" rel="rating" id="rating-album-722">
 <div class="star star_on"><span title="0.5">1</span></div>
 <div class="star star_on"><span class="even" title="1.0">2</span></div>
 <div class="star star_on"><span title="1.5">3</span></div>
@@ -754,22 +759,22 @@ $(document).ready(function() {
 <div class="star"><span class="even" title="5.0">10</span></div>
 
 </form><br style="clear: both" />
-<span rel="rating" id="ratingmsg-album-722" class="time">Rated 4.19 by 26 people</span>
+<span rel="rating" id="ratingmsg-album-722" class="time">Rated 4.15 by 31 people</span>
 </div>
 
-<div style="margin-bottom: 10px;"><img src="http://vgmdb.net/db/img/arrowbit.gif" alt="" /> <b class="label">Contained in</b> 0 collections<br />
+<div style="margin-bottom: 10px;"><img src="/db/img/arrowbit.gif" alt="" /> <b class="label">Contained in</b> 0 collections<br />
 </div>
 
-<div style="margin-bottom: 10px;"><img src="http://vgmdb.net/db/img/arrowbit.gif" alt="" /> <b class="label">Contained in</b> 0 wish lists<br />
+<div style="margin-bottom: 10px;"><img src="/db/img/arrowbit.gif" alt="" /> <b class="label">Contained in</b> 0 wish lists<br />
 </div>
 
-<div style="margin-bottom: 10px;"><img src="http://vgmdb.net/db/img/arrowbit.gif" alt="" /> <b class="label">Category</b><br />
+<div style="margin-bottom: 10px;"><img src="/db/img/arrowbit.gif" alt="" /> <b class="label">Category</b><br />
 Game </div>
 
-<div style="margin-bottom: 10px;"><img src="http://vgmdb.net/db/img/arrowbit.gif" alt="" /> <b class="label">Products represented</b><br />
+<div style="margin-bottom: 10px;"><img src="/db/img/arrowbit.gif" alt="" /> <b class="label">Products represented</b><br />
 <a href="/product/196"><span class="productname" lang="en" style="display:inline">Secret of Mana</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja" style="display:none">聖剣伝説2</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja-Latn" style="display:none">Seiken Densetsu 2</span></a> </div>
 
-<div><img src="http://vgmdb.net/db/img/arrowbit.gif" alt="" /> <b class="label">Platforms represented</b><br />
+<div><img src="/db/img/arrowbit.gif" alt="" /> <b class="label">Platforms represented</b><br />
 SNES (Super Famicom) </div>
 
 <div id="preview"></div>
@@ -793,13 +798,13 @@ SNES (Super Famicom) </div>
 
 <div class="covertab" id="cover_gallery"><table border='0' width='100%'><tr>
 <td width='33%' align='center' valign='top'>
-<a id="thumb_41748" href="/db/assets/covers-medium/1/1/7/0/5/11705-1232199290.jpg" class="highslide" rel="highslide"><div  style="background-color: #001122; background-image: url('/db/assets/covers-thumb/1/1/7/0/5/11705-1232199290.jpg'); background-repeat: no-repeat; background-position: center center; border: solid 1px #40557E; height: 60px; width: 60px;">&nbsp;</div><h4 class="label" style="font-weight: normal">Front</h4></a>
+<a id="thumb_41748" href="http://medium.media.vgm.io/albums/50/11705/11705-1232199290.jpg" class="highslide" rel="highslide"><div  style="background-color: #001122; background-image: url('http://thumb.media.vgm.io/albums/50/11705/11705-1232199290.jpg'); background-repeat: no-repeat; background-position: center center; border: solid 1px #40557E; height: 60px; width: 60px;">&nbsp;</div><h4 class="label" style="font-weight: normal">Front</h4></a>
 <div class='highslide-caption'><div class="smallfont">Submitted <!--- by <b>Secret Squirrel</b> ---> on Jan 17, 2009 <span class="time">04:34 AM</span></div><div class="smallfont"></div></div>
 </td><td width='33%' align='center' valign='top'>
-<a id="thumb_41749" href="/db/assets/covers-medium/1/1/7/0/5/11705-1232199375.jpg" class="highslide" rel="highslide"><div  style="background-color: #001122; background-image: url('/db/assets/covers-thumb/1/1/7/0/5/11705-1232199375.jpg'); background-repeat: no-repeat; background-position: center center; border: solid 1px #40557E; height: 60px; width: 60px;">&nbsp;</div><h4 class="label" style="font-weight: normal">Back</h4></a>
+<a id="thumb_41749" href="http://medium.media.vgm.io/albums/50/11705/11705-1232199375.jpg" class="highslide" rel="highslide"><div  style="background-color: #001122; background-image: url('http://thumb.media.vgm.io/albums/50/11705/11705-1232199375.jpg'); background-repeat: no-repeat; background-position: center center; border: solid 1px #40557E; height: 60px; width: 60px;">&nbsp;</div><h4 class="label" style="font-weight: normal">Back</h4></a>
 <div class='highslide-caption'><div class="smallfont">Submitted <!--- by <b>Secret Squirrel</b> ---> on Jan 17, 2009 <span class="time">04:36 AM</span></div><div class="smallfont"></div></div>
 </td><td width='33%' align='center' valign='top'>
-<a id="thumb_41751" href="/db/assets/covers-medium/1/1/7/0/5/11705-1232199433.jpg" class="highslide" rel="highslide"><div  style="background-color: #001122; background-image: url('/db/assets/covers-thumb/1/1/7/0/5/11705-1232199433.jpg'); background-repeat: no-repeat; background-position: center center; border: solid 1px #40557E; height: 60px; width: 60px;">&nbsp;</div><h4 class="label" style="font-weight: normal">Booklet Front &amp; Back</h4></a>
+<a id="thumb_41751" href="http://medium.media.vgm.io/albums/50/11705/11705-1232199433.jpg" class="highslide" rel="highslide"><div  style="background-color: #001122; background-image: url('http://thumb.media.vgm.io/albums/50/11705/11705-1232199433.jpg'); background-repeat: no-repeat; background-position: center center; border: solid 1px #40557E; height: 60px; width: 60px;">&nbsp;</div><h4 class="label" style="font-weight: normal">Booklet Front &amp; Back</h4></a>
 <div class='highslide-caption'><div class="smallfont">Submitted <!--- by <b>Secret Squirrel</b> ---> on Jan 17, 2009 <span class="time">04:37 AM</span></div><div class="smallfont"></div></div>
 </td></tr>
 </tr></table>
@@ -820,10 +825,8 @@ SNES (Super Famicom) </div>
 
 
 <span class="smallfont"><div class="album_infobit_small smallfont label">
-<div class="album_infobit_thumb"><div>
-<a href="http://vgmdb.net/album/721" title='Seiken Densetsu 2 Original Sound Version'>
-	<span><img src="/db/assets/covers-thumb/7/2/1/721-1191334639.jpg" width="60" height="55" alt="N25D-019" border="0" /></span>
-</a>
+<div class="album_infobit_thumb"><div style="background-image: url('http://thumb.media.vgm.io/albums/12/721/721-1191334639.jpg')">
+<a href="http://vgmdb.net/album/721" title='Seiken Densetsu 2 Original Sound Version'></a>
 </div></div>
 <ul class="album_infobit_detail">
 <li><a class="albumtitle smallfont album-game" href="http://vgmdb.net/album/721" title='Seiken Densetsu 2 Original Sound Version'><span class="albumtitle" lang="en" style="display:inline">Seiken Densetsu 2 Original Sound Version</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>聖剣伝説2...</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Seiken Densetsu 2 Original Sound Version</i></span></a></li>
@@ -831,10 +834,8 @@ SNES (Super Famicom) </div>
 <li>Aug 06, 1993</li>
 </ul>
 </div><div class="album_infobit_small smallfont label">
-<div class="album_infobit_thumb"><div>
-<a href="http://vgmdb.net/album/722" title='secret of mana +'>
-	<span><img src="/db/assets/covers-thumb/7/2/2/722-1191331784.jpg" width="60" height="60" alt="N30D-021" border="0" /></span>
-</a>
+<div class="album_infobit_thumb"><div style="background-image: url('http://thumb.media.vgm.io/albums/22/722/722-1191331784.jpg')">
+<a href="http://vgmdb.net/album/722" title='secret of mana +'></a>
 </div></div>
 <ul class="album_infobit_detail">
 <li><a class="albumtitle smallfont album-game" href="http://vgmdb.net/album/722" title='secret of mana +'><span class="albumtitle" lang="en" style="display:inline">secret of mana +</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>聖剣伝説2 シークレット オブ マナ</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>secret of mana +</i></span></a></li>
@@ -842,10 +843,8 @@ SNES (Super Famicom) </div>
 <li>Oct 29, 1993</li>
 </ul>
 </div><div class="album_infobit_small smallfont label">
-<div class="album_infobit_thumb"><div>
-<a href="http://vgmdb.net/album/33308" title='Secret of Mana Genesis / Seiken Densetsu 2 Arrange Album'>
-	<span><img src="/db/assets/covers-thumb/33308-1344861358.jpg" width="60" height="60" alt="SQEX-10321" border="0" /></span>
-</a>
+<div class="album_infobit_thumb"><div style="background-image: url('http://thumb.media.vgm.io/albums/80/33308/33308-1344861358.jpg')">
+<a href="http://vgmdb.net/album/33308" title='Secret of Mana Genesis / Seiken Densetsu 2 Arrange Album'></a>
 </div></div>
 <ul class="album_infobit_detail">
 <li><a class="albumtitle smallfont album-game" href="http://vgmdb.net/album/33308" title='Secret of Mana Genesis / Seiken Densetsu 2 Arrange Album'><span class="albumtitle" lang="en" style="display:inline">Secret of Mana Genesis / Seiken Densetsu 2 Arrange Album</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>シークレット　オブ　マナ　ジェネシス／�...</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Secret of Mana Genesis / Seiken Densetsu 2 Arrange Album</i></span></a></li>
@@ -853,15 +852,22 @@ SNES (Super Famicom) </div>
 <li>Aug 08, 2012</li>
 </ul>
 </div><div class="album_infobit_small smallfont label">
-<div class="album_infobit_thumb"><div>
-<a href="http://vgmdb.net/album/41159" title='Spectrum of Mana'>
-	<span><img src="/db/assets/covers-thumb/41159-1376838640.jpg" width="60" height="60" alt="N/A" border="0" /></span>
-</a>
+<div class="album_infobit_thumb"><div style="background-image: url('http://thumb.media.vgm.io/albums/95/41159/41159-1376838640.jpg')">
+<a href="http://vgmdb.net/album/41159" title='Spectrum of Mana'></a>
 </div></div>
 <ul class="album_infobit_detail">
 <li><a class="albumtitle smallfont album-doujin" href="http://vgmdb.net/album/41159" title='Spectrum of Mana'><span class="albumtitle" lang="en" style="display:inline">Spectrum of Mana</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>Spectrum of Mana: A Tribute to Secret of Mana</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Spectrum of Mana</i></span></a></li>
 <li><span class="catalog smallfont album-doujin">N/A</span></li>
 <li>Sep 28, 2013</li>
+</ul>
+</div><div class="album_infobit_small smallfont label">
+<div class="album_infobit_thumb"><div style="background-image: url('http://thumb.media.vgm.io/albums/08/42480/42480-1383037899.jpg')">
+<a href="http://vgmdb.net/album/42480" title='Pieces of Mana 2'></a>
+</div></div>
+<ul class="album_infobit_detail">
+<li><a class="albumtitle smallfont album-doujin" href="http://vgmdb.net/album/42480" title='Pieces of Mana 2'><span class="albumtitle" lang="en" style="display:inline">Pieces of Mana 2</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>Pieces of Mana 2</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Pieces of Mana 2</i></span></a></li>
+<li><span class="catalog smallfont album-doujin">TKM-0004</span></li>
+<li>Oct 27, 2013</li>
 </ul>
 </div></span>
 <br />
@@ -875,19 +881,19 @@ SNES (Super Famicom) </div>
 <b class="rtop"><b></b></b>
 
 <div class="smallfont" style="padding: 6px 10px 6px 10px">
-<div style="margin-bottom: 10px;"><img src="http://vgmdb.net/db/img/arrowbit.gif" alt="" /> <b class="label">Added</b><br />
+<div style="margin-bottom: 10px;"><img src="/db/img/arrowbit.gif" alt="" /> <b class="label">Added</b><br />
 Jan 17, 2009 <span class="time">04:33 AM</span></div>
 
-<div style="margin-bottom: 10px;"><img src="http://vgmdb.net/db/img/arrowbit.gif" alt="" border = "0" /> <b class="label">Edited</b><br />
+<div style="margin-bottom: 10px;"><img src="/db/img/arrowbit.gif" alt="" border = "0" /> <b class="label">Edited</b><br />
 Jul 14, 2011 <span class="time">07:14 AM</span></div>
 
-<div style="margin-bottom: 10px;"><img src="http://vgmdb.net/db/img/arrowbit.gif" alt="" /> <b class="label">Page traffic</b><br />
-<span class="time">873</span> visitors<br />
-<span class="time">0</span> freedb<br />
+<div style="margin-bottom: 10px;"><img src="/db/img/arrowbit.gif" alt="" /> <b class="label">Page traffic</b><br />
+<span class="time">1227</span> visitors<br />
+<span class="time" style="word-break:break-all">0</span> freedb<br />
 <!----></div>
 
-<div><img src="http://vgmdb.net/db/img/arrowbit.gif" alt="" /> <b class="label">Page built in</b><br />
-<span class="time">0.02</span> seconds</div>
+<div><img src="/db/img/arrowbit.gif" alt="" /> <b class="label">Page built in</b><br />
+<span class="time">0.03</span> seconds</div>
 </div>
 
 <b class="rbot"><b></b></b>
@@ -904,7 +910,7 @@ Jul 14, 2011 <span class="time">07:14 AM</span></div>
 <h3>Notes</h3>
 </div>
 <div style="background-color: #2F364F;">
-<div style="padding: 10px" class="smallfont">ALL COMPOSED, ARRANGED AND INSTRUMENTS by<br />HIROKI KIKUTA<br />Except<br />Guitar: RYUICHIRO MISUMI<br />Voice: CAROL MORIYAMA<br /><br />Producers:<br />HIROKI KIKUTA (Square)<br />KENSUKE MATSUSHITA (NTT Publishing)<br />MARQUEE MASAKI NOMULA (Hakuhodo CSD)<br />Production Management:<br />TADASHI NOMURA (Square)<br />Public Relations:<br />HIROFUMI NAKAMURA (NTT Publishing)<br /><br />Mixing Engineer:<br />YUUKI MIZUTANI<br />Assistant Engineers:<br />TETSUYA HIROTA (Studio TAKE ONE)<br />KOHJI MURATA (Studio TAKE ONE)<br />AKINORI FURUBAYASHI (LITTLE BACH)<br />Recorded at<br />Studio TAKE ONE&#160;&#160;'93 . 8 . 17 . ---&gt; 9 . 5 .<br />LITTLE BACH KOBUCHIZAWA&#160;&#160;'93 . 9 . 6 . ---&gt; 9 . 13 .<br />Mastering Engineer:<br />TOMOYUKI YOKOYAMA (HARION)<br />Mastered at<br />HARION<br /><br />Photographer:<br />JOYCE TENNESON<br />Cover Artwork:<br />YOSHITO TANAKA<br /><br />Co - Executive Producer:<br />MITSUMASA IKEDA (NTT Publishing)<br />Executive Producers:<br />YOSHITOMO OGATA (NTT Publishing)<br />YOSHITOMO SAKUMA (Hakuhodo CSD)</div>
+<div style="padding: 10px" class="smallfont">ALL COMPOSED, ARRANGED AND INSTRUMENTS by<br />HIROKI KIKUTA<br />Except<br />Guitar: RYUICHIRO MISUMI<br />Voice: CAROL MORIYAMA<br /><br />Producers:<br />HIROKI KIKUTA (Square)<br />KENSUKE MATSUSHITA (NTT Publishing)<br />MARQUEE MASAKI NOMULA (Hakuhodo CSD)<br />Production Management:<br />TADASHI NOMURA (Square)<br />Public Relations:<br />HIROFUMI NAKAMURA (NTT Publishing)<br /><br />Mixing Engineer:<br />YUUKI MIZUTANI<br />Assistant Engineers:<br />TETSUYA HIROTA (Studio TAKE ONE)<br />KOHJI MURATA (Studio TAKE ONE)<br />AKINORI FURUBAYASHI (LITTLE BACH)<br />Recorded at<br />Studio TAKE ONE&#160;&#160;1993-08-17 → 1993-09-05<br />LITTLE BACH KOBUCHIZAWA&#160;&#160;1993-09-06&#160;&#160;→ 1993-09-13<br />Mastering Engineer:<br />TOMOYUKI YOKOYAMA (HARION)<br />Mastered at<br />HARION<br /><br />Photographer:<br />JOYCE TENNESON<br />Cover Artwork:<br />YOSHITO TANAKA<br /><br />Co - Executive Producer:<br />MITSUMASA IKEDA (NTT Publishing)<br />Executive Producers:<br />YOSHITOMO OGATA (NTT Publishing)<br />YOSHITOMO SAKUMA (Hakuhodo CSD)</div>
 
 
 
@@ -964,7 +970,7 @@ Jul 14, 2011 <span class="time">07:14 AM</span></div>
 	<div style="float: right; text-align: right; font-family: Arial;" class="label">
 		<a href="/about">About Us</a> &bull;
 		<a href="/faq">F.A.Q.</a> &bull;
-		<a href="/forums/sendmessage.php?s=5be7ac6b99d8472d257a2f6a61eba371" rel="nofollow" accesskey="9">Contact Us</a> &bull;
+		<a href="/forums/sendmessage.php?s=8d900d2e514ed8b842074faf948879ba" rel="nofollow" accesskey="9">Contact Us</a> &bull;
 		<a href="/db/statistics.php" rel="nofollow">Statistics</a> &bull;
 		<a href="http://vgmdb.net">Home</a>
 
@@ -990,11 +996,11 @@ Jul 14, 2011 <span class="time">07:14 AM</span></div>
 	<div class="label">
 		<h3>VGMdb 0.15 (beta)</h3>
 		<div class="smallfont"><!-- Do not remove this copyright notice -->
-		Powered by vBulletin&reg; Version 3.8.5<br />Copyright &copy;2000 - 2013, Jelsoft Enterprises Ltd.
+		Powered by vBulletin&reg; Version 3.8.5<br />Copyright &copy;2000 - 2015, Jelsoft Enterprises Ltd.
 		<!-- Do not remove this copyright notice --></div>
 		<div class="smallfont">Site code and design copyright VGMdb.net</div>
 		<div class="smallfont">Site material is property of their respective owners.</div>
-		<div class="smallfont">All times are GMT -8. The time now is <span class="time">07:36 AM</span>.</div>
+		<div class="smallfont">All times are GMT -8. The time now is <span class="time">11:15 PM</span>.</div>
 	</div>
 
 
@@ -1008,7 +1014,7 @@ Jul 14, 2011 <span class="time">07:14 AM</span></div>
 	vBulletin_init();
 //-->
 </script>
-<script type="text/javascript">if(!NREUMQ.f){NREUMQ.f=function(){NREUMQ.push(["load",new Date().getTime()]);var e=document.createElement("script");e.type="text/javascript";e.src=(("http:"===document.location.protocol)?"http:":"https:")+"//"+"rpm-images.newrelic.com/42/eum/rum.js";document.body.appendChild(e);if(NREUMQ.a)NREUMQ.a();};NREUMQ.a=window.onload;window.onload=NREUMQ.f;};NREUMQ.push(["nrfj","beacon-1.newrelic.com","ae449e68e8","505396","NANSNkUDWUoCU0MNDA1JZRBeTVNbTFFbBhYOFR4SXxI=",0,130,new Date().getTime(),"","","","",""]);</script>
+<script type="text/javascript">if(!NREUMQ.f){NREUMQ.f=function(){NREUMQ.push(["load",new Date().getTime()]);var e=document.createElement("script");e.type="text/javascript";e.src=(("http:"===document.location.protocol)?"http:":"https:")+"//"+"js-agent.newrelic.com/nr-100.js";document.body.appendChild(e);if(NREUMQ.a)NREUMQ.a();};NREUMQ.a=window.onload;window.onload=NREUMQ.f;};NREUMQ.push(["nrfj","beacon-3.newrelic.com","ae449e68e8","505396","NANSNkUDWUoCU0MNDA1JZRBeTVNbTFFbBhYOFR4SXxI=",0,112,new Date().getTime(),"","","","",""]);</script>
 
 </body>
 </html>
