@@ -16,6 +16,7 @@ class outputter(object):
 		self._templates = jinja2.Environment(loader=jinja2.PackageLoader('vgmdb.output'), trim_blocks=True, autoescape=autoescape)
 		self._templates.filters['artist_type'] = self.artist_type
 		self._templates.filters['absolute_linkhref'] = self.absolute_linkhref
+		self._templates.filters['absolute_linkhref_scheme'] = self.absolute_linkhref_scheme
 		self._templates.filters['resource_attr'] = self.resource_attr
 		self._templates.filters['link_subject'] = self.link_subject
 		self._templates.filters['linkhref'] = self.linkhref
@@ -75,6 +76,11 @@ class outputter(object):
 		return link
 	def absolute_linkhref(self, link):
 		return urlparse.urljoin(self._config.BASE_URL, self.linkhref(link))
+	def absolute_linkhref_scheme(self, link):
+		base_url = self._config.BASE_URL
+		if base_url[0:2] == '//':
+			base_url = 'http:' + base_url
+		return urlparse.urljoin(base_url, self.linkhref(link))
 
 	def resource_attr(self, href, type='resource', hash="subject"):
 		if href != None and len(href)>0:
