@@ -200,7 +200,6 @@ def parse_string(soup_element, _strip=True):
 	Given an element, return the strings inside
 	Useful for getting all the text out of something, even if it has <span> tags
 	"""
-	import re
 	if not isinstance(soup_element, bs4.Tag):
 		ret = soup_element.string
 		ret = re.sub('\s+',' ', ret)
@@ -218,6 +217,16 @@ def parse_string(soup_element, _strip=True):
 		if _strip:
 			ret = re.sub('\s*\n+\s*','\n', ret)
 		return ret
+
+def extract_background_image(style):
+	found = re.match(r"background-image:\surl\('([^)]*)'\)", style)
+	if found:
+		return found.group(1)
+
+def media_thumb(medium_link):
+	return medium_link.replace('medium.media', 'thumb.media')
+def media_full(medium_link):
+	return medium_link.replace('medium.media', 'media')
 
 def next_tag(soup_element):
 	next_element = soup_element.next_element

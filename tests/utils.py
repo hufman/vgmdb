@@ -108,5 +108,14 @@ class TestLinks(unittest.TestCase):
 		self.assertEqual('http://www.mobygames.com/game/clannad', utils.strip_redirect('/redirect/43446/www.mobygames.com/game/clannad'))
 		self.assertEqual('http://www.mobygames.com/game/clannad', utils.strip_redirect('/redirect/0/www.mobygames.com/game/clannad'))
 
+	def test_media(self):
+		style = "background-image: url('http://medium.media.vgm.io/albums/97/79/79-1264618929.png')"
+		medium = "http://medium.media.vgm.io/albums/97/79/79-1264618929.png"
+		thumb = "http://thumb.media.vgm.io/albums/97/79/79-1264618929.png"
+		full = "http://media.vgm.io/albums/97/79/79-1264618929.png"
+		self.assertEqual(medium, utils.extract_background_image(style))
+		self.assertEqual(thumb, utils.media_thumb(medium))
+		self.assertEqual(full, utils.media_full(medium))
+
 if __name__ == '__main__':
 	unittest.main()
