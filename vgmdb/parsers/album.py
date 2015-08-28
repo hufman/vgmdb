@@ -20,12 +20,16 @@ def parse_page(html_source):
 	album_info['name'] = album_info['names']['en']
 
 	# main cover
-	soup_cover = soup_profile.find(id='leftfloat').find('img')
+	soup_cover = soup_profile.find(id='coverart')
 	if soup_cover:
-		medium_link = utils.force_absolute(soup_cover['src'])
-		full_link = medium_link.replace('-medium', '')
-		album_info['picture_small'] = medium_link
-		album_info['picture_full'] = full_link
+		style = soup_cover.get('style', '')
+		medium_link = utils.extract_background_image(style)
+		if medium_link:
+			full_link = utils.media_full(medium_link)
+			thumb_link = utils.media_thumb(medium_link)
+			album_info['picture_thumb'] = thumb_link
+			album_info['picture_small'] = medium_link
+			album_info['picture_full'] = full_link
 
 	# main info header
 	soup_info = soup_profile.find(id='rightfloat').div.div.table
@@ -377,8 +381,8 @@ def _parse_section_covers(soup_covers):
 				if not soup_link:
 					continue
 				medium_link = utils.force_absolute(soup_cell.a['href'])
-				full_link = medium_link.replace('-medium', '')
-				thumb_link = medium_link.replace('-medium', '-thumb')
+				full_link = utils.media_full(medium_link)
+				thumb_link = utils.media_thumb(medium_link)
 				if soup_cell.a.h4.string:
 					name = soup_cell.a.h4.string.strip()
 				else:
