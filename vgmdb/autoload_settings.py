@@ -39,11 +39,13 @@ if 'OPENSHIFT_MEMCACHED_HOST' in os.environ and \
 	logger.info("Openshift Memcache link detected, guessing %s" % (MEMCACHE_SERVERS,))
 
 # some fancy processing
-if os.environ.has_key('BACKGROUND_DATA'):
-	if os.environ['BACKGROUND_DATA'].lower() in ['yes', 'true']:
-		BACKGROUND_DATA = True
-	if os.environ['BACKGROUND_DATA'].lower() in ['no', 'false']:
-		BACKGROUND_DATA = False
+if os.environ.has_key('DATA_BACKGROUND'):
+	if os.environ['DATA_BACKGROUND'].lower() in ['yes', 'true']:
+		DATA_BACKGROUND = True
+		logger.info("Loading DATA_BACKGROUND from environ: %s" % (DATA_BACKGROUND,))
+	if os.environ['DATA_BACKGROUND'].lower() in ['no', 'false']:
+		DATA_BACKGROUND = False
+		logger.info("Loading DATA_BACKGROUND from environ: %s" % (DATA_BACKGROUND,))
 if os.environ.has_key('GAE_BASEURL'):
 	BASE_URL = os.environ['GAE_BASEURL']
 	logger.info("Loading BASE_URL from GAE: %s" % (BASE_URL,))
