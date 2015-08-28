@@ -36,10 +36,20 @@ def _fetch_page(cache_key, page_type, id, link=None, use_cache=True):
 			task = _vgmdb._tasks.request_page
 			running = task.delay(cache_key, page_type, id, link)
 	else:
-		if _vgmdb.config.DATA_BACKGROUND:
-			task = _vgmdb._tasks.request_page
-			running = task.delay(cache_key, page_type, id, link)
-			info = running.wait()
+		# if we should try to load over Celery
+		if getattr(_vgmdb.config, 'DATA_BACKGROUND', False):
+			alive = True	# assume it's accessible
+			if getattr(_vgmdb.config, 'CELERY_PING', False):
+				# check if it's accessible
+				alive = _vgmdb._tasks.celery.control.inspect(timeout=0.1).stats()
+			if not alive:
+				# load synchronously
+				_logger.warning('Celery is unavailable but DATA_BACKGROUND requested!')
+				info = _vgmdb.data.request_page(cache_key, page_type, id, link)
+			else:
+				task = _vgmdb._tasks.request_page
+				running = task.delay(cache_key, page_type, id, link)
+				info = running.wait()
 		else:
 			info = _vgmdb.data.request_page(cache_key, page_type, id, link)
 	return info
@@ -52,7 +62,7 @@ def _is_info_current(info):
 		try:
 			fetched_date = _datetime.datetime.strptime(fetched_date, '%Y-%m-%dT%H:%M')
 		except ValueError as e:
-			_logger.warning('Could not load fetched_date from %s: %s' % (info.get('link', None), e))
+			_logger.warning('Could not parse fetched_date from %s (%s): %s' % (info.get('link', None), fetched_date, e))
 			fetched_date = None
 	else:
 		_logger.warning('Missing fetched_date on %s' % (info.get('link', None),))
