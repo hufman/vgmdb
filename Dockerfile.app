@@ -7,8 +7,10 @@ RUN mkdir /www_root
 ADD static /www_root/static
 RUN mkdir /etc/service/vgmdb
 ADD docker/sv-vgmdb /etc/service/vgmdb/run
-RUN mkdir /etc/service/celeryd
-ADD docker/sv-celeryd /etc/service/celeryd/run
+RUN mkdir /etc/service/celery-priority
+ADD docker/sv-celery-priority /etc/service/celery-priority/run
+RUN mkdir /etc/service/celery-background
+ADD docker/sv-celery-background /etc/service/celery-background/run
 
 # other changes
 RUN chmod +x /etc/service/*/run

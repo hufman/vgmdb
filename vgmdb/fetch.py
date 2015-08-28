@@ -34,7 +34,7 @@ def _fetch_page(cache_key, page_type, id, link=None, use_cache=True):
 		info = prevdata
 		if not _is_info_current(info):
 			task = _vgmdb._tasks.request_page
-			running = task.delay(cache_key, page_type, id, link)
+			running = task.apply_async(args=[cache_key, page_type, id, link], queue='background')
 	else:
 		# if we should try to load over Celery
 		if getattr(_vgmdb.config, 'DATA_BACKGROUND', False):

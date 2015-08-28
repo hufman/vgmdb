@@ -1,0 +1,2 @@
+#!/bin/sh
+exec su -s /bin/sh www-data -c "/usr/local/bin/celery worker --time-limit=300 --concurrency=4 --app=vgmdb --loglevel=DEBUG --workdir=/ --config=celery --hostname=vgmdb-background.%h --queues=celery,sellers,background"

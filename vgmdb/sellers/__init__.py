@@ -151,7 +151,7 @@ def _search_all_workers(type, id, info, wait):
 		if not prev:
 			name = module.__name__.split('.')[-1]
 			task = getattr(_tasks, name)
-			active.append(task.delay(type, id))
+			active.append(task.apply_async(args=[type, id], queue='sellers'))
 	if wait:
 		try:
 			for task in active:

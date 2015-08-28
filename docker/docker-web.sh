@@ -10,7 +10,7 @@ Ports=`docker inspect -f '[{{ range $key,$value := .Config.ExposedPorts }}"{{ $k
 
 [ -e cid.web ] && rm cid.web || true
 
-docker run --cidfile=cid.web --entrypoint=/bin/sh "$IMAGE" -c "rm -r /etc/service/celeryd/"
+docker run --cidfile=cid.web --entrypoint=/bin/sh "$IMAGE" -c "rm -r /etc/service/celery*/"
 
 NEWIMAGE=`echo "${IMAGE}" | sed -E 's/(:|$)/_web\1/'`
 #docker commit --change="ENTRYPOINT" --change="CMD=/sbin/my_init" `cat cid.web` "${NEWIMAGE}
