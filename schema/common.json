@@ -140,7 +140,7 @@
 			"title": "An absolute url, such as proto://server:port/path",
 			"type": "string",
 			"example": "http://vgmdb.net/fifty",
-			"pattern": "^([a-z]+)://([a-zA-Z0-9-.]+)(?::([0-9]+))?(/.*)?$"
+			"pattern": "^([a-z]+)://([^/:]+)(?::([0-9]+))?(/.*)?$"
 		},
 		"link": {
 			"title": "A relative link to another vgmdb page",
