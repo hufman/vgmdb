@@ -96,6 +96,8 @@ def _parse_album_info(soup_info):
 					right = name.find(')', left)
 					note = name[left+1:right]
 					name = name[:left].strip()
+					if name == '':
+						name = 'N/A'
 				if name == catalog:
 					continue
 				reprint_info = {"catalog": name, "link": link}
