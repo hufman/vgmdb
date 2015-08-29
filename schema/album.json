@@ -108,6 +108,6 @@
 		"votes": { "title": "The number of votes for the rating", "type": "integer" },
 		"websites": { "$ref": "common.json#/definitions/itemWebsites" }
 	},
-	"required": ["link", "name", "names", "arrangers", "covers", "catalog", "classification", "composers", "lyricists", "notes", "discs", "media_format", "meta", "performers", "picture_full", "picture_small", "picture_thumb", "publish_format", "publisher", "vgmdb_link", "votes"]
+	"required": ["link", "name", "names", "arrangers", "covers", "catalog", "classification", "composers", "lyricists", "notes", "discs", "media_format", "meta", "performers", "picture_full", "picture_small", "picture_thumb", "publish_format", "vgmdb_link", "votes"]
 }
 
