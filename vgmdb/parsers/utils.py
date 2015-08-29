@@ -247,7 +247,7 @@ def trim_absolute(link):
 		link = link[1:]
 	return link
 def force_absolute(link):
-	if link.startswith('http://'):
+	if link.startswith('http://') or link.startswith('https://'):
 		return link
 	return urlparse.urljoin('http://vgmdb.net/', link)
 
@@ -270,12 +270,16 @@ def parse_vgmdb_link(link):
 		return link
 
 def strip_redirect(link):
+	link = force_absolute(link)
 	if link.startswith('http://vgmdb.net/redirect'):
+		# skip the number
 		index = link.find('/', len('http://vgmdb.net/redirect/'))
-		return 'http://' + link[index+1:]
-	if link.startswith('/redirect'):
-		index = link.find('/', len('/redirect/'))
-		return 'http://' + link[index+1:]
+		# get the link from the end of the redirect
+		link = link[index+1:]
+		if link.startswith('http://') or link.startswith('https://'):
+			return link
+		else:
+			return 'http://' + link
 
 def parse_discography(soup_disco_table, label_type='roles'):
 	"""
