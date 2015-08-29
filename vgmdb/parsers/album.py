@@ -174,6 +174,7 @@ def _parse_album_info(soup_info):
 						text = splits[1]
 					if 'distribut' in text.lower():
 						role = 'distributor'
+			album_info['publisher'] = album_info.get('publisher', '')
 		elif name in names_single.keys():
 			key = names_single[name]
 			soup_value = soup_value.contents[0]
