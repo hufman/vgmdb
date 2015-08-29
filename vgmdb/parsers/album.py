@@ -126,6 +126,9 @@ def _parse_album_info(soup_info):
 					album_info['release_date'] = soup_value.value
 			for soup_event in soup_children[1:]:
 				if not isinstance(soup_event, bs4.Tag): continue
+				if 'Pending edit' in soup_event.get('title'):
+					# Pending edit pencil
+					continue
 				link = utils.trim_absolute(soup_event['href'])
 				event = {}
 				event['name'] = soup_event['title']
