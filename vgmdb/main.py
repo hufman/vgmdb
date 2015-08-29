@@ -1,5 +1,6 @@
 from bottle import route, response, request, static_file, abort, hook, error
 import urllib
+from functools import wraps
 
 from datetime import datetime
 import email.utils
@@ -29,6 +30,19 @@ def method_unsupported(error):
 		response.status = 200
 		add_cors_headers()
 		return 'Of course, this API is free for everyone!'
+
+def catch_exceptions(func):
+	"""
+	Used as a decorator around functions that could raise an exception
+	"""
+	@wraps(func)
+	def func_wrapper(*args, **kwargs):
+		try:
+			return func(*args, **kwargs)
+		except IOError:
+			# failed to connect to vgmdb.net
+			abort(503, "vgmdb.net is temporarily unavailable")
+	return func_wrapper
 
 def do_page(page_type, info, filterkey=None):
 	"""
@@ -76,12 +90,14 @@ def do_page(page_type, info, filterkey=None):
 	return outputter(page_type, info, filterkey)
 
 @route('/<type:re:(artist|album|product|release|event|org)>/<id:int>')
+@catch_exceptions
 def info(type,id):
 	return do_page(type, vgmdb.fetch.info(type,id))
 
 @route('/<type:re:(albumlist|artistlist|productlist)>/<id:re:[#A-Z]>')
 @route('/<type:re:(albumlist|artistlist|productlist)>/')
 @route('/<type:re:(albumlist|artistlist|productlist)>')
+@catch_exceptions
 def list(type,id='A'):
 	return do_page(type, vgmdb.fetch.list(type,id))
 
@@ -89,6 +105,7 @@ def list(type,id='A'):
 @route('/<type:re:(eventlist)>/<filterkey:int>')
 @route('/<type:re:(orglist|eventlist)>/')
 @route('/<type:re:(orglist|eventlist)>')
+@catch_exceptions
 def singlelist(type,filterkey=None):
 	return do_page(type, vgmdb.fetch.list(type, filterkey), filterkey=filterkey)
 
@@ -96,6 +113,7 @@ def singlelist(type,filterkey=None):
 @route('/search/<type:re:(albums|artists|orgs|products)>')
 @route('/search/<query>')
 @route('/search')
+@catch_exceptions
 def search(type=None, query=None):
 	# Handle the case of /search/albums?q=
 	if query in ['albums','artists','orgs','products']:
@@ -106,6 +124,7 @@ def search(type=None, query=None):
 
 @route('/recent/<type:re:(albums|media|tracklists|scans|artists|products|labels|links|ratings)>')
 @route('/recent')
+@catch_exceptions
 def recent(type='albums'):
 	return do_page('recent', vgmdb.fetch.recent(type))
 
