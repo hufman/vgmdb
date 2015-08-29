@@ -167,5 +167,14 @@ class TestAlbums(unittest.TestCase):
 		self.assertEqual(u'org/429', million['organizations'][1]['link'])
 		self.assertEqual(u'publisher', million['organizations'][1]['role'])
 
+	def test_got(self):
+		# has unlinked publisher and a distributor
+		got_code = file(os.path.join(base, 'album_got.html'), 'r').read()
+		got = album.parse_page(got_code)
+		self.assertEqual(2, len(got['organizations']))
+		self.assertEqual(u'Game Audio Factory', got['publisher']['names']['en'])
+		self.assertNotIn(u'link', got['publisher'])
+		self.assertEqual(u'Bandcamp', got['distributor']['names']['en'])
+		self.assertEqual(u'org/965', got['distributor']['link'])
 if __name__ == '__main__':
 	unittest.main()

@@ -161,7 +161,14 @@ def _parse_album_info(soup_info):
 					info['names'] = utils.parse_names(soup_child)
 					addOrganization(info, role)
 				else:
-					if 'distribut' in unicode(soup_child.string).lower():
+					text = unicode(soup_child.string).strip()
+					splits = text.split('(', 1)
+					if len(splits) == 2 and len(splits[0].strip()) > 3:
+						# unlinked publisher
+						info = {'names': {'en': splits[0].strip()}}
+						addOrganization(info, 'publisher')
+						text = splits[1]
+					if 'distribut' in text.lower():
 						role = 'distributor'
 		elif name in names_single.keys():
 			key = names_single[name]
