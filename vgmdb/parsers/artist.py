@@ -17,12 +17,27 @@ def parse_page(html_source):
 	artist_info['name'] = soup_name.string.strip()
 	artist_info['type'] = 'Individual'
 	if len(spans)>2 and spans[2]['class'] and 'time' in spans[2]['class']:   # artist type (unit)
-		artist_type = unicode(spans[2].string)
-		if len(artist_type) > 0 and artist_type[0] == '(':
-			artist_type = artist_type[1:]
-		if len(artist_type) > 0 and artist_type[-1] == ')':
-			artist_type = artist_type[:-1]
-		artist_info['type'] = artist_type
+		soup_type = spans[2]
+		artist_type = utils.parse_string(soup_type)
+		if 'Alias' in artist_type:
+			artist_info['type'] = 'Alias'
+			alias_info = {}
+			soup_alias_link = soup_type.a
+			if soup_alias_link:
+				alias_info['link'] = utils.trim_absolute(soup_alias_link['href'])
+				alias_info['names'] = utils.parse_names(soup_alias_link)
+			else:
+				left_index = artist_type.find('of')
+				if left_index > 0:
+					name = artist_type[left_index+3:-1]
+					alias_info['names'] = {'en': name}
+			artist_info['alias_of'] = alias_info
+		else:
+			if len(artist_type) > 0 and artist_type[0] == '(':
+				artist_type = artist_type[1:]
+			if len(artist_type) > 0 and artist_type[-1] == ')':
+				artist_type = artist_type[:-1]
+			artist_info['type'] = artist_type
 	if len(spans)>2 and spans[2].string and 'deceased' in spans[2].string:
 		artist_info['deathdate'] = utils.parse_date_time(spans[2].string[10:])
 

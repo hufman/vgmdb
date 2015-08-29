@@ -73,6 +73,13 @@ class TestArtists(unittest.TestCase):
 		self.assertEqual(u'2011-10-03T05:45', ss['meta']['edited_date'])
 		self.assertEqual(u'Unit', ss['type'])
 
+	def test_s_s(self):
+		# sexy synthesizer alias
+		ss_code = file(os.path.join(base, 'artist_s_s.html'), 'r').read()
+		ss = artist.parse_page(ss_code)
+		self.assertEqual(u'(S_S)', ss['name'])
+		self.assertEqual(u'Alias', ss['type'])
+
 	def test_offenbach(self):
 		offenbach_code = file(os.path.join(base, 'artist_offenbach.html'), 'r').read()
 		offenbach = artist.parse_page(offenbach_code)

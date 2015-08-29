@@ -12,7 +12,7 @@
 		},
 		"artistType": {
 			"type": "string",
-			"enum": ["Individual", "Unit"]
+			"enum": ["Individual", "Unit", "Alias"]
 		},
 		"artistInfo": {
 			"title": "Quick summary of an artist",
@@ -55,6 +55,7 @@
 	"title": "Information about an artist",
 	"type": "object",
 	"properties": {
+		"alias_of": { "$ref": "common.json#/definitions/namedItem" },
 		"birthday": { "$ref": "common.json#/definitions/rfc3339" },
 		"deathdate": { "$ref": "common.json#/definitions/rfc3339" },
 		"discography": { "$ref": "#/definitions/discography" },
