@@ -173,7 +173,7 @@ class TestAlbums(unittest.TestCase):
 		got = album.parse_page(got_code)
 		self.assertEqual(2, len(got['organizations']))
 		self.assertEqual(u'Game Audio Factory', got['publisher']['names']['en'])
-		self.assertNotIn(u'link', got['publisher'])
+		self.assertFalse(u'link' in got['publisher'])
 		self.assertEqual(u'Bandcamp', got['distributor']['names']['en'])
 		self.assertEqual(u'org/965', got['distributor']['link'])
 if __name__ == '__main__':
