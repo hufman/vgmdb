@@ -25,6 +25,7 @@ def parse_page(html_source):
 		style = soup_cover.get('style', '')
 		medium_link = utils.extract_background_image(style)
 		if medium_link:
+			medium_link = utils.force_absolute(medium_link)
 			full_link = utils.media_full(medium_link)
 			thumb_link = utils.media_thumb(medium_link)
 			album_info['picture_thumb'] = thumb_link
