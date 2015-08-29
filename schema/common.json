@@ -38,7 +38,11 @@
 			"title": "Language-specific names, with full names from the tracklist tabs",
 			"type": "object",
 			"patternProperties": {
-				"^[a-zA-Z() /]+$": {"title": "The name of the track in this language", "type":"string"}
+				"^.+$": {
+					"title": "The name of the track in this language",
+					"type":"string",
+					"example": "English"
+				}
 			},
 			"additionalProperties": false
 		},
