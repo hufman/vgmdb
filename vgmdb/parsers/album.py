@@ -362,8 +362,7 @@ def _parse_section_stores(soup_stores):
 		link = soup_link['href']
 		name = unicode(soup_link.string)
 		if link[0:9] == '/redirect':
-			slashpos = link.find('/', 10)
-			link = 'http://'+link[slashpos+1:]
+			link = utils.strip_redirect(link)
 		links.append({"link":utils.trim_absolute(link),"name":name})
 	return links
 
@@ -378,8 +377,7 @@ def _parse_section_websites(soup_websites):
 			link = soup_link['href']
 			name = unicode(soup_link.string)
 			if link[0:9] == '/redirect':
-				slashpos = link.find('/', 10)
-				link = 'http://'+link[slashpos+1:]
+				link = utils.strip_redirect(link)
 			links.append({"link":utils.trim_absolute(link),"name":name})
 		sites[category] = links
 	return sites
