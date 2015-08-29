@@ -54,7 +54,9 @@
 	"properties": {
 		"arrangers": { "$ref": "common.json#/definitions/listOfNamedItems" },
 		"catalog": { "$ref": "common.json#/definitions/catalog" },
-		"category": { "$ref": "common.json#/definitions/albumCategory" },
+		"category": { "title": "The primary category of an album",
+		              "$ref": "common.json#/definitions/albumCategory" },
+		"categories": { "$ref": "common.json#/definitions/albumCategories" },
 		"classification": { "type": "string" },
 		"composers": { "$ref": "common.json#/definitions/listOfNamedItems" },
 		"covers": { "type": "array", "items": { "$ref": "common.json#/definitions/albumArt" } },

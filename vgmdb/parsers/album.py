@@ -308,7 +308,10 @@ def _parse_section_album_stats(soup_section):
 			if not isinstance(child, bs4.Tag):
 				div_value = child.string.strip()
 		if div_name == 'Category':
-			album_info['category'] = div_value
+			categories = div_value.split(',')
+			categories = [x.strip() for x in categories]
+			album_info['category'] = categories[0]
+			album_info['categories'] = categories
 		if div_name == 'Products represented':
 			album_info['products'] = []
 			for soup_product in soup_div.find_all('a', recursive=False):

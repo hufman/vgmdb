@@ -17,13 +17,19 @@
 				"works", "bonus", "doujin", "cancel", "bootleg"
 			]
 		},
+		"albumCategories": {
+			"title": "All of the categories an album is tagged as",
+			"type": "array",
+			"items": { "$ref": "#/definitions/albumCategory" }
+		},
 		"albumCategory": {
 			"title": "The different categories an album can be",
 			"type": "string",
 			"enum": [
-				"Game", "Animations", "Publication", "Audio Drama",
+				"Game", "Animation", "Publication", "Audio Drama",
 				"Demo Scene", "Other Works", "Enclosure/Promo",
-				"Doujin/Fanmade", "Delayed/Cancelled", "Bootleg"
+				"Doujin/Fanmade", "Delayed/Cancelled", "Bootleg",
+				"Radio/Drama"
 			]
 		},
 		"productType": {
