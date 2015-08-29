@@ -82,9 +82,10 @@
 			"type": "object",
 			"properties": {
 				"currency": { "type": "string" },
-				"price": { "oneOf": [
+				"price": { "anyOf": [
 					{ "type": "string", "enum": ["Free", "Unknown", "Not for Sale", "Name Your Price"] },
 					{ "type": "string", "pattern": "[0-9,]+\\.[0-9]+" },
+					{ "type": "string", "pattern": "[0-9.]+,[0-9]+" },
 					{ "type": "number" }
 				] }
 			},
