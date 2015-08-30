@@ -7,6 +7,8 @@ fetch_page = lambda id: utils.fetch_info_page('product', id)
 
 def parse_page(html_source):
 	product_info = {}
+	product_info['description'] = ''
+	product_info['websites'] = {}
 	soup = bs4.BeautifulSoup(html_source)
 	soup_profile = soup.find(id='innermain')
 	soup_right_column = soup.find(id='rightcolumn')
@@ -39,9 +41,14 @@ def parse_page(html_source):
 		product_info['picture_full'] = utils.force_absolute(full_link)
 		product_info['picture_small'] = utils.force_absolute(medium_link)
 
-	if soup_profile.find('h3').find_previous_sibling('div'):	# full profile
-		soup_profile_info = soup_profile_sections[1].div.dl
-		product_info.update(_parse_product_info(soup_profile_info))
+	last_div = soup_profile.find('h3').find_previous_sibling('div')
+	if last_div:	# full profile info box
+		soup_profile_info = last_div.find('dl')
+		if soup_profile_info:
+			product_info.update(_parse_product_info(soup_profile_info))
+		else:
+			# comment box
+			product_info['description'] = utils.parse_string(last_div).strip()
 
 	soup_section_heads = soup_profile.find_all('h3', recursive=False)
 	for soup_section_head in soup_section_heads:
@@ -73,10 +80,6 @@ def parse_page(html_source):
 	product_info['meta'] = utils.parse_meta(soup_right_divs[-1].div)
 
 	# make sure required things are in place
-	if "description" not in product_info:
-		product_info['description'] = ''
-	if 'websites' not in product_info:
-		product_info['websites'] = {}
 	return product_info
 
 def _parse_product_info(soup_profile_info):

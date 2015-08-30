@@ -38,6 +38,7 @@ class TestProducts(unittest.TestCase):
 	def test_at(self):
 		at_code = file(os.path.join(base, 'product_at.html'), 'r').read()
 		at = product.parse_page(at_code)
+		self.assertEqual('Franchise', at['type'])
 		self.assertEqual(u"Ar tonelico", at['name'])
 		self.assertEqual(u"アルトネリコ", at['name_real'])
 		self.assertEqual(4, len(at['titles']))
@@ -79,6 +80,18 @@ class TestProducts(unittest.TestCase):
 		self.assertEqual(1, len(cl['websites']['Reference']))
 		self.assertEqual(u'MobyGames', cl['websites']['Reference'][0]['name'])
 		self.assertEqual(u'http://www.mobygames.com/game/clannad', cl['websites']['Reference'][0]['link'])
+
+	def test_hack(self):
+		hack_code = file(os.path.join(base, 'product_hack.html')).read()
+		hack = product.parse_page(hack_code)
+		self.assertEqual('.hack//', hack['name'])
+		self.assertEqual('Franchise', hack['type'])
+		self.assertEqual(u".hack//SIGN", hack['titles'][0]['names']['en'])
+		self.assertEqual(u"MACHIDA ~ooedo Express mail Special CD 2001~", hack['albums'][0]['titles']['en'])
+		self.assertEqual(u"OEMM-0025", hack['albums'][0]['catalog'])
+		self.assertEqual(u"doujin", hack['albums'][0]['type'])
+		self.assertTrue(u"Fan Arrange" in hack['albums'][0]['classifications'])
+		self.assertEqual('Test description', hack['description'])
 
 if __name__ == '__main__':
 	unittest.main()

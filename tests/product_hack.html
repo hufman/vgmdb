@@ -1,0 +1,1363 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html dir="ltr" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>.hack// - VGMdb</title>
+
+
+
+
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="vBulletin 3.8.5" />
+
+
+<!-- CSS Stylesheet -->
+<style type="text/css" id="vbulletin_css">
+/**
+* vBulletin 3.8.5 CSS
+* Style: 'Default Style'; Style ID: 1
+*/
+body
+{
+	background: #001122;
+	color: #FFFFFF;
+	font: 10pt verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+	margin: 0px;
+	padding: 0px;
+}
+a:link, body_alink
+{
+	color: #B1E8FF;
+}
+a:visited, body_avisited
+{
+	color: #B1E8FF;
+}
+a:hover, a:active, body_ahover
+{
+	color: #87CEEB;
+}
+.page
+{
+	background: #001122;
+	color: #FFFFFF;
+	padding: 0px;
+}
+.page a:link, .page_alink
+{
+	color: #CEFFFF;
+	text-decoration: none;
+}
+.page a:visited, .page_avisited
+{
+	color: #CEFFFF;
+	text-decoration: none;
+}
+.page a:hover, .page a:active, .page_ahover
+{
+	text-decoration: underline;
+}
+td, th, p, li
+{
+	font: 10pt verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+}
+.tborder
+{
+	background: #001122;
+	color: #FFFFFF;
+	border: 1px solid #444465
+}
+.tcat
+{
+	background: #2F364F;
+	color: #788990;
+	font: bold 10pt verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+}
+.tcat a:link, .tcat_alink
+{
+	color: #788990;
+	text-decoration: none;
+}
+.tcat a:visited, .tcat_avisited
+{
+	color: #788990;
+	text-decoration: none;
+}
+.tcat a:hover, .tcat a:active, .tcat_ahover
+{
+	color: #FFFF66;
+	text-decoration: underline;
+}
+.thead
+{
+	background: #2F364F;
+	color: #FFFFFF;
+	font: bold 11px tahoma, verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+}
+.thead a:link, .thead_alink
+{
+	color: #FFFFFF;
+}
+.thead a:visited, .thead_avisited
+{
+	color: #FFFFFF;
+}
+.thead a:hover, .thead a:active, .thead_ahover
+{
+	color: #FFFF00;
+}
+.tfoot
+{
+	background: #2F364F;
+	color: #E0E0F6;
+}
+.tfoot a:link, .tfoot_alink
+{
+	color: #E0E0F6;
+}
+.tfoot a:visited, .tfoot_avisited
+{
+	color: #E0E0F6;
+}
+.tfoot a:hover, .tfoot a:active, .tfoot_ahover
+{
+	color: #FFFF66;
+}
+.alt1, .alt1Active
+{
+	background: #1B273D;
+	color: #FFFFFF;
+}
+.alt1 a:link, .alt1_alink, .alt1Active a:link, .alt1Active_alink
+{
+	color: #CEFFFF;
+	text-decoration: none;
+}
+.alt1 a:visited, .alt1_avisited, .alt1Active a:visited, .alt1Active_avisited
+{
+	color: #CEFFFF;
+	text-decoration: none;
+}
+.alt1 a:hover, .alt1 a:active, .alt1_ahover, .alt1Active a:hover, .alt1Active a:active, .alt1Active_ahover
+{
+	color: #87CEEB;
+	text-decoration: underline;
+}
+.alt2, .alt2Active
+{
+	background: #2F364F;
+	color: #FFFFFF;
+}
+.alt2 a:link, .alt2_alink, .alt2Active a:link, .alt2Active_alink
+{
+	color: #CEFFFF;
+	text-decoration: none;
+}
+.alt2 a:visited, .alt2_avisited, .alt2Active a:visited, .alt2Active_avisited
+{
+	color: #CEFFFF;
+	text-decoration: none;
+}
+.alt2 a:hover, .alt2 a:active, .alt2_ahover, .alt2Active a:hover, .alt2Active a:active, .alt2Active_ahover
+{
+	color: #87CEEB;
+	text-decoration: underline;
+}
+.inlinemod
+{
+	background: #3A5284;
+	color: #FFFFFF;
+}
+.wysiwyg
+{
+	background: #14194E;
+	color: #FFFFFF;
+	font: 10pt verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+}
+textarea, .bginput
+{
+	background: #14194E;
+	color: #FFFFFF;
+	font: 10pt verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+	border-left: 1px solid #3C405C;
+	border-top: 1px solid #3C405C;
+	border-right: 1px solid #666B72;
+	border-bottom: 1px solid #666B72;
+}
+.bginput option, .bginput optgroup
+{
+	font-size: 10pt;
+	font-family: verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+}
+.button
+{
+	background: #14194E;
+	color: #FFFFFF;
+	font: 11px verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+	border-left: 1px solid #666B72;
+	border-top: 1px solid #666B72;
+	border-right: 1px solid #3C405C;
+	border-bottom: 1px solid #3C405C;
+}
+select
+{
+	background: #14194E;
+	color: #FFFFFF;
+	font: 11px verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+	border-left: 1px solid #666B72;
+	border-top: 1px solid #666B72;
+	border-right: 1px solid #3C405C;
+	border-bottom: 1px solid #3C405C;
+}
+option, optgroup
+{
+	font-size: 11px;
+	font-family: verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+}
+.smallfont
+{
+	font: 11px verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+}
+.time
+{
+	color: #B0C4DE;
+}
+.navbar
+{
+	font: 11px verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+}
+.highlight
+{
+	font-weight: bold;
+	border-bottom: 1px dotted #B1E8FF;
+}
+.fjsel
+{
+	background: #3E5C92;
+	color: #E0E0F6;
+}
+.fjdpth0
+{
+	background: #F7F7F7;
+	color: #000000;
+}
+.panel
+{
+	background: #1B273D;
+	color: #FFFFFF;
+	padding: 10px;
+}
+.panelsurround
+{
+	background: #1B273D;
+	color: #FFFFFF;
+}
+legend
+{
+	color: #788990;
+	font: 11px tahoma, verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+}
+.vbmenu_control
+{
+	background: #2F364F;
+	color: #FFFFFF;
+	font: bold 11px tahoma, verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+	padding: 3px 6px 3px 6px;
+	white-space: nowrap;
+}
+.vbmenu_control a:link, .vbmenu_control_alink
+{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.vbmenu_control a:visited, .vbmenu_control_avisited
+{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.vbmenu_control a:hover, .vbmenu_control a:active, .vbmenu_control_ahover
+{
+	color: #FFFFFF;
+	text-decoration: underline;
+}
+.vbmenu_popup
+{
+	background: #FFFFFF;
+	color: #000000;
+	border: 1px solid #0B198C;
+}
+.vbmenu_option
+{
+	background: #BBC7CE;
+	color: #000000;
+	font: 11px verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+	white-space: nowrap;
+	cursor: pointer;
+}
+.vbmenu_option a:link, .vbmenu_option_alink
+{
+	color: #22229C;
+	text-decoration: none;
+}
+.vbmenu_option a:visited, .vbmenu_option_avisited
+{
+	color: #22229C;
+	text-decoration: none;
+}
+.vbmenu_option a:hover, .vbmenu_option a:active, .vbmenu_option_ahover
+{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.vbmenu_hilite
+{
+	background: #8A949E;
+	color: #FFFFFF;
+	font: 11px verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+	white-space: nowrap;
+	cursor: pointer;
+}
+.vbmenu_hilite a:link, .vbmenu_hilite_alink
+{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.vbmenu_hilite a:visited, .vbmenu_hilite_avisited
+{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.vbmenu_hilite a:hover, .vbmenu_hilite a:active, .vbmenu_hilite_ahover
+{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+/* ***** styling for 'big' usernames on postbit etc. ***** */
+.bigusername { font-size: 14pt; }
+
+/* ***** small padding on 'thead' elements ***** */
+td.thead, div.thead { padding: 4px; }
+
+/* ***** basic styles for multi-page nav elements */
+.pagenav a { text-decoration: none; }
+.pagenav td { padding: 2px 4px 2px 4px; }
+
+/* ***** define margin and font-size for elements inside panels ***** */
+.fieldset { margin-bottom: 6px; }
+.fieldset, .fieldset td, .fieldset p, .fieldset li { font-size: 11px; }
+
+fieldset { border: 1px solid #2F364F; padding: 6px; }
+
+/* .imgalpha { opacity:0.25; filter:alpha(opacity=25); -moz-opacity:0.25; } */
+
+/* ***** don't change the following ***** */
+form { display: inline; }
+.label { color: #788990; }
+</style>
+<link rel="stylesheet" type="text/css" href="http://vgmdb.net/forums/clientscript/vbulletin_important.css?v=385" />
+
+
+<link rel="stylesheet" type="text/css" href="/db/vgmdb.css?20100803" />
+<link rel="stylesheet" type="text/css" href="http://media.vgmdb.net/css/vgmdb-colorcode-title.css" id="colorcode" />
+<link rel="stylesheet" type="text/css" href="/db/jquery.autocomplete.css?20091023" />
+<link rel="stylesheet" type="text/css" href="/db/jquery.jcarousel.css?20091124" />
+<link rel="stylesheet" type="text/css" href="/db/highslide.css?080623" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" type="text/css" href="/db/iepngfix.css" />
+<![endif]-->
+<!-- / CSS Stylesheet -->
+
+<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/yahoo-dom-event/yahoo-dom-event.js?v=385"></script>
+<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/connection/connection-min.js?v=385"></script>
+<script type="text/javascript">
+<!--
+var SESSIONURL = "s=93dcd97317a7e75f71acf74ea399fbda&";
+var SECURITYTOKEN = "guest";
+var IMGDIR_MISC = "/forums/images/misc";
+var vb_disable_ajax = parseInt("0", 10);
+// -->
+</script>
+<script type="text/javascript" src="/forums/clientscript/vbulletin_global.js?v=385"></script>
+
+<link rel="alternate" type="application/rss+xml" title="VGMdb Forums RSS Feed" href="/forums/external.php?type=RSS2" />
+
+<script type="text/javascript" src="http://media.vgmdb.net/js/jquery-1.4.min.js"></script>
+<script type="text/javascript" src="http://media.vgmdb.net/js/jquery.compressed.js"></script>
+<script type="text/javascript" src="http://media.vgmdb.net/js/jquery.tristate.js?20100420"></script>
+<script type="text/javascript" src="http://media.vgmdb.net/js/highslide.packed.js?080620"></script>
+<script type="text/javascript" src="http://media.vgmdb.net/js/vgmdb_global.js?0906"></script>
+<link rel="search" type="application/opensearchdescription+xml" title="Search VGMdb" href="http://vgmdb.net/db/search.xml" />
+<link rel="icon" href="http://vgmdb.net/favicon.ico" type="image/vnd.microsoft.icon" />
+<link rel="shortcut icon" href="http://vgmdb.net/favicon.ico" type="image/vnd.microsoft.icon" />
+<script language="javascript" type="text/javascript">
+$(document).ready(function() {
+	var ItemType = new Array;
+	ItemType["0"] = "Album";
+	ItemType["1"] = "Artist";
+	ItemType["2"] = "Organization";
+	hs.showCredits = false;
+	hs.allowMultipleInstances = false;
+	hs.graphicsDir = '/db/highslide/graphics/';
+	function formatItem(row) {
+		return "<span style='float: right; margin-left: 10px' class='tinyfont label'>" + ItemType[row[3]] + " #" + row[1] + "</span>" + row[0];
+	}
+	$('#navoptions a').click(function() {
+		if (!$('#pref_content form').length) {
+			$.ajax({
+				url: '/db/user.php?do=preferences',
+				beforeSend: function() {
+					$('#navoptions').css('visibility', 'hidden').parent('li').css('background', 'transparent url(http://media.vgmdb.net/img/ajax_loader_small.gif) center center no-repeat');
+				},
+				success: function(data) { 
+					$('#navoptions').css('visibility', 'visible').parent('li').css('background', 'transparent url(http://media.vgmdb.net/img/vgmdbsubnav2010.gif) -593px 0 no-repeat');
+					$('#pref_content').html(data.html);
+					$('#pref_content form label.tristate').tristate();
+					$('#pref_content form').ajaxForm({
+						beforeSubmit: function() {
+							$('#pref_content form input[type=submit]').css('visibility', 'hidden').parent('div').css('background', 'transparent url(http://media.vgmdb.net/img/ajax_loader_small.gif) center center no-repeat');
+						},
+						success: function() {
+							$('#pref').slideUp('fast');
+							$('#pref_content form input[type=submit]').css('visibility', 'visible').parent('div').css('background', 'none');
+							$('#navoptions a').blur();
+						}
+					});
+					$('#pref').slideDown('fast');
+				},
+				dataType: 'json'
+			});
+		}
+		else {
+			if ($('#pref').is(':visible')) {
+				$('#pref').slideUp('fast');
+				$('#navoptions a').blur();
+			}
+			else $('#pref').slideDown('fast');
+		}
+		return false;
+	});
+	$("#simplesearch").autocomplete('/db/ajax-autocomplete.php', {
+		minChars: 3,
+		delay: 1000,
+		max: 150,
+		width: 500,
+		scrollHeight: 600,
+		selectFirst: false,
+		formatItem: formatItem
+	}).result(function(event, item) {
+		location.href = item[2];
+	});
+	$('label.tristate').tristate(); // 'sup IRA
+	
+	$('#chatClient').change(function() {
+		$(this).parents('form').attr('action', $(this).val());
+	});
+	$('#nav_chat a').click(function() {
+		var chatnick = 'CGI' + (Math.floor(Math.random()*901) + 100).toString();
+		var chatinterface = 'nonjs';
+		var usrAgent = navigator.userAgent.toLowerCase();
+		if (/msie/.test( usrAgent ) && !/opera/.test( usrAgent )) return true; // ie sucks
+		else if (/webkit/.test( usrAgent )) chatinterface = 'safari';
+		else if (/opera/.test( usrAgent )) chatinterface = 'opera';
+		else if (/mozilla/.test( usrAgent ) && !/(compatible|webkit)/.test( usrAgent )) chatinterface = 'mozilla';
+		else if (/konqueror/.test( usrAgent )) chatinterface = 'konqueror';
+		$('#chatNick').val(chatnick);
+		$('#chatInterface').val(chatinterface);
+		hs.htmlExpand(this, { contentId: 'chat-popup' }); return false;
+	});
+});</script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-4758350-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script');
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    ga.setAttribute('async', 'true');
+    document.documentElement.firstChild.appendChild(ga);
+  })();
+
+</script>
+<script type="text/javascript">var NREUMQ=NREUMQ||[];NREUMQ.push(["mark","firstbyte",new Date().getTime()]);</script>
+
+<meta name="keywords" content="VGM, Video Game Music, Game Music, Anime, Animation, OST, Soundtrack, Doujin, database, composer, arranger, discography" />
+<meta name="description" content="VGMdb provides media, tracklist and artist information for video game soundtracks and anime music." />
+
+
+
+
+<script language="javascript" type="text/javascript">
+$(document).ready(function() {
+	$('textarea.resizable:not(.processed), select.resizable:not(.processed)').TextAreaResizer();
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	function dfilter(tablename) {
+		$("#" + tablename + " tbody, #" + tablename + " tr").hide();
+		var elements = $("#" + tablename + " tr").not("[rel='year']");
+		var checked = new Array(); var unchecked1 = false; var unchecked2 = false;
+		$("#" + tablename + "filter_menu :checkbox").each(function() {
+			checked[this.value] = this.checked; 
+			if (!this.checked) {
+				if (this.value.substr(0,1) == 'd') unchecked1 = true;
+				if (this.value.substr(0,1) == 'r') unchecked2 = true;
+			}
+		});
+		if (unchecked1 || unchecked2) { 
+			elements = elements.filter(function(index) {
+				var attribs = $(this).attr("rel").split("|");
+				if (unchecked1) if (!checked[attribs[0]]) return false;
+				if (unchecked2) {
+					for (i = 1; i <= attribs.length; i++) {
+						if (checked[attribs[i]]) return true;
+					}
+					return false;
+				}
+				return true;
+			});
+			elements = elements.siblings("[rel='year']").andSelf().parents("tbody").andSelf();
+			elements.show();
+		} else {
+			$("#" + tablename + " tbody, #" + tablename + " tr").show();
+		}
+	}
+	$("#discotablefilter_menu :checkbox").click(function() { dfilter("discotable"); });
+	$("#featuredtablefilter_menu :checkbox").click(function() { dfilter("featuredtable"); });
+	
+	
+	
+	
+	
+	
+        
+	
+	// shamelessly ripped from Digg
+	var cheatCode = '';
+	var maxCode = 40;
+	$(document).keypress(function(key) {
+		if (cheatCode.length < maxCode) {
+			var k = (key.keyCode == 0) ? key.charCode : key.keyCode;
+			cheatCode = cheatCode + String(k) + ' ';
+			switch (cheatCode) {
+				case '38 40 37 39 97 13 ':
+				window.location='../album/2072';
+				break;
+				case '38 38 40 40 37 39 37 39 98 97 13 ':
+				window.location='../album/3778';
+				break;
+				case '105 100 100 113 100 ':
+				window.location='../album/2950';
+				break;
+			}
+		}
+	});
+});
+</script>
+</head>
+<body style="padding: 0; margin: 0">
+<a name="top"></a>
+<div class="page" style="background-color: #1B273D; height: 100px; width: 100%;">
+<div style="float: right; margin-top: 10px; margin-right: 10px;">
+	<ul class="pipelist tinyfont">
+	
+	<li class="smallfont first-child"><span id="navlogin"><a href="#">Login</a><script type="text/javascript"> vBmenu.register('navlogin'); </script></span></li>
+	<li class="smallfont"><a title="Register a new account" href="/forums/register.php">Register</a></li>
+	
+	</ul>
+</div>
+<div style="white-space: nowrap;">
+<!-- logo -->
+<div style="height: 100px; float: left;"><a href="/db/main.php"><img src="http://media.vgmdb.net/img/vgmdblogo.png" alt="VGMdb" style="padding: 10px; width: 250px; height: 80px; border: 0" /></a></div>
+<!-- /logo -->
+<!-- top nav -->
+<div style="height: 100px; float: left; position: relative; margin-left: 1px;">
+<ul id="topnav">
+	<li id="nav_album"><a title="Official Albums, Enclosures, Doujins" href="/db/albums.php">Albums</a><a class="buttonSubmit" href="/album/new" title="Submit a new album"><img src="http://media.vgmdb.net/img/button-add-big.png" alt="" /></a></li>
+	<li id="nav_artist"><a title="Composers, Arrangers, Lyricists, Performers" href="/db/artists.php">Artists</a><a class="buttonSubmit" href="/db/artists-submit.php" title="Submit a new artist"><img src="http://media.vgmdb.net/img/button-add-big.png" alt="" /></a></li>
+	<!-- <li id="nav_track"><a title="Instrumentals, Vocals, Sound Effects, Voice Dramas" href="#">Tracks</a></li> -->
+	<li id="nav_label"><a title="Music Labels, Publishers, Organizations and Groups" href="/db/org.php">Labels</a><a class="buttonSubmit" href="/db/org-submit.php" title="Submit a new publisher"><img src="http://media.vgmdb.net/img/button-add-big.png" alt="" /></a></li>
+	<li id="nav_product"><a title="Games, Video, Radio/Drama Programs, Print Publications" href="/db/product.php">Products</a><a class="buttonSubmit" href="/db/product-submit.php" title="Submit a new product"><img src="http://media.vgmdb.net/img/button-add-big.png" alt="" /></a></li>
+	<li id="nav_event"><a title="Conventions, Gatherings and Shows" href="/db/events.php">Events</a></li>
+	<li id="nav_podcast"><a title="VGM Decibel, our bi-monthly podcast" href="/cast">Podcast</a></li>
+</ul>
+</div>
+<!-- / top nav -->
+</div>
+</div>
+<div class="label" style="clear: both; width: 100%; background-color: #2F364F; font-family: Arial">
+<ul id="subnav">
+	<li id="nav_search" style="width: 250px">
+		<form name="navsearch" action="/search" method="get">
+			<div><input type="text" class="bginput smallfont ac_input ac_default" name="q" id="simplesearch" maxlength="150" style="width: 236px;" /></div>
+		</form>
+	</li>
+	<li id="nav_advsearch"><a title="More search options" href="/search">Advanced Search</a></li>
+	<li id="nav_update"><a title="Latest submissions and edits" href="/db/recent.php">Updates</a></li>
+	<li id="nav_calendar"><a title="Release schedules" href="/db/calendar.php?year=2015&month=8">Calendar</a></li>
+	<li id="nav_forum"><a title="Community discussions" href="/forums/">Forums</a></li>
+	<li id="nav_market"><a title="Trade with other members" href="/db/marketplace.php?do=view">Marketplace</a></li>
+	<!-- <li id="nav_radio"><a title="Live streaming VGM" href="#" onclick="alert('Under Construction');">Radio</a></li> -->
+	<li id="nav_users"><a title="User collections" href="/db/collection.php">Users</a></li>
+	<li id="nav_chat"><a title="Real-time IRC chat" rel="nofollow" href="http://bigblah.net/cgi-bin/irc/irc.cgi" target="vgmdbirc">Chat</a></li>
+	<li id="nav_submit"><a title="Submit an album" href="/album/new">Submit Album</a></li>
+	<li id="nav_customize"><span id="navoptions"><a title="Edit your preferences" href="#">Customize</a></span></li>
+</ul>
+</div>
+
+
+	<!-- login form -->
+	<div class="vbmenu_popup" id="navlogin_menu" style="display:none;">
+	<table cellpadding="4" cellspacing="1" border="0"><tr><td style="background: #BBC7CE;">
+	<form action="/forums/login.php?do=login" method="post" onsubmit="md5hash(vb_login_password, vb_login_md5password, vb_login_md5password_utf, 0)">
+	<script type="text/javascript" src="/forums/clientscript/vbulletin_md5.js?v=385"></script>
+	<table cellpadding="0" cellspacing="3" border="0">
+	<tr>
+		<td class="smallfont"><label for="navbar_username">User Name</label></td>
+		<td><input type="text" class="bginput" style="font-size: 11px" name="vb_login_username" id="navbar_username" size="10" accesskey="u" tabindex="101" value="User Name" onfocus="if (this.value == 'User Name') this.value = '';" /></td>
+		<td class="smallfont" colspan="2" nowrap="nowrap"><label for="cb_cookieuser_navbar"><input type="checkbox" name="cookieuser" value="1" tabindex="103" id="cb_cookieuser_navbar" accesskey="c" />Remember</label></td>
+	</tr><tr>
+		<td class="smallfont"><label for="navbar_password">Password</label></td>
+		<td><input type="password" class="bginput" style="font-size: 11px" name="vb_login_password" id="navbar_password" size="10" tabindex="102" /></td>
+		<td><input type="submit" class="button" value="Log in" tabindex="104" title="Enter your username and password in the boxes provided to login, or click the 'register' button to create a profile for yourself." accesskey="s" /></td>
+	</tr>
+	</table>
+	<input type="hidden" name="s" value="93dcd97317a7e75f71acf74ea399fbda" />
+	<input type="hidden" name="securitytoken" value="guest" />
+	<input type="hidden" name="do" value="login" />		
+	<input type="hidden" name="vb_login_md5password" />
+	<input type="hidden" name="vb_login_md5password_utf" />
+	</form>
+	</td></tr></table>
+	</div>
+	<!-- / login form -->
+
+
+<!-- content table -->
+<div class="page" style="padding:20px 20px 0 20px">
+
+<div id="pref" style="width: 100%; background-color:#1B273D; margin-bottom: 20px; display: none">
+	<b class="rtop"><b></b></b>
+	<div id="pref_content"></div>
+	<b class="rbot"><b></b></b>
+</div>
+
+
+
+<!-- main page contents -->
+<table width="100%" cellpadding="0" cellspacing="0" border="0" align="left">
+<tr><td width="100%" style="background-color: #1B273D;" valign="top">
+	<b class="rtop"><b></b></b>
+	<div id="innermain" style="padding: 6px 10px 10px 10px">
+
+	<span style="float:right;" class="label smallfont"><a href="/db/product-discuss.php?id=560">Discuss</a> 
+</span>
+
+	
+
+	<h1 id="maintitle" style="display: inline"><span class="albumtitle" lang="en" style="display:inline">.hack//</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>.hack//</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>.hack//</i></span></h1> <span class="smallfont time">(Franchise)</span>
+	<div id="subtitle" class="label" style="padding: 0px 10px 0px 10px"><span class="albumtitle" lang="en" style="display:inline"></span><span class="albumtitle" lang="ja" style="display:none">.hack//<br /></span><span class="albumtitle" lang="ja-Latn" style="display:none">.hack//<br /></span></div>
+
+	<div id="innercontent" style="padding: 10px 10px 0px 10px">
+	<style>dl {margin: 0; padding: 0} dt {margin-bottom: 6px; float: left; clear: both} dd {margin-bottom: 6px; margin-left: 10em}</style>
+
+	
+
+	
+	<div style="background-color: #2F364F;">
+	<b class="rtop"><b></b></b>
+	<div style="padding: 6px 10px 6px 10px" class="smallfont">Test description
+	<div style="clear: both; height: 1px; font-size: 1px; overflow: hidden"></div>
+	</div>
+	<b class="rbot"><b></b></b>
+	</div><br />
+
+	
+
+
+	<h3 class="label">Titles</h3>
+	<div style="background-color: #2F364F;">
+	<b class="rtop"><b></b></b>
+	<div style="padding: 6px 10px 6px 10px" class="smallfont"><table cellspacing="0" cellpadding="0" border="0">
+<tr>
+<td align="left" style="padding-left: 8px;"><h4>DATE</h4></td>
+<td align="left" style="padding-left: 8px;"><h4>PRODUCT</h4></td>
+</tr>
+<tr>
+<td align="left" style="padding-left: 8px;" nowrap="nowrap">
+<span class="smallfont label">2012-6-28</span>
+</td>
+<td width="100%" align="left" style="padding-left: 8px;">
+<a class="smallfont" href="/product/1285"><span style="color:#CEFFFF"><span class="productname" lang="en" style="display:inline">.hack//Versus</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja" style="display:none">.hack//Versus</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja-Latn" style="display:none">.hack//Versus</span></span></a>
+</td>
+</tr><tr>
+<td align="left" style="padding-left: 8px;" nowrap="nowrap">
+<span class="smallfont label">2012-1-21</span>
+</td>
+<td width="100%" align="left" style="padding-left: 8px;">
+<a class="smallfont" href="/product/1282"><span style="color:yellowgreen"><span class="productname" lang="en" style="display:inline">.hack//The Movie: Sekai no Mukou ni</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja" style="display:none">ドットハック セカイの向こうに</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja-Latn" style="display:none">.hack//The Movie: Sekai no Mukou ni</span></span></a>
+</td>
+</tr><tr>
+<td align="left" style="padding-left: 8px;" nowrap="nowrap">
+<span class="smallfont label">2011-1</span>
+</td>
+<td width="100%" align="left" style="padding-left: 8px;">
+<a class="smallfont" href="/product/1281"><span style="color:yellowgreen"><span class="productname" lang="en" style="display:inline">.hack//Quantum</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja" style="display:none">.hack//Quantum</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja-Latn" style="display:none">.hack//Quantum</span></span></a>
+</td>
+</tr><tr>
+<td align="left" style="padding-left: 8px;" nowrap="nowrap">
+<span class="smallfont label">2010-3-4</span>
+</td>
+<td width="100%" align="left" style="padding-left: 8px;">
+<a class="smallfont" href="/product/1284"><span style="color:#CEFFFF"><span class="productname" lang="en" style="display:inline">.hack//Link</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja" style="display:none">.hack//Link</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja-Latn" style="display:none">.hack//Link</span></span></a>
+</td>
+</tr><tr>
+<td align="left" style="padding-left: 8px;" nowrap="nowrap">
+<span class="smallfont label">2008-3-25</span>
+</td>
+<td width="100%" align="left" style="padding-left: 8px;">
+<a class="smallfont" href="/product/1283"><span style="color:yellowgreen"><span class="productname" lang="en" style="display:inline">.hack//G.U. TRILOGY</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja" style="display:none">.hack//G.U. TRILOGY</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja-Latn" style="display:none">.hack//G.U. TRILOGY</span></span></a>
+</td>
+</tr><tr>
+<td align="left" style="padding-left: 8px;" nowrap="nowrap">
+<span class="smallfont label">2007-1-18</span>
+</td>
+<td width="100%" align="left" style="padding-left: 8px;">
+<a class="smallfont" href="/product/1910"><span style="color:#CEFFFF"><span class="productname" lang="en" style="display:inline">.hack//G.U. Vol.3 Redemption</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja" style="display:none">.hack//G.U. Vol.3 歩くような速さで</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja-Latn" style="display:none">.hack//G.U. Vol.3 Aruku Youna Hayasa de</span></span></a>
+</td>
+</tr><tr>
+<td align="left" style="padding-left: 8px;" nowrap="nowrap">
+<span class="smallfont label">2006-9-28</span>
+</td>
+<td width="100%" align="left" style="padding-left: 8px;">
+<a class="smallfont" href="/product/1909"><span style="color:#CEFFFF"><span class="productname" lang="en" style="display:inline">.hack//G.U. Vol.2 Reminisce</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja" style="display:none">.hack//G.U. Vol.2 君想フ声</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja-Latn" style="display:none">.hack//G.U. Vol.2 Kimi Omou Koe</span></span></a>
+</td>
+</tr><tr>
+<td align="left" style="padding-left: 8px;" nowrap="nowrap">
+<span class="smallfont label">2006-5-18</span>
+</td>
+<td width="100%" align="left" style="padding-left: 8px;">
+<a class="smallfont" href="/product/1908"><span style="color:#CEFFFF"><span class="productname" lang="en" style="display:inline">.hack//G.U. Vol.1 Rebirth</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja" style="display:none">.hack//G.U. Vol.1 再誕</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja-Latn" style="display:none">.hack//G.U. Vol.1 Saitan</span></span></a>
+</td>
+</tr><tr>
+<td align="left" style="padding-left: 8px;" nowrap="nowrap">
+<span class="smallfont label">2006-4</span>
+</td>
+<td width="100%" align="left" style="padding-left: 8px;">
+<a class="smallfont" href="/product/533"><span style="color:yellowgreen"><span class="productname" lang="en" style="display:inline">.hack//Roots</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja" style="display:none">.hack//Roots</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja-Latn" style="display:none">.hack//Roots</span></span></a>
+</td>
+</tr><tr>
+<td align="left" style="padding-left: 8px;" nowrap="nowrap">
+<span class="smallfont label">2003-4-10</span>
+</td>
+<td width="100%" align="left" style="padding-left: 8px;">
+<a class="smallfont" href="/product/1907"><span style="color:#CEFFFF"><span class="productname" lang="en" style="display:inline">.hack//Quarantine</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja" style="display:none">.hack//絶対包囲 Vol.4</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja-Latn" style="display:none">.hack//Zettai Houi Vol.4</span></span></a>
+</td>
+</tr><tr>
+<td align="left" style="padding-left: 8px;" nowrap="nowrap">
+<span class="smallfont label">2003-1</span>
+</td>
+<td width="100%" align="left" style="padding-left: 8px;">
+<a class="smallfont" href="/product/561"><span style="color:yellowgreen"><span class="productname" lang="en" style="display:inline">.hack//Legend of the Twilight Bracelet</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja" style="display:none">.hack//黄昏の腕輪伝説</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja-Latn" style="display:none">.hack//Tasogare no Udewa Densetsu</span></span></a>
+</td>
+</tr><tr>
+<td align="left" style="padding-left: 8px;" nowrap="nowrap">
+<span class="smallfont label">2002-12-12</span>
+</td>
+<td width="100%" align="left" style="padding-left: 8px;">
+<a class="smallfont" href="/product/1906"><span style="color:#CEFFFF"><span class="productname" lang="en" style="display:inline">.hack//Outbreak</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja" style="display:none">.hack//侵食汚染 Vol.3</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja-Latn" style="display:none">.hack//Shinshoku Osen Vol.3</span></span></a>
+</td>
+</tr><tr>
+<td align="left" style="padding-left: 8px;" nowrap="nowrap">
+<span class="smallfont label">2002-9-9</span>
+</td>
+<td width="100%" align="left" style="padding-left: 8px;">
+<a class="smallfont" href="/product/1905"><span style="color:#CEFFFF"><span class="productname" lang="en" style="display:inline">.hack//Mutation</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja" style="display:none">.hack//悪性変異 Vol.2</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja-Latn" style="display:none">.hack//Akushou Heni Vol.2</span></span></a>
+</td>
+</tr><tr>
+<td align="left" style="padding-left: 8px;" nowrap="nowrap">
+<span class="smallfont label">2002-6-20</span>
+</td>
+<td width="100%" align="left" style="padding-left: 8px;">
+<a class="smallfont" href="/product/1904"><span style="color:#CEFFFF"><span class="productname" lang="en" style="display:inline">.hack//Infection</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja" style="display:none">.hack//感染拡大 Vol.1</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja-Latn" style="display:none">.hack//Kansen Kakudai Vol.1</span></span></a>
+</td>
+</tr><tr>
+<td align="left" style="padding-left: 8px;" nowrap="nowrap">
+<span class="smallfont label">2002-6</span>
+</td>
+<td width="100%" align="left" style="padding-left: 8px;">
+<a class="smallfont" href="/product/562"><span style="color:yellowgreen"><span class="productname" lang="en" style="display:inline">.hack//Liminality</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja" style="display:none">.hack//Liminality</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja-Latn" style="display:none">.hack//Liminality</span></span></a>
+</td>
+</tr><tr>
+<td align="left" style="padding-left: 8px;" nowrap="nowrap">
+<span class="smallfont label">2002-4</span>
+</td>
+<td width="100%" align="left" style="padding-left: 8px;">
+<a class="smallfont" href="/product/531"><span style="color:yellowgreen"><span class="productname" lang="en" style="display:inline">.hack//SIGN</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja" style="display:none">.hack//SIGN</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja-Latn" style="display:none">.hack//SIGN</span></span></a>
+</td>
+</tr>
+
+</table>
+	<div style="clear: both; height: 1px; font-size: 1px; overflow: hidden"></div>
+	</div>
+	<b class="rbot"><b></b></b>
+	</div><br />
+
+	
+
+	<span style="float:right; font-size:8pt; font-weight:bold" id="discotablefilter">Filter <script type="text/javascript"> vBmenu.register('discotablefilter'); </script></span>
+
+	<!-- discography filter menu -->
+	<div class="vbmenu_popup" id="discotablefilter_menu" style="display:none">
+	<form action="" name="formdiscotablefilter">
+	<table cellpadding="4" cellspacing="1" border="0" style="color: white">
+	<tr><td class="thead">Classification</td></tr>
+<tr><td style="background-color: #1B273D"><div class="smallfont" style="white-space: nowrap"><label for="r0|0"><input type="checkbox" class="inlineimg" name="r0|0" id="r0|0" value="r0" checked="checked" />Unclassified</label></div>
+<div class="smallfont" style="white-space: nowrap"><label for="r6|0"><input type="checkbox" class="inlineimg" name="r6|0" id="r6|0" value="r6" checked="checked" />Vocal</label></div>
+<div class="smallfont" style="white-space: nowrap"><label for="r7|0"><input type="checkbox" class="inlineimg" name="r7|0" id="r7|0" value="r7" checked="checked" />OP/ED/Insert</label></div>
+<div class="smallfont" style="white-space: nowrap"><label for="r1|0"><input type="checkbox" class="inlineimg" name="r1|0" id="r1|0" value="r1" checked="checked" />Soundtrack</label></div>
+<div class="smallfont" style="white-space: nowrap"><label for="r13|0"><input type="checkbox" class="inlineimg" name="r13|0" id="r13|0" value="r13" checked="checked" />Data</label></div>
+<div class="smallfont" style="white-space: nowrap"><label for="r12|0"><input type="checkbox" class="inlineimg" name="r12|0" id="r12|0" value="r12" checked="checked" />Live Event</label></div>
+<div class="smallfont" style="white-space: nowrap"><label for="r11|0"><input type="checkbox" class="inlineimg" name="r11|0" id="r11|0" value="r11" checked="checked" />Sound Effect</label></div>
+<div class="smallfont" style="white-space: nowrap"><label for="r14|0"><input type="checkbox" class="inlineimg" name="r14|0" id="r14|0" value="r14" checked="checked" />Video</label></div>
+<div class="smallfont" style="white-space: nowrap"><label for="r3|0"><input type="checkbox" class="inlineimg" name="r3|0" id="r3|0" value="r3" checked="checked" />Fan Arrange</label></div>
+<div class="smallfont" style="white-space: nowrap"><label for="r4|0"><input type="checkbox" class="inlineimg" name="r4|0" id="r4|0" value="r4" checked="checked" />Remix</label></div>
+<div class="smallfont" style="white-space: nowrap"><label for="r2|0"><input type="checkbox" class="inlineimg" name="r2|0" id="r2|0" value="r2" checked="checked" />Arrange</label></div>
+<div class="smallfont" style="white-space: nowrap"><label for="r10|0"><input type="checkbox" class="inlineimg" name="r10|0" id="r10|0" value="r10" checked="checked" />Prototype</label></div>
+<div class="smallfont" style="white-space: nowrap"><label for="r8|0"><input type="checkbox" class="inlineimg" name="r8|0" id="r8|0" value="r8" checked="checked" />Drama</label></div>
+<div class="smallfont" style="white-space: nowrap"><label for="r9|0"><input type="checkbox" class="inlineimg" name="r9|0" id="r9|0" value="r9" checked="checked" />Talk</label></div>
+</td></tr>
+
+	</table>
+	</form>
+	</div>
+	<!-- / discography filter menu -->
+
+<h3 class="label">Albums | Credits</h3>
+<div style="background-color: #2F364F;">
+<b class="rtop"><b></b></b>
+<div id="discotable" style="padding: 6px 10px 10px 10px">
+<table cellpadding="4" cellspacing="0" border="0" width="100%">
+<tbody class="">
+<tr rel="year"><td align="left" style="padding-top: 10px" colspan="3"><h3 class="time">2014</h3></td></tr>
+<tr rel="|r0">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">01.01</td>
+   <td align="left" valign="top"> <a class="albumtitle album-game" href="http://vgmdb.net/album/43109" title='LieN Original Album Noir'><span class="albumtitle" lang="en" style="display:inline">LieN Original Album Noir</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>LieN －リアン－ Original Album Noir －ノワール－</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>LieN Original Album Noir</i></span></a> <span class="catalog album-game">LIEN-NOIR</span> <span class="smallfont label">Unclassified</span></td>
+</tr>
+<tr rel="|r0">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">01.01</td>
+   <td align="left" valign="top"> <a class="albumtitle album-game" href="http://vgmdb.net/album/43110" title='LieN Original Album Blanc'><span class="albumtitle" lang="en" style="display:inline">LieN Original Album Blanc</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>LieN －リアン－ Original Album Blanc －ブラン－</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>LieN Original Album Blanc</i></span></a> <span class="catalog album-game">R-13B0143</span> <span class="smallfont label">Unclassified</span></td>
+</tr>
+
+</tbody>
+<tbody class="">
+<tr rel="year"><td align="left" style="padding-top: 10px" colspan="3"><h3 class="time">2013</h3></td></tr>
+<tr rel="|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">05.08</td>
+   <td align="left" valign="top"> <img class='inlineimg' src='http://media.vgmdb.net/icon/album-reprint.gif' width='15' height='15' alt='This album is a reprint' /> <a class="albumtitle album-anime" href="http://vgmdb.net/album/38000" title='Dream Field / See-Saw'><span class="albumtitle" lang="en" style="display:inline">Dream Field / See-Saw</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>Dream Field / See-Saw</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Dream Field / See-Saw</i></span></a> <span class="catalog album-anime">VTCL-60341</span> <span class="smallfont label">Vocal</span></td>
+</tr>
+<tr rel="|r6|r7">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">05.08</td>
+   <td align="left" valign="top"> <img class='inlineimg' src='http://media.vgmdb.net/icon/album-reprint.gif' width='15' height='15' alt='This album is a reprint' /> <a class="albumtitle album-anime" href="http://vgmdb.net/album/38004" title='circus / FictionJunction YUUKA'><span class="albumtitle" lang="en" style="display:inline">circus / FictionJunction YUUKA</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>circus / FictionJunction YUUKA</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>circus / FictionJunction YUUKA</i></span></a> <span class="catalog album-anime">VTCL-60343</span> <span class="smallfont label">Vocal, OP/ED/Insert</span></td>
+</tr>
+
+</tbody>
+<tbody class="">
+<tr rel="year"><td align="left" style="padding-top: 10px" colspan="3"><h3 class="time">2012</h3></td></tr>
+<tr rel="|r6|r7">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">11.28</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/35349" title='SINGLES BEST 2002-2012 MEMORIES / ROUND TABLE featuring Nino'><span class="albumtitle" lang="en" style="display:inline">SINGLES BEST 2002-2012 MEMORIES / ROUND TABLE featuring Nino</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>SINGLES BEST 2002-2012 MEMORIES / ROUND TABLE featuring Nino</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>SINGLES BEST 2002-2012 MEMORIES / ROUND TABLE featuring Nino</i></span></a> <span class="catalog album-anime">VTCL-60320</span> <span class="smallfont label">Vocal, OP/ED/Insert</span></td>
+</tr>
+<tr rel="|r6|r7">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">11.28</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/35350" title='SINGLES BEST 2002-2012 MEMORIES / ROUND TABLE featuring Nino [Limited Edition]'><span class="albumtitle" lang="en" style="display:inline">SINGLES BEST 2002-2012 MEMORIES / ROUND TABLE featuring Nino [Limited Edition]</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>SINGLES BEST 2002-2012 MEMORIES / ROUND TABLE featuring Nino [Limited Edition]</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>SINGLES BEST 2002-2012 MEMORIES / ROUND TABLE featuring Nino [Limited Edition]</i></span></a> <span class="catalog album-anime">VTZL-49</span> <span class="smallfont label">Vocal, OP/ED/Insert</span></td>
+</tr>
+<tr rel="|r1|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">06.27</td>
+   <td align="left" valign="top"> <a class="albumtitle album-game" href="http://vgmdb.net/album/32692" title='.hack//Versus O.S.T.'><span class="albumtitle" lang="en" style="display:inline">.hack//Versus O.S.T.</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>.hack//Versus O.S.T.</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>.hack//Versus O.S.T.</i></span></a> <span class="catalog album-game">VTCL-60313</span> <span class="smallfont label">Soundtrack, Vocal</span></td>
+</tr>
+<tr rel="|r1|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">06.27</td>
+   <td align="left" valign="top"> <a class="albumtitle album-game" href="http://vgmdb.net/album/32693" title='.hack//Versus O.S.T. [Limited Edition]'><span class="albumtitle" lang="en" style="display:inline">.hack//Versus O.S.T. [Limited Edition]</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>.hack//Versus O.S.T. [Limited Edition]</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>.hack//Versus O.S.T. [Limited Edition]</i></span></a> <span class="catalog album-game">VTZL-46</span> <span class="smallfont label">Soundtrack, Vocal</span></td>
+</tr>
+<tr rel="|r7">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">01.25</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/30349" title='Hikari wo Atsumete / KOKIA'><span class="albumtitle" lang="en" style="display:inline">Hikari wo Atsumete / KOKIA</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>光をあつめて / KOKIA</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Hikari wo Atsumete / KOKIA</i></span></a> <span class="catalog album-anime">VTCL-35123</span> <span class="smallfont label">OP/ED/Insert</span></td>
+</tr>
+<tr rel="|r1|r13">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">01.25</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/31294" title='.hack//The Movie: Sekai no Mukou ni O.S.T. [Limited Edition]'><span class="albumtitle" lang="en" style="display:inline">.hack//The Movie: Sekai no Mukou ni O.S.T. [Limited Edition]</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>ドットハック セカイの向こうに O.S.T.(初回限定盤)</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>.hack//The Movie: Sekai no Mukou ni O.S.T. [Limited Edition]</i></span></a> <span class="catalog album-anime">VTZL-37</span> <span class="smallfont label">Soundtrack, Data</span></td>
+</tr>
+<tr rel="|r1">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">01.25</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/31295" title='.hack//The Movie: Sekai no Mukou ni O.S.T.'><span class="albumtitle" lang="en" style="display:inline">.hack//The Movie: Sekai no Mukou ni O.S.T.</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>ドットハック セカイの向こうに O.S.T.</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>.hack//The Movie: Sekai no Mukou ni O.S.T.</i></span></a> <span class="catalog album-anime">VTCL-60288</span> <span class="smallfont label">Soundtrack</span></td>
+</tr>
+
+</tbody>
+<tbody class="">
+<tr rel="year"><td align="left" style="padding-top: 10px" colspan="3"><h3 class="time">2011</h3></td></tr>
+<tr rel="|r0">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">06.03</td>
+   <td align="left" valign="top"> <a class="albumtitle album-bonus" href="http://vgmdb.net/album/35883" title='.hack//Archives_03_LIMITED EDITION_Special Sound Track'><span class="albumtitle" lang="en" style="display:inline">.hack//Archives_03_LIMITED EDITION_Special Sound Track</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>.hack//Archives_03 限定版 特典 スペシャル サウンド トラック</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>.hack//Archives_03_LIMITED EDITION_Special Sound Track</i></span></a> <span class="catalog album-bonus">201104</span> <span class="smallfont label">Unclassified</span></td>
+</tr>
+
+</tbody>
+<tbody class="">
+<tr rel="year"><td align="left" style="padding-top: 10px" colspan="3"><h3 class="time">2010</h3></td></tr>
+<tr rel="|r1|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">12.22</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/21727" title='OVA .hack//Quantum Original Soundtrack'><span class="albumtitle" lang="en" style="display:inline">OVA .hack//Quantum Original Soundtrack</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>OVA .hack//Quantum オリジナルサウンドトラック</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>OVA .hack//Quantum Original Soundtrack</i></span></a> <span class="catalog album-anime">VTCL-60235</span> <span class="smallfont label">Soundtrack, Vocal</span></td>
+</tr>
+<tr rel="|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">11.24</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/21335" title='Shizuku / Yuuka Nanri'><span class="albumtitle" lang="en" style="display:inline">Shizuku / Yuuka Nanri</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>雫 -Shizuku- / 南里侑香</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Shizuku / Yuuka Nanri</i></span></a> <span class="catalog album-anime">VTCL-35097</span> <span class="smallfont label">Vocal</span></td>
+</tr>
+<tr rel="|r0">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">05.17</td>
+   <td align="left" valign="top"> <a class="albumtitle album-bonus" href="http://vgmdb.net/album/39570" title='.hack//Archives_02 WHITE LIMITED EDITION -Special Sound Track-'><span class="albumtitle" lang="en" style="display:inline">.hack//Archives_02 WHITE LIMITED EDITION -Special Sound Track-</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>.hack//Archives_02 WHITE 限定版 特典 スペシャル サウンド トラック</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>.hack//Archives_02 WHITE LIMITED EDITION -Special Sound Track-</i></span></a> <span class="catalog album-bonus">20100413</span> <span class="smallfont label">Unclassified</span></td>
+</tr>
+<tr rel="|r12">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">05.12</td>
+   <td align="left" valign="top"> <a class="albumtitle album-game" href="http://vgmdb.net/album/22655" title='FictionJunction 2008-2010 The BEST of Yuki Kajiura LIVE'><span class="albumtitle" lang="en" style="display:inline">FictionJunction 2008-2010 The BEST of Yuki Kajiura LIVE</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>FictionJunction 2008-2010 The BEST of Yuki Kajiura LIVE</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>FictionJunction 2008-2010 The BEST of Yuki Kajiura LIVE</i></span></a> <span class="catalog album-game">VTCL-60201~2</span> <span class="smallfont label">Live Event</span></td>
+</tr>
+<tr rel="|r1">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">03.03</td>
+   <td align="left" valign="top"> <a class="albumtitle album-game" href="http://vgmdb.net/album/17317" title='.hack//Link GAME MUSIC O.S.T.'><span class="albumtitle" lang="en" style="display:inline">.hack//Link GAME MUSIC O.S.T.</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>.hack//Link GAME MUSIC O.S.T.</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>.hack//Link GAME MUSIC O.S.T.</i></span></a> <span class="catalog album-game">VTCL-60187~8</span> <span class="smallfont label">Soundtrack</span></td>
+</tr>
+<tr rel="|r1|r11|r13">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">03.03</td>
+   <td align="left" valign="top"> <a class="albumtitle album-game" href="http://vgmdb.net/album/17318" title='.hack//Link GAME MUSIC O.S.T. [Limited Edition]'><span class="albumtitle" lang="en" style="display:inline">.hack//Link GAME MUSIC O.S.T. [Limited Edition]</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>.hack//Link GAME MUSIC O.S.T. [Limited Edition]</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>.hack//Link GAME MUSIC O.S.T. [Limited Edition]</i></span></a> <span class="catalog album-game">VTZL-13</span> <span class="smallfont label">Soundtrack, Sound Effect, Data</span></td>
+</tr>
+
+</tbody>
+<tbody class="">
+<tr rel="year"><td align="left" style="padding-top: 10px" colspan="3"><h3 class="time">2009</h3></td></tr>
+<tr rel="|r14">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">10.21</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/36247" title='FictionJunction YUUKA ~Yuki Kajiura LIVE Vol.#4 PART I~'><span class="albumtitle" lang="en" style="display:inline">FictionJunction YUUKA ~Yuki Kajiura LIVE Vol.#4 PART I~</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>FictionJunction YUUKA ~Yuki Kajiura LIVE Vol.#4 PART I~</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>FictionJunction YUUKA ~Yuki Kajiura LIVE Vol.#4 PART I~</i></span></a> <span class="catalog album-anime">VTBL-7</span> <span class="smallfont label">Video</span></td>
+</tr>
+<tr rel="|r3">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">05.07</td>
+   <td align="left" valign="top"> <a class="albumtitle album-doujin" href="http://vgmdb.net/album/13365" title='Boshuu Natsuyo Piano Collection vol. 01 "Kizuna"'><span class="albumtitle" lang="en" style="display:inline">Boshuu Natsuyo Piano Collection vol. 01 &quot;Kizuna&quot;</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>暮秋夏夜 Piano Collection vol. 01 『絆 -キヅナ-』</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Boshuu Natsuyo Piano Collection vol. 01 &quot;Kizuna&quot;</i></span></a> <span class="catalog album-doujin">N/A</span> <span class="smallfont label">Fan Arrange</span></td>
+</tr>
+
+</tbody>
+<tbody class="">
+<tr rel="year"><td align="left" style="padding-top: 10px" colspan="3"><h3 class="time">2008</h3></td></tr>
+<tr rel="|r6|r12|r14">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">12.24</td>
+   <td align="left" valign="top"> <a class="albumtitle album-game" href="http://vgmdb.net/album/17671" title='YUKI KAJIURA LIVE 2008.07.31'><span class="albumtitle" lang="en" style="display:inline">YUKI KAJIURA LIVE 2008.07.31</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>YUKI KAJIURA LIVE 2008.07.31</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>YUKI KAJIURA LIVE 2008.07.31</i></span></a> <span class="catalog album-game">VTBL-2</span> <span class="smallfont label">Vocal, Live Event, Video</span></td>
+</tr>
+<tr rel="|r4|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">07.02</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/29343" title='EXIT TRANCE PRESENTS SPEED ANIME TRANCE BEST 4'><span class="albumtitle" lang="en" style="display:inline">EXIT TRANCE PRESENTS SPEED ANIME TRANCE BEST 4</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>EXIT TRANCE PRESENTS SPEED アニメトランス BEST4</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>EXIT TRANCE PRESENTS SPEED ANIME TRANCE BEST 4</i></span></a> <span class="catalog album-anime">QWCE-00051</span> <span class="smallfont label">Remix, Vocal</span></td>
+</tr>
+<tr rel="|r2|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">06.25</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/20459" title='Hyper Yocomix3'><span class="albumtitle" lang="en" style="display:inline">Hyper Yocomix3</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>Hyper Yocomix3</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Hyper Yocomix3</i></span></a> <span class="catalog album-anime">GNCA-1170</span> <span class="smallfont label">Arrange, Vocal</span></td>
+</tr>
+<tr rel="|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">04.23</td>
+   <td align="left" valign="top"> <img class='inlineimg' src='http://media.vgmdb.net/icon/album-reprint.gif' width='15' height='15' alt='This album is a reprint' /> <a class="albumtitle album-anime" href="http://vgmdb.net/album/30216" title='FICTION'><span class="albumtitle" lang="en" style="display:inline">FICTION</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>FICTION</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>FICTION</i></span></a> <span class="catalog album-anime">VTCL-60062</span> <span class="smallfont label">Vocal</span></td>
+</tr>
+<tr rel="|r1">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">03.26</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/12959" title='.hack//G.U. TRILOGY O.S.T. [Limited Edition]'><span class="albumtitle" lang="en" style="display:inline">.hack//G.U. TRILOGY O.S.T. [Limited Edition]</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>.hack//G.U. TRILOGY O.S.T. [Limited Edition]</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>.hack//G.U. TRILOGY O.S.T. [Limited Edition]</i></span></a> <span class="catalog album-anime">VTZL-5</span> <span class="smallfont label">Soundtrack</span></td>
+</tr>
+<tr rel="|r1|r10">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">03.25</td>
+   <td align="left" valign="top"> <a class="albumtitle album-bonus" href="http://vgmdb.net/album/35245" title='.hack SERIES SOUNDTRACK SP'><span class="albumtitle" lang="en" style="display:inline">.hack SERIES SOUNDTRACK SP</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>.hackシリーズ サウンドトラックSP</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>.hack SERIES SOUNDTRACK SP</i></span></a> <span class="catalog album-bonus">AFR1B84-1</span> <span class="smallfont label">Soundtrack, Prototype</span></td>
+</tr>
+
+</tbody>
+<tbody class="">
+<tr rel="year"><td align="left" style="padding-top: 10px" colspan="3"><h3 class="time">2007</h3></td></tr>
+<tr rel="|r4|r6|r7">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">12.19</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/29341" title='EXIT TRANCE PRESENTS SPEED ANIME TRANCE BEST 2'><span class="albumtitle" lang="en" style="display:inline">EXIT TRANCE PRESENTS SPEED ANIME TRANCE BEST 2</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>EXIT TRANCE PRESENTS SPEED アニメトランス BEST 2</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>EXIT TRANCE PRESENTS SPEED ANIME TRANCE BEST 2</i></span></a> <span class="catalog album-anime">QWCE-00033</span> <span class="smallfont label">Remix, Vocal, OP/ED/Insert</span></td>
+</tr>
+<tr rel="|r6|r7">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">07.04</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/36255" title='circus / FictionJunction YUUKA'><span class="albumtitle" lang="en" style="display:inline">circus / FictionJunction YUUKA</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>circus / FictionJunction YUUKA</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>circus / FictionJunction YUUKA</i></span></a> <span class="catalog album-anime">VICL-62426</span> <span class="smallfont label">Vocal, OP/ED/Insert</span></td>
+</tr>
+<tr rel="|r2">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">04.20</td>
+   <td align="left" valign="top"> <a class="albumtitle album-game" href="http://vgmdb.net/album/5699" title='Passion'><span class="albumtitle" lang="en" style="display:inline">Passion</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>Passion</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Passion</i></span></a> <span class="catalog album-game">N/A</span> <span class="smallfont label">Arrange</span></td>
+</tr>
+<tr rel="|r1">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">01.24</td>
+   <td align="left" valign="top"> <a class="albumtitle album-game" href="http://vgmdb.net/album/4216" title='.hack//G.U. GAME MUSIC O.S.T. 2'><span class="albumtitle" lang="en" style="display:inline">.hack//G.U. GAME MUSIC O.S.T. 2</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>.hack//G.U. GAME MUSIC O.S.T. 2</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>.hack//G.U. GAME MUSIC O.S.T. 2</i></span></a> <span class="catalog album-game">VICL-62289~90</span> <span class="smallfont label">Soundtrack</span></td>
+</tr>
+<tr rel="|r1">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">01.24</td>
+   <td align="left" valign="top"> <a class="albumtitle album-game" href="http://vgmdb.net/album/4217" title='.hack//G.U. GAME MUSIC O.S.T. 2 [Limited Edition]'><span class="albumtitle" lang="en" style="display:inline">.hack//G.U. GAME MUSIC O.S.T. 2 [Limited Edition]</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>.hack//G.U. GAME MUSIC O.S.T. 2 [Limited Edition]</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>.hack//G.U. GAME MUSIC O.S.T. 2 [Limited Edition]</i></span></a> <span class="catalog album-game">VIZL-218</span> <span class="smallfont label">Soundtrack</span></td>
+</tr>
+
+</tbody>
+<tbody class="">
+<tr rel="year"><td align="left" style="padding-top: 10px" colspan="3"><h3 class="time">2006</h3></td></tr>
+<tr rel="|r1">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">11.25</td>
+   <td align="left" valign="top"> <a class="albumtitle album-bonus" href="http://vgmdb.net/album/35884" title='.hack & G.U. SOUNDTRACK Ver. The World'><span class="albumtitle" lang="en" style="display:inline">.hack &amp; G.U. SOUNDTRACK Ver. The World</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>.hack &amp; G.U. サウンドトラック Ver. The World</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>.hack &amp; G.U. SOUNDTRACK Ver. The World</i></span></a> <span class="catalog album-bonus">C6K08-16</span> <span class="smallfont label">Soundtrack</span></td>
+</tr>
+<tr rel="|r1">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">09.21</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/12425" title='.hack//Roots O.S.T.2'><span class="albumtitle" lang="en" style="display:inline">.hack//Roots O.S.T.2</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>.hack//Roots O.S.T.2</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>.hack//Roots O.S.T.2</i></span></a> <span class="catalog album-anime">VICL-62089</span> <span class="smallfont label">Soundtrack</span></td>
+</tr>
+<tr rel="|r1">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">08.23</td>
+   <td align="left" valign="top"> <a class="albumtitle album-game" href="http://vgmdb.net/album/1119" title='.hack//G.U. GAME MUSIC O.S.T.'><span class="albumtitle" lang="en" style="display:inline">.hack//G.U. GAME MUSIC O.S.T.</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>.hack//G.U. GAME MUSIC O.S.T.</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>.hack//G.U. GAME MUSIC O.S.T.</i></span></a> <span class="catalog album-game">VICL-62098~9</span> <span class="smallfont label">Soundtrack</span></td>
+</tr>
+<tr rel="|r1">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">06.28</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/12226" title='.hack//Roots O.S.T'><span class="albumtitle" lang="en" style="display:inline">.hack//Roots O.S.T</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>.hack//Roots O.S.T</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>.hack//Roots O.S.T</i></span></a> <span class="catalog album-anime">VICL-61989</span> <span class="smallfont label">Soundtrack</span></td>
+</tr>
+<tr rel="|r1|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">06.26</td>
+   <td align="left" valign="top"> <a class="albumtitle album-bonus" href="http://vgmdb.net/album/38906" title='.hack//G.U. Soundtrack Ver.The World'><span class="albumtitle" lang="en" style="display:inline">.hack//G.U. Soundtrack Ver.The World</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>.hack//G.U. サウンドトラック Ver.The World</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>.hack//G.U. Soundtrack Ver.The World</i></span></a> <span class="catalog album-bonus">C6F08-4</span> <span class="smallfont label">Soundtrack, Vocal</span></td>
+</tr>
+<tr rel="|r7">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">05.24</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/12958" title='Boukoku Kakusei Catharsis / ALI PROJECT'><span class="albumtitle" lang="en" style="display:inline">Boukoku Kakusei Catharsis / ALI PROJECT</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>亡國覚醒カタルシス</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Boukoku Kakusei Catharsis / ALI PROJECT</i></span></a> <span class="catalog album-anime">VICL-36089</span> <span class="smallfont label">OP/ED/Insert</span></td>
+</tr>
+<tr rel="|r7">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">05.10</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/12957" title='Silly-Go-Round / FictionJunction YUUKA'><span class="albumtitle" lang="en" style="display:inline">Silly-Go-Round / FictionJunction YUUKA</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>Silly-Go-Round / FictionJunction YUUKA</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Silly-Go-Round / FictionJunction YUUKA</i></span></a> <span class="catalog album-anime">VICL-35989</span> <span class="smallfont label">OP/ED/Insert</span></td>
+</tr>
+
+</tbody>
+<tbody class="">
+<tr rel="year"><td align="left" style="padding-top: 10px" colspan="3"><h3 class="time">2004</h3></td></tr>
+<tr rel="|r1|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">04.27</td>
+   <td align="left" valign="top"> <img class='inlineimg' src='http://media.vgmdb.net/icon/album-reprint.gif' width='15' height='15' alt='This album is a reprint' /> <a class="albumtitle album-anime" href="http://vgmdb.net/album/24313" title='.hack//LEGEND OF THE TWILIGHT ORIGINAL SOUNDTRACK'><span class="albumtitle" lang="en" style="display:inline">.hack//LEGEND OF THE TWILIGHT ORIGINAL SOUNDTRACK</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>.hack//LEGEND OF THE TWILIGHT ORIGINAL SOUNDTRACK</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>.hack//LEGEND OF THE TWILIGHT ORIGINAL SOUNDTRACK</i></span></a> <span class="catalog album-anime">22200CD</span> <span class="smallfont label">Soundtrack, Vocal</span></td>
+</tr>
+<tr rel="|r1">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">04.22</td>
+   <td align="left" valign="top"> <a class="albumtitle album-bonus" href="http://vgmdb.net/album/38904" title='.hack//The World Vol.3 Special Sound Track'><span class="albumtitle" lang="en" style="display:inline">.hack//The World Vol.3 Special Sound Track</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>.hack//The World Vol.3 Special Sound Track</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>.hack//The World Vol.3 Special Sound Track</i></span></a> <span class="catalog album-bonus">B4D01-5</span> <span class="smallfont label">Soundtrack</span></td>
+</tr>
+<tr rel="|r1">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">03.16</td>
+   <td align="left" valign="top"> <a class="albumtitle album-game" href="http://vgmdb.net/album/7196" title='.hack//GAME MUSIC Best Collection'><span class="albumtitle" lang="en" style="display:inline">.hack//GAME MUSIC Best Collection</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>.hack//GAME MUSIC Best Collection</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>.hack//GAME MUSIC Best Collection</i></span></a> <span class="catalog album-game">5224-2</span> <span class="smallfont label">Soundtrack</span></td>
+</tr>
+
+</tbody>
+<tbody class="">
+<tr rel="year"><td align="left" style="padding-top: 10px" colspan="3"><h3 class="time">2003</h3></td></tr>
+<tr rel="|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">08.06</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/43981" title='FICTION'><span class="albumtitle" lang="en" style="display:inline">FICTION</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>FICTION</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>FICTION</i></span></a> <span class="catalog album-anime">VICL-61137</span> <span class="smallfont label">Vocal</span></td>
+</tr>
+<tr rel="|r7">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">07.01</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/43990" title='FICTION'><span class="albumtitle" lang="en" style="display:inline">FICTION</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>FICTION</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>FICTION</i></span></a> <span class="catalog album-anime">5202-2</span> <span class="smallfont label">OP/ED/Insert</span></td>
+</tr>
+<tr rel="|r1">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">04.23</td>
+   <td align="left" valign="top"> <a class="albumtitle album-game" href="http://vgmdb.net/album/1449" title='.hack//GAME MUSIC Perfect Collection'><span class="albumtitle" lang="en" style="display:inline">.hack//GAME MUSIC Perfect Collection</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>.hack//GAME MUSIC Perfect Collection</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>.hack//GAME MUSIC Perfect Collection</i></span></a> <span class="catalog album-game">VICL-61116~7</span> <span class="smallfont label">Soundtrack</span></td>
+</tr>
+<tr rel="|r1">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">04.23</td>
+   <td align="left" valign="top"> <a class="albumtitle album-game" href="http://vgmdb.net/album/11832" title='.hack//GAME MUSIC Perfect Collection [Limited Edition]'><span class="albumtitle" lang="en" style="display:inline">.hack//GAME MUSIC Perfect Collection [Limited Edition]</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>.hack//GAME MUSIC Perfect Collection [Limited Edition]</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>.hack//GAME MUSIC Perfect Collection [Limited Edition]</i></span></a> <span class="catalog album-game">VIZL-78</span> <span class="smallfont label">Soundtrack</span></td>
+</tr>
+<tr rel="|r6|r8|r9">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">03.21</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/12956" title='.hack//Legend of the Twilight Bracelet Character Song & Story'><span class="albumtitle" lang="en" style="display:inline">.hack//Legend of the Twilight Bracelet Character Song &amp; Story</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>.hack//黄昏の腕輪伝説 Character Song &amp; Story</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em>.hack//Tasogare no Udewa Densetsu Character Song &amp; Story</span></a> <span class="catalog album-anime">VICL-61088</span> <span class="smallfont label">Vocal, Drama, Talk</span></td>
+</tr>
+<tr rel="|r1|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">02.21</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/12954" title='.hack//Legend of the Twilight Bracelet ORIGINAL SOUNDTRACK'><span class="albumtitle" lang="en" style="display:inline">.hack//Legend of the Twilight Bracelet ORIGINAL SOUNDTRACK</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>.hack／／黄昏の腕輪伝説　ORIGINAL SOUNDTRACK</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em>.hack//Tasogare no Udewa Densetsu ORIGINAL SOUNDTRACK</span></a> <span class="catalog album-anime">VICL-61068</span> <span class="smallfont label">Soundtrack, Vocal</span></td>
+</tr>
+<tr rel="|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">02.21</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/28052" title='Dream Field / See-Saw'><span class="albumtitle" lang="en" style="display:inline">Dream Field / See-Saw</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>Dream Field / See-Saw</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Dream Field / See-Saw</i></span></a> <span class="catalog album-anime">VICL-61069</span> <span class="smallfont label">Vocal</span></td>
+</tr>
+<tr rel="|r7">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">01.22</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/5869" title='.hack//Liminality – Kimi ga Ita Monogatari / Kioku 90sec "Liminality" version'><span class="albumtitle" lang="en" style="display:inline">.hack//Liminality – Kimi ga Ita Monogatari / Kioku 90sec &quot;Liminality&quot; version</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>.hack// - 君がいた物語 / Emerald Green</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>.hack//Liminality – Kimi ga Ita Monogatari / Kioku 90sec &quot;Liminality&quot; version</i></span></a> <span class="catalog album-anime">VICL-35458</span> <span class="smallfont label">OP/ED/Insert</span></td>
+</tr>
+<tr rel="|r1|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">01.22</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/11045" title='NEW WORLD / ROUND TABLE featuring Nino'><span class="albumtitle" lang="en" style="display:inline">NEW WORLD / ROUND TABLE featuring Nino</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>ニューワールド　ラウンドテーブル フィーチャリング ニノ</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>NEW WORLD / ROUND TABLE featuring Nino</i></span></a> <span class="catalog album-anime">VICL-35457</span> <span class="smallfont label">Soundtrack, Vocal</span></td>
+</tr>
+<tr rel="|r1|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">??.??</td>
+   <td align="left" valign="top"> <img class='inlineimg' src='http://media.vgmdb.net/icon/album-reprint.gif' width='15' height='15' alt='This album is a reprint' /> <a class="albumtitle album-bonus" href="http://vgmdb.net/album/28051" title='.hack//Liminality ORIGINAL SOUNDTRACK'><span class="albumtitle" lang="en" style="display:inline">.hack//Liminality ORIGINAL SOUNDTRACK</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>.hack//Liminality ORIGINAL SOUNDTRACK</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>.hack//Liminality ORIGINAL SOUNDTRACK</i></span></a> <span class="catalog album-bonus">2212-CD</span> <span class="smallfont label">Soundtrack, Vocal</span></td>
+</tr>
+<tr rel="|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">??.??</td>
+   <td align="left" valign="top"> <a class="albumtitle album-bonus" href="http://vgmdb.net/album/38828" title='Dream Field NON-STOP SPECIAL SAMPLER'><span class="albumtitle" lang="en" style="display:inline">Dream Field NON-STOP SPECIAL SAMPLER</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>Dream Field NON-STOP SPECIAL SAMPLER</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Dream Field NON-STOP SPECIAL SAMPLER</i></span></a> <span class="catalog album-bonus">CDES-526</span> <span class="smallfont label">Vocal</span></td>
+</tr>
+
+</tbody>
+<tbody class="">
+<tr rel="year"><td align="left" style="padding-top: 10px" colspan="3"><h3 class="time">2002</h3></td></tr>
+<tr rel="|r1">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">10.23</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/12952" title='.hack//EXTRA SOUNDTRACKS'><span class="albumtitle" lang="en" style="display:inline">.hack//EXTRA SOUNDTRACKS</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>.hack//EXTRA SOUNDTRACKS</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>.hack//EXTRA SOUNDTRACKS</i></span></a> <span class="catalog album-anime">VICL-60971</span> <span class="smallfont label">Soundtrack</span></td>
+</tr>
+<tr rel="|r1">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">09.21</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/5650" title='.hack//SIGN ORIGINAL SOUND & SONG TRACK 2'><span class="albumtitle" lang="en" style="display:inline">.hack//SIGN ORIGINAL SOUND &amp; SONG TRACK 2</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>.hack//SIGN ORIGINAL SOUND &amp; SONG TRACK 2</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>.hack//SIGN ORIGINAL SOUND &amp; SONG TRACK 2</i></span></a> <span class="catalog album-anime">VICL-60906</span> <span class="smallfont label">Soundtrack</span></td>
+</tr>
+<tr rel="|r1|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">09.21</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/5867" title='.hack//Liminality ORIGINAL SOUNDTRACK'><span class="albumtitle" lang="en" style="display:inline">.hack//Liminality ORIGINAL SOUNDTRACK</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>.hack//Liminality ORIGINAL SOUNDTRACK</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>.hack//Liminality ORIGINAL SOUNDTRACK</i></span></a> <span class="catalog album-anime">VIZL-70</span> <span class="smallfont label">Soundtrack, Vocal</span></td>
+</tr>
+<tr rel="|r7">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">07.24</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/3585" title='.hack//Liminality – edge / Tasogare no Umi'><span class="albumtitle" lang="en" style="display:inline">.hack//Liminality – edge / Tasogare no Umi</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>.hack//Liminality – edge / Tasogare no Umi</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>.hack//Liminality – edge / Tasogare no Umi</i></span></a> <span class="catalog album-anime">VICL-35407</span> <span class="smallfont label">OP/ED/Insert</span></td>
+</tr>
+<tr rel="|r1|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">07.24</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/5649" title='.hack//SIGN ORIGINAL SOUND & SONG TRACK 1'><span class="albumtitle" lang="en" style="display:inline">.hack//SIGN ORIGINAL SOUND &amp; SONG TRACK 1</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>.hack//SIGN ORIGINAL SOUND &amp; SONG TRACK 1</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>.hack//SIGN ORIGINAL SOUND &amp; SONG TRACK 1</i></span></a> <span class="catalog album-anime">VICL-60905</span> <span class="smallfont label">Soundtrack, Vocal</span></td>
+</tr>
+<tr rel="|r7">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">05.22</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/3581" title='.hack//SIGN Openning Theme Obsession / Ending Theme Yasashii Yoake'><span class="albumtitle" lang="en" style="display:inline">.hack//SIGN Openning Theme Obsession / Ending Theme Yasashii Yoake</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>.hack//SIGN Openning Theme Obsession Ending Theme 優しい夜明け</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>.hack//SIGN Openning Theme Obsession / Ending Theme Yasashii Yoake</i></span></a> <span class="catalog album-anime">VICL-35384</span> <span class="smallfont label">OP/ED/Insert</span></td>
+</tr>
+
+</tbody>
+<tbody class="">
+<tr rel="year"><td align="left" style="padding-top: 10px" colspan="3"><h3 class="time">2001</h3></td></tr>
+<tr rel="|r3">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">04.30</td>
+   <td align="left" valign="top"> <a class="albumtitle album-doujin" href="http://vgmdb.net/album/14616" title='MACHIDA ~ooedo Express mail Special CD 2001~'><span class="albumtitle" lang="en" style="display:inline">MACHIDA ~ooedo Express mail Special CD 2001~</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>MACHIDA ~ooedo Express mail Special CD 2001~</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>MACHIDA ~ooedo Express mail Special CD 2001~</i></span></a> <span class="catalog album-doujin">OEMM-0025</span> <span class="smallfont label">Fan Arrange</span></td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+<b class="rbot"><b></b></b>
+</div>
+
+</div></div>
+</td>
+<td id="rightcolumn" rowspan="2" style="width: 270px; padding-left: 20px" valign="top">
+
+
+<div style="width: 250px; background-color: #1B273D">
+<b class="rtop"><b></b></b>
+<div style="padding: 6px 10px 0px 10px"><h3>Websites</h3></div>
+</div>
+<div style="width: 250px; background-color: #2F364F;">
+<div class="smallfont" style="padding: 10px 10px 0px 10px">
+<div style="margin-bottom: 10px"><img src="/db/img/arrowbit.gif" alt="" /> <b class="label">Official</b><br />
+<a class='link_doc' rel='nofollow' href='/redirect/60730/dothack.com/'>.hack</a>
+</div>
+
+
+
+
+</div>
+<b class="rbot"><b></b></b>
+</div><br style="clear: left" />
+
+<div style="width: 250px; background-color: #1B273D">
+<b class="rtop"><b></b></b>
+<div style="padding: 6px 10px 0px 10px"><h3>Upcoming Releases</h3></div>
+</div>
+<div style="width: 250px; background-color: #2F364F;">
+
+
+<div style="padding: 10px 10px 0px 10px">
+<span class="smallfont"><i>No albums found.</i></span>
+</div>
+
+<br />
+<b class="rbot"><b></b></b>
+</div>
+
+<br style="clear: left" />
+
+<div style="width: 250px; background-color: #1B273D">
+<b class="rtop"><b></b></b>
+<div style="padding: 6px 10px 0px 10px"><h3>Recent Releases</h3></div>
+</div>
+<div style="width: 250px; background-color: #2F364F;">
+
+
+<span class="smallfont"><div class="album_infobit_small smallfont label">
+<div class="album_infobit_thumb"><div style="background-image: url('http://thumb.media.vgm.io/albums/01/43110/43110-1386746789.jpg')">
+<a href="http://vgmdb.net/album/43110" title='LieN Original Album Blanc'></a>
+</div></div>
+<ul class="album_infobit_detail">
+<li><a class="albumtitle smallfont album-game" href="http://vgmdb.net/album/43110" title='LieN Original Album Blanc'><span class="albumtitle" lang="en" style="display:inline">LieN Original Album Blanc</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>LieN －リアン－ Original Album Blanc －ブラン－</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>LieN Original Album Blanc</i></span></a></li>
+<li><span class="catalog smallfont album-game">R-13B0143</span></li>
+<li>Jan 01, 2014</li>
+</ul>
+</div><div class="album_infobit_small smallfont label">
+<div class="album_infobit_thumb"><div style="background-image: url('http://thumb.media.vgm.io/albums/90/43109/43109-1386746821.jpg')">
+<a href="http://vgmdb.net/album/43109" title='LieN Original Album Noir'></a>
+</div></div>
+<ul class="album_infobit_detail">
+<li><a class="albumtitle smallfont album-game" href="http://vgmdb.net/album/43109" title='LieN Original Album Noir'><span class="albumtitle" lang="en" style="display:inline">LieN Original Album Noir</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>LieN －リアン－ Original Album Noir －ノワール－</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>LieN Original Album Noir</i></span></a></li>
+<li><span class="catalog smallfont album-game">LIEN-NOIR</span></li>
+<li>Jan 01, 2014</li>
+</ul>
+</div><div class="album_infobit_small smallfont label">
+<div class="album_infobit_thumb"><div style="background-image: url('http://thumb.media.vgm.io/albums/05/35350/35350-1348232305.jpg')">
+<a href="http://vgmdb.net/album/35350" title='SINGLES BEST 2002-2012 MEMORIES / ROUND TABLE featuring Nino [Limited Edition]'></a>
+</div></div>
+<ul class="album_infobit_detail">
+<li><a class="albumtitle smallfont album-anime" href="http://vgmdb.net/album/35350" title='SINGLES BEST 2002-2012 MEMORIES / ROUND TABLE featuring Nino [Limited Edition]'><span class="albumtitle" lang="en" style="display:inline">SINGLES BEST 2002-2012 MEMORIES / ROUND TABLE featuring...</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>SINGLES BEST 2002-2012 MEMORIES / ROUND TABLE featuring...</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>SINGLES BEST 2002-2012 MEMORIES / ROUND TABLE featuring...</i></span></a></li>
+<li><span class="catalog smallfont album-anime">VTZL-49</span></li>
+<li>Nov 28, 2012</li>
+</ul>
+</div><div class="album_infobit_small smallfont label">
+<div class="album_infobit_thumb"><div style="background-image: url('http://thumb.media.vgm.io/albums/94/35349/35349-1348232283.jpg')">
+<a href="http://vgmdb.net/album/35349" title='SINGLES BEST 2002-2012 MEMORIES / ROUND TABLE featuring Nino'></a>
+</div></div>
+<ul class="album_infobit_detail">
+<li><a class="albumtitle smallfont album-anime" href="http://vgmdb.net/album/35349" title='SINGLES BEST 2002-2012 MEMORIES / ROUND TABLE featuring Nino'><span class="albumtitle" lang="en" style="display:inline">SINGLES BEST 2002-2012 MEMORIES / ROUND TABLE featuring Nino</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>SINGLES BEST 2002-2012 MEMORIES / ROUND TABLE featuring Nino</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>SINGLES BEST 2002-2012 MEMORIES / ROUND TABLE featuring Nino</i></span></a></li>
+<li><span class="catalog smallfont album-anime">VTCL-60320</span></li>
+<li>Nov 28, 2012</li>
+</ul>
+</div><div class="album_infobit_small smallfont label">
+<div class="album_infobit_thumb"><div style="background-image: url('http://thumb.media.vgm.io/albums/39/32693/32693-1339394665.jpg')">
+<a href="http://vgmdb.net/album/32693" title='.hack//Versus O.S.T. [Limited Edition]'></a>
+</div></div>
+<ul class="album_infobit_detail">
+<li><a class="albumtitle smallfont album-game" href="http://vgmdb.net/album/32693" title='.hack//Versus O.S.T. [Limited Edition]'><span class="albumtitle" lang="en" style="display:inline">.hack//Versus O.S.T. [Limited Edition]</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>.hack//Versus O.S.T. [Limited Edition]</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>.hack//Versus O.S.T. [Limited Edition]</i></span></a></li>
+<li><span class="catalog smallfont album-game">VTZL-46</span></li>
+<li>Jun 27, 2012</li>
+</ul>
+</div></span>
+
+<br />
+<b class="rbot"><b></b></b>
+</div>
+
+<br style="clear: left" />
+
+<div class="smallfont" style="width: 250px; background-color: #2F364F;">
+<b class="rtop"><b></b></b>
+<div style="padding: 6px 10px 6px 10px">
+
+<div style="margin-bottom: 10px;"><img src="/db/img/arrowbit.gif" alt="" /> <b style="color: #788990">Added by</b> Phonograph<br />
+Dec 22, 2010 <span class="time">07:15 AM</span></div>
+
+<div style="margin-bottom: 10px;"><img src="/db/img/arrowbit.gif" alt="" border = "0" /> <b style="color: #788990">Edited by</b> Gigablah<br />
+Jul 26, 2015 <span class="time">04:54 AM</span></div>
+
+<div style="margin-bottom: 10px;"><img src="/db/img/arrowbit.gif" alt="" /> <b style="color: #788990">Page traffic</b><br />
+<span class="time">2384</span> visitors <!----></div>
+
+<div><img src="/db/img/arrowbit.gif" alt="" /> <b style="color: #788990">Page built in</b><br />
+<span class="time">0.11</span> seconds</div>
+
+</div>
+<b class="rbot"><b></b></b>
+</div>
+
+</td></tr><tr><td valign="bottom" style="background-color: #1B273D;">
+
+<div style="padding: 10px 10px 0px 10px">
+<h3>Notes</h3>
+</div>
+<div style="background-color: #2F364F;">
+<div style="padding: 10px" class="smallfont"><i class='label'>No notes available for this Franchise</i></div>
+
+<b class="rbot"><b></b></b>
+</div>
+
+</td></tr>
+</table>
+
+
+<!-- / main page contents -->
+
+</div>
+<!-- /content area table -->
+<div style="clear: both; height: 20px"></div>
+
+<!-- chat popup -->
+<div style="display: none; width: 500px; padding: 10px;" id="chat-popup">
+	<a class="buttonCancel" style="float: right" href="#" onclick="return hs.close(this)"><img title="Close" src="http://media.vgmdb.net/img/button-cancel.gif" alt="Close"></a>
+	<div>
+		<h3>Chat with us!</h3>
+		<p>Our official IRC channel is <b>#vgmdb</b> on <b>irc.psigenix.net</b></p>
+		<p>You may use any IRC client such as <a rel="nofollow" href="http://www.mirc.com/">mIRC</a> to connect. Alternatively you may chat in your browser window using the form below.</p>
+		<p class="smallfont">If you are unable to run Java applets, please choose CGI:IRC from the dropdown menu. Note that there is a limit to the number of connections allowed for this option.</p>
+		<form id="loginform" name="loginform" action="http://bigblah.net/irc/index.php" method="post" target="vgmdbirc">
+		<input id="chatInterface" type="hidden" name="interface" value="nonjs">
+		<span class="label">Nickname</span> <input id="chatNick" class="bginput" type="text" name="Nickname" value="CGI-IRC">
+		<select id="chatClient" class="bginput" name="client">
+		<option value="http://bigblah.net/irc/index.php">PJIRC</option>
+		<option value="http://bigblah.net/cgi-bin/irc/irc.cgi">CGI:IRC</option>
+		</select>
+		<input type="hidden" name="server" value="irc.psigenix.net">
+		<input type="hidden" name="channel" value="#vgmdb">
+		<input class="button" type="submit" name="submit" value="Connect"></form>
+	</div>
+</div>
+<!-- / chat popup -->
+
+<div class="alt1" style="width: 100%">
+<div id="footer">
+<div style="padding: 20px 10px 0 200px">
+
+
+
+	<div style="float: right; text-align: right; font-family: Arial;" class="label">
+		<a href="/about">About Us</a> &bull;
+		<a href="/faq">F.A.Q.</a> &bull;
+		<a href="/forums/sendmessage.php?s=93dcd97317a7e75f71acf74ea399fbda" rel="nofollow" accesskey="9">Contact Us</a> &bull;
+		<a href="/db/statistics.php" rel="nofollow">Statistics</a> &bull;
+		<a href="http://vgmdb.net">Home</a>
+
+		<div class="smallfont" style="font-family: Arial; margin-top: 10px">
+		
+		
+		
+		<a href="/forums/archive/index.php">Archive</a> &bull;
+		
+		<a href="/privacy">Privacy Statement</a> &bull;
+		
+		<a href="#top" onclick="self.scrollTo(0, 0); return false;">Top</a>
+		</div>
+
+	<div style="margin-top: 10px"><form action="index.php" method="get">
+	
+	
+	
+
+	</form></div>
+	</div>
+
+	<div class="label">
+		<h3>VGMdb 0.15 (beta)</h3>
+		<div class="smallfont"><!-- Do not remove this copyright notice -->
+		Powered by vBulletin&reg; Version 3.8.5<br />Copyright &copy;2000 - 2015, Jelsoft Enterprises Ltd.
+		<!-- Do not remove this copyright notice --></div>
+		<div class="smallfont">Site code and design copyright VGMdb.net</div>
+		<div class="smallfont">Site material is property of their respective owners.</div>
+		<div class="smallfont">All times are GMT -8. The time now is <span class="time">12:00 PM</span>.</div>
+	</div>
+
+
+
+</div></div></div>
+
+
+<script type="text/javascript">
+<!--
+	// Main vBulletin Javascript Initialization
+	vBulletin_init();
+//-->
+</script>
+<script type="text/javascript">if(!NREUMQ.f){NREUMQ.f=function(){NREUMQ.push(["load",new Date().getTime()]);var e=document.createElement("script");e.type="text/javascript";e.src=(("http:"===document.location.protocol)?"http:":"https:")+"//"+"js-agent.newrelic.com/nr-100.js";document.body.appendChild(e);if(NREUMQ.a)NREUMQ.a();};NREUMQ.a=window.onload;window.onload=NREUMQ.f;};NREUMQ.push(["nrfj","beacon-3.newrelic.com","ae449e68e8","505396","NANSNkUDWUoCU0MNDA1JZRBeTVNbTEBFCwcWBURMRwpH",0,19,new Date().getTime(),"","","","",""]);</script>
+
+</body>
+</html>
