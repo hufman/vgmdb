@@ -155,14 +155,6 @@ def _parse_album(soup_row):
 _parse_artist = _parse_listitem
 _parse_org = _parse_listitem
 def _parse_product(soup_row):
-	product_colors = {
-		'#CEFFFF': 'Game',
-		'yellowgreen': 'Animation',
-		'silver': 'Radio & Drama',
-		'white': 'Print Publication',
-		'violet': 'Goods',
-		'yellow': 'Franchise'
-	}
 	soup_cells = soup_row.find_all('td', recursive=False)
 	soup_link = soup_cells[0].a
 	names = utils.parse_names(soup_link.span.span)
@@ -172,11 +164,7 @@ def _parse_product(soup_row):
 	# aliases could be aliases or name_trans, dunno
 	soup_color = soup_cells[0].span
 	if soup_color:
-		style = soup_color['style']
-		if 'color:' in style:
-			color = style.split(':')[1]
-			if color in product_colors:
-				info['type'] = product_colors[color]
+		info['type'] = utils.product_color_type(soup_color)
 		soup_names = soup_color.span
 		if soup_names:
 			names = utils.parse_names(soup_color)
