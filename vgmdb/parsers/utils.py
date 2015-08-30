@@ -276,10 +276,10 @@ def strip_redirect(link):
 		index = link.find('/', len('http://vgmdb.net/redirect/'))
 		# get the link from the end of the redirect
 		link = link[index+1:]
-		if link.startswith('http://') or link.startswith('https://'):
-			return link
-		else:
-			return 'http://' + link
+		if not (link.startswith('http://') or link.startswith('https://')):
+			link = 'http://' + link
+		return strip_redirect(link)   # handle nested redirects
+	return link
 
 def parse_discography(soup_disco_table, label_type='roles'):
 	"""
