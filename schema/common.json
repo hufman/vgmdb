@@ -38,7 +38,7 @@
 			"enum": [
 				"Video", "Franchise", "Game", "Radio & Drama",
 				"Print Publication", "Other", "Meta-franchise",
-				"Animation"
+				"Animation", "Goods"
 			]
 		},
 		"trackNames": {
