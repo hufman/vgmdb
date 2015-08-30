@@ -114,6 +114,8 @@ def _parse_product_info(soup_profile_info):
 				product_info['franchises'] = value
 			if name == 'Release Date' and value != None:
 				product_info['release_date'] = utils.parse_date_time(value)
+				if not product_info['release_date']:
+					del product_info['release_date']
 			if name == 'Organizations' and value != None:
 				if isinstance(value, list):
 					product_info['organizations'] = value
@@ -175,14 +177,14 @@ def _parse_franchise_titles(soup_table):
 		title = {}
 		title['date'] = utils.normalize_dashed_date(soup_cells[0].span.string)
 		if not title['date']:
-			title['date'] = ''
+			del title['date']
 		title['names'] = utils.parse_names(soup_cells[1].span)
 		if soup_cells[1].a:
 			title['link'] = utils.trim_absolute(soup_cells[1].a['href'])
 			type = utils.product_color_type(soup_cells[1].a.span)
 			title['type'] = type
 		titles.append(title)
-	titles = sorted(titles, key=lambda e:e['date'])
+	titles = sorted(titles, key=lambda e:e.get('date',''))
 	return titles
 
 def _parse_franchise_superproduct(soup_element):
@@ -207,12 +209,14 @@ def _parse_franchise_subproducts(soup_table):
 			continue
 		product = {}
 		product['date'] = utils.normalize_dashed_date(soup_cells[0].span.string)
+		if not product['date']:
+			del product['date']
 		product['names'] = utils.parse_names(soup_cells[1].span)
 		if soup_cells[1].a:
 			product['link'] = utils.trim_absolute(soup_cells[1].a['href'])
 			type = utils.product_color_type(soup_cells[1].a.span)
 			product['type'] = type
 		subproducts.append(product)
-	subproducts = sorted(subproducts, key=lambda e:e['date'])
+	subproducts = sorted(subproducts, key=lambda e:e.get('date',''))
 	return subproducts
 

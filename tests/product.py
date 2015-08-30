@@ -123,7 +123,7 @@ class TestProducts(unittest.TestCase):
 		ecco = product.parse_page(ecco_code)
 		self.assertEqual('Ecco', ecco['name'])
 		self.assertEqual('Franchise', ecco['type'])
-		self.assertEqual('', ecco['titles'][0]['date'])
+		self.assertFalse('date' in ecco['titles'][0])
 
 	def test_attack(self):
 		# "other" product type

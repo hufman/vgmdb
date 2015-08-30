@@ -13,7 +13,7 @@
 					"type": { "$ref": "common.json#/definitions/productType" }
 				},
 				"required": [
-					"date", "names"
+					"names"
 				]
 			}
 		}

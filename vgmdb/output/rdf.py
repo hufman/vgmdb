@@ -380,8 +380,9 @@ def generate_product(config, data):
 		for titledata in data['titles']:
 			title = URIRef(link(titledata['link'])+"#subject") if titledata.has_key('link') else BNode()
 			g.add((title, RDF.type, SCHEMA.CreativeWork))
-			g.add((title, SCHEMA.datePublished, Literal(titledata['date'], datatype=XSD.date)))
-			g.add((title, DCTERMS.created, Literal(titledata['date'], datatype=XSD.date)))
+			if titledata.has_key('date'):
+				g.add((title, SCHEMA.datePublished, Literal(titledata['date'], datatype=XSD.date)))
+				g.add((title, DCTERMS.created, Literal(titledata['date'], datatype=XSD.date)))
 			add_lang_names(g, title, titledata['names'], rel=[DCTERMS.title, SCHEMA.name])
 	add_discography(g, subject, data['albums'], rel=[], rev=[SCHEMA.about])
 
