@@ -7,6 +7,7 @@ fetch_page = lambda id: utils.fetch_info_page('org', id)
 
 def parse_page(html_source):
 	org_info = {}
+	org_info['websites'] = {}
 	html_source = utils.fix_invalid_table(html_source)
 	soup = bs4.BeautifulSoup(html_source)
 	soup_profile = soup.find(id='innermain')
@@ -45,6 +46,9 @@ def parse_page(html_source):
 def _parse_org_info(soup_profile_info):
 	""" Receives a dl list from a org's info box """
 	org_info = {}
+	org_info['staff'] = []
+	org_info['description'] = ''
+	org_info['type'] = 'Label / Imprint'
 	name = None
 	value = None
 	for soup_child in soup_profile_info:
@@ -144,9 +148,8 @@ def _parse_websites(soup_websites):
 			link = soup_link['href']
 			name = unicode(soup_link.string)
 			if link[0:9] == '/redirect':
-				slashpos = link.find('/', 10)
-				link = 'http://'+link[slashpos+1:]
-			links.append({"link":utils.trim_absolute(link),"name":name})
+				link = utils.strip_redirect(link)
+			links.append({"link":link, "name":name})
 		sites[category] = links
 	return sites
 
