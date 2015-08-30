@@ -44,6 +44,7 @@ class TestProducts(unittest.TestCase):
 		self.assertEqual(4, len(at['titles']))
 		self.assertEqual(u"Ar tonelico: Melody of Elemia", at['titles'][0]['names']['en'])
 		self.assertEqual(u"product/566", at['titles'][0]['link'])
+		self.assertEqual(u"Game", at['titles'][0]['type'])
 		self.assertEqual(u"2010-12-26T03:20", at['meta']['added_date'])
 		self.assertTrue(not at.has_key('picture_full'))
 		two = [at['albums'][32], at['albums'][33]]
@@ -92,6 +93,21 @@ class TestProducts(unittest.TestCase):
 		self.assertEqual(u"doujin", hack['albums'][0]['type'])
 		self.assertTrue(u"Fan Arrange" in hack['albums'][0]['classifications'])
 		self.assertEqual('Test description', hack['description'])
+
+	def test_madhouse(self):
+		madhouse_code = file(os.path.join(base, 'product_madhouse.html')).read()
+		madhouse = product.parse_page(madhouse_code)
+		self.assertEqual('MADHOUSE', madhouse['name'])
+		self.assertEqual('Meta-franchise', madhouse['type'])
+		self.assertEqual(u"Anime Studios", madhouse['superproduct']['names']['en'])
+		self.assertEqual(u"product/3854", madhouse['superproduct']['link'])
+		self.assertEqual(u"Final Fantasy: Legend of the Crystals", madhouse['subproducts'][0]['names']['en'])
+		self.assertEqual(u"product/177", madhouse['subproducts'][0]['link'])
+		self.assertEqual(u"Animation", madhouse['subproducts'][0]['type'])
+		self.assertEqual(u"1994-02-21", madhouse['subproducts'][0]['date'])
+		self.assertEqual(u"Final Fantasy \"The Wind Chapter\" \"The Fire Chapter\" Soundtrack", madhouse['albums'][0]['titles']['en'])
+		self.assertEqual(u"COCC-11741", madhouse['albums'][0]['catalog'])
+		self.assertEqual(u"anime", madhouse['albums'][0]['type'])
 
 if __name__ == '__main__':
 	unittest.main()

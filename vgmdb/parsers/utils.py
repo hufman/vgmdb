@@ -228,6 +228,23 @@ def media_thumb(medium_link):
 def media_full(medium_link):
 	return medium_link.replace('medium.media', 'media')
 
+def product_color_type(soup_element):
+	product_colors = {
+		'#CEFFFF': 'Game',
+		'yellowgreen': 'Animation',
+		'silver': 'Radio & Drama',
+		'white': 'Print Publication',
+		'violet': 'Goods',
+		'yellow': 'Franchise'
+	}
+	if soup_element:
+		style = soup_element['style']
+		if 'color:' in style:
+			color = style.split(':')[1]
+			if color in product_colors:
+				return product_colors[color]
+	return None
+
 def next_tag(soup_element):
 	next_element = soup_element.next_element
 	while next_element and not isinstance(next_element, bs4.Tag):

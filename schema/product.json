@@ -9,8 +9,12 @@
 				"properties": {
 					"date": { "$ref": "common.json#/definitions/rfc3339" },
 					"link": { "$ref": "common.json#/definitions/link" },
-					"names": { "$ref": "common.json#/definitions/names" }
-				}
+					"names": { "$ref": "common.json#/definitions/names" },
+					"type": { "$ref": "common.json#/definitions/productType" }
+				},
+				"required": [
+					"date", "names"
+				]
 			}
 		}
 	},
@@ -26,6 +30,8 @@
 		"meta": { "$ref": "common.json#/definitions/meta" },
 		"albums": { "type": "array", "items": { "$ref": "common.json#/definitions/productAlbum" }},
 		"franchises": { "type": "array", "items": { "$ref": "common.json#/definitions/namedItem" }},
+		"superproduct": { "$ref": "common.json#/definitions/namedItem" },
+		"superproducts": { "type": "array", "items": { "$ref": "#/definitions/productTitles" }},
 		"titles": { "$ref": "#/definitions/productTitles" },
 		"organizations": { "type": "array", "items": { "$ref": "common.json#/definitions/namedItem" }},
 		"vgmdb_link": { "$ref": "common.json#/definitions/url" },

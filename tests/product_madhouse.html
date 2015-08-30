@@ -1,0 +1,1852 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html dir="ltr" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>MADHOUSE - VGMdb</title>
+
+
+
+
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="vBulletin 3.8.5" />
+
+
+<!-- CSS Stylesheet -->
+<style type="text/css" id="vbulletin_css">
+/**
+* vBulletin 3.8.5 CSS
+* Style: 'Default Style'; Style ID: 1
+*/
+body
+{
+	background: #001122;
+	color: #FFFFFF;
+	font: 10pt verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+	margin: 0px;
+	padding: 0px;
+}
+a:link, body_alink
+{
+	color: #B1E8FF;
+}
+a:visited, body_avisited
+{
+	color: #B1E8FF;
+}
+a:hover, a:active, body_ahover
+{
+	color: #87CEEB;
+}
+.page
+{
+	background: #001122;
+	color: #FFFFFF;
+	padding: 0px;
+}
+.page a:link, .page_alink
+{
+	color: #CEFFFF;
+	text-decoration: none;
+}
+.page a:visited, .page_avisited
+{
+	color: #CEFFFF;
+	text-decoration: none;
+}
+.page a:hover, .page a:active, .page_ahover
+{
+	text-decoration: underline;
+}
+td, th, p, li
+{
+	font: 10pt verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+}
+.tborder
+{
+	background: #001122;
+	color: #FFFFFF;
+	border: 1px solid #444465
+}
+.tcat
+{
+	background: #2F364F;
+	color: #788990;
+	font: bold 10pt verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+}
+.tcat a:link, .tcat_alink
+{
+	color: #788990;
+	text-decoration: none;
+}
+.tcat a:visited, .tcat_avisited
+{
+	color: #788990;
+	text-decoration: none;
+}
+.tcat a:hover, .tcat a:active, .tcat_ahover
+{
+	color: #FFFF66;
+	text-decoration: underline;
+}
+.thead
+{
+	background: #2F364F;
+	color: #FFFFFF;
+	font: bold 11px tahoma, verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+}
+.thead a:link, .thead_alink
+{
+	color: #FFFFFF;
+}
+.thead a:visited, .thead_avisited
+{
+	color: #FFFFFF;
+}
+.thead a:hover, .thead a:active, .thead_ahover
+{
+	color: #FFFF00;
+}
+.tfoot
+{
+	background: #2F364F;
+	color: #E0E0F6;
+}
+.tfoot a:link, .tfoot_alink
+{
+	color: #E0E0F6;
+}
+.tfoot a:visited, .tfoot_avisited
+{
+	color: #E0E0F6;
+}
+.tfoot a:hover, .tfoot a:active, .tfoot_ahover
+{
+	color: #FFFF66;
+}
+.alt1, .alt1Active
+{
+	background: #1B273D;
+	color: #FFFFFF;
+}
+.alt1 a:link, .alt1_alink, .alt1Active a:link, .alt1Active_alink
+{
+	color: #CEFFFF;
+	text-decoration: none;
+}
+.alt1 a:visited, .alt1_avisited, .alt1Active a:visited, .alt1Active_avisited
+{
+	color: #CEFFFF;
+	text-decoration: none;
+}
+.alt1 a:hover, .alt1 a:active, .alt1_ahover, .alt1Active a:hover, .alt1Active a:active, .alt1Active_ahover
+{
+	color: #87CEEB;
+	text-decoration: underline;
+}
+.alt2, .alt2Active
+{
+	background: #2F364F;
+	color: #FFFFFF;
+}
+.alt2 a:link, .alt2_alink, .alt2Active a:link, .alt2Active_alink
+{
+	color: #CEFFFF;
+	text-decoration: none;
+}
+.alt2 a:visited, .alt2_avisited, .alt2Active a:visited, .alt2Active_avisited
+{
+	color: #CEFFFF;
+	text-decoration: none;
+}
+.alt2 a:hover, .alt2 a:active, .alt2_ahover, .alt2Active a:hover, .alt2Active a:active, .alt2Active_ahover
+{
+	color: #87CEEB;
+	text-decoration: underline;
+}
+.inlinemod
+{
+	background: #3A5284;
+	color: #FFFFFF;
+}
+.wysiwyg
+{
+	background: #14194E;
+	color: #FFFFFF;
+	font: 10pt verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+}
+textarea, .bginput
+{
+	background: #14194E;
+	color: #FFFFFF;
+	font: 10pt verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+	border-left: 1px solid #3C405C;
+	border-top: 1px solid #3C405C;
+	border-right: 1px solid #666B72;
+	border-bottom: 1px solid #666B72;
+}
+.bginput option, .bginput optgroup
+{
+	font-size: 10pt;
+	font-family: verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+}
+.button
+{
+	background: #14194E;
+	color: #FFFFFF;
+	font: 11px verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+	border-left: 1px solid #666B72;
+	border-top: 1px solid #666B72;
+	border-right: 1px solid #3C405C;
+	border-bottom: 1px solid #3C405C;
+}
+select
+{
+	background: #14194E;
+	color: #FFFFFF;
+	font: 11px verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+	border-left: 1px solid #666B72;
+	border-top: 1px solid #666B72;
+	border-right: 1px solid #3C405C;
+	border-bottom: 1px solid #3C405C;
+}
+option, optgroup
+{
+	font-size: 11px;
+	font-family: verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+}
+.smallfont
+{
+	font: 11px verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+}
+.time
+{
+	color: #B0C4DE;
+}
+.navbar
+{
+	font: 11px verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+}
+.highlight
+{
+	font-weight: bold;
+	border-bottom: 1px dotted #B1E8FF;
+}
+.fjsel
+{
+	background: #3E5C92;
+	color: #E0E0F6;
+}
+.fjdpth0
+{
+	background: #F7F7F7;
+	color: #000000;
+}
+.panel
+{
+	background: #1B273D;
+	color: #FFFFFF;
+	padding: 10px;
+}
+.panelsurround
+{
+	background: #1B273D;
+	color: #FFFFFF;
+}
+legend
+{
+	color: #788990;
+	font: 11px tahoma, verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+}
+.vbmenu_control
+{
+	background: #2F364F;
+	color: #FFFFFF;
+	font: bold 11px tahoma, verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+	padding: 3px 6px 3px 6px;
+	white-space: nowrap;
+}
+.vbmenu_control a:link, .vbmenu_control_alink
+{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.vbmenu_control a:visited, .vbmenu_control_avisited
+{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.vbmenu_control a:hover, .vbmenu_control a:active, .vbmenu_control_ahover
+{
+	color: #FFFFFF;
+	text-decoration: underline;
+}
+.vbmenu_popup
+{
+	background: #FFFFFF;
+	color: #000000;
+	border: 1px solid #0B198C;
+}
+.vbmenu_option
+{
+	background: #BBC7CE;
+	color: #000000;
+	font: 11px verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+	white-space: nowrap;
+	cursor: pointer;
+}
+.vbmenu_option a:link, .vbmenu_option_alink
+{
+	color: #22229C;
+	text-decoration: none;
+}
+.vbmenu_option a:visited, .vbmenu_option_avisited
+{
+	color: #22229C;
+	text-decoration: none;
+}
+.vbmenu_option a:hover, .vbmenu_option a:active, .vbmenu_option_ahover
+{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.vbmenu_hilite
+{
+	background: #8A949E;
+	color: #FFFFFF;
+	font: 11px verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+	white-space: nowrap;
+	cursor: pointer;
+}
+.vbmenu_hilite a:link, .vbmenu_hilite_alink
+{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.vbmenu_hilite a:visited, .vbmenu_hilite_avisited
+{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.vbmenu_hilite a:hover, .vbmenu_hilite a:active, .vbmenu_hilite_ahover
+{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+/* ***** styling for 'big' usernames on postbit etc. ***** */
+.bigusername { font-size: 14pt; }
+
+/* ***** small padding on 'thead' elements ***** */
+td.thead, div.thead { padding: 4px; }
+
+/* ***** basic styles for multi-page nav elements */
+.pagenav a { text-decoration: none; }
+.pagenav td { padding: 2px 4px 2px 4px; }
+
+/* ***** define margin and font-size for elements inside panels ***** */
+.fieldset { margin-bottom: 6px; }
+.fieldset, .fieldset td, .fieldset p, .fieldset li { font-size: 11px; }
+
+fieldset { border: 1px solid #2F364F; padding: 6px; }
+
+/* .imgalpha { opacity:0.25; filter:alpha(opacity=25); -moz-opacity:0.25; } */
+
+/* ***** don't change the following ***** */
+form { display: inline; }
+.label { color: #788990; }
+</style>
+<link rel="stylesheet" type="text/css" href="http://vgmdb.net/forums/clientscript/vbulletin_important.css?v=385" />
+
+
+<link rel="stylesheet" type="text/css" href="/db/vgmdb.css?20100803" />
+<link rel="stylesheet" type="text/css" href="http://media.vgmdb.net/css/vgmdb-colorcode-title.css" id="colorcode" />
+<link rel="stylesheet" type="text/css" href="/db/jquery.autocomplete.css?20091023" />
+<link rel="stylesheet" type="text/css" href="/db/jquery.jcarousel.css?20091124" />
+<link rel="stylesheet" type="text/css" href="/db/highslide.css?080623" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" type="text/css" href="/db/iepngfix.css" />
+<![endif]-->
+<!-- / CSS Stylesheet -->
+
+<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/yahoo-dom-event/yahoo-dom-event.js?v=385"></script>
+<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/connection/connection-min.js?v=385"></script>
+<script type="text/javascript">
+<!--
+var SESSIONURL = "s=c7affb7b9a1dacb09b3063bc22a4ed65&";
+var SECURITYTOKEN = "guest";
+var IMGDIR_MISC = "/forums/images/misc";
+var vb_disable_ajax = parseInt("0", 10);
+// -->
+</script>
+<script type="text/javascript" src="/forums/clientscript/vbulletin_global.js?v=385"></script>
+
+<link rel="alternate" type="application/rss+xml" title="VGMdb Forums RSS Feed" href="/forums/external.php?type=RSS2" />
+
+<script type="text/javascript" src="http://media.vgmdb.net/js/jquery-1.4.min.js"></script>
+<script type="text/javascript" src="http://media.vgmdb.net/js/jquery.compressed.js"></script>
+<script type="text/javascript" src="http://media.vgmdb.net/js/jquery.tristate.js?20100420"></script>
+<script type="text/javascript" src="http://media.vgmdb.net/js/highslide.packed.js?080620"></script>
+<script type="text/javascript" src="http://media.vgmdb.net/js/vgmdb_global.js?0906"></script>
+<link rel="search" type="application/opensearchdescription+xml" title="Search VGMdb" href="http://vgmdb.net/db/search.xml" />
+<link rel="icon" href="http://vgmdb.net/favicon.ico" type="image/vnd.microsoft.icon" />
+<link rel="shortcut icon" href="http://vgmdb.net/favicon.ico" type="image/vnd.microsoft.icon" />
+<script language="javascript" type="text/javascript">
+$(document).ready(function() {
+	var ItemType = new Array;
+	ItemType["0"] = "Album";
+	ItemType["1"] = "Artist";
+	ItemType["2"] = "Organization";
+	hs.showCredits = false;
+	hs.allowMultipleInstances = false;
+	hs.graphicsDir = '/db/highslide/graphics/';
+	function formatItem(row) {
+		return "<span style='float: right; margin-left: 10px' class='tinyfont label'>" + ItemType[row[3]] + " #" + row[1] + "</span>" + row[0];
+	}
+	$('#navoptions a').click(function() {
+		if (!$('#pref_content form').length) {
+			$.ajax({
+				url: '/db/user.php?do=preferences',
+				beforeSend: function() {
+					$('#navoptions').css('visibility', 'hidden').parent('li').css('background', 'transparent url(http://media.vgmdb.net/img/ajax_loader_small.gif) center center no-repeat');
+				},
+				success: function(data) { 
+					$('#navoptions').css('visibility', 'visible').parent('li').css('background', 'transparent url(http://media.vgmdb.net/img/vgmdbsubnav2010.gif) -593px 0 no-repeat');
+					$('#pref_content').html(data.html);
+					$('#pref_content form label.tristate').tristate();
+					$('#pref_content form').ajaxForm({
+						beforeSubmit: function() {
+							$('#pref_content form input[type=submit]').css('visibility', 'hidden').parent('div').css('background', 'transparent url(http://media.vgmdb.net/img/ajax_loader_small.gif) center center no-repeat');
+						},
+						success: function() {
+							$('#pref').slideUp('fast');
+							$('#pref_content form input[type=submit]').css('visibility', 'visible').parent('div').css('background', 'none');
+							$('#navoptions a').blur();
+						}
+					});
+					$('#pref').slideDown('fast');
+				},
+				dataType: 'json'
+			});
+		}
+		else {
+			if ($('#pref').is(':visible')) {
+				$('#pref').slideUp('fast');
+				$('#navoptions a').blur();
+			}
+			else $('#pref').slideDown('fast');
+		}
+		return false;
+	});
+	$("#simplesearch").autocomplete('/db/ajax-autocomplete.php', {
+		minChars: 3,
+		delay: 1000,
+		max: 150,
+		width: 500,
+		scrollHeight: 600,
+		selectFirst: false,
+		formatItem: formatItem
+	}).result(function(event, item) {
+		location.href = item[2];
+	});
+	$('label.tristate').tristate(); // 'sup IRA
+	
+	$('#chatClient').change(function() {
+		$(this).parents('form').attr('action', $(this).val());
+	});
+	$('#nav_chat a').click(function() {
+		var chatnick = 'CGI' + (Math.floor(Math.random()*901) + 100).toString();
+		var chatinterface = 'nonjs';
+		var usrAgent = navigator.userAgent.toLowerCase();
+		if (/msie/.test( usrAgent ) && !/opera/.test( usrAgent )) return true; // ie sucks
+		else if (/webkit/.test( usrAgent )) chatinterface = 'safari';
+		else if (/opera/.test( usrAgent )) chatinterface = 'opera';
+		else if (/mozilla/.test( usrAgent ) && !/(compatible|webkit)/.test( usrAgent )) chatinterface = 'mozilla';
+		else if (/konqueror/.test( usrAgent )) chatinterface = 'konqueror';
+		$('#chatNick').val(chatnick);
+		$('#chatInterface').val(chatinterface);
+		hs.htmlExpand(this, { contentId: 'chat-popup' }); return false;
+	});
+});</script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-4758350-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script');
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    ga.setAttribute('async', 'true');
+    document.documentElement.firstChild.appendChild(ga);
+  })();
+
+</script>
+<script type="text/javascript">var NREUMQ=NREUMQ||[];NREUMQ.push(["mark","firstbyte",new Date().getTime()]);</script>
+
+<meta name="keywords" content="VGM, Video Game Music, Game Music, Anime, Animation, OST, Soundtrack, Doujin, database, composer, arranger, discography" />
+<meta name="description" content="VGMdb provides media, tracklist and artist information for video game soundtracks and anime music." />
+
+
+
+
+<script language="javascript" type="text/javascript">
+$(document).ready(function() {
+	$('textarea.resizable:not(.processed), select.resizable:not(.processed)').TextAreaResizer();
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	function dfilter(tablename) {
+		$("#" + tablename + " tbody, #" + tablename + " tr").hide();
+		var elements = $("#" + tablename + " tr").not("[rel='year']");
+		var checked = new Array(); var unchecked1 = false; var unchecked2 = false;
+		$("#" + tablename + "filter_menu :checkbox").each(function() {
+			checked[this.value] = this.checked; 
+			if (!this.checked) {
+				if (this.value.substr(0,1) == 'd') unchecked1 = true;
+				if (this.value.substr(0,1) == 'r') unchecked2 = true;
+			}
+		});
+		if (unchecked1 || unchecked2) { 
+			elements = elements.filter(function(index) {
+				var attribs = $(this).attr("rel").split("|");
+				if (unchecked1) if (!checked[attribs[0]]) return false;
+				if (unchecked2) {
+					for (i = 1; i <= attribs.length; i++) {
+						if (checked[attribs[i]]) return true;
+					}
+					return false;
+				}
+				return true;
+			});
+			elements = elements.siblings("[rel='year']").andSelf().parents("tbody").andSelf();
+			elements.show();
+		} else {
+			$("#" + tablename + " tbody, #" + tablename + " tr").show();
+		}
+	}
+	$("#discotablefilter_menu :checkbox").click(function() { dfilter("discotable"); });
+	$("#featuredtablefilter_menu :checkbox").click(function() { dfilter("featuredtable"); });
+	
+	
+	
+	
+	
+	
+        
+	
+	// shamelessly ripped from Digg
+	var cheatCode = '';
+	var maxCode = 40;
+	$(document).keypress(function(key) {
+		if (cheatCode.length < maxCode) {
+			var k = (key.keyCode == 0) ? key.charCode : key.keyCode;
+			cheatCode = cheatCode + String(k) + ' ';
+			switch (cheatCode) {
+				case '38 40 37 39 97 13 ':
+				window.location='../album/2072';
+				break;
+				case '38 38 40 40 37 39 37 39 98 97 13 ':
+				window.location='../album/3778';
+				break;
+				case '105 100 100 113 100 ':
+				window.location='../album/2950';
+				break;
+			}
+		}
+	});
+});
+</script>
+</head>
+<body style="padding: 0; margin: 0">
+<a name="top"></a>
+<div class="page" style="background-color: #1B273D; height: 100px; width: 100%;">
+<div style="float: right; margin-top: 10px; margin-right: 10px;">
+	<ul class="pipelist tinyfont">
+	
+	<li class="smallfont first-child"><span id="navlogin"><a href="#">Login</a><script type="text/javascript"> vBmenu.register('navlogin'); </script></span></li>
+	<li class="smallfont"><a title="Register a new account" href="/forums/register.php">Register</a></li>
+	
+	</ul>
+</div>
+<div style="white-space: nowrap;">
+<!-- logo -->
+<div style="height: 100px; float: left;"><a href="/db/main.php"><img src="http://media.vgmdb.net/img/vgmdblogo.png" alt="VGMdb" style="padding: 10px; width: 250px; height: 80px; border: 0" /></a></div>
+<!-- /logo -->
+<!-- top nav -->
+<div style="height: 100px; float: left; position: relative; margin-left: 1px;">
+<ul id="topnav">
+	<li id="nav_album"><a title="Official Albums, Enclosures, Doujins" href="/db/albums.php">Albums</a><a class="buttonSubmit" href="/album/new" title="Submit a new album"><img src="http://media.vgmdb.net/img/button-add-big.png" alt="" /></a></li>
+	<li id="nav_artist"><a title="Composers, Arrangers, Lyricists, Performers" href="/db/artists.php">Artists</a><a class="buttonSubmit" href="/db/artists-submit.php" title="Submit a new artist"><img src="http://media.vgmdb.net/img/button-add-big.png" alt="" /></a></li>
+	<!-- <li id="nav_track"><a title="Instrumentals, Vocals, Sound Effects, Voice Dramas" href="#">Tracks</a></li> -->
+	<li id="nav_label"><a title="Music Labels, Publishers, Organizations and Groups" href="/db/org.php">Labels</a><a class="buttonSubmit" href="/db/org-submit.php" title="Submit a new publisher"><img src="http://media.vgmdb.net/img/button-add-big.png" alt="" /></a></li>
+	<li id="nav_product"><a title="Games, Video, Radio/Drama Programs, Print Publications" href="/db/product.php">Products</a><a class="buttonSubmit" href="/db/product-submit.php" title="Submit a new product"><img src="http://media.vgmdb.net/img/button-add-big.png" alt="" /></a></li>
+	<li id="nav_event"><a title="Conventions, Gatherings and Shows" href="/db/events.php">Events</a></li>
+	<li id="nav_podcast"><a title="VGM Decibel, our bi-monthly podcast" href="/cast">Podcast</a></li>
+</ul>
+</div>
+<!-- / top nav -->
+</div>
+</div>
+<div class="label" style="clear: both; width: 100%; background-color: #2F364F; font-family: Arial">
+<ul id="subnav">
+	<li id="nav_search" style="width: 250px">
+		<form name="navsearch" action="/search" method="get">
+			<div><input type="text" class="bginput smallfont ac_input ac_default" name="q" id="simplesearch" maxlength="150" style="width: 236px;" /></div>
+		</form>
+	</li>
+	<li id="nav_advsearch"><a title="More search options" href="/search">Advanced Search</a></li>
+	<li id="nav_update"><a title="Latest submissions and edits" href="/db/recent.php">Updates</a></li>
+	<li id="nav_calendar"><a title="Release schedules" href="/db/calendar.php?year=2015&month=8">Calendar</a></li>
+	<li id="nav_forum"><a title="Community discussions" href="/forums/">Forums</a></li>
+	<li id="nav_market"><a title="Trade with other members" href="/db/marketplace.php?do=view">Marketplace</a></li>
+	<!-- <li id="nav_radio"><a title="Live streaming VGM" href="#" onclick="alert('Under Construction');">Radio</a></li> -->
+	<li id="nav_users"><a title="User collections" href="/db/collection.php">Users</a></li>
+	<li id="nav_chat"><a title="Real-time IRC chat" rel="nofollow" href="http://bigblah.net/cgi-bin/irc/irc.cgi" target="vgmdbirc">Chat</a></li>
+	<li id="nav_submit"><a title="Submit an album" href="/album/new">Submit Album</a></li>
+	<li id="nav_customize"><span id="navoptions"><a title="Edit your preferences" href="#">Customize</a></span></li>
+</ul>
+</div>
+
+
+	<!-- login form -->
+	<div class="vbmenu_popup" id="navlogin_menu" style="display:none;">
+	<table cellpadding="4" cellspacing="1" border="0"><tr><td style="background: #BBC7CE;">
+	<form action="/forums/login.php?do=login" method="post" onsubmit="md5hash(vb_login_password, vb_login_md5password, vb_login_md5password_utf, 0)">
+	<script type="text/javascript" src="/forums/clientscript/vbulletin_md5.js?v=385"></script>
+	<table cellpadding="0" cellspacing="3" border="0">
+	<tr>
+		<td class="smallfont"><label for="navbar_username">User Name</label></td>
+		<td><input type="text" class="bginput" style="font-size: 11px" name="vb_login_username" id="navbar_username" size="10" accesskey="u" tabindex="101" value="User Name" onfocus="if (this.value == 'User Name') this.value = '';" /></td>
+		<td class="smallfont" colspan="2" nowrap="nowrap"><label for="cb_cookieuser_navbar"><input type="checkbox" name="cookieuser" value="1" tabindex="103" id="cb_cookieuser_navbar" accesskey="c" />Remember</label></td>
+	</tr><tr>
+		<td class="smallfont"><label for="navbar_password">Password</label></td>
+		<td><input type="password" class="bginput" style="font-size: 11px" name="vb_login_password" id="navbar_password" size="10" tabindex="102" /></td>
+		<td><input type="submit" class="button" value="Log in" tabindex="104" title="Enter your username and password in the boxes provided to login, or click the 'register' button to create a profile for yourself." accesskey="s" /></td>
+	</tr>
+	</table>
+	<input type="hidden" name="s" value="c7affb7b9a1dacb09b3063bc22a4ed65" />
+	<input type="hidden" name="securitytoken" value="guest" />
+	<input type="hidden" name="do" value="login" />		
+	<input type="hidden" name="vb_login_md5password" />
+	<input type="hidden" name="vb_login_md5password_utf" />
+	</form>
+	</td></tr></table>
+	</div>
+	<!-- / login form -->
+
+
+<!-- content table -->
+<div class="page" style="padding:20px 20px 0 20px">
+
+<div id="pref" style="width: 100%; background-color:#1B273D; margin-bottom: 20px; display: none">
+	<b class="rtop"><b></b></b>
+	<div id="pref_content"></div>
+	<b class="rbot"><b></b></b>
+</div>
+
+
+
+<!-- main page contents -->
+<table width="100%" cellpadding="0" cellspacing="0" border="0" align="left">
+<tr><td width="100%" style="background-color: #1B273D;" valign="top">
+	<b class="rtop"><b></b></b>
+	<div id="innermain" style="padding: 6px 10px 10px 10px">
+
+	<span style="float:right;" class="label smallfont"><a href="/db/product-discuss.php?id=2567">Discuss</a> 
+</span>
+
+	
+
+	<h1 id="maintitle" style="display: inline"><span class="albumtitle" lang="en" style="display:inline">MADHOUSE</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>マッドハウス</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>MADHOUSE</i></span></h1> <span class="smallfont time">(Meta-franchise)</span>
+	<div id="subtitle" class="label" style="padding: 0px 10px 0px 10px"><span class="albumtitle" lang="en" style="display:inline">マッドハウス<br /></span><span class="albumtitle" lang="ja" style="display:none">MADHOUSE<br /></span><span class="albumtitle" lang="ja-Latn" style="display:none">MADHOUSE<br />マッドハウス<br /></span></div>
+
+	<div id="innercontent" style="padding: 10px 10px 0px 10px">
+	<style>dl {margin: 0; padding: 0} dt {margin-bottom: 6px; float: left; clear: both} dd {margin-bottom: 6px; margin-left: 10em}</style>
+
+	
+
+	
+
+	<h3 class="label">Belongs to</h3>
+	<div style="background-color: #2F364F;">
+	<b class="rtop"><b></b></b>
+	<div style="padding: 6px 10px 6px 10px" class="smallfont"><div><a class='smallfont' href='/product/3854'><span class="productname" lang="en" style="display:inline">Anime Studios</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja" style="display:none">Anime Studios</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja-Latn" style="display:none">Anime Studios</span></a></div>
+
+	<div style="clear: both; height: 1px; font-size: 1px; overflow: hidden"></div>
+	</div>
+	<b class="rbot"><b></b></b>
+	</div><br />
+
+
+	<h3 class="label">Subproducts</h3>
+	<div style="background-color: #2F364F;">
+	<b class="rtop"><b></b></b>
+	<div style="padding: 6px 10px 6px 10px" class="smallfont"><table cellspacing="0" cellpadding="0" border="0">
+<tr>
+<td align="left" style="padding-left: 8px;"><h4>DATE</h4></td>
+<td align="left" style="padding-left: 8px;"><h4>PRODUCT</h4></td>
+</tr>
+<tr>
+<td align="left" style="padding-left: 8px;" nowrap="nowrap">
+<span class="smallfont label">2015-10</span>
+</td>
+<td width="100%" align="left" style="padding-left: 8px;">
+<a class="smallfont" href="/product/3813"><span style="color:yellowgreen"><span class="productname" lang="en" style="display:inline">One Punch Man</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja" style="display:none">ワンパンマン</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja-Latn" style="display:none">One Punch Man</span></span></a>
+</td>
+</tr><tr>
+<td align="left" style="padding-left: 8px;" nowrap="nowrap">
+<span class="smallfont label">2015-7-7</span>
+</td>
+<td width="100%" align="left" style="padding-left: 8px;">
+<a class="smallfont" href="/product/3480"><span style="color:yellowgreen"><span class="productname" lang="en" style="display:inline">Overlord</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja" style="display:none">オーバーロード</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja-Latn" style="display:none">Overlord</span></span></a>
+</td>
+</tr><tr>
+<td align="left" style="padding-left: 8px;" nowrap="nowrap">
+<span class="smallfont label">2015-4-9</span>
+</td>
+<td width="100%" align="left" style="padding-left: 8px;">
+<a class="smallfont" href="/product/3446"><span style="color:yellowgreen"><span class="productname" lang="en" style="display:inline">MY love STORY!!</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja" style="display:none">俺物語!!</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja-Latn" style="display:none">Ore Monogatari!!</span></span></a>
+</td>
+</tr><tr>
+<td align="left" style="padding-left: 8px;" nowrap="nowrap">
+<span class="smallfont label">2015-1-10</span>
+</td>
+<td width="100%" align="left" style="padding-left: 8px;">
+<a class="smallfont" href="/product/3230"><span style="color:yellowgreen"><span class="productname" lang="en" style="display:inline">Death Parade</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja" style="display:none">デス・パレード</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja-Latn" style="display:none">Death Parade</span></span></a>
+</td>
+</tr><tr>
+<td align="left" style="padding-left: 8px;" nowrap="nowrap">
+<span class="smallfont label">2014-10-9</span>
+</td>
+<td width="100%" align="left" style="padding-left: 8px;">
+<a class="smallfont" href="/product/2985"><span style="color:yellowgreen"><span class="productname" lang="en" style="display:inline">Parasyte -the maxim-</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja" style="display:none">寄生獣 セイの格率</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja-Latn" style="display:none">Kiseijuu: Sei no Kakuritsu</span></span></a>
+</td>
+</tr><tr>
+<td align="left" style="padding-left: 8px;" nowrap="nowrap">
+<span class="smallfont label">2014-4-9</span>
+</td>
+<td width="100%" align="left" style="padding-left: 8px;">
+<a class="smallfont" href="/product/2592"><span style="color:yellowgreen"><span class="productname" lang="en" style="display:inline">No Game, No Life</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja" style="display:none">ノーゲーム・ノーライフ</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja-Latn" style="display:none">No Game No Life</span></span></a>
+</td>
+</tr><tr>
+<td align="left" style="padding-left: 8px;" nowrap="nowrap">
+<span class="smallfont label">2014-4-6</span>
+</td>
+<td width="100%" align="left" style="padding-left: 8px;">
+<a class="smallfont" href="/product/2455"><span style="color:yellowgreen"><span class="productname" lang="en" style="display:inline">The irregular at magic high school</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja" style="display:none">魔法科高校の劣等生</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja-Latn" style="display:none">Mahouka Koukou no Rettousei</span></span></a>
+</td>
+</tr><tr>
+<td align="left" style="padding-left: 8px;" nowrap="nowrap">
+<span class="smallfont label">2013-7-7</span>
+</td>
+<td width="100%" align="left" style="padding-left: 8px;">
+<a class="smallfont" href="/product/2152"><span style="color:yellowgreen"><span class="productname" lang="en" style="display:inline">Sunday Without God</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja" style="display:none">神さまのいない日曜日</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja-Latn" style="display:none">Kamisama no Inai Nichiyoubi</span></span></a>
+</td>
+</tr><tr>
+<td align="left" style="padding-left: 8px;" nowrap="nowrap">
+<span class="smallfont label">2012-7-9</span>
+</td>
+<td width="100%" align="left" style="padding-left: 8px;">
+<a class="smallfont" href="/product/2902"><span style="color:yellowgreen"><span class="productname" lang="en" style="display:inline">The Ambition of Oda Nobuna</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja" style="display:none">織田信奈の野望</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja-Latn" style="display:none">Oda Nobuna no Yabou</span></span></a>
+</td>
+</tr><tr>
+<td align="left" style="padding-left: 8px;" nowrap="nowrap">
+<span class="smallfont label">2011-10-1</span>
+</td>
+<td width="100%" align="left" style="padding-left: 8px;">
+<a class="smallfont" href="/product/2568"><span style="color:yellowgreen"><span class="productname" lang="en" style="display:inline">The Princess and the Pilot</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja" style="display:none">とある飛空士への追憶</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja-Latn" style="display:none">Toaru Hikuushi e no Tsuioku</span></span></a>
+</td>
+</tr><tr>
+<td align="left" style="padding-left: 8px;" nowrap="nowrap">
+<span class="smallfont label">2008-10-9</span>
+</td>
+<td width="100%" align="left" style="padding-left: 8px;">
+<a class="smallfont" href="/product/2382"><span style="color:yellowgreen"><span class="productname" lang="en" style="display:inline">Chäos;HEAd</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja" style="display:none">カオスヘッド</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja-Latn" style="display:none">Chäos;HEAd</span></span></a>
+</td>
+</tr><tr>
+<td align="left" style="padding-left: 8px;" nowrap="nowrap">
+<span class="smallfont label">2007-6-14</span>
+</td>
+<td width="100%" align="left" style="padding-left: 8px;">
+<a class="smallfont" href="/product/2178"><span style="color:yellowgreen"><span class="productname" lang="en" style="display:inline">Devil May Cry</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja" style="display:none">デビルメイクライ</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja-Latn" style="display:none">Devil May Cry</span></span></a>
+</td>
+</tr><tr>
+<td align="left" style="padding-left: 8px;" nowrap="nowrap">
+<span class="smallfont label">2005-9-14</span>
+</td>
+<td width="100%" align="left" style="padding-left: 8px;">
+<a class="smallfont" href="/product/721"><span style="color:yellowgreen"><span class="productname" lang="en" style="display:inline">Last Order: Final Fantasy VII</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja" style="display:none">ラストオーダー ファイナルファンタジーVII</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja-Latn" style="display:none">Last Order: Final Fantasy VII</span></span></a>
+</td>
+</tr><tr>
+<td align="left" style="padding-left: 8px;" nowrap="nowrap">
+<span class="smallfont label">2003-10-7</span>
+</td>
+<td width="100%" align="left" style="padding-left: 8px;">
+<a class="smallfont" href="/product/1244"><span style="color:yellowgreen"><span class="productname" lang="en" style="display:inline">Space Pirate Captain Herlock Outside Legend ~The Endless Odyssey~</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja" style="display:none">キャプテンハーロック アウトサイド・レジェンド ~ジ・エンドレス・オデッセィ~</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja-Latn" style="display:none">Space Pirate Captain Herlock Outside Legend ~The Endless Odyssey~</span></span></a>
+</td>
+</tr><tr>
+<td align="left" style="padding-left: 8px;" nowrap="nowrap">
+<span class="smallfont label">2003-2-3</span>
+</td>
+<td width="100%" align="left" style="padding-left: 8px;">
+<a class="smallfont" href="/product/2790"><span style="color:yellowgreen"><span class="productname" lang="en" style="display:inline">Kero-chan ni Omakase! The Movie</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja" style="display:none">劇場版 ケロちゃんにおまかせ!</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja-Latn" style="display:none">Gekijouban Kero-chan ni Omakase!</span></span></a>
+</td>
+</tr><tr>
+<td align="left" style="padding-left: 8px;" nowrap="nowrap">
+<span class="smallfont label">2002-1-3</span>
+</td>
+<td width="100%" align="left" style="padding-left: 8px;">
+<a class="smallfont" href="/product/3812"><span style="color:yellowgreen"><span class="productname" lang="en" style="display:inline">Aquarian Age: Sign for Evolution</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja" style="display:none">アクエリアンエイジ Sign for Evolution</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja-Latn" style="display:none">Aquarian Age: Sign for Evolution</span></span></a>
+</td>
+</tr><tr>
+<td align="left" style="padding-left: 8px;" nowrap="nowrap">
+<span class="smallfont label">2000-8-25</span>
+</td>
+<td width="100%" align="left" style="padding-left: 8px;">
+<a class="smallfont" href="/product/1754"><span style="color:yellowgreen"><span class="productname" lang="en" style="display:inline">Vampire Hunter D</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja" style="display:none">バンパイアハンターD</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja-Latn" style="display:none">Vampire Hunter D</span></span></a>
+</td>
+</tr><tr>
+<td align="left" style="padding-left: 8px;" nowrap="nowrap">
+<span class="smallfont label">2000-7-15</span>
+</td>
+<td width="100%" align="left" style="padding-left: 8px;">
+<a class="smallfont" href="/product/2789"><span style="color:yellowgreen"><span class="productname" lang="en" style="display:inline">Cardcaptor Sakura The Movie 2: The Sealed Card</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja" style="display:none">劇場版　カードキャプターさくら　封印されたカード</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja-Latn" style="display:none">Gekijouban Cardcaptor Sakura: Fuuin Sareta Card</span></span></a>
+</td>
+</tr><tr>
+<td align="left" style="padding-left: 8px;" nowrap="nowrap">
+<span class="smallfont label">2000-4-8</span>
+</td>
+<td width="100%" align="left" style="padding-left: 8px;">
+<a class="smallfont" href="/product/1343"><span style="color:yellowgreen"><span class="productname" lang="en" style="display:inline">Sakura Wars TV Series</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja" style="display:none">サクラ大戦 TVシリーズ</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja-Latn" style="display:none">Sakura Taisen TV Series</span></span></a>
+</td>
+</tr><tr>
+<td align="left" style="padding-left: 8px;" nowrap="nowrap">
+<span class="smallfont label">1999-8-21</span>
+</td>
+<td width="100%" align="left" style="padding-left: 8px;">
+<a class="smallfont" href="/product/2788"><span style="color:yellowgreen"><span class="productname" lang="en" style="display:inline">Cardcaptor Sakura: The Movie</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja" style="display:none">劇場版 カードキャプターさくら</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja-Latn" style="display:none">Gekijouban Cardcaptor Sakura</span></span></a>
+</td>
+</tr><tr>
+<td align="left" style="padding-left: 8px;" nowrap="nowrap">
+<span class="smallfont label">1998-4-7</span>
+</td>
+<td width="100%" align="left" style="padding-left: 8px;">
+<a class="smallfont" href="/product/2787"><span style="color:yellowgreen"><span class="productname" lang="en" style="display:inline">Cardcaptor Sakura</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja" style="display:none">カードキャプターさくら</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja-Latn" style="display:none">Cardcaptor Sakura</span></span></a>
+</td>
+</tr><tr>
+<td align="left" style="padding-left: 8px;" nowrap="nowrap">
+<span class="smallfont label">1994-2-21</span>
+</td>
+<td width="100%" align="left" style="padding-left: 8px;">
+<a class="smallfont" href="/product/177"><span style="color:yellowgreen"><span class="productname" lang="en" style="display:inline">Final Fantasy: Legend of the Crystals</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja" style="display:none">Final Fantasy: Legend of the Crystals</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja-Latn" style="display:none">Final Fantasy: Legend of the Crystals</span></span></a>
+</td>
+</tr>
+
+</table>
+	<div style="clear: both; height: 1px; font-size: 1px; overflow: hidden"></div>
+	</div>
+	<b class="rbot"><b></b></b>
+	</div><br />
+
+	
+
+	<span style="float:right; font-size:8pt; font-weight:bold" id="discotablefilter">Filter <script type="text/javascript"> vBmenu.register('discotablefilter'); </script></span>
+
+	<!-- discography filter menu -->
+	<div class="vbmenu_popup" id="discotablefilter_menu" style="display:none">
+	<form action="" name="formdiscotablefilter">
+	<table cellpadding="4" cellspacing="1" border="0" style="color: white">
+	<tr><td class="thead">Classification</td></tr>
+<tr><td style="background-color: #1B273D"><div class="smallfont" style="white-space: nowrap"><label for="r1|0"><input type="checkbox" class="inlineimg" name="r1|0" id="r1|0" value="r1" checked="checked" />Soundtrack</label></div>
+<div class="smallfont" style="white-space: nowrap"><label for="r6|0"><input type="checkbox" class="inlineimg" name="r6|0" id="r6|0" value="r6" checked="checked" />Vocal</label></div>
+<div class="smallfont" style="white-space: nowrap"><label for="r7|0"><input type="checkbox" class="inlineimg" name="r7|0" id="r7|0" value="r7" checked="checked" />OP/ED/Insert</label></div>
+<div class="smallfont" style="white-space: nowrap"><label for="r8|0"><input type="checkbox" class="inlineimg" name="r8|0" id="r8|0" value="r8" checked="checked" />Drama</label></div>
+<div class="smallfont" style="white-space: nowrap"><label for="r9|0"><input type="checkbox" class="inlineimg" name="r9|0" id="r9|0" value="r9" checked="checked" />Talk</label></div>
+<div class="smallfont" style="white-space: nowrap"><label for="r3|0"><input type="checkbox" class="inlineimg" name="r3|0" id="r3|0" value="r3" checked="checked" />Fan Arrange</label></div>
+<div class="smallfont" style="white-space: nowrap"><label for="r2|0"><input type="checkbox" class="inlineimg" name="r2|0" id="r2|0" value="r2" checked="checked" />Arrange</label></div>
+<div class="smallfont" style="white-space: nowrap"><label for="r4|0"><input type="checkbox" class="inlineimg" name="r4|0" id="r4|0" value="r4" checked="checked" />Remix</label></div>
+<div class="smallfont" style="white-space: nowrap"><label for="r0|0"><input type="checkbox" class="inlineimg" name="r0|0" id="r0|0" value="r0" checked="checked" />Unclassified</label></div>
+</td></tr>
+
+	</table>
+	</form>
+	</div>
+	<!-- / discography filter menu -->
+
+<h3 class="label">Albums | Credits</h3>
+<div style="background-color: #2F364F;">
+<b class="rtop"><b></b></b>
+<div id="discotable" style="padding: 6px 10px 10px 10px">
+<table cellpadding="4" cellspacing="0" border="0" width="100%">
+<tbody class="">
+<tr rel="year"><td align="left" style="padding-top: 10px" colspan="3"><h3 class="time">2016</h3></td></tr>
+<tr rel="|r1">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">02.24</td>
+   <td align="left" valign="top"> <a class="albumtitle album-bonus" href="http://vgmdb.net/album/53657" title='Overlord Special Soundtrack CD vol.2'><span class="albumtitle" lang="en" style="display:inline">Overlord Special Soundtrack CD vol.2</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>オーバーロード スペシャルサウンドトラックCD vol.2</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Overlord Special Soundtrack CD vol.2</i></span></a> <span class="catalog album-bonus">ZMXZ-10156-CD</span> <span class="smallfont label">Soundtrack</span></td>
+</tr>
+<tr rel="|r1">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">01.27</td>
+   <td align="left" valign="top"> <a class="albumtitle album-bonus" href="http://vgmdb.net/album/53656" title='Overlord Special Soundtrack CD vol.1'><span class="albumtitle" lang="en" style="display:inline">Overlord Special Soundtrack CD vol.1</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>オーバーロード スペシャルサウンドトラックCD vol.1</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Overlord Special Soundtrack CD vol.1</i></span></a> <span class="catalog album-bonus">ZMXZ-10155-CD</span> <span class="smallfont label">Soundtrack</span></td>
+</tr>
+
+</tbody>
+<tbody class="">
+<tr rel="year"><td align="left" style="padding-top: 10px" colspan="3"><h3 class="time">2015</h3></td></tr>
+<tr rel="|r6|r7">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">11.18</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/54210" title='TV Anime "One Punch Man" Ending Theme / Hiroko Moriguchi'><span class="albumtitle" lang="en" style="display:inline">TV Anime &quot;One Punch Man&quot; Ending Theme / Hiroko Moriguchi</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>TVアニメ『ワンパンマン』ED主題歌 / 森口博子</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>TV Anime &quot;One Punch Man&quot; Ending Theme / Hiroko Moriguchi</i></span></a> <span class="catalog album-anime">LACM-14407</span> <span class="smallfont label">Vocal, OP/ED/Insert</span></td>
+</tr>
+<tr rel="|r6|r7">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">10.21</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/54211" title='TV Anime "One Punch Man" Opening Theme / JAM Project'><span class="albumtitle" lang="en" style="display:inline">TV Anime &quot;One Punch Man&quot; Opening Theme / JAM Project</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>TVアニメ『ワンパンマン』OP主題歌 / JAM Project</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>TV Anime &quot;One Punch Man&quot; Opening Theme / JAM Project</i></span></a> <span class="catalog album-anime">LACM-14406</span> <span class="smallfont label">Vocal, OP/ED/Insert</span></td>
+</tr>
+<tr rel="|r6|r7">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">10.21</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/54212" title='TV Anime "One Punch Man" Opening Theme / JAM Project [Limited Edition]'><span class="albumtitle" lang="en" style="display:inline">TV Anime &quot;One Punch Man&quot; Opening Theme / JAM Project [Limited Edition]</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>TVアニメ『ワンパンマン』OP主題歌 / JAM Project</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>TV Anime &quot;One Punch Man&quot; Opening Theme / JAM Project [Limited Edition]</i></span></a> <span class="catalog album-anime">LACM-14405</span> <span class="smallfont label">Vocal, OP/ED/Insert</span></td>
+</tr>
+<tr rel="|r6|r7">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">08.26</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/53261" title='Clattanoia / OxT'><span class="albumtitle" lang="en" style="display:inline">Clattanoia / OxT</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>Clattanoia / OxT</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Clattanoia / OxT</i></span></a> <span class="catalog album-anime">ZMCZ-10179</span> <span class="smallfont label">Vocal, OP/ED/Insert</span></td>
+</tr>
+<tr rel="|r6|r7">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">08.26</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/53262" title='L.L.L. / MYTH & ROID'><span class="albumtitle" lang="en" style="display:inline">L.L.L. / MYTH &amp; ROID</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>L.L.L. / MYTH &amp; ROID</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>L.L.L. / MYTH &amp; ROID</i></span></a> <span class="catalog album-anime">ZMCZ-10180</span> <span class="smallfont label">Vocal, OP/ED/Insert</span></td>
+</tr>
+<tr rel="|r1">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">07.22</td>
+   <td align="left" valign="top"> <a class="albumtitle album-bonus" href="http://vgmdb.net/album/53967" title='TV ANIMATION KISEIJU SPECIAL SOUNDTRACK CD'><span class="albumtitle" lang="en" style="display:inline">TV ANIMATION KISEIJU SPECIAL SOUNDTRACK CD</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>寄生獣 セイの格率 スペシャルサウンドトラックCD</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em>Kiseijuu Sei no Kakuritsu Special Soundtrack CD</span></a> <span class="catalog album-bonus">VPXY-72955C</span> <span class="smallfont label">Soundtrack</span></td>
+</tr>
+<tr rel="|r1">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">07.22</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/52906" title='Ore Monogatari!! Original Soundtrack'><span class="albumtitle" lang="en" style="display:inline">Ore Monogatari!! Original Soundtrack</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>アニメ「俺物語!!」オリジナル・サウンドトラック</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Ore Monogatari!! Original Soundtrack</i></span></a> <span class="catalog album-anime">VPCG-83501</span> <span class="smallfont label">Soundtrack</span></td>
+</tr>
+<tr rel="|r1|r8|r9">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">06.17</td>
+   <td align="left" valign="top"> <a class="albumtitle album-bonus" href="http://vgmdb.net/album/51129" title='Death Parade Blu-ray BOX Bonus Discs'><span class="albumtitle" lang="en" style="display:inline">Death Parade Blu-ray BOX Bonus Discs</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>デス・パレード Blu-ray BOX 特典CD</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Death Parade Blu-ray BOX Bonus Discs</i></span></a> <span class="catalog album-bonus">VPXY-72958C</span> <span class="smallfont label">Soundtrack, Drama, Talk</span></td>
+</tr>
+<tr rel="|r6|r7">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">06.17</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/52199" title='Kako Tsunagu Mirai / LOCAL CONNECT'><span class="albumtitle" lang="en" style="display:inline">Kako Tsunagu Mirai / LOCAL CONNECT</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>過去ツナグ未来 / LOCAL CONNECT</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Kako Tsunagu Mirai / LOCAL CONNECT</i></span></a> <span class="catalog album-anime">VPCC-81844</span> <span class="smallfont label">Vocal, OP/ED/Insert</span></td>
+</tr>
+<tr rel="|r6|r7">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">05.05</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/51897" title='Miraikei Answer / TRUSTRICK'><span class="albumtitle" lang="en" style="display:inline">Miraikei Answer / TRUSTRICK</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>未来系Answer / TRUSTRICK</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Miraikei Answer / TRUSTRICK</i></span></a> <span class="catalog album-anime">COCP-39111</span> <span class="smallfont label">Vocal, OP/ED/Insert</span></td>
+</tr>
+<tr rel="|r6|r7">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">05.05</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/51898" title='Miraikei Answer / TRUSTRICK [Limited Edition]'><span class="albumtitle" lang="en" style="display:inline">Miraikei Answer / TRUSTRICK [Limited Edition]</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>未来系Answer / TRUSTRICK</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Miraikei Answer / TRUSTRICK [Limited Edition]</i></span></a> <span class="catalog album-anime">COZP-1049~50</span> <span class="smallfont label">Vocal, OP/ED/Insert</span></td>
+</tr>
+<tr rel="|r3">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">04.26</td>
+   <td align="left" valign="top"> <a class="albumtitle album-doujin" href="http://vgmdb.net/album/53861" title='FMPSG021 -reboot-'><span class="albumtitle" lang="en" style="display:inline">FMPSG021 -reboot-</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>FMPSG021 -reboot-</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>FMPSG021 -reboot-</i></span></a> <span class="catalog album-doujin">FPCR-021</span> <span class="smallfont label">Fan Arrange</span></td>
+</tr>
+<tr rel="|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">04.22</td>
+   <td align="left" valign="top"> <a class="albumtitle album-bonus" href="http://vgmdb.net/album/48312" title='The irregular at magic high school Vol.10 Special Disc'><span class="albumtitle" lang="en" style="display:inline">The irregular at magic high school Vol.10 Special Disc</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>魔法科高校の劣等生 第10巻 特典CD</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em>Mahouka Koukou no Rettousei Vol.10 Bonus CD</span></a> <span class="catalog album-bonus">ANZX-11320</span> <span class="smallfont label">Vocal</span></td>
+</tr>
+<tr rel="|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">03.25</td>
+   <td align="left" valign="top"> <a class="albumtitle album-bonus" href="http://vgmdb.net/album/47959" title='The irregular at magic high school Vol.9 Special Disc'><span class="albumtitle" lang="en" style="display:inline">The irregular at magic high school Vol.9 Special Disc</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>魔法科高校の劣等生 第9巻 特典CD</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em>Mahouka Koukou no Rettousei Vol.9 Bonus CD</span></a> <span class="catalog album-bonus">ANZX-11318</span> <span class="smallfont label">Vocal</span></td>
+</tr>
+<tr rel="|r6|r7">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">03.11</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/51456" title='Last Theater / NoisyCell'><span class="albumtitle" lang="en" style="display:inline">Last Theater / NoisyCell</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>Last Theater / NoisyCell</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Last Theater / NoisyCell</i></span></a> <span class="catalog album-anime">HISN-00886</span> <span class="smallfont label">Vocal, OP/ED/Insert</span></td>
+</tr>
+<tr rel="|r1">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">03.11</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/51757" title='Death Parade Original Soundtrack Digest Edition'><span class="albumtitle" lang="en" style="display:inline">Death Parade Original Soundtrack Digest Edition</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>デス・パレード オリジナル・サウンドトラック Digest Edition</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Death Parade Original Soundtrack Digest Edition</i></span></a> <span class="catalog album-anime">HISN-00887</span> <span class="smallfont label">Soundtrack</span></td>
+</tr>
+<tr rel="|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">03.04</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/50329" title='Launcher / LiSA'><span class="albumtitle" lang="en" style="display:inline">Launcher / LiSA</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>Launcher / LiSA</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Launcher / LiSA</i></span></a> <span class="catalog album-anime">SVWC-70060</span> <span class="smallfont label">Vocal</span></td>
+</tr>
+<tr rel="|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">03.04</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/50330" title='Launcher / LiSA [Limited Edition]'><span class="albumtitle" lang="en" style="display:inline">Launcher / LiSA [Limited Edition]</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>Launcher / LiSA [Limited Edition]</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Launcher / LiSA [Limited Edition]</i></span></a> <span class="catalog album-anime">SVWC-70058~9</span> <span class="smallfont label">Vocal</span></td>
+</tr>
+<tr rel="|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">03.04</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/49768" title='18 -Colorful Gift- / Konomi Suzuki'><span class="albumtitle" lang="en" style="display:inline">18 -Colorful Gift- / Konomi Suzuki</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>18 -Colorful Gift- / 鈴木このみ</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>18 -Colorful Gift- / Konomi Suzuki</i></span></a> <span class="catalog album-anime">ZMCZ-9901</span> <span class="smallfont label">Vocal</span></td>
+</tr>
+<tr rel="|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">03.04</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/49769" title='18 -Colorful Gift- / Konomi Suzuki [Limited Edition]'><span class="albumtitle" lang="en" style="display:inline">18 -Colorful Gift- / Konomi Suzuki [Limited Edition]</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>18 -Colorful Gift- / 鈴木このみ</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>18 -Colorful Gift- / Konomi Suzuki [Limited Edition]</i></span></a> <span class="catalog album-anime">ZMCZ-9900</span> <span class="smallfont label">Vocal</span></td>
+</tr>
+<tr rel="|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">03.04</td>
+   <td align="left" valign="top"> <img class='inlineimg' src='http://media.vgmdb.net/icon/album-reprint.gif' width='15' height='15' alt='This album is a reprint' /> <a class="albumtitle album-anime" href="http://vgmdb.net/album/50331" title='Launcher / LiSA [Limited Edition]'><span class="albumtitle" lang="en" style="display:inline">Launcher / LiSA [Limited Edition]</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>Launcher / LiSA [Limited Edition]</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Launcher / LiSA [Limited Edition]</i></span></a> <span class="catalog album-anime">SVWC-70056~7</span> <span class="smallfont label">Vocal</span></td>
+</tr>
+<tr rel="|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">02.25</td>
+   <td align="left" valign="top"> <a class="albumtitle album-bonus" href="http://vgmdb.net/album/47541" title='The irregular at magic high school Vol.8 Special Disc'><span class="albumtitle" lang="en" style="display:inline">The irregular at magic high school Vol.8 Special Disc</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>魔法科高校の劣等生 第8巻 特典CD</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em>Mahouka Koukou no Rettousei Vol.8 Bonus CD</span></a> <span class="catalog album-bonus">ANZX-11316</span> <span class="smallfont label">Vocal</span></td>
+</tr>
+<tr rel="|r6|r7">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">02.25</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/49872" title='Flyers / BRADIO'><span class="albumtitle" lang="en" style="display:inline">Flyers / BRADIO</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>Flyers / BRADIO</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Flyers / BRADIO</i></span></a> <span class="catalog album-anime">HRME-1003</span> <span class="smallfont label">Vocal, OP/ED/Insert</span></td>
+</tr>
+<tr rel="|r1|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">01.28</td>
+   <td align="left" valign="top"> <a class="albumtitle album-bonus" href="http://vgmdb.net/album/47206" title='The irregular at magic high school Vol.7 Special Disc'><span class="albumtitle" lang="en" style="display:inline">The irregular at magic high school Vol.7 Special Disc</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>魔法科高校の劣等生 第7巻 特典CD</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em>Mahouka Koukou no Rettousei Vol.7 Bonus CD</span></a> <span class="catalog album-bonus">ANZX-11314</span> <span class="smallfont label">Soundtrack, Vocal</span></td>
+</tr>
+<tr rel="|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">01.21</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/49155" title='Linkage Ring / GARNiDELiA'><span class="albumtitle" lang="en" style="display:inline">Linkage Ring / GARNiDELiA</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>Linkage Ring / GARNiDELiA</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Linkage Ring / GARNiDELiA</i></span></a> <span class="catalog album-anime">DFCL-2114</span> <span class="smallfont label">Vocal</span></td>
+</tr>
+<tr rel="|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">01.21</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/49156" title='Linkage Ring / GARNiDELiA [Limited Edition]'><span class="albumtitle" lang="en" style="display:inline">Linkage Ring / GARNiDELiA [Limited Edition]</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>Linkage Ring / GARNiDELiA [Limited Edition]</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Linkage Ring / GARNiDELiA [Limited Edition]</i></span></a> <span class="catalog album-anime">DFCL-2112~3</span> <span class="smallfont label">Vocal</span></td>
+</tr>
+<tr rel="|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">01.21</td>
+   <td align="left" valign="top"> <img class='inlineimg' src='http://media.vgmdb.net/icon/album-reprint.gif' width='15' height='15' alt='This album is a reprint' /> <a class="albumtitle album-anime" href="http://vgmdb.net/album/49157" title='Linkage Ring / GARNiDELiA [Limited Edition]'><span class="albumtitle" lang="en" style="display:inline">Linkage Ring / GARNiDELiA [Limited Edition]</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>Linkage Ring / GARNiDELiA [Limited Edition]</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Linkage Ring / GARNiDELiA [Limited Edition]</i></span></a> <span class="catalog album-anime">DFCL-2110~1</span> <span class="smallfont label">Vocal</span></td>
+</tr>
+<tr rel="|r6|r7">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">01.07</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/48347" title='Let Me Hear / Fear, and Loathing in Las Vegas'><span class="albumtitle" lang="en" style="display:inline">Let Me Hear / Fear, and Loathing in Las Vegas</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>Let Me Hear / Fear, and Loathing in Las Vegas</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Let Me Hear / Fear, and Loathing in Las Vegas</i></span></a> <span class="catalog album-anime">VPCC-82322</span> <span class="smallfont label">Vocal, OP/ED/Insert</span></td>
+</tr>
+
+</tbody>
+<tbody class="">
+<tr rel="year"><td align="left" style="padding-top: 10px" colspan="3"><h3 class="time">2014</h3></td></tr>
+<tr rel="|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">12.24</td>
+   <td align="left" valign="top"> <a class="albumtitle album-bonus" href="http://vgmdb.net/album/46845" title='The irregular at magic high school Vol.6 Special Disc'><span class="albumtitle" lang="en" style="display:inline">The irregular at magic high school Vol.6 Special Disc</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>魔法科高校の劣等生 第6巻 特典CD</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em>Mahouka Koukou no Rettousei Vol.6 Bonus CD</span></a> <span class="catalog album-bonus">ANZX-11312</span> <span class="smallfont label">Vocal</span></td>
+</tr>
+<tr rel="|r1">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">12.24</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/48700" title='KISEIJU ORIGINAL SOUNDTRACK'><span class="albumtitle" lang="en" style="display:inline">KISEIJU ORIGINAL SOUNDTRACK</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>寄生獣 セイの格率 オリジナル・サウンドトラック</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em>Kiseijuu Sei no Kakuritsu Original Soundtrack</span></a> <span class="catalog album-anime">VPCG-84988</span> <span class="smallfont label">Soundtrack</span></td>
+</tr>
+<tr rel="|r6|r7">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">12.03</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/51268" title='Fureau dake de ~Always with you~/IT&#039;S THE RIGHT TIME / Daichi Miura'><span class="albumtitle" lang="en" style="display:inline">Fureau dake de ~Always with you~/IT'S THE RIGHT TIME / Daichi Miura</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>ふれあうだけで ～Always with you～/IT'S THE RIGHT TIME / 三浦大知</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Fureau dake de ~Always with you~/IT'S THE RIGHT TIME / Daichi Miura</i></span></a> <span class="catalog album-anime">AVCD-16490</span> <span class="smallfont label">Vocal, OP/ED/Insert</span></td>
+</tr>
+<tr rel="|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">11.26</td>
+   <td align="left" valign="top"> <a class="albumtitle album-bonus" href="http://vgmdb.net/album/46590" title='The irregular at magic high school Vol.5 Special Disc'><span class="albumtitle" lang="en" style="display:inline">The irregular at magic high school Vol.5 Special Disc</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>魔法科高校の劣等生 第5巻 特典CD</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em>Mahouka Koukou no Rettousei Vol.5 Bonus CD</span></a> <span class="catalog album-bonus">ANZX-11310</span> <span class="smallfont label">Vocal</span></td>
+</tr>
+<tr rel="|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">11.26</td>
+   <td align="left" valign="top"> <a class="albumtitle album-bonus" href="http://vgmdb.net/album/45081" title='No Game No Life SPECIAL CD 06 CHARACTER SONG'><span class="albumtitle" lang="en" style="display:inline">No Game No Life SPECIAL CD 06 CHARACTER SONG</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>ノーゲーム・ノーライフ スペシャルCD 06 キャラクターソング</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>No Game No Life SPECIAL CD 06 CHARACTER SONG</i></span></a> <span class="catalog album-bonus">MFXN-0030EX</span> <span class="smallfont label">Vocal</span></td>
+</tr>
+<tr rel="|r2|r6|r7">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">11.19</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/47847" title='Ginsen no Kaze / Konomi Suzuki [Limited Edition]'><span class="albumtitle" lang="en" style="display:inline">Ginsen no Kaze / Konomi Suzuki [Limited Edition]</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>銀閃の風 / 鈴木このみ</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Ginsen no Kaze / Konomi Suzuki [Limited Edition]</i></span></a> <span class="catalog album-anime">ZMCZ-9717</span> <span class="smallfont label">Arrange, Vocal, OP/ED/Insert</span></td>
+</tr>
+<tr rel="|r1">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">10.29</td>
+   <td align="left" valign="top"> <a class="albumtitle album-bonus" href="http://vgmdb.net/album/45080" title='No Game No Life SPECIAL CD 05 SOUNDTRACK VOL.3'><span class="albumtitle" lang="en" style="display:inline">No Game No Life SPECIAL CD 05 SOUNDTRACK VOL.3</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>ノーゲーム・ノーライフ スペシャルCD 05 サウンドトラック VOL.3</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>No Game No Life SPECIAL CD 05 SOUNDTRACK VOL.3</i></span></a> <span class="catalog album-bonus">MFXN-0029EX</span> <span class="smallfont label">Soundtrack</span></td>
+</tr>
+<tr rel="|r1|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">10.22</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/46292" title='The irregular at magic high school Original Soundtrack 2'><span class="albumtitle" lang="en" style="display:inline">The irregular at magic high school Original Soundtrack 2</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>魔法科高校の劣等生 オリジナルサウンドトラック 2</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em>Mahouka Koukou no Rettousei Original Soundtrack 2</span></a> <span class="catalog album-anime">SVWC-70018</span> <span class="smallfont label">Soundtrack, Vocal</span></td>
+</tr>
+<tr rel="|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">10.22</td>
+   <td align="left" valign="top"> <a class="albumtitle album-bonus" href="http://vgmdb.net/album/46328" title='The irregular at magic high school Vol.4 Special Disc'><span class="albumtitle" lang="en" style="display:inline">The irregular at magic high school Vol.4 Special Disc</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>魔法科高校の劣等生 第4巻 特典CD</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em>Mahouka Koukou no Rettousei Vol.4 Bonus CD</span></a> <span class="catalog album-bonus">ANZX-11308</span> <span class="smallfont label">Vocal</span></td>
+</tr>
+<tr rel="|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">10.08</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/48065" title='WILL / Rei Yasuda [Limited Edition]'><span class="albumtitle" lang="en" style="display:inline">WILL / Rei Yasuda [Limited Edition]</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>WILL / 安田レイ</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>WILL / Rei Yasuda [Limited Edition]</i></span></a> <span class="catalog album-anime">SECL-1597~8</span> <span class="smallfont label">Vocal</span></td>
+</tr>
+<tr rel="|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">10.08</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/48066" title='WILL / Rei Yasuda'><span class="albumtitle" lang="en" style="display:inline">WILL / Rei Yasuda</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>WILL / 安田レイ</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>WILL / Rei Yasuda</i></span></a> <span class="catalog album-anime">SECL-1599</span> <span class="smallfont label">Vocal</span></td>
+</tr>
+<tr rel="|r4|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">10.01</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/46821" title='EXIT TRANCE PRESENTS SPEED ANIME TRANCE BEST 22'><span class="albumtitle" lang="en" style="display:inline">EXIT TRANCE PRESENTS SPEED ANIME TRANCE BEST 22</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>EXIT TRANCE PRESENTS SPEED アニメトランス BEST 22</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>EXIT TRANCE PRESENTS SPEED ANIME TRANCE BEST 22</i></span></a> <span class="catalog album-anime">QWCE-00386</span> <span class="smallfont label">Remix, Vocal</span></td>
+</tr>
+<tr rel="|r2|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">09.24</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/48256" title='TOKYO SHOKO☆LAND 2014 ~RPG-teki Michi no Kioku~ Shokotan☆Cover Extra Edition / Shoko Nakagawa'><span class="albumtitle" lang="en" style="display:inline">TOKYO SHOKO☆LAND 2014 ~RPG-teki Michi no Kioku~ Shokotan☆Cover Extra Edition / Shoko Nakagawa</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>TOKYO SHOKO☆LAND 2014 ～RPG的未知の記憶～ しょこたん☆かばー番外編 / 中川翔子</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>TOKYO SHOKO☆LAND 2014 ~RPG-teki Michi no Kioku~ Shokotan☆Cover Extra Edition / Shoko Nakagawa</i></span></a> <span class="catalog album-anime">SRCL-8603</span> <span class="smallfont label">Arrange, Vocal</span></td>
+</tr>
+<tr rel="|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">09.24</td>
+   <td align="left" valign="top"> <a class="albumtitle album-bonus" href="http://vgmdb.net/album/46327" title='The irregular at magic high school Vol.3 Special Disc'><span class="albumtitle" lang="en" style="display:inline">The irregular at magic high school Vol.3 Special Disc</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>魔法科高校の劣等生 第3巻 特典CD</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em>Mahouka Koukou no Rettousei Vol.3 Bonus CD</span></a> <span class="catalog album-bonus">ANZX-11306</span> <span class="smallfont label">Vocal</span></td>
+</tr>
+<tr rel="|r1">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">09.24</td>
+   <td align="left" valign="top"> <a class="albumtitle album-bonus" href="http://vgmdb.net/album/45079" title='No Game No Life SPECIAL CD 04 SOUNDTRACK VOL.2'><span class="albumtitle" lang="en" style="display:inline">No Game No Life SPECIAL CD 04 SOUNDTRACK VOL.2</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>ノーゲーム・ノーライフ スペシャルCD 04 サウンドトラック VOL.2</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>No Game No Life SPECIAL CD 04 SOUNDTRACK VOL.2</i></span></a> <span class="catalog album-bonus">MFXN-0028EX</span> <span class="smallfont label">Soundtrack</span></td>
+</tr>
+<tr rel="|r6|r7">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">09.03</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/46501" title='Mirror / Rei Yasuda [Limited Edition]'><span class="albumtitle" lang="en" style="display:inline">Mirror / Rei Yasuda [Limited Edition]</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>Mirror / 安田レイ</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Mirror / Rei Yasuda [Limited Edition]</i></span></a> <span class="catalog album-anime">SECL-1574~5</span> <span class="smallfont label">Vocal, OP/ED/Insert</span></td>
+</tr>
+<tr rel="|r6|r7">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">09.03</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/46502" title='Mirror / Rei Yasuda'><span class="albumtitle" lang="en" style="display:inline">Mirror / Rei Yasuda</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>Mirror / 安田レイ</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Mirror / Rei Yasuda</i></span></a> <span class="catalog album-anime">SECL-1573</span> <span class="smallfont label">Vocal, OP/ED/Insert</span></td>
+</tr>
+<tr rel="|r6|r7">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">09.03</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/46503" title='Mirror / Rei Yasuda [Limited Edition]'><span class="albumtitle" lang="en" style="display:inline">Mirror / Rei Yasuda [Limited Edition]</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>Mirror / 安田レイ</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Mirror / Rei Yasuda [Limited Edition]</i></span></a> <span class="catalog album-anime">SECL-1571~2</span> <span class="smallfont label">Vocal, OP/ED/Insert</span></td>
+</tr>
+<tr rel="|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">08.27</td>
+   <td align="left" valign="top"> <a class="albumtitle album-bonus" href="http://vgmdb.net/album/46325" title='The irregular at magic high school Vol.2 Special Disc'><span class="albumtitle" lang="en" style="display:inline">The irregular at magic high school Vol.2 Special Disc</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>魔法科高校の劣等生 第2巻 特典CD</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em>Mahouka Koukou no Rettousei Vol.2 Bonus CD</span></a> <span class="catalog album-bonus">ANZX-11304</span> <span class="smallfont label">Vocal</span></td>
+</tr>
+<tr rel="|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">08.27</td>
+   <td align="left" valign="top"> <a class="albumtitle album-bonus" href="http://vgmdb.net/album/45078" title='No Game No Life SPECIAL CD 03 CHARACTER SONG'><span class="albumtitle" lang="en" style="display:inline">No Game No Life SPECIAL CD 03 CHARACTER SONG</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>ノーゲーム・ノーライフ スペシャルCD 03 キャラクターソング</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>No Game No Life SPECIAL CD 03 CHARACTER SONG</i></span></a> <span class="catalog album-bonus">MFXN-0027EX</span> <span class="smallfont label">Vocal</span></td>
+</tr>
+<tr rel="|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">08.20</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/46424" title='Replica / Maaya Sakamoto [Limited Edition]'><span class="albumtitle" lang="en" style="display:inline">Replica / Maaya Sakamoto [Limited Edition]</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>レプリカ / 坂本真綾</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Replica / Maaya Sakamoto [Limited Edition]</i></span></a> <span class="catalog album-anime">VTZL-85</span> <span class="smallfont label">Vocal</span></td>
+</tr>
+<tr rel="|r6|r7">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">07.30</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/46309" title='grilletto / GARNiDELiA [Limited Edition]'><span class="albumtitle" lang="en" style="display:inline">grilletto / GARNiDELiA [Limited Edition]</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>grilletto / GARNiDELiA [Limited Edition]</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>grilletto / GARNiDELiA [Limited Edition]</i></span></a> <span class="catalog album-anime">DFCL-2074~5</span> <span class="smallfont label">Vocal, OP/ED/Insert</span></td>
+</tr>
+<tr rel="|r6|r7">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">07.30</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/46310" title='grilletto / GARNiDELiA'><span class="albumtitle" lang="en" style="display:inline">grilletto / GARNiDELiA</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>grilletto / GARNiDELiA</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>grilletto / GARNiDELiA</i></span></a> <span class="catalog album-anime">DFCL-2076</span> <span class="smallfont label">Vocal, OP/ED/Insert</span></td>
+</tr>
+<tr rel="|r6|r7">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">07.30</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/46311" title='grilletto / GARNiDELiA [Limited Edition]'><span class="albumtitle" lang="en" style="display:inline">grilletto / GARNiDELiA [Limited Edition]</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>grilletto / GARNiDELiA [Limited Edition]</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>grilletto / GARNiDELiA [Limited Edition]</i></span></a> <span class="catalog album-anime">DFCL-2077~8</span> <span class="smallfont label">Vocal, OP/ED/Insert</span></td>
+</tr>
+<tr rel="|r1">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">07.30</td>
+   <td align="left" valign="top"> <a class="albumtitle album-bonus" href="http://vgmdb.net/album/45077" title='No Game No Life SPECIAL CD 02 SOUNDTRACK VOL.1'><span class="albumtitle" lang="en" style="display:inline">No Game No Life SPECIAL CD 02 SOUNDTRACK VOL.1</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>ノーゲーム・ノーライフ スペシャルCD 02 サウンドトラック VOL.1</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>No Game No Life SPECIAL CD 02 SOUNDTRACK VOL.1</i></span></a> <span class="catalog album-bonus">MFXN-0026EX</span> <span class="smallfont label">Soundtrack</span></td>
+</tr>
+<tr rel="|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">07.23</td>
+   <td align="left" valign="top"> <a class="albumtitle album-bonus" href="http://vgmdb.net/album/45180" title='The irregular at magic high school Vol.1 Special Disc'><span class="albumtitle" lang="en" style="display:inline">The irregular at magic high school Vol.1 Special Disc</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>魔法科高校の劣等生 第1巻 特典CD</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em>Mahouka Koukou no Rettousei Vol.1 Bonus CD</span></a> <span class="catalog album-bonus">ANZX-11302</span> <span class="smallfont label">Vocal</span></td>
+</tr>
+<tr rel="|r1">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">07.02</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/45195" title='The irregular at magic high school Original Soundtrack 1'><span class="albumtitle" lang="en" style="display:inline">The irregular at magic high school Original Soundtrack 1</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>魔法科高校の劣等生 オリジナルサウンドトラック 1</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em>Mahouka Koukou no Rettousei Original Soundtrack 1</span></a> <span class="catalog album-anime">SVWC-7998</span> <span class="smallfont label">Soundtrack</span></td>
+</tr>
+<tr rel="|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">06.25</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/52558" title='AS LIFE / ELISA'><span class="albumtitle" lang="en" style="display:inline">AS LIFE / ELISA</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>AS LIFE / ELISA</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>AS LIFE / ELISA</i></span></a> <span class="catalog album-anime">SECL-1527</span> <span class="smallfont label">Vocal</span></td>
+</tr>
+<tr rel="|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">06.25</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/52574" title='AS LIFE / ELISA [Limited Edition]'><span class="albumtitle" lang="en" style="display:inline">AS LIFE / ELISA [Limited Edition]</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>AS LIFE / ELISA [Limited Edition]</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>AS LIFE / ELISA [Limited Edition]</i></span></a> <span class="catalog album-anime">SECL-1525~6</span> <span class="smallfont label">Vocal</span></td>
+</tr>
+<tr rel="|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">06.25</td>
+   <td align="left" valign="top"> <a class="albumtitle album-bonus" href="http://vgmdb.net/album/45076" title='No Game No Life SPECIAL CD 01 CHARACTER SONG'><span class="albumtitle" lang="en" style="display:inline">No Game No Life SPECIAL CD 01 CHARACTER SONG</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>ノーゲーム・ノーライフ スペシャルCD 01 キャラクターソング</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>No Game No Life SPECIAL CD 01 CHARACTER SONG</i></span></a> <span class="catalog album-bonus">MFXN-0025EX</span> <span class="smallfont label">Vocal</span></td>
+</tr>
+<tr rel="|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">06.25</td>
+   <td align="left" valign="top"> <img class='inlineimg' src='http://media.vgmdb.net/icon/album-reprint.gif' width='15' height='15' alt='This album is a reprint' /> <a class="albumtitle album-anime" href="http://vgmdb.net/album/52576" title='AS LIFE / ELISA [Limited Edition]'><span class="albumtitle" lang="en" style="display:inline">AS LIFE / ELISA [Limited Edition]</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>AS LIFE / ELISA [Limited Edition]</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>AS LIFE / ELISA [Limited Edition]</i></span></a> <span class="catalog album-anime">SECL-1523~4</span> <span class="smallfont label">Vocal</span></td>
+</tr>
+<tr rel="|r2|r6|r7">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">05.21</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/44757" title='This game / Konomi Suzuki [Limited Edition]'><span class="albumtitle" lang="en" style="display:inline">This game / Konomi Suzuki [Limited Edition]</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>This game / 鈴木このみ</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>This game / Konomi Suzuki [Limited Edition]</i></span></a> <span class="catalog album-anime">ZMCZ-9306</span> <span class="smallfont label">Arrange, Vocal, OP/ED/Insert</span></td>
+</tr>
+<tr rel="|r6|r7">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">05.21</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/44756" title='This game / Konomi Suzuki'><span class="albumtitle" lang="en" style="display:inline">This game / Konomi Suzuki</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>This game / 鈴木このみ</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>This game / Konomi Suzuki</i></span></a> <span class="catalog album-anime">ZMCZ-9307</span> <span class="smallfont label">Vocal, OP/ED/Insert</span></td>
+</tr>
+<tr rel="|r6|r7">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">05.21</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/44759" title='Oración / Shiro (CV: Ai Kayano)'><span class="albumtitle" lang="en" style="display:inline">Oración / Shiro (CV: Ai Kayano)</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>オラシオン / 白(CV:茅野愛衣)</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Oración / Shiro (CV: Ai Kayano)</i></span></a> <span class="catalog album-anime">ZMCZ-9308</span> <span class="smallfont label">Vocal, OP/ED/Insert</span></td>
+</tr>
+<tr rel="|r6|r7">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">05.14</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/44559" title='e&#039;tuis / Mikako Komatsu'><span class="albumtitle" lang="en" style="display:inline">e'tuis / Mikako Komatsu</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>e'tuis / 小松未可子</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>e'tuis / Mikako Komatsu</i></span></a> <span class="catalog album-anime">KICS-3051</span> <span class="smallfont label">Vocal, OP/ED/Insert</span></td>
+</tr>
+<tr rel="|r6|r7">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">05.14</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/44560" title='e&#039;tuis / Mikako Komatsu [Limited Edition]'><span class="albumtitle" lang="en" style="display:inline">e'tuis / Mikako Komatsu [Limited Edition]</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>e'tuis / 小松未可子</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>e'tuis / Mikako Komatsu [Limited Edition]</i></span></a> <span class="catalog album-anime">KICS-93051</span> <span class="smallfont label">Vocal, OP/ED/Insert</span></td>
+</tr>
+<tr rel="|r6|r7">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">05.07</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/44403" title='Rising Hope / LiSA [Limited Edition]'><span class="albumtitle" lang="en" style="display:inline">Rising Hope / LiSA [Limited Edition]</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>Rising Hope / LiSA [Limited Edition]</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Rising Hope / LiSA [Limited Edition]</i></span></a> <span class="catalog album-anime">SVWC-70001~2</span> <span class="smallfont label">Vocal, OP/ED/Insert</span></td>
+</tr>
+<tr rel="|r6|r7">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">05.07</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/44404" title='Rising Hope / LiSA [Limited Edition]'><span class="albumtitle" lang="en" style="display:inline">Rising Hope / LiSA [Limited Edition]</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>Rising Hope / LiSA [Limited Edition]</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Rising Hope / LiSA [Limited Edition]</i></span></a> <span class="catalog album-anime">SVWC-70003~4</span> <span class="smallfont label">Vocal, OP/ED/Insert</span></td>
+</tr>
+<tr rel="|r6|r7">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">05.07</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/44405" title='Rising Hope / LiSA'><span class="albumtitle" lang="en" style="display:inline">Rising Hope / LiSA</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>Rising Hope / LiSA</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Rising Hope / LiSA</i></span></a> <span class="catalog album-anime">SVWC-70005</span> <span class="smallfont label">Vocal, OP/ED/Insert</span></td>
+</tr>
+<tr rel="|r6|r7">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">04.30</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/44432" title='Millenario / ELISA [Limited Edition]'><span class="albumtitle" lang="en" style="display:inline">Millenario / ELISA [Limited Edition]</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>ミレナリオ / ELISA</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Millenario / ELISA [Limited Edition]</i></span></a> <span class="catalog album-anime">SECL-1495~6</span> <span class="smallfont label">Vocal, OP/ED/Insert</span></td>
+</tr>
+<tr rel="|r6|r7">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">04.30</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/44433" title='Millenario / ELISA'><span class="albumtitle" lang="en" style="display:inline">Millenario / ELISA</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>ミレナリオ / ELISA</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Millenario / ELISA</i></span></a> <span class="catalog album-anime">SECL-1497</span> <span class="smallfont label">Vocal, OP/ED/Insert</span></td>
+</tr>
+<tr rel="|r6|r7">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">04.30</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/44434" title='Millenario / ELISA [Limited Edition]'><span class="albumtitle" lang="en" style="display:inline">Millenario / ELISA [Limited Edition]</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>ミレナリオ / ELISA</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Millenario / ELISA [Limited Edition]</i></span></a> <span class="catalog album-anime">SECL-1498~9</span> <span class="smallfont label">Vocal, OP/ED/Insert</span></td>
+</tr>
+
+</tbody>
+<tbody class="">
+<tr rel="year"><td align="left" style="padding-top: 10px" colspan="3"><h3 class="time">2013</h3></td></tr>
+<tr rel="|r1">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">12.18</td>
+   <td align="left" valign="top"> <a class="albumtitle album-game" href="http://vgmdb.net/album/41787" title='Devil May Cry Sound Box'><span class="albumtitle" lang="en" style="display:inline">Devil May Cry Sound Box</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>デビル メイ クライ サウンドBOX</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Devil May Cry Sound Box</i></span></a> <span class="catalog album-game">CPCA-10318~21</span> <span class="smallfont label">Soundtrack</span></td>
+</tr>
+<tr rel="|r4|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">12.04</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/46186" title='EXIT TRANCE PRESENTS SPEED ANIME TRANCE BEST 20'><span class="albumtitle" lang="en" style="display:inline">EXIT TRANCE PRESENTS SPEED ANIME TRANCE BEST 20</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>EXIT TRANCE PRESENTS SPEED アニメトランス BEST 20</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>EXIT TRANCE PRESENTS SPEED ANIME TRANCE BEST 20</i></span></a> <span class="catalog album-anime">QWCE-00315</span> <span class="smallfont label">Remix, Vocal</span></td>
+</tr>
+<tr rel="|r3">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">10.27</td>
+   <td align="left" valign="top"> <a class="albumtitle album-doujin" href="http://vgmdb.net/album/48025" title='OtaQuintet Woodwind Arrange CD Vol.3 OtaKku#'><span class="albumtitle" lang="en" style="display:inline">OtaQuintet Woodwind Arrange CD Vol.3 OtaKku#</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>おたクインテット木管アレンジCD Vol.3 おたっく＃</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>OtaQuintet Woodwind Arrange CD Vol.3 OtaKku#</i></span></a> <span class="catalog album-doujin">OTAQ-003</span> <span class="smallfont label">Fan Arrange</span></td>
+</tr>
+<tr rel="|r1">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">09.25</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/40314" title='Kamisama no Inai Nichiyoubi O.S.T Requiem'><span class="albumtitle" lang="en" style="display:inline">Kamisama no Inai Nichiyoubi O.S.T Requiem</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>神さまのいない日曜日 オリジナルサウンドトラック 鎮魂歌</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Kamisama no Inai Nichiyoubi O.S.T Requiem</i></span></a> <span class="catalog album-anime">KICA-3217</span> <span class="smallfont label">Soundtrack</span></td>
+</tr>
+<tr rel="|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">09.25</td>
+   <td align="left" valign="top"> <a class="albumtitle album-bonus" href="http://vgmdb.net/album/41783" title='Hohoemi no Ame / Ai Astin (CV: Aki Toyosaki)'><span class="albumtitle" lang="en" style="display:inline">Hohoemi no Ame / Ai Astin (CV: Aki Toyosaki)</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>微笑みの雨 / アイ・アスティン(CV 豊崎愛生)</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Hohoemi no Ame / Ai Astin (CV: Aki Toyosaki)</i></span></a> <span class="catalog album-bonus">SSX-257</span> <span class="smallfont label">Vocal</span></td>
+</tr>
+<tr rel="|r6|r7">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">08.07</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/39424" title='Birth / Eri Kitamura [Limited Edition]'><span class="albumtitle" lang="en" style="display:inline">Birth / Eri Kitamura [Limited Edition]</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>Birth / 喜多村英梨</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Birth / Eri Kitamura [Limited Edition]</i></span></a> <span class="catalog album-anime">KICM-91460</span> <span class="smallfont label">Vocal, OP/ED/Insert</span></td>
+</tr>
+<tr rel="|r6|r7">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">08.07</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/39423" title='Birth / Eri Kitamura'><span class="albumtitle" lang="en" style="display:inline">Birth / Eri Kitamura</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>Birth / 喜多村英梨</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Birth / Eri Kitamura</i></span></a> <span class="catalog album-anime">KICM-1460</span> <span class="smallfont label">Vocal, OP/ED/Insert</span></td>
+</tr>
+<tr rel="|r6|r7">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">07.24</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/39315" title='Owaranai Melody wo Utaidashimashita. / Mikako Komatsu [Limited Edition]'><span class="albumtitle" lang="en" style="display:inline">Owaranai Melody wo Utaidashimashita. / Mikako Komatsu [Limited Edition]</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>終わらないメロディーを歌いだしました。 / 小松未可子</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Owaranai Melody wo Utaidashimashita. / Mikako Komatsu [Limited Edition]</i></span></a> <span class="catalog album-anime">KICM-91464</span> <span class="smallfont label">Vocal, OP/ED/Insert</span></td>
+</tr>
+<tr rel="|r6|r7">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">07.24</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/39139" title='Owaranai Melody wo Utaidashimashita. / Mikako Komatsu'><span class="albumtitle" lang="en" style="display:inline">Owaranai Melody wo Utaidashimashita. / Mikako Komatsu</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>終わらないメロディーを歌いだしました。 / 小松未可子</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Owaranai Melody wo Utaidashimashita. / Mikako Komatsu</i></span></a> <span class="catalog album-anime">KICM-1465</span> <span class="smallfont label">Vocal, OP/ED/Insert</span></td>
+</tr>
+
+</tbody>
+<tbody class="">
+<tr rel="year"><td align="left" style="padding-top: 10px" colspan="3"><h3 class="time">2012</h3></td></tr>
+<tr rel="|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">11.28</td>
+   <td align="left" valign="top"> <a class="albumtitle album-game" href="http://vgmdb.net/album/35428" title='CHAOS LOGIC / Kanako Ito'><span class="albumtitle" lang="en" style="display:inline">CHAOS LOGIC / Kanako Ito</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>カオスロジック / いとうかなこ</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>CHAOS LOGIC / Kanako Ito</i></span></a> <span class="catalog album-game">FVCG-1219</span> <span class="smallfont label">Vocal</span></td>
+</tr>
+<tr rel="|r8|r9">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">11.07</td>
+   <td align="left" valign="top"> <a class="albumtitle album-bonus" href="http://vgmdb.net/album/37331" title='Oda Nobuna no Yabou Anime Special Drama CD Sengoku Konyoku Rotenburo no Sangeki Yu no Naka ni Kakusareta Himitsu Yokubou Uzumaku Onsen ni Chi no Hana ga Saita!'><span class="albumtitle" lang="en" style="display:inline">Oda Nobuna no Yabou Anime Special Drama CD Sengoku Konyoku Rotenburo no Sangeki Yu no Naka ni Kakusareta Himitsu Yokubou Uzumaku Onsen ni Chi no Hana ga Saita!</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>織田信奈の野望 アニメスペシャルドラマCD 戦国混浴露天風呂の惨劇 湯の中に隠された秘密 欲望渦巻く温泉に血の花が咲いた！</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Oda Nobuna no Yabou Anime Special Drama CD Sengoku Konyoku Rotenburo no Sangeki Yu no Naka ni Kakusareta Himitsu Yokubou Uzumaku Onsen ni Chi no Hana ga Saita!</i></span></a> <span class="catalog album-bonus">PCXG-50173-2</span> <span class="smallfont label">Drama, Talk</span></td>
+</tr>
+<tr rel="|r1">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">10.17</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/34538" title='Oda Nobuna no Yabou -Gekiban Shuu- ORIGINAL SOUNDTRACK'><span class="albumtitle" lang="en" style="display:inline">Oda Nobuna no Yabou -Gekiban Shuu- ORIGINAL SOUNDTRACK</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>TVアニメ織田信奈の野望 -劇伴集- ORIGINAL SOUNDTRACK</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Oda Nobuna no Yabou -Gekiban Shuu- ORIGINAL SOUNDTRACK</i></span></a> <span class="catalog album-anime">PCCG-01300</span> <span class="smallfont label">Soundtrack</span></td>
+</tr>
+<tr rel="|r8|r9">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">09.05</td>
+   <td align="left" valign="top"> <a class="albumtitle album-bonus" href="http://vgmdb.net/album/37312" title='Oda Nobuna no Yabou Anime Special Drama CD Gekitou, Suikawari'><span class="albumtitle" lang="en" style="display:inline">Oda Nobuna no Yabou Anime Special Drama CD Gekitou, Suikawari</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>織田信奈の野望 アニメスペシャルドラマCD 激闘、スイカ割り</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Oda Nobuna no Yabou Anime Special Drama CD Gekitou, Suikawari</i></span></a> <span class="catalog album-bonus">PCXG-50171-2</span> <span class="smallfont label">Drama, Talk</span></td>
+</tr>
+<tr rel="|r6|r7">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">07.18</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/33112" title='Hikari / Makino Mizuta'><span class="albumtitle" lang="en" style="display:inline">Hikari / Makino Mizuta</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>ヒカリ / みずたまきの</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Hikari / Makino Mizuta</i></span></a> <span class="catalog album-anime">PCCG-70140</span> <span class="smallfont label">Vocal, OP/ED/Insert</span></td>
+</tr>
+<tr rel="|r6|r7">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">07.18</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/33111" title='Link / Aimi'><span class="albumtitle" lang="en" style="display:inline">Link / Aimi</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>Link / 愛美</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Link / Aimi</i></span></a> <span class="catalog album-anime">PCCG-70139</span> <span class="smallfont label">Vocal, OP/ED/Insert</span></td>
+</tr>
+<tr rel="|r2|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">02.08</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/31127" title='Rasmus Faber presents Platina Jazz ~Anime Standards Vol.3~'><span class="albumtitle" lang="en" style="display:inline">Rasmus Faber presents Platina Jazz ~Anime Standards Vol.3~</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>Rasmus Faber presents Platina Jazz ~Anime Standards Vol.3~</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Rasmus Faber presents Platina Jazz ~Anime Standards Vol.3~</i></span></a> <span class="catalog album-anime">VICP-65036</span> <span class="smallfont label">Arrange, Vocal</span></td>
+</tr>
+
+</tbody>
+<tbody class="">
+<tr rel="year"><td align="left" style="padding-top: 10px" colspan="3"><h3 class="time">2011</h3></td></tr>
+<tr rel="|r2|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">12.21</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/29155" title='The World God Only Knows Character Cover Album'><span class="albumtitle" lang="en" style="display:inline">The World God Only Knows Character Cover Album</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>神のみぞ知るセカイ キャラクター・カバー・アルバム</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em>Kami Nomi zo Shiru Sekai Character Cover Album</span></a> <span class="catalog album-anime">GNCA-1286</span> <span class="smallfont label">Arrange, Vocal</span></td>
+</tr>
+<tr rel="|r2|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">12.21</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/29156" title='The World God Only Knows Character Cover Album [Limited Edition]'><span class="albumtitle" lang="en" style="display:inline">The World God Only Knows Character Cover Album [Limited Edition]</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>神のみぞ知るセカイ キャラクター・カバー・アルバム</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em>Kami Nomi zo Shiru Sekai Character Cover Album</span></a> <span class="catalog album-anime">GNCA-1285</span> <span class="smallfont label">Arrange, Vocal</span></td>
+</tr>
+<tr rel="|r6|r7">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">09.21</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/37805" title='Toki no Tsubasa / Seiko Niizuma'><span class="albumtitle" lang="en" style="display:inline">Toki no Tsubasa / Seiko Niizuma</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>時の翼 / 新妻聖子</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Toki no Tsubasa / Seiko Niizuma</i></span></a> <span class="catalog album-anime">PCCA-70310</span> <span class="smallfont label">Vocal, OP/ED/Insert</span></td>
+</tr>
+<tr rel="|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">08.24</td>
+   <td align="left" valign="top"> <a class="albumtitle album-game" href="http://vgmdb.net/album/26802" title='CHAOS;HEAD vocal collection'><span class="albumtitle" lang="en" style="display:inline">CHAOS;HEAD vocal collection</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>CHAOS;HEAD ボーカル collection</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>CHAOS;HEAD vocal collection</i></span></a> <span class="catalog album-game">FVCG-1172</span> <span class="smallfont label">Vocal</span></td>
+</tr>
+<tr rel="|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">04.27</td>
+   <td align="left" valign="top"> <a class="albumtitle album-game" href="http://vgmdb.net/album/24250" title='Live5pb.2010 @JCB Hall'><span class="albumtitle" lang="en" style="display:inline">Live5pb.2010 @JCB Hall</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>Live5pb.2010 @JCB Hall</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Live5pb.2010 @JCB Hall</i></span></a> <span class="catalog album-game">MHXL-5</span> <span class="smallfont label">Vocal</span></td>
+</tr>
+
+</tbody>
+<tbody class="">
+<tr rel="year"><td align="left" style="padding-top: 10px" colspan="3"><h3 class="time">2010</h3></td></tr>
+<tr rel="|r2">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">09.15</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/26554" title='Anime Euro Best ~Robot Edition~'><span class="albumtitle" lang="en" style="display:inline">Anime Euro Best ~Robot Edition~</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>アニメユーロベスト ～Robot Edition～</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Anime Euro Best ~Robot Edition~</i></span></a> <span class="catalog album-anime">MUCD-1234</span> <span class="smallfont label">Arrange</span></td>
+</tr>
+<tr rel="|r2">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">07.21</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/33943" title='Replay! ~Mikuni Shimokawa Seishun Anime Song Covers III~ '><span class="albumtitle" lang="en" style="display:inline">Replay! ~Mikuni Shimokawa Seishun Anime Song Covers III~ </span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>Replay！～下川みくに青春アニソンカバーIII～</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Replay! ~Mikuni Shimokawa Seishun Anime Song Covers III~ </i></span></a> <span class="catalog album-anime">PCCA-03209</span> <span class="smallfont label">Arrange</span></td>
+</tr>
+<tr rel="|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">02.10</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/37858" title='KIRAKIRA♡MAJOCCO♡CLUV'><span class="albumtitle" lang="en" style="display:inline">KIRAKIRA♡MAJOCCO♡CLUV</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>キラキラ 魔女ッ娘 Cluv</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em>キラキラ♡魔女ッ娘♡CLUV</span></a> <span class="catalog album-anime">XNAE-10023~4/B</span> <span class="smallfont label">Vocal</span></td>
+</tr>
+
+</tbody>
+<tbody class="">
+<tr rel="year"><td align="left" style="padding-top: 10px" colspan="3"><h3 class="time">2009</h3></td></tr>
+<tr rel="|r1|r6|r8|r9">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">08.05</td>
+   <td align="left" valign="top"> <a class="albumtitle album-game" href="http://vgmdb.net/album/13649" title='CHAOS;HEAD Audio Series Complete BOX'><span class="albumtitle" lang="en" style="display:inline">CHAOS;HEAD Audio Series Complete BOX</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>CHAOS;HEAD オーディオシリーズ・コンプリートBOX</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>CHAOS;HEAD Audio Series Complete BOX</i></span></a> <span class="catalog album-game">FVCG-1093</span> <span class="smallfont label">Soundtrack, Vocal, Drama, Talk</span></td>
+</tr>
+<tr rel="|r1|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">04.22</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/13133" title='sound track of CHAOS;HEAD the animation'><span class="albumtitle" lang="en" style="display:inline">sound track of CHAOS;HEAD the animation</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>sound track of CHAOS;HEAD the animation</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>sound track of CHAOS;HEAD the animation</i></span></a> <span class="catalog album-anime">VPCG-84890</span> <span class="smallfont label">Soundtrack, Vocal</span></td>
+</tr>
+<tr rel="|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">04.22</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/47938" title='Celebration / Seira Kagami'><span class="albumtitle" lang="en" style="display:inline">Celebration / Seira Kagami</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>Celebration / 加賀美セイラ</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Celebration / Seira Kagami</i></span></a> <span class="catalog album-anime">VPCC-81627</span> <span class="smallfont label">Vocal</span></td>
+</tr>
+<tr rel="|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">04.22</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/47939" title='Celebration / Seira Kagami [Limited Edition]'><span class="albumtitle" lang="en" style="display:inline">Celebration / Seira Kagami [Limited Edition]</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>Celebration / 加賀美セイラ</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Celebration / Seira Kagami [Limited Edition]</i></span></a> <span class="catalog album-anime">VPCC-80637</span> <span class="smallfont label">Vocal</span></td>
+</tr>
+<tr rel="|r6|r4">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">03.19</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/29350" title='EXIT TRANCE PRESENTS SPEED ANIME TRANCE BEST 6'><span class="albumtitle" lang="en" style="display:inline">EXIT TRANCE PRESENTS SPEED ANIME TRANCE BEST 6</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>EXIT TRANCE PRESENTS SPEED アニメトランス BEST 6</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>EXIT TRANCE PRESENTS SPEED ANIME TRANCE BEST 6</i></span></a> <span class="catalog album-anime">QWCE-00085</span> <span class="smallfont label">Vocal, Remix</span></td>
+</tr>
+<tr rel="|r7">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">01.21</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/30895" title='ideAnimation / Seira Kagami'><span class="albumtitle" lang="en" style="display:inline">ideAnimation / Seira Kagami</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>加賀美セイラ　ideAnimation</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>ideAnimation / Seira Kagami</i></span></a> <span class="catalog album-anime">VPCC-80633</span> <span class="smallfont label">OP/ED/Insert</span></td>
+</tr>
+
+</tbody>
+<tbody class="">
+<tr rel="year"><td align="left" style="padding-top: 10px" colspan="3"><h3 class="time">2008</h3></td></tr>
+<tr rel="|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">11.26</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/13098" title='CHAOS;HEAD ~Glajioul-ki Mokushiroku Shihen yori~ "Haritsuke no Misa" / PHANTASM'><span class="albumtitle" lang="en" style="display:inline">CHAOS;HEAD ~Glajioul-ki Mokushiroku Shihen yori~ &quot;Haritsuke no Misa&quot; / PHANTASM</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>カオスヘッド ～グラジオール記黙示録詩編より～「磔のミサ」 / ファンタズム</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>CHAOS;HEAD ~Glajioul-ki Mokushiroku Shihen yori~ &quot;Haritsuke no Misa&quot; / PHANTASM</i></span></a> <span class="catalog album-anime">FVCG-1060</span> <span class="smallfont label">Vocal</span></td>
+</tr>
+<tr rel="|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">11.21</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/47937" title='First Sight / Seira Kagami'><span class="albumtitle" lang="en" style="display:inline">First Sight / Seira Kagami</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>First Sight / 加賀美セイラ</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>First Sight / Seira Kagami</i></span></a> <span class="catalog album-anime">VPCC-82260</span> <span class="smallfont label">Vocal</span></td>
+</tr>
+<tr rel="|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">11.21</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/47936" title='First Sight / Seira Kagami [Limited Edition]'><span class="albumtitle" lang="en" style="display:inline">First Sight / Seira Kagami [Limited Edition]</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>First Sight / 加賀美セイラ</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>First Sight / Seira Kagami [Limited Edition]</i></span></a> <span class="catalog album-anime">VPCC-82623</span> <span class="smallfont label">Vocal</span></td>
+</tr>
+<tr rel="|r7">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">10.29</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/10878" title='CHAOS;HEAD Opening Theme "F.D.D."'><span class="albumtitle" lang="en" style="display:inline">CHAOS;HEAD Opening Theme &quot;F.D.D.&quot;</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>TVアニメ「カオスヘッド」オープニングテーマ 「F.D.D.」</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>CHAOS;HEAD Opening Theme &quot;F.D.D.&quot;</i></span></a> <span class="catalog album-anime">FVCG-1062</span> <span class="smallfont label">OP/ED/Insert</span></td>
+</tr>
+<tr rel="|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">10.29</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/10879" title='CHAOS;HEAD Opening Theme "F.D.D." [Limited Edition]'><span class="albumtitle" lang="en" style="display:inline">CHAOS;HEAD Opening Theme &quot;F.D.D.&quot; [Limited Edition]</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>TVアニメ「カオスヘッド」オープニングテーマ 「F.D.D.」 限定盤</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>CHAOS;HEAD Opening Theme &quot;F.D.D.&quot; [Limited Edition]</i></span></a> <span class="catalog album-anime">FVCG-1059</span> <span class="smallfont label">Vocal</span></td>
+</tr>
+<tr rel="|r8">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">02.27</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/5669" title='Devil May Cry Drama CD Vol.2'><span class="albumtitle" lang="en" style="display:inline">Devil May Cry Drama CD Vol.2</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>ドラマCD デビルメイクライVol.2</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Devil May Cry Drama CD Vol.2</i></span></a> <span class="catalog album-anime">FCCM-0215</span> <span class="smallfont label">Drama</span></td>
+</tr>
+<tr rel="|r1">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">??.??</td>
+   <td align="left" valign="top"> <a class="albumtitle album-bonus" href="http://vgmdb.net/album/9193" title='SQUARE ENIX MUSiC COMPILATION Vol.2'><span class="albumtitle" lang="en" style="display:inline">SQUARE ENIX MUSiC COMPILATION Vol.2</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>SQUARE ENIX MUSiC COMPILATION Vol.2</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>SQUARE ENIX MUSiC COMPILATION Vol.2</i></span></a> <span class="catalog album-bonus">SQEX-200801</span> <span class="smallfont label">Soundtrack</span></td>
+</tr>
+
+</tbody>
+<tbody class="">
+<tr rel="year"><td align="left" style="padding-top: 10px" colspan="3"><h3 class="time">2007</h3></td></tr>
+<tr rel="|r8">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">12.21</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/5589" title='Devil May Cry Drama CD Vol.1'><span class="albumtitle" lang="en" style="display:inline">Devil May Cry Drama CD Vol.1</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>ドラマCD デビルメイクライVol.1</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Devil May Cry Drama CD Vol.1</i></span></a> <span class="catalog album-anime">FCCM-0214</span> <span class="smallfont label">Drama</span></td>
+</tr>
+<tr rel="|r1|r2|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">12.19</td>
+   <td align="left" valign="top"> <a class="albumtitle album-game" href="http://vgmdb.net/album/4062" title='Before Crisis -Final Fantasy VII- & Last Order -Final Fantasy VII- Original Soundtrack'><span class="albumtitle" lang="en" style="display:inline">Before Crisis -Final Fantasy VII- &amp; Last Order -Final Fantasy VII- Original Soundtrack</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>BEFORE CRISIS -FINAL FANTASY VII- &amp; LAST ORDER -FINAL FANTASY VII- オリジナル・サウンドトラック</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Before Crisis -Final Fantasy VII- &amp; Last Order -Final Fantasy VII- Original Soundtrack</i></span></a> <span class="catalog album-game">SQEX-10087</span> <span class="smallfont label">Soundtrack, Arrange, Vocal</span></td>
+</tr>
+<tr rel="|r6|r4">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">09.19</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/29340" title='EXIT TRANCE PRESENTS CODE SPEED ANIME TRANCE BEST'><span class="albumtitle" lang="en" style="display:inline">EXIT TRANCE PRESENTS CODE SPEED ANIME TRANCE BEST</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>EXIT TRANCE PRESENTS CODE SPEED アニメトランス BEST</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>EXIT TRANCE PRESENTS CODE SPEED ANIME TRANCE BEST</i></span></a> <span class="catalog album-anime">QWCE-00025</span> <span class="smallfont label">Vocal, Remix</span></td>
+</tr>
+<tr rel="|r1">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">08.18</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/7060" title='Devil May Cry O.S.T.'><span class="albumtitle" lang="en" style="display:inline">Devil May Cry O.S.T.</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>Devil May Cry O.S.T.</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Devil May Cry O.S.T.</i></span></a> <span class="catalog album-anime">VICL-62451</span> <span class="smallfont label">Soundtrack</span></td>
+</tr>
+
+</tbody>
+<tbody class="">
+<tr rel="year"><td align="left" style="padding-top: 10px" colspan="3"><h3 class="time">2005</h3></td></tr>
+<tr rel="|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">03.30</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/46809" title='CLAMPAZAR 15th Anniversary CD & DVD BOX'><span class="albumtitle" lang="en" style="display:inline">CLAMPAZAR 15th Anniversary CD &amp; DVD BOX</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>CLAMP15周年記念CD&amp;DVD BOX CLAMPAZAR ~クランパザール~</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>CLAMPAZAR 15th Anniversary CD &amp; DVD BOX</i></span></a> <span class="catalog album-anime">VIZL-131</span> <span class="smallfont label">Vocal</span></td>
+</tr>
+
+</tbody>
+<tbody class="">
+<tr rel="year"><td align="left" style="padding-top: 10px" colspan="3"><h3 class="time">2002</h3></td></tr>
+<tr rel="|r1">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">12.21</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/22642" title='Captain Herlock Outside Legend ~The endless odyssey~'><span class="albumtitle" lang="en" style="display:inline">Captain Herlock Outside Legend ~The endless odyssey~</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>キャプテンハーロック アウトサイド・レジェンド ~ジ・エンドレス・オデッセィ~</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Captain Herlock Outside Legend ~The endless odyssey~</i></span></a> <span class="catalog album-anime">VPCG-84766</span> <span class="smallfont label">Soundtrack</span></td>
+</tr>
+<tr rel="|r0">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">12.11</td>
+   <td align="left" valign="top"> <a class="albumtitle album-game" href="http://vgmdb.net/album/7824" title='Sakura Wars Complete Song Box'><span class="albumtitle" lang="en" style="display:inline">Sakura Wars Complete Song Box</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>サクラ大戦 全曲集 COMPLETE SONG BOX</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em>Sakura Taisen Zenkyokushuu COMPLETE SONG BOX</span></a> <span class="catalog album-game">AVCA-14491~8</span> <span class="smallfont label">Unclassified</span></td>
+</tr>
+<tr rel="|r1|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">02.21</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/28524" title='Aquarian Age: Sign for Evolution ORIGINAL SOUNDTRACK'><span class="albumtitle" lang="en" style="display:inline">Aquarian Age: Sign for Evolution ORIGINAL SOUNDTRACK</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>Aquarian Age: Sign for Evolution ORIGINAL SOUNDTRACK</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Aquarian Age: Sign for Evolution ORIGINAL SOUNDTRACK</i></span></a> <span class="catalog album-anime">VICL-60840</span> <span class="smallfont label">Soundtrack, Vocal</span></td>
+</tr>
+<tr rel="|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">02.21</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/34145" title='Everlasting Love / SeYUN'><span class="albumtitle" lang="en" style="display:inline">Everlasting Love / SeYUN</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>Everlasting Love / SeYUN</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Everlasting Love / SeYUN</i></span></a> <span class="catalog album-anime">VICL-35348</span> <span class="smallfont label">Vocal</span></td>
+</tr>
+<tr rel="|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">02.21</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/34146" title='PRISM / Miki Ashihara'><span class="albumtitle" lang="en" style="display:inline">PRISM / Miki Ashihara</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>PRISM / Miki Ashihara</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>PRISM / Miki Ashihara</i></span></a> <span class="catalog album-anime">VICL-35349</span> <span class="smallfont label">Vocal</span></td>
+</tr>
+
+</tbody>
+<tbody class="">
+<tr rel="year"><td align="left" style="padding-top: 10px" colspan="3"><h3 class="time">2001</h3></td></tr>
+<tr rel="|r6|r7">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">12.19</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/27138" title='Cardcaptor Sakura Theme Song Collection'><span class="albumtitle" lang="en" style="display:inline">Cardcaptor Sakura Theme Song Collection</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>カードキャプターさくら 主題歌コレクション</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Cardcaptor Sakura Theme Song Collection</i></span></a> <span class="catalog album-anime">VICL-60820</span> <span class="smallfont label">Vocal, OP/ED/Insert</span></td>
+</tr>
+<tr rel="|r1|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">08.01</td>
+   <td align="left" valign="top"> <img class='inlineimg' src='http://media.vgmdb.net/icon/album-reprint.gif' width='15' height='15' alt='This album is a reprint' /> <a class="albumtitle album-anime" href="http://vgmdb.net/album/42140" title='Vampire Hunter D'><span class="albumtitle" lang="en" style="display:inline">Vampire Hunter D</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>バンパイアハンターD ― オリジナル・サウンドトラック</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Vampire Hunter D</i></span></a> <span class="catalog album-anime">AVCA-14214</span> <span class="smallfont label">Soundtrack, Vocal</span></td>
+</tr>
+<tr rel="|r1|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">05.03</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/23561" title='Vampire Hunter D [Limited Edition]'><span class="albumtitle" lang="en" style="display:inline">Vampire Hunter D [Limited Edition]</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>バンパイアハンターD ― オリジナル・サウンドトラック</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Vampire Hunter D [Limited Edition]</i></span></a> <span class="catalog album-anime">AVCA-14161</span> <span class="smallfont label">Soundtrack, Vocal</span></td>
+</tr>
+<tr rel="|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">04.25</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/23566" title='Far Away / Do As Infinity'><span class="albumtitle" lang="en" style="display:inline">Far Away / Do As Infinity</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>遠くまで / Do As Infinity</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em>Tooku Made / Do As Infinity</span></a> <span class="catalog album-anime">AVCD-30241</span> <span class="smallfont label">Vocal</span></td>
+</tr>
+<tr rel="|r6|r7">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">02.21</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/27137" title='Cardcaptor Sakura Complete Vocal Collection'><span class="albumtitle" lang="en" style="display:inline">Cardcaptor Sakura Complete Vocal Collection</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>カードキャプターさくら コンプリート・ボーカル・コレクション</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Cardcaptor Sakura Complete Vocal Collection</i></span></a> <span class="catalog album-anime">VICL-60681~4</span> <span class="smallfont label">Vocal, OP/ED/Insert</span></td>
+</tr>
+
+</tbody>
+<tbody class="">
+<tr rel="year"><td align="left" style="padding-top: 10px" colspan="3"><h3 class="time">2000</h3></td></tr>
+<tr rel="|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">10.12</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/22066" title='Sakura Wars TV Series Song Album'><span class="albumtitle" lang="en" style="display:inline">Sakura Wars TV Series Song Album</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>サクラ大戦 TVシリーズ 歌のアルバム</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em>Sakura Taisen TV Series Uta no Album</span></a> <span class="catalog album-anime">AVCA-14060</span> <span class="smallfont label">Vocal</span></td>
+</tr>
+<tr rel="|r1">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">09.27</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/18905" title='Sakura Wars TV Series BGM Collection Steam Gramophone'><span class="albumtitle" lang="en" style="display:inline">Sakura Wars TV Series BGM Collection Steam Gramophone</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>サクラ大戦 TVシリーズ BGM集 蒸気蓄音館</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em>Sakura Taisen TV Series BGM Collection Jouki Chikuonkan</span></a> <span class="catalog album-anime">AVCA-14057</span> <span class="smallfont label">Soundtrack</span></td>
+</tr>
+<tr rel="|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">09.13</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/22071" title='Akai Katyusha / Center Spot'><span class="albumtitle" lang="en" style="display:inline">Akai Katyusha / Center Spot</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>赤いカチューシャ / センタースポット</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Akai Katyusha / Center Spot</i></span></a> <span class="catalog album-anime">AVCA-14056</span> <span class="smallfont label">Vocal</span></td>
+</tr>
+<tr rel="|r1|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">08.02</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/38554" title='Cardcaptor Sakura Movie: The Sealed Card Original Soundtrack'><span class="albumtitle" lang="en" style="display:inline">Cardcaptor Sakura Movie: The Sealed Card Original Soundtrack</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>劇場版カードキャプターさくら 封印されたカード オリジナル・サウンドトラック</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Cardcaptor Sakura Movie: The Sealed Card Original Soundtrack</i></span></a> <span class="catalog album-anime">VICL-60591</span> <span class="smallfont label">Soundtrack, Vocal</span></td>
+</tr>
+<tr rel="|r6|r7">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">07.12</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/36654" title='Ashita e no Melody / CHAKA'><span class="albumtitle" lang="en" style="display:inline">Ashita e no Melody / CHAKA</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>明日へのメロディー / CHAKA</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Ashita e no Melody / CHAKA</i></span></a> <span class="catalog album-anime">VIDL-30498</span> <span class="smallfont label">Vocal, OP/ED/Insert</span></td>
+</tr>
+<tr rel="|r1|r6|r7">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">07.12</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/36655" title='Okashi no Uta / Aya Hisakawa'><span class="albumtitle" lang="en" style="display:inline">Okashi no Uta / Aya Hisakawa</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>おかしのうた / 久川 綾</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Okashi no Uta / Aya Hisakawa</i></span></a> <span class="catalog album-anime">VICL-35153</span> <span class="smallfont label">Soundtrack, Vocal, OP/ED/Insert</span></td>
+</tr>
+<tr rel="|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">07.05</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/22073" title='Gekitei Ondo / Mayumi Tanaka'><span class="albumtitle" lang="en" style="display:inline">Gekitei Ondo / Mayumi Tanaka</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>ゲキテイ音頭 / 田中真弓</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Gekitei Ondo / Mayumi Tanaka</i></span></a> <span class="catalog album-anime">AVDA-14044</span> <span class="smallfont label">Vocal</span></td>
+</tr>
+<tr rel="|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">06.21</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/22069" title='Tsubasa / Cinderella '><span class="albumtitle" lang="en" style="display:inline">Tsubasa / Cinderella </span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>つばさ / シンデレラ</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Tsubasa / Cinderella </i></span></a> <span class="catalog album-anime">AVCA-14042</span> <span class="smallfont label">Vocal</span></td>
+</tr>
+<tr rel="|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">04.19</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/11077" title='Gekitei (Geki! Teikoku Kagekidan) / Yumemite Iyou'><span class="albumtitle" lang="en" style="display:inline">Gekitei (Geki! Teikoku Kagekidan) / Yumemite Iyou</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>ゲキテイ (檄! 帝国華撃団) / 夢見ていよう</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Gekitei (Geki! Teikoku Kagekidan) / Yumemite Iyou</i></span></a> <span class="catalog album-anime">AVCA-14025</span> <span class="smallfont label">Vocal</span></td>
+</tr>
+<tr rel="|r1|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">03.23</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/27136" title='Cardcaptor Sakura Original Soundtrack 4'><span class="albumtitle" lang="en" style="display:inline">Cardcaptor Sakura Original Soundtrack 4</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>カードキャプターさくら オリジナル・サウンドトラック4</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Cardcaptor Sakura Original Soundtrack 4</i></span></a> <span class="catalog album-anime">VICL-60544</span> <span class="smallfont label">Soundtrack, Vocal</span></td>
+</tr>
+
+</tbody>
+<tbody class="">
+<tr rel="year"><td align="left" style="padding-top: 10px" colspan="3"><h3 class="time">1999</h3></td></tr>
+<tr rel="|r8">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">12.18</td>
+   <td align="left" valign="top"> <a class="albumtitle album-bonus" href="http://vgmdb.net/album/54283" title='Sakura no Oshaberi Talk CD'><span class="albumtitle" lang="en" style="display:inline">Sakura no Oshaberi Talk CD</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>さくらのおしゃべりトークCD</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Sakura no Oshaberi Talk CD</i></span></a> <span class="catalog album-bonus">CCS-13</span> <span class="smallfont label">Drama</span></td>
+</tr>
+<tr rel="|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">12.01</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/54620" title='Cardcaptor Sakura Tomoeda Shougakkou Chorus-bu Christmas Concert'><span class="albumtitle" lang="en" style="display:inline">Cardcaptor Sakura Tomoeda Shougakkou Chorus-bu Christmas Concert</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>カードキャプターさくら 友枝小学校コーラス部 クリスマス・コンサート</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Cardcaptor Sakura Tomoeda Shougakkou Chorus-bu Christmas Concert</i></span></a> <span class="catalog album-anime">VICL-60494</span> <span class="smallfont label">Vocal</span></td>
+</tr>
+<tr rel="|r6|r7">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">11.20</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/24265" title='FRUITS CANDY / Megumi Kojima'><span class="albumtitle" lang="en" style="display:inline">FRUITS CANDY / Megumi Kojima</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>FRUITS CANDY / こじまめぐみ</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>FRUITS CANDY / Megumi Kojima</i></span></a> <span class="catalog album-anime">VIDL-30454</span> <span class="smallfont label">Vocal, OP/ED/Insert</span></td>
+</tr>
+<tr rel="|r6|r7">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">10.21</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/28549" title='Platinum / Maaya Sakamoto'><span class="albumtitle" lang="en" style="display:inline">Platinum / Maaya Sakamoto</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>プラチナ / 坂本真綾</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Platinum / Maaya Sakamoto</i></span></a> <span class="catalog album-anime">VIDL-30450</span> <span class="smallfont label">Vocal, OP/ED/Insert</span></td>
+</tr>
+<tr rel="|r1|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">08.25</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/38555" title='Cardcaptor Sakura Movie Original Soundtrack'><span class="albumtitle" lang="en" style="display:inline">Cardcaptor Sakura Movie Original Soundtrack</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>劇場版カードキャプターさくら オリジナル・サウンドトラック</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Cardcaptor Sakura Movie Original Soundtrack</i></span></a> <span class="catalog album-anime">VICL-60446</span> <span class="smallfont label">Soundtrack, Vocal</span></td>
+</tr>
+<tr rel="|r1|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">06.23</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/27135" title='Cardcaptor Sakura Original Soundtrack 3'><span class="albumtitle" lang="en" style="display:inline">Cardcaptor Sakura Original Soundtrack 3</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>カードキャプターさくら オリジナルサウンドトラック3</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Cardcaptor Sakura Original Soundtrack 3</i></span></a> <span class="catalog album-anime">VICL-60385</span> <span class="smallfont label">Soundtrack, Vocal</span></td>
+</tr>
+<tr rel="|r6|r7">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">05.21</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/24263" title='Honey / chihiro'><span class="albumtitle" lang="en" style="display:inline">Honey / chihiro</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>Honey / chihiro</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Honey / chihiro</i></span></a> <span class="catalog album-anime">VIDL-30423</span> <span class="smallfont label">Vocal, OP/ED/Insert</span></td>
+</tr>
+<tr rel="|r6|r7">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">04.21</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/36653" title='Tobira wo Akete / ANZA'><span class="albumtitle" lang="en" style="display:inline">Tobira wo Akete / ANZA</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>扉をあけて / ANZA</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Tobira wo Akete / ANZA</i></span></a> <span class="catalog album-anime">VIDL-30422</span> <span class="smallfont label">Vocal, OP/ED/Insert</span></td>
+</tr>
+<tr rel="|r6|r8">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">02.10</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/54541" title='cardcaptor sakura original drama album 2: sweet valentine stories'><span class="albumtitle" lang="en" style="display:inline">cardcaptor sakura original drama album 2: sweet valentine stories</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>カードキャプターさくら オリジナルドラマアルバム2 スィートバレンタインストーリーズ</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>cardcaptor sakura original drama album 2: sweet valentine stories</i></span></a> <span class="catalog album-anime">VICL-60344</span> <span class="smallfont label">Vocal, Drama</span></td>
+</tr>
+<tr rel="|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">01.21</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/54654" title='CARDCAPTOR SAKURA CHARACTER SONGBOOK'><span class="albumtitle" lang="en" style="display:inline">CARDCAPTOR SAKURA CHARACTER SONGBOOK</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>カードキャプターさくら キャラクターソングブック</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>CARDCAPTOR SAKURA CHARACTER SONGBOOK</i></span></a> <span class="catalog album-anime">VICL-60318</span> <span class="smallfont label">Vocal</span></td>
+</tr>
+
+</tbody>
+<tbody class="">
+<tr rel="year"><td align="left" style="padding-top: 10px" colspan="3"><h3 class="time">1998</h3></td></tr>
+<tr rel="|r3">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">12.30</td>
+   <td align="left" valign="top"> <a class="albumtitle album-doujin" href="http://vgmdb.net/album/16669" title='Release the Seal ~Cardcaptor Sakura Image Album~'><span class="albumtitle" lang="en" style="display:inline">Release the Seal ~Cardcaptor Sakura Image Album~</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>封印解除 ～カードキャプターさくら イメージアルバム～</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em>Fuuin Kaijo ~Cardcaptor Sakura Image Album~</span></a> <span class="catalog album-doujin">STBL-0004</span> <span class="smallfont label">Fan Arrange</span></td>
+</tr>
+<tr rel="|r1|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">12.19</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/27134" title='Cardcaptor Sakura Original Soundtrack 2'><span class="albumtitle" lang="en" style="display:inline">Cardcaptor Sakura Original Soundtrack 2</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>カードキャプターさくら オリジナルサウンドトラック2</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Cardcaptor Sakura Original Soundtrack 2</i></span></a> <span class="catalog album-anime">VICL-60342</span> <span class="smallfont label">Soundtrack, Vocal</span></td>
+</tr>
+<tr rel="|r6|r7">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">09.23</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/24258" title='Groovy! / Kohmi Hirose'><span class="albumtitle" lang="en" style="display:inline">Groovy! / Kohmi Hirose</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>Groovy! / 広瀬香美</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Groovy! / Kohmi Hirose</i></span></a> <span class="catalog album-anime">VIDL-30249</span> <span class="smallfont label">Vocal, OP/ED/Insert</span></td>
+</tr>
+<tr rel="|r6|r7">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">08.11</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/24268" title='Tooi kono Machi de / Naomi Kaitani'><span class="albumtitle" lang="en" style="display:inline">Tooi kono Machi de / Naomi Kaitani</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>遠いこの街で / 皆谷尚美</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Tooi kono Machi de / Naomi Kaitani</i></span></a> <span class="catalog album-anime">VIDL-30441</span> <span class="smallfont label">Vocal, OP/ED/Insert</span></td>
+</tr>
+<tr rel="|r1|r6">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">07.23</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/27133" title='Cardcaptor Sakura Original Soundtrack'><span class="albumtitle" lang="en" style="display:inline">Cardcaptor Sakura Original Soundtrack</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>カードキャプターさくら オリジナルサウンドトラック</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Cardcaptor Sakura Original Soundtrack</i></span></a> <span class="catalog album-anime">VICL-60263</span> <span class="smallfont label">Soundtrack, Vocal</span></td>
+</tr>
+<tr rel="|r6|r8">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">07.23</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/54502" title='Cardcaptor Sakura ORIGINAL DRAMA ALBUM 1: Sakura to Okaasan no Organ'><span class="albumtitle" lang="en" style="display:inline">Cardcaptor Sakura ORIGINAL DRAMA ALBUM 1: Sakura to Okaasan no Organ</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>カードキャプターさくら オリジナルドラマアルバム さくらとお母さんのオルガン</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Cardcaptor Sakura ORIGINAL DRAMA ALBUM 1: Sakura to Okaasan no Organ</i></span></a> <span class="catalog album-anime">VICL-60262</span> <span class="smallfont label">Vocal, Drama</span></td>
+</tr>
+<tr rel="|r6|r8">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">06.24</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/54374" title='Cardcaptor Sakura Character Single SYAORAN'><span class="albumtitle" lang="en" style="display:inline">Cardcaptor Sakura Character Single SYAORAN</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>カードキャプターさくら Character Single SYAORAN</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Cardcaptor Sakura Character Single SYAORAN</i></span></a> <span class="catalog album-anime">VIDL-30229</span> <span class="smallfont label">Vocal, Drama</span></td>
+</tr>
+<tr rel="|r6|r8">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">06.24</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/54375" title='Cardcaptor Sakura Character Single TOMOYO'><span class="albumtitle" lang="en" style="display:inline">Cardcaptor Sakura Character Single TOMOYO</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>カードキャプターさくら Character Single TOMOYO</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Cardcaptor Sakura Character Single TOMOYO</i></span></a> <span class="catalog album-anime">VIDL-30227</span> <span class="smallfont label">Vocal, Drama</span></td>
+</tr>
+<tr rel="|r6|r8">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">06.24</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/54378" title='Cardcaptor Sakura Character Single YUKITO'><span class="albumtitle" lang="en" style="display:inline">Cardcaptor Sakura Character Single YUKITO</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>カードキャプターさくら Character Single YUKITO</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Cardcaptor Sakura Character Single YUKITO</i></span></a> <span class="catalog album-anime">VIDL-30228</span> <span class="smallfont label">Vocal, Drama</span></td>
+</tr>
+<tr rel="|r6|r8">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">06.24</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/54400" title='Cardcaptor Sakura CHARACTER SINGLE SPECIAL SET Vol.2'><span class="albumtitle" lang="en" style="display:inline">Cardcaptor Sakura CHARACTER SINGLE SPECIAL SET Vol.2</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>カードキャプターさくら CHARACTER SINGLE SPECIAL SET Vol.2</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Cardcaptor Sakura CHARACTER SINGLE SPECIAL SET Vol.2</i></span></a> <span class="catalog album-anime">VIZL-32</span> <span class="smallfont label">Vocal, Drama</span></td>
+</tr>
+<tr rel="|r6|r8">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">06.03</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/54351" title='Cardcaptor Sakura Character Single KERO'><span class="albumtitle" lang="en" style="display:inline">Cardcaptor Sakura Character Single KERO</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>カードキャプターさくら Character Single KERO</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Cardcaptor Sakura Character Single KERO</i></span></a> <span class="catalog album-anime">VIDL-30226</span> <span class="smallfont label">Vocal, Drama</span></td>
+</tr>
+<tr rel="|r6|r8">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">06.03</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/54372" title='Cardcaptor Sakura Character Single SAKURA'><span class="albumtitle" lang="en" style="display:inline">Cardcaptor Sakura Character Single SAKURA</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>カードキャプターさくら Character Single SAKURA</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Cardcaptor Sakura Character Single SAKURA</i></span></a> <span class="catalog album-anime">VIDL-30224</span> <span class="smallfont label">Vocal, Drama</span></td>
+</tr>
+<tr rel="|r6|r8">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">06.03</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/54376" title='Cardcaptor Sakura Character Single TOUYA'><span class="albumtitle" lang="en" style="display:inline">Cardcaptor Sakura Character Single TOUYA</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>カードキャプターさくら Character Single TOUYA</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Cardcaptor Sakura Character Single TOUYA</i></span></a> <span class="catalog album-anime">VIDL-30225</span> <span class="smallfont label">Vocal, Drama</span></td>
+</tr>
+<tr rel="|r6|r8">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">06.03</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/54398" title='Cardcaptor Sakura CHARACTER SINGLE SPECIAL SET Vol.1'><span class="albumtitle" lang="en" style="display:inline">Cardcaptor Sakura CHARACTER SINGLE SPECIAL SET Vol.1</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>カードキャプターさくら CHARACTER SINGLE SPECIAL SET Vol.1</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Cardcaptor Sakura CHARACTER SINGLE SPECIAL SET Vol.1</i></span></a> <span class="catalog album-anime">VIZL-31</span> <span class="smallfont label">Vocal, Drama</span></td>
+</tr>
+<tr rel="|r6|r7">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">04.22</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/24270" title='Catch You Catch Me / Gumi'><span class="albumtitle" lang="en" style="display:inline">Catch You Catch Me / Gumi</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>Catch You Catch Me / グミ</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Catch You Catch Me / Gumi</i></span></a> <span class="catalog album-anime">VIDL-30200</span> <span class="smallfont label">Vocal, OP/ED/Insert</span></td>
+</tr>
+
+</tbody>
+<tbody class="">
+<tr rel="year"><td align="left" style="padding-top: 10px" colspan="3"><h3 class="time">1994</h3></td></tr>
+<tr rel="|r1">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">07.21</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/4600" title='Final Fantasy "The Dragon Chapter" "The Star Chapter" Soundtrack'><span class="albumtitle" lang="en" style="display:inline">Final Fantasy &quot;The Dragon Chapter&quot; &quot;The Star Chapter&quot; Soundtrack</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>ファイナルファンタジー「竜の章」「星の章」 サウンドトラック</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Final Fantasy &quot;The Dragon Chapter&quot; &quot;The Star Chapter&quot; Soundtrack</i></span></a> <span class="catalog album-anime">COCC-11873</span> <span class="smallfont label">Soundtrack</span></td>
+</tr>
+<tr rel="|r1">
+   <td align="left" valign="top" style="width: 10%" style="white-space: nowrap" class="label">05.21</td>
+   <td align="left" valign="top"> <a class="albumtitle album-anime" href="http://vgmdb.net/album/1879" title='Final Fantasy "The Wind Chapter" "The Fire Chapter" Soundtrack'><span class="albumtitle" lang="en" style="display:inline">Final Fantasy &quot;The Wind Chapter&quot; &quot;The Fire Chapter&quot; Soundtrack</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>ファイナルファンタジー「風の章」「炎の章」 サウンドトラック</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Final Fantasy &quot;The Wind Chapter&quot; &quot;The Fire Chapter&quot; Soundtrack</i></span></a> <span class="catalog album-anime">COCC-11741</span> <span class="smallfont label">Soundtrack</span></td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+<b class="rbot"><b></b></b>
+</div>
+
+</div></div>
+</td>
+<td id="rightcolumn" rowspan="2" style="width: 270px; padding-left: 20px" valign="top">
+
+
+
+<div style="width: 250px; background-color: #1B273D">
+<b class="rtop"><b></b></b>
+<div style="padding: 6px 10px 0px 10px"><h3>Upcoming Releases</h3></div>
+</div>
+<div style="width: 250px; background-color: #2F364F;">
+
+
+<span class="smallfont"><div class="album_infobit_small smallfont label">
+<div class="album_infobit_thumb"><div style="background-image: url('/db/img/album-nocover-thumb60.gif')">
+<a href="http://vgmdb.net/album/54212" title='TV Anime "One Punch Man" Opening Theme / JAM Project [Limited Edition]'></a>
+</div></div>
+<ul class="album_infobit_detail">
+<li><a class="albumtitle smallfont album-anime" href="http://vgmdb.net/album/54212" title='TV Anime "One Punch Man" Opening Theme / JAM Project [Limited Edition]'><span class="albumtitle" lang="en" style="display:inline">TV Anime &quot;One Punch Man&quot; Opening Theme / JAM Project...</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>TVアニメ『ワンパンマン』OP主題歌 / JAM Project</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>TV Anime &quot;One Punch Man&quot; Opening Theme / JAM Project...</i></span></a></li>
+<li><span class="catalog smallfont album-anime">LACM-14405</span></li>
+<li>Oct 21, 2015</li>
+</ul>
+</div><div class="album_infobit_small smallfont label">
+<div class="album_infobit_thumb"><div style="background-image: url('/db/img/album-nocover-thumb60.gif')">
+<a href="http://vgmdb.net/album/54211" title='TV Anime "One Punch Man" Opening Theme / JAM Project'></a>
+</div></div>
+<ul class="album_infobit_detail">
+<li><a class="albumtitle smallfont album-anime" href="http://vgmdb.net/album/54211" title='TV Anime "One Punch Man" Opening Theme / JAM Project'><span class="albumtitle" lang="en" style="display:inline">TV Anime &quot;One Punch Man&quot; Opening Theme / JAM Project</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>TVアニメ『ワンパンマン』OP主題歌 / JAM Project</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>TV Anime &quot;One Punch Man&quot; Opening Theme / JAM Project</i></span></a></li>
+<li><span class="catalog smallfont album-anime">LACM-14406</span></li>
+<li>Oct 21, 2015</li>
+</ul>
+</div><div class="album_infobit_small smallfont label">
+<div class="album_infobit_thumb"><div style="background-image: url('/db/img/album-nocover-thumb60.gif')">
+<a href="http://vgmdb.net/album/54210" title='TV Anime "One Punch Man" Ending Theme / Hiroko Moriguchi'></a>
+</div></div>
+<ul class="album_infobit_detail">
+<li><a class="albumtitle smallfont album-anime" href="http://vgmdb.net/album/54210" title='TV Anime "One Punch Man" Ending Theme / Hiroko Moriguchi'><span class="albumtitle" lang="en" style="display:inline">TV Anime &quot;One Punch Man&quot; Ending Theme / Hiroko Moriguchi</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>TVアニメ『ワンパンマン』ED主題歌 /...</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>TV Anime &quot;One Punch Man&quot; Ending Theme / Hiroko Moriguchi</i></span></a></li>
+<li><span class="catalog smallfont album-anime">LACM-14407</span></li>
+<li>Nov 18, 2015</li>
+</ul>
+</div><div class="album_infobit_small smallfont label">
+<div class="album_infobit_thumb"><div style="background-image: url('/db/img/album-nocover-thumb60.gif')">
+<a href="http://vgmdb.net/album/53656" title='Overlord Special Soundtrack CD vol.1'></a>
+</div></div>
+<ul class="album_infobit_detail">
+<li><a class="albumtitle smallfont album-bonus" href="http://vgmdb.net/album/53656" title='Overlord Special Soundtrack CD vol.1'><span class="albumtitle" lang="en" style="display:inline">Overlord Special Soundtrack CD vol.1</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>オーバーロード...</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Overlord Special Soundtrack CD vol.1</i></span></a></li>
+<li><span class="catalog smallfont album-bonus">ZMXZ-10155-CD</span></li>
+<li>Jan 27, 2016</li>
+</ul>
+</div><div class="album_infobit_small smallfont label">
+<div class="album_infobit_thumb"><div style="background-image: url('/db/img/album-nocover-thumb60.gif')">
+<a href="http://vgmdb.net/album/53657" title='Overlord Special Soundtrack CD vol.2'></a>
+</div></div>
+<ul class="album_infobit_detail">
+<li><a class="albumtitle smallfont album-bonus" href="http://vgmdb.net/album/53657" title='Overlord Special Soundtrack CD vol.2'><span class="albumtitle" lang="en" style="display:inline">Overlord Special Soundtrack CD vol.2</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>オーバーロード...</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Overlord Special Soundtrack CD vol.2</i></span></a></li>
+<li><span class="catalog smallfont album-bonus">ZMXZ-10156-CD</span></li>
+<li>Feb 24, 2016</li>
+</ul>
+</div></span>
+
+<br />
+<b class="rbot"><b></b></b>
+</div>
+
+<br style="clear: left" />
+
+<div style="width: 250px; background-color: #1B273D">
+<b class="rtop"><b></b></b>
+<div style="padding: 6px 10px 0px 10px"><h3>Recent Releases</h3></div>
+</div>
+<div style="width: 250px; background-color: #2F364F;">
+
+
+<span class="smallfont"><div class="album_infobit_small smallfont label">
+<div class="album_infobit_thumb"><div style="background-image: url('http://thumb.media.vgm.io/albums/26/53262/53262-1436515427.jpg')">
+<a href="http://vgmdb.net/album/53262" title='L.L.L. / MYTH & ROID'></a>
+</div></div>
+<ul class="album_infobit_detail">
+<li><a class="albumtitle smallfont album-anime" href="http://vgmdb.net/album/53262" title='L.L.L. / MYTH & ROID'><span class="albumtitle" lang="en" style="display:inline">L.L.L. / MYTH &amp; ROID</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>L.L.L. / MYTH &amp; ROID</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>L.L.L. / MYTH &amp; ROID</i></span></a></li>
+<li><span class="catalog smallfont album-anime">ZMCZ-10180</span></li>
+<li>Aug 26, 2015</li>
+</ul>
+</div><div class="album_infobit_small smallfont label">
+<div class="album_infobit_thumb"><div style="background-image: url('http://thumb.media.vgm.io/albums/16/53261/53261-1436515429.jpg')">
+<a href="http://vgmdb.net/album/53261" title='Clattanoia / OxT'></a>
+</div></div>
+<ul class="album_infobit_detail">
+<li><a class="albumtitle smallfont album-anime" href="http://vgmdb.net/album/53261" title='Clattanoia / OxT'><span class="albumtitle" lang="en" style="display:inline">Clattanoia / OxT</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>Clattanoia / OxT</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Clattanoia / OxT</i></span></a></li>
+<li><span class="catalog smallfont album-anime">ZMCZ-10179</span></li>
+<li>Aug 26, 2015</li>
+</ul>
+</div><div class="album_infobit_small smallfont label">
+<div class="album_infobit_thumb"><div style="background-image: url('http://thumb.media.vgm.io/albums/76/53967/53967-1437478538.jpg')">
+<a href="http://vgmdb.net/album/53967" title='TV ANIMATION KISEIJU SPECIAL SOUNDTRACK CD'></a>
+</div></div>
+<ul class="album_infobit_detail">
+<li><a class="albumtitle smallfont album-bonus" href="http://vgmdb.net/album/53967" title='TV ANIMATION KISEIJU SPECIAL SOUNDTRACK CD'><span class="albumtitle" lang="en" style="display:inline">TV ANIMATION KISEIJU SPECIAL SOUNDTRACK CD</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>寄生獣 セイの格率...</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em>Kiseijuu Sei no Kakuritsu Special Soundtrack CD</span></a></li>
+<li><span class="catalog smallfont album-bonus">VPXY-72955C</span></li>
+<li>Jul 22, 2015</li>
+</ul>
+</div><div class="album_infobit_small smallfont label">
+<div class="album_infobit_thumb"><div style="background-image: url('http://thumb.media.vgm.io/albums/60/52906/52906-1437020307.jpg')">
+<a href="http://vgmdb.net/album/52906" title='Ore Monogatari!! Original Soundtrack'></a>
+</div></div>
+<ul class="album_infobit_detail">
+<li><a class="albumtitle smallfont album-anime" href="http://vgmdb.net/album/52906" title='Ore Monogatari!! Original Soundtrack'><span class="albumtitle" lang="en" style="display:inline">Ore Monogatari!! Original Soundtrack</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>アニメ「俺物語!!」オリジナル・サウンドト...</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Ore Monogatari!! Original Soundtrack</i></span></a></li>
+<li><span class="catalog smallfont album-anime">VPCG-83501</span></li>
+<li>Jul 22, 2015</li>
+</ul>
+</div><div class="album_infobit_small smallfont label">
+<div class="album_infobit_thumb"><div style="background-image: url('http://thumb.media.vgm.io/albums/92/51129/51129-1432516220.jpg')">
+<a href="http://vgmdb.net/album/51129" title='Death Parade Blu-ray BOX Bonus Discs'></a>
+</div></div>
+<ul class="album_infobit_detail">
+<li><a class="albumtitle smallfont album-bonus" href="http://vgmdb.net/album/51129" title='Death Parade Blu-ray BOX Bonus Discs'><span class="albumtitle" lang="en" style="display:inline">Death Parade Blu-ray BOX Bonus Discs</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>デス・パレード Blu-ray BOX 特典CD</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Death Parade Blu-ray BOX Bonus Discs</i></span></a></li>
+<li><span class="catalog smallfont album-bonus">VPXY-72958C</span></li>
+<li>Jun 17, 2015</li>
+</ul>
+</div></span>
+
+<br />
+<b class="rbot"><b></b></b>
+</div>
+
+<br style="clear: left" />
+
+<div class="smallfont" style="width: 250px; background-color: #2F364F;">
+<b class="rtop"><b></b></b>
+<div style="padding: 6px 10px 6px 10px">
+
+<div style="margin-bottom: 10px;"><img src="/db/img/arrowbit.gif" alt="" /> <b style="color: #788990">Added by</b> Illidan<br />
+May 6, 2014 <span class="time">12:13 PM</span></div>
+
+<div style="margin-bottom: 10px;"><img src="/db/img/arrowbit.gif" alt="" border = "0" /> <b style="color: #788990">Edited by</b> Phonograph<br />
+Aug 11, 2015 <span class="time">06:37 AM</span></div>
+
+<div style="margin-bottom: 10px;"><img src="/db/img/arrowbit.gif" alt="" /> <b style="color: #788990">Page traffic</b><br />
+<span class="time">156</span> visitors <!----></div>
+
+<div><img src="/db/img/arrowbit.gif" alt="" /> <b style="color: #788990">Page built in</b><br />
+<span class="time">0.30</span> seconds</div>
+
+</div>
+<b class="rbot"><b></b></b>
+</div>
+
+</td></tr><tr><td valign="bottom" style="background-color: #1B273D;">
+
+<div style="padding: 10px 10px 0px 10px">
+<h3>Notes</h3>
+</div>
+<div style="background-color: #2F364F;">
+<div style="padding: 10px" class="smallfont"><i class='label'>No notes available for this Meta-franchise</i></div>
+
+<b class="rbot"><b></b></b>
+</div>
+
+</td></tr>
+</table>
+
+
+<!-- / main page contents -->
+
+</div>
+<!-- /content area table -->
+<div style="clear: both; height: 20px"></div>
+
+<!-- chat popup -->
+<div style="display: none; width: 500px; padding: 10px;" id="chat-popup">
+	<a class="buttonCancel" style="float: right" href="#" onclick="return hs.close(this)"><img title="Close" src="http://media.vgmdb.net/img/button-cancel.gif" alt="Close"></a>
+	<div>
+		<h3>Chat with us!</h3>
+		<p>Our official IRC channel is <b>#vgmdb</b> on <b>irc.psigenix.net</b></p>
+		<p>You may use any IRC client such as <a rel="nofollow" href="http://www.mirc.com/">mIRC</a> to connect. Alternatively you may chat in your browser window using the form below.</p>
+		<p class="smallfont">If you are unable to run Java applets, please choose CGI:IRC from the dropdown menu. Note that there is a limit to the number of connections allowed for this option.</p>
+		<form id="loginform" name="loginform" action="http://bigblah.net/irc/index.php" method="post" target="vgmdbirc">
+		<input id="chatInterface" type="hidden" name="interface" value="nonjs">
+		<span class="label">Nickname</span> <input id="chatNick" class="bginput" type="text" name="Nickname" value="CGI-IRC">
+		<select id="chatClient" class="bginput" name="client">
+		<option value="http://bigblah.net/irc/index.php">PJIRC</option>
+		<option value="http://bigblah.net/cgi-bin/irc/irc.cgi">CGI:IRC</option>
+		</select>
+		<input type="hidden" name="server" value="irc.psigenix.net">
+		<input type="hidden" name="channel" value="#vgmdb">
+		<input class="button" type="submit" name="submit" value="Connect"></form>
+	</div>
+</div>
+<!-- / chat popup -->
+
+<div class="alt1" style="width: 100%">
+<div id="footer">
+<div style="padding: 20px 10px 0 200px">
+
+
+
+	<div style="float: right; text-align: right; font-family: Arial;" class="label">
+		<a href="/about">About Us</a> &bull;
+		<a href="/faq">F.A.Q.</a> &bull;
+		<a href="/forums/sendmessage.php?s=c7affb7b9a1dacb09b3063bc22a4ed65" rel="nofollow" accesskey="9">Contact Us</a> &bull;
+		<a href="/db/statistics.php" rel="nofollow">Statistics</a> &bull;
+		<a href="http://vgmdb.net">Home</a>
+
+		<div class="smallfont" style="font-family: Arial; margin-top: 10px">
+		
+		
+		
+		<a href="/forums/archive/index.php">Archive</a> &bull;
+		
+		<a href="/privacy">Privacy Statement</a> &bull;
+		
+		<a href="#top" onclick="self.scrollTo(0, 0); return false;">Top</a>
+		</div>
+
+	<div style="margin-top: 10px"><form action="index.php" method="get">
+	
+	
+	
+
+	</form></div>
+	</div>
+
+	<div class="label">
+		<h3>VGMdb 0.15 (beta)</h3>
+		<div class="smallfont"><!-- Do not remove this copyright notice -->
+		Powered by vBulletin&reg; Version 3.8.5<br />Copyright &copy;2000 - 2015, Jelsoft Enterprises Ltd.
+		<!-- Do not remove this copyright notice --></div>
+		<div class="smallfont">Site code and design copyright VGMdb.net</div>
+		<div class="smallfont">Site material is property of their respective owners.</div>
+		<div class="smallfont">All times are GMT -8. The time now is <span class="time">01:28 PM</span>.</div>
+	</div>
+
+
+
+</div></div></div>
+
+
+<script type="text/javascript">
+<!--
+	// Main vBulletin Javascript Initialization
+	vBulletin_init();
+//-->
+</script>
+<script type="text/javascript">if(!NREUMQ.f){NREUMQ.f=function(){NREUMQ.push(["load",new Date().getTime()]);var e=document.createElement("script");e.type="text/javascript";e.src=(("http:"===document.location.protocol)?"http:":"https:")+"//"+"js-agent.newrelic.com/nr-100.js";document.body.appendChild(e);if(NREUMQ.a)NREUMQ.a();};NREUMQ.a=window.onload;window.onload=NREUMQ.f;};NREUMQ.push(["nrfj","beacon-3.newrelic.com","ae449e68e8","505396","NANSNkUDWUoCU0MNDA1JZRBeTVNbTEBFCwcWBURMRwpH",0,19,new Date().getTime(),"","","","",""]);</script>
+
+</body>
+</html>

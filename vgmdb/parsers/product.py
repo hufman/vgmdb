@@ -54,6 +54,10 @@ def parse_page(html_source):
 	for soup_section_head in soup_section_heads:
 		section_name = unicode(soup_section_head.string)
 		soup_section = soup_section_head.find_next_sibling('div')
+		if section_name == 'Belongs to':
+			product_info['superproduct'] = _parse_franchise_superproduct(soup_section.div.div)
+		if section_name == 'Subproducts':
+			product_info['subproducts'] = _parse_franchise_subproducts(soup_section.div.table)
 		if section_name == 'Titles':
 			product_info['titles'] = _parse_franchise_titles(soup_section.div.table)
 		if section_name == 'Releases':
@@ -173,7 +177,40 @@ def _parse_franchise_titles(soup_table):
 		title['names'] = utils.parse_names(soup_cells[1].span)
 		if soup_cells[1].a:
 			title['link'] = utils.trim_absolute(soup_cells[1].a['href'])
+			type = utils.product_color_type(soup_cells[1].a.span)
+			title['type'] = type
 		titles.append(title)
 	titles = sorted(titles, key=lambda e:e['date'])
 	return titles
+
+def _parse_franchise_superproduct(soup_element):
+	superproduct = {}
+	superproduct['names'] = utils.parse_names(soup_element.a)
+	if soup_element.a:
+		superproduct['link'] = utils.trim_absolute(soup_element.a['href'])
+	return superproduct
+
+def _parse_franchise_subproducts(soup_table):
+	subproducts = []
+	if not soup_table:
+		return titles
+	soup_rows = soup_table.find_all('tr', recursive=False)
+	if len(soup_rows) == 0:
+		return subproducts
+	for soup_row in soup_rows[1:]:
+		soup_cells = soup_row.find_all('td', recursive=False)
+		if len(soup_cells) < 2:
+			continue
+		if soup_cells[1].span.string == 'No products found':
+			continue
+		product = {}
+		product['date'] = utils.normalize_dashed_date(soup_cells[0].span.string)
+		product['names'] = utils.parse_names(soup_cells[1].span)
+		if soup_cells[1].a:
+			product['link'] = utils.trim_absolute(soup_cells[1].a['href'])
+			type = utils.product_color_type(soup_cells[1].a.span)
+			product['type'] = type
+		subproducts.append(product)
+	subproducts = sorted(subproducts, key=lambda e:e['date'])
+	return subproducts
 
