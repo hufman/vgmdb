@@ -109,5 +109,12 @@ class TestProducts(unittest.TestCase):
 		self.assertEqual(u"COCC-11741", madhouse['albums'][0]['catalog'])
 		self.assertEqual(u"anime", madhouse['albums'][0]['type'])
 
+	def test_bandai(self):
+		bandai_code = file(os.path.join(base, 'product_bandai.html')).read()
+		bandai = product.parse_page(bandai_code)
+		self.assertEqual('BANDAI NAMCO Games', bandai['name'])
+		self.assertEqual('Meta-franchise', bandai['type'])
+		self.assertEqual(0, len(bandai['subproducts']))
+
 if __name__ == '__main__':
 	unittest.main()

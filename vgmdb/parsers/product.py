@@ -201,7 +201,7 @@ def _parse_franchise_subproducts(soup_table):
 		soup_cells = soup_row.find_all('td', recursive=False)
 		if len(soup_cells) < 2:
 			continue
-		if soup_cells[1].span.string == 'No products found':
+		if soup_cells[1].span.string == 'No titles found':
 			continue
 		product = {}
 		product['date'] = utils.normalize_dashed_date(soup_cells[0].span.string)
