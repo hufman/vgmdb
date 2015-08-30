@@ -235,7 +235,8 @@ def product_color_type(soup_element):
 		'silver': 'Radio & Drama',
 		'white': 'Print Publication',
 		'violet': 'Goods',
-		'yellow': 'Franchise'
+		'yellow': 'Franchise',
+		'orange': 'Meta-franchise'
 	}
 	if soup_element:
 		style = soup_element['style']
