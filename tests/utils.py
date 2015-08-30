@@ -109,6 +109,7 @@ class TestLinks(unittest.TestCase):
 		self.assertEqual('http://www.mobygames.com/game/clannad', utils.strip_redirect('/redirect/43446/www.mobygames.com/game/clannad'))
 		self.assertEqual('http://www.mobygames.com/game/clannad', utils.strip_redirect('/redirect/0/www.mobygames.com/game/clannad'))
 		self.assertEqual('https://www.facebook.com/akadress', utils.strip_redirect('/redirect/63221/https://www.facebook.com/akadress'))
+		self.assertEqual('http://vgmdb.net/redirect/79964/musenote.blog10.fc2.com/blog-entry-187.html', utils.strip_redirect('/redirect/79973/vgmdb.net/redirect/79964/musenote.blog10.fc2.com/blog-entry-187.html'))
 
 	def test_media(self):
 		style = "background-image: url('http://medium.media.vgm.io/albums/97/79/79-1264618929.png')"
