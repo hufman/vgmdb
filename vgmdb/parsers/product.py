@@ -174,6 +174,8 @@ def _parse_franchise_titles(soup_table):
 			continue
 		title = {}
 		title['date'] = utils.normalize_dashed_date(soup_cells[0].span.string)
+		if not title['date']:
+			title['date'] = ''
 		title['names'] = utils.parse_names(soup_cells[1].span)
 		if soup_cells[1].a:
 			title['link'] = utils.trim_absolute(soup_cells[1].a['href'])

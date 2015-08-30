@@ -110,11 +110,20 @@ class TestProducts(unittest.TestCase):
 		self.assertEqual(u"anime", madhouse['albums'][0]['type'])
 
 	def test_bandai(self):
+		# empty subproducts
 		bandai_code = file(os.path.join(base, 'product_bandai.html')).read()
 		bandai = product.parse_page(bandai_code)
 		self.assertEqual('BANDAI NAMCO Games', bandai['name'])
 		self.assertEqual('Meta-franchise', bandai['type'])
 		self.assertEqual(0, len(bandai['subproducts']))
+
+	def test_ecco(self):
+		# empty title dates
+		ecco_code = file(os.path.join(base, 'product_ecco.html')).read()
+		ecco = product.parse_page(ecco_code)
+		self.assertEqual('Ecco', ecco['name'])
+		self.assertEqual('Franchise', ecco['type'])
+		self.assertEqual('', ecco['titles'][0]['date'])
 
 if __name__ == '__main__':
 	unittest.main()
