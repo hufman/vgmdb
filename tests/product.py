@@ -125,5 +125,14 @@ class TestProducts(unittest.TestCase):
 		self.assertEqual('Franchise', ecco['type'])
 		self.assertEqual('', ecco['titles'][0]['date'])
 
+	def test_attack(self):
+		# "other" product type
+		attack_code = file(os.path.join(base, 'product_attack.html')).read()
+		attack = product.parse_page(attack_code)
+		self.assertEqual('Attack on Titan', attack['name'])
+		self.assertEqual('Franchise', attack['type'])
+		self.assertEqual('2015-08-01', attack['titles'][5]['date'])
+		self.assertEqual('Other', attack['titles'][5]['type'])
+
 if __name__ == '__main__':
 	unittest.main()

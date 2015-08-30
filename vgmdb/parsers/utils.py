@@ -244,7 +244,7 @@ def product_color_type(soup_element):
 			color = style.split(':')[1]
 			if color in product_colors:
 				return product_colors[color]
-	return None
+	return 'Other'
 
 def next_tag(soup_element):
 	next_element = soup_element.next_element
