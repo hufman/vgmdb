@@ -10,7 +10,6 @@ from . import amazon as real_amazon
 from . import cdjapan as real_cdjapan
 from . import discogs as real_discogs
 from . import itunes as real_itunes
-from . import rdio as real_rdio
 from . import spotify as real_spotify
 
 def do_search(type, id, sellername):
@@ -44,10 +43,6 @@ def discogs(type, id):
 @celery.task(default_retry_delay=5)
 def itunes(type, id):
 	return do_search(type, id, 'itunes')
-
-@celery.task(default_retry_delay=5)
-def rdio(type, id):
-	return do_search(type, id, 'rdio')
 
 @celery.task(default_retry_delay=5)
 def spotify(type, id):
