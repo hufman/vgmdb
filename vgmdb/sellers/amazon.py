@@ -84,6 +84,8 @@ def search_album(info):
 def search_artist_album_name(info):
 	if not API:
 		return None
+	if len(info['composers']) < 1:
+		return None
 	artist = primary_name(info['composers'][0]['names'])
 	title = info['name']
 	try:
