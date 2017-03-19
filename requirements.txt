@@ -3,6 +3,7 @@ unittest2==0.5.1
 gevent==1.0.2
 
 # Parsing
+html5lib==1.0b8
 beautifulsoup4==4.2.1
 lxml==3.3.5
 
