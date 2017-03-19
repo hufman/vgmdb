@@ -12,8 +12,7 @@ PyYAML==3.10
 rdflib==4.0.1
 
 # Speed optimization
-#python-binary-memcached==0.24.5
-git+https://github.com/jaysonsantos/python-binary-memcached.git
+python-binary-memcached==0.26
 python-memcached==1.57
 simplejson==3.3.0
 
