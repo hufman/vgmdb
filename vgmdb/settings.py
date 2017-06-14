@@ -20,6 +20,8 @@ DISCOGS_KEY = None
 DISCOGS_SECRET = None
 RDIO_KEY = None
 RDIO_SECRET = None
+SPOTIFY_ID = None
+SPOTIFY_SECRET = None
 
 import logging
 logger = logging.getLogger(__name__)

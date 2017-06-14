@@ -14,7 +14,7 @@ access_token = None
 access_expires = None
 
 def authenticate():
-	if len(config.SPOTIFY_ID) < 10:
+	if config.SPOTIFY_ID is None or len(config.SPOTIFY_ID) < 10:
 		raise Exception("Invalid SPOTIFY_ID")
 	data = urllib.urlencode({'grant_type': 'client_credentials'})
 	request = urllib2.Request(AUTH_API, data=data)
