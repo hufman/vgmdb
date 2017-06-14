@@ -1,17 +1,44 @@
 import urllib
 import urllib2
 import urlparse
+import base64
+import datetime
 import json
 import logging
 from ._utils import squash_str, find_best_match, primary_name
 from .. import config
 
+AUTH_API = 'https://accounts.spotify.com/api/token'
 SEARCH_API = 'https://api.spotify.com/v1/search'
+access_token = None
+access_expires = None
+
+def authenticate():
+	if len(config.SPOTIFY_ID) < 10:
+		raise Exception("Invalid SPOTIFY_ID")
+	data = urllib.urlencode({'grant_type': 'client_credentials'})
+	request = urllib2.Request(AUTH_API, data=data)
+	auth = base64.b64encode("%s:%s" % (config.SPOTIFY_ID, config.SPOTIFY_SECRET))
+	request.add_header('Authorization', 'Basic %s' % (auth,))
+	opener = urllib2.build_opener()
+	response = opener.open(request).read()
+	response = json.loads(response)
+	# save auth info
+	global access_token
+	global access_expires
+	access_token = response['access_token']
+	access_expires = datetime.datetime.utcnow() + datetime.timedelta(seconds=response['expires_in'])
 
 def search(query):
+	time_in_10_minutes = datetime.datetime.utcnow() + datetime.timedelta(minutes=10)
+	if access_expires is None or access_expires < time_in_10_minutes:
+		authenticate()
+	if access_expires is None:
+		raise Exception("Failed to authenticate to Spotify API")
 	url = SEARCH_API + '?' + query
 	request = urllib2.Request(url)
 	request.add_header('User-Agent', 'VGMdb/1.0 vgmdb.info')
+	request.add_header('Authorization', 'Bearer %s' % (access_token,))
 	opener = urllib2.build_opener()
 	return opener.open(request).read()
 
