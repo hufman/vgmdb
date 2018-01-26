@@ -35,7 +35,7 @@ class TestRecent(unittest.TestCase):
 		self.assertEqual(u'bonus', up[2]['type'])
 		self.assertEqual(u'Enclosure/Promo', up[2]['category'])
 		self.assertEqual(u'Efendija', up[0]['contributor']['name'])
-		self.assertEqual(u'http://vgmdb.net/forums/member.php?u=10807', up[0]['contributor']['link'])
+		self.assertEqual(u'https://vgmdb.net/forums/member.php?u=10807', up[0]['contributor']['link'])
 		self.assertEqual(u'2013-10-20T15:40', up[0]['date'])
 
 	def test_media(self):
@@ -58,7 +58,7 @@ class TestRecent(unittest.TestCase):
 		self.assertEqual(u'Digital', up[-3]['media_format'])
 
 		self.assertEqual(u'ritsukai', up[0]['contributor']['name'])
-		self.assertEqual(u'http://vgmdb.net/forums/member.php?u=606', up[0]['contributor']['link'])
+		self.assertEqual(u'https://vgmdb.net/forums/member.php?u=606', up[0]['contributor']['link'])
 		self.assertEqual(u'2013-10-20T15:11', up[0]['date'])
 
 	def test_tracklists(self):
@@ -82,7 +82,7 @@ class TestRecent(unittest.TestCase):
 		self.assertEqual(u'Game', up[2]['category'])
 
 		self.assertEqual(u'ritsukai', up[0]['contributor']['name'])
-		self.assertEqual(u'http://vgmdb.net/forums/member.php?u=606', up[0]['contributor']['link'])
+		self.assertEqual(u'https://vgmdb.net/forums/member.php?u=606', up[0]['contributor']['link'])
 		self.assertEqual(u'2013-10-20T15:17', up[0]['date'])
 
 	def test_scans(self):
@@ -103,10 +103,10 @@ class TestRecent(unittest.TestCase):
 		self.assertEqual(u'album/42362', up[-1]['link'])
 
 		self.assertEqual(u'Myrkul', up[0]['contributor']['name'])
-		self.assertEqual(u'http://vgmdb.net/forums/member.php?u=65', up[0]['contributor']['link'])
+		self.assertEqual(u'https://vgmdb.net/forums/member.php?u=65', up[0]['contributor']['link'])
 		self.assertEqual(u'2013-10-20T15:43', up[0]['date'])
 		self.assertEqual(u'boogiepop', up[-1]['contributor']['name'])
-		self.assertEqual(u'http://vgmdb.net/forums/member.php?u=11507', up[-1]['contributor']['link'])
+		self.assertEqual(u'https://vgmdb.net/forums/member.php?u=11507', up[-1]['contributor']['link'])
 		self.assertEqual(u'2013-10-20T07:56', up[-1]['date'])
 
 	def test_artists(self):
@@ -127,7 +127,7 @@ class TestRecent(unittest.TestCase):
 		self.assertFalse(u'deleted' in up[-1])
 
 		self.assertEqual(u'Efendija', up[-1]['contributor']['name'])
-		self.assertEqual(u'http://vgmdb.net/forums/member.php?u=10807', up[-1]['contributor']['link'])
+		self.assertEqual(u'https://vgmdb.net/forums/member.php?u=10807', up[-1]['contributor']['link'])
 		self.assertEqual(u'2013-10-20T11:28', up[-1]['date'])
 
 	def test_products(self):
@@ -147,7 +147,7 @@ class TestRecent(unittest.TestCase):
 		self.assertEqual(u'N/A', up[0]['linked']['catalog'])
 
 		self.assertEqual(u'Lashiec', up[0]['contributor']['name'])
-		self.assertEqual(u'http://vgmdb.net/forums/member.php?u=13861', up[0]['contributor']['link'])
+		self.assertEqual(u'https://vgmdb.net/forums/member.php?u=13861', up[0]['contributor']['link'])
 		self.assertEqual(u'2013-10-19T06:50', up[0]['date'])
 
 	def test_labels(self):
@@ -167,7 +167,7 @@ class TestRecent(unittest.TestCase):
 		self.assertEqual(u'302 066 978 2', up[0]['linked']['catalog'])
 
 		self.assertEqual(u'Efendija', up[0]['contributor']['name'])
-		self.assertEqual(u'http://vgmdb.net/forums/member.php?u=10807', up[0]['contributor']['link'])
+		self.assertEqual(u'https://vgmdb.net/forums/member.php?u=10807', up[0]['contributor']['link'])
 		self.assertEqual(u'2013-10-20T10:57', up[0]['date'])
 
 		self.assertEqual(u'Label Page Edit', up[-3]['edit'])
@@ -197,13 +197,13 @@ class TestRecent(unittest.TestCase):
 		self.assertEqual(u'album/42367', up[0]['link'])
 		self.assertEqual(u'N/A', up[0]['catalog'])
 		self.assertEqual(u'Crossfade Demo', up[0]['link_data']['title'])
-		self.assertEqual(u'http://vgmdb.net/redirect/65785/www.amazon.co.jp/dp/B00FXMYERU/', up[1]['link_data']['link'])
+		self.assertEqual(u'https://vgmdb.net/redirect/65785/www.amazon.co.jp/dp/B00FXMYERU/', up[1]['link_data']['link'])
 		self.assertEqual(u'amazon.co.jp', up[1]['link_data']['title'])
 		self.assertEqual(u'http://', up[3]['link_data']['link'])
 		self.assertEqual(u'', up[3]['link_data']['title'])
 
 		self.assertEqual(u'ritsukai', up[0]['contributor']['name'])
-		self.assertEqual(u'http://vgmdb.net/forums/member.php?u=606', up[0]['contributor']['link'])
+		self.assertEqual(u'https://vgmdb.net/forums/member.php?u=606', up[0]['contributor']['link'])
 		self.assertEqual(u'2013-10-20T15:28', up[0]['date'])
 
 		self.assertEqual(u'Purchase Link', up[1]['link_type'])
@@ -238,7 +238,7 @@ class TestRecent(unittest.TestCase):
 		self.assertEqual(u'5', up[0]['rating'])
 
 		self.assertEqual(u'Jodo Kast', up[0]['contributor']['name'])
-		self.assertEqual(u'http://vgmdb.net/forums/member.php?u=1254', up[0]['contributor']['link'])
+		self.assertEqual(u'https://vgmdb.net/forums/member.php?u=1254', up[0]['contributor']['link'])
 		self.assertEqual(u'2013-10-20T13:34', up[0]['date'])
 
 

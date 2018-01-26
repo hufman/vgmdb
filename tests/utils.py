@@ -92,10 +92,12 @@ class TestUtils(unittest.TestCase):
 class TestLinks(unittest.TestCase):
 	def test_trim_absolute(self):
 		self.assertEqual('album/29', utils.trim_absolute('http://vgmdb.net/album/29'))
+		self.assertEqual('album/29', utils.trim_absolute('https://vgmdb.net/album/29'))
 		self.assertEqual('http://wikipedia.org/album/29', utils.trim_absolute('http://wikipedia.org/album/29'))
+		self.assertEqual('https://wikipedia.org/album/29', utils.trim_absolute('https://wikipedia.org/album/29'))
 
 	def test_force_absolute(self):
-		self.assertEqual('http://vgmdb.net/album/29', utils.force_absolute('album/29'))
+		self.assertEqual('https://vgmdb.net/album/29', utils.force_absolute('album/29'))
 		self.assertEqual('http://wikipedia.org/album/29', utils.force_absolute('http://wikipedia.org/album/29'))
 		self.assertEqual('https://www.facebook.com/akadress', utils.force_absolute('https://www.facebook.com/akadress'))
 
@@ -105,7 +107,7 @@ class TestLinks(unittest.TestCase):
 		self.assertEqual('release/29', utils.parse_vgmdb_link('db/release.php?id=29'))
 
 	def test_strip_redirect(self):
-		self.assertEqual('http://www.mobygames.com/game/clannad', utils.strip_redirect('http://vgmdb.net/redirect/43446/www.mobygames.com/game/clannad'))
+		self.assertEqual('http://www.mobygames.com/game/clannad', utils.strip_redirect('https://vgmdb.net/redirect/43446/www.mobygames.com/game/clannad'))
 		self.assertEqual('http://www.mobygames.com/game/clannad', utils.strip_redirect('/redirect/43446/www.mobygames.com/game/clannad'))
 		self.assertEqual('http://www.mobygames.com/game/clannad', utils.strip_redirect('/redirect/0/www.mobygames.com/game/clannad'))
 		self.assertEqual('https://www.facebook.com/akadress', utils.strip_redirect('/redirect/63221/https://www.facebook.com/akadress'))

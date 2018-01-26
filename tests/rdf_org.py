@@ -39,12 +39,12 @@ class TestOrgRDF(TestRDF):
 			"select ?name where { <@base#subject> schema:name ?name . }": "Dog Ear Records Co., Ltd.",
 			"select ?name where { <@base#subject> foaf:name ?name . }": "Dog Ear Records Co., Ltd.",
 			"select ?person where { ?person foaf:member <@base#subject> . ?person foaf:name \"Miyu\"@en . }" : "<@baseartist/6680#subject>",
-			"select ?picture where { <@base#subject> foaf:depiction ?picture . ?picture a foaf:Image }" : "<http://vgmdb.net/db/assets/logos/135-1246205463.gif>",
-			"select ?picture where { <@base#subject> schema:image ?picture . ?picture a schema:ImageObject }" : "<http://vgmdb.net/db/assets/logos/135-1246205463.gif>",
-			"select ?picture where { ?picture foaf:depicts <@base#subject> . }" : "<http://vgmdb.net/db/assets/logos/135-1246205463.gif>",
-			"select ?picture where { ?picture schema:about <@base#subject> . }" : "<http://vgmdb.net/db/assets/logos/135-1246205463.gif>",
-			"select ?thumb where { <@base#subject> foaf:depiction ?picture . ?picture foaf:thumbnail ?thumb . ?thumb a foaf:Image }" : "<http://vgmdb.net/db/assets/logos-medium/135-1246205463.gif>",
-			"select ?thumb where { <@base#subject> schema:image ?picture . ?picture schema:thumbnailUrl ?thumb . ?thumb a schema:ImageObject }" : "<http://vgmdb.net/db/assets/logos-medium/135-1246205463.gif>"
+			"select ?picture where { <@base#subject> foaf:depiction ?picture . ?picture a foaf:Image }" : "<https://vgmdb.net/db/assets/logos/135-1246205463.gif>",
+			"select ?picture where { <@base#subject> schema:image ?picture . ?picture a schema:ImageObject }" : "<https://vgmdb.net/db/assets/logos/135-1246205463.gif>",
+			"select ?picture where { ?picture foaf:depicts <@base#subject> . }" : "<https://vgmdb.net/db/assets/logos/135-1246205463.gif>",
+			"select ?picture where { ?picture schema:about <@base#subject> . }" : "<https://vgmdb.net/db/assets/logos/135-1246205463.gif>",
+			"select ?thumb where { <@base#subject> foaf:depiction ?picture . ?picture foaf:thumbnail ?thumb . ?thumb a foaf:Image }" : "<https://vgmdb.net/db/assets/logos-medium/135-1246205463.gif>",
+			"select ?thumb where { <@base#subject> schema:image ?picture . ?picture schema:thumbnailUrl ?thumb . ?thumb a schema:ImageObject }" : "<https://vgmdb.net/db/assets/logos-medium/135-1246205463.gif>"
 		}
 
 		self.run_tests(graph, test_count_results, test_first_result)

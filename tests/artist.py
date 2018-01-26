@@ -33,8 +33,8 @@ class TestArtists(unittest.TestCase):
 		self.assertEqual(u'DOGEARRECORDS', nobuo['websites']['Official'][0]['name'])
 		self.assertEqual('UematsuNobuo', nobuo['twitter_names'][0])
 		self.assertEqual('2007-10-17T09:14', nobuo['meta']['added_date'])
-		self.assertEqual('http://vgmdb.net/db/assets/portraits-medium/77-1345913713.jpg', nobuo['picture_small'])
-		self.assertEqual('http://vgmdb.net/db/assets/portraits/77-1345913713.jpg', nobuo['picture_full'])
+		self.assertEqual('https://vgmdb.net/db/assets/portraits-medium/77-1345913713.jpg', nobuo['picture_small'])
+		self.assertEqual('https://vgmdb.net/db/assets/portraits/77-1345913713.jpg', nobuo['picture_full'])
 
 	def test_nobuo_name(self):
 		""" Japanese name """

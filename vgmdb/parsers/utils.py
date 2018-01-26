@@ -302,7 +302,7 @@ def strip_redirect(link):
 		# get the link from the end of the redirect
 		link = link[index+1:]
 		if not (link.startswith('http://') or link.startswith('https://')):
-			link = 'https://' + link
+			link = 'http://' + link
 		return strip_redirect(link)   # handle nested redirects
 	return link
 

@@ -20,8 +20,8 @@ class TestProducts(unittest.TestCase):
 		self.assertFalse('link' in skyrim['releases'][3])
 		self.assertEqual(u"Gaming Fantasy", skyrim['albums'][3]['titles']['en'])
 		self.assertEqual("2012-09-12T18:46", skyrim['meta']['added_date'])
-		self.assertEqual("http://vgmdb.net/db/assets/logos/1387-pr-1347504448.jpg", skyrim['picture_full'])
-		self.assertEqual("http://vgmdb.net/db/assets/logos-medium/1387-pr-1347504448.jpg", skyrim['picture_small'])
+		self.assertEqual("https://vgmdb.net/db/assets/logos/1387-pr-1347504448.jpg", skyrim['picture_full'])
+		self.assertEqual("https://vgmdb.net/db/assets/logos-medium/1387-pr-1347504448.jpg", skyrim['picture_small'])
 
 	def test_witcher(self):
 		witcher_code = file(os.path.join(base, 'product_witcher.html'), 'r').read()
