@@ -2,7 +2,7 @@ import bs4
 
 from . import utils
 
-fetch_url = lambda id: 'http://vgmdb.net/db/release.php?id=%s'%(id)
+fetch_url = lambda id: 'https://vgmdb.net/db/release.php?id=%s'%(id)
 fetch_page = lambda id: utils.fetch_page(fetch_url(id))
 
 def parse_page(html_source):

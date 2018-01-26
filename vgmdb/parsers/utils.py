@@ -10,7 +10,7 @@ import urlparse
 db_parser = re.compile(r'db/([a-z]+)\.php')
 
 class AppURLOpener(urllib.FancyURLopener):
-	version = "vgmdbapi/0.2 +http://vgmdb.info"
+	version = "vgmdbapi/0.2 +https://vgmdb.info"
 urllib._urlopener = AppURLOpener()
 
 def fetch_page(url):
@@ -19,17 +19,17 @@ def fetch_page(url):
 	return data
 
 def url_info_page(type, id):
-	return 'http://vgmdb.net/%s/%s?perpage=99999'%(type,id)
+	return 'https://vgmdb.net/%s/%s?perpage=99999'%(type,id)
 def fetch_info_page(type, id):
 	return fetch_page(url_info_page(type, id))
 
 def url_list_page(type, id):
-	return 'http://vgmdb.net/db/%s.php?ltr=%s&field=title&perpage=9999'%(type,id)
+	return 'https://vgmdb.net/db/%s.php?ltr=%s&field=title&perpage=9999'%(type,id)
 def fetch_list_page(type, id):
 	return fetch_page(url_list_page(type, id))
 
 def url_singlelist_page(type):
-	return 'http://vgmdb.net/db/%s.php'%(type,)
+	return 'https://vgmdb.net/db/%s.php'%(type,)
 def fetch_singlelist_page(type):
 	return fetch_page(url_singlelist_page(type))
 
@@ -261,13 +261,15 @@ def next_sibling_tag(soup_element):
 def trim_absolute(link):
 	if link[0:17]=="http://vgmdb.net/":
 		link = link[len("http://vgmdb.net/"):]
+	if link[0:18]=="https://vgmdb.net/":
+		link = link[len("https://vgmdb.net/"):]
 	if len(link) > 0 and link[0] == '/':
 		link = link[1:]
 	return link
 def force_absolute(link):
 	if link.startswith('http://') or link.startswith('https://'):
 		return link
-	return urlparse.urljoin('http://vgmdb.net/', link)
+	return urlparse.urljoin('https://vgmdb.net/', link)
 
 def parse_vgmdb_link(link):
 	vgmdb_link_types = {}
@@ -289,13 +291,18 @@ def parse_vgmdb_link(link):
 
 def strip_redirect(link):
 	link = force_absolute(link)
+	index = -1
 	if link.startswith('http://vgmdb.net/redirect'):
 		# skip the number
 		index = link.find('/', len('http://vgmdb.net/redirect/'))
+	if link.startswith('https://vgmdb.net/redirect'):
+		# skip the number
+		index = link.find('/', len('https://vgmdb.net/redirect/'))
+	if index > 0:
 		# get the link from the end of the redirect
 		link = link[index+1:]
 		if not (link.startswith('http://') or link.startswith('https://')):
-			link = 'http://' + link
+			link = 'https://' + link
 		return strip_redirect(link)   # handle nested redirects
 	return link
 

@@ -3,7 +3,7 @@ import bs4
 from . import utils
 import urlparse
 
-fetch_url = lambda type: "http://vgmdb.net/db/recent.php?do=view_%s"%(type,)
+fetch_url = lambda type: "https://vgmdb.net/db/recent.php?do=view_%s"%(type,)
 fetch_page = lambda type: utils.fetch_page(fetch_url(type))
 
 def parse_page(html_source):

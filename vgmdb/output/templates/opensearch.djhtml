@@ -3,7 +3,7 @@
     <Description>Video game music information</Description>
     <InputEncoding>UTF-8</InputEncoding>
     <Image height="16" width="16" type="image/x-icon">
-http://vgmdb.net/favicon.ico
+https://vgmdb.net/favicon.ico
     </Image>
     <Url type="text/html"
          template="{{config.BASE_URL}}search?q={searchTerms}"/>
