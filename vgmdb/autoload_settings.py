@@ -25,6 +25,11 @@ if 'MEMCACHED_PORT_11211_TCP' in os.environ:
 	)]
 	logger.info("Docker Memcache link detected, guessing %s" % (MEMCACHE_SERVERS,))
 
+# detect docker redis
+if 'REDIS_PORT_6379_TCP_PORT' in os.environ:
+	REDIS_HOST = os.environ.get('REDIS_PORT_6379_TCP_ADDR', '127.0.0.1')
+	logger.info("Docker Redis link detected, guessing %s" % (REDIS_HOST,))
+
 # detect openshift
 if 'OPENSHIFT_MEMCACHED_HOST' in os.environ and \
    'OPENSHIFT_MEMCACHED_PORT' in os.environ:
@@ -65,15 +70,11 @@ if 'MEMCACHE_SERVERS' in globals():
 		return host
 	MEMCACHE_SERVERS = [add_port(s, '11211') for s in MEMCACHE_SERVERS]
 
-# guess the final celery cache string based on the discovered MEMCACHE_SERVERS
-if 'MEMCACHE_SERVERS' in globals():
-	CELERY_CACHE_BACKEND = 'memcached://%s/' % (';'.join(MEMCACHE_SERVERS), )
-	logger.info("Guessing Celery cache backend at: %s" % (CELERY_CACHE_BACKEND,))
-
 # try to load some keys from environment
 env_keys = [
   'BASE_URL',
   'CELERY_BROKER', 'CELERY_RESULT_BACKEND', 'CELERY_CACHE_BACKEND',
+  'REDIS_HOST',
   'AMAZON_ACCESS_KEY_ID', 'AMAZON_SECRET_ACCESS_KEY', 'AMAZON_ASSOCIATE_TAG',
   'ITUNES_AFFILIATE_ID', 'ITUNES_TD_PROGRAM_ID', 'ITUNES_TD_WEBSITE_ID',
   'DISCOGS_KEY', 'DISCOGS_SECRET', 'RDIO_KEY', 'RDIO_SECRET',
@@ -83,3 +84,15 @@ for key in env_keys:
 	if key in os.environ:
 		globals()[key] = os.environ[key]
 		logger.info("Loading %s from environ: %s" % (key, os.environ[key]))
+
+# now autoload up some Celery configs
+if 'CELERY_BROKER' not in globals() and 'REDIS_HOST' in globals():
+	CELERY_BROKER = 'redis://%s:6379/0' % (REDIS_HOST,)
+
+if 'CELERY_RESULT_BACKEND' not in globals() and 'REDIS_HOST' in globals():
+	CELERY_RESULT_BACKEND = 'redis://%s:6379/0' % (REDIS_HOST,)
+
+# guess the final celery cache string based on the discovered MEMCACHE_SERVERS
+if 'CELERY_CACHE_BACKEND' not in globals() and 'MEMCACHE_SERVERS' in globals():
+	CELERY_CACHE_BACKEND = 'memcached://%s/' % (';'.join(MEMCACHE_SERVERS), )
+	logger.info("Guessing Celery cache backend at: %s" % (CELERY_CACHE_BACKEND,))

@@ -40,6 +40,11 @@ try:
 except:
 	pass
 
+try:
+	import redis
+except:
+	pass
+
 from . import config
 
 class NullCache(object):
@@ -53,6 +58,13 @@ class NullCache(object):
 class MemcacheCache(object):
 	def __init__(self, addresses, **kwargs):
 		self._memcache = memcache.Client(addresses, **kwargs)
+		stats = None
+		if hasattr(self._memcache, 'get_stats'):
+			stats = self._memcache.get_stats()
+		elif hasattr(self._memcache, 'stats'):
+			stats = self._memcache.stats()
+		if stats is not None and all((len(s)==0 for s in stats.values())):
+			raise IOError("Could not connect to memcache")
 	def __getitem__(self, key):
 		# returns the value or None
 		try:
@@ -99,6 +111,28 @@ class GaeCache(object):
 		except:
 			pass
 
+class RedisCache(object):
+	def __init__(self, host, port=6379):
+		self._cache = redis.Redis(host=host, port=6379)
+	def __getitem__(self, key):
+		try:
+			value = self._cache.get(key)
+			if value:
+				return pickle.loads(value)
+		except:
+			return None
+	def __setitem__(self, key, value):
+		ttl = 86400 * 29  # 29 days
+		try:
+			self._cache.set(key, pickle.dumps(value,-1), ex=ttl)
+		except:
+			pass
+	def __delitem__(self, key):
+		try:
+			self._cache.delete(key)
+		except:
+			pass
+
 cache = None
 
 if not cache and gaecache:
@@ -114,6 +148,13 @@ if not cache and memcache:
 		cache = MemcacheCache(config.MEMCACHE_SERVERS, **config.MEMCACHE_ARGS)
 	except Exception as e:
 		logger.warning("Failed to create Memcache client: %s" % (e, ))
+
+if not cache and 'redis' in globals() and hasattr(config, 'REDIS_HOST'):
+	try:
+		logger.info("Connecting Redis client to %s" % (config.REDIS_HOST,))
+		cache = RedisCache(config.REDIS_HOST)
+	except Exception as e:
+		logger.warning("Failed to create Redis client: %s" % (e, ))
 
 if not cache:
 	logger.info("Failing back to null cache")
