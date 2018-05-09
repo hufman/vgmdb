@@ -1,0 +1,33 @@
+redis:
+  image: bitnami/redis:latest
+  labels:
+    com.joyent.package: g4-highcpu-128M
+  restart: always
+  environment:
+    - REDIS_EXTRA_FLAGS=--maxmemory 100mb
+    - ALLOW_EMPTY_PASSWORD=yes
+vgmdb_web:
+  image: hufman/vgmdb_web:latest
+  links:
+    - redis
+  ports:
+    - "80:80"
+  labels:
+    com.joyent.package: g4-highcpu-256M
+    triton.cns.services: vgmdb-web
+  restart: always
+  environment:
+    - REDIS_HOST=redis
+    - DATA_BACKGROUND=true
+    - CELERY_PING=false
+# add secret keys here
+vgmdb_celery:
+  image: hufman/vgmdb_celery:latest
+  links:
+    - redis
+  labels:
+    com.joyent.package: g4-highcpu-256M
+  restart: always
+  environment:
+    - REDIS_HOST=redis
+# add secret keys here
