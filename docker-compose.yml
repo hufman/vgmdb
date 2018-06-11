@@ -4,7 +4,7 @@ redis:
     com.joyent.package: g4-highcpu-128M
   restart: always
   environment:
-    - REDIS_EXTRA_FLAGS=--maxmemory 100mb
+    - REDIS_EXTRA_FLAGS=--maxmemory 100mb --maxmemory-policy allkeys-lru
     - ALLOW_EMPTY_PASSWORD=yes
 vgmdb_web:
   image: hufman/vgmdb_web:latest
