@@ -37,21 +37,15 @@ def parse_page(html_source):
 	album_info.update(_parse_album_info(soup_info))
 
 	# track list
-	soup_tracklist = soup_profile.find_all('div', recursive=False)[-1]
+	soup_tracklist = _find_element_named(soup_profile, 'h3', 'Tracklist').parent.parent
 	album_info['discs'] = _parse_tracklist(soup_tracklist)
 
 	# stats
 	album_info.update(_parse_right_column(soup_right_column))
 
 	# notes
-	soup_row = soup_profile
-	while soup_row and soup_row.name != 'tr':
-		soup_row = soup_row.parent
-	if soup_row:
-		soup_row = soup_row.find_next_sibling('tr')
-		if soup_row:	# has a notes row
-			soup_notes = soup_row.td.div.find_next_sibling('div').div
-			album_info['notes'] = utils.parse_string(soup_notes).strip()
+	soup_notes_container = _find_element_named(soup_profile, 'h3', 'Notes').parent
+	album_info['notes'] = utils.parse_string(soup_notes_container.div.div).strip()
 
 	# add any required properties
 	required_lists = ['arrangers', 'composers', 'covers', 'lyricists', 'organizations', 'performers']
@@ -59,6 +53,11 @@ def parse_page(html_source):
 		if not key in album_info:
 			album_info[key] = []
 	return album_info
+
+def _find_element_named(soup_profile, tagname, name):
+	for element in soup_profile.find_all(tagname):
+		if element.text == name:
+			return element
 
 def _parse_album_info(soup_info):
 	album_info = {}
