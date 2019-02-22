@@ -46,8 +46,8 @@ class TestAlbums(unittest.TestCase):
 		self.assertEqual(u"3:09", ff8['discs'][0]['tracks'][0]['track_length'])
 		self.assertEqual(u"Liberi Fatali", ff8['discs'][0]['tracks'][0]['names']['English'])
 		self.assertEqual(u"64:16", ff8['discs'][0]['disc_length'])
-		self.assertEqual(4.46, ff8['rating'])
-		self.assertEqual(50, ff8['votes'])
+		self.assertEqual(4.43, ff8['rating'])
+		self.assertEqual(56, ff8['votes'])
 		self.assertEqual(u"Game", ff8['category'])
 		self.assertEqual(u"Final Fantasy VIII", ff8['products'][0]['names']['en'])
 		self.assertEqual(u"ファイナルファンタジーVIII", ff8['products'][0]['names']['ja'])
@@ -55,24 +55,24 @@ class TestAlbums(unittest.TestCase):
 		self.assertEqual(u"Sony PlayStation", ff8['platforms'][0])
 		self.assertEqual(u"RPGFan's Review", ff8['websites']['Review'][0]['name'])
 		self.assertEqual(u"Booklet Front", ff8['covers'][0]['name'])
-		self.assertEqual(u"http://medium.media.vgm.io/albums/97/79/79-1264618929.png", ff8['picture_small'])
-		self.assertEqual(u"http://media.vgm.io/albums/97/79/79-1264618929.png", ff8['picture_full'])
-		self.assertEqual(u"http://thumb.media.vgm.io/albums/97/79/79-1264618929.png", ff8['covers'][0]['thumb'])
-		self.assertEqual(u"http://medium.media.vgm.io/albums/97/79/79-1264618929.png", ff8['covers'][0]['medium'])
-		self.assertEqual(u"http://media.vgm.io/albums/97/79/79-1264618929.png", ff8['covers'][0]['full'])
+		self.assertEqual(u"https://medium-media.vgm.io/albums/97/79/79-1264618929.png", ff8['picture_small'])
+		self.assertEqual(u"https://media.vgm.io/albums/97/79/79-1264618929.png", ff8['picture_full'])
+		self.assertEqual(u"https://thumb-media.vgm.io/albums/97/79/79-1264618929.png", ff8['covers'][0]['thumb'])
+		self.assertEqual(u"https://medium-media.vgm.io/albums/97/79/79-1264618929.png", ff8['covers'][0]['medium'])
+		self.assertEqual(u"https://media.vgm.io/albums/97/79/79-1264618929.png", ff8['covers'][0]['full'])
 		self.assertEqual(u"EYES ON ME: featured in FINAL FANTASY VIII", ff8['related'][0]['names']['en'])
 		self.assertEqual(u"PRT-8429", ff8['related'][0]['catalog'])
 		self.assertEqual(u"bonus", ff8['related'][0]['type'])
-		self.assertEqual(u"2006-08-03T01:33", ff8['meta']['added_date'])
-		self.assertEqual(u"2015-01-06T17:23", ff8['meta']['edited_date'])
-		self.assertEqual(9382, ff8['meta']['visitors'])
-		self.assertEqual(24, ff8['meta']['freedb'])
+		self.assertEqual(u"2006-08-03T02:33", ff8['meta']['added_date'])
+		self.assertEqual(u"2015-01-06T18:23", ff8['meta']['edited_date'])
+		self.assertEqual(15011, ff8['meta']['visitors'])
+		self.assertEqual(32, ff8['meta']['freedb'])
 
 	def test_arciel(self):
 		arciel_code = file(os.path.join(base, 'album_arciel.html'), 'r').read()
 		arciel = album.parse_page(arciel_code)
 
-		self.assertEqual(u"Ar tonelico III Image CD Utau Oka~Ar=Ciel Ar=Dor~", arciel['names']['en'])
+		self.assertEqual(u"Ar tonelico III Image CD Utau Oka ~Ar=Ciel Ar=Dor~", arciel['names']['en'])
 		self.assertEqual(u"アルトネリコ3 イメージCD 謳う丘～Ar=Ciel Ar=Dor～", arciel['names']['ja'])
 		self.assertEqual(u"FCCM-0328", arciel['catalog'])
 		self.assertEqual(u"謳う丘 ～Ar=Ciel Ar=Dor～", arciel['discs'][0]['tracks'][0]['names']['Japanese'])
@@ -89,7 +89,7 @@ class TestAlbums(unittest.TestCase):
 		viking = album.parse_page(viking_code)
 
 		self.assertEqual('Free', viking['release_price']['price'])
-		self.assertEqual(1188, viking['meta']['visitors'])
+		self.assertEqual(1819, viking['meta']['visitors'])
 		self.assertEqual('NES (Famicom)', viking['platforms'][0])
 		self.assertEqual('Duty Cycle Generator', viking['publisher']['names']['en'])
 
@@ -97,8 +97,11 @@ class TestAlbums(unittest.TestCase):
 		blooming_code = file(os.path.join(base, 'album_blooming.html'), 'r').read()
 		blooming = album.parse_page(blooming_code)
 
-		self.assertEqual('KMCA-65', blooming['related'][0]['catalog'])
-		self.assertEqual('2000-10-04', blooming['related'][1]['date'])
+		self.assertEqual('KMCM-2', blooming['catalog'])
+		self.assertEqual('KMDA-5', blooming['related'][0]['catalog'])
+		self.assertEqual('2000-08-03', blooming['related'][0]['date'])
+		self.assertEqual('KMCA-65', blooming['related'][1]['catalog'])
+		self.assertEqual('2000-09-21', blooming['related'][1]['date'])
 		self.assertEqual('CD Japan (OOP)', blooming['stores'][1]['name'])
 
 	def test_istoria(self):
@@ -168,12 +171,12 @@ class TestAlbums(unittest.TestCase):
 		self.assertEqual(u'publisher', million['organizations'][1]['role'])
 
 	def test_got(self):
-		# has unlinked publisher and a distributor
+		# used to have unlinked publisher and a distributor
 		got_code = file(os.path.join(base, 'album_got.html'), 'r').read()
 		got = album.parse_page(got_code)
 		self.assertEqual(2, len(got['organizations']))
 		self.assertEqual(u'Game Audio Factory', got['publisher']['names']['en'])
-		self.assertFalse(u'link' in got['publisher'])
+		self.assertEqual(u'org/1636', got['publisher']['link'])
 		self.assertEqual(u'Bandcamp', got['distributor']['names']['en'])
 		self.assertEqual(u'org/965', got['distributor']['link'])
 if __name__ == '__main__':

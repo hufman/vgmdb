@@ -114,10 +114,10 @@ class TestLinks(unittest.TestCase):
 		self.assertEqual('http://musenote.blog10.fc2.com/blog-entry-187.html', utils.strip_redirect('/redirect/79973/vgmdb.net/redirect/79964/musenote.blog10.fc2.com/blog-entry-187.html'))
 
 	def test_media(self):
-		style = "background-image: url('http://medium.media.vgm.io/albums/97/79/79-1264618929.png')"
-		medium = "http://medium.media.vgm.io/albums/97/79/79-1264618929.png"
-		thumb = "http://thumb.media.vgm.io/albums/97/79/79-1264618929.png"
-		full = "http://media.vgm.io/albums/97/79/79-1264618929.png"
+		style = "background-image: url('https://medium-media.vgm.io/albums/97/79/79-1264618929.png')"
+		medium = "https://medium-media.vgm.io/albums/97/79/79-1264618929.png"
+		thumb = "https://thumb-media.vgm.io/albums/97/79/79-1264618929.png"
+		full = "https://media.vgm.io/albums/97/79/79-1264618929.png"
 		self.assertEqual(medium, utils.extract_background_image(style))
 		self.assertEqual(thumb, utils.media_thumb(medium))
 		self.assertEqual(full, utils.media_full(medium))

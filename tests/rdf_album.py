@@ -71,15 +71,15 @@ class TestAlbumsRDF(TestRDF):
 			"select ?name where { <@base#subject> schema:publisher ?publisher . ?publisher foaf:name ?name . filter(lang(?name)='en') }" : "DigiCube",
 			"select ?composer where { <@base#composition> mo:composer ?composer . }" : "<@base/artist/77#subject>",
 			"select ?name where { <@base#composition> mo:composer ?composer . ?composer foaf:name ?name . filter(lang(?name)='en') }" : "Nobuo Uematsu",
-			"select ?rating where { <@base#subject> schema:aggregateRating ?agg . ?agg schema:ratingValue ?rating . }" : decimal.Decimal("4.46"),
-			"select ?rating where { <@base#subject> schema:aggregateRating ?agg . ?agg schema:ratingCount ?rating . }" : 50,
+			"select ?rating where { <@base#subject> schema:aggregateRating ?agg . ?agg schema:ratingValue ?rating . }" : decimal.Decimal("4.43"),
+			"select ?rating where { <@base#subject> schema:aggregateRating ?agg . ?agg schema:ratingCount ?rating . }" : 56,
 			"select ?rating where { <@base#subject> schema:aggregateRating ?agg . ?agg schema:bestRating ?rating . }" : 5,
-			"select ?cover where { <@base#subject> foaf:depiction ?cover . ?cover a foaf:Image }" : "<http://media.vgm.io/albums/97/79/79-1264618929.png>",
-			"select ?cover where { <@base#subject> schema:image ?cover . ?cover a schema:ImageObject }" : "<http://media.vgm.io/albums/97/79/79-1264618929.png>",
-			"select ?cover where { ?cover foaf:depicts <@base#subject> . }" : "<http://media.vgm.io/albums/97/79/79-1264618929.png>",
-			"select ?cover where { ?cover schema:about <@base#subject> . }" : "<http://media.vgm.io/albums/97/79/79-1264618929.png>",
-			"select ?thumb where { <@base#subject> foaf:depiction ?cover . ?cover foaf:thumbnail ?thumb . ?thumb a foaf:Image }" : "<http://medium.media.vgm.io/albums/97/79/79-1264618929.png>",
-			"select ?thumb where { <@base#subject> schema:image ?cover . ?cover schema:thumbnailUrl ?thumb . ?thumb a schema:ImageObject }" : "<http://medium.media.vgm.io/albums/97/79/79-1264618929.png>"
+			"select ?cover where { <@base#subject> foaf:depiction ?cover . ?cover a foaf:Image }" : "<https://media.vgm.io/albums/97/79/79-1264618929.png>",
+			"select ?cover where { <@base#subject> schema:image ?cover . ?cover a schema:ImageObject }" : "<https://media.vgm.io/albums/97/79/79-1264618929.png>",
+			"select ?cover where { ?cover foaf:depicts <@base#subject> . }" : "<https://media.vgm.io/albums/97/79/79-1264618929.png>",
+			"select ?cover where { ?cover schema:about <@base#subject> . }" : "<https://media.vgm.io/albums/97/79/79-1264618929.png>",
+			"select ?thumb where { <@base#subject> foaf:depiction ?cover . ?cover foaf:thumbnail ?thumb . ?thumb a foaf:Image }" : "<https://medium-media.vgm.io/albums/97/79/79-1264618929.png>",
+			"select ?thumb where { <@base#subject> schema:image ?cover . ?cover schema:thumbnailUrl ?thumb . ?thumb a schema:ImageObject }" : "<https://medium-media.vgm.io/albums/97/79/79-1264618929.png>"
 		}
 
 		self.run_tests(graph, test_count_results, test_first_result)
