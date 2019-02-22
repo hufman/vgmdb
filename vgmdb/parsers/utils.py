@@ -224,9 +224,9 @@ def extract_background_image(style):
 		return found.group(1)
 
 def media_thumb(medium_link):
-	return medium_link.replace('medium.media', 'thumb.media')
+	return medium_link.replace('medium-media', 'thumb-media')
 def media_full(medium_link):
-	return medium_link.replace('medium.media', 'media')
+	return medium_link.replace('medium-media', 'media')
 
 def product_color_type(soup_element):
 	product_colors = {
