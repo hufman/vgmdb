@@ -20,8 +20,8 @@ class TestUtils(unittest.TestCase):
 		self.assertTrue(utils.is_english(u"Marcin Przybyłowicz"))
 
 	def test_date_parse(self):
-		date = "Aug 3, 2006 01:33 AM"
-		self.assertEqual("2006-08-03T01:33", utils.parse_date_time(date))
+		date = "Aug 3, 2006 09:33 AM"
+		self.assertEqual("2006-08-03T09:33", utils.parse_date_time(date))
 		date = "Aug 3, 2006 12:33 PM"
 		self.assertEqual("2006-08-03T12:33", utils.parse_date_time(date))
 		date = "Oct 04, 2000"
@@ -42,6 +42,8 @@ class TestUtils(unittest.TestCase):
 		self.assertEqual("0000-12-09", utils.parse_date_time(date))
 		date = "0"
 		self.assertEqual(None, utils.parse_date_time(date))
+		date = "Dec 5 1791"
+		self.assertEqual("1791-12-05", utils.parse_date_time(date))
 
 	def test_dotted_year(self):
 		""" Make sure that weird dates with unknown month and days work """

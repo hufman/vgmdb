@@ -126,14 +126,21 @@ def parse_date_time(time):
 	notmonth = time[space+1:].strip()
 	if len(notmonth) == 4:
 		return "%04d-%02d"%(int(notmonth),month)
-	comma = time.find(',')
-	if comma < 0 or len(time[comma:].strip())<4:	# no year
-		day = int(time[space+1:])
-		year = 0
+
+	day_year_found = re.match('([0-9][0-9]?),? ?([12][0-9][0-9][0-9])?', time[space+1:])
+	if day_year_found is not None:
+		if day_year_found.group(2) is not None:
+			# found day and year
+			day = int(day_year_found.group(1))
+			year = int(day_year_found.group(2))
+		else:
+			day = int(day_year_found.group(1))
+			year = 0
+		timepos = space + 1 + day_year_found.end() + 1
 	else:
-		day = int(time[space+1:comma])
-		year = int(time[comma+2:comma+2+4])
-	timepos = comma+2+4+1
+		# couldn't parse day_year
+		return None
+
 	if timepos >= len(time):		# there is not a time to parse
 		return "%04d-%02d-%02d"%(year,month,day)
 	else:
