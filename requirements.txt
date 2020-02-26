@@ -18,7 +18,7 @@ python-memcached==1.57
 simplejson==3.3.0
 
 # Only needed for amazon seller provider
-python-amazon-product-api==0.2.8
+amightygirl.paapi5-python-sdk==1.0.0
 
 # Seller optimizations
 futures==2.1.4
