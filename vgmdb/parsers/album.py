@@ -87,6 +87,8 @@ def _parse_album_info(soup_info):
 			catalog = catalog.split('(')[0].strip()
 			reprints = []
 			for soup_reprint in soup_value.find_all('a'):
+				if soup_reprint.get('href') == '#':
+					continue
 				note = None
 				link = soup_reprint['href']
 				link = utils.trim_absolute(link)
@@ -137,6 +139,7 @@ def _parse_album_info(soup_info):
 			album_info['release_events'] = soup_events
 		elif name == 'Release Price':
 			price = soup_value.contents[0].strip()
+			price = price.split('(')[0].strip()
 			album_info['release_price'] = {"price":price}
 			try:
 				price = float(soup_value.contents[0])
@@ -144,39 +147,62 @@ def _parse_album_info(soup_info):
 				album_info['release_price'] = {"price":price, "currency":currency}
 			except:
 				pass
-		elif name == 'Published by':
+		elif name == 'Organizations':
 			def addOrganization(info, role='publisher'):
 				if not 'organizations' in album_info:
 					album_info['organizations'] = []
-				album_info['organizations'].append(dict(info))
+				info = dict(info)
+				album_info['organizations'].append(info)
 				album_info['organizations'][-1]['role'] = role
-				if role == 'publisher' and 'publisher' not in album_info:
+				is_publisher = role in ('publisher', 'label')
+				is_distributor = role in ('distributor', 'retailer')
+				if (is_publisher and 'publisher' not in album_info):
 					album_info['publisher'] = info
-				if role == 'distributor' and 'distributor' not in album_info:
+				if is_distributor and 'distributor' not in album_info:
 					album_info['distributor'] = info
+				if len(album_info['organizations']) == 1 and not is_distributor:
+					album_info['publisher'] = info
+
 			soup_links = soup_value.find_all('a')
 			if len(soup_links) == 0:
 				addOrganization({'names':{'en':soup_value.string.strip()}}, 'publisher')
-			separator = utils.parse_shallow_string(soup_value)
+			# Organizations row has some expando-javascript
+			for soup_child in soup_value.children:
+				if isinstance(soup_child, bs4.Tag) and soup_child.name == 'span' and soup_child.get('id') == 'publisher_less':
+					soup_value = soup_child
+					break
+
+			info = None
 			role = 'publisher'
+
 			for soup_child in soup_value.children:
 				if isinstance(soup_child, bs4.Tag) and soup_child.name == 'a':
+					# found a new org, commit any previous one
+					if info is not None:
+						addOrganization(info, role)
+						info = None
+
 					link = soup_child['href']
 					link = utils.trim_absolute(link)
 					info = {}
 					info['link'] = link
 					info['names'] = utils.parse_names(soup_child)
-					addOrganization(info, role)
 				else:
 					text = unicode(soup_child.string).strip()
 					splits = text.split('(', 1)
 					if len(splits) == 2 and len(splits[0].strip()) > 3:
 						# unlinked publisher
 						info = {'names': {'en': splits[0].strip()}}
-						addOrganization(info, 'publisher')
-						text = splits[1]
-					if 'distribut' in text.lower():
-						role = 'distributor'
+					if len(splits) == 2:
+						roles = splits[1].split(',')
+						for role in roles:
+							role = role.strip()
+							role = role.strip(')')
+							role = role.strip()
+							addOrganization(info, role.lower())
+						info = None
+			if info is not None:
+				addOrganization(info, role)
 		elif name in names_single.keys():
 			key = names_single[name]
 			soup_value = soup_value.contents[0]
@@ -237,7 +263,7 @@ def _parse_tracklist(soup_tracklist):
 			for soup_track in soup_tracklist.find_all('tr', recursive=False):
 				track_no += 1
 				soup_cells = soup_track.find_all('td')
-				track_name = unicode(soup_cells[1].string)
+				track_name = unicode(soup_cells[1].string).strip()
 				maybe_track_length = soup_cells[2].span.string
 				if maybe_track_length:
 					track_length = unicode(maybe_track_length)

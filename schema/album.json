@@ -69,6 +69,7 @@
 		"name": { "type": "string" },
 		"names": { "$ref": "common.json#/definitions/names" },
 		"notes": { "type": "string" },
+		"organizations": { "$ref": "common.json#/definitions/listOfNamedItems" },
 		"performers": { "$ref": "common.json#/definitions/listOfNamedItems" },
 		"picture_full": { "$ref": "common.json#/definitions/url" },
 		"picture_small": { "$ref": "common.json#/definitions/url" },
