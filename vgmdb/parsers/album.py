@@ -56,7 +56,7 @@ def parse_page(html_source):
 
 def _find_element_named(soup_profile, tagname, name):
 	for element in soup_profile.find_all(tagname):
-		if element.text == name:
+		if element.text and element.text.strip() == name:
 			return element
 
 def _parse_album_info(soup_info):
