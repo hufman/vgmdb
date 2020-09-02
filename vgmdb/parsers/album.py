@@ -261,8 +261,10 @@ def _parse_tracklist(soup_tracklist):
 				discs[index]['tracks'] = []
 			track_no = -1
 			for soup_track in soup_tracklist.find_all('tr', recursive=False):
-				track_no += 1
 				soup_cells = soup_track.find_all('td')
+				if len(soup_cells) != 3:
+					continue
+				track_no += 1
 				track_name = unicode(soup_cells[1].string).strip()
 				maybe_track_length = soup_cells[2].span.string
 				if maybe_track_length:
