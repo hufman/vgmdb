@@ -25,7 +25,7 @@ class TestArtists(unittest.TestCase):
 		self.assertEqual(u'Earthbound Papas', nobuo['units'][0]['names']['en'])
 		self.assertEqual(u'CRUISE CHASER BLASSTY', nobuo['discography'][0]['titles']['en'])
 		self.assertEqual(u'album/11113', nobuo['discography'][0]['link'])
-		self.assertEqual(u'album/719', nobuo['featured_on'][0]['link'])
+		self.assertEqual(u'album/718', nobuo['featured_on'][0]['link'])
 		self.assertEqual(u'bonus', nobuo['discography'][0]['type'])
 		self.assertEqual(u'1986-04-26', nobuo['discography'][0]['date'])
 		self.assertEqual(u'H25X-20015', nobuo['discography'][2]['catalog'])
@@ -33,8 +33,8 @@ class TestArtists(unittest.TestCase):
 		self.assertEqual(u'DOGEARRECORDS', nobuo['websites']['Official'][0]['name'])
 		self.assertEqual('UematsuNobuo', nobuo['twitter_names'][0])
 		self.assertEqual('2007-10-17T09:14', nobuo['meta']['added_date'])
-		self.assertEqual('https://vgmdb.net/db/assets/portraits-medium/77-1345913713.jpg', nobuo['picture_small'])
-		self.assertEqual('https://vgmdb.net/db/assets/portraits/77-1345913713.jpg', nobuo['picture_full'])
+		self.assertEqual('https://thumb-media.vgm.io/artists/77/77/77-1345913713.jpg', nobuo['picture_small'])
+		self.assertEqual('https://media.vgm.io/artists/77/77/77-1345913713.jpg', nobuo['picture_full'])
 
 	def test_nobuo_name(self):
 		""" Japanese name """
@@ -66,9 +66,10 @@ class TestArtists(unittest.TestCase):
 	def test_ss(self):
 		ss_code = file(os.path.join(base, 'artist_ss.html'), 'r').read()
 		ss = artist.parse_page(ss_code)
-		self.assertEqual(u'Composer (as HAPPY-SYNTHESIZER)', ss['discography'][12]['roles'][0])
-		self.assertEqual(u'Arranger (as (S_S))', ss['discography'][13]['roles'][0])
-		self.assertEqual(u'HAPPY-SYNTHESIZER', ss['aliases'][1]['names']['en'])
+		self.assertEqual(u'Composer (as HAPPY-SYNTHESIZER)', ss['discography'][13]['roles'][0])
+		self.assertEqual(u'Arranger (as (S_S))', ss['discography'][14]['roles'][0])
+		self.assertEqual(u'DIRTY-SYNTHESIZER', ss['aliases'][1]['names']['en'])
+		self.assertEqual(u'HAPPY-SYNTHESIZER', ss['aliases'][3]['names']['en'])
 		self.assertEqual(u'Takeshi Nagai', ss['members'][0]['names']['en'])
 		self.assertEqual(u'2011-10-03T05:45', ss['meta']['edited_date'])
 		self.assertEqual(u'Unit', ss['type'])
@@ -114,8 +115,7 @@ class TestArtists(unittest.TestCase):
 	def test_horie(self):
 		horie_code = file(os.path.join(base, 'artist_horie.html'), 'r').read()
 		horie = artist.parse_page(horie_code)
-		self.assertEqual(1, len(horie['info']['Variations']))
-		self.assertEqual(u'白河ことり', horie['info']['Variations'][0]['names']['ja'])
+		self.assertEqual('B', horie['info']['Bloodtype'])
 
 if __name__ == '__main__':
 	unittest.main()

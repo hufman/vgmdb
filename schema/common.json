@@ -14,7 +14,8 @@
 			"type": "string",
 			"enum": [
 				"game", "anime", "print", "drama", "demo",
-				"works", "bonus", "doujin", "cancel", "bootleg"
+				"works", "bonus", "doujin", "cancel", "bootleg",
+				"mult", "live"
 			]
 		},
 		"albumCategories": {

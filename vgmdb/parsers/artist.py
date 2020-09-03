@@ -72,13 +72,13 @@ def parse_page(html_source):
 	artist_info['notes'] = utils.parse_string(soup_notes).strip()
 
 	# Parse Discography
-	soup_separator = soup_profile_right.find('br', recursive=False)
-	soup_disco_table = soup_separator.find_next_sibling('div').find_next_sibling('div').div.table
+	disco_container = soup_profile_right.find(id='albumlist')
+	soup_disco_table = disco_container.find(id='discotable').table
 	if soup_disco_table:
 		artist_info['discography'] = utils.parse_discography(soup_disco_table, 'roles')
 	else:
 		artist_info['discography'] = []
-	soup_featured_table = soup_separator.find_next_sibling('br').find_next_sibling('div').find_next_sibling('div').div.table
+	soup_featured_table = disco_container.find(id='featuredtable').table
 	if soup_featured_table:
 		artist_info['featured_on'] = utils.parse_discography(soup_featured_table, 'roles')
 	else:
@@ -94,15 +94,13 @@ def parse_page(html_source):
 
 	# Parse for twitter handle
 	twitters = []
-	soup_twitters = soup_right_column.find_all('script')
-	for soup_twitter in soup_twitters:
-		widget_code = unicode(soup_twitter)
-		index = widget_code.find("setUser('")
-		if index > -1:
-			index = index + 9
-			end = widget_code.find("'", index)
-			twitter = widget_code[index:end]
-			twitters.append(twitter)
+	soup_links = soup_right_column.find_all('a')
+	for soup_link in soup_links:
+		if soup_link.text == "Twitter":
+			index = soup_link['href'].find("twitter.com")
+			if index > -1:
+				index = soup_link['href'].find("/", index)
+				twitters.append(soup_link['href'][index+1:])
 
 	if len(twitters) > 0:
 		artist_info['twitter_names'] = twitters

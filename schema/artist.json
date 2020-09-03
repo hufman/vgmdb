@@ -34,11 +34,11 @@
 						"oneOf": [
 							{
 								"example": "4 albums in database",
-								"pattern": "^([0-9]+) albums in database$"
+								"pattern": "^([0-9]+) ([^ ]+) in database$"
 							},
 							{
 								"example": "4 composer credits",
-								"pattern": "^([0-9]+) ([^ ]+) credits$"
+								"pattern": "^([0-9]+) ([^ ]+)( [^ ]+)? credits?$"
 							}
 						]
 					}

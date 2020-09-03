@@ -20,19 +20,19 @@ class TestArtistsRDF(TestRDF):
 			"select ?artist where { <@base#subject> rdf:type schema:Person . }" : 1,
 			"select ?artist where { <@base#subject> rdf:type schema:MusicGroup . }" : 1,
 			"select ?name where { ?person rdf:type foaf:Person . ?person foaf:name ?name . }" : 1,
-			"select ?album where { <@base#subject> foaf:made ?album . ?album rdf:type schema:MusicAlbum }" : 652,
-			"select ?group where { ?person mo:member_of ?group . }" : 4,
+			"select ?album where { <@base#subject> foaf:made ?album . ?album rdf:type schema:MusicAlbum }" : 1562,
+			"select ?group where { ?person mo:member_of ?group . }" : 5,
 			"select ?artist where { ?artist foaf:page <http://www.dogearrecords.com/> . }" : 1,
-			"select ?site where { <@base#subject> foaf:page ?site . }" : 29,
+			"select ?site where { <@base#subject> foaf:page ?site . }" : 38,
 			# discography
-			"select ?album where { ?album dcterms:creator <@base#subject> . }" : 1304, # includes composition and so on
-			"select ?album where { ?album schema:byArtist <@base#subject> . }" : 332,
-			"select ?album where { <@basealbum/79#composition> dcterms:title ?name . }" : 1,
-			"select ?album where { <@basealbum/79#composition> schema:name ?name . }" : 1,
-			"select ?album where { <@basealbum/108#performance> dcterms:title ?name . }" : 2,
-			"select ?album where { <@basealbum/108#performance> schema:name ?name . }" : 2,
-			"select ?album where { <@basealbum/79#subject> dcterms:title ?name . }" : 1,
-			"select ?album where { <@basealbum/79#subject> schema:name ?name . }" : 1,
+			"select ?album where { ?album dcterms:creator <@base#subject> . }" : 3122, # includes composition and so on
+			"select ?album where { ?album schema:byArtist <@base#subject> . }" : 535,
+			"select ?album where { <@basealbum/79#composition> dcterms:title ?name . }" : 3,
+			"select ?album where { <@basealbum/79#composition> schema:name ?name . }" : 3,
+			"select ?album where { <@basealbum/108#performance> dcterms:title ?name . }" : 3,
+			"select ?album where { <@basealbum/108#performance> schema:name ?name . }" : 3,
+			"select ?album where { <@basealbum/79#subject> dcterms:title ?name . }" : 3,
+			"select ?album where { <@basealbum/79#subject> schema:name ?name . }" : 3,
 			"select ?album where { <@base#subject> foaf:made <@basealbum/79#composition> . }" : 1,
 			"select ?album where { <@basealbum/79#subject> schema:byArtist <@base#subject> . }" : 1,
 			"select ?album where { <@basealbum/79#subject> dcterms:creator <@base#subject> . }" : 1,
@@ -43,7 +43,7 @@ class TestArtistsRDF(TestRDF):
 			"select ?album where { <@basealbum/1858#performance> schema:byArtist <@base#subject> . }" : 1,
 			"select ?album where { <@base#subject> foaf:made <@basealbum/1858#lyrics> . }" : 1,
 			# featured
-			"select ?album where { ?album mo:tribute_to ?artist . }" : 336,
+			"select ?album where { ?album mo:tribute_to ?artist . }" : 1050,
 			"select ?album where { <@base#subject> foaf:made <@basealbum/719#composition> . }" : 1
 		}
 		test_first_result = {
@@ -57,13 +57,13 @@ class TestArtistsRDF(TestRDF):
 			"select ?date where { ?album rdf:type mo:Release . ?artist foaf:made ?album . ?album dcterms:created ?date . } order by ?date" : datetime.date(1986,04,26),
 			"select ?catalog where { ?album mo:catalogue_number ?catalog . ?album dcterms:title \"SYMPHONIC SUITE FINAL FANTASY\"@en . }" : "H28X-10007",
 			"select ?handle where { ?person foaf:account ?account . ?account foaf:accountServiceHomepage <http://www.twitter.com/> . ?account foaf:accountName ?handle . }" : "UematsuNobuo",
-			"select ?image where { <@base#subject> foaf:depiction ?image . ?image a foaf:Image }" : "<https://vgmdb.net/db/assets/portraits/77-1345913713.jpg>",
-			"select ?image where { <@base#subject> foaf:img ?image }" : "<https://vgmdb.net/db/assets/portraits/77-1345913713.jpg>",
-			"select ?image where { <@base#subject> schema:image ?image . ?image a schema:ImageObject }" : "<https://vgmdb.net/db/assets/portraits/77-1345913713.jpg>",
-			"select ?image where { ?image foaf:depicts <@base#subject> }" : "<https://vgmdb.net/db/assets/portraits/77-1345913713.jpg>",
-			"select ?image where { ?image schema:about <@base#subject> }" : "<https://vgmdb.net/db/assets/portraits/77-1345913713.jpg>",
-			"select ?thumb where { <@base#subject> foaf:depiction ?image . ?image foaf:thumbnail ?thumb . ?thumb a foaf:Image }" : "<https://vgmdb.net/db/assets/portraits-medium/77-1345913713.jpg>",
-			"select ?thumb where { <@base#subject> schema:image ?image . ?image schema:thumbnailUrl ?thumb . ?thumb a schema:ImageObject }" : "<https://vgmdb.net/db/assets/portraits-medium/77-1345913713.jpg>"
+			"select ?image where { <@base#subject> foaf:depiction ?image . ?image a foaf:Image }" : "<https://media.vgm.io/artists/77/77/77-1345913713.jpg>",
+			"select ?image where { <@base#subject> foaf:img ?image }" : "<https://media.vgm.io/artists/77/77/77-1345913713.jpg>",
+			"select ?image where { <@base#subject> schema:image ?image . ?image a schema:ImageObject }" : "<https://media.vgm.io/artists/77/77/77-1345913713.jpg>",
+			"select ?image where { ?image foaf:depicts <@base#subject> }" : "<https://media.vgm.io/artists/77/77/77-1345913713.jpg>",
+			"select ?image where { ?image schema:about <@base#subject> }" : "<https://media.vgm.io/artists/77/77/77-1345913713.jpg>",
+			"select ?thumb where { <@base#subject> foaf:depiction ?image . ?image foaf:thumbnail ?thumb . ?thumb a foaf:Image }" : "<https://thumb-media.vgm.io/artists/77/77/77-1345913713.jpg>",
+			"select ?thumb where { <@base#subject> schema:image ?image . ?image schema:thumbnailUrl ?thumb . ?thumb a schema:ImageObject }" : "<https://thumb-media.vgm.io/artists/77/77/77-1345913713.jpg>"
 		}
 
 		self.run_tests(graph, test_count_results, test_first_result)
