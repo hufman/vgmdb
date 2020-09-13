@@ -152,6 +152,8 @@ def _parse_album_info(soup_info):
 				if not 'organizations' in album_info:
 					album_info['organizations'] = []
 				info = dict(info)
+				if info.get('link', "").startswith("search"):
+					del info['link']
 				album_info['organizations'].append(info)
 				album_info['organizations'][-1]['role'] = role
 				is_publisher = role in ('publisher', 'label')
