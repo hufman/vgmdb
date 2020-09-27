@@ -39,6 +39,8 @@ def parse_page(html_source):
 		release_info['picture_full'] = utils.force_absolute(full_link)
 		release_info['picture_small'] = utils.force_absolute(medium_link)
 
+	release_info['release_albums'] = []
+	release_info['product_albums'] = []
 	soup_section_heads = soup_profile.find_all('h3', recursive=False)
 	for soup_section_head in soup_section_heads:
 		section_name = unicode(soup_section_head.string)

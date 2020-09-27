@@ -9,6 +9,7 @@ def parse_page(html_source):
 	product_info = {}
 	product_info['description'] = ''
 	product_info['websites'] = {}
+	product_info['albums'] = []
 	soup = bs4.BeautifulSoup(html_source)
 	soup_profile = soup.find(id='innermain')
 	soup_right_column = soup.find(id='rightcolumn')
