@@ -71,7 +71,8 @@ def _parse_album_info(soup_info):
 		soup_value = soup_row.td.find_next_sibling('td')
 		names_single = {'Publish Format':'publish_format',
 		                'Media Format':'media_format',
-		                'Classification':'classification'}
+		                'Classification':'classification',
+		                'Barcode':'barcode'}
 		names_multiple = {'Composed by':'composers',
 		                  'Arranged by':'arrangers',
 		                  'Performed by':'performers',
