@@ -66,7 +66,7 @@ def _parse_album_info(soup_info):
 		album_info['bootleg'] = True
 	soup_info_rows = soup_info.find_all('tr', recursive=False)
 	for soup_row in soup_info_rows:
-		name = soup_row.td.find('b').string
+		name = utils.parse_names(soup_row.td.find('b'))['en']
 		name = unicode(name)
 		soup_value = soup_row.td.find_next_sibling('td')
 		names_single = {'Publish Format':'publish_format',
@@ -76,7 +76,11 @@ def _parse_album_info(soup_info):
 		names_multiple = {'Composed by':'composers',
 		                  'Arranged by':'arrangers',
 		                  'Performed by':'performers',
-		                  'Lyrics by':'lyricists'}
+		                  'Lyrics by':'lyricists',
+		                  'Composer':'composers',
+		                  'Arranger':'arrangers',
+		                  'Performer':'performers',
+		                  'Lyricist':'lyricists'}
 
 		if name == "Catalog Number":
 			for child in soup_value.descendants:
