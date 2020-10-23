@@ -51,9 +51,9 @@ def parse_page(html_source):
 			# comment box
 			product_info['description'] = utils.parse_string(last_div).strip()
 
-	soup_section_heads = soup_profile.find_all('h3', recursive=False)
+	soup_section_heads = soup_profile.find_all('h3', {"class": "label"})
 	for soup_section_head in soup_section_heads:
-		section_name = unicode(soup_section_head.string)
+		section_name = utils.parse_shallow_string(soup_section_head).strip()
 		soup_section = soup_section_head.find_next_sibling('div')
 		if section_name == 'Belongs to':
 			product_info['superproduct'] = _parse_franchise_superproduct(soup_section.div.div)
@@ -63,7 +63,7 @@ def parse_page(html_source):
 			product_info['titles'] = _parse_franchise_titles(soup_section.div.table)
 		if section_name == 'Releases':
 			product_info['releases'] = _parse_product_releases(soup_section.div.table)
-		if section_name == 'Albums | Credits':
+		if section_name == 'Albums | Credits' or section_name == 'Albums':
 			product_info['albums'] = utils.parse_discography(soup_section.div.table, 'classifications')
 
 	soup_right_divs = soup_right_column.find_all('div', recursive=False)
