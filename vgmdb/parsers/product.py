@@ -39,17 +39,20 @@ def parse_page(html_source):
 	if soup_pic_div.a and soup_pic_div.a.img:
 		full_link = soup_pic_div.a['href']
 		medium_link = soup_pic_div.a.img['src']
-		product_info['picture_full'] = utils.force_absolute(full_link)
-		product_info['picture_small'] = utils.force_absolute(medium_link)
+		if 'media.vgm.io' in full_link:
+			product_info['picture_full'] = utils.force_absolute(full_link)
+		if 'media.vgm.io' in medium_link:
+			product_info['picture_small'] = utils.force_absolute(medium_link)
 
+	soup_profile_div = soup_pic_div.find_next_sibling('div')
+	soup_profile_info = soup_profile_div.find('dl')
 	last_div = soup_profile.find('h3').find_previous_sibling('div')
-	if last_div:	# full profile info box
-		soup_profile_info = last_div.find('dl')
-		if soup_profile_info:
-			product_info.update(_parse_product_info(soup_profile_info))
-		else:
-			# comment box
-			product_info['description'] = utils.parse_string(last_div).strip()
+	if last_div:
+		# comment box
+		product_info['description'] = utils.parse_string(last_div).strip()
+	if soup_profile_info:
+		# full profile info box
+		product_info.update(_parse_product_info(soup_profile_info))
 
 	soup_section_heads = soup_profile.find_all('h3', {"class": "label"})
 	for soup_section_head in soup_section_heads:
