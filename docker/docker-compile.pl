@@ -20,7 +20,7 @@ $tmpdir = tempdir(CLEANUP => !$ENV{LEAVE_TMPDIR});
 $tmpcount = 0;
 $prefix = '';
 
-$metadata{Cmd} = ["/bin/bash"];
+$metadata{CMD} = ["/bin/bash"];
 $filename = 'Dockerfile';
 GetOptions ('t=s' => \$tag,'f=s' => \$filename);
  
@@ -90,15 +90,15 @@ while ( <DOCKERFILE> ) {
  
     # image metadata
     when ('MAINTAINER') { $author = $args }
-    when ('CMD')        { $metadata{Cmd} =        eval { decode_json($args) } || ['sh', '-c', $args] }
-    when ('ENTRYPOINT') { $metadata{Entrypoint} = eval { decode_json($args) } || ['sh', '-c', $args] }
-    when ('WORKDIR')    { $metadata{WorkingDir} = $args }
-    when ('USER')       { $metadata{User}       = $args }
-    when ('EXPOSE')     { push @{ $metadata{PortSpecs} ||= [] },   split(' ',$args); }
+    when ('CMD')        { $metadata{CMD} =        eval { decode_json($args) } || ['sh', '-c', $args] }
+    when ('ENTRYPOINT') { $metadata{ENTRYPOINT} = eval { decode_json($args) } || ['sh', '-c', $args] }
+    when ('WORKDIR')    { $metadata{WORKDIR} = $args }
+    when ('USER')       { $metadata{USER}       = $args }
+    when ('EXPOSE')     { push @{ $metadata{EXPOSE} ||= [] },   split(' ',$args); }
     when ('ENV')        {
       my ( $k, $v ) = split(/s+/, $args, 2);
       push @commands, "export $k='$v'";
-      push @{ $metadata{Env} ||= [] }, "$k=$v";
+      push @{ $metadata{ENV} ||= [] }, "$k=$v";
     }
     when ('VOLUME')     {
       # This seems to be a NOP in `docker build`.
@@ -125,9 +125,16 @@ open CID, "<$tmpdir/CID" or die;
 our $cid = <CID>;
 close CID;
  
+# Convert metadata to a list of changes
+foreach my $key (keys %metadata) {
+    if (ref $metadata{$key} eq "ARRAY") {
+        $metadata{$key} = join(" ", @{ $metadata{$key} });
+    }
+}
+our @changes = map{qq{--change=$_ $metadata{$_}}} keys %metadata;
 our @commit = ( 'docker', 'commit' );
 push @commit, "--author=$author" if defined $author;
-push @commit, "--run=" . encode_json(\%metadata) if %metadata;
+push @commit, @changes;
 push @commit, $cid;
 push @commit, $tag if defined $tag;
 print "*** ", join(' ', @commit), "\n";

@@ -23,3 +23,4 @@ Most of any runtime requirements should be documented in requirements.txt. Use p
 
 The run.py example script will start up an HTTP server process for the site. An example Apache2 configuration, using mod\_wsgi, is also provided. It should work just as well under any other WSGI server.
 
+The `docker/docker-build.sh` script should produce a `vgmdb_reqs` base image with the dependencies and a `vgmdb` image with the current version of the code installed. This image exposes port 80, and `vgmdb/autoload_settings.py` implements loading optional dependencies and settings based on environment variables.
