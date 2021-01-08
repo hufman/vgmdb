@@ -159,6 +159,9 @@ def _parse_album_info(soup_info):
 					soup_event = soup_value.a.find_next_sibling('a')
 				else:			# freeform text
 					album_info['release_date'] = soup_value.value
+			if isinstance(soup_children[0], bs4.NavigableString):
+				if 'release_date' not in album_info:
+					album_info['release_date'] = str(soup_children[0]).strip()
 			for soup_event in soup_children[1:]:
 				if not isinstance(soup_event, bs4.Tag): continue
 				if 'Pending edit' in soup_event.get('title'):
