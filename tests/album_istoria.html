@@ -21,15 +21,15 @@
 <!-- CSS Stylesheet -->
 <style type="text/css" id="vbulletin_css">
 /**
-* vBulletin 3.8.8 CSS
+* vBulletin 3.8.11 CSS
 * Style: 'Default Style'; Style ID: 1
 */
-@import url("/forums/clientscript/vbulletin_css/style-ce6b22fa-00001.css");
+@import url("/forums/clientscript/vbulletin_css/style-57140a36-00001.css");
 </style>
-<link rel="stylesheet" type="text/css" href="/forums/clientscript/vbulletin_important.css?v=389" />
+<link rel="stylesheet" type="text/css" href="/forums/clientscript/vbulletin_important.css?v=3811" />
 
 
-<link rel="stylesheet" type="text/css" href="/db/vgmdb.css?20171010" />
+<link rel="stylesheet" type="text/css" href="/db/vgmdb.css?20201214" />
 <link rel="stylesheet" type="text/css" href="/db/css/vgmdb-colorcode-title.css?20190227" id="colorcode" />
 <link rel="stylesheet" type="text/css" href="/db/jquery.autocomplete.css?20091023" />
 <link rel="stylesheet" type="text/css" href="/db/jquery.jcarousel.css?20091124" />
@@ -39,18 +39,18 @@
 <![endif]-->
 <!-- / CSS Stylesheet -->
 
-<script type="text/javascript" src="https://yui-s.yahooapis.com/2.9.0/build/yahoo-dom-event/yahoo-dom-event.js?v=389"></script>
-<script type="text/javascript" src="https://yui-s.yahooapis.com/2.9.0/build/connection/connection-min.js?v=389"></script>
+<script type="text/javascript" src="https://yui-s.yahooapis.com/2.9.0/build/yahoo-dom-event/yahoo-dom-event.js?v=3811"></script>
+<script type="text/javascript" src="https://yui-s.yahooapis.com/2.9.0/build/connection/connection-min.js?v=3811"></script>
 <script type="text/javascript">
 <!--
-var SESSIONURL = "s=8a6ed4529709c0c1b03d8b57242b2c8b&";
+var SESSIONURL = "s=36e8d48c1d1d262a0a9662d498041765&";
 var SECURITYTOKEN = "guest";
 var IMGDIR_MISC = "/db/images/misc";
-var vb_disable_ajax = parseInt("0", 10);
+var vb_disable_ajax = parseInt("1", 10);
 // -->
 </script>
-<script type="text/javascript" src="/forums/clientscript/vbulletin_global.js?v=389"></script>
-<script type="text/javascript" src="/forums/clientscript/vbulletin_menu.js?v=389"></script>
+<script type="text/javascript" src="/forums/clientscript/vbulletin_global.js?v=3811"></script>
+<script type="text/javascript" src="/forums/clientscript/vbulletin_menu.js?v=3811"></script>
 <link rel="alternate" type="application/rss+xml" title="VGMdb Forums RSS Feed" href="/forums/external.php?type=RSS2" />
 
 <script type="text/javascript" src="/db/clientscript/jquery-1.4.min.js"></script>
@@ -136,13 +136,25 @@ $(document).ready(function() {
   })();
 
 </script>
+<style>
+.alt1_dark {
+    background: #151F30;
+    color: #FFFFFF;
+}
+
+.alt2_dark {
+    background: #252B3F;
+    color: #FFFFFF;
+}
+span.link_doc { display: block; background: transparent url('/db/icons/album-cover.gif') 0 2px no-repeat; padding-left: 14px; margin-bottom: 4px; }
+</style>
 
 <meta name="keywords" content="AURA-0018, Akiko Shikata, Noa Fujii, Hayao Kawai, K-Taro, Istoria, album, ost, soundtrack, tracklist, scans, covers, vgm, translation" />
 <meta name="description" content="Commercial (CD) published by VAGRANCY on Dec 31, 2011 containing vocal, original work from Istoria with compositions by Akiko Shikata, Noa Fujii, Hayao Kawai, K-Taro performed by Akiko Shikata, Haruo Kondo, Hiroki Ito, Koichiro Tashiro, Tamao Fujii, Seiko Onuki, Miho Yamashita, Gen Takeuchi, Akiko Hanafusa, Yuumi Arai, Asa Nagakura, Yoko Fujimura, Souko Eriguchi, Fumihiro Fukutome, Ichiro Matsumura, Misako Ootani, Akiko Hattori, Mihoko Arimura, Fumi Uchiyama, Yuri Matsumoto, Junko Baba, Hanae Haruki, Rui Kawata, Akina Harasawa, Satoshi Idouji, Mayumi Kawai, Takefumi Shirasa, Marie Ooishi, Takashi Yasui, Kensho Hagiwara, Noa Fujii, Hayao Kawai, Minoru Yoshida, Akihisa Tsuboy, Gen-San, K-Taro, Mayu Kodera, Atsuko Uomoto, Mai Ota, Chisato Shimura, Saori Oka, Daisuke Tomita, Tomoki Yamada" />
 <meta property="og:title" content="AURA-0018 | Istoria ~Kalliope~ - VGMdb" />
 <meta property="og:type" content="website" />
 <meta property="og:image" content="https://medium-media.vgm.io/albums/47/30474/30474-1324615346.jpg" />
-<meta property="og:url" content="website" />
+<meta property="og:url" content="https://vgmdb.net/album/30474" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:site" content="@vgmdb" />
 <meta name="twitter:title" content="AURA-0018 | Istoria ~Kalliope~ - VGMdb" />
@@ -150,6 +162,7 @@ $(document).ready(function() {
 <meta name="twitter:image" content="https://medium-media.vgm.io/albums/47/30474/30474-1324615346.jpg" />
 
 <!---->
+
 
 <style>tr.extracred { display: none; }</style>
 
@@ -170,6 +183,23 @@ $(document).ready(function() {
 	
 	$('table.role tr.rolebit').mouseover(function() { $(this).addClass("over"); });
 	$('table.role tr.rolebit').mouseout(function() { $(this).removeClass("over"); });
+	
+	
+	
+	
+	$(document).ready(function() {
+		$('.collapsible_section').click(function() {
+			var src = $(this).find('img').attr('src');
+			if (src.indexOf('close') > 0) {
+				$(this).find('img').attr('src', src.replace('close', 'open'));
+				$('#' + $(this).attr('rel')).hide('fast');
+			} else {
+				$(this).find('img').attr('src', src.replace('open', 'close'));
+				$('#' + $(this).attr('rel')).show('fast');
+			}
+			return false;
+		});
+	});
 	
 	
 	
@@ -217,7 +247,7 @@ $(document).ready(function() {
 </div>
 <div style="white-space: nowrap;">
 <!-- logo -->
-<div style="height: 100px; float: left;"><a href="/db/main.php"><img src="/db/img/vgmdblogo.png" alt="VGMdb" style="padding: 10px; width: 250px; height: 80px; border: 0" /></a></div>
+<div style="height: 100px; float: left;"><a href="/"><img src="/db/img/vgmdblogo.png" alt="VGMdb" style="padding: 10px; width: 250px; height: 80px; border: 0" /></a></div>
 <!-- /logo -->
 <!-- top nav -->
 <div style="height: 100px; float: left; position: relative; margin-left: 1px;">
@@ -243,12 +273,12 @@ $(document).ready(function() {
 	</li>
 	<li id="nav_advsearch"><a title="More search options" href="/search">Advanced Search</a></li>
 	<li id="nav_update"><a title="Latest submissions and edits" href="/db/recent.php">Updates</a></li>
-	<li id="nav_calendar"><a title="Release schedules" href="/db/calendar.php?year=2020&month=6">Calendar</a></li>
+	<li id="nav_calendar"><a title="Release schedules" href="/db/calendar.php?year=2021&month=1">Calendar</a></li>
 	<li id="nav_forum"><a title="Community discussions" href="/forums/">Forums</a></li>
 	<li id="nav_market"><a title="Trade with other members" href="/db/marketplace.php?do=view">Marketplace</a></li>
-	<!-- <li id="nav_radio"><a title="Live streaming VGM" href="#" onclick="alert('Under Construction');">Radio</a></li> -->
 	<li id="nav_users"><a title="User collections" href="/db/collection.php">Users</a></li>
 	<li id="nav_chat"><a title="Real-time chat" rel="nofollow" href="https://discord.gg/VXgKQUa" target="vgmdbchat">Chat</a></li>
+	
 	<li id="nav_submit"><a title="Submit an album" href="/album/new">Submit Album</a></li>
 	<li id="nav_customize"><span id="navoptions"><a title="Edit your preferences" href="#">Customize</a></span></li>
 </ul>
@@ -259,7 +289,7 @@ $(document).ready(function() {
 	<div class="vbmenu_popup" id="navlogin_menu" style="display:none;">
 	<table cellpadding="4" cellspacing="1" border="0"><tr><td style="background: #BBC7CE;">
 	<form action="/forums/login.php?do=login" method="post" onsubmit="md5hash(vb_login_password, vb_login_md5password, vb_login_md5password_utf, 0)">
-	<script type="text/javascript" src="/forums/clientscript/vbulletin_md5.js?v=389"></script>
+	<script type="text/javascript" src="/forums/clientscript/vbulletin_md5.js?v=3811"></script>
 	<table cellpadding="0" cellspacing="3" border="0">
 	<tr>
 		<td class="smallfont"><label for="navbar_username">User Name</label></td>
@@ -271,7 +301,7 @@ $(document).ready(function() {
 		<td><input type="submit" class="button" value="Log in" tabindex="104" title="Enter your username and password in the boxes provided to login, or click the 'register' button to create a profile for yourself." accesskey="s" /></td>
 	</tr>
 	</table>
-	<input type="hidden" name="s" value="8a6ed4529709c0c1b03d8b57242b2c8b" />
+	<input type="hidden" name="s" value="36e8d48c1d1d262a0a9662d498041765" />
 	<input type="hidden" name="securitytoken" value="guest" />
 	<input type="hidden" name="do" value="login" />		
 	<input type="hidden" name="vb_login_md5password" />
@@ -294,12 +324,15 @@ $(document).ready(function() {
 
 
 <!-- main page contents -->
+
+
+
 <table width="100%" cellpadding="0" cellspacing="0" border="0" align="left"><tr><td width="100%" style="background-color: #1B273D;" valign="top">
 	<b class="rtop"><b></b></b>
 	<div id="innermain" style="padding: 6px 10px 0px 10px">
 		<span style="float:right;" class="label smallfont"><a href="/db/albums-discuss.php?id=30474">Discuss</a> <span class="time">(14)</span> | <span id="albumtools"><a href="#">Edit</a><script type="text/javascript"> vBmenu.register('albumtools'); </script></span> | <a class="smallfont" href="/album/30474/feed" title="Activity RSS Feed">Feed <img class="inlineimg" border="0" src="/db/img/rss.png" height="16" width="16" alt="" /></a></span>
 
-		<h1><span class="albumtitle" lang="en" style="display:inline">Istoria ~Kalliope~</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>志方あきこ／Istoria～Kalliope～</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Istoria ~Kalliope~</i></span> </h1>
+		<h1><span class="albumtitle" lang="en" style="display:inline">Istoria ~Kalliope~</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>志方あきこ／Istoria～Kalliope～</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em>Istoria ~Kalliope~</span> </h1>
 
 		<div style="padding-left: 10px; padding-right: 10px; padding-bottom: 6px; font-size: 9pt; color: #788990;"><span class="albumtitle" lang="en" style="display:inline">志方あきこ／Istoria～Kalliope～<br /></span><span class="albumtitle" lang="ja" style="display:none">Istoria ~Kalliope~<br /></span><span class="albumtitle" lang="ja-Latn" style="display:none">Istoria ~Kalliope~<br />志方あきこ／Istoria～Kalliope～<br /></span></div>
 		<div style="padding-left: 10px; padding-right: 10px; margin-top: 10px;"><div id="leftfloat" style="float: left; width: 250px; height: 250px; padding-top: 4px; padding-bottom: 4px;">
@@ -338,60 +371,8 @@ $(document).ready(function() {
 <tr><td nowrap="nowrap"><span class="label"><b>Classification</b></span></td>
 <td>Vocal, Original Work </td></tr>
 
-<tr class="maincred"><td nowrap="nowrap"><span class="label"><b>Organizations</b></span></td>
-<td>
 
-<script type="text/javascript">
-$(document).ready(function() {
-  $("#publisher_show_more, #publisher_show_less").click(function(e) {
-    $("#publisher_less").toggle();
-    $("#publisher_more").toggle();
-    e.preventDefault();
-  });
-});
-</script>
-<span id="publisher_less"><a href="/org/203"><span class="productname" lang="en" style="display:inline">VAGRANCY</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja" style="display:none">VAGRANCY</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja-Latn" style="display:none">VAGRANCY</span></a> <span class="label smalltext">(Publisher)</span><span id="publisher_more" style="display:none"><a href="/org/203"><span class="productname" lang="en" style="display:inline">VAGRANCY</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja" style="display:none">VAGRANCY</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja-Latn" style="display:none">VAGRANCY</span></a> <span class="label smalltext">(Publisher)</span> &nbsp;<a href="#" style="display:none" id="publisher_show_less">[see less]</a></span>
-
-</td></tr>
-
-<tr class="maincred"><td nowrap="nowrap"><span class="label"><b>Composed by</b></span></td>
-<td><a href="/artist/201"><span title="志方あきこ" class="artistname" lang="en" style="display:inline">Akiko Shikata</span><span style="display:none"><em> / </em></span><span title="Akiko Shikata" class="artistname" lang="ja" style="display:none">志方あきこ</span></a>, <a href="/artist/12947"><span title="藤井乃亜" class="artistname" lang="en" style="display:inline">Noa Fujii</span><span style="display:none"><em> / </em></span><span title="Noa Fujii" class="artistname" lang="ja" style="display:none">藤井乃亜</span></a>, <a href="/artist/12948"><span title="河井早緒" class="artistname" lang="en" style="display:inline">Hayao Kawai</span><span style="display:none"><em> / </em></span><span title="Hayao Kawai" class="artistname" lang="ja" style="display:none">河井早緒</span></a>, <a href="/artist/12949"><span title="ケタロー" class="artistname" lang="en" style="display:inline">K-Taro</span><span style="display:none"><em> / </em></span><span title="K-Taro" class="artistname" lang="ja" style="display:none">ケタロー</span></a> </td></tr>
-
-<tr class="maincred"><td nowrap="nowrap"><span class="label"><b>Arranged by</b></span></td>
-<td><a href="/artist/201"><span title="志方あきこ" class="artistname" lang="en" style="display:inline">Akiko Shikata</span><span style="display:none"><em> / </em></span><span title="Akiko Shikata" class="artistname" lang="ja" style="display:none">志方あきこ</span></a>, <a href="/artist/12947"><span title="藤井乃亜" class="artistname" lang="en" style="display:inline">Noa Fujii</span><span style="display:none"><em> / </em></span><span title="Noa Fujii" class="artistname" lang="ja" style="display:none">藤井乃亜</span></a>, <a href="/artist/12948"><span title="河井早緒" class="artistname" lang="en" style="display:inline">Hayao Kawai</span><span style="display:none"><em> / </em></span><span title="Hayao Kawai" class="artistname" lang="ja" style="display:none">河井早緒</span></a>, <a href="/artist/12949"><span title="ケタロー" class="artistname" lang="en" style="display:inline">K-Taro</span><span style="display:none"><em> / </em></span><span title="K-Taro" class="artistname" lang="ja" style="display:none">ケタロー</span></a> </td></tr>
-
-<tr class="maincred"><td nowrap="nowrap"><span class="label"><b>Performed by</b></span></td>
-<td><a href="/artist/201"><span title="志方あきこ" class="artistname" lang="en" style="display:inline">Akiko Shikata</span><span style="display:none"><em> / </em></span><span title="Akiko Shikata" class="artistname" lang="ja" style="display:none">志方あきこ</span></a>, <a href="/artist/4466"><span title="近藤治夫" class="artistname" lang="en" style="display:inline">Haruo Kondo</span><span style="display:none"><em> / </em></span><span title="Haruo Kondo" class="artistname" lang="ja" style="display:none">近藤治夫</span></a>, <a href="/artist/6629"><span title="伊藤浩紀" class="artistname" lang="en" style="display:inline">Hiroki Ito</span><span style="display:none"><em> / </em></span><span title="Hiroki Ito" class="artistname" lang="ja" style="display:none">伊藤浩紀</span></a>, <a href="/artist/1868"><span title="田代耕一郎" class="artistname" lang="en" style="display:inline">Koichiro Tashiro</span><span style="display:none"><em> / </em></span><span title="Koichiro Tashiro" class="artistname" lang="ja" style="display:none">田代耕一郎</span></a>, <a href="/artist/4469"><span title="藤井珠緒" class="artistname" lang="en" style="display:inline">Tamao Fujii</span><span style="display:none"><em> / </em></span><span title="Tamao Fujii" class="artistname" lang="ja" style="display:none">藤井珠緒</span></a>, <a href="/artist/4967"><span title="大貫聖子" class="artistname" lang="en" style="display:inline">Seiko Onuki</span><span style="display:none"><em> / </em></span><span title="Seiko Onuki" class="artistname" lang="ja" style="display:none">大貫聖子</span></a>, <a href="/artist/14128"><span title="山下未歩" class="artistname" lang="en" style="display:inline">Miho Yamashita</span><span style="display:none"><em> / </em></span><span title="Miho Yamashita" class="artistname" lang="ja" style="display:none">山下未歩</span></a>, <a href="/artist/14152"><span title="竹内弦" class="artistname" lang="en" style="display:inline">Gen Takeuchi</span><span style="display:none"><em> / </em></span><span title="Gen Takeuchi" class="artistname" lang="ja" style="display:none">竹内弦</span></a>, <a href="/artist/13638"><span title="花房照子" class="artistname" lang="en" style="display:inline">Akiko Hanafusa</span><span style="display:none"><em> / </em></span><span title="Akiko Hanafusa" class="artistname" lang="ja" style="display:none">花房照子</span></a>, <a href="/artist/16238"><span title="荒井友美" class="artistname" lang="en" style="display:inline">Yuumi Arai</span><span style="display:none"><em> / </em></span><span title="Yuumi Arai" class="artistname" lang="ja" style="display:none">荒井友美</span></a>, <a href="/artist/21263"><span title="長倉亜紗" class="artistname" lang="en" style="display:inline">Asa Nagakura</span><span style="display:none"><em> / </em></span><span title="Asa Nagakura" class="artistname" lang="ja" style="display:none">長倉亜紗</span></a>, <a href="/artist/21265"><span title="藤村陽子" class="artistname" lang="en" style="display:inline">Yoko Fujimura</span><span style="display:none"><em> / </em></span><span title="Yoko Fujimura" class="artistname" lang="ja" style="display:none">藤村陽子</span></a>, <a href="/artist/21266"><span title="江里口奏子" class="artistname" lang="en" style="display:inline">Souko Eriguchi</span><span style="display:none"><em> / </em></span><span title="Souko Eriguchi" class="artistname" lang="ja" style="display:none">江里口奏子</span></a>, <a href="/artist/15874"><span title="福留史紘" class="artistname" lang="en" style="display:inline">Fumihiro Fukutome</span><span style="display:none"><em> / </em></span><span title="Fumihiro Fukutome" class="artistname" lang="ja" style="display:none">福留史紘</span></a>, <a href="/artist/14233"><span title="松村一郎" class="artistname" lang="en" style="display:inline">Ichiro Matsumura</span><span style="display:none"><em> / </em></span><span title="Ichiro Matsumura" class="artistname" lang="ja" style="display:none">松村一郎</span></a>, <a href="/artist/21267"><span title="大谷美佐子" class="artistname" lang="en" style="display:inline">Misako Ootani</span><span style="display:none"><em> / </em></span><span title="Misako Ootani" class="artistname" lang="ja" style="display:none">大谷美佐子</span></a>, <a href="/artist/21268"><span title="服部亜希子" class="artistname" lang="en" style="display:inline">Akiko Hattori</span><span style="display:none"><em> / </em></span><span title="Akiko Hattori" class="artistname" lang="ja" style="display:none">服部亜希子</span></a>, <a href="/artist/21269"><span title="有村実保子" class="artistname" lang="en" style="display:inline">Mihoko Arimura</span><span style="display:none"><em> / </em></span><span title="Mihoko Arimura" class="artistname" lang="ja" style="display:none">有村実保子</span></a>, <a href="/artist/4419"><span title="内山ふみ" class="artistname" lang="en" style="display:inline">Fumi Uchiyama</span><span style="display:none"><em> / </em></span><span title="Fumi Uchiyama" class="artistname" lang="ja" style="display:none">内山ふみ</span></a>, <a href="/artist/11159"><span title="松本有理" class="artistname" lang="en" style="display:inline">Yuri Matsumoto</span><span style="display:none"><em> / </em></span><span title="Yuri Matsumoto" class="artistname" lang="ja" style="display:none">松本有理</span></a>, <a href="/artist/14156"><span title="馬場順子" class="artistname" lang="en" style="display:inline">Junko Baba</span><span style="display:none"><em> / </em></span><span title="Junko Baba" class="artistname" lang="ja" style="display:none">馬場順子</span></a>, <a href="/artist/12311"><span title="春木英恵" class="artistname" lang="en" style="display:inline">Hanae Haruki</span><span style="display:none"><em> / </em></span><span title="Hanae Haruki" class="artistname" lang="ja" style="display:none">春木英恵</span></a>, <a href="/artist/21270"><span title="川田留生" class="artistname" lang="en" style="display:inline">Rui Kawata</span><span style="display:none"><em> / </em></span><span title="Rui Kawata" class="artistname" lang="ja" style="display:none">川田留生</span></a>, <a href="/artist/8062"><span title="唐沢安岐奈" class="artistname" lang="en" style="display:inline">Akina Karasawa</span><span style="display:none"><em> / </em></span><span title="Akina Karasawa" class="artistname" lang="ja" style="display:none">唐沢安岐奈</span></a>, <a href="/artist/21272"><span title="伊堂寺聡" class="artistname" lang="en" style="display:inline">Satoshi Idouji</span><span style="display:none"><em> / </em></span><span title="Satoshi Idouji" class="artistname" lang="ja" style="display:none">伊堂寺聡</span></a>, <a href="/artist/21273"><span title="川井真由美" class="artistname" lang="en" style="display:inline">Mayumi Kawai</span><span style="display:none"><em> / </em></span><span title="Mayumi Kawai" class="artistname" lang="ja" style="display:none">川井真由美</span></a>, <a href="/artist/21274"><span title="白佐武史" class="artistname" lang="en" style="display:inline">Takefumi Shirasa</span><span style="display:none"><em> / </em></span><span title="Takefumi Shirasa" class="artistname" lang="ja" style="display:none">白佐武史</span></a>, <a href="/artist/4966"><span title="大石真理恵" class="artistname" lang="en" style="display:inline">Marie Ooishi</span><span style="display:none"><em> / </em></span><span title="Marie Ooishi" class="artistname" lang="ja" style="display:none">大石真理恵</span></a>, <a href="/artist/4968"><span title="安井敬" class="artistname" lang="en" style="display:inline">Takashi Yasui</span><span style="display:none"><em> / </em></span><span title="Takashi Yasui" class="artistname" lang="ja" style="display:none">安井敬</span></a>, <a href="/artist/7055"><span title="萩原顕彰" class="artistname" lang="en" style="display:inline">Kensho Hagiwara</span><span style="display:none"><em> / </em></span><span title="Kensho Hagiwara" class="artistname" lang="ja" style="display:none">萩原顕彰</span></a>, <a href="/artist/12947"><span title="藤井乃亜" class="artistname" lang="en" style="display:inline">Noa Fujii</span><span style="display:none"><em> / </em></span><span title="Noa Fujii" class="artistname" lang="ja" style="display:none">藤井乃亜</span></a>, <a href="/artist/12948"><span title="河井早緒" class="artistname" lang="en" style="display:inline">Hayao Kawai</span><span style="display:none"><em> / </em></span><span title="Hayao Kawai" class="artistname" lang="ja" style="display:none">河井早緒</span></a>, <a href="/artist/14069"><span title="吉田穣" class="artistname" lang="en" style="display:inline">Minoru Yoshida</span><span style="display:none"><em> / </em></span><span title="Minoru Yoshida" class="artistname" lang="ja" style="display:none">吉田穣</span></a>, <a href="/artist/4453"><span title="壷井彰久" class="artistname" lang="en" style="display:inline">Akihisa Tsuboy</span><span style="display:none"><em> / </em></span><span title="Akihisa Tsuboy" class="artistname" lang="ja" style="display:none">壷井彰久</span></a>, Gen-San, <a href="/artist/12949"><span title="ケタロー" class="artistname" lang="en" style="display:inline">K-Taro</span><span style="display:none"><em> / </em></span><span title="K-Taro" class="artistname" lang="ja" style="display:none">ケタロー</span></a>, <a href="/artist/14136"><span title="小寺麻由" class="artistname" lang="en" style="display:inline">Mayu Kodera</span><span style="display:none"><em> / </em></span><span title="Mayu Kodera" class="artistname" lang="ja" style="display:none">小寺麻由</span></a>, <a href="/artist/21275"><span title="魚本あつ子" class="artistname" lang="en" style="display:inline">Atsuko Uomoto</span><span style="display:none"><em> / </em></span><span title="Atsuko Uomoto" class="artistname" lang="ja" style="display:none">魚本あつ子</span></a>, <a href="/artist/21276"><span title="太田麻衣" class="artistname" lang="en" style="display:inline">Mai Ota</span><span style="display:none"><em> / </em></span><span title="Mai Ota" class="artistname" lang="ja" style="display:none">太田麻衣</span></a>, <a href="/artist/13825"><span title="志村知里" class="artistname" lang="en" style="display:inline">Chisato Shimura</span><span style="display:none"><em> / </em></span><span title="Chisato Shimura" class="artistname" lang="ja" style="display:none">志村知里</span></a>, <a href="/artist/10768"><span title="岡さおり" class="artistname" lang="en" style="display:inline">Saori Oka</span><span style="display:none"><em> / </em></span><span title="Saori Oka" class="artistname" lang="ja" style="display:none">岡さおり</span></a>, <a href="/artist/14001"><span title="冨田大輔" class="artistname" lang="en" style="display:inline">Daisuke Tomita</span><span style="display:none"><em> / </em></span><span title="Daisuke Tomita" class="artistname" lang="ja" style="display:none">冨田大輔</span></a>, <a href="/artist/21277"><span title="山田智樹" class="artistname" lang="en" style="display:inline">Tomoki Yamada</span><span style="display:none"><em> / </em></span><span title="Tomoki Yamada" class="artistname" lang="ja" style="display:none">山田智樹</span></a> </td></tr>
-
-<tr class="maincred"><td nowrap="nowrap"><span class="label"><b>Lyrics by</b></span></td>
-<td><a href="/artist/201"><span title="志方あきこ" class="artistname" lang="en" style="display:inline">Akiko Shikata</span><span style="display:none"><em> / </em></span><span title="Akiko Shikata" class="artistname" lang="ja" style="display:none">志方あきこ</span></a>, <a href="/artist/4969"><span title="篠田朋子" class="artistname" lang="en" style="display:inline">Tomoko Shinoda</span><span style="display:none"><em> / </em></span><span title="Tomoko Shinoda" class="artistname" lang="ja" style="display:none">篠田朋子</span></a>, <a href="/artist/8552"><span title="波乃渉" class="artistname" lang="en" style="display:inline">Wataru Hano</span><span style="display:none"><em> / </em></span><span title="Wataru Hano" class="artistname" lang="ja" style="display:none">波乃渉</span></a>, <a href="/artist/7541"><span title="磯谷佳江" class="artistname" lang="en" style="display:inline">Yoshie Isogai</span><span style="display:none"><em> / </em></span><span title="Yoshie Isogai" class="artistname" lang="ja" style="display:none">磯谷佳江</span></a> </td></tr>
-
-
-
-
-
-
-
-
-
-<tr class="extracred"><td nowrap="nowrap"><span class="label"><b>Recorded by</b></span></td>
-<td></td></tr>
-
-
-
-
-
-<tr class="extracred"><td nowrap="nowrap"><span class="label"><b>Mixed by</b></span></td>
-<td></td></tr>
-
-
-
-<tr class="extracred"><td nowrap="nowrap"><span class="label"><b>Mastered by</b></span></td>
-<td></td></tr>
-
-
-
-
+    <tr class="maincred"><td nowrap="nowrap"><span class="label"><b>Publisher</b></span></td><td><a href="/org/203"><span class="productname" lang="en" style="display:inline">VAGRANCY</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja" style="display:none">VAGRANCY</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja-Latn" style="display:none">VAGRANCY</span></a></td></tr>
 
 
 
@@ -413,12 +394,27 @@ $(document).ready(function() {
 </div>
 		<br style="clear: both" />
 
+
+
+<div style="padding-left: 10px; padding-right: 10px"><h3><span style="float:left">Credits <a href="#" class="collapsible_section" rel="collapse_credits"><img src="/db/img/collapse_close.png" /></a></span></h3><span style="clear:both;display:block;"></span>
+<div style="background-color: #2F364F;" id="collapse_credits">
+<b class="rtop"><b></b></b>
+<div style="max-height:1000px; padding: 6px 10px 10px 6px; overflow:auto;">
+<table id="album_infobit_large" style="height:auto" cellpadding="1" cellspacing="1">
+<tbody>
+<tr class="maincred"><td nowrap="nowrap"><span class="label"><b><span title="Composer" class="artistname" lang="en" style="display:inline">Composer</span><span style="display:none"><em> / </em></span><span title="Composer" class="artistname" lang="ja" style="display:none">Composer</span></b></span></td><td width="100%"><a href="/artist/201"><span title="志方あきこ" class="artistname" lang="en" style="display:inline">Akiko Shikata</span><span style="display:none"><em> / </em></span><span title="志方あきこ" class="artistname" lang="ja" style="display:none">志方あきこ</span></a>, <a href="/artist/12947"><span title="藤井乃亜" class="artistname" lang="en" style="display:inline">Noa Fujii</span><span style="display:none"><em> / </em></span><span title="藤井乃亜" class="artistname" lang="ja" style="display:none">藤井乃亜</span></a>, <a href="/artist/12948"><span title="河井早緒" class="artistname" lang="en" style="display:inline">Hayao Kawai</span><span style="display:none"><em> / </em></span><span title="河井早緒" class="artistname" lang="ja" style="display:none">河井早緒</span></a>, <a href="/artist/12949"><span title="ケタロー" class="artistname" lang="en" style="display:inline">K-Taro</span><span style="display:none"><em> / </em></span><span title="ケタロー" class="artistname" lang="ja" style="display:none">ケタロー</span></a></td></tr><tr class="maincred"><td nowrap="nowrap"><span class="label"><b><span title="Arranger" class="artistname" lang="en" style="display:inline">Arranger</span><span style="display:none"><em> / </em></span><span title="Arranger" class="artistname" lang="ja" style="display:none">Arranger</span></b></span></td><td width="100%"><a href="/artist/201"><span title="志方あきこ" class="artistname" lang="en" style="display:inline">Akiko Shikata</span><span style="display:none"><em> / </em></span><span title="志方あきこ" class="artistname" lang="ja" style="display:none">志方あきこ</span></a>, <a href="/artist/12947"><span title="藤井乃亜" class="artistname" lang="en" style="display:inline">Noa Fujii</span><span style="display:none"><em> / </em></span><span title="藤井乃亜" class="artistname" lang="ja" style="display:none">藤井乃亜</span></a>, <a href="/artist/12948"><span title="河井早緒" class="artistname" lang="en" style="display:inline">Hayao Kawai</span><span style="display:none"><em> / </em></span><span title="河井早緒" class="artistname" lang="ja" style="display:none">河井早緒</span></a>, <a href="/artist/12949"><span title="ケタロー" class="artistname" lang="en" style="display:inline">K-Taro</span><span style="display:none"><em> / </em></span><span title="ケタロー" class="artistname" lang="ja" style="display:none">ケタロー</span></a></td></tr><tr class="maincred"><td nowrap="nowrap"><span class="label"><b><span title="Performer" class="artistname" lang="en" style="display:inline">Performer</span><span style="display:none"><em> / </em></span><span title="Performer" class="artistname" lang="ja" style="display:none">Performer</span></b></span></td><td width="100%"><a href="/artist/201"><span title="志方あきこ" class="artistname" lang="en" style="display:inline">Akiko Shikata</span><span style="display:none"><em> / </em></span><span title="志方あきこ" class="artistname" lang="ja" style="display:none">志方あきこ</span></a>, <a href="/artist/4466"><span title="近藤治夫" class="artistname" lang="en" style="display:inline">Haruo Kondo</span><span style="display:none"><em> / </em></span><span title="近藤治夫" class="artistname" lang="ja" style="display:none">近藤治夫</span></a>, <a href="/artist/6629"><span title="伊藤浩紀" class="artistname" lang="en" style="display:inline">Hiroki Ito</span><span style="display:none"><em> / </em></span><span title="伊藤浩紀" class="artistname" lang="ja" style="display:none">伊藤浩紀</span></a>, <a href="/artist/1868"><span title="田代耕一郎" class="artistname" lang="en" style="display:inline">Koichiro Tashiro</span><span style="display:none"><em> / </em></span><span title="田代耕一郎" class="artistname" lang="ja" style="display:none">田代耕一郎</span></a>, <a href="/artist/4469"><span title="藤井珠緒" class="artistname" lang="en" style="display:inline">Tamao Fujii</span><span style="display:none"><em> / </em></span><span title="藤井珠緒" class="artistname" lang="ja" style="display:none">藤井珠緒</span></a>, <a href="/artist/4967"><span title="大貫聖子" class="artistname" lang="en" style="display:inline">Seiko Onuki</span><span style="display:none"><em> / </em></span><span title="大貫聖子" class="artistname" lang="ja" style="display:none">大貫聖子</span></a>, <a href="/artist/14128"><span title="山下未歩" class="artistname" lang="en" style="display:inline">Miho Yamashita</span><span style="display:none"><em> / </em></span><span title="山下未歩" class="artistname" lang="ja" style="display:none">山下未歩</span></a>, <a href="/artist/14152"><span title="竹内弦" class="artistname" lang="en" style="display:inline">Gen Takeuchi</span><span style="display:none"><em> / </em></span><span title="竹内弦" class="artistname" lang="ja" style="display:none">竹内弦</span></a>, <a href="/artist/13638"><span title="花房照子" class="artistname" lang="en" style="display:inline">Akiko Hanafusa</span><span style="display:none"><em> / </em></span><span title="花房照子" class="artistname" lang="ja" style="display:none">花房照子</span></a>, <a href="/artist/16238"><span title="荒井友美" class="artistname" lang="en" style="display:inline">Yuumi Arai</span><span style="display:none"><em> / </em></span><span title="荒井友美" class="artistname" lang="ja" style="display:none">荒井友美</span></a>, <a href="/artist/21263"><span title="長倉亜紗" class="artistname" lang="en" style="display:inline">Asa Nagakura</span><span style="display:none"><em> / </em></span><span title="長倉亜紗" class="artistname" lang="ja" style="display:none">長倉亜紗</span></a>, <a href="/artist/21265"><span title="藤村陽子" class="artistname" lang="en" style="display:inline">Yoko Fujimura</span><span style="display:none"><em> / </em></span><span title="藤村陽子" class="artistname" lang="ja" style="display:none">藤村陽子</span></a>, <a href="/artist/21266"><span title="江里口奏子" class="artistname" lang="en" style="display:inline">Souko Eriguchi</span><span style="display:none"><em> / </em></span><span title="江里口奏子" class="artistname" lang="ja" style="display:none">江里口奏子</span></a>, <a href="/artist/15874"><span title="福留史紘" class="artistname" lang="en" style="display:inline">Fumihiro Fukutome</span><span style="display:none"><em> / </em></span><span title="福留史紘" class="artistname" lang="ja" style="display:none">福留史紘</span></a>, <a href="/artist/14233"><span title="松村一郎" class="artistname" lang="en" style="display:inline">Ichiro Matsumura</span><span style="display:none"><em> / </em></span><span title="松村一郎" class="artistname" lang="ja" style="display:none">松村一郎</span></a>, <a href="/artist/21267"><span title="大谷美佐子" class="artistname" lang="en" style="display:inline">Misako Ootani</span><span style="display:none"><em> / </em></span><span title="大谷美佐子" class="artistname" lang="ja" style="display:none">大谷美佐子</span></a>, <a href="/artist/21268"><span title="服部亜希子" class="artistname" lang="en" style="display:inline">Akiko Hattori</span><span style="display:none"><em> / </em></span><span title="服部亜希子" class="artistname" lang="ja" style="display:none">服部亜希子</span></a>, <a href="/artist/21269"><span title="有村実保子" class="artistname" lang="en" style="display:inline">Mihoko Arimura</span><span style="display:none"><em> / </em></span><span title="有村実保子" class="artistname" lang="ja" style="display:none">有村実保子</span></a>, <a href="/artist/4419"><span title="内山ふみ" class="artistname" lang="en" style="display:inline">Fumi Uchiyama</span><span style="display:none"><em> / </em></span><span title="内山ふみ" class="artistname" lang="ja" style="display:none">内山ふみ</span></a>, <a href="/artist/11159"><span title="松本有理" class="artistname" lang="en" style="display:inline">Yuri Matsumoto</span><span style="display:none"><em> / </em></span><span title="松本有理" class="artistname" lang="ja" style="display:none">松本有理</span></a>, <a href="/artist/14156"><span title="馬場順子" class="artistname" lang="en" style="display:inline">Junko Baba</span><span style="display:none"><em> / </em></span><span title="馬場順子" class="artistname" lang="ja" style="display:none">馬場順子</span></a>, <a href="/artist/12311"><span title="春木英恵" class="artistname" lang="en" style="display:inline">Hanae Haruki</span><span style="display:none"><em> / </em></span><span title="春木英恵" class="artistname" lang="ja" style="display:none">春木英恵</span></a>, <a href="/artist/21270"><span title="川田留生" class="artistname" lang="en" style="display:inline">Rui Kawata</span><span style="display:none"><em> / </em></span><span title="川田留生" class="artistname" lang="ja" style="display:none">川田留生</span></a>, <a href="/artist/8062"><span title="唐沢安岐奈" class="artistname" lang="en" style="display:inline">Akina Karasawa</span><span style="display:none"><em> / </em></span><span title="唐沢安岐奈" class="artistname" lang="ja" style="display:none">唐沢安岐奈</span></a>, <a href="/artist/21272"><span title="伊堂寺聡" class="artistname" lang="en" style="display:inline">Satoshi Idouji</span><span style="display:none"><em> / </em></span><span title="伊堂寺聡" class="artistname" lang="ja" style="display:none">伊堂寺聡</span></a>, <a href="/artist/21273"><span title="川井真由美" class="artistname" lang="en" style="display:inline">Mayumi Kawai</span><span style="display:none"><em> / </em></span><span title="川井真由美" class="artistname" lang="ja" style="display:none">川井真由美</span></a>, <a href="/artist/21274"><span title="白佐武史" class="artistname" lang="en" style="display:inline">Takefumi Shirasa</span><span style="display:none"><em> / </em></span><span title="白佐武史" class="artistname" lang="ja" style="display:none">白佐武史</span></a>, <a href="/artist/4966"><span title="大石真理恵" class="artistname" lang="en" style="display:inline">Marie Ooishi</span><span style="display:none"><em> / </em></span><span title="大石真理恵" class="artistname" lang="ja" style="display:none">大石真理恵</span></a>, <a href="/artist/4968"><span title="安井敬" class="artistname" lang="en" style="display:inline">Takashi Yasui</span><span style="display:none"><em> / </em></span><span title="安井敬" class="artistname" lang="ja" style="display:none">安井敬</span></a>, <a href="/artist/7055"><span title="萩原顕彰" class="artistname" lang="en" style="display:inline">Kensho Hagiwara</span><span style="display:none"><em> / </em></span><span title="萩原顕彰" class="artistname" lang="ja" style="display:none">萩原顕彰</span></a>, <a href="/artist/12947"><span title="藤井乃亜" class="artistname" lang="en" style="display:inline">Noa Fujii</span><span style="display:none"><em> / </em></span><span title="藤井乃亜" class="artistname" lang="ja" style="display:none">藤井乃亜</span></a>, <a href="/artist/12948"><span title="河井早緒" class="artistname" lang="en" style="display:inline">Hayao Kawai</span><span style="display:none"><em> / </em></span><span title="河井早緒" class="artistname" lang="ja" style="display:none">河井早緒</span></a>, <a href="/artist/14069"><span title="吉田穣" class="artistname" lang="en" style="display:inline">Minoru Yoshida</span><span style="display:none"><em> / </em></span><span title="吉田穣" class="artistname" lang="ja" style="display:none">吉田穣</span></a>, <a href="/artist/4453"><span title="壷井彰久" class="artistname" lang="en" style="display:inline">Akihisa Tsuboy</span><span style="display:none"><em> / </em></span><span title="壷井彰久" class="artistname" lang="ja" style="display:none">壷井彰久</span></a>, Gen-San, <a href="/artist/12949"><span title="ケタロー" class="artistname" lang="en" style="display:inline">K-Taro</span><span style="display:none"><em> / </em></span><span title="ケタロー" class="artistname" lang="ja" style="display:none">ケタロー</span></a>, <a href="/artist/14136"><span title="小寺麻由" class="artistname" lang="en" style="display:inline">Mayu Kodera</span><span style="display:none"><em> / </em></span><span title="小寺麻由" class="artistname" lang="ja" style="display:none">小寺麻由</span></a>, <a href="/artist/21275"><span title="魚本あつ子" class="artistname" lang="en" style="display:inline">Atsuko Uomoto</span><span style="display:none"><em> / </em></span><span title="魚本あつ子" class="artistname" lang="ja" style="display:none">魚本あつ子</span></a>, <a href="/artist/21276"><span title="太田麻衣" class="artistname" lang="en" style="display:inline">Mai Ota</span><span style="display:none"><em> / </em></span><span title="太田麻衣" class="artistname" lang="ja" style="display:none">太田麻衣</span></a>, <a href="/artist/13825"><span title="志村知里" class="artistname" lang="en" style="display:inline">Chisato Shimura</span><span style="display:none"><em> / </em></span><span title="志村知里" class="artistname" lang="ja" style="display:none">志村知里</span></a>, <a href="/artist/10768"><span title="岡さおり" class="artistname" lang="en" style="display:inline">Saori Oka</span><span style="display:none"><em> / </em></span><span title="岡さおり" class="artistname" lang="ja" style="display:none">岡さおり</span></a>, <a href="/artist/14001"><span title="冨田大輔" class="artistname" lang="en" style="display:inline">Daisuke Tomita</span><span style="display:none"><em> / </em></span><span title="冨田大輔" class="artistname" lang="ja" style="display:none">冨田大輔</span></a>, <a href="/artist/21277"><span title="山田智樹" class="artistname" lang="en" style="display:inline">Tomoki Yamada</span><span style="display:none"><em> / </em></span><span title="山田智樹" class="artistname" lang="ja" style="display:none">山田智樹</span></a></td></tr><tr class="maincred"><td nowrap="nowrap"><span class="label"><b><span title="Lyricist" class="artistname" lang="en" style="display:inline">Lyricist</span><span style="display:none"><em> / </em></span><span title="Lyricist" class="artistname" lang="ja" style="display:none">Lyricist</span></b></span></td><td width="100%"><a href="/artist/201"><span title="志方あきこ" class="artistname" lang="en" style="display:inline">Akiko Shikata</span><span style="display:none"><em> / </em></span><span title="志方あきこ" class="artistname" lang="ja" style="display:none">志方あきこ</span></a>, <a href="/artist/4969"><span title="篠田朋子" class="artistname" lang="en" style="display:inline">Tomoko Shinoda</span><span style="display:none"><em> / </em></span><span title="篠田朋子" class="artistname" lang="ja" style="display:none">篠田朋子</span></a>, <a href="/artist/8552"><span title="波乃渉" class="artistname" lang="en" style="display:inline">Wataru Hano</span><span style="display:none"><em> / </em></span><span title="波乃渉" class="artistname" lang="ja" style="display:none">波乃渉</span></a>, <a href="/artist/7541"><span title="磯谷佳江" class="artistname" lang="en" style="display:inline">Yoshie Isogai</span><span style="display:none"><em> / </em></span><span title="磯谷佳江" class="artistname" lang="ja" style="display:none">磯谷佳江</span></a></td></tr>
+</tbody>
+</table>
+</div>
+<b class="rbot"><b></b></b>
+</div></div><br/>
+
 		<div style="padding-left: 10px; padding-right: 10px">
 		
-			<div><h3 style="float: left">Tracklist</h3>
+			<div><h3 style="float: left">Tracklist <a href="#" class="collapsible_section" rel="tracklist"><img src="/db/img/collapse_close.png" /></a></h3>
 			<ul id="tlnav" class="tabnav" style="margin-left: 10px"><li class="active"><a class='smallfont' rel='tl43072' href='#'>English</a></li><li><a class='smallfont' rel='tl43073' href='#'>Japanese / Greek</a></li><li><a class='smallfont' rel='tl45901' href='#'>Romaji</a></li></ul>
 			</div>
-			
+
 			<div style="background-color: #2F364F; clear: both">
 			<b class="rtop"><b></b></b>
 			<div style="padding: 6px 10px 10px 10px" id="tracklist"><span class="tl" id="tl43072">
@@ -550,8 +546,9 @@ Funeral for a Hero</td>
   <span class="time">59:10</span>
 </span>
 <br style="clear: both" />
-<h4 class="label" style="font-weight: normal">
+<h4 style="font-weight: normal; clear:both"><span class="label">
 Translated by <b><a href='http://artonelico.isisview.org/viewtopic.php?f=7&t=783&start=100'>aquagon</a></b><br />
+&nbsp;</span>
 
 </h4></span>
 <span class="tl" id="tl43073" style="display: none">
@@ -683,8 +680,9 @@ Istoria</td>
   <span class="time">59:10</span>
 </span>
 <br style="clear: both" />
-<h4 class="label" style="font-weight: normal">
+<h4 style="font-weight: normal; clear:both"><span class="label">
 
+&nbsp;</span>
 
 </h4></span>
 <span class="tl" id="tl45901" style="display: none">
@@ -816,8 +814,9 @@ Eiyuusou</td>
   <span class="time">59:10</span>
 </span>
 <br style="clear: both" />
-<h4 class="label" style="font-weight: normal">
+<h4 style="font-weight: normal; clear:both"><span class="label">
 
+&nbsp;</span>
 
 </h4></span>
 </div>
@@ -827,8 +826,8 @@ Eiyuusou</td>
 		</div>
 
 <div style="padding: 20px 10px 10px 10px">
-<h3>Notes</h3>
-<div style="background-color: #2F364F;">
+<h3>Notes  <a href="#" class="collapsible_section" rel="collapse_notes"><img src="/db/img/collapse_close.png" /></a></h3>
+<div style="background-color: #2F364F;" id="collapse_notes">
 <b class="rtop"><b></b></b>
 <div style="padding: 6px 10px 10px 10px" class="smallfont" id="notes">M01<br />Lyrics: Yoshie Isogai &amp; Wataru Hano<br />Composition &amp; Arrangement: Akiko Shikata<br /><br />Bagpipes: Haruo Kondo<br />Electric Guitar: Hiroki Itou<br />Greece Bouzouki, Irish Bouzouki, Oud, Tzouras: Koichiro Tashiro<br />Percussion: Tamao Fujii<br />Strings - 1st Violin: Seiko Onuki/Miho Yamashita/Gen Takeuchi/Akiko Hanafusa/Yuumi Arai/Asa Nagakura/Yoko Fujimura/Souko Eriguchi<br />2nd Violin: Fumihiro Fukutome/Ichiro Matsumura/Misako Ootani/Akiko Hattori/Mihoko Arimura/Fumi Uchiyama<br />Viola: Yuri Matsumoto/Junko Baba/Hanae Haruki/Rui Kawata<br />Cello: Akina Harasawa/ Satoshi Idouji/Mayumi Kawai/Takefumi Shirasa<br />All Other Instruments: Akiko Shikata<br /> <br />M02<br />Lyrics: Akiko Shikata &amp; Tomoko Shinoda<br />Composition &amp; Arrangement: Akiko Shikata<br /><br />Acoustic Guitar, Greece Bouzouki, Irish Bouzouki, Kantele: Koichiro Tashiro<br />Percussion: Marie Ooishi<br />Violin: Seiko Onuki<br />Whistle, Recorder: Takashi Yasui<br />All Other Instruments: Akiko Shikata<br /><br />M03<br />Lyrics, Composition &amp; Arrangement: Akiko Shikata<br /><br />All Other Instruments: Akiko Shikata<br /><br />M04<br />Lyrics: Wataru Hano<br />Composition &amp; Arrangement: Akiko Shikata<br /><br />Horn: Kensho Hagiwara<br />Irishi Bouzouki, Lauto, Portugal Guitar: Koichiro Tashiro<br />Percussion: Marie Ooishi<br />Violin: Seiko Onuki<br />All Other Instruments: Akiko Shikata<br /><br />M05<br />Lyrics: Tomoko Shinoda<br />Composition &amp; Arrangement: Noa Fujii<br /><br />All Other Instruments: Noa Fujii<br /><br />06<br />Composition, Arrangement and Lyrics: Akiko Shikata<br /><br />Acoustic Guitar, Greece Bouzouki, Irish Bouzouki, Lute: Koichiro Tashiro<br />All Other Instruments: Akiko Shikata<br /><br />M07<br />Lyrics: Wataru Hano<br />Composition &amp; Arrangement: Akiko Shikata<br /><br />Guitar: Hiroki Itou<br />Violin: Seiko Onuki<br />Whistle: Takashi Yasui<br />All Other Instruments: Akiko Shikata<br /><br />M08<br />Lyrics: Wataru Hano<br />Composition: Hayao Kawai<br />Arrangement: Hayao Kawai &amp; Akiko Shikata<br /><br />Acoustic Guitar, Vihuela: Koichiro Tashiro<br />Violin: Seiko Onuki<br />Whistle, Recorder: Takashi Yasui<br />All Other Instruments: Hayao Kawai<br /><br />M09<br />Lyrics: Yoshie Isogai &amp; Tomoko Shinoda<br />Composition &amp; Arrangement: Akiko Shikata<br /><br />Guitar: Hiroki Itou<br />All Other Instruments: Akiko Shikata<br /><br />M10<br />Lyrics, Composition &amp; Arrangement: Akiko Shikata<br /><br />Guitar: Minoru Yoshida<br />Violin: Akihisa Tsuboy<br />All Other Instruments: Akiko Shikata<br /><br />M11<br />Composition &amp; Arrangement: K-Taro<br /><br />Bass: Gen-San<br />Hammered Dulcimer: Gen-San, K-Taro<br />Whistle: K-Taro<br />All Other Instruments: K-Taro<br /><br />M12<br />Lyrics, Composition &amp; Arrangement: Akiko Shikata<br /><br />Acoustic Guitar, Irish Bouzouki: Koichiro Tashiro<br />Violin: Seiko Onuki<br />Whistle, Recorder: Takashi Yasui<br />All Other Instruments: Akiko Shikata<br /><br />M13<br />Lyrics: Wataru Hano<br />Composition &amp; Arrangement: Akiko Shikata<br /><br />Greece Bouzouki, Irish Bouzouki, Oud, Tzouras: Koichiro Tashiro<br />Percussions: Marie Ooishi<br />Strings - 1st Violin: Seiko Onuki/Mayu Kodera/Atsuko Uomoto/Fumihiro Fukutome<br />2nd Violin: Mai Ota/Miho Yamashita/Chisato Shimura<br />Viola: Saori Oka/Daisuke Tomita/Yuri Matsumoto<br />Cello: Akina Harasawa/Tomoki Yamada<br />All Other Instruments: Akiko Shikata</div>
 <b class="rbot"><b></b></b>
@@ -897,7 +896,7 @@ Istoria </div>
 <div style="width: 250px; background-color: #2F364F;">
 <div class="smallfont" style="padding: 10px 10px 0px 10px">
 <div style="margin-bottom: 10px"><img src="/db/img/arrowbit.gif" alt="" /> <b class="label">Official</b><br />
-<a class='link_doc' rel='nofollow' href='/redirect/48585/www.vagrancy.jp/istoria_kalliope/cdinfor.html'>∥Istoria～Kalliope～∥</a>
+<span class='link_doc'><a rel='nofollow' href='/redirect/48585/www.vagrancy.jp/istoria_kalliope/cdinfor.html'>∥Istoria～Kalliope～∥</a></span>
 </div>
 
 
@@ -924,7 +923,7 @@ Istoria </div>
 <a href="https://vgmdb.net/album/6904" title='Istoria ~Musa~'></a>
 </div></div>
 <ul class="album_infobit_detail">
-<li><a class="albumtitle smallfont album-works" href="https://vgmdb.net/album/6904" title='Istoria ~Musa~'><span class="albumtitle" lang="en" style="display:inline">Istoria ~Musa~</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>イストリア～ムーサ～</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Istoria ~Musa~</i></span></a></li>
+<li><a class="albumtitle smallfont album-works" href="https://vgmdb.net/album/6904" title='Istoria ~Musa~'><span class="albumtitle" lang="en" style="display:inline">Istoria ~Musa~</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>イストリア～ムーサ～</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em>Istoria ~Musa~</span></a></li>
 <li><span class="catalog smallfont album-works">AURA-0013</span></li>
 <li>Dec 29, 2007</li>
 </ul>
@@ -933,7 +932,7 @@ Istoria </div>
 <a href="https://vgmdb.net/album/30473" title='Istoria ~Kalliope~ [Limited Edition]'></a>
 </div></div>
 <ul class="album_infobit_detail">
-<li><a class="albumtitle smallfont album-works" href="https://vgmdb.net/album/30473" title='Istoria ~Kalliope~ [Limited Edition]'><span class="albumtitle" lang="en" style="display:inline">Istoria ~Kalliope~ [Limited Edition]</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>志方あきこ／Istoria～Kalliope～</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Istoria ~Kalliope~ [Limited Edition]</i></span></a></li>
+<li><a class="albumtitle smallfont album-works" href="https://vgmdb.net/album/30473" title='Istoria ~Kalliope~ [Limited Edition]'><span class="albumtitle" lang="en" style="display:inline">Istoria ~Kalliope~ [Limited Edition]</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>志方あきこ／Istoria～Kalliope～</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em>Istoria ~Kalliope~ [Limited Edition]</span></a></li>
 <li><span class="catalog smallfont album-works">AURA-0018~9</span></li>
 <li>Dec 31, 2011</li>
 </ul>
@@ -942,7 +941,7 @@ Istoria </div>
 <a href="https://vgmdb.net/album/32134" title='Istoria ~Kalliope~ Orgel Collection'></a>
 </div></div>
 <ul class="album_infobit_detail">
-<li><a class="albumtitle smallfont album-bonus" href="https://vgmdb.net/album/32134" title='Istoria ~Kalliope~ Orgel Collection'><span class="albumtitle" lang="en" style="display:inline">Istoria ~Kalliope~ Orgel Collection</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>イストリア ～カリオペ～...</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Istoria ~Kalliope~ Orgel Collection</i></span></a></li>
+<li><a class="albumtitle smallfont album-bonus" href="https://vgmdb.net/album/32134" title='Istoria ~Kalliope~ Orgel Collection'><span class="albumtitle" lang="en" style="display:inline">Istoria ~Kalliope~ Orgel Collection</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>イストリア ～カリオペ～ オルゴールコレクション</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em>Istoria ~Kalliope~ Orgel Collection</span></a></li>
 <li><span class="catalog smallfont album-bonus">AURA-0020</span></li>
 <li>Mar 18, 2012</li>
 </ul>
@@ -965,12 +964,12 @@ Dec 7, 2011 <span class="time">09:54 PM</span></div>
 Sep 5, 2016 <span class="time">02:16 PM</span></div>
 
 <div style="margin-bottom: 10px;"><img src="/db/img/arrowbit.gif" alt="" /> <b class="label">Page traffic</b><br />
-<span class="time">5502</span> visitors<br />
+<span class="time">5721</span> visitors<br />
 <span class="time" style="word-break:break-all">2</span> freedb<br />
 <!----></div>
 
 <div><img src="/db/img/arrowbit.gif" alt="" /> <b class="label">Page built in</b><br />
-<span class="time">0.02</span> seconds</div>
+<span class="time">0.04</span> seconds</div>
 </div>
 
 <b class="rbot"><b></b></b>
@@ -1014,7 +1013,7 @@ Sep 5, 2016 <span class="time">02:16 PM</span></div>
 	<div style="float: right; text-align: right; font-family: Arial;" class="label">
 		<a href="/about">About Us</a> &bull;
 		<a href="/faq">F.A.Q.</a> &bull;
-		<a href="/forums/sendmessage.php?s=8a6ed4529709c0c1b03d8b57242b2c8b" rel="nofollow" accesskey="9">Contact Us</a> &bull;
+		<a href="/forums/sendmessage.php?s=36e8d48c1d1d262a0a9662d498041765" rel="nofollow" accesskey="9">Contact Us</a> &bull;
 		<a href="/db/statistics.php" rel="nofollow">Statistics</a> &bull;
 		<a href="https://vgmdb.net">Home</a>
 
@@ -1038,14 +1037,16 @@ Sep 5, 2016 <span class="time">02:16 PM</span></div>
 	</div>
 
 	<div class="label">
-		<h3>VGMdb 1.3</h3>
+		<h3>VGMdb 1.4</h3>
 		<div class="smallfont"><!-- Do not remove this copyright notice -->
 		
 		<!-- Do not remove this copyright notice --></div>
 		<div class="smallfont">Site code and design copyright VGMdb.net</div>
 		<div class="smallfont">Site material is property of their respective owners.</div>
-		<div class="smallfont">All times are GMT -8. The time now is <span class="time">06:59 PM</span>.</div>
+		<div class="smallfont">All times are GMT -8. The time now is <span class="time">08:45 PM</span>.</div>
 	</div>
+
+
 
 
 

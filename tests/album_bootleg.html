@@ -21,15 +21,15 @@
 <!-- CSS Stylesheet -->
 <style type="text/css" id="vbulletin_css">
 /**
-* vBulletin 3.8.8 CSS
+* vBulletin 3.8.11 CSS
 * Style: 'Default Style'; Style ID: 1
 */
-@import url("/forums/clientscript/vbulletin_css/style-ce6b22fa-00001.css");
+@import url("/forums/clientscript/vbulletin_css/style-57140a36-00001.css");
 </style>
-<link rel="stylesheet" type="text/css" href="/forums/clientscript/vbulletin_important.css?v=389" />
+<link rel="stylesheet" type="text/css" href="/forums/clientscript/vbulletin_important.css?v=3811" />
 
 
-<link rel="stylesheet" type="text/css" href="/db/vgmdb.css?20171010" />
+<link rel="stylesheet" type="text/css" href="/db/vgmdb.css?20201214" />
 <link rel="stylesheet" type="text/css" href="/db/css/vgmdb-colorcode-title.css?20190227" id="colorcode" />
 <link rel="stylesheet" type="text/css" href="/db/jquery.autocomplete.css?20091023" />
 <link rel="stylesheet" type="text/css" href="/db/jquery.jcarousel.css?20091124" />
@@ -39,18 +39,18 @@
 <![endif]-->
 <!-- / CSS Stylesheet -->
 
-<script type="text/javascript" src="https://yui-s.yahooapis.com/2.9.0/build/yahoo-dom-event/yahoo-dom-event.js?v=389"></script>
-<script type="text/javascript" src="https://yui-s.yahooapis.com/2.9.0/build/connection/connection-min.js?v=389"></script>
+<script type="text/javascript" src="https://yui-s.yahooapis.com/2.9.0/build/yahoo-dom-event/yahoo-dom-event.js?v=3811"></script>
+<script type="text/javascript" src="https://yui-s.yahooapis.com/2.9.0/build/connection/connection-min.js?v=3811"></script>
 <script type="text/javascript">
 <!--
-var SESSIONURL = "s=8a6ed4529709c0c1b03d8b57242b2c8b&";
+var SESSIONURL = "s=36e8d48c1d1d262a0a9662d498041765&";
 var SECURITYTOKEN = "guest";
 var IMGDIR_MISC = "/db/images/misc";
-var vb_disable_ajax = parseInt("0", 10);
+var vb_disable_ajax = parseInt("1", 10);
 // -->
 </script>
-<script type="text/javascript" src="/forums/clientscript/vbulletin_global.js?v=389"></script>
-<script type="text/javascript" src="/forums/clientscript/vbulletin_menu.js?v=389"></script>
+<script type="text/javascript" src="/forums/clientscript/vbulletin_global.js?v=3811"></script>
+<script type="text/javascript" src="/forums/clientscript/vbulletin_menu.js?v=3811"></script>
 <link rel="alternate" type="application/rss+xml" title="VGMdb Forums RSS Feed" href="/forums/external.php?type=RSS2" />
 
 <script type="text/javascript" src="/db/clientscript/jquery-1.4.min.js"></script>
@@ -136,20 +136,33 @@ $(document).ready(function() {
   })();
 
 </script>
+<style>
+.alt1_dark {
+    background: #151F30;
+    color: #FFFFFF;
+}
 
-<meta name="keywords" content="GAME-119, bootleg printing, Hiroki Kikuta, &lt;a href=&quot;/product/196&quot;&gt;&lt;span class=&quot;productname&quot; lang=&quot;en&quot; style=&quot;display:inline&quot;&gt;Secret of Mana&lt;/span&gt;&lt;span style=&quot;display:none&quot;&gt;&lt;em&gt; / &lt;/em&gt;&lt;/span&gt;&lt;span class=&quot;productname&quot; lang=&quot;ja&quot; style=&quot;display:none&quot;&gt;聖剣伝説2&lt;/span&gt;&lt;span style=&quot;display:none&quot;&gt;&lt;em&gt; / &lt;/em&gt;&lt;/span&gt;&lt;span class=&quot;productname&quot; lang=&quot;ja-Latn&quot; style=&quot;display:none&quot;&gt;Seiken Densetsu 2&lt;/span&gt;&lt;/a&gt;, SNES (Super Famicom), album, ost, soundtrack, tracklist, scans, covers, vgm, translation" />
-<meta name="description" content="Bootleg (CD) published by Son May Records on Nov 25, 1995 containing arrangement from &lt;a href=&quot;/product/196&quot;&gt;&lt;span class=&quot;productname&quot; lang=&quot;en&quot; style=&quot;display:inline&quot;&gt;Secret of Mana&lt;/span&gt;&lt;span style=&quot;display:none&quot;&gt;&lt;em&gt; / &lt;/em&gt;&lt;/span&gt;&lt;span class=&quot;productname&quot; lang=&quot;ja&quot; style=&quot;display:none&quot;&gt;聖剣伝説2&lt;/span&gt;&lt;span style=&quot;display:none&quot;&gt;&lt;em&gt; / &lt;/em&gt;&lt;/span&gt;&lt;span class=&quot;productname&quot; lang=&quot;ja-Latn&quot; style=&quot;display:none&quot;&gt;Seiken Densetsu 2&lt;/span&gt;&lt;/a&gt; with compositions by Hiroki Kikuta performed by Hiroki Kikuta, Ryuichiro Misumi, Carol Moriyama" />
+.alt2_dark {
+    background: #252B3F;
+    color: #FFFFFF;
+}
+span.link_doc { display: block; background: transparent url('/db/icons/album-cover.gif') 0 2px no-repeat; padding-left: 14px; margin-bottom: 4px; }
+</style>
+
+<meta name="keywords" content="GAME-119, bootleg printing, Hiroki Kikuta, Secret of Mana / 聖剣伝説2 / Seiken Densetsu 2, SNES (Super Famicom), album, ost, soundtrack, tracklist, scans, covers, vgm, translation" />
+<meta name="description" content="Bootleg (CD) published by SonMay Records on Nov 25, 1995 containing arrangement from Secret of Mana with compositions by Hiroki Kikuta performed by Hiroki Kikuta, Ryuichiro Misumi, Carol Moriyama" />
 <meta property="og:title" content="GAME-119 | secret of mana + - VGMdb" />
 <meta property="og:type" content="website" />
 <meta property="og:image" content="https://medium-media.vgm.io/albums/50/11705/11705-1232199290.jpg" />
-<meta property="og:url" content="website" />
+<meta property="og:url" content="https://vgmdb.net/album/11705" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:site" content="@vgmdb" />
 <meta name="twitter:title" content="GAME-119 | secret of mana + - VGMdb" />
-<meta name="twitter:description" content="Bootleg (CD) published by Son May Records on Nov 25, 1995 containing arrangement from &lt;a href=&quot;/product/196&quot;&gt;&lt;span class=&quot;productname&quot; lang=&quot;en&quot; style=&quot;display:inline&quot;&gt;Secret of Mana&lt;/span&gt;&lt;span style=&quot;display:none&quot;&gt;&lt;em&gt; / &lt;/em&gt;&lt;/span&gt;&lt;span class=&quot;productname&quot; lang=&quot;ja&quot; style=&quot;display:none&quot;&gt;聖剣伝説2&lt;/span&gt;&lt;span style=&quot;display:none&quot;&gt;&lt;em&gt; / &lt;/em&gt;&lt;/span&gt;&lt;span class=&quot;productname&quot; lang=&quot;ja-Latn&quot; style=&quot;display:none&quot;&gt;Seiken Densetsu 2&lt;/span&gt;&lt;/a&gt; with compositions by Hiroki Kikuta performed by Hiroki Kikuta, Ryuichiro Misumi, Carol Moriyama" />
+<meta name="twitter:description" content="Bootleg (CD) published by SonMay Records on Nov 25, 1995 containing arrangement from Secret of Mana with compositions by Hiroki Kikuta performed by Hiroki Kikuta, Ryuichiro Misumi, Carol Moriyama" />
 <meta name="twitter:image" content="https://medium-media.vgm.io/albums/50/11705/11705-1232199290.jpg" />
 
 <!---->
+
 
 <style>tr.extracred { display: none; }</style>
 
@@ -164,6 +177,23 @@ $(document).ready(function() {
 	
 	$('table.role tr.rolebit').mouseover(function() { $(this).addClass("over"); });
 	$('table.role tr.rolebit').mouseout(function() { $(this).removeClass("over"); });
+	
+	
+	
+	
+	$(document).ready(function() {
+		$('.collapsible_section').click(function() {
+			var src = $(this).find('img').attr('src');
+			if (src.indexOf('close') > 0) {
+				$(this).find('img').attr('src', src.replace('close', 'open'));
+				$('#' + $(this).attr('rel')).hide('fast');
+			} else {
+				$(this).find('img').attr('src', src.replace('open', 'close'));
+				$('#' + $(this).attr('rel')).show('fast');
+			}
+			return false;
+		});
+	});
 	
 	
 	
@@ -211,7 +241,7 @@ $(document).ready(function() {
 </div>
 <div style="white-space: nowrap;">
 <!-- logo -->
-<div style="height: 100px; float: left;"><a href="/db/main.php"><img src="/db/img/vgmdblogo.png" alt="VGMdb" style="padding: 10px; width: 250px; height: 80px; border: 0" /></a></div>
+<div style="height: 100px; float: left;"><a href="/"><img src="/db/img/vgmdblogo.png" alt="VGMdb" style="padding: 10px; width: 250px; height: 80px; border: 0" /></a></div>
 <!-- /logo -->
 <!-- top nav -->
 <div style="height: 100px; float: left; position: relative; margin-left: 1px;">
@@ -237,12 +267,12 @@ $(document).ready(function() {
 	</li>
 	<li id="nav_advsearch"><a title="More search options" href="/search">Advanced Search</a></li>
 	<li id="nav_update"><a title="Latest submissions and edits" href="/db/recent.php">Updates</a></li>
-	<li id="nav_calendar"><a title="Release schedules" href="/db/calendar.php?year=2020&month=6">Calendar</a></li>
+	<li id="nav_calendar"><a title="Release schedules" href="/db/calendar.php?year=2021&month=1">Calendar</a></li>
 	<li id="nav_forum"><a title="Community discussions" href="/forums/">Forums</a></li>
 	<li id="nav_market"><a title="Trade with other members" href="/db/marketplace.php?do=view">Marketplace</a></li>
-	<!-- <li id="nav_radio"><a title="Live streaming VGM" href="#" onclick="alert('Under Construction');">Radio</a></li> -->
 	<li id="nav_users"><a title="User collections" href="/db/collection.php">Users</a></li>
 	<li id="nav_chat"><a title="Real-time chat" rel="nofollow" href="https://discord.gg/VXgKQUa" target="vgmdbchat">Chat</a></li>
+	
 	<li id="nav_submit"><a title="Submit an album" href="/album/new">Submit Album</a></li>
 	<li id="nav_customize"><span id="navoptions"><a title="Edit your preferences" href="#">Customize</a></span></li>
 </ul>
@@ -253,7 +283,7 @@ $(document).ready(function() {
 	<div class="vbmenu_popup" id="navlogin_menu" style="display:none;">
 	<table cellpadding="4" cellspacing="1" border="0"><tr><td style="background: #BBC7CE;">
 	<form action="/forums/login.php?do=login" method="post" onsubmit="md5hash(vb_login_password, vb_login_md5password, vb_login_md5password_utf, 0)">
-	<script type="text/javascript" src="/forums/clientscript/vbulletin_md5.js?v=389"></script>
+	<script type="text/javascript" src="/forums/clientscript/vbulletin_md5.js?v=3811"></script>
 	<table cellpadding="0" cellspacing="3" border="0">
 	<tr>
 		<td class="smallfont"><label for="navbar_username">User Name</label></td>
@@ -265,7 +295,7 @@ $(document).ready(function() {
 		<td><input type="submit" class="button" value="Log in" tabindex="104" title="Enter your username and password in the boxes provided to login, or click the 'register' button to create a profile for yourself." accesskey="s" /></td>
 	</tr>
 	</table>
-	<input type="hidden" name="s" value="8a6ed4529709c0c1b03d8b57242b2c8b" />
+	<input type="hidden" name="s" value="36e8d48c1d1d262a0a9662d498041765" />
 	<input type="hidden" name="securitytoken" value="guest" />
 	<input type="hidden" name="do" value="login" />		
 	<input type="hidden" name="vb_login_md5password" />
@@ -288,12 +318,15 @@ $(document).ready(function() {
 
 
 <!-- main page contents -->
+
+
+
 <table width="100%" cellpadding="0" cellspacing="0" border="0" align="left"><tr><td width="100%" style="background-color: #1B273D;" valign="top">
 	<b class="rtop"><b></b></b>
 	<div id="innermain" style="padding: 6px 10px 0px 10px">
 		<span style="float:right;" class="label smallfont"><a href="/db/albums-discuss.php?id=11705">Discuss</a> | <span id="albumtools"><a href="#">Edit</a><script type="text/javascript"> vBmenu.register('albumtools'); </script></span> | <a class="smallfont" href="/album/11705/feed" title="Activity RSS Feed">Feed <img class="inlineimg" border="0" src="/db/img/rss.png" height="16" width="16" alt="" /></a></span>
 
-		<h1><span class="albumtitle" lang="en" style="display:inline">secret of mana +</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>聖剣伝説2　シークレット オブ マナ</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>secret of mana +</i></span> </h1>
+		<h1><span class="albumtitle" lang="en" style="display:inline">secret of mana +</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>聖剣伝説2　シークレット オブ マナ</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em>secret of mana +</span> </h1>
 
 		<div style="padding-left: 10px; padding-right: 10px; padding-bottom: 6px; font-size: 9pt; color: #788990;"><span class="albumtitle" lang="en" style="display:inline">聖剣伝説2　シークレット オブ マナ<br /></span><span class="albumtitle" lang="ja" style="display:none">secret of mana +<br /></span><span class="albumtitle" lang="ja-Latn" style="display:none">secret of mana +<br />聖剣伝説2　シークレット オブ マナ<br /></span></div>
 		<div style="padding-left: 10px; padding-right: 10px; margin-top: 10px;"><div id="leftfloat" style="float: left; width: 250px; height: 250px; padding-top: 4px; padding-bottom: 4px;">
@@ -312,18 +345,6 @@ $(document).ready(function() {
 <tr><td nowrap="nowrap"><span class="label"><b>Catalog Number</b></span></td>
 <td width="100%">GAME-119 (bootleg printing of <a class="smallfont" href="/album/722">N30D-021</a>) 
 
-
-<a id="extralink" href="#" style="float:right">[Extra Credits]</a>
-<script type="text/javascript">
-$(document).ready(function() {
-  $("#extralink").click(function(e) {
-    $("tr.maincred").toggle();
-    $("tr.extracred").toggle();
-    $(this).text($("tr.maincred").is(":visible") ? "[Extra Credits]" : "[Main Credits]");
-    e.preventDefault();
-  });
-});
-</script>
 
 </td></tr>
 
@@ -345,60 +366,8 @@ $(document).ready(function() {
 <tr><td nowrap="nowrap"><span class="label"><b>Classification</b></span></td>
 <td>Arrangement </td></tr>
 
-<tr class="maincred"><td nowrap="nowrap"><span class="label"><b>Organizations</b></span></td>
-<td>
 
-<script type="text/javascript">
-$(document).ready(function() {
-  $("#publisher_show_more, #publisher_show_less").click(function(e) {
-    $("#publisher_less").toggle();
-    $("#publisher_more").toggle();
-    e.preventDefault();
-  });
-});
-</script>
-<span id="publisher_less"><a href="/org/293"><span class="productname" lang="en" style="display:inline">SonMay Records</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja" style="display:none">笙美影音光碟有限公司</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja-Latn" style="display:none">SonMay Records</span></a> <span class="label smalltext">(Publisher)</span><span id="publisher_more" style="display:none"><a href="/org/293"><span class="productname" lang="en" style="display:inline">SonMay Records</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja" style="display:none">笙美影音光碟有限公司</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja-Latn" style="display:none">SonMay Records</span></a> <span class="label smalltext">(Publisher)</span> &nbsp;<a href="#" style="display:none" id="publisher_show_less">[see less]</a></span>
-
-</td></tr>
-
-<tr class="maincred"><td nowrap="nowrap"><span class="label"><b>Composed by</b></span></td>
-<td><a href="/artist/140"><span title="菊田裕樹" class="artistname" lang="en" style="display:inline">Hiroki Kikuta</span><span style="display:none"><em> / </em></span><span title="Hiroki Kikuta" class="artistname" lang="ja" style="display:none">菊田裕樹</span></a> </td></tr>
-
-<tr class="maincred"><td nowrap="nowrap"><span class="label"><b>Arranged by</b></span></td>
-<td><a href="/artist/140"><span title="菊田裕樹" class="artistname" lang="en" style="display:inline">Hiroki Kikuta</span><span style="display:none"><em> / </em></span><span title="Hiroki Kikuta" class="artistname" lang="ja" style="display:none">菊田裕樹</span></a> </td></tr>
-
-<tr class="maincred"><td nowrap="nowrap"><span class="label"><b>Performed by</b></span></td>
-<td><a href="/artist/140"><span title="菊田裕樹" class="artistname" lang="en" style="display:inline">Hiroki Kikuta</span><span style="display:none"><em> / </em></span><span title="Hiroki Kikuta" class="artistname" lang="ja" style="display:none">菊田裕樹</span></a>, Ryuichiro Misumi, <a href="/artist/17486">Carol Moriyama</a> </td></tr>
-
-
-
-
-
-
-
-
-
-
-
-<tr class="extracred"><td nowrap="nowrap"><span class="label"><b>Recorded by</b></span></td>
-<td></td></tr>
-
-<tr class="extracred"><td nowrap="nowrap"><span class="label"><b>Assisted by</b></span></td>
-<td>Tetsuya Hirota, <a href="/artist/14165"><span title="村田康治" class="artistname" lang="en" style="display:inline">Kohji Murata</span><span style="display:none"><em> / </em></span><span title="Kohji Murata" class="artistname" lang="ja" style="display:none">村田康治</span></a>, Akinori Furubayashi</td></tr>
-
-
-
-<tr class="extracred"><td nowrap="nowrap"><span class="label"><b>Mixed by</b></span></td>
-<td><a href="/artist/28771">Yuuki Mizutani</a></td></tr>
-
-
-
-<tr class="extracred"><td nowrap="nowrap"><span class="label"><b>Mastered by</b></span></td>
-<td>Tomoyuki Yokoyama</td></tr>
-
-
-
-
+    <tr class="maincred"><td nowrap="nowrap"><span class="label"><b>Publisher</b></span></td><td><a href="/org/293"><span class="productname" lang="en" style="display:inline">SonMay Records</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja" style="display:none">笙美影音光碟有限公司</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja-Latn" style="display:none">SonMay Records</span></a></td></tr>
 
 
 
@@ -422,12 +391,27 @@ $(document).ready(function() {
 </div>
 		<br style="clear: both" />
 
+
+
+<div style="padding-left: 10px; padding-right: 10px"><h3><span style="float:left">Credits <a href="#" class="collapsible_section" rel="collapse_credits"><img src="/db/img/collapse_close.png" /></a></span></h3><span style="clear:both;display:block;"></span>
+<div style="background-color: #2F364F;" id="collapse_credits">
+<b class="rtop"><b></b></b>
+<div style="max-height:1000px; padding: 6px 10px 10px 6px; overflow:auto;">
+<table id="album_infobit_large" style="height:auto" cellpadding="1" cellspacing="1">
+<tbody>
+<tr class="maincred"><td nowrap="nowrap"><span class="label"><b><span title="Composer" class="artistname" lang="en" style="display:inline">Composer</span><span style="display:none"><em> / </em></span><span title="Composer" class="artistname" lang="ja" style="display:none">Composer</span></b></span></td><td width="100%"><a href="/artist/140"><span title="菊田裕樹" class="artistname" lang="en" style="display:inline">Hiroki Kikuta</span><span style="display:none"><em> / </em></span><span title="菊田裕樹" class="artistname" lang="ja" style="display:none">菊田裕樹</span></a></td></tr><tr class="maincred"><td nowrap="nowrap"><span class="label"><b><span title="Arranger" class="artistname" lang="en" style="display:inline">Arranger</span><span style="display:none"><em> / </em></span><span title="Arranger" class="artistname" lang="ja" style="display:none">Arranger</span></b></span></td><td width="100%"><a href="/artist/140"><span title="菊田裕樹" class="artistname" lang="en" style="display:inline">Hiroki Kikuta</span><span style="display:none"><em> / </em></span><span title="菊田裕樹" class="artistname" lang="ja" style="display:none">菊田裕樹</span></a></td></tr><tr class="maincred"><td nowrap="nowrap"><span class="label"><b><span title="Performer" class="artistname" lang="en" style="display:inline">Performer</span><span style="display:none"><em> / </em></span><span title="Performer" class="artistname" lang="ja" style="display:none">Performer</span></b></span></td><td width="100%"><a href="/artist/140"><span title="菊田裕樹" class="artistname" lang="en" style="display:inline">Hiroki Kikuta</span><span style="display:none"><em> / </em></span><span title="菊田裕樹" class="artistname" lang="ja" style="display:none">菊田裕樹</span></a>, Ryuichiro Misumi, <a href="/artist/17486">Carol Moriyama</a></td></tr><tr class="maincred"><td nowrap="nowrap"><span class="label"><b><span title="Assistant Engineer" class="artistname" lang="en" style="display:inline">Assistant Engineer</span><span style="display:none"><em> / </em></span><span title="Assistant Engineer" class="artistname" lang="ja" style="display:none">Assistant Engineer</span></b></span></td><td width="100%">Tetsuya Hirota, <a href="/artist/14165"><span title="村田康治" class="artistname" lang="en" style="display:inline">Kohji Murata</span><span style="display:none"><em> / </em></span><span title="村田康治" class="artistname" lang="ja" style="display:none">村田康治</span></a>, Akinori Furubayashi</td></tr><tr class="maincred"><td nowrap="nowrap"><span class="label"><b><span title="Mixing Engineer" class="artistname" lang="en" style="display:inline">Mixing Engineer</span><span style="display:none"><em> / </em></span><span title="Mixing Engineer" class="artistname" lang="ja" style="display:none">Mixing Engineer</span></b></span></td><td width="100%"><a href="/artist/28771">Yuuki Mizutani</a></td></tr><tr class="maincred"><td nowrap="nowrap"><span class="label"><b><span title="Mastering Engineer" class="artistname" lang="en" style="display:inline">Mastering Engineer</span><span style="display:none"><em> / </em></span><span title="Mastering Engineer" class="artistname" lang="ja" style="display:none">Mastering Engineer</span></b></span></td><td width="100%">Tomoyuki Yokoyama</td></tr><tr class="maincred"><td nowrap="nowrap"><span class="label"><b><span title="Mastering Studio" class="artistname" lang="en" style="display:inline">Mastering Studio</span><span style="display:none"><em> / </em></span><span title="Mastering Studio" class="artistname" lang="ja" style="display:none">Mastering Studio</span></b></span></td><td width="100%"><a href="/artist/35902"><span title="ハリオンマスタリングスタジオ" class="artistname" lang="en" style="display:inline">HARION</span><span style="display:none"><em> / </em></span><span title="ハリオンマスタリングスタジオ" class="artistname" lang="ja" style="display:none">ハリオンマスタリングスタジオ</span></a></td></tr>
+</tbody>
+</table>
+</div>
+<b class="rbot"><b></b></b>
+</div></div><br/>
+
 		<div style="padding-left: 10px; padding-right: 10px">
 		
-			<div><h3 style="float: left">Tracklist</h3>
+			<div><h3 style="float: left">Tracklist <a href="#" class="collapsible_section" rel="tracklist"><img src="/db/img/collapse_close.png" /></a></h3>
 			<ul id="tlnav" class="tabnav" style="margin-left: 10px"><li class="active"><a class='smallfont' rel='tl4526' href='#'>English</a></li></ul>
 			</div>
-			
+
 			<div style="background-color: #2F364F; clear: both">
 			<b class="rtop"><b></b></b>
 			<div style="padding: 6px 10px 10px 10px" id="tracklist"><span class="tl" id="tl4526">
@@ -451,8 +435,9 @@ Secret of Mana</td>
   <span class="time">49:26</span>
 </span>
 <br style="clear: both" />
-<h4 class="label" style="font-weight: normal">
+<h4 style="font-weight: normal; clear:both"><span class="label">
 
+&nbsp;</span>
 
 </h4></span>
 </div>
@@ -462,8 +447,8 @@ Secret of Mana</td>
 		</div>
 
 <div style="padding: 20px 10px 10px 10px">
-<h3>Notes</h3>
-<div style="background-color: #2F364F;">
+<h3>Notes  <a href="#" class="collapsible_section" rel="collapse_notes"><img src="/db/img/collapse_close.png" /></a></h3>
+<div style="background-color: #2F364F;" id="collapse_notes">
 <b class="rtop"><b></b></b>
 <div style="padding: 6px 10px 10px 10px" class="smallfont" id="notes">ALL COMPOSED, ARRANGED AND INSTRUMENTS by<br />HIROKI KIKUTA<br />Except<br />Guitar: RYUICHIRO MISUMI<br />Voice: CAROL MORIYAMA<br /><br />Producers:<br />HIROKI KIKUTA (Square)<br />KENSUKE MATSUSHITA (NTT Publishing)<br />MARQUEE MASAKI NOMULA (Hakuhodo CSD)<br />Production Management:<br />TADASHI NOMURA (Square)<br />Public Relations:<br />HIROFUMI NAKAMURA (NTT Publishing)<br /><br />Mixing Engineer:<br />YUUKI MIZUTANI<br />Assistant Engineers:<br />TETSUYA HIROTA (Studio TAKE ONE)<br />KOHJI MURATA (Studio TAKE ONE)<br />AKINORI FURUBAYASHI (LITTLE BACH)<br />Recorded at<br />Studio TAKE ONE&#160;&#160;1993-08-17 → 1993-09-05<br />LITTLE BACH KOBUCHIZAWA&#160;&#160;1993-09-06&#160;&#160;→ 1993-09-13<br />Mastering Engineer:<br />TOMOYUKI YOKOYAMA (HARION)<br />Mastered at<br />HARION<br /><br />Photographer:<br />JOYCE TENNESON<br />Cover Artwork:<br />YOSHITO TANAKA<br /><br />Co - Executive Producer:<br />MITSUMASA IKEDA (NTT Publishing)<br />Executive Producers:<br />YOSHITOMO OGATA (NTT Publishing)<br />YOSHITOMO SAKUMA (Hakuhodo CSD)</div>
 <b class="rbot"><b></b></b>
@@ -569,7 +554,7 @@ SNES (Super Famicom) </div>
 <div style="width: 250px; background-color: #2F364F;">
 
 
-<span class="smallfont"><div class="smallfont" style="padding: 6px 10px 6px 10px"><a class="albumtitle smallfont album-game" href="https://vgmdb.net/album/721" title='Seiken Densetsu 2 Original Sound Version'><span class="albumtitle" lang="en" style="display:inline">Seiken Densetsu 2 Original Sound Version</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>聖剣伝説2...</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Seiken Densetsu 2 Original Sound Version</i></span></a> <span class="catalog smallfont album-game">N25D-019</span></div><div class="smallfont" style="padding: 6px 10px 6px 10px"><a class="albumtitle smallfont album-game" href="https://vgmdb.net/album/722" title='secret of mana +'><span class="albumtitle" lang="en" style="display:inline">secret of mana +</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>聖剣伝説2 シークレット オブ マナ</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>secret of mana +</i></span></a> <span class="catalog smallfont album-game">N30D-021</span></div><div class="smallfont" style="padding: 6px 10px 6px 10px"><a class="albumtitle smallfont album-game" href="https://vgmdb.net/album/33308" title='Secret of Mana Genesis / Seiken Densetsu 2 Arrange Album'><span class="albumtitle" lang="en" style="display:inline">Secret of Mana Genesis / Seiken Densetsu 2 Arrange Album</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>シークレット　オブ　マナ　ジェネシス／�...</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Secret of Mana Genesis / Seiken Densetsu 2 Arrange Album</i></span></a> <span class="catalog smallfont album-game">SQEX-10321</span></div><div class="smallfont" style="padding: 6px 10px 6px 10px"><a class="albumtitle smallfont album-game" href="https://vgmdb.net/album/58126" title='Secret of Mana: Distant Thunder'><span class="albumtitle" lang="en" style="display:inline">Secret of Mana: Distant Thunder</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>Secret of Mana: Distant Thunder (Gaia's Navel)</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Secret of Mana: Distant Thunder</i></span></a> <span class="catalog smallfont album-game">N/A</span></div><div class="smallfont" style="padding: 6px 10px 6px 10px"><a class="albumtitle smallfont album-doujin" href="https://vgmdb.net/album/41159" title='Spectrum of Mana'><span class="albumtitle" lang="en" style="display:inline">Spectrum of Mana</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>Spectrum of Mana: A Tribute to Secret of Mana</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Spectrum of Mana</i></span></a> <span class="catalog smallfont album-doujin">N/A</span></div><div class="smallfont" style="padding: 6px 10px 6px 10px"><a class="albumtitle smallfont album-doujin" href="https://vgmdb.net/album/42480" title='Pieces of Mana 2'><span class="albumtitle" lang="en" style="display:inline">Pieces of Mana 2</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>Pieces of Mana 2</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Pieces of Mana 2</i></span></a> <span class="catalog smallfont album-doujin">TKM-0004</span></div><div class="smallfont" style="padding: 6px 10px 6px 10px"><a class="albumtitle smallfont album-doujin" href="https://vgmdb.net/album/56017" title='memoria'><span class="albumtitle" lang="en" style="display:inline">memoria</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>memoria</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>memoria</i></span></a> <span class="catalog smallfont album-doujin">CLPJ-0014</span></div><div class="smallfont" style="padding: 6px 10px 6px 10px"><a class="albumtitle smallfont album-doujin" href="https://vgmdb.net/album/67327" title='Mana Series Arrangements'><span class="albumtitle" lang="en" style="display:inline">Mana Series Arrangements</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>Mana Series Arrangements</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Mana Series Arrangements</i></span></a> <span class="catalog smallfont album-doujin">N/A</span></div><div class="smallfont" style="padding: 6px 10px 6px 10px"><a class="albumtitle smallfont album-doujin" href="https://vgmdb.net/album/89519" title='Hear, Here.'><span class="albumtitle" lang="en" style="display:inline">Hear, Here.</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>Hear, Here.</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Hear, Here.</i></span></a> <span class="catalog smallfont album-doujin">ELCD-0005</span></div><div class="smallfont" style="padding: 6px 10px 6px 10px"><a class="albumtitle smallfont album-doujin" href="https://vgmdb.net/album/73243" title='Secret of Mana: Resonance of the Pure Land'><span class="albumtitle" lang="en" style="display:inline">Secret of Mana: Resonance of the Pure Land</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em><i>Secret of Mana: Resonance of the Pure Land</i></span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Secret of Mana: Resonance of the Pure Land</i></span></a> <span class="catalog smallfont album-doujin">OCRA-0065</span></div></span>
+<span class="smallfont"><div class="smallfont" style="padding: 6px 10px 6px 10px"><a class="albumtitle smallfont album-game" href="https://vgmdb.net/album/721" title='Seiken Densetsu 2 Original Sound Version'><span class="albumtitle" lang="en" style="display:inline">Seiken Densetsu 2 Original Sound Version</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>聖剣伝説2 オリジナル・サウンド・ヴァージョン</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em>Seiken Densetsu 2 Original Sound Version</span></a> <span class="catalog smallfont album-game">N25D-019</span></div><div class="smallfont" style="padding: 6px 10px 6px 10px"><a class="albumtitle smallfont album-game" href="https://vgmdb.net/album/722" title='secret of mana +'><span class="albumtitle" lang="en" style="display:inline">secret of mana +</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>聖剣伝説2 シークレット オブ マナ</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em>secret of mana +</span></a> <span class="catalog smallfont album-game">N30D-021</span></div><div class="smallfont" style="padding: 6px 10px 6px 10px"><a class="albumtitle smallfont album-game" href="https://vgmdb.net/album/33308" title='Secret of Mana Genesis / Seiken Densetsu 2 Arrange Album'><span class="albumtitle" lang="en" style="display:inline">Secret of Mana Genesis / Seiken Densetsu 2 Arra...</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>シークレット　オブ　マナ　ジェネシス／聖剣伝説...</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em>Secret of Mana Genesis / Seiken Densetsu 2 Arra...</span></a> <span class="catalog smallfont album-game">SQEX-10321</span></div><div class="smallfont" style="padding: 6px 10px 6px 10px"><a class="albumtitle smallfont album-game" href="https://vgmdb.net/album/58126" title='Secret of Mana: Distant Thunder'><span class="albumtitle" lang="en" style="display:inline">Secret of Mana: Distant Thunder</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>Secret of Mana: Distant Thunder (Gaia's Navel)</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em>Secret of Mana: Distant Thunder</span></a> <span class="catalog smallfont album-game">N/A</span></div><div class="smallfont" style="padding: 6px 10px 6px 10px"><a class="albumtitle smallfont album-doujin" href="https://vgmdb.net/album/41159" title='Spectrum of Mana'><span class="albumtitle" lang="en" style="display:inline">Spectrum of Mana</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>Spectrum of Mana: A Tribute to Secret of Mana</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em>Spectrum of Mana</span></a> <span class="catalog smallfont album-doujin">N/A</span></div><div class="smallfont" style="padding: 6px 10px 6px 10px"><a class="albumtitle smallfont album-doujin" href="https://vgmdb.net/album/42480" title='Pieces of Mana 2'><span class="albumtitle" lang="en" style="display:inline">Pieces of Mana 2</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>Pieces of Mana 2</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em>Pieces of Mana 2</span></a> <span class="catalog smallfont album-doujin">TKM-0004</span></div><div class="smallfont" style="padding: 6px 10px 6px 10px"><a class="albumtitle smallfont album-doujin" href="https://vgmdb.net/album/56017" title='memoria'><span class="albumtitle" lang="en" style="display:inline">memoria</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>memoria</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em>memoria</span></a> <span class="catalog smallfont album-doujin">CLPJ-0014</span></div><div class="smallfont" style="padding: 6px 10px 6px 10px"><a class="albumtitle smallfont album-doujin" href="https://vgmdb.net/album/67327" title='Mana Series Arrangements'><span class="albumtitle" lang="en" style="display:inline">Mana Series Arrangements</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>Mana Series Arrangements</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em>Mana Series Arrangements</span></a> <span class="catalog smallfont album-doujin">N/A</span></div><div class="smallfont" style="padding: 6px 10px 6px 10px"><a class="albumtitle smallfont album-doujin" href="https://vgmdb.net/album/89519" title='Hear, Here.'><span class="albumtitle" lang="en" style="display:inline">Hear, Here.</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>Hear, Here.</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em>Hear, Here.</span></a> <span class="catalog smallfont album-doujin">ELCD-0005</span></div><div class="smallfont" style="padding: 6px 10px 6px 10px"><a class="albumtitle smallfont album-doujin" href="https://vgmdb.net/album/73243" title='Secret of Mana: Resonance of the Pure Land'><span class="albumtitle" lang="en" style="display:inline">Secret of Mana: Resonance of the Pure Land</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>Secret of Mana: Resonance of the Pure Land</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em>Secret of Mana: Resonance of the Pure Land</span></a> <span class="catalog smallfont album-doujin">OCRA-0065</span></div></span>
 <br />
 
 <b class="rbot"><b></b></b>
@@ -588,7 +573,7 @@ Jan 17, 2009 <span class="time">05:33 AM</span></div>
 Jul 14, 2011 <span class="time">07:14 AM</span></div>
 
 <div style="margin-bottom: 10px;"><img src="/db/img/arrowbit.gif" alt="" /> <b class="label">Page traffic</b><br />
-<span class="time">2367</span> visitors<br />
+<span class="time">2474</span> visitors<br />
 <span class="time" style="word-break:break-all">0</span> freedb<br />
 <!----></div>
 
@@ -637,7 +622,7 @@ Jul 14, 2011 <span class="time">07:14 AM</span></div>
 	<div style="float: right; text-align: right; font-family: Arial;" class="label">
 		<a href="/about">About Us</a> &bull;
 		<a href="/faq">F.A.Q.</a> &bull;
-		<a href="/forums/sendmessage.php?s=8a6ed4529709c0c1b03d8b57242b2c8b" rel="nofollow" accesskey="9">Contact Us</a> &bull;
+		<a href="/forums/sendmessage.php?s=36e8d48c1d1d262a0a9662d498041765" rel="nofollow" accesskey="9">Contact Us</a> &bull;
 		<a href="/db/statistics.php" rel="nofollow">Statistics</a> &bull;
 		<a href="https://vgmdb.net">Home</a>
 
@@ -661,14 +646,16 @@ Jul 14, 2011 <span class="time">07:14 AM</span></div>
 	</div>
 
 	<div class="label">
-		<h3>VGMdb 1.3</h3>
+		<h3>VGMdb 1.4</h3>
 		<div class="smallfont"><!-- Do not remove this copyright notice -->
 		
 		<!-- Do not remove this copyright notice --></div>
 		<div class="smallfont">Site code and design copyright VGMdb.net</div>
 		<div class="smallfont">Site material is property of their respective owners.</div>
-		<div class="smallfont">All times are GMT -8. The time now is <span class="time">06:59 PM</span>.</div>
+		<div class="smallfont">All times are GMT -8. The time now is <span class="time">08:45 PM</span>.</div>
 	</div>
+
+
 
 
 

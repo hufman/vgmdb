@@ -36,6 +36,11 @@ def parse_page(html_source):
 	soup_info = soup_profile.find(id='rightfloat').div.div.table
 	album_info.update(_parse_album_info(soup_info))
 
+	# credit list
+	soup_creditinfo = _find_element_named(soup_profile, 'span', 'Credits').parent.parent
+	soup_creditlist = soup_creditinfo.div.div.table
+	album_info.update(_parse_album_info(soup_creditlist))
+
 	# track list
 	soup_tracklist = _find_element_named(soup_profile, 'h3', 'Tracklist').parent.parent
 	album_info['discs'] = _parse_tracklist(soup_tracklist)
@@ -60,10 +65,29 @@ def _find_element_named(soup_profile, tagname, name):
 			return element
 
 def _parse_album_info(soup_info):
+	def addOrganization(info, role='publisher'):
+		if not 'organizations' in album_info:
+			album_info['organizations'] = []
+		info = dict(info)
+		if info.get('link', "").startswith("search"):
+			del info['link']
+		album_info['organizations'].append(info)
+		album_info['organizations'][-1]['role'] = role
+		is_publisher = role in ('publisher', 'label')
+		is_distributor = role in ('distributor', 'retailer')
+		if (is_publisher and 'publisher' not in album_info):
+			album_info['publisher'] = info
+		if is_distributor and 'distributor' not in album_info:
+			album_info['distributor'] = info
+		if len(album_info['organizations']) == 1 and not is_distributor:
+			album_info['publisher'] = info
+
 	album_info = {}
 	if 'class' in soup_info.attrs and \
 	   soup_info['class'][0] == 'bootleg':
 		album_info['bootleg'] = True
+	if soup_info.tbody is not None:
+		soup_info = soup_info.tbody
 	soup_info_rows = soup_info.find_all('tr', recursive=False)
 	for soup_row in soup_info_rows:
 		if soup_row.td is None:
@@ -83,6 +107,9 @@ def _parse_album_info(soup_info):
 		                  'Arranger':'arrangers',
 		                  'Performer':'performers',
 		                  'Lyricist':'lyricists'}
+		organization_names = ["Publisher", "Distributor",
+		                      "Retailer", "Exclusive Retailer",
+		                      "Manufacturer", "Label"]
 
 		if name == "Catalog Number":
 			for child in soup_value.descendants:
@@ -154,24 +181,15 @@ def _parse_album_info(soup_info):
 				album_info['release_price'] = {"price":price, "currency":currency}
 			except:
 				pass
+		elif name in organization_names:
+			soup_child = soup_value.a
+			link = soup_child['href']
+			link = utils.trim_absolute(link)
+			info = {}
+			info['link'] = link
+			info['names'] = utils.parse_names(soup_child)
+			addOrganization(info, name.split()[-1].lower())
 		elif name == 'Organizations':
-			def addOrganization(info, role='publisher'):
-				if not 'organizations' in album_info:
-					album_info['organizations'] = []
-				info = dict(info)
-				if info.get('link', "").startswith("search"):
-					del info['link']
-				album_info['organizations'].append(info)
-				album_info['organizations'][-1]['role'] = role
-				is_publisher = role in ('publisher', 'label')
-				is_distributor = role in ('distributor', 'retailer')
-				if (is_publisher and 'publisher' not in album_info):
-					album_info['publisher'] = info
-				if is_distributor and 'distributor' not in album_info:
-					album_info['distributor'] = info
-				if len(album_info['organizations']) == 1 and not is_distributor:
-					album_info['publisher'] = info
-
 			soup_links = soup_value.find_all('a')
 			if len(soup_links) == 0:
 				addOrganization({'names':{'en':soup_value.string.strip()}}, 'publisher')
@@ -397,9 +415,12 @@ def _parse_section_related_albums(soup_div):
 
 def _parse_section_stores(soup_stores):
 	""" Given an array of divs containing website information """
-	soup_links = soup_stores.find_all('a', recursive=False)
 	links = []
-	for soup_link in soup_links:
+	soup_rows = soup_stores.find_all('span', recursive=False)
+	for soup_row in soup_rows:
+		if soup_row.a is None:
+			continue
+		soup_link = soup_row.a
 		link = soup_link['href']
 		name = unicode(soup_link.string)
 		if link[0:9] == '/redirect':
@@ -412,9 +433,12 @@ def _parse_section_websites(soup_websites):
 	sites = {}
 	for soup_category in soup_websites.find_all('div', recursive=False):
 		category = unicode(soup_category.b.string)
-		soup_links = soup_category.find_all('a', recursive=False)
 		links = []
-		for soup_link in soup_links:
+		soup_rows = soup_category.find_all('span', recursive=False)
+		for soup_row in soup_rows:
+			if soup_row.a is None:
+				continue
+			soup_link = soup_row.a
 			link = soup_link['href']
 			name = unicode(soup_link.string)
 			if link[0:9] == '/redirect':

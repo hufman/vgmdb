@@ -21,15 +21,15 @@
 <!-- CSS Stylesheet -->
 <style type="text/css" id="vbulletin_css">
 /**
-* vBulletin 3.8.8 CSS
+* vBulletin 3.8.11 CSS
 * Style: 'Default Style'; Style ID: 1
 */
-@import url("/forums/clientscript/vbulletin_css/style-ce6b22fa-00001.css");
+@import url("/forums/clientscript/vbulletin_css/style-57140a36-00001.css");
 </style>
-<link rel="stylesheet" type="text/css" href="/forums/clientscript/vbulletin_important.css?v=389" />
+<link rel="stylesheet" type="text/css" href="/forums/clientscript/vbulletin_important.css?v=3811" />
 
 
-<link rel="stylesheet" type="text/css" href="/db/vgmdb.css?20171010" />
+<link rel="stylesheet" type="text/css" href="/db/vgmdb.css?20201214" />
 <link rel="stylesheet" type="text/css" href="/db/css/vgmdb-colorcode-title.css?20190227" id="colorcode" />
 <link rel="stylesheet" type="text/css" href="/db/jquery.autocomplete.css?20091023" />
 <link rel="stylesheet" type="text/css" href="/db/jquery.jcarousel.css?20091124" />
@@ -39,18 +39,18 @@
 <![endif]-->
 <!-- / CSS Stylesheet -->
 
-<script type="text/javascript" src="https://yui-s.yahooapis.com/2.9.0/build/yahoo-dom-event/yahoo-dom-event.js?v=389"></script>
-<script type="text/javascript" src="https://yui-s.yahooapis.com/2.9.0/build/connection/connection-min.js?v=389"></script>
+<script type="text/javascript" src="https://yui-s.yahooapis.com/2.9.0/build/yahoo-dom-event/yahoo-dom-event.js?v=3811"></script>
+<script type="text/javascript" src="https://yui-s.yahooapis.com/2.9.0/build/connection/connection-min.js?v=3811"></script>
 <script type="text/javascript">
 <!--
-var SESSIONURL = "s=8a6ed4529709c0c1b03d8b57242b2c8b&";
+var SESSIONURL = "s=36e8d48c1d1d262a0a9662d498041765&";
 var SECURITYTOKEN = "guest";
 var IMGDIR_MISC = "/db/images/misc";
-var vb_disable_ajax = parseInt("0", 10);
+var vb_disable_ajax = parseInt("1", 10);
 // -->
 </script>
-<script type="text/javascript" src="/forums/clientscript/vbulletin_global.js?v=389"></script>
-<script type="text/javascript" src="/forums/clientscript/vbulletin_menu.js?v=389"></script>
+<script type="text/javascript" src="/forums/clientscript/vbulletin_global.js?v=3811"></script>
+<script type="text/javascript" src="/forums/clientscript/vbulletin_menu.js?v=3811"></script>
 <link rel="alternate" type="application/rss+xml" title="VGMdb Forums RSS Feed" href="/forums/external.php?type=RSS2" />
 
 <script type="text/javascript" src="/db/clientscript/jquery-1.4.min.js"></script>
@@ -136,20 +136,33 @@ $(document).ready(function() {
   })();
 
 </script>
+<style>
+.alt1_dark {
+    background: #151F30;
+    color: #FFFFFF;
+}
 
-<meta name="keywords" content="NW10102540, Falcom Sound Team jdk (Atsushi Shirakawa, Hayato Sonoda, Wataru Ishibashi, Maiko Hattori), &lt;a href=&quot;/product/3586&quot;&gt;&lt;span class=&quot;productname&quot; lang=&quot;en&quot; style=&quot;display:inline&quot;&gt;Zwei!!&lt;/span&gt;&lt;span style=&quot;display:none&quot;&gt;&lt;em&gt; / &lt;/em&gt;&lt;/span&gt;&lt;span class=&quot;productname&quot; lang=&quot;ja&quot; style=&quot;display:none&quot;&gt;ツヴァイ!!&lt;/span&gt;&lt;span style=&quot;display:none&quot;&gt;&lt;em&gt; / &lt;/em&gt;&lt;/span&gt;&lt;span class=&quot;productname&quot; lang=&quot;ja-Latn&quot; style=&quot;display:none&quot;&gt;Zwei!!&lt;/span&gt;&lt;/a&gt;, PC, Sony PlayStation 2, album, ost, soundtrack, tracklist, scans, covers, vgm, translation" />
-<meta name="description" content="Commercial (CD) published by Nihon Falcom Corp. on Dec 19, 2002 containing arrangement from &lt;a href=&quot;/product/3586&quot;&gt;&lt;span class=&quot;productname&quot; lang=&quot;en&quot; style=&quot;display:inline&quot;&gt;Zwei!!&lt;/span&gt;&lt;span style=&quot;display:none&quot;&gt;&lt;em&gt; / &lt;/em&gt;&lt;/span&gt;&lt;span class=&quot;productname&quot; lang=&quot;ja&quot; style=&quot;display:none&quot;&gt;ツヴァイ!!&lt;/span&gt;&lt;span style=&quot;display:none&quot;&gt;&lt;em&gt; / &lt;/em&gt;&lt;/span&gt;&lt;span class=&quot;productname&quot; lang=&quot;ja-Latn&quot; style=&quot;display:none&quot;&gt;Zwei!!&lt;/span&gt;&lt;/a&gt; with compositions by Falcom Sound Team jdk (Atsushi Shirakawa, Hayato Sonoda, Wataru Ishibashi, Maiko Hattori)" />
-<meta property="og:title" content="NW10102540 | "zwei!!" SUPER ARRANGE VERSION - VGMdb" />
+.alt2_dark {
+    background: #252B3F;
+    color: #FFFFFF;
+}
+span.link_doc { display: block; background: transparent url('/db/icons/album-cover.gif') 0 2px no-repeat; padding-left: 14px; margin-bottom: 4px; }
+</style>
+
+<meta name="keywords" content="NW10102540, Falcom Sound Team jdk (Atsushi Shirakawa, Hayato Sonoda, Wataru Ishibashi, Maiko Hattori), Zwei!! / ツヴァイ!!, PC, Sony PlayStation 2, album, ost, soundtrack, tracklist, scans, covers, vgm, translation" />
+<meta name="description" content="Commercial (CD) published by Falcom, Nihon Falcom Corporation on Dec 19, 2002 containing arrangement from Zwei!! with compositions by Falcom Sound Team jdk (Atsushi Shirakawa, Hayato Sonoda, Wataru Ishibashi, Maiko Hattori)" />
+<meta property="og:title" content="NW10102540 | &quot;zwei!!&quot; SUPER ARRANGE VERSION - VGMdb" />
 <meta property="og:type" content="website" />
 <meta property="og:image" content="https://medium-media.vgm.io/albums/18/981/981-1196956726.jpg" />
-<meta property="og:url" content="website" />
+<meta property="og:url" content="https://vgmdb.net/album/981" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:site" content="@vgmdb" />
-<meta name="twitter:title" content="NW10102540 | "zwei!!" SUPER ARRANGE VERSION - VGMdb" />
-<meta name="twitter:description" content="Commercial (CD) published by Nihon Falcom Corp. on Dec 19, 2002 containing arrangement from &lt;a href=&quot;/product/3586&quot;&gt;&lt;span class=&quot;productname&quot; lang=&quot;en&quot; style=&quot;display:inline&quot;&gt;Zwei!!&lt;/span&gt;&lt;span style=&quot;display:none&quot;&gt;&lt;em&gt; / &lt;/em&gt;&lt;/span&gt;&lt;span class=&quot;productname&quot; lang=&quot;ja&quot; style=&quot;display:none&quot;&gt;ツヴァイ!!&lt;/span&gt;&lt;span style=&quot;display:none&quot;&gt;&lt;em&gt; / &lt;/em&gt;&lt;/span&gt;&lt;span class=&quot;productname&quot; lang=&quot;ja-Latn&quot; style=&quot;display:none&quot;&gt;Zwei!!&lt;/span&gt;&lt;/a&gt; with compositions by Falcom Sound Team jdk (Atsushi Shirakawa, Hayato Sonoda, Wataru Ishibashi, Maiko Hattori)" />
+<meta name="twitter:title" content="NW10102540 | &quot;zwei!!&quot; SUPER ARRANGE VERSION - VGMdb" />
+<meta name="twitter:description" content="Commercial (CD) published by Falcom, Nihon Falcom Corporation on Dec 19, 2002 containing arrangement from Zwei!! with compositions by Falcom Sound Team jdk (Atsushi Shirakawa, Hayato Sonoda, Wataru Ishibashi, Maiko Hattori)" />
 <meta name="twitter:image" content="https://medium-media.vgm.io/albums/18/981/981-1196956726.jpg" />
 
 <!---->
+
 
 <style>tr.extracred { display: none; }</style>
 
@@ -170,6 +183,23 @@ $(document).ready(function() {
 	
 	$('table.role tr.rolebit').mouseover(function() { $(this).addClass("over"); });
 	$('table.role tr.rolebit').mouseout(function() { $(this).removeClass("over"); });
+	
+	
+	
+	
+	$(document).ready(function() {
+		$('.collapsible_section').click(function() {
+			var src = $(this).find('img').attr('src');
+			if (src.indexOf('close') > 0) {
+				$(this).find('img').attr('src', src.replace('close', 'open'));
+				$('#' + $(this).attr('rel')).hide('fast');
+			} else {
+				$(this).find('img').attr('src', src.replace('open', 'close'));
+				$('#' + $(this).attr('rel')).show('fast');
+			}
+			return false;
+		});
+	});
 	
 	
 	
@@ -217,7 +247,7 @@ $(document).ready(function() {
 </div>
 <div style="white-space: nowrap;">
 <!-- logo -->
-<div style="height: 100px; float: left;"><a href="/db/main.php"><img src="/db/img/vgmdblogo.png" alt="VGMdb" style="padding: 10px; width: 250px; height: 80px; border: 0" /></a></div>
+<div style="height: 100px; float: left;"><a href="/"><img src="/db/img/vgmdblogo.png" alt="VGMdb" style="padding: 10px; width: 250px; height: 80px; border: 0" /></a></div>
 <!-- /logo -->
 <!-- top nav -->
 <div style="height: 100px; float: left; position: relative; margin-left: 1px;">
@@ -243,12 +273,12 @@ $(document).ready(function() {
 	</li>
 	<li id="nav_advsearch"><a title="More search options" href="/search">Advanced Search</a></li>
 	<li id="nav_update"><a title="Latest submissions and edits" href="/db/recent.php">Updates</a></li>
-	<li id="nav_calendar"><a title="Release schedules" href="/db/calendar.php?year=2020&month=6">Calendar</a></li>
+	<li id="nav_calendar"><a title="Release schedules" href="/db/calendar.php?year=2021&month=1">Calendar</a></li>
 	<li id="nav_forum"><a title="Community discussions" href="/forums/">Forums</a></li>
 	<li id="nav_market"><a title="Trade with other members" href="/db/marketplace.php?do=view">Marketplace</a></li>
-	<!-- <li id="nav_radio"><a title="Live streaming VGM" href="#" onclick="alert('Under Construction');">Radio</a></li> -->
 	<li id="nav_users"><a title="User collections" href="/db/collection.php">Users</a></li>
 	<li id="nav_chat"><a title="Real-time chat" rel="nofollow" href="https://discord.gg/VXgKQUa" target="vgmdbchat">Chat</a></li>
+	
 	<li id="nav_submit"><a title="Submit an album" href="/album/new">Submit Album</a></li>
 	<li id="nav_customize"><span id="navoptions"><a title="Edit your preferences" href="#">Customize</a></span></li>
 </ul>
@@ -259,7 +289,7 @@ $(document).ready(function() {
 	<div class="vbmenu_popup" id="navlogin_menu" style="display:none;">
 	<table cellpadding="4" cellspacing="1" border="0"><tr><td style="background: #BBC7CE;">
 	<form action="/forums/login.php?do=login" method="post" onsubmit="md5hash(vb_login_password, vb_login_md5password, vb_login_md5password_utf, 0)">
-	<script type="text/javascript" src="/forums/clientscript/vbulletin_md5.js?v=389"></script>
+	<script type="text/javascript" src="/forums/clientscript/vbulletin_md5.js?v=3811"></script>
 	<table cellpadding="0" cellspacing="3" border="0">
 	<tr>
 		<td class="smallfont"><label for="navbar_username">User Name</label></td>
@@ -271,7 +301,7 @@ $(document).ready(function() {
 		<td><input type="submit" class="button" value="Log in" tabindex="104" title="Enter your username and password in the boxes provided to login, or click the 'register' button to create a profile for yourself." accesskey="s" /></td>
 	</tr>
 	</table>
-	<input type="hidden" name="s" value="8a6ed4529709c0c1b03d8b57242b2c8b" />
+	<input type="hidden" name="s" value="36e8d48c1d1d262a0a9662d498041765" />
 	<input type="hidden" name="securitytoken" value="guest" />
 	<input type="hidden" name="do" value="login" />		
 	<input type="hidden" name="vb_login_md5password" />
@@ -294,12 +324,15 @@ $(document).ready(function() {
 
 
 <!-- main page contents -->
+
+
+
 <table width="100%" cellpadding="0" cellspacing="0" border="0" align="left"><tr><td width="100%" style="background-color: #1B273D;" valign="top">
 	<b class="rtop"><b></b></b>
 	<div id="innermain" style="padding: 6px 10px 0px 10px">
 		<span style="float:right;" class="label smallfont"><a href="/db/albums-discuss.php?id=981">Discuss</a> | <span id="albumtools"><a href="#">Edit</a><script type="text/javascript"> vBmenu.register('albumtools'); </script></span> | <a class="smallfont" href="/album/981/feed" title="Activity RSS Feed">Feed <img class="inlineimg" border="0" src="/db/img/rss.png" height="16" width="16" alt="" /></a></span>
 
-		<h1><span class="albumtitle" lang="en" style="display:inline">&quot;zwei!!&quot; SUPER ARRANGE VERSION</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>ツヴァイ!! スーパーアレンジバージョン</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>&quot;zwei!!&quot; SUPER ARRANGE VERSION</i></span> </h1>
+		<h1><span class="albumtitle" lang="en" style="display:inline">&quot;zwei!!&quot; SUPER ARRANGE VERSION</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>ツヴァイ!! スーパーアレンジバージョン</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em>&quot;zwei!!&quot; SUPER ARRANGE VERSION</span> </h1>
 
 		<div style="padding-left: 10px; padding-right: 10px; padding-bottom: 6px; font-size: 9pt; color: #788990;"><span class="albumtitle" lang="en" style="display:inline">ツヴァイ!! スーパーアレンジバージョン<br /></span><span class="albumtitle" lang="ja" style="display:none">&quot;zwei!!&quot; SUPER ARRANGE VERSION<br /></span><span class="albumtitle" lang="ja-Latn" style="display:none">&quot;zwei!!&quot; SUPER ARRANGE VERSION<br />ツヴァイ!! スーパーアレンジバージョン<br /></span></div>
 		<div style="padding-left: 10px; padding-right: 10px; margin-top: 10px;"><div id="leftfloat" style="float: left; width: 250px; height: 250px; padding-top: 4px; padding-bottom: 4px;">
@@ -339,58 +372,8 @@ $(document).ready(function() {
 <tr><td nowrap="nowrap"><span class="label"><b>Classification</b></span></td>
 <td>Arrangement </td></tr>
 
-<tr class="maincred"><td nowrap="nowrap"><span class="label"><b>Organizations</b></span></td>
-<td>
 
-<script type="text/javascript">
-$(document).ready(function() {
-  $("#publisher_show_more, #publisher_show_less").click(function(e) {
-    $("#publisher_less").toggle();
-    $("#publisher_more").toggle();
-    e.preventDefault();
-  });
-});
-</script>
-<span id="publisher_less"><a href="/org/1943"><span class="productname" lang="en" style="display:inline">Falcom</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja" style="display:none">ファルコム</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja-Latn" style="display:none">Falcom</span></a> <span class="label smalltext">(Label)</span><span class="label smalltext">,</span> <a href="/org/55"><span class="productname" lang="en" style="display:inline">Nihon Falcom Corporation</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja" style="display:none">日本ファルコム株式会社</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja-Latn" style="display:none">Nihon Falcom Corporation</span></a> <span class="label smalltext">(Publisher)</span><span id="publisher_more" style="display:none"><a href="/org/1943"><span class="productname" lang="en" style="display:inline">Falcom</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja" style="display:none">ファルコム</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja-Latn" style="display:none">Falcom</span></a> <span class="label smalltext">(Label)</span><span class="label smalltext">,</span> <a href="/org/55"><span class="productname" lang="en" style="display:inline">Nihon Falcom Corporation</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja" style="display:none">日本ファルコム株式会社</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja-Latn" style="display:none">Nihon Falcom Corporation</span></a> <span class="label smalltext">(Publisher)</span> &nbsp;<a href="#" style="display:none" id="publisher_show_less">[see less]</a></span>
-
-</td></tr>
-
-<tr class="maincred"><td nowrap="nowrap"><span class="label"><b>Composed by</b></span></td>
-<td><a href="/artist/293"><span title="ファルコム・サウンド・チーム・jdk" class="artistname" lang="en" style="display:inline">Falcom Sound Team jdk</span><span style="display:none"><em> / </em></span><span title="Falcom Sound Team jdk" class="artistname" lang="ja" style="display:none">ファルコム・サウンド・チーム・jdk</span></a> (<a href="/artist/703"><span title="白川篤史" class="artistname" lang="en" style="display:inline">Atsushi Shirakawa</span><span style="display:none"><em> / </em></span><span title="Atsushi Shirakawa" class="artistname" lang="ja" style="display:none">白川篤史</span></a>, <a href="/artist/2151"><span title="園田隼人" class="artistname" lang="en" style="display:inline">Hayato Sonoda</span><span style="display:none"><em> / </em></span><span title="Hayato Sonoda" class="artistname" lang="ja" style="display:none">園田隼人</span></a>, <a href="/artist/2152"><span title="石橋渡" class="artistname" lang="en" style="display:inline">Wataru Ishibashi</span><span style="display:none"><em> / </em></span><span title="Wataru Ishibashi" class="artistname" lang="ja" style="display:none">石橋渡</span></a>, <a href="/artist/2153"><span title="服部麻衣子" class="artistname" lang="en" style="display:inline">Maiko Hattori</span><span style="display:none"><em> / </em></span><span title="Maiko Hattori" class="artistname" lang="ja" style="display:none">服部麻衣子</span></a>) </td></tr>
-
-<tr class="maincred"><td nowrap="nowrap"><span class="label"><b>Arranged by</b></span></td>
-<td><a href="/artist/293"><span title="ファルコム・サウンド・チーム・jdk" class="artistname" lang="en" style="display:inline">Falcom Sound Team jdk</span><span style="display:none"><em> / </em></span><span title="Falcom Sound Team jdk" class="artistname" lang="ja" style="display:none">ファルコム・サウンド・チーム・jdk</span></a> </td></tr>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<tr class="extracred"><td nowrap="nowrap"><span class="label"><b>Recorded by</b></span></td>
-<td></td></tr>
-
-
-
-
-
-<tr class="extracred"><td nowrap="nowrap"><span class="label"><b>Mixed by</b></span></td>
-<td></td></tr>
-
-
-
-<tr class="extracred"><td nowrap="nowrap"><span class="label"><b>Mastered by</b></span></td>
-<td></td></tr>
-
-
-
-
+    <tr class="maincred"><td nowrap="nowrap"><span class="label"><b>Label</b></span></td><td><a href="/org/1943"><span class="productname" lang="en" style="display:inline">Falcom</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja" style="display:none">ファルコム</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja-Latn" style="display:none">Falcom</span></a></td></tr><tr class="maincred"><td nowrap="nowrap"><span class="label"><b>Publisher</b></span></td><td><a href="/org/55"><span class="productname" lang="en" style="display:inline">Nihon Falcom Corporation</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja" style="display:none">日本ファルコム株式会社</span><span style="display:none"><em> / </em></span><span class="productname" lang="ja-Latn" style="display:none">Nihon Falcom Corporation</span></a></td></tr>
 
 
 
@@ -412,12 +395,27 @@ $(document).ready(function() {
 </div>
 		<br style="clear: both" />
 
+
+
+<div style="padding-left: 10px; padding-right: 10px"><h3><span style="float:left">Credits <a href="#" class="collapsible_section" rel="collapse_credits"><img src="/db/img/collapse_close.png" /></a></span></h3><span style="clear:both;display:block;"></span>
+<div style="background-color: #2F364F;" id="collapse_credits">
+<b class="rtop"><b></b></b>
+<div style="max-height:1000px; padding: 6px 10px 10px 6px; overflow:auto;">
+<table id="album_infobit_large" style="height:auto" cellpadding="1" cellspacing="1">
+<tbody>
+<tr class="maincred"><td nowrap="nowrap"><span class="label"><b><span title="Composer" class="artistname" lang="en" style="display:inline">Composer</span><span style="display:none"><em> / </em></span><span title="Composer" class="artistname" lang="ja" style="display:none">Composer</span></b></span></td><td width="100%"><a href="/artist/293"><span title="ファルコム・サウンド・チーム・jdk" class="artistname" lang="en" style="display:inline">Falcom Sound Team jdk</span><span style="display:none"><em> / </em></span><span title="ファルコム・サウンド・チーム・jdk" class="artistname" lang="ja" style="display:none">ファルコム・サウンド・チーム・jdk</span></a> (<a href="/artist/703"><span title="白川篤史" class="artistname" lang="en" style="display:inline">Atsushi Shirakawa</span><span style="display:none"><em> / </em></span><span title="白川篤史" class="artistname" lang="ja" style="display:none">白川篤史</span></a>, <a href="/artist/2151"><span title="園田隼人" class="artistname" lang="en" style="display:inline">Hayato Sonoda</span><span style="display:none"><em> / </em></span><span title="園田隼人" class="artistname" lang="ja" style="display:none">園田隼人</span></a>, <a href="/artist/2152"><span title="石橋渡" class="artistname" lang="en" style="display:inline">Wataru Ishibashi</span><span style="display:none"><em> / </em></span><span title="石橋渡" class="artistname" lang="ja" style="display:none">石橋渡</span></a>, <a href="/artist/2153"><span title="服部麻衣子" class="artistname" lang="en" style="display:inline">Maiko Hattori</span><span style="display:none"><em> / </em></span><span title="服部麻衣子" class="artistname" lang="ja" style="display:none">服部麻衣子</span></a>)</td></tr><tr class="maincred"><td nowrap="nowrap"><span class="label"><b><span title="Arranger" class="artistname" lang="en" style="display:inline">Arranger</span><span style="display:none"><em> / </em></span><span title="Arranger" class="artistname" lang="ja" style="display:none">Arranger</span></b></span></td><td width="100%"><a href="/artist/293"><span title="ファルコム・サウンド・チーム・jdk" class="artistname" lang="en" style="display:inline">Falcom Sound Team jdk</span><span style="display:none"><em> / </em></span><span title="ファルコム・サウンド・チーム・jdk" class="artistname" lang="ja" style="display:none">ファルコム・サウンド・チーム・jdk</span></a></td></tr>
+</tbody>
+</table>
+</div>
+<b class="rbot"><b></b></b>
+</div></div><br/>
+
 		<div style="padding-left: 10px; padding-right: 10px">
 		
-			<div><h3 style="float: left">Tracklist</h3>
+			<div><h3 style="float: left">Tracklist <a href="#" class="collapsible_section" rel="tracklist"><img src="/db/img/collapse_close.png" /></a></h3>
 			<ul id="tlnav" class="tabnav" style="margin-left: 10px"><li class="active"><a class='smallfont' rel='tl1033' href='#'>English</a></li><li><a class='smallfont' rel='tl12381' href='#'>Japanese</a></li></ul>
 			</div>
-			
+
 			<div style="background-color: #2F364F; clear: both">
 			<b class="rtop"><b></b></b>
 			<div style="padding: 6px 10px 10px 10px" id="tracklist"><span class="tl" id="tl1033">
@@ -540,8 +538,9 @@ Song of Flower and Wind</td>
   <span class="time">53:21</span>
 </span>
 <br style="clear: both" />
-<h4 class="label" style="font-weight: normal">
+<h4 style="font-weight: normal; clear:both"><span class="label">
 
+&nbsp;</span>
 
 </h4></span>
 <span class="tl" id="tl12381" style="display: none">
@@ -664,8 +663,9 @@ Song of Flower and Wind</td>
   <span class="time">53:21</span>
 </span>
 <br style="clear: both" />
-<h4 class="label" style="font-weight: normal">
+<h4 style="font-weight: normal; clear:both"><span class="label">
 
+&nbsp;</span>
 
 </h4></span>
 </div>
@@ -675,8 +675,8 @@ Song of Flower and Wind</td>
 		</div>
 
 <div style="padding: 20px 10px 10px 10px">
-<h3>Notes</h3>
-<div style="background-color: #2F364F;">
+<h3>Notes  <a href="#" class="collapsible_section" rel="collapse_notes"><img src="/db/img/collapse_close.png" /></a></h3>
+<div style="background-color: #2F364F;" id="collapse_notes">
 <b class="rtop"><b></b></b>
 <div style="padding: 6px 10px 10px 10px" class="smallfont" id="notes">All music by Falcom Sound Team jdk.</div>
 <b class="rbot"><b></b></b>
@@ -714,10 +714,10 @@ Song of Flower and Wind</td>
 <span rel="rating" id="ratingmsg-album-981" class="time">Rated 4.70 by 28 people</span>
 </div>
 
-<div style="margin-bottom: 10px;"><img src="/db/img/arrowbit.gif" alt="" /> <b class="label">Contained in</b> 43 collections<br />
+<div style="margin-bottom: 10px;"><img src="/db/img/arrowbit.gif" alt="" /> <b class="label">Contained in</b> 44 collections<br />
 </div>
 
-<div style="margin-bottom: 10px;"><img src="/db/img/arrowbit.gif" alt="" /> <b class="label">Contained in</b> 4 wish lists<br />
+<div style="margin-bottom: 10px;"><img src="/db/img/arrowbit.gif" alt="" /> <b class="label">Contained in</b> 6 wish lists<br />
 </div>
 
 <div style="margin-bottom: 10px;"><img src="/db/img/arrowbit.gif" alt="" /> <b class="label">Category</b><br />
@@ -743,7 +743,7 @@ PC, Sony PlayStation 2 </div>
 </div>
 <div style="width: 250px; background-color: #2F364F;">
 <div class="smallfont" style="padding: 10px 10px 6px 10px">
-<div style="margin-bottom: 10px"><a style="display: block; clear: both; min-height: 16px; line-height: 16px; margin-bottom: 4px; padding-left: 20px; background: transparent url('/db/img/Aff-Misc.png') top left no-repeat; " rel="nofollow" class="smallfont" href="/redirect/70097/itunes.apple.com/us/album/zwei!!-super-arrange-version/id643230326"  title="">iTunes (US)</a></div><img src="/db/img/arrowbit.gif" alt="" /><b class="label"> Marketplace: </b><a href="/db/collection.php?do=show&amp;albumid=981" class="smallfont">2 for sale </a>
+<div style="margin-bottom: 10px"><span style="display: block; clear: both; min-height: 16px; line-height: 16px; margin-bottom: 4px; padding-left: 20px; background: transparent url('/db/img/link-apple.png') top left no-repeat;" class="smallfont"><a style="" rel="nofollow" href="/redirect/70097/itunes.apple.com/us/album/zwei!!-super-arrange-version/id643230326"  title="">iTunes (US)</a></span></div><img src="/db/img/arrowbit.gif" alt="" /><b class="label"> Marketplace: </b><a href="/db/collection.php?do=show&amp;albumid=981" class="smallfont">2 for sale </a>
 </div>
 <b class="rbot"><b></b></b>
 </div>
@@ -760,8 +760,8 @@ PC, Sony PlayStation 2 </div>
 
 
 <div style="margin-bottom: 10px"><img src="/db/img/arrowbit.gif" alt="" /> <b class="label">Review</b><br />
-<a class='link_doc' rel='nofollow' href='/redirect/28123/www.rpgfan.com/soundtracks/zwei-sav/index.html'>RPGFan's Review</a>
-<a class='link_doc' rel='nofollow' href='/redirect/59282/www.squareenixmusic.com/reviews/donbryan/zweiarr.shtml'>SEMO's Review</a>
+<span class='link_doc'><a rel='nofollow' href='/redirect/28123/www.rpgfan.com/soundtracks/zwei-sav/index.html'>RPGFan's Review</a></span>
+<span class='link_doc'><a rel='nofollow' href='/redirect/59282/www.squareenixmusic.com/reviews/donbryan/zweiarr.shtml'>SEMO's Review</a></span>
 </div>
 
 
@@ -825,11 +825,11 @@ PC, Sony PlayStation 2 </div>
 
 
 <span class="smallfont"><div class="album_infobit_small smallfont label">
-<div class="album_infobit_thumb"><div style="background-image: url('https://thumb-media.vgm.io/albums/97/979/979-1270994393.jpg')">
+<div class="album_infobit_thumb"><div style="background-image: url('https://thumb-media.vgm.io/albums/97/979/979-a770ab185ba1.jpg')">
 <a href="https://vgmdb.net/album/979" title='Zwei!! Original Sound Track'></a>
 </div></div>
 <ul class="album_infobit_detail">
-<li><a class="albumtitle smallfont album-game" href="https://vgmdb.net/album/979" title='Zwei!! Original Sound Track'><span class="albumtitle" lang="en" style="display:inline">Zwei!! Original Sound Track</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>オリジナル・サウンドトラック...</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Zwei!! Original Sound Track</i></span></a></li>
+<li><a class="albumtitle smallfont album-game" href="https://vgmdb.net/album/979" title='Zwei!! Original Sound Track'><span class="albumtitle" lang="en" style="display:inline">Zwei!! Original Sound Track</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>オリジナル・サウンドトラック 「ツヴァイ！！」</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em>Zwei!! Original Sound Track</span></a></li>
 <li><span class="catalog smallfont album-game">NW10102480</span></li>
 <li>Dec 20, 2001</li>
 </ul>
@@ -838,7 +838,7 @@ PC, Sony PlayStation 2 </div>
 <a href="https://vgmdb.net/album/11305" title='Zwei!! Original Sound Track 2008'></a>
 </div></div>
 <ul class="album_infobit_detail">
-<li><a class="albumtitle smallfont album-bonus" href="https://vgmdb.net/album/11305" title='Zwei!! Original Sound Track 2008'><span class="albumtitle" lang="en" style="display:inline">Zwei!! Original Sound Track 2008</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>ツヴァイ!! オリジナル・サウンドトラック...</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em><i>Zwei!! Original Sound Track 2008</i></span></a></li>
+<li><a class="albumtitle smallfont album-bonus" href="https://vgmdb.net/album/11305" title='Zwei!! Original Sound Track 2008'><span class="albumtitle" lang="en" style="display:inline">Zwei!! Original Sound Track 2008</span><span class="albumtitle" lang="ja" style="display:none"><em> / </em>ツヴァイ!! オリジナル・サウンドトラック 2008</span><span class="albumtitle" lang="ja-Latn" style="display:none"><em> / </em>Zwei!! Original Sound Track 2008</span></a></li>
 <li><span class="catalog smallfont album-bonus">NW10102790</span></li>
 <li>Dec 11, 2008</li>
 </ul>
@@ -861,12 +861,12 @@ Aug 8, 2006 <span class="time">10:22 AM</span></div>
 Apr 21, 2013 <span class="time">12:06 AM</span></div>
 
 <div style="margin-bottom: 10px;"><img src="/db/img/arrowbit.gif" alt="" /> <b class="label">Page traffic</b><br />
-<span class="time">7536</span> visitors<br />
-<span class="time" style="word-break:break-all">36</span> freedb<br />
+<span class="time">7977</span> visitors<br />
+<span class="time" style="word-break:break-all">38</span> freedb<br />
 <!----></div>
 
 <div><img src="/db/img/arrowbit.gif" alt="" /> <b class="label">Page built in</b><br />
-<span class="time">0.02</span> seconds</div>
+<span class="time">0.03</span> seconds</div>
 </div>
 
 <b class="rbot"><b></b></b>
@@ -910,7 +910,7 @@ Apr 21, 2013 <span class="time">12:06 AM</span></div>
 	<div style="float: right; text-align: right; font-family: Arial;" class="label">
 		<a href="/about">About Us</a> &bull;
 		<a href="/faq">F.A.Q.</a> &bull;
-		<a href="/forums/sendmessage.php?s=8a6ed4529709c0c1b03d8b57242b2c8b" rel="nofollow" accesskey="9">Contact Us</a> &bull;
+		<a href="/forums/sendmessage.php?s=36e8d48c1d1d262a0a9662d498041765" rel="nofollow" accesskey="9">Contact Us</a> &bull;
 		<a href="/db/statistics.php" rel="nofollow">Statistics</a> &bull;
 		<a href="https://vgmdb.net">Home</a>
 
@@ -934,14 +934,16 @@ Apr 21, 2013 <span class="time">12:06 AM</span></div>
 	</div>
 
 	<div class="label">
-		<h3>VGMdb 1.3</h3>
+		<h3>VGMdb 1.4</h3>
 		<div class="smallfont"><!-- Do not remove this copyright notice -->
 		
 		<!-- Do not remove this copyright notice --></div>
 		<div class="smallfont">Site code and design copyright VGMdb.net</div>
 		<div class="smallfont">Site material is property of their respective owners.</div>
-		<div class="smallfont">All times are GMT -8. The time now is <span class="time">06:59 PM</span>.</div>
+		<div class="smallfont">All times are GMT -8. The time now is <span class="time">08:45 PM</span>.</div>
 	</div>
+
+
 
 
 

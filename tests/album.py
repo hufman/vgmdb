@@ -47,8 +47,8 @@ class TestAlbums(unittest.TestCase):
 		self.assertEqual(u"3:09", ff8['discs'][0]['tracks'][0]['track_length'])
 		self.assertEqual(u"Liberi Fatali", ff8['discs'][0]['tracks'][0]['names']['English'])
 		self.assertEqual(u"64:16", ff8['discs'][0]['disc_length'])
-		self.assertEqual(4.43, ff8['rating'])
-		self.assertEqual(56, ff8['votes'])
+		self.assertEqual(4.44, ff8['rating'])
+		self.assertEqual(57, ff8['votes'])
 		self.assertEqual(u"Game", ff8['category'])
 		self.assertEqual(u"Final Fantasy VIII", ff8['products'][0]['names']['en'])
 		self.assertEqual(u"ファイナルファンタジーVIII", ff8['products'][0]['names']['ja'])
@@ -65,8 +65,8 @@ class TestAlbums(unittest.TestCase):
 		self.assertEqual(u"PRT-8429", ff8['related'][0]['catalog'])
 		self.assertEqual(u"bonus", ff8['related'][0]['type'])
 		self.assertEqual(u"2006-08-03T01:33", ff8['meta']['added_date'])
-		self.assertEqual(u"2019-09-05T08:31", ff8['meta']['edited_date'])
-		self.assertEqual(17324, ff8['meta']['visitors'])
+		self.assertEqual(u"2020-08-07T19:45", ff8['meta']['edited_date'])
+		self.assertEqual(18238, ff8['meta']['visitors'])
 		self.assertEqual(35, ff8['meta']['freedb'])
 
 	def test_arciel(self):
@@ -77,7 +77,7 @@ class TestAlbums(unittest.TestCase):
 		self.assertEqual(u"アルトネリコ3 イメージCD 謳う丘～Ar=Ciel Ar=Dor～", arciel['names']['ja'])
 		self.assertEqual(u"FCCM-0328", arciel['catalog'])
 		self.assertEqual(u"謳う丘 ～Ar=Ciel Ar=Dor～", arciel['discs'][0]['tracks'][0]['names']['Japanese'])
-		self.assertEqual(u"CD Japan", arciel['stores'][1]['name'])
+		self.assertEqual(u"CDJapan", arciel['stores'][0]['name'])
 		self.assertTrue(u"Akiko Shikata" in arciel['notes'])
 
 	def test_at3(self):
@@ -90,7 +90,7 @@ class TestAlbums(unittest.TestCase):
 		viking = album.parse_page(viking_code)
 
 		self.assertEqual('Free', viking['release_price']['price'])
-		self.assertEqual(2024, viking['meta']['visitors'])
+		self.assertEqual(2099, viking['meta']['visitors'])
 		self.assertEqual('NES (Famicom)', viking['platforms'][0])
 		self.assertEqual('Duty Cycle Generator', viking['publisher']['names']['en'])
 
@@ -103,7 +103,7 @@ class TestAlbums(unittest.TestCase):
 		self.assertEqual('2000-08-03', blooming['related'][0]['date'])
 		self.assertEqual('KMCA-65', blooming['related'][1]['catalog'])
 		self.assertEqual('2000-09-21', blooming['related'][1]['date'])
-		self.assertEqual('CD Japan (OOP)', blooming['stores'][1]['name'])
+		self.assertEqual('CDJapan (OOP)', blooming['stores'][0]['name'])
 
 	def test_istoria(self):
 		istoria_code = file(os.path.join(base, 'album_istoria.html'), 'r').read()
