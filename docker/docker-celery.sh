@@ -5,7 +5,7 @@
 IMAGE="$1"
 [ -z "$IMAGE" ] && exit
 docker inspect "$IMAGE" > /dev/null || exit
-Cmd=`docker inspect -f '[{{ range .Config.Cmd }}"{{ . }}"{{ end }}]' "$IMAGE"`
+Cmd=`docker inspect -f '[{{ range $index, $element := .Config.Cmd }}{{if $index}}, {{end}}"{{ $element }}"{{ end }}]' "$IMAGE"`
 Ports=`docker inspect -f '[{{ range $key,$value := .Config.ExposedPorts }}"{{ $key }}"{{end}}]' "$IMAGE"`
 
 [ -e cid.celery ] && rm cid.celery || true
@@ -14,5 +14,5 @@ docker run --cidfile=cid.celery --entrypoint=/bin/sh "$IMAGE" -c "rm -r /etc/ser
 
 NEWIMAGE=`echo "${IMAGE}" | sed -E 's/(:|$)/_celery\1/'`
 #docker commit --change="ENTRYPOINT" --change="CMD=/sbin/my_init" `cat cid` "${NEWIMAGE}
-docker commit --run='{"Cmd":'$Cmd',"Entrypoint":[]}' `cat cid.celery` "${NEWIMAGE}"
+docker commit --change="CMD $Cmd" --change='ENTRYPOINT [""]' `cat cid.celery` "${NEWIMAGE}"
 [ -e cid.celery ] && rm cid.celery || true
