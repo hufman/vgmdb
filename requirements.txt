@@ -8,7 +8,7 @@ beautifulsoup4==4.2.1
 lxml==3.3.5
 
 # Output
-Jinja2==2.7.1
+Jinja2==2.10.1
 PyYAML==3.10
 rdflib==4.0.1
 
