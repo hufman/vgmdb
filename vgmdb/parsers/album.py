@@ -66,6 +66,8 @@ def _parse_album_info(soup_info):
 		album_info['bootleg'] = True
 	soup_info_rows = soup_info.find_all('tr', recursive=False)
 	for soup_row in soup_info_rows:
+		if soup_row.td is None:
+			continue
 		name = utils.parse_names(soup_row.td.find('b'))['en']
 		name = unicode(name)
 		soup_value = soup_row.td.find_next_sibling('td')
