@@ -37,9 +37,11 @@ def parse_page(html_source):
 	album_info.update(_parse_album_info(soup_info))
 
 	# credit list
-	soup_creditinfo = _find_element_named(soup_profile, 'span', 'Credits').parent.parent
-	soup_creditlist = soup_creditinfo.div.div.table
-	album_info.update(_parse_album_info(soup_creditlist))
+	soup_credithead = _find_element_named(soup_profile, 'span', 'Credits')
+	if soup_credithead is not None:
+		soup_creditinfo = soup_credithead.parent.parent
+		soup_creditlist = soup_creditinfo.div.div.table
+		album_info.update(_parse_album_info(soup_creditlist))
 
 	# track list
 	soup_tracklist = _find_element_named(soup_profile, 'h3', 'Tracklist').parent.parent
