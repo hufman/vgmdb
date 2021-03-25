@@ -9,7 +9,7 @@ lxml==3.3.5
 
 # Output
 Jinja2==2.7.1
-PyYAML==3.10
+PyYAML==5.4
 rdflib==4.0.1
 
 # Speed optimization
