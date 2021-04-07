@@ -1,4 +1,4 @@
-bottle==0.11.6
+bottle==0.12.19
 unittest2==0.5.1
 gevent==1.0.2
 
