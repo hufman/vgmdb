@@ -1,4 +1,4 @@
-FROM vgmdb_reqs:36a64e
+FROM vgmdb_reqs:0b51ca
 
 # install vgmdb software
 ADD vgmdb /vgmdb
