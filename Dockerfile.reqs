@@ -1,9 +1,9 @@
-FROM phusion/baseimage:0.9.15
+FROM phusion/baseimage:bionic-1.0.0
 
 # setting up the baseimage
 ENV HOME=/root
 RUN rm /etc/my_init.d/*ssh*
-RUN rm -r /etc/service/sshd /etc/service/cron /etc/service/syslog-ng
+RUN rm -r /etc/service/sshd /etc/service/cron
 
 # install nginx
 RUN apt-get update; apt-get install -y nginx
@@ -11,6 +11,10 @@ RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 RUN mkdir /etc/service/nginx
 ADD docker/sv-nginx /etc/service/nginx/run
 ADD docker/nginx-site.conf /etc/nginx/sites-enabled/default
+
+# explicitly install vgmdb runtime requirements, to avoid
+# removal in apt-get autoremove.
+RUN apt-get install -y libpython2.7 libxml2 libxslt1.1 zlib1g
 
 # install vgmdb requirements
 RUN apt-get install -y python-dev python-pip libxml2-dev libxslt1-dev zlib1g-dev git
