@@ -73,14 +73,14 @@ def parse_page(html_source):
 
 	# Parse Discography
 	disco_container = soup_profile_right.find(id='albumlist')
-	soup_disco_table = disco_container.find(id='discotable').table
-	if soup_disco_table:
-		artist_info['discography'] = utils.parse_discography(soup_disco_table, 'roles')
+	soup_disco_div = disco_container.find(id='discotable')
+	if soup_disco_div:
+		artist_info['discography'] = utils.parse_discography(soup_disco_div.find('table'), 'roles')
 	else:
 		artist_info['discography'] = []
-	soup_featured_table = disco_container.find(id='featuredtable').table
-	if soup_featured_table:
-		artist_info['featured_on'] = utils.parse_discography(soup_featured_table, 'roles')
+	soup_featured_div = disco_container.find(id='featuredtable')
+	if soup_featured_div:
+		artist_info['featured_on'] = utils.parse_discography(soup_featured_div.find('table'), 'roles')
 	else:
 		artist_info['featured_on'] = []
 
