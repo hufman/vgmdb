@@ -13,19 +13,18 @@ def parse_page(html_source):
 	if soup_innermain == None:
 		return None	# info not found
 
-	soup_profile = soup_innermain.find_parent('div')
-	soup_sections = soup_profile.find_all('div', recursive=False)
-	soup_name_sections = soup_sections[0].find_all('span', recursive=False)
+	soup_sections = soup_innermain.parent.find_all('div',recursive=False)
+	soup_titlespans = soup_sections[0].find_all('span',recursive=False)
 
-	event_info['name'] = soup_name_sections[1].string.strip()
-	date = soup_name_sections[2].string.strip()
+	event_info['name'] = soup_titlespans[1].find('span',class_='albumtitle').string.strip()
+	date = soup_titlespans[2].string.strip()
 	date_pieces = date.split('to')
 	event_info['startdate'] = utils.parse_date_time(date_pieces[0])
 	event_info['enddate'] = utils.parse_date_time(date_pieces[-1])
 
-	event_info['notes'] = utils.parse_string(soup_sections[1].div).strip()
+	event_info['notes'] = utils.parse_string(soup_innermain.find('div')).strip()
 
-	event_info['releases'] = _parse_event_releases(soup_sections[2].table)
+	event_info['releases'] = _parse_event_releases(soup_sections[2].find('table',recursive=False))
 
 	return event_info
 
