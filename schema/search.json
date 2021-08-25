@@ -6,7 +6,7 @@
 			"type": "object",
 			"properties": {
 				"catalog": { "$ref": "common.json#/definitions/catalog" },
-				"category": { "$ref": "common.json#/definitions/category" },
+				"category": { "$ref": "common.json#/definitions/albumCategory" },
 				"link": { "$ref": "common.json#/definitions/link" },
 				"release_date": { "$ref": "common.json#/definitions/rfc3339" },
 				"titles": { "$ref": "common.json#/definitions/names"}
