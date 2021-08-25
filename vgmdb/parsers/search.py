@@ -146,10 +146,12 @@ def _parse_album(soup_row):
 	link = utils.trim_absolute(link)
 	names = utils.parse_names(soup_album.a)
 	date = utils.parse_date_time(soup_cells[3].string)
+	media_format = unicode(soup_cells[4].string)
 	info = {'link':link,
 	        'catalog':catalog,
 	        'titles':names,
-	        'release_date':date
+	        'release_date':date,
+	        'media_format':media_format
 	}
 	typelist = [s.replace('album-','') for s in soup_album.a['class'] if 'album-' in s]
 	info['category'] = utils.type_category(typelist[0])
