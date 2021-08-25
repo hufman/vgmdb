@@ -151,6 +151,8 @@ def _parse_album(soup_row):
 	        'titles':names,
 	        'release_date':date
 	}
+	typelist = [s.replace('album-','') for s in soup_album.a['class'] if 'album-' in s]
+	info['category'] = utils.type_category(typelist[0])
 	return info
 _parse_artist = _parse_listitem
 _parse_org = _parse_listitem
