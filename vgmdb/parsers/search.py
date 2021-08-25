@@ -52,7 +52,7 @@ def masquerade(url, page):
 
 def generate_fakeresult(info):
 	fake = {'link':info['link']}
-	copy_keys = ['aliases', 'catalog','release_date']
+	copy_keys = ['aliases', 'category', 'catalog','release_date']
 	for key in copy_keys:
 		if key in info:
 			fake[key] = info[key]
