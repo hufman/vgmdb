@@ -1,4 +1,4 @@
-bottle==0.11.6
+bottle==0.12.19
 unittest2==0.5.1
 gevent==1.0.2
 
@@ -8,7 +8,7 @@ beautifulsoup4==4.2.1
 lxml==3.3.5
 
 # Output
-Jinja2==2.7.1
+Jinja2==2.11.3
 PyYAML==5.4
 rdflib==4.0.1
 

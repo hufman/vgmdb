@@ -8,7 +8,7 @@ from vgmdb.parsers import eventlist
 from vgmdb.config import BASE_URL
 from urlparse import urljoin
 
-class TestOrglistRDF(TestRDF):
+class TestEventlistRDF(TestRDF):
 	data_parser = lambda self,x: eventlist.parse_page(x)
 	outputter_type = 'eventlist'
 	def setUp(self):
@@ -16,8 +16,8 @@ class TestOrglistRDF(TestRDF):
 
 	def run_list_tests(self, graph):
 		test_count_results = {
-			"select ?event where { ?event rdf:type mo:ReleaseEvent . }" : 152,
-			"select ?event where { ?event rdf:type schema:MusicEvent . }" : 152,
+			"select ?event where { ?event rdf:type mo:ReleaseEvent . }" : 257,
+			"select ?event where { ?event rdf:type schema:MusicEvent . }" : 257,
 			"select ?name where { <@baseevent/44#subject> schema:name ?name . FILTER(lang(?name)='en')}" : 1,
 			"select ?name where { <@baseevent/158#subject> schema:name ?name . FILTER(lang(?name)='en')}" : 1
 		}
@@ -30,8 +30,8 @@ class TestOrglistRDF(TestRDF):
 		self.run_tests(graph, test_count_results, test_first_result)
 	def run_list_tests_2001(self, graph):
 		test_count_results = {
-			"select ?event where { ?event rdf:type mo:ReleaseEvent . }" : 4,
-			"select ?event where { ?event rdf:type schema:MusicEvent . }" : 4,
+			"select ?event where { ?event rdf:type mo:ReleaseEvent . }" : 5,
+			"select ?event where { ?event rdf:type schema:MusicEvent . }" : 5,
 			"select ?name where { <@baseevent/44#subject> schema:name ?name . FILTER(lang(?name)='en')}" : 1,
 			"select ?name where { <@baseevent/158#subject> schema:name ?name . FILTER(lang(?name)='en')}" : 0
 		}
@@ -42,8 +42,8 @@ class TestOrglistRDF(TestRDF):
 		self.run_tests(graph, test_count_results, test_first_result)
 	def run_list_tests_2013(self, graph):
 		test_count_results = {
-			"select ?event where { ?event rdf:type mo:ReleaseEvent . }" : 3,
-			"select ?event where { ?event rdf:type schema:MusicEvent . }" : 3,
+			"select ?event where { ?event rdf:type mo:ReleaseEvent . }" : 9,
+			"select ?event where { ?event rdf:type schema:MusicEvent . }" : 9,
 			"select ?name where { <@baseevent/44#subject> schema:name ?name . FILTER(lang(?name)='en')}" : 0,
 			"select ?name where { <@baseevent/158#subject> schema:name ?name . FILTER(lang(?name)='en')}" : 1
 		}

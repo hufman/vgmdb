@@ -1,0 +1,23 @@
+name: build
+
+on:
+  push:
+    branches: '*'
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  unitTest:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout the project
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          submodules: true
+      - name: Install apt dependencies
+        run: sudo apt-get install virtualenv python-dev libxml2-dev libxslt-dev
+      - name: Install dependencies
+        run: virtualenv --python=/usr/bin/python2 venv && venv/bin/pip install -r requirements.txt
+      - name: Run unit tests
+        run: . venv/bin/activate && ./tests.sh
