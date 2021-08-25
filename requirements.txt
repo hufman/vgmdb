@@ -5,7 +5,7 @@ gevent==1.0.2
 # Parsing
 html5lib==1.0b8
 beautifulsoup4==4.2.1
-lxml==3.3.5
+lxml==4.6.3
 
 # Output
 Jinja2==2.11.3
