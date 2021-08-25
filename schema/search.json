@@ -6,11 +6,12 @@
 			"type": "object",
 			"properties": {
 				"catalog": { "$ref": "common.json#/definitions/catalog" },
+				"category": { "$ref": "common.json#/definitions/category" },
 				"link": { "$ref": "common.json#/definitions/link" },
 				"release_date": { "$ref": "common.json#/definitions/rfc3339" },
 				"titles": { "$ref": "common.json#/definitions/names"}
 			},
-			"required": ["catalog", "link", "release_date", "titles"]
+			"required": ["catalog", "category", "link", "release_date", "titles"]
 		},
 		"resultArtist": {
 			"title": "An artist search result",

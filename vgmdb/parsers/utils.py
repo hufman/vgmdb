@@ -413,6 +413,8 @@ def parse_meta(soup_meta_section):
 _category_type = {
 	"Game": "game", "Animation": "anime",
 	"Publication": "print", "Audio Drama": "drama",
+	"Live": "live", "Tokusatsu/Puppetry": "toku",
+	"Multimedia Franchise": "mult",
 	"Demo Scene": "demo", "Other Works": "works",
 	"Enclosure/Promo": "bonus", "Doujin/Fanmade": "doujin",
 	"Delayed/Cancelled": "cancel", "Bootleg": "bootleg"

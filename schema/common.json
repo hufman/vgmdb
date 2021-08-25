@@ -15,7 +15,7 @@
 			"enum": [
 				"game", "anime", "print", "drama", "demo",
 				"works", "bonus", "doujin", "cancel", "bootleg",
-				"mult", "live"
+				"mult", "live", "toku"
 			]
 		},
 		"albumCategories": {
@@ -28,6 +28,7 @@
 			"type": "string",
 			"enum": [
 				"Game", "Animation", "Publication", "Audio Drama",
+				"Live", "Tokusatsu/Puppetry", "Multimedia Franchise",
 				"Demo Scene", "Other Works", "Enclosure/Promo",
 				"Doujin/Fanmade", "Delayed/Cancelled", "Bootleg",
 				"Radio/Drama", "Artist Discography"
