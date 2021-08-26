@@ -158,6 +158,8 @@ def _parse_album_info(soup_info):
 					date = soup_value.a['href'].split('#')[1]
 					if date.isdigit():
 						album_info['release_date'] = '%s-%s-%s'%(date[0:4], date[4:6], date[6:8])
+					else: # link to calendar, but date is ambiguous (Jul 1997)
+						album_info['release_date'] = utils.parse_date_time(soup_value.a.string)
 					soup_event = soup_value.a.find_next_sibling('a')
 				else:			# freeform text
 					album_info['release_date'] = soup_value.value
