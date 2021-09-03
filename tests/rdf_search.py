@@ -16,8 +16,8 @@ class TestSearchRDF(TestRDF):
 
 	def run_list_tests(self, graph):
 		test_count_results = {
-			"select ?search where { ?search rdf:type schema:MusicAlbum . }" : 6,
-			"select ?search where { ?search rdf:type mo:Release . }" : 6,
+			"select ?search where { ?search rdf:type schema:MusicAlbum . }" : 8,
+			"select ?search where { ?search rdf:type mo:Release . }" : 8,
 			"select ?search where { ?search rdf:type schema:MusicGroup . }" : 1,
 			"select ?search where { ?search rdf:type foaf:Organization . }" : 1,
 			"select ?search where { ?search rdf:type schema:Organization . }" : 1,

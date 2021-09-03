@@ -103,7 +103,7 @@ def parse_page(html_source):
 		search_info['results'][section_type] = _parse_list(soup_section, parse_item)
 
 	# parse the query
-	match = re.search(r'\$\("#simplesearch"\).val\(\'(.*)\'\);', html_source)
+	match = re.search(r'\$\("#simplesearch"\).val\("(.*)"\);', html_source)
 	if match:
 		search_info['query'] = match.groups(1)[0].replace("\\'","'")
 
