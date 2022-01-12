@@ -190,12 +190,13 @@ def _parse_album_info(soup_info):
 				pass
 		elif name in organization_names:
 			soup_child = soup_value.a
-			link = soup_child['href']
-			link = utils.trim_absolute(link)
-			info = {}
-			info['link'] = link
-			info['names'] = utils.parse_names(soup_child)
-			addOrganization(info, name.split()[-1].lower())
+			if soup_child:
+				link = soup_child['href']
+				link = utils.trim_absolute(link)
+				info = {}
+				info['link'] = link
+				info['names'] = utils.parse_names(soup_child)
+				addOrganization(info, name.split()[-1].lower())
 		elif name == 'Organizations':
 			soup_links = soup_value.find_all('a')
 			if len(soup_links) == 0:
