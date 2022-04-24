@@ -1,6 +1,8 @@
 VGMdb
 =========
 
+[![Docker Pulls](https://img.shields.io/docker/pulls/hufman/vgmdb)](https://hub.docker.com/repository/docker/hufman/vgmdb)
+
 VGMdb.net is an excellent resource, containing gigabytes of information about video game music. It documents the relationships between games, albums that represent games, and all the people that contributed to an album.
 
 However, VGMdb does not provide an API to access its information, which provides an obstacle to programs that want to use its information. This site is a way to programmatically access the information on VGMdb.net.
