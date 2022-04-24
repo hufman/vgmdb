@@ -11,7 +11,7 @@ vgmdb_web:
   links:
     - redis
   ports:
-    - "80:80"
+    - "80"
   labels:
     com.joyent.package: g4-highcpu-256M
     triton.cns.services: vgmdb-web
