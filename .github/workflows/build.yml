@@ -21,3 +21,41 @@ jobs:
         run: virtualenv --python=/usr/bin/python2 venv && venv/bin/pip install -r requirements.txt
       - name: Run unit tests
         run: . venv/bin/activate && ./tests.sh
+
+  dockerize:
+    needs: unitTest
+    runs-on: ubuntu-20.04
+    if: github.repository == 'hufman/vgmdb'
+    steps:
+      - name: Checkout the project
+        uses: actions/checkout@v2
+      - name: Login to DockerHub
+        run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u hufman --password-stdin
+      - name: Get the version
+        run: echo REV=$(echo ${GITHUB_SHA:0:8}) >> $GITHUB_ENV
+
+      - name: Build the combined image
+        run: docker/docker-build.sh
+      - name: Build the celery image
+        run: docker/docker-celery.sh vgmdb:$REV
+      - name: Build the web image
+        run: docker/docker-web.sh vgmdb:$REV
+
+      - name: Tag and push the images
+        run: |
+          docker tag vgmdb:$REV hufman/vgmdb:$REV
+          docker push hufman/vgmdb:$REV
+          docker tag vgmdb_celery:$REV hufman/vgmdb_celery:$REV
+          docker push hufman/vgmdb_celery:$REV
+          docker tag vgmdb_web:$REV hufman/vgmdb_web:$REV
+          docker push hufman/vgmdb_web:$REV
+
+      - name: Tag and push the latest images
+        if: github.ref == 'ref/head/master'
+        run: |
+          docker tag vgmdb:$REV hufman/vgmdb:latest
+          docker push hufman/vgmdb:latest
+          docker tag vgmdb_celery:$REV hufman/vgmdb_celery:latest
+          docker push hufman/vgmdb_celery:latest
+          docker tag vgmdb_web:$REV hufman/vgmdb_web:latest
+          docker push hufman/vgmdb_web:latest
