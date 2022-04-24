@@ -51,7 +51,7 @@ jobs:
           docker push hufman/vgmdb_web:$REV
 
       - name: Tag and push the latest images
-        if: github.ref == 'ref/head/master'
+        if: github.event.ref == 'refs/heads/master'
         run: |
           docker tag vgmdb:$REV hufman/vgmdb:latest
           docker push hufman/vgmdb:latest
@@ -59,3 +59,15 @@ jobs:
           docker push hufman/vgmdb_celery:latest
           docker tag vgmdb_web:$REV hufman/vgmdb_web:latest
           docker push hufman/vgmdb_web:latest
+
+      - name: Deploy the latest version
+        if: github.event.ref == 'refs/heads/master'
+        uses: octokit/request-action@v2.x
+        with:
+          route: POST /repos/:repository/actions/workflows/deploy.yml/dispatches
+        env:
+          GITHUB_TOKEN: "${{ secrets.DEPLOY_TOKEN }}"
+          INPUT_REPOSITORY: "${{ github.repository }}"
+          INPUT_REF: master
+          INPUT_INPUTS: '{"tag": "${{env.REV}}"}'
+
