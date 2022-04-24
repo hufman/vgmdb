@@ -4,7 +4,7 @@ import logging
 logger = logging.getLogger(__name__)
 
 # load cloud settings for defaults
-if 'AMQP_PORT_5672_TCP' in os.environ or 'AMQP_HOST' in os.environ:
+if os.environ.get('AMQP_PORT_5672_TCP') or os.environ.get('AMQP_HOST'):
 	amqp_user = os.environ.get('AMQP_USER', 'guest')
 	amqp_pass = os.environ.get('AMQP_PASSWORD', 'guest')
 	amqp_ip = os.environ.get('AMQP_HOST', '127.0.0.1')
@@ -18,7 +18,7 @@ if 'AMQP_PORT_5672_TCP' in os.environ or 'AMQP_HOST' in os.environ:
 	logger.info("Docker AMQP link detected, guessing %s" % (CELERY_BROKER,))
 
 # detect docker links
-if 'MEMCACHED_PORT_11211_TCP' in os.environ:
+if os.environ.get('MEMCACHED_PORT_11211_TCP'):
 	MEMCACHE_SERVERS = ["%s:%s" % (
 	    os.environ['MEMCACHED_PORT_11211_TCP_ADDR'],
 	    os.environ['MEMCACHED_PORT_11211_TCP_PORT']
@@ -26,13 +26,13 @@ if 'MEMCACHED_PORT_11211_TCP' in os.environ:
 	logger.info("Docker Memcache link detected, guessing %s" % (MEMCACHE_SERVERS,))
 
 # detect docker redis
-if 'REDIS_PORT_6379_TCP_PORT' in os.environ:
+if os.environ.get('REDIS_PORT_6379_TCP_PORT'):
 	REDIS_HOST = os.environ.get('REDIS_PORT_6379_TCP_ADDR', '127.0.0.1')
 	logger.info("Docker Redis link detected, guessing %s" % (REDIS_HOST,))
 
 # detect openshift
-if 'OPENSHIFT_MEMCACHED_HOST' in os.environ and \
-   'OPENSHIFT_MEMCACHED_PORT' in os.environ:
+if os.environ.get('OPENSHIFT_MEMCACHED_HOST') and \
+   os.environ.get('OPENSHIFT_MEMCACHED_PORT'):
 	MEMCACHE_SERVERS = ["%s:%s" % (
 	    os.environ['OPENSHIFT_MEMCACHED_HOST'],
 	    os.environ['OPENSHIFT_MEMCACHED_PORT']
@@ -44,20 +44,20 @@ if 'OPENSHIFT_MEMCACHED_HOST' in os.environ and \
 	logger.info("Openshift Memcache link detected, guessing %s" % (MEMCACHE_SERVERS,))
 
 # some fancy processing
-if os.environ.has_key('DATA_BACKGROUND'):
+if os.environ.get('DATA_BACKGROUND'):
 	if os.environ['DATA_BACKGROUND'].lower() in ['yes', 'true']:
 		DATA_BACKGROUND = True
 		logger.info("Loading DATA_BACKGROUND from environ: %s" % (DATA_BACKGROUND,))
 	if os.environ['DATA_BACKGROUND'].lower() in ['no', 'false']:
 		DATA_BACKGROUND = False
 		logger.info("Loading DATA_BACKGROUND from environ: %s" % (DATA_BACKGROUND,))
-if os.environ.has_key('GAE_BASEURL'):
+if os.environ.get('GAE_BASEURL'):
 	BASE_URL = os.environ['GAE_BASEURL']
 	logger.info("Loading BASE_URL from GAE: %s" % (BASE_URL,))
-if os.environ.has_key('MEMCACHE_SERVER'):
+if os.environ.get('MEMCACHE_SERVER'):
 	MEMCACHE_SERVERS = [os.environ['MEMCACHE_SERVER']]
 	logger.info("Loading MEMCACHE_SERVER from environ: %s" % (MEMCACHE_SERVERS[0],))
-if os.environ.has_key('MEMCACHE_SERVERS'):
+if os.environ.get('MEMCACHE_SERVERS'):
 	MEMCACHE_SERVERS = os.environ['MEMCACHE_SERVERS'].split(',')
 	MEMCACHE_SERVERS = [s.strip() for s in MEMCACHE_SERVERS]
 	logger.info("Loading MEMCACHE_SERVERS from environ: %s" % (MEMCACHE_SERVERS,))
@@ -81,7 +81,7 @@ env_keys = [
   'SPOTIFY_ID', 'SPOTIFY_SECRET'
 ]
 for key in env_keys:
-	if key in os.environ:
+	if os.environ.get(key):
 		globals()[key] = os.environ[key]
 		logger.info("Loading %s from environ: %s" % (key, os.environ[key]))
 
