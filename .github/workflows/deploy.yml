@@ -1,0 +1,50 @@
+name: deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Version to deploy:"
+        required: true
+        default: "latest"
+
+env:
+  DOCKER_CERT_PATH: .docker
+  DOCKER_HOST: "${{ secrets.DOCKER_HOST }}"
+  DOCKER_TLS_VERIFY: 1
+
+jobs:
+  deploy:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Check out the project
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Switch to specified version
+        run: |
+          sed -i 's/vgmdb\(.*\):latest/vgmdb\1:${{ github.event.inputs.tag }}/' docker-compose.yml
+      - name: Extract Docker authentication
+        run: |
+          mkdir .docker
+          echo "${{ secrets.DOCKER_KEY }}" >> .docker/key.pem
+          echo "${{ secrets.DOCKER_CERT }}" >> .docker/cert.pem
+          echo "${{ secrets.DOCKER_CA }}" >> .docker/ca.pem
+      - name: Deploy the services
+        run: |
+          docker-compose -p vgmdbapi pull --quiet
+      - name: Restart the services
+        run: |
+          docker-compose -p vgmdbapi up --detach &&
+          docker-compose -p vgmdbapi rm
+        env:
+          VIRTUAL_HOST: vgmdb.info
+          VIRTUAL_PORT: 80
+          AMAZON_ACCESS_KEY_ID: "${{ secrets.AMAZON_ACCESS_KEY_ID }}"
+          AMAZON_SECRET_ACCESS_KEY: "${{ secrets.AMAZON_SECRET_ACCESS_KEY }}"
+          AMAZON_ASSOCIATE_TAG: "${{ secrets.AMAZON_ASSOCIATE_TAG }}"
+          ITUNES_AFFILIATE_ID: "${{ secrets.ITUNES_AFFILIATE_ID }}"
+          DISCOGS_KEY: "${{ secrets.DISCOGS_KEY }}"
+          DISCOGS_SECRET: "${{ secrets.DISCOGS_SECRET }}"
+          SPOTIFY_ID: "${{ secrets.SPOTIFY_ID }}"
+          SPOTIFY_SECRET: "${{ secrets.SPOTIFY_SECRET }}"
