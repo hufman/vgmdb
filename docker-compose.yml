@@ -20,7 +20,16 @@ vgmdb_web:
     - REDIS_HOST=redis
     - DATA_BACKGROUND=true
     - CELERY_PING=false
-# add secret keys here
+    - VIRTUAL_HOST
+    - VIRTUAL_PORT
+    - AMAZON_ACCESS_KEY_ID
+    - AMAZON_SECRET_ACCESS_KEY
+    - AMAZON_ASSOCIATE_TAG
+    - ITUNES_AFFILIATE_ID
+    - DISCOGS_KEY
+    - DISCOGS_SECRET
+    - SPOTIFY_ID
+    - SPOTIFY_SECRET
 vgmdb_celery:
   image: hufman/vgmdb_celery:latest
   links:
@@ -30,4 +39,11 @@ vgmdb_celery:
   restart: always
   environment:
     - REDIS_HOST=redis
-# add secret keys here
+    - AMAZON_ACCESS_KEY_ID
+    - AMAZON_SECRET_ACCESS_KEY
+    - AMAZON_ASSOCIATE_TAG
+    - ITUNES_AFFILIATE_ID
+    - DISCOGS_KEY
+    - DISCOGS_SECRET
+    - SPOTIFY_ID
+    - SPOTIFY_SECRET
