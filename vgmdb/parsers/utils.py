@@ -194,14 +194,17 @@ def parse_shallow_string(soup_element):
 	Given an element, return the strings inside, but not inside nested elements
 	"""
 	if not isinstance(soup_element, bs4.Tag):
-		return unicode(soup_element.string)
+		ret = unicode(soup_element.string)
 	else:
 		bits = []
 		for child in soup_element.children:
 			if not isinstance(child, bs4.Tag):
 				bits.append(child.string)
-		return "".join(bits)
-	
+		ret = "".join(bits)
+	ret = re.sub('\s+', ' ', ret)
+	ret = ret.replace(u'\u200b', '')
+	return ret
+
 def parse_string(soup_element, _strip=True):
 	"""
 	Given an element, return the strings inside
@@ -210,6 +213,7 @@ def parse_string(soup_element, _strip=True):
 	if not isinstance(soup_element, bs4.Tag):
 		ret = soup_element.string
 		ret = re.sub('\s+',' ', ret)
+		ret = ret.replace(u'\u200b', '')
 		return ret
 	else:
 		if soup_element.name == 'br':
@@ -223,6 +227,7 @@ def parse_string(soup_element, _strip=True):
 		ret = "".join(bits)
 		if _strip:
 			ret = re.sub('\s*\n+\s*','\n', ret)
+		ret = ret.replace(u'\u200b', '')
 		return ret
 
 def extract_background_image(style):
