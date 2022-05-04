@@ -35,7 +35,7 @@ jobs:
           docker-compose -p vgmdbapi pull --quiet
       - name: Restart the services
         run: |
-          docker-compose -p vgmdbapi up --detach &&
+          docker-compose -p vgmdbapi up --detach --scale vgmdb_web=3 --scale vgmdb_celery=2 &&
           docker-compose -p vgmdbapi rm
         env:
           VIRTUAL_HOST: vgmdb.info
