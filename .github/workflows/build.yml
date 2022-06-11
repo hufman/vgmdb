@@ -5,6 +5,14 @@ on:
     branches: '*'
   pull_request:
     types: [opened, synchronize]
+  workflow_dispatch:
+    inputs:
+      platform:
+        required: true
+        default: amd64
+        options:
+        - amd64
+        - arm64
 
 jobs:
   unitTest:
@@ -36,6 +44,8 @@ jobs:
 
       - name: Build the combined image
         run: docker/docker-build.sh
+        env:
+          PLATFORM: ${{ inputs.platform }}
       - name: Build the celery image
         run: docker/docker-celery.sh vgmdb:$REV
       - name: Build the web image
