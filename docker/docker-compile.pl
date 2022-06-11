@@ -14,7 +14,7 @@ use Getopt::Long;
  
 use JSON;
  
-our ( $from, $author, %metadata, @commands, $tmpdir, $tmpcount, $prefix, $tag, $filename );
+our ( $from, $author, %metadata, @commands, $tmpdir, $tmpcount, $prefix, $tag, $filename, $platform );
  
 $tmpdir = tempdir(CLEANUP => !$ENV{LEAVE_TMPDIR});
 $tmpcount = 0;
@@ -22,7 +22,8 @@ $prefix = '';
 
 $metadata{CMD} = ["/bin/bash"];
 $filename = 'Dockerfile';
-GetOptions ('t=s' => \$tag,'f=s' => \$filename);
+$platform = 'amd64';
+GetOptions ('t=s' => \$tag,'f=s' => \$filename, 'p=s' => \$platform);
  
 print "*** Working directory: $tmpdir\n" if $ENV{LEAVE_TMPDIR};
  
@@ -113,7 +114,7 @@ print SETUP join("\n", "#!/bin/sh", "set -e -x", @commands), "\ntouch /.data/FIN
 close SETUP;
 chmod 0755, "$tmpdir/setup.sh";
  
-our @run = ('docker', 'run', "--cidfile=$tmpdir/CID", '-v', "$tmpdir:/.data", $from, "/.data/setup.sh");
+our @run = ('docker', 'run', "--platform=$platform", "--cidfile=$tmpdir/CID", '-v', "$tmpdir:/.data", $from, "/.data/setup.sh");
 print "*** ", join(' ', @run), "\n";
 system(@run) == 0 or die;
  

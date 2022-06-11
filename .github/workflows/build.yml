@@ -5,14 +5,6 @@ on:
     branches: '*'
   pull_request:
     types: [opened, synchronize]
-  workflow_dispatch:
-    inputs:
-      platform:
-        required: true
-        default: amd64
-        options:
-        - amd64
-        - arm64
 
 jobs:
   unitTest:
@@ -34,6 +26,9 @@ jobs:
     needs: unitTest
     runs-on: ubuntu-20.04
     if: github.repository == 'hufman/vgmdb'
+    strategy:
+      matrix:
+        platform: [amd64, arm64]
     steps:
       - name: Checkout the project
         uses: actions/checkout@v2
@@ -42,32 +37,77 @@ jobs:
       - name: Get the version
         run: echo REV=$(echo ${GITHUB_SHA:0:8}) >> $GITHUB_ENV
 
+      - name: Prepare Qemu building
+        uses: docker/setup-qemu-action@v2
+
+      - name: Pull reqs image, if existant
+        run: |
+          . docker/_inc.sh
+          reqs_id=`get_reqs_id`-${{ matrix.platform }}
+          docker pull hufman/vgmdb_reqs:$reqs_id && docker tag hufman/vgmdb_reqs:$reqs_id vgmdb_reqs:$reqs_id || true
+
       - name: Build the combined image
         run: docker/docker-build.sh
         env:
-          PLATFORM: ${{ inputs.platform }}
+          PLATFORM: ${{ matrix.platform }}
       - name: Build the celery image
-        run: docker/docker-celery.sh vgmdb:$REV
+        run: |
+          PLATFORM=${{ matrix.platform }}
+          docker/docker-celery.sh vgmdb:$REV-$PLATFORM
       - name: Build the web image
-        run: docker/docker-web.sh vgmdb:$REV
+        run: |
+          PLATFORM=${{ matrix.platform }}
+          docker/docker-web.sh vgmdb:$REV-$PLATFORM
+
+      - name: Check if reqs image needs to be pushed
+        id: check_reqs_image
+        run: |
+          reqs_id=`docker images | grep ^vgmdb_reqs | awk '{print $2}'`
+          echo "::set-output name=exists::"$(docker manifest inspect hufman/vgmdb_reqs:$reqs_id > /dev/null && echo true || echo false)
+
+      - name: Push the reqs image
+        if: steps.check_reqs_image.outputs.exists == 'false'
+        run: |
+          reqs_id=`docker images | grep ^vgmdb_reqs | awk '{print $2}'`
+          docker tag vgmdb_reqs:$reqs_id hufman/vgmdb_reqs:$reqs_id
+          docker push hufman/vgmdb_reqs:$reqs_id
 
       - name: Tag and push the images
         run: |
-          docker tag vgmdb:$REV hufman/vgmdb:$REV
-          docker push hufman/vgmdb:$REV
-          docker tag vgmdb_celery:$REV hufman/vgmdb_celery:$REV
-          docker push hufman/vgmdb_celery:$REV
-          docker tag vgmdb_web:$REV hufman/vgmdb_web:$REV
-          docker push hufman/vgmdb_web:$REV
+          PLATFORM=${{ matrix.platform }}
+          docker tag vgmdb:$REV-$PLATFORM hufman/vgmdb:$REV-$PLATFORM
+          docker push hufman/vgmdb:$REV-$PLATFORM
+          docker tag vgmdb_celery:$REV-$PLATFORM hufman/vgmdb_celery:$REV-$PLATFORM
+          docker push hufman/vgmdb_celery:$REV-$PLATFORM
+          docker tag vgmdb_web:$REV-$PLATFORM hufman/vgmdb_web:$REV-$PLATFORM
+          docker push hufman/vgmdb_web:$REV-$PLATFORM
+
+  dockerfinalize:
+    needs: dockerize
+    runs-on: ubuntu-20.04
+    if: github.repository == 'hufman/vgmdb'
+    steps:
+      - name: Login to DockerHub
+        run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u hufman --password-stdin
+      - name: Get the version
+        run: echo REV=$(echo ${GITHUB_SHA:0:8}) >> $GITHUB_ENV
+      - name: Combine multiplatform images
+        run: |
+          docker manifest create hufman/vgmdb:$REV $(docker manifest inspect hufman/vgmdb:$REV-amd64 >/dev/null && echo hufman/vgmdb:$REV-amd64)  $(docker manifest inspect hufman/vgmdb:$REV-arm64 >/dev/null && echo hufman/vgmdb:$REV-arm64)
+          docker manifest push hufman/vgmdb:$REV
+          docker manifest create hufman/vgmdb_celery:$REV $(docker manifest inspect hufman/vgmdb_celery:$REV-amd64 >/dev/null && echo hufman/vgmdb_celery:$REV-amd64)  $(docker manifest inspect hufman/vgmdb_celery:$REV-arm64 >/dev/null && echo hufman/vgmdb_celery:$REV-arm64)
+          docker manifest push hufman/vgmdb_celery:$REV
+          docker manifest create hufman/vgmdb_web:$REV $(docker manifest inspect hufman/vgmdb_web:$REV-amd64 >/dev/null && echo hufman/vgmdb_web:$REV-amd64)  $(docker manifest inspect hufman/vgmdb_web:$REV-arm64 >/dev/null && echo hufman/vgmdb_web:$REV-arm64)
+          docker manifest push hufman/vgmdb_web:$REV
 
       - name: Tag and push the latest images
         if: github.event.ref == 'refs/heads/master'
         run: |
-          docker tag vgmdb:$REV hufman/vgmdb:latest
+          docker tag hufman/vgmdb:$REV hufman/vgmdb:latest
           docker push hufman/vgmdb:latest
-          docker tag vgmdb_celery:$REV hufman/vgmdb_celery:latest
+          docker tag hufman/vgmdb_celery:$REV hufman/vgmdb_celery:latest
           docker push hufman/vgmdb_celery:latest
-          docker tag vgmdb_web:$REV hufman/vgmdb_web:latest
+          docker tag hufman/vgmdb_web:$REV hufman/vgmdb_web:latest
           docker push hufman/vgmdb_web:latest
 
       - name: Deploy the latest version
