@@ -12,12 +12,13 @@ def get_defaults():
 
 def for_request(request):
 	settings = get_defaults()
-	if request.get_header('Host'):
-		settings.BASE_URL = '//%s/'%(request.get_header('Host'),)
-	if request.get_header('base_url'):
-		settings.BASE_URL = request.get_header('base_url')
-	if request.get_header('base-url'):
-		settings.BASE_URL = request.get_header('base-url')
+	if settings.BASE_URL == '//vgmdb.info/':	# setting hasn't been configured
+		if request.get_header('Host'):
+			settings.BASE_URL = '//%s/'%(request.get_header('Host'),)
+		if request.get_header('base_url'):
+			settings.BASE_URL = request.get_header('base_url')
+		if request.get_header('base-url'):
+			settings.BASE_URL = request.get_header('base-url')
 	if request.query.get('callback'):
 		settings.jsonp_callback = request.query.get('callback')
 	return settings
