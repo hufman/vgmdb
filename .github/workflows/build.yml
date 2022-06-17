@@ -93,22 +93,22 @@ jobs:
         run: echo REV=$(echo ${GITHUB_SHA:0:8}) >> $GITHUB_ENV
       - name: Combine multiplatform images
         run: |
-          docker manifest create hufman/vgmdb:$REV $(docker manifest inspect hufman/vgmdb:$REV-amd64 >/dev/null && echo hufman/vgmdb:$REV-amd64)  $(docker manifest inspect hufman/vgmdb:$REV-arm64 >/dev/null && echo hufman/vgmdb:$REV-arm64)
+          docker manifest create hufman/vgmdb:$REV $(docker manifest inspect hufman/vgmdb:$REV-amd64 >/dev/null && echo hufman/vgmdb:$REV-amd64) $(docker manifest inspect hufman/vgmdb:$REV-arm64 >/dev/null && echo hufman/vgmdb:$REV-arm64)
           docker manifest push hufman/vgmdb:$REV
-          docker manifest create hufman/vgmdb_celery:$REV $(docker manifest inspect hufman/vgmdb_celery:$REV-amd64 >/dev/null && echo hufman/vgmdb_celery:$REV-amd64)  $(docker manifest inspect hufman/vgmdb_celery:$REV-arm64 >/dev/null && echo hufman/vgmdb_celery:$REV-arm64)
+          docker manifest create hufman/vgmdb_celery:$REV $(docker manifest inspect hufman/vgmdb_celery:$REV-amd64 >/dev/null && echo hufman/vgmdb_celery:$REV-amd64) $(docker manifest inspect hufman/vgmdb_celery:$REV-arm64 >/dev/null && echo hufman/vgmdb_celery:$REV-arm64)
           docker manifest push hufman/vgmdb_celery:$REV
-          docker manifest create hufman/vgmdb_web:$REV $(docker manifest inspect hufman/vgmdb_web:$REV-amd64 >/dev/null && echo hufman/vgmdb_web:$REV-amd64)  $(docker manifest inspect hufman/vgmdb_web:$REV-arm64 >/dev/null && echo hufman/vgmdb_web:$REV-arm64)
+          docker manifest create hufman/vgmdb_web:$REV $(docker manifest inspect hufman/vgmdb_web:$REV-amd64 >/dev/null && echo hufman/vgmdb_web:$REV-amd64) $(docker manifest inspect hufman/vgmdb_web:$REV-arm64 >/dev/null && echo hufman/vgmdb_web:$REV-arm64)
           docker manifest push hufman/vgmdb_web:$REV
 
       - name: Tag and push the latest images
         if: github.event.ref == 'refs/heads/master'
         run: |
-          docker tag hufman/vgmdb:$REV hufman/vgmdb:latest
-          docker push hufman/vgmdb:latest
-          docker tag hufman/vgmdb_celery:$REV hufman/vgmdb_celery:latest
-          docker push hufman/vgmdb_celery:latest
-          docker tag hufman/vgmdb_web:$REV hufman/vgmdb_web:latest
-          docker push hufman/vgmdb_web:latest
+          docker manifest create hufman/vgmdb:latest $(docker manifest inspect hufman/vgmdb:$REV-amd64 >/dev/null && echo hufman/vgmdb:$REV-amd64) $(docker manifest inspect hufman/vgmdb:$REV-arm64 >/dev/null && echo hufman/vgmdb:$REV-arm64)
+          docker manifest push hufman/vgmdb:latest
+          docker manifest create hufman/vgmdb_celery:latest $(docker manifest inspect hufman/vgmdb_celery:$REV-amd64 >/dev/null && echo hufman/vgmdb_celery:$REV-amd64) $(docker manifest inspect hufman/vgmdb_celery:$REV-arm64 >/dev/null && echo hufman/vgmdb_celery:$REV-arm64)
+          docker manifest push hufman/vgmdb_celery:latest
+          docker manifest create hufman/vgmdb_web:latest $(docker manifest inspect hufman/vgmdb_web:$REV-amd64 >/dev/null && echo hufman/vgmdb_web:$REV-amd64) $(docker manifest inspect hufman/vgmdb_web:$REV-arm64 >/dev/null && echo hufman/vgmdb_web:$REV-arm64)
+          docker manifest push hufman/vgmdb_web:latest
 
       - name: Deploy the latest version
         if: github.event.ref == 'refs/heads/master'
