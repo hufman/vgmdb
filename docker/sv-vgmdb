@@ -1,2 +1,2 @@
 #!/bin/sh
-cd /; exec uwsgi --uid www-data -p 3 --gevent 100 --gevent-monkey-patch --async 100 -s /tmp/uwsgi.sock --plugins=python --module wsgi --callable application
+cd /; exec uwsgi --uid www-data -p 3 --max-requests 10000 --gevent 100 --gevent-monkey-patch --async 100 -s /tmp/uwsgi.sock --plugins=python --module wsgi --callable application
