@@ -119,7 +119,7 @@ def search(type=None, query=None):
 	if query in ['albums','artists','orgs','products']:
 		type = query
 		query = None
-	query = query or request.query['q']
+	query = query or request.query.get('q', "")
 	return do_page('search', vgmdb.fetch.search(type, query), filterkey=type)
 
 @route('/recent/<type:re:(albums|media|tracklists|scans|artists|products|labels|links|ratings)>')
