@@ -109,6 +109,7 @@ def _parse_album_info(soup_info):
 		                  'Arranger':'arrangers',
 		                  'Performer':'performers',
 		                  'Lyricist':'lyricists',
+											'Vocals':'vocals',
 											'All Composed by':'composers',
 											'All Music Composed by':'composers',
 											'All Arranged by':'arrangers',

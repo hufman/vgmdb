@@ -72,9 +72,11 @@ def add_discography(g, subject, albums, rel=[FOAF.made, SCHEMA.album], rev=[]):
 		perflink = URIRef(link(album['link'])+"#performance") if album.has_key('link') else BNode()
 		complink = URIRef(link(album['link'])+"#composition") if album.has_key('link') else BNode()
 		lyricslink = URIRef(link(album['link'])+"#lyrics") if album.has_key('link') else BNode()
+		vocalslink = URIRef(link(album['link'])+"#vocals") if album.has_key('vocals') else BNode()
 		g.add((perflink, RDF.type, MO.Performance))
 		g.add((complink, RDF.type, MO.Composition))
 		g.add((lyricslink, RDF.type, MO.Lyrics))
+		g.add((vocalslink, RDF.type, MO.Singer))
 
 		g.add((albumlink, RDF.type, SCHEMA.MusicAlbum))
 		g.add((albumlink, RDF.type, MO.Release))
@@ -118,6 +120,9 @@ def add_discography(g, subject, albums, rel=[FOAF.made, SCHEMA.album], rev=[]):
 			if 'Lyricist' in album['roles']:
 				g.add((subject, FOAF.made, albumlink))
 				g.add((subject, FOAF.made, lyricslink))
+			if 'Vocals' in album['roles']:
+				g.add((subject, FOAF.made, albumlink))
+				g.add((subject, FOAF.made, vocalslink))
 
 def add_depiction(g, subject, image, thumb):
 	image = URIRef(image)
@@ -223,6 +228,7 @@ def generate_album(config, data):
 	musicalwork = URIRef(uri + "#musicalwork")
 	composition = URIRef(uri + "#composition")
 	lyrics = URIRef(uri + "#lyrics")
+	vocals = URIRef(uri + "#vocals")
 	g.add((doc, FOAF.primaryTopic, subject))
 
 	g.add((subject, RDF.type, SCHEMA.MusicAlbum))
@@ -235,6 +241,7 @@ def generate_album(config, data):
 	g.add((composition, RDF.type, SCHEMA.CreativeWork))
 	g.add((composition, RDF.type, MO.Composition))
 	g.add((lyrics, RDF.type, MO.Lyrics))
+	g.add((vocals, RDF.type, MO.Singer))
 
 	g.add((subject, MO.publication_of, musicalexpression))
 	g.add((musicalexpression, MO.published_as, subject))
@@ -246,6 +253,7 @@ def generate_album(config, data):
 	g.add((musicalwork, MO.composed_in, composition))
 	g.add((composition, MO.produced_work, musicalwork))
 	g.add((musicalwork, MO.lyrics, lyrics))
+	g.add((musicalwork, MO.singer, vocals))
 
 	add_lang_names(g, subject, data['names'], rel=[DCTERMS.title, SCHEMA.name])
 	add_lang_names(g, performance, data['names'], rel=[DCTERMS.title, SCHEMA.name])
@@ -312,6 +320,9 @@ def generate_album(config, data):
 	if data.has_key('lyricists'):
 		add_people(g, subject, data['lyricists'], rel=[], rev=[FOAF.made])
 		add_people(g, lyrics, data['lyricists'], rel=[], rev=[FOAF.made])
+	if data.has_key('vocals'):
+		add_people(g, subject, data['vocals'], rel=[], rev=[FOAF.made])
+		add_people(g, vocals, data['vocals'], rel=[], rev=[FOAF.made])
 
 	if data.has_key('products'):
 		for productdata in data['products']:
