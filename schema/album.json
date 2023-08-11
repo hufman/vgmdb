@@ -110,6 +110,7 @@
 		},
 		"vgmdb_link": { "title": "Link to the source vgmdb.net page", "$ref": "common.json#/definitions/url" },
 		"votes": { "title": "The number of votes for the rating", "type": "integer" },
+		"vocals": { "$ref": "common.json#/definitions/listOfNamedItems" },
 		"websites": { "$ref": "common.json#/definitions/itemWebsites" }
 	},
 	"required": ["link", "name", "names", "arrangers", "covers", "catalog", "classification", "composers", "lyricists", "notes", "discs", "media_format", "meta", "performers", "picture_full", "picture_small", "picture_thumb", "publish_format", "vgmdb_link", "votes"]

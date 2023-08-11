@@ -101,6 +101,7 @@
        {{ list_names(data.composers, rel="", rev="dcterms:creator foaf:made") }}
        {{ list_names(data.performers, rel="schema:byArtist") }}
        {{ list_names(data.lyricists, rev="foaf:made") }}
+       {{ list_names(data.vocals, rev="foaf:made") }}
       </div>
       <dl>
         {% if data.composers -%}
@@ -114,6 +115,10 @@
         {% if data.lyricists -%}
         <dt>Lyricists</dt>
         <dd resource="{{data.link | linkhref}}#lyrics" class="names">{{ list_names(data.lyricists, rev="foaf:made") }}</dd>
+        {% endif -%}
+        {% if data.vocals -%}
+        <dt>Vocals</dt>
+        <dd resource="{{data.link | linkhref}}#vocals" class="names">{{ list_names(data.vocals, rev="foaf:made") }}</dd>
         {% endif -%}
         {% if data.arrangers -%}
         <dt>Arrangers</dt>
