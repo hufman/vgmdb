@@ -52,6 +52,10 @@ def _fetch_page(cache_key, page_type, id, link=None, use_cache=True):
 				info = running.wait()
 		else:
 			info = _vgmdb.data.request_page(cache_key, page_type, id, link)
+		if info and info.get('link') and info.get('link') != link:
+			prev_data = _vgmdb.cache.get(cache_key) or {}
+			_logger.warning('Fetched %s but received %s, cache now has %s' % (link, info.get('link'), prev_data.get('link')))
+			info = prev_data or info
 	return info
 
 def _is_info_current(info):
