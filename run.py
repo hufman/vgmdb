@@ -1,8 +1,14 @@
 #!/usr/bin/env python
 
 import os
+
+DEBUG = os.environ.get('DEBUG', 'True')
+
 import logging
-logging.basicConfig(level=logging.DEBUG)
+if DEBUG.lower().startswith('t'):
+	logging.basicConfig(level=logging.DEBUG)
+else:
+	logging.basicConfig(level=logging.INFO)
 
 USE_GEVENT = os.environ.get('USE_GEVENT', False)
 

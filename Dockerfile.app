@@ -3,6 +3,7 @@ FROM vgmdb_reqs:0b51ca
 # install vgmdb software
 ADD vgmdb /vgmdb
 RUN touch /vgmdb/local_settings.py
+ADD run.py /run.py
 ADD wsgi.py /wsgi.py
 RUN mkdir /www_root
 ADD static /www_root/static

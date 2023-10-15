@@ -1,2 +1,5 @@
 #!/bin/sh
-cd /; exec uwsgi --plugins python,gevent --uid www-data -p 1 --max-worker-lifetime 600 --max-requests 10000 --gevent 200 --gevent-monkey-patch -s /tmp/uwsgi.sock --plugins=python --module wsgi --callable application
+export DEBUG=False
+export USE_GEVENT=True
+cd /; exec su www-data -s /bin/sh -c "/usr/bin/python2 run.py"
+
