@@ -1,6 +1,7 @@
 import bs4
 
 import re
+import sys
 from . import utils
 import urllib
 
@@ -11,8 +12,13 @@ urllib._urlopener = AppURLOpener()
 def fetch_url(query):
 	return 'https://vgmdb.net/search?q=%s'%(urllib.quote(query))
 def fetch_page(query):
-	url = fetch_url(query)
-	page = urllib.urlopen(url)
+	try:
+		url = fetch_url(query)
+		page = urllib.urlopen(url)
+	except urllib.HTTPError, error:
+		print >> sys.stderr, error.read()
+		raise
+
 	if page.geturl() == url:
 		data = page.read()
 		data = data.decode('utf-8', 'ignore')

@@ -1,6 +1,7 @@
 # coding=utf-8
 import bs4
 import string
+import sys
 import unicodedata
 import re
 import urllib
@@ -14,9 +15,13 @@ class AppURLOpener(urllib.FancyURLopener):
 urllib._urlopener = AppURLOpener()
 
 def fetch_page(url):
-	data = urllib2.urlopen(url, None, 30).read()
-	data = data.decode('utf-8', 'ignore')
-	return data
+	try:
+		data = urllib2.urlopen(url, None, 30).read()
+		data = data.decode('utf-8', 'ignore')
+		return data
+	except urllib2.HTTPError, error:
+		print >> sys.stderr, error.read()
+		raise
 
 def url_info_page(type, id):
 	return 'https://vgmdb.net/%s/%s?perpage=99999'%(type,id)
