@@ -3,7 +3,9 @@ import bs4
 import string
 import sys
 import unicodedata
+import random
 import re
+import time
 import urllib
 import urllib2
 import urlparse
@@ -14,12 +16,15 @@ class AppURLOpener(urllib.FancyURLopener):
 	version = "vgmdbapi/0.2 +https://vgmdb.info"
 urllib._urlopener = AppURLOpener()
 
-def fetch_page(url):
+def fetch_page(url, retries=2):
 	try:
 		data = urllib2.urlopen(url, None, 30).read()
 		data = data.decode('utf-8', 'ignore')
 		return data
 	except urllib2.HTTPError, error:
+		if error.code == 503 and retries:
+			time.sleep(random.randint(500, 3000)/1000.0)
+			return fetch_page(url, retries-1)
 		print >> sys.stderr, error.read()
 		raise
 
