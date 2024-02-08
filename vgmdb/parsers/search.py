@@ -18,6 +18,7 @@ def fetch_page(query, retries=2):
 		url = fetch_url(query)
 		page = urllib.urlopen(url)
 	except urllib.HTTPError, error:
+		print >> sys.stderr, "HTTPError %s while fetching %s" % (error.code, url)
 		if error.code == 503 and retries:
 			time.sleep(random.randint(500, 3000)/1000.0)
 			return fetch_page(url, retries-1)

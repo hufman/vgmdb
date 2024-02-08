@@ -22,6 +22,7 @@ def fetch_page(url, retries=2):
 		data = data.decode('utf-8', 'ignore')
 		return data
 	except urllib2.HTTPError, error:
+		print >> sys.stderr, "HTTPError %s while fetching %s" % (error.code, url)
 		if error.code == 503 and retries:
 			time.sleep(random.randint(500, 3000)/1000.0)
 			return fetch_page(url, retries-1)
