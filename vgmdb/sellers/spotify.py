@@ -18,6 +18,7 @@ def authenticate():
 		raise Exception("Invalid SPOTIFY_ID")
 	data = urllib.urlencode({'grant_type': 'client_credentials'})
 	request = urllib2.Request(AUTH_API, data=data)
+	request.add_header('User-Agent', 'VGMdb/1.0 vgmdb.info')
 	auth = base64.b64encode("%s:%s" % (config.SPOTIFY_ID, config.SPOTIFY_SECRET))
 	request.add_header('Authorization', 'Basic %s' % (auth,))
 	opener = urllib2.build_opener()

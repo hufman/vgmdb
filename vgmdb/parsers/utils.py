@@ -6,19 +6,16 @@ import unicodedata
 import random
 import re
 import time
-import urllib
 import urllib2
 import urlparse
 
 db_parser = re.compile(r'db/([a-z]+)\.php')
 
-class AppURLOpener(urllib.FancyURLopener):
-	version = "vgmdbapi/0.2 +https://vgmdb.info"
-urllib._urlopener = AppURLOpener()
-
 def fetch_page(url, retries=2):
 	try:
-		data = urllib2.urlopen(url, None, 30).read()
+		request = urllib2.Request(url)
+		request.add_header('User-Agent', 'VGMdb/1.0 vgmdb.info')
+		data = urllib2.urlopen(request, None, 30).read()
 		data = data.decode('utf-8', 'ignore')
 		return data
 	except urllib2.HTTPError, error:
