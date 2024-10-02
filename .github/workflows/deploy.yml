@@ -48,3 +48,24 @@ jobs:
           DISCOGS_SECRET: "${{ secrets.DISCOGS_SECRET }}"
           SPOTIFY_ID: "${{ secrets.SPOTIFY_ID }}"
           SPOTIFY_SECRET: "${{ secrets.SPOTIFY_SECRET }}"
+      - name: Deploy the services (mirror)
+        run: |
+          docker-compose -p vgmdbapi pull --quiet
+        env:
+          DOCKER_HOST: "${{ secrets.DOCKER_HOST_2 }}"
+      - name: Restart the services (mirror)
+        run: |
+          docker-compose -p vgmdbapi up --detach --scale vgmdb_web=2 --scale vgmdb_celery=2 &&
+          docker-compose -p vgmdbapi rm
+        env:
+          DOCKER_HOST: "${{ secrets.DOCKER_HOST_2 }}"
+          VIRTUAL_HOST: stg.vgmdb.info
+          VIRTUAL_PORT: 80
+          AMAZON_ACCESS_KEY_ID: "${{ secrets.AMAZON_ACCESS_KEY_ID }}"
+          AMAZON_SECRET_ACCESS_KEY: "${{ secrets.AMAZON_SECRET_ACCESS_KEY }}"
+          AMAZON_ASSOCIATE_TAG: "${{ secrets.AMAZON_ASSOCIATE_TAG }}"
+          ITUNES_AFFILIATE_ID: "${{ secrets.ITUNES_AFFILIATE_ID }}"
+          DISCOGS_KEY: "${{ secrets.DISCOGS_KEY }}"
+          DISCOGS_SECRET: "${{ secrets.DISCOGS_SECRET }}"
+          SPOTIFY_ID: "${{ secrets.SPOTIFY_ID }}"
+          SPOTIFY_SECRET: "${{ secrets.SPOTIFY_SECRET }}"
