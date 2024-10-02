@@ -1,49 +1,50 @@
-redis:
-  image: bitnami/redis:latest
-  labels:
-    com.joyent.package: g4-highcpu-256M
-  restart: always
-  environment:
-    - REDIS_EXTRA_FLAGS=--maxmemory 200mb --maxmemory-policy volatile-lru
-    - ALLOW_EMPTY_PASSWORD=yes
-vgmdb_web:
-  image: hufman/vgmdb_web:latest
-  links:
-    - redis
-  ports:
-    - "80"
-  labels:
-    com.joyent.package: g4-highcpu-256M
-    triton.cns.services: vgmdb-web
-  restart: always
-  environment:
-    - REDIS_HOST=redis
-    - DATA_BACKGROUND=true
-    - CELERY_PING=false
-    - VIRTUAL_HOST
-    - VIRTUAL_PORT
-    - AMAZON_ACCESS_KEY_ID
-    - AMAZON_SECRET_ACCESS_KEY
-    - AMAZON_ASSOCIATE_TAG
-    - ITUNES_AFFILIATE_ID
-    - DISCOGS_KEY
-    - DISCOGS_SECRET
-    - SPOTIFY_ID
-    - SPOTIFY_SECRET
-vgmdb_celery:
-  image: hufman/vgmdb_celery:latest
-  links:
-    - redis
-  labels:
-    com.joyent.package: g4-highcpu-256M
-  restart: always
-  environment:
-    - REDIS_HOST=redis
-    - AMAZON_ACCESS_KEY_ID
-    - AMAZON_SECRET_ACCESS_KEY
-    - AMAZON_ASSOCIATE_TAG
-    - ITUNES_AFFILIATE_ID
-    - DISCOGS_KEY
-    - DISCOGS_SECRET
-    - SPOTIFY_ID
-    - SPOTIFY_SECRET
+services:
+  redis:
+    image: bitnami/redis:latest
+    labels:
+      com.joyent.package: g4-highcpu-256M
+    restart: always
+    environment:
+      - REDIS_EXTRA_FLAGS=--maxmemory 200mb --maxmemory-policy volatile-lru
+      - ALLOW_EMPTY_PASSWORD=yes
+  vgmdb_web:
+    image: hufman/vgmdb_web:latest
+    links:
+      - redis
+    ports:
+      - "80"
+    labels:
+      com.joyent.package: g4-highcpu-256M
+      triton.cns.services: vgmdb-web
+    restart: always
+    environment:
+      - REDIS_HOST=redis
+      - DATA_BACKGROUND=true
+      - CELERY_PING=false
+      - VIRTUAL_HOST
+      - VIRTUAL_PORT
+      - AMAZON_ACCESS_KEY_ID
+      - AMAZON_SECRET_ACCESS_KEY
+      - AMAZON_ASSOCIATE_TAG
+      - ITUNES_AFFILIATE_ID
+      - DISCOGS_KEY
+      - DISCOGS_SECRET
+      - SPOTIFY_ID
+      - SPOTIFY_SECRET
+  vgmdb_celery:
+    image: hufman/vgmdb_celery:latest
+    links:
+      - redis
+    labels:
+      com.joyent.package: g4-highcpu-256M
+    restart: always
+    environment:
+      - REDIS_HOST=redis
+      - AMAZON_ACCESS_KEY_ID
+      - AMAZON_SECRET_ACCESS_KEY
+      - AMAZON_ASSOCIATE_TAG
+      - ITUNES_AFFILIATE_ID
+      - DISCOGS_KEY
+      - DISCOGS_SECRET
+      - SPOTIFY_ID
+      - SPOTIFY_SECRET
