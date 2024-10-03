@@ -48,7 +48,10 @@ def _fetch_page(cache_key, page_type, id, link=None, use_cache=True):
 				info = _vgmdb.data.request_page(cache_key, page_type, id, link)
 			else:
 				task = _vgmdb._tasks.request_page
-				running = task.delay(cache_key, page_type, id, link)
+				if page_type == 'search':
+					running = task.apply_async(args=[cache_key, page_type, id, link], queue='background')
+				else:
+					running = task.delay(cache_key, page_type, id, link)
 				info = running.wait()
 		else:
 			info = _vgmdb.data.request_page(cache_key, page_type, id, link)
