@@ -73,7 +73,7 @@ if 'MEMCACHE_SERVERS' in globals():
 # try to load some keys from environment
 env_keys = [
   'BASE_URL',
-  'CELERY_BROKER', 'CELERY_RESULT_BACKEND', 'CELERY_CACHE_BACKEND',
+  'CELERY_BROKER', 'CELERY_RESULT_BACKEND', 'CELERY_CACHE_BACKEND', 'CELERY_PING',
   'REDIS_HOST',
   'AMAZON_ACCESS_KEY_ID', 'AMAZON_SECRET_ACCESS_KEY', 'AMAZON_ASSOCIATE_TAG',
   'ITUNES_AFFILIATE_ID', 'ITUNES_TD_PROGRAM_ID', 'ITUNES_TD_WEBSITE_ID',
@@ -82,7 +82,17 @@ env_keys = [
 ]
 for key in env_keys:
 	if os.environ.get(key):
-		globals()[key] = os.environ[key]
+		if key in {'CELERY_PING'}:
+			value = os.environ[key]
+			if value.lower().startswith('t'):
+				globals()[key] = True
+			elif value.lower().startswith('f'):
+				globals()[key] = False
+			else:
+				logger.info("Could not parse %s as boolean" % value)
+				continue
+		else:
+			globals()[key] = os.environ[key]
 		logger.info("Loading %s from environ: %s" % (key, os.environ[key]))
 
 # now autoload up some Celery configs
