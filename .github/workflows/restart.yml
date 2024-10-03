@@ -18,9 +18,15 @@ jobs:
           echo "${{ secrets.DOCKER_KEY }}" >> .docker/key.pem
           echo "${{ secrets.DOCKER_CERT }}" >> .docker/cert.pem
           echo "${{ secrets.DOCKER_CA }}" >> .docker/ca.pem
-      - name: Restart the processes
+      - name: Restart the processes (x64)
         run: docker compose -p vgmdbapi restart vgmdb_web && docker compose -p vgmdbapi restart vgmdb_celery
         env:
           DOCKER_CERT_PATH: .docker
           DOCKER_HOST: "${{ secrets.DOCKER_HOST }}"
+          DOCKER_TLS_VERIFY: 1
+      - name: Restart the processes (arm)
+        run: docker compose -p vgmdbapi restart vgmdb_web && docker compose -p vgmdbapi restart vgmdb_celery
+        env:
+          DOCKER_CERT_PATH: .docker
+          DOCKER_HOST: "${{ secrets.DOCKER_HOST_2 }}"
           DOCKER_TLS_VERIFY: 1

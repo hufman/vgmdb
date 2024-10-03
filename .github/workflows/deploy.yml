@@ -30,10 +30,10 @@ jobs:
           echo "${{ secrets.DOCKER_KEY }}" >> .docker/key.pem
           echo "${{ secrets.DOCKER_CERT }}" >> .docker/cert.pem
           echo "${{ secrets.DOCKER_CA }}" >> .docker/ca.pem
-      - name: Deploy the services
+      - name: Deploy the services (x64)
         run: |
           docker compose -p vgmdbapi pull --quiet
-      - name: Restart the services
+      - name: Restart the services (x64)
         run: |
           docker compose -p vgmdbapi up --detach --scale vgmdb_web=2 --scale vgmdb_celery=2 &&
           docker compose -p vgmdbapi rm
@@ -48,18 +48,18 @@ jobs:
           DISCOGS_SECRET: "${{ secrets.DISCOGS_SECRET }}"
           SPOTIFY_ID: "${{ secrets.SPOTIFY_ID }}"
           SPOTIFY_SECRET: "${{ secrets.SPOTIFY_SECRET }}"
-      - name: Deploy the services (mirror)
+      - name: Deploy the services (arm)
         run: |
           docker compose -p vgmdbapi pull --quiet
         env:
           DOCKER_HOST: "${{ secrets.DOCKER_HOST_2 }}"
-      - name: Restart the services (mirror)
+      - name: Restart the services (arm)
         run: |
           docker compose -p vgmdbapi up --detach --scale vgmdb_web=2 --scale vgmdb_celery=2 &&
           docker compose -p vgmdbapi rm
         env:
           DOCKER_HOST: "${{ secrets.DOCKER_HOST_2 }}"
-          VIRTUAL_HOST: stg.vgmdb.info
+          VIRTUAL_HOST: vgmdb.info
           VIRTUAL_PORT: 80
           AMAZON_ACCESS_KEY_ID: "${{ secrets.AMAZON_ACCESS_KEY_ID }}"
           AMAZON_SECRET_ACCESS_KEY: "${{ secrets.AMAZON_SECRET_ACCESS_KEY }}"
