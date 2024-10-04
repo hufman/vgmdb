@@ -8,6 +8,7 @@ CELERY_RESULT_BACKEND = 'cache'
 CELERY_CACHE_BACKEND = 'memcached://127.0.0.1:11211/'
 CELERY_PING = True
 DATA_BACKGROUND = False
+SEARCH_INDEX = False
 
 # seller backend settings
 AMAZON_ACCESS_KEY_ID = None

@@ -17,7 +17,7 @@ del vgmdb
 
 _logger = _logging.getLogger(__name__)
 
-def _fetch_page(cache_key, page_type, id, link=None, use_cache=True):
+def _fetch_page(cache_key, page_type, id, link=None, use_cache=True, use_celery=True):
 	""" Generic function to handle general vgmdb requests
 
 	@param cache_key is where the data should be stored in the cache
@@ -25,6 +25,7 @@ def _fetch_page(cache_key, page_type, id, link=None, use_cache=True):
 	@param id is which specific page to fetch
 	@param link is where the page comes from, to be added to the data
 	@param use_cache can be set to False to ignore any cached data
+	@param use_celery can be set to False to specifically not load data from the background
 	"""
 	info = None
 	prevdata = None
@@ -37,7 +38,7 @@ def _fetch_page(cache_key, page_type, id, link=None, use_cache=True):
 			running = task.apply_async(args=[cache_key, page_type, id, link], queue='background')
 	else:
 		# if we should try to load over Celery
-		if getattr(_vgmdb.config, 'DATA_BACKGROUND', False):
+		if use_celery and getattr(_vgmdb.config, 'DATA_BACKGROUND', False):
 			alive = True	# assume it's accessible
 			if getattr(_vgmdb.config, 'CELERY_PING', False):
 				# check if it's accessible
@@ -96,7 +97,7 @@ for name in ['artist','album','product','release','event','org']:
 	func.__name__ = name
 	locals()[name] = func
 
-def list(page_type, id='A', use_cache=True):
+def list(page_type, id='A', use_cache=True, use_celery=True):
 	""" Loads an information list page
 
 	@param page_type says which specific type of page
@@ -106,6 +107,7 @@ def list(page_type, id='A', use_cache=True):
 		orglist and eventlist ignore the id
 		id will default to 'A' if not passed
 	@param use_cache can be set to False to ignore any cached data
+	@param use_celery can be set to False to specifically not load data from the background
 	"""
 	cache_key = 'vgmdb/%s/%s'%(page_type,id)
 	if page_type in ['orglist', 'eventlist']:	# complete pages
@@ -114,7 +116,7 @@ def list(page_type, id='A', use_cache=True):
 		link = '%s/%s'%(page_type, _urllib.quote(str(id)))
 	else:
 		link = '%s'%(page_type,)
-	return _fetch_page(cache_key, page_type, id, link, use_cache)
+	return _fetch_page(cache_key, page_type, id, link, use_cache, use_celery)
 _list_aliaser = lambda page_type: lambda id='A',use_cache=True: list(page_type, id, use_cache)
 for name in ['albumlist','artistlist','productlist','orglist','eventlist']:
 	func = _list_aliaser(name)
