@@ -72,7 +72,7 @@ if 'MEMCACHE_SERVERS' in globals():
 
 # try to load some keys from environment
 env_keys = [
-  'BASE_URL',
+  'BASE_URL', 'DATA_BACKGROUND', 'SEARCH_INDEX',
   'CELERY_BROKER', 'CELERY_RESULT_BACKEND', 'CELERY_CACHE_BACKEND', 'CELERY_PING',
   'REDIS_HOST',
   'AMAZON_ACCESS_KEY_ID', 'AMAZON_SECRET_ACCESS_KEY', 'AMAZON_ASSOCIATE_TAG',
@@ -82,7 +82,7 @@ env_keys = [
 ]
 for key in env_keys:
 	if os.environ.get(key):
-		if key in {'CELERY_PING'}:
+		if key in {'CELERY_PING', 'DATA_BACKGROUND', 'SEARCH_INDEX'}:
 			value = os.environ[key]
 			if value.lower().startswith('t'):
 				globals()[key] = True

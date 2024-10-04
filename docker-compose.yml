@@ -21,6 +21,7 @@ services:
       - REDIS_HOST=redis
       - DATA_BACKGROUND=true
       - CELERY_PING=false
+      - SEARCH_INDEX
       - VIRTUAL_HOST
       - VIRTUAL_PORT
       - AMAZON_ACCESS_KEY_ID
@@ -39,6 +40,7 @@ services:
       com.joyent.package: g4-highcpu-256M
     restart: always
     environment:
+      - SEARCH_INDEX
       - REDIS_HOST=redis
       - AMAZON_ACCESS_KEY_ID
       - AMAZON_SECRET_ACCESS_KEY

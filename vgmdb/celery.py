@@ -1,6 +1,7 @@
 from __future__ import absolute_import
 
 from celery import Celery
+from celery.signals import celeryd_init
 from . import config
 
 broker = config.CELERY_BROKER
@@ -14,6 +15,12 @@ celery = Celery('vgmdb.celery',
 celery.conf.update(
 	CELERY_CACHE_BACKEND=cache
 )
+
+@celeryd_init.connect
+def generate_search_index(*args, **kwargs):
+	if config.SEARCH_INDEX:
+		import vgmdb.parsers.search
+		vgmdb.parsers.search.generate_search_index()
 
 if __name__ == '__main__':
 	celery.start()

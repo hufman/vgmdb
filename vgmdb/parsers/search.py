@@ -1,5 +1,7 @@
 import bs4
 
+import json
+import logging
 import random
 import re
 import sys
@@ -7,13 +9,41 @@ import time
 from . import utils
 import urllib
 
+logger = logging.getLogger(__name__)
+
 class AppURLOpener(urllib.FancyURLopener):
 	version = "vgmdbapi/0.2 +https://vgmdb.info"
 urllib._urlopener = AppURLOpener()
 
+SEARCH_INDEX = {}
+
+def generate_search_index():
+	import vgmdb.fetch
+	logger.info("Starting to build search index")
+	start = time.time()
+	for list, section in (('albumlist', 'albums'), ('artistlist', 'artists')):
+		SEARCH_INDEX[section] = []
+		for letter in '#ABCDEFGHIJKLMNOPQRSTUVWXYZ':
+			data = vgmdb.fetch.list(list, letter, use_celery=False)
+			SEARCH_INDEX[section].extend(data[section])
+	data = vgmdb.fetch.list('orglist', '', use_celery=False)
+	SEARCH_INDEX['orgs'] = []
+	for letter_data in data['orgs'].values():
+		SEARCH_INDEX['orgs'].extend(letter_data)
+	data = vgmdb.fetch.list('productlist', '', use_celery=False)
+	SEARCH_INDEX['products'] = data['products']
+
+	count = 0
+	for section_data in SEARCH_INDEX.values():
+		count += len(section_data)
+	logger.info("Building index of %s items took %s" % (count, time.time() - start))
+
 def fetch_url(query):
 	return 'https://vgmdb.net/search?q=%s'%(urllib.quote(query))
 def fetch_page(query, retries=2):
+	if SEARCH_INDEX:
+		return search_locally(query)
+
 	try:
 		url = fetch_url(query)
 		page = urllib.urlopen(url)
@@ -30,6 +60,32 @@ def fetch_page(query, retries=2):
 		data = data.decode('utf-8', 'ignore')
 		return data
 	return masquerade(url, page)
+
+def search_locally(query):
+	sections = {'albums':[],
+	            'artists':[],
+	            'orgs':[],
+	            'products':[]}
+
+	start = time.time()
+	pieces = [re.escape(p) for p in query.split()]
+	needle = re.compile(".{,20}".join(pieces), re.I)
+	for section, data in SEARCH_INDEX.iteritems():
+		for item in data:
+			# albums
+			if any(needle.search(t) for t in item.get('titles', {}).values()):
+				sections[section].append(item)
+			# others
+			if any(needle.search(t) for t in item.get('names', {}).values()):
+				sections[section].append(item)
+	logger.debug("Searching locally took %s" % (time.time() - start,))
+	fake = {
+	    "meta":{},
+	    "query":query,
+	    "results":sections,
+	    "sections":sorted(sections.keys())
+	}
+	return fake
 
 def masquerade(url, page):
 	import urlparse
