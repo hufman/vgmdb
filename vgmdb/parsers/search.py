@@ -70,16 +70,17 @@ def search_locally(query):
 
 	start = time.time()
 	pieces = [re.escape(p) for p in query.split()]
-	needle = re.compile(".{,20}".join(pieces), re.I)
+	substrings = ["(?=.*%s)"%(p,) for p in pieces]
+	needle = re.compile("".join(substrings), re.I)
 	for section, data in SEARCH_INDEX.iteritems():
 		for item in data:
 			# albums
-			if any(needle.search(t) for t in item.get('titles', {}).values()):
+			if any(needle.match(t) for t in item.get('titles', {}).values()):
 				sections[section].append(item)
 			# others
-			if any(needle.search(t) for t in item.get('names', {}).values()):
+			elif any(needle.match(t) for t in item.get('names', {}).values()):
 				sections[section].append(item)
-	logger.debug("Searching locally took %s" % (time.time() - start,))
+	logger.debug("Searching for %s locally took %s" % (pieces, time.time() - start,))
 	fake = {
 	    "meta":{},
 	    "query":query,
