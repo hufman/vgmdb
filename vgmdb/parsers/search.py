@@ -1,6 +1,5 @@
 import bs4
 
-import json
 import logging
 import random
 import re
@@ -21,17 +20,19 @@ def generate_search_index():
 	import vgmdb.fetch
 	logger.info("Starting to build search index")
 	start = time.time()
-	for list, section in (('albumlist', 'albums'), ('artistlist', 'artists')):
+	for list, section in (('albumlist', 'albums'), ('artistlist', 'artists'), ('productlist', 'products')):
 		SEARCH_INDEX[section] = []
 		for letter in '#ABCDEFGHIJKLMNOPQRSTUVWXYZ':
-			data = vgmdb.fetch.list(list, letter, use_celery=False)
-			SEARCH_INDEX[section].extend(data[section])
+			id = letter + '1'
+			while id:
+				logger.info('... %s/%s' % (list, id))
+				data = vgmdb.fetch.list(list, id, use_celery=False)
+				SEARCH_INDEX[section].extend(data[section])
+				id = data['pagination'].get('link_next', '/').split('/')[-1]  # next page
 	data = vgmdb.fetch.list('orglist', '', use_celery=False)
 	SEARCH_INDEX['orgs'] = []
 	for letter_data in data['orgs'].values():
 		SEARCH_INDEX['orgs'].extend(letter_data)
-	data = vgmdb.fetch.list('productlist', '', use_celery=False)
-	SEARCH_INDEX['products'] = data['products']
 
 	count = 0
 	for section_data in SEARCH_INDEX.values():
