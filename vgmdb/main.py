@@ -100,11 +100,11 @@ def do_page(page_type, info, filterkey=None):
 def info(type,id):
 	return do_page(type, vgmdb.fetch.info(type,id))
 
-@route('/<type:re:(albumlist|artistlist|productlist)>/<id:re:[#A-Z]>')
+@route('/<type:re:(albumlist|artistlist|productlist)>/<id:re:[#A-Z][0-9]*>')
 @route('/<type:re:(albumlist|artistlist|productlist)>/')
 @route('/<type:re:(albumlist|artistlist|productlist)>')
 @catch_exceptions
-def list(type,id='A'):
+def list(type,id='A1'):
 	return do_page(type, vgmdb.fetch.list(type,id))
 
 @route('/<type:re:(orglist)>/<filterkey:re:[#A-Z]>')

@@ -23,7 +23,8 @@
 		]}},
 		"link": { "$ref": "common.json#/definitions/link" },
 		"meta": {},
+		"pagination": { "$ref": "common.json#/definitions/pagination" },
 		"vgmdb_link": { "$ref": "common.json#/definitions/url" }
 	},
-	"required": [ "artists", "letters", "link", "meta", "vgmdb_link" ]
+	"required": [ "artists", "letters", "link", "meta", "pagination", "vgmdb_link" ]
 }

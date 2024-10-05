@@ -21,7 +21,13 @@ def parse_page(html_source):
 	for soup_row in soup_table.find_all('tr')[1:]:
 		productlist_info['products'].append(_parse_product(soup_row))
 	
-	# parse page meat
+	# pagination row after the table
+	page_count = 1
+	soup_pagination = soup_innermain.find('div', {'class': 'pagenav'}, recursive=True)
+	if soup_pagination:
+		page_count = utils.pagination_last_page(soup_pagination)
+	
+	# parse page meta
 	productlist_info['meta'] = {}
 	soup_navbar = soup_innermain.find_all('div', recursive=False)[1]
 	soup_sections = soup_navbar.find_all('div', recursive=False)
@@ -35,6 +41,7 @@ def parse_page(html_source):
 		if soup_letter.strong:
 			letter = unicode(soup_letter.strong.string)
 		productlist_info['letters'].append(letter)
+	productlist_info['pagination'] = {'last': page_count}
 	
 	return productlist_info
 

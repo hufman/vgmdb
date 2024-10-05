@@ -11,7 +11,16 @@
   <div>
     <ul class="inline">
       {% for letter in data.letters -%}
+      {% if data.link is defined and data.link.startswith("productlist/" + letter) %}<li>{{letter}}</li>{% else -%}
       <li><a href="productlist/{{letter | urlencode}}">{{letter}}</a></li>
+      {% endif -%}
+      {% endfor -%}
+    </ul>
+    <ul class="inline">
+      {% for page in range(1, data.pagination.last + 1) -%}
+      {% if data.pagination.link_first is not defined or data.pagination.current == page %}<li>{{page}}</li>{% else -%}
+      <li><a href="{{data.pagination.link_first[0:13]}}{{page}}">{{page}}</a></li>
+      {% endif -%}
       {% endfor -%}
     </ul>
   </div>

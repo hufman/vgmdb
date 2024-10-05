@@ -25,7 +25,13 @@ def parse_page(html_source):
 	for column in artist_columns:
 		artistlist_info['artists'].extend(column)
 
-	# parse page meat
+	# pagination row after the table
+	page_count = 1
+	soup_pagination = soup_innermain.find('div', {'class': 'pagenav'}, recursive=True)
+	if soup_pagination:
+		page_count = utils.pagination_last_page(soup_pagination)
+	
+	# parse page meta
 	artistlist_info['meta'] = {}
 	soup_navbar = soup_innermain.parent.div
 	soup_metadata = soup_navbar.div
@@ -35,6 +41,7 @@ def parse_page(html_source):
 	for soup_letter in soup_letters.find_all('li'):
 		letter = unicode(soup_letter.a.h3.string)
 		artistlist_info['letters'].append(letter)
+	artistlist_info['pagination'] = {'last': page_count}
 
 	return artistlist_info
 

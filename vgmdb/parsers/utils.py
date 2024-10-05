@@ -32,7 +32,10 @@ def fetch_info_page(type, id):
 	return fetch_page(url_info_page(type, id))
 
 def url_list_page(type, id):
-	return 'https://vgmdb.net/db/%s.php?ltr=%s&field=title&perpage=9999'%(type,id)
+	page = 1
+	if len(id) > 1:
+		page = int(id[1:])
+	return 'https://vgmdb.net/db/%s.php?ltr=%s&field=title&perpage=100&page=%s'%(type,id,page)
 def fetch_list_page(type, id):
 	return fetch_page(url_list_page(type, id))
 
@@ -383,6 +386,14 @@ def parse_discography(soup_disco_table, label_type='roles'):
 			albums.append(album_info)
 	albums = sorted(albums, key=lambda e:e['date'])
 	return albums
+
+def pagination_last_page(soup_pagination):
+	""" soup_pagination = soup_innermain.find('div', {'class': 'pagenav'}, recursive=True) """
+	last_page = 1
+	control = soup_pagination.find('td', {'class': 'vbmenu_control'})
+	if control:
+		last_page = int(control.string.strip().split()[-1])
+	return last_page
 
 def parse_meta(soup_meta_section):
 	meta_info = {}

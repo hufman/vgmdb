@@ -97,7 +97,7 @@ for name in ['artist','album','product','release','event','org']:
 	func.__name__ = name
 	locals()[name] = func
 
-def list(page_type, id='A', use_cache=True, use_celery=True):
+def list(page_type, id='A1', use_cache=True, use_celery=True):
 	""" Loads an information list page
 
 	@param page_type says which specific type of page
@@ -105,17 +105,19 @@ def list(page_type, id='A', use_cache=True, use_celery=True):
 		orglist eventlist
 	@param id is which specific item to load
 		orglist and eventlist ignore the id
-		id will default to 'A' if not passed
+		id will default to 'A1' if not passed
 	@param use_cache can be set to False to ignore any cached data
 	@param use_celery can be set to False to specifically not load data from the background
 	"""
-	cache_key = 'vgmdb/%s/%s'%(page_type,id)
-	if page_type in ['orglist', 'eventlist']:	# complete pages
-		cache_key = 'vgmdb/%s'%(page_type,)
 	if id:
+		if len(id) == 1:
+			id = id + '1'  # add a page number
 		link = '%s/%s'%(page_type, _urllib.quote(str(id)))
 	else:
 		link = '%s'%(page_type,)
+	cache_key = 'vgmdb/%s/%s'%(page_type,id)
+	if page_type in ['orglist', 'eventlist']:	# complete pages
+		cache_key = 'vgmdb/%s'%(page_type,)
 	return _fetch_page(cache_key, page_type, id, link, use_cache, use_celery)
 _list_aliaser = lambda page_type: lambda id='A',use_cache=True: list(page_type, id, use_cache)
 for name in ['albumlist','artistlist','productlist','orglist','eventlist']:

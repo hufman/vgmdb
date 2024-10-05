@@ -173,6 +173,19 @@
 			},
 			"required": ["added_date", "edited_date", "ttl", "visitors"]
 		},
+		"pagination": {
+			"title": "Pagination information",
+			"type": "object",
+			"properties": {
+				"current": { "title": "Current page index", "type": "integer" },
+				"last": { "title": "Last page index", "type": "integer" },
+				"link_first": { "title": "First page link", "$ref": "#/definitions/link" },
+				"link_last": { "title": "Last page link", "$ref": "#/definitions/link" },
+				"link_prev": { "title": "Previous page link", "$ref": "#/definitions/link" },
+				"link_next": { "title": "Next page link", "$ref": "#/definitions/link" }
+			},
+			"required": ["current", "last", "link_first", "link_last"]
+		},
 		"albumArt": {
 			"title": "Various album art pictures",
 			"type": "object",

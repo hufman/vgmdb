@@ -1,4 +1,5 @@
 """ Loads vgmdb data and saves it to cache """
+import re as _re
 import urllib as _urllib
 import base64 as _base64
 
@@ -47,11 +48,27 @@ def request_page(cache_key, page_type, id, link=None):
 	if info != None:
 		if link:
 			info['link'] = link
+			_add_pagination_links(link, info)
 		if fetch_url:
 			info['vgmdb_link'] = fetch_url(id)
 		_calculate_ttl(info)
 		_vgmdb.cache.set(cache_key, info)
 	return info
+
+def _add_pagination_links(link, info):
+	result = _re.match('(.*/[#A-Z])(\d+)?', link)
+	if 'pagination' in info and result:
+		mainlink = result.group(1)
+		page = 1
+		if result.group(2):
+			page = int(result.group(2))
+		info['pagination']['current'] = page
+		info['pagination']['link_first'] = mainlink + '1'
+		info['pagination']['link_last'] = mainlink + str(info['pagination']['last'])
+		if page > 1:
+			info['pagination']['link_prev'] = mainlink + str(page-1)
+		if page < info['pagination']['last']:
+			info['pagination']['link_next'] = mainlink + str(page+1)
 
 def _calculate_ttl(info):
 	ttl = 24 * 60 * 60	# 1 day default
