@@ -17,6 +17,9 @@ python-binary-memcached==0.26
 python-memcached==1.57
 simplejson==3.3.0
 
+# search index
+bloom-filter==1.3.3
+
 # Only needed for amazon seller provider
 amightygirl.paapi5-python-sdk==1.0.0
 
