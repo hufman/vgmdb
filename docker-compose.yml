@@ -21,7 +21,6 @@ services:
       - REDIS_HOST=redis
       - DATA_BACKGROUND=true
       - CELERY_PING=false
-      - SEARCH_INDEX
       - VIRTUAL_HOST
       - VIRTUAL_PORT
       - AMAZON_ACCESS_KEY_ID
