@@ -4,7 +4,7 @@
 {% endblock %}
 {% block title %}
     <h1>Search Results</h1>
-    <h3>Searched for {{data.query}}</h3>
+    <h3>Searched for {{data.query.decode('utf-8')}}</h3>
 {% endblock %}
 {% block quickinfo %}
 {% endblock %}
@@ -30,6 +30,9 @@
       {% for artist in data.results['artists'] -%}
       <li resource="{{artist.link | linkhref}}#subject" typeof="schema:MusicGroup">
         <span class="names">{{artist.names | lang_names | link(artist.link)}}</span>
+        {% if artist.name_real -%}
+        <small>({{artist.name_real}})</small>
+        {% endif -%}
         {% if artist.aliases -%}
         <small><ul class="inline slashlist" style="display:inline">
           {% for alias in artist.aliases -%}
