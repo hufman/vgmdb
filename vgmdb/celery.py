@@ -4,6 +4,9 @@ from celery import Celery
 from celery.signals import celeryd_init
 from . import config
 
+import logging
+logging.basicConfig(level=logging.INFO)
+
 broker = config.CELERY_BROKER
 result = config.CELERY_RESULT_BACKEND
 cache = config.CELERY_CACHE_BACKEND
