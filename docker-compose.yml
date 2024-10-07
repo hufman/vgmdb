@@ -5,7 +5,7 @@ services:
       com.joyent.package: g4-highcpu-256M
     restart: always
     environment:
-      - REDIS_EXTRA_FLAGS=--maxmemory 200mb --maxmemory-policy volatile-lru
+      - REDIS_EXTRA_FLAGS=--maxmemory 400mb --maxmemory-policy volatile-lru
       - ALLOW_EMPTY_PASSWORD=yes
   vgmdb_web:
     image: hufman/vgmdb_web:latest

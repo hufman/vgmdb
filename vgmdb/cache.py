@@ -122,9 +122,12 @@ class RedisCache(object):
 		except:
 			return None
 	def __setitem__(self, key, value):
-		ttl = 86400 * 29  # 29 days
 		try:
-			self._cache.set(key, pickle.dumps(value,-1), ex=ttl)
+			if key.startswith('albumlist') or key.startswith('artistlist') or key.startswith('orglist') or key.startwith('eventlist'):
+				self._cache.set(key, pickle.dumps(value,-1))
+			else:
+				ttl = 86400 * 29  # 29 days
+				self._cache.set(key, pickle.dumps(value,-1), ex=ttl)
 		except:
 			pass
 	def __delitem__(self, key):
