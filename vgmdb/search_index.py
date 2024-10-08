@@ -1,5 +1,6 @@
 from itertools import combinations
 import logging
+import os
 import re
 import time
 from . import cache
@@ -13,6 +14,35 @@ SEARCH_INDEX = {}
 
 
 # Bloom Filter Helpers
+def _copy_filter(src, dst):
+	assert src.backend.num_bits == dst.backend.num_bits
+	logger.info("Loading %s bits"%(src.backend.num_bits,))
+	count = 0
+	for bitno in xrange(src.backend.num_bits):
+		if src.backend.is_set(bitno):
+			count += 1
+			#dst.backend.set(bitno)
+		#else:
+		#	dst.backend.clear(bitno)
+	logger.info("Loaded %s/%s=%s bits"%(count, src.backend.num_bits, count/src.backend.num_bits))
+def _load_filter(name, capacity):
+	result = BloomFilter(max_elements=capacity, error_rate=0.1)
+	try:
+		source = BloomFilter(max_elements=capacity, error_rate=0.1, filename='/data/%s.blm'%(name,))
+		_copy_filter(source, result)
+	except:
+		raise
+		if os.path.exists('/data/%s.blm'%(name,)):
+			logger.error("Failed to load bloom filter /data/%s.blm"%(name,))
+	return result
+def _save_filter(name, filter):
+	try:
+		output = BloomFilter(max_elements=filter.max_elements, error_rate=filter.error_rate, filename='/data/%s.blm'%(name,))
+		_copy_filter(filter, output)
+	except:
+		raise
+		logger.error("Failed to save bloom filter /data/%s.blm"%(name,))
+
 def _add_keyword(bloom_filter, keyword):
 	keyword = keyword.lower()
 	length = len(keyword)
@@ -45,7 +75,7 @@ def generate_search_index():
 
 	for list, section in (('albumlist', 'albums'), ('artistlist', 'artists'), ('productlist', 'products')):
 		bloom_elements = 100000000 if section == 'albums' else 1000000
-		BLOOM_INDEX[section] = BloomFilter(max_elements=bloom_elements, error_rate=0.1)
+		BLOOM_INDEX[section] = _load_filter(section, bloom_elements)
 		SEARCH_INDEX[section] = []
 		for letter in '#ABCDEFGHIJKLMNOPQRSTUVWXYZ':
 			id = letter + '1'
@@ -55,14 +85,16 @@ def generate_search_index():
 				SEARCH_INDEX[section].extend(data[section])
 				_add_items(BLOOM_INDEX[section], data[section])
 				id = data['pagination'].get('link_next', '/').split('/')[-1]  # next page
+		_save_filter(section, BLOOM_INDEX[section])
 
 	data = vgmdb.fetch.list('orglist', '', use_celery=False)
 	SEARCH_INDEX['orgs'] = []
 	for letter_data in data['orgs'].values():
 		SEARCH_INDEX['orgs'].extend(letter_data)
 	# insert into bloom filter
-	BLOOM_INDEX['orgs'] = BloomFilter(max_elements=100000, error_rate=0.1)
+	BLOOM_INDEX['orgs'] = _load_filter('orgs', 100000)
 	_add_items(BLOOM_INDEX['orgs'], SEARCH_INDEX['orgs'])
+	_save_filter('orgs', BLOOM_INDEX['orgs'])
 
 	cache.cache = orig_cache
 
