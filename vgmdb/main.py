@@ -13,8 +13,8 @@ import vgmdb.output
 
 
 if vgmdb.config.SEARCH_INDEX:
-	import vgmdb.parsers.search
-	vgmdb.parsers.search.generate_search_index()
+	import vgmdb.search_index
+	vgmdb.search_index.generate_search_index()
 
 
 @route('/hello')

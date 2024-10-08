@@ -136,6 +136,45 @@ class RedisCache(object):
 		except:
 			pass
 
+class FileCache(object):
+	def __init__(self, path):
+		self._path = path
+	def _filepath(self, key):
+		return os.path.join(self._path, key.replace('/', '_'))
+	def __getitem__(self, key):
+		try:
+			with open(self._filepath(key)) as handle:
+				return json.load(handle)
+		except:
+			pass
+	def __setitem__(self, key, value):
+		try:
+			with open(self._filepath(key), 'w') as handle:
+				json.dump(value, handle)
+		except:
+			raise
+			pass
+	def __delitem__(self, key):
+		try:
+			os.remove(self._filepath(key))
+		except:
+			pass
+
+class MultiCache(object):
+	def __init__(self, backing):
+		self._backing = backing
+	def __getitem__(self, key):
+		for backing in self._backing:
+			value = backing[key]
+			if value:
+				return value
+	def __setitem__(self, key, value):
+		for backing in self._backing:
+			backing[key] = value
+	def __delitem__(self, key):
+		for backing in self._backing:
+			del backing[key]
+
 cache = None
 
 if not cache and gaecache:
