@@ -9,12 +9,19 @@ import vgmdb.fetch
 import vgmdb.sellers
 
 import vgmdb.config
+import vgmdb.metrics
+from vgmdb.metrics import instrumented
 import vgmdb.output
 
 
 if vgmdb.config.SEARCH_INDEX:
 	import vgmdb.parsers.search
 	vgmdb.parsers.search.generate_search_index()
+
+if vgmdb.config.STATSD_HOST:
+	host, port = vgmdb.config.STATSD_HOST.split(':', 1)
+	port = int(port)
+	vgmdb.metrics.initialize(host, port)
 
 
 @route('/hello')
@@ -97,6 +104,7 @@ def do_page(page_type, info, filterkey=None):
 
 @route('/<type:re:(artist|album|product|release|event|org)>/<id:int>')
 @catch_exceptions
+@instrumented
 def info(type,id):
 	return do_page(type, vgmdb.fetch.info(type,id))
 
@@ -104,6 +112,7 @@ def info(type,id):
 @route('/<type:re:(albumlist|artistlist|productlist)>/')
 @route('/<type:re:(albumlist|artistlist|productlist)>')
 @catch_exceptions
+@instrumented
 def list(type,id='A1'):
 	return do_page(type, vgmdb.fetch.list(type,id))
 
@@ -112,6 +121,7 @@ def list(type,id='A1'):
 @route('/<type:re:(orglist|eventlist)>/')
 @route('/<type:re:(orglist|eventlist)>')
 @catch_exceptions
+@instrumented(name='list')
 def singlelist(type,filterkey=None):
 	return do_page(type, vgmdb.fetch.list(type, filterkey), filterkey=filterkey)
 
@@ -120,6 +130,7 @@ def singlelist(type,filterkey=None):
 @route('/search/<query>')
 @route('/search')
 @catch_exceptions
+@instrumented(page_type='')
 def search(type=None, query=None):
 	# Handle the case of /search/albums?q=
 	if query in ['albums','artists','orgs','products']:
@@ -131,6 +142,7 @@ def search(type=None, query=None):
 @route('/recent/<type:re:(albums|media|tracklists|scans|artists|products|labels|links|ratings)>')
 @route('/recent')
 @catch_exceptions
+@instrumented
 def recent(type='albums'):
 	return do_page('recent', vgmdb.fetch.recent(type))
 
@@ -142,6 +154,7 @@ def about():
 	return outputter('about', {}, None)
 
 @route('/<type:re:(album|artist)>/<id:int>/sellers')
+@instrumented
 def sellers(type,id):
 	allow_partial = False or request.query.get('allow_partial')
 	sellers = vgmdb.sellers.search(type,id, start_search=True, wait=True, allow_partial=allow_partial)

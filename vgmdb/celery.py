@@ -2,7 +2,7 @@ from __future__ import absolute_import
 
 from celery import Celery
 from celery.signals import celeryd_init
-from . import config
+from . import config, metrics
 
 import logging
 logging.basicConfig(level=logging.INFO)
@@ -26,4 +26,9 @@ def generate_search_index(*args, **kwargs):
 		vgmdb.parsers.search.generate_search_index()
 
 if __name__ == '__main__':
+	if config.STATSD_HOST:
+		host, port = config.STATSD_HOST.split(':', 1)
+		port = int(port)
+		metrics.initialize(host, port)
+
 	celery.start()

@@ -23,6 +23,7 @@ import vgmdb.parsers.recent
 
 import vgmdb.cache
 import vgmdb.config
+from vgmdb.metrics import instrumented, timed
 
 import logging
 logger = logging.getLogger(__name__)
@@ -41,10 +42,12 @@ def request_page(cache_key, page_type, id, link=None):
 	info = None
 	module = getattr(_vgmdb.parsers, page_type)
 	fetch_url = getattr(module, "fetch_url")
-	fetch_page = getattr(module, "fetch_page")
-	parse_page = getattr(module, "parse_page")
-	data = fetch_page(id)
-	info = parse_page(data)
+	with timed('data.fetch', tags={'page_type': page_type}):
+		fetch_page = getattr(module, "fetch_page")
+		data = fetch_page(id)
+	with timed('data.parse', tags={'page_type': page_type}):
+		parse_page = getattr(module, "parse_page")
+		info = parse_page(data)
 	if info != None:
 		if link:
 			info['link'] = link
@@ -88,6 +91,7 @@ def _calculate_ttl(info):
 			logger.warning("Failed to update data ttl for %s: %s" % (info.get('link'), e))
 		info['meta']['ttl'] = ttl
 
+@instrumented
 def info(page_type, id):
 	""" Loads an information page
 
@@ -104,6 +108,7 @@ for name in ['artist','album','product','release','event','org']:
 	func.__name__ = name
 	locals()[name] = func
 
+@instrumented
 def list(page_type, id='A'):
 	""" Loads an information list page
 
@@ -128,6 +133,7 @@ for name in ['albumlist','artistlist','productlist','orglist','eventlist']:
 	func.__name__ = name
 	locals()[name] = func
 
+@instrumented(page_type='')
 def search(page_type, query):
 	""" Loads an search page
 
@@ -151,6 +157,7 @@ for name in ['albums','artists','orgs','products']:
 	func.__name__ = func_name
 	locals()[func_name] = func
 
+@instrumented
 def recent(page_type):
 	""" Loads a list of recent edits
 

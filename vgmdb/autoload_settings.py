@@ -72,7 +72,7 @@ if 'MEMCACHE_SERVERS' in globals():
 
 # try to load some keys from environment
 env_keys = [
-  'BASE_URL', 'DATA_BACKGROUND', 'SEARCH_INDEX',
+  'BASE_URL', 'DATA_BACKGROUND', 'SEARCH_INDEX', 'STATSD_HOST',
   'CELERY_BROKER', 'CELERY_RESULT_BACKEND', 'CELERY_CACHE_BACKEND', 'CELERY_PING',
   'REDIS_HOST',
   'AMAZON_ACCESS_KEY_ID', 'AMAZON_SECRET_ACCESS_KEY', 'AMAZON_ASSOCIATE_TAG',
@@ -106,3 +106,8 @@ if 'CELERY_RESULT_BACKEND' not in globals() and 'REDIS_HOST' in globals():
 if 'CELERY_CACHE_BACKEND' not in globals() and 'MEMCACHE_SERVERS' in globals():
 	CELERY_CACHE_BACKEND = 'memcached://%s/' % (';'.join(MEMCACHE_SERVERS), )
 	logger.info("Guessing Celery cache backend at: %s" % (CELERY_CACHE_BACKEND,))
+
+# make sure StatsD host has a port
+if 'STATSD_HOST' in globals():
+	if ':' not in STATSD_HOST:
+		STATSD_HOST = STATSD_HOST + ":8125"
