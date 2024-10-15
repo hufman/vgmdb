@@ -24,11 +24,10 @@ def generate_search_index(*args, **kwargs):
 	if config.SEARCH_INDEX:
 		import vgmdb.parsers.search
 		vgmdb.parsers.search.generate_search_index()
-
-if __name__ == '__main__':
 	if config.STATSD_HOST:
 		host, port = config.STATSD_HOST.split(':', 1)
 		port = int(port)
 		metrics.initialize(host, port)
 
+if __name__ == '__main__':
 	celery.start()
