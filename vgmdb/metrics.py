@@ -35,7 +35,6 @@ def instrumented(*args, **dec_kwargs):
 			tags = {'method': name}
 			if page_type:
 				tags['page_type'] = page_type
-			client.incr("%s.count"%(module,), tags=tags)
 			with timed(module, tags):
 				return func(*args, **kwargs)
 		return hook
@@ -55,6 +54,7 @@ class timed(object):
 	def __enter__(self):
 		if self.timer:
 			self.timer.start()
+			client.incr("%s.count"%(self.name,), tags=self.tags)
 			client.incr("%s.exceptions"%(self.name,), count=0, tags=self.tags)
 
 	def __exit__(self, typ, value, tb):
