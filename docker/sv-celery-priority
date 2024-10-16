@@ -1,2 +1,3 @@
 #!/bin/sh
+export SEARCH_INDEX=false
 exec su -s /bin/sh www-data -c "/usr/local/bin/celery worker --maxtasksperchild=100 --time-limit=300 --concurrency=3 --app=vgmdb --loglevel=DEBUG --workdir=/ --config=celery --hostname=vgmdb-priority.%h --queues=celery"
