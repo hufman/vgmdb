@@ -11,6 +11,7 @@ import vgmdb._tasks
 
 import vgmdb.cache
 import vgmdb.config
+import vgmdb.metrics as _metrics
 
 _vgmdb = vgmdb
 del vgmdb
@@ -29,15 +30,19 @@ def _fetch_page(cache_key, page_type, id, link=None, use_cache=True, use_celery=
 	"""
 	info = None
 	prevdata = None
+	_metrics.incr('fetch.count', tags={'page_type': page_type})
 	if use_cache:
 		prevdata = _vgmdb.cache.get(cache_key)
 	if prevdata:
+		_metrics.incr('fetch.cache_hit', tags={'page_type': page_type})
 		info = prevdata
 		if not _is_info_current(info):
+			_metrics.incr('fetch.cache_refresh', tags={'page_type': page_type})
 			task = _vgmdb._tasks.request_page
 			running = task.apply_async(args=[cache_key, page_type, id, link], queue='background')
 	else:
 		# if we should try to load over Celery
+		_metrics.incr('fetch.cache_miss', tags={'page_type': page_type})
 		if use_celery and getattr(_vgmdb.config, 'DATA_BACKGROUND', False):
 			alive = True	# assume it's accessible
 			if getattr(_vgmdb.config, 'CELERY_PING', False):
@@ -46,6 +51,7 @@ def _fetch_page(cache_key, page_type, id, link=None, use_cache=True, use_celery=
 			if not alive:
 				# load synchronously
 				_logger.warning('Celery is unavailable but DATA_BACKGROUND requested!')
+				_metrics.incr('fetch.celery_unresponsive', tags={'page_type': page_type})
 				info = _vgmdb.data.request_page(cache_key, page_type, id, link)
 			else:
 				task = _vgmdb._tasks.request_page

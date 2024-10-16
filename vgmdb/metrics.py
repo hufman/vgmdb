@@ -63,3 +63,19 @@ class timed(object):
 			if typ:
 				client.incr("%s.exceptions"%(self.name,), tags=self.tags)
 		# bubble any exception
+
+def incr(name, count=1, tags=None):
+	if client:
+		client.incr(name, count=count, tags=tags)
+
+def decr(name, count=1, tags=None):
+	if client:
+		client.decr(name, count=count, tags=tags)
+
+def gauge(name, value, delta=False, tags=None):
+	if client:
+		client.gauge(name, value, delta=delta, tags=tags)
+
+def set(name, value, tags=None):
+	if client:
+		client.set(name, value, tags=tags)
