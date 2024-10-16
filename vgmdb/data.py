@@ -75,10 +75,11 @@ def _add_pagination_links(link, info):
 
 def _calculate_ttl(info):
 	ttl = 24 * 60 * 60	# 1 day default
+	fetched_date = _datetime.now()
+	if 'meta' in info:
+		info['meta']['fetched_date'] = fetched_date.strftime('%Y-%m-%dT%H:%M')
 	if 'meta' in info and 'edited_date' in info['meta']:
 		try:
-			fetched_date = _datetime.now()
-			info['meta']['fetched_date'] = fetched_date.strftime('%Y-%m-%dT%H:%M')
 			edited_date = _datetime.strptime(info['meta']['edited_date'], '%Y-%m-%dT%H:%M')
 			date_diff = fetched_date - edited_date
 			if date_diff.total_seconds() < 7 * 24 * 60 * 60:	# 1 week
