@@ -124,7 +124,8 @@ class RedisCache(object):
 	def __setitem__(self, key, value):
 		try:
 			if key.startswith('vgmdb/albumlist') or key.startswith('vgmdb/artistlist') or \
-			        key.startswith('vgmdb/orglist') or key.startswith('vgmdb/eventlist'):
+			        key.startswith('vgmdb/orglist') or key.startswith('vgmdb/eventlist') or \
+                                key.startswith('vgmdb/productlist'):
 				self._cache.set(key, pickle.dumps(value,-1))
 			else:
 				ttl = 86400 * 29  # 29 days
