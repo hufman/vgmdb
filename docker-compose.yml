@@ -1,6 +1,8 @@
 services:
   redis:
     image: bitnami/redis:latest
+    ports:
+      - "6379:6379"
     labels:
       com.joyent.package: g4-highcpu-256M
     restart: always
