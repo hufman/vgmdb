@@ -30,25 +30,25 @@ jobs:
           echo "${{ secrets.DOCKER_KEY }}" >> .docker/key.pem
           echo "${{ secrets.DOCKER_CERT }}" >> .docker/cert.pem
           echo "${{ secrets.DOCKER_CA }}" >> .docker/ca.pem
-      - name: Deploy the services (x64)
-        run: |
-          docker compose -p vgmdbapi pull --quiet
-      - name: Restart the services (x64)
-        run: |
-          docker compose -p vgmdbapi up --detach --scale vgmdb_web=1 --scale vgmdb_celery=1 &&
-          docker compose -p vgmdbapi rm
-        env:
-          VIRTUAL_HOST: stg.vgmdb.info
-          VIRTUAL_PORT: 80
-          STATSD_HOST: "dsig-telegraf"
-          AMAZON_ACCESS_KEY_ID: "${{ secrets.AMAZON_ACCESS_KEY_ID }}"
-          AMAZON_SECRET_ACCESS_KEY: "${{ secrets.AMAZON_SECRET_ACCESS_KEY }}"
-          AMAZON_ASSOCIATE_TAG: "${{ secrets.AMAZON_ASSOCIATE_TAG }}"
-          ITUNES_AFFILIATE_ID: "${{ secrets.ITUNES_AFFILIATE_ID }}"
-          DISCOGS_KEY: "${{ secrets.DISCOGS_KEY }}"
-          DISCOGS_SECRET: "${{ secrets.DISCOGS_SECRET }}"
-          SPOTIFY_ID: "${{ secrets.SPOTIFY_ID }}"
-          SPOTIFY_SECRET: "${{ secrets.SPOTIFY_SECRET }}"
+      # - name: Deploy the services (x64)
+      #   run: |
+      #     docker compose -p vgmdbapi pull --quiet
+      # - name: Restart the services (x64)
+      #   run: |
+      #     docker compose -p vgmdbapi up --detach --scale vgmdb_web=1 --scale vgmdb_celery=1 &&
+      #     docker compose -p vgmdbapi rm
+      #   env:
+      #     VIRTUAL_HOST: stg.vgmdb.info
+      #     VIRTUAL_PORT: 80
+      #     STATSD_HOST: "dsig-telegraf"
+      #     AMAZON_ACCESS_KEY_ID: "${{ secrets.AMAZON_ACCESS_KEY_ID }}"
+      #     AMAZON_SECRET_ACCESS_KEY: "${{ secrets.AMAZON_SECRET_ACCESS_KEY }}"
+      #     AMAZON_ASSOCIATE_TAG: "${{ secrets.AMAZON_ASSOCIATE_TAG }}"
+      #     ITUNES_AFFILIATE_ID: "${{ secrets.ITUNES_AFFILIATE_ID }}"
+      #     DISCOGS_KEY: "${{ secrets.DISCOGS_KEY }}"
+      #     DISCOGS_SECRET: "${{ secrets.DISCOGS_SECRET }}"
+      #     SPOTIFY_ID: "${{ secrets.SPOTIFY_ID }}"
+      #     SPOTIFY_SECRET: "${{ secrets.SPOTIFY_SECRET }}"
       - name: Deploy the services (arm)
         run: |
           docker compose -p vgmdbapi pull --quiet
