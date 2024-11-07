@@ -2,7 +2,7 @@
 
 import os
 
-DEBUG = os.environ.get('DEBUG', 'True')
+DEBUG = os.environ.get('DEBUG', 'False')
 
 import logging
 if DEBUG.lower().startswith('t'):
