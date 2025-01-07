@@ -56,7 +56,7 @@ jobs:
           DOCKER_HOST: "${{ secrets.DOCKER_HOST_2 }}"
       - name: Restart the services (arm)
         run: |
-          docker compose -p vgmdbapi up --detach --scale vgmdb_web=2 --scale vgmdb_celery=2 &&
+          docker compose -p vgmdbapi up --detach --scale vgmdb_web=2 --scale vgmdb_celery=1 &&
           docker compose -p vgmdbapi rm
         env:
           DOCKER_HOST: "${{ secrets.DOCKER_HOST_2 }}"
