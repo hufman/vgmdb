@@ -8,15 +8,15 @@ on:
 
 jobs:
   unitTest:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04  # old enough for py2
     steps:
       - name: Checkout the project
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
           submodules: true
       - name: Install apt dependencies
-        run: sudo apt-get install virtualenv python-dev libxml2-dev libxslt-dev
+        run: sudo apt-get update && sudo apt-get install virtualenv python2-dev libxml2-dev libxslt-dev
       - name: Install dependencies
         run: virtualenv --python=/usr/bin/python2 venv && venv/bin/pip install -r requirements.txt
       - name: Run unit tests
@@ -24,14 +24,14 @@ jobs:
 
   dockerize:
     needs: unitTest
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     if: github.repository == 'hufman/vgmdb'
     strategy:
       matrix:
         platform: [amd64, arm64]
     steps:
       - name: Checkout the project
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Login to DockerHub
         run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u hufman --password-stdin
       - name: Get the version
@@ -84,7 +84,7 @@ jobs:
 
   dockerfinalize:
     needs: dockerize
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     if: github.repository == 'hufman/vgmdb'
     steps:
       - name: Login to DockerHub
