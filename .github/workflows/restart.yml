@@ -25,7 +25,7 @@ jobs:
       #     DOCKER_HOST: "${{ secrets.DOCKER_HOST }}"
       #     DOCKER_TLS_VERIFY: 1
       - name: Restart the processes (arm)
-        run: docker compose -p vgmdbapi restart vgmdb_web && docker compose -p vgmdbapi restart vgmdb_celery
+        run: docker compose -p vgmdbapi down vgmdb_web && docker compose -p vgmdbapi down vgmdb_celery && docker compose -p vgmdbapi up -d vgmdb_web --force-recreate && docker compose -p vgmdbapi up -d vgmdb_celery --force-recreate
         env:
           DOCKER_CERT_PATH: .docker
           DOCKER_HOST: "${{ secrets.DOCKER_HOST_2 }}"
