@@ -11,3 +11,4 @@ wget https://vgmdb.net/album/48287 -O album_brokennight.html
 wget https://vgmdb.net/album/35753 -O album_touhou.html
 wget https://vgmdb.net/album/49938 -O album_million.html
 wget https://vgmdb.net/album/41559 -O album_got.html
+wget https://vgmdb.net/album/2315 -O album_gameover.html

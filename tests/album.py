@@ -184,5 +184,13 @@ class TestAlbums(unittest.TestCase):
 		self.assertEqual(u'org/1636', got['publisher']['link'])
 		self.assertEqual(u'Bandcamp', got['distributor']['names']['en'])
 		self.assertEqual(u'org/965', got['distributor']['link'])
+
+	def test_gameover(self):
+		# an extra Music credits
+		go_code = file(os.path.join(base, 'album_gameover.html'), 'r').read()
+		go = album.parse_page(go_code)
+		self.assertEqual(u'Hiroshi Kawaguchi', go['composers'][-1]['names']['en'])
+
+
 if __name__ == '__main__':
 	unittest.main()
