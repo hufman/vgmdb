@@ -117,5 +117,10 @@ class TestArtists(unittest.TestCase):
 		horie = artist.parse_page(horie_code)
 		self.assertEqual('B', horie['info']['Bloodtype'])
 
+	def test_kirkhope_logged_in(self):
+		kirkhope_code = file(os.path.join(base, 'artist_kirkhope_logged_in.html'), 'r').read()
+		artist.parse_page(kirkhope_code)
+
+
 if __name__ == '__main__':
 	unittest.main()
