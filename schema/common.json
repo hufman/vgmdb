@@ -109,7 +109,7 @@
 				"type": {"$ref": "#/definitions/albumType"},
 				"role": {"type": "string"}
 			},
-			"required": ["link", "catalog", "titles", "role"]
+			"required": ["link", "catalog", "titles"]
 		},
 		"productAlbum": {
 			"title": "A link object to an album related to a product",
