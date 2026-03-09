@@ -73,26 +73,13 @@ def generate_search_index():
 
 def fetch_url(query):
 	return 'https://vgmdb.net/search?q=%s'%(urllib.quote(query))
-def fetch_page(query, retries=2):
+
+def fetch_page(query):
 	if SEARCH_INDEX:
 		return search_locally(query)
 
-	try:
-		url = fetch_url(query)
-		page = urllib.urlopen(url)
-	except urllib2.HTTPError, error:
-		print >> sys.stderr, "HTTPError %s while fetching %s" % (error.code, url)
-		if error.code == 503 and retries:
-			time.sleep(random.randint(500, 3000)/1000.0)
-			return fetch_page(url, retries-1)
-		print >> sys.stderr, error.read()
-		raise
-
-	if page.geturl() == url:
-		data = page.read()
-		data = data.decode('utf-8', 'ignore')
-		return data
-	return masquerade(url, page)
+	url = fetch_url(query)
+	return utils.fetch_page(url)
 
 def search_locally(query):
 	sections = {'albums':[],
@@ -127,56 +114,6 @@ def search_locally(query):
 	}
 	return fake
 
-def masquerade(url, page):
-	import urlparse
-	import importlib
-	sections = {'albums':[],
-	            'artists':[],
-	            'orgs':[],
-	            'products':[]}
-	parsed = urlparse.urlparse(page.geturl())
-	data = page.read()
-	data = data.decode('utf-8', 'ignore')
-	for section in sections.keys():
-		type = section[:-1]
-		prefix = '/%s/'%type
-		if parsed.path[:len(prefix)] == prefix:
-			module = importlib.import_module('.parsers.'+type, 'vgmdb')
-			parse_page = getattr(module, "parse_page")
-			info = parse_page(data)
-			info['link'] = parsed.path[1:]
-			fake = generate_fakeresult(info)
-			sections[section].append(fake)
-	orig_parsed = urlparse.urlparse(url)
-	query = urlparse.parse_qs(orig_parsed.query)['q'][0]
-	query = urllib.unquote(query)
-	fake = {
-	    "meta":{},
-	    "query":query,
-	    "results":sections,
-	    "sections":sorted(sections.keys())
-	}
-	return fake
-
-def generate_fakeresult(info):
-	fake = {'link':info['link']}
-	copy_keys = ['aliases', 'category', 'catalog', 'media_format', 'release_date']
-	for key in copy_keys:
-		if key in info:
-			fake[key] = info[key]
-	if 'names' in info:
-		fake['titles'] = info['names']
-	if not 'names' in info:
-		if 'name' in info:
-			fake['names'] = {}
-			fake['names']['en'] = info['name']
-		if 'name_real' in info:
-			fake['names']['ja'] = info['name_real']
-			fake['aliases'] = [info['name_real']]
-			fake['names']['ja-latn'] = info['name']
-		if 'name_trans' in info:
-			fake['names']['ja-latn'] = info['name_trans']
-	return fake
 
 def parse_page(html_source):
 	if isinstance(html_source, dict):
