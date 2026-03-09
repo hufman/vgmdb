@@ -34,6 +34,7 @@ services:
       - DISCOGS_SECRET
       - SPOTIFY_ID
       - SPOTIFY_SECRET
+      - USER_COOKIE
   vgmdb_celery:
     image: hufman/vgmdb_celery:latest
     links:
@@ -53,3 +54,4 @@ services:
       - DISCOGS_SECRET
       - SPOTIFY_ID
       - SPOTIFY_SECRET
+      - USER_COOKIE

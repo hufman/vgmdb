@@ -18,6 +18,9 @@ The page will produce the output format that most-closely matches the request's 
 
 There are also links to validation services, to verify that the page's data is in fact valid and parseable in the respective formats. The main page doesn't produce any other formats, but every other page does.
 
+# Authentication
+Since the introduction of Cloudflare at VGMdb, you need to authenticate with your user. To do that set the environment variable `USER_COOKIE` or within local settings. You need to grab the value from your browser request cookie after logging in.
+
 # Development and Installation
 Unit tests are employed, both in the parsing and in the output stages, to validate that the information is being correctly parsed and encoded. Run the tests.sh script to run the tests.
 

@@ -8,6 +8,8 @@ import re
 import time
 import urllib2
 import urlparse
+from .. import config
+
 
 db_parser = re.compile(r'db/([a-z]+)\.php')
 
@@ -15,6 +17,8 @@ def fetch_page(url, retries=2):
 	try:
 		request = urllib2.Request(url)
 		request.add_header('User-Agent', 'VGMdb/1.0 vgmdb.info')
+		if config.USER_COOKIE != None:
+			request.add_header('Cookie', config.USER_COOKIE)
 		data = urllib2.urlopen(request, None, 30).read()
 		data = data.decode('utf-8', 'ignore')
 		return data

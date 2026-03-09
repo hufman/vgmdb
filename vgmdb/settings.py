@@ -10,6 +10,7 @@ CELERY_PING = True
 DATA_BACKGROUND = False
 SEARCH_INDEX = False
 STATSD_HOST = None
+USER_COOKIE = None
 
 # seller backend settings
 AMAZON_ACCESS_KEY_ID = None
