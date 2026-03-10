@@ -13,13 +13,16 @@ from .. import config
 
 db_parser = re.compile(r'db/([a-z]+)\.php')
 
-def fetch_page(url, retries=2):
+def fetch_page(url, retries=2, return_page_object=False):
 	try:
 		request = urllib2.Request(url)
 		request.add_header('User-Agent', 'VGMdb/1.0 vgmdb.info')
 		if config.USER_COOKIE != None:
 			request.add_header('Cookie', config.USER_COOKIE)
-		data = urllib2.urlopen(request, None, 30).read()
+		page = urllib2.urlopen(request, None, 30)
+		if return_page_object:
+			return page
+		data = page.read()
 		data = data.decode('utf-8', 'ignore')
 		return data
 	except urllib2.HTTPError, error:

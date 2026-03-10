@@ -21,6 +21,12 @@ There are also links to validation services, to verify that the page's data is i
 # Authentication
 Since the introduction of Cloudflare at VGMdb, you need to authenticate with your user. To do that set the environment variable `USER_COOKIE` or within local settings. You need to grab the value from your browser request cookie after logging in.
 
+- Login to https://vgmdb.net/
+- Open Web Developer Tools by right clicking and selecting Inspect
+- Switch to the Network tab in the dev tools subwindow and reload the page
+- Select a request to a document/HTML and within the Request Headers you should find the `Cookie` header and the value should be a pretty large string looking something like: `cf_clearance=...; vgmsessionhash=...;`
+- Copy the full `Cookie` value and set it as the `USER_COOKIE` environment variable
+
 # Development and Installation
 Unit tests are employed, both in the parsing and in the output stages, to validate that the information is being correctly parsed and encoded. Run the tests.sh script to run the tests.
 

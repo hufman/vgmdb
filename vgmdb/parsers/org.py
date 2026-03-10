@@ -86,7 +86,6 @@ def _parse_org_info(soup_profile_info):
 			if name == 'Staff' and isinstance(value, list):
 				org_info['staff'] = value
 			if name == 'Description' and not isinstance(soup_child.string, bs4.element.Comment):
-				print type(soup_child.string)
 				org_info['description'] = value
 	return org_info
 
