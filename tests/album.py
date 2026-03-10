@@ -69,6 +69,12 @@ class TestAlbums(unittest.TestCase):
 		self.assertEqual(18238, ff8['meta']['visitors'])
 		self.assertEqual(35, ff8['meta']['freedb'])
 
+	def test_ff8_logged_in(self):
+		ff8_code = file(os.path.join(base, 'album_ff8_logged_in.html'), 'r').read()
+		ff8 = album.parse_page(ff8_code)
+
+		self.assertEqual(u"Disc 1", ff8['discs'][0]['name'])
+
 	def test_arciel(self):
 		arciel_code = file(os.path.join(base, 'album_arciel.html'), 'r').read()
 		arciel = album.parse_page(arciel_code)

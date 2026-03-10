@@ -73,26 +73,19 @@ def generate_search_index():
 
 def fetch_url(query):
 	return 'https://vgmdb.net/search?q=%s'%(urllib.quote(query))
-def fetch_page(query, retries=2):
+
+def fetch_page(query):
 	if SEARCH_INDEX:
 		return search_locally(query)
 
-	try:
-		url = fetch_url(query)
-		page = urllib.urlopen(url)
-	except urllib2.HTTPError, error:
-		print >> sys.stderr, "HTTPError %s while fetching %s" % (error.code, url)
-		if error.code == 503 and retries:
-			time.sleep(random.randint(500, 3000)/1000.0)
-			return fetch_page(url, retries-1)
-		print >> sys.stderr, error.read()
-		raise
-
+	url = fetch_url(query)
+	page = utils.fetch_page(url, return_page_object=True)
 	if page.geturl() == url:
 		data = page.read()
 		data = data.decode('utf-8', 'ignore')
 		return data
 	return masquerade(url, page)
+
 
 def search_locally(query):
 	sections = {'albums':[],
@@ -126,6 +119,7 @@ def search_locally(query):
 	    "sections":sorted(sections.keys())
 	}
 	return fake
+
 
 def masquerade(url, page):
 	import urlparse
@@ -177,6 +171,7 @@ def generate_fakeresult(info):
 		if 'name_trans' in info:
 			fake['names']['ja-latn'] = info['name_trans']
 	return fake
+
 
 def parse_page(html_source):
 	if isinstance(html_source, dict):

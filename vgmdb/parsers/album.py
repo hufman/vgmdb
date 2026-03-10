@@ -288,6 +288,9 @@ def _parse_tracklist(soup_tracklist):
 		index = 0
 		soup_cur = soup_tab.span
 		while soup_cur:
+			# in logged in mode, skip Edit span
+			if soup_cur.b == None:
+				soup_cur = soup_cur.find_next_sibling('span')
 			disc_name = unicode(soup_cur.b.string)
 			soup_tracklist = soup_cur.find_next_sibling('table')
 			soup_cur = soup_tracklist.find_next_sibling('span')
@@ -358,11 +361,11 @@ def _parse_right_column(soup_right_column):
 def _parse_section_album_stats(soup_section):
 	album_info = {}
 	soup_divs = soup_section.find_all('div', recursive=False)
-	soup_rating = soup_divs[0].find_all('span', recursive=False)
-	if len(soup_rating) <= 1:
+	soup_rating = soup_divs[0].find_all('span', rel="rating", recursive=False)
+	if len(soup_rating) == 0 or soup_rating[0].string == None:
 		album_info['votes'] = 0
 	else:
-		splits = soup_rating[1].string.split()
+		splits = soup_rating[0].string.split()
 		if splits[0] == 'Nobody':
 			album_info['votes'] = 0
 		else:

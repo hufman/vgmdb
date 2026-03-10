@@ -42,7 +42,7 @@ def parse_page(html_source):
 	if len(spans)>2 and spans[2].string and 'deceased' in spans[2].string:
 		artist_info['deathdate'] = utils.parse_date_time(spans[2].string[10:])
 
-	soup_profile = soup_profile.div
+	soup_profile = soup_profile.find_all('div', recursive=False)[-1]
 	(soup_profile_left,soup_profile_right) = soup_profile.find_all('div', recursive=False, limit=2)
 	soup_right_column = soup.find(id='rightcolumn')
 

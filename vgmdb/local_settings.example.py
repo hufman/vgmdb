@@ -16,3 +16,5 @@ DISCOGS_SECRET = 'hY..'
 
 RDIO_KEY = 'g6..'
 RDIO_SECRET = '8x..'
+
+USER_COOKIE = 'cf_clearance=Pg..'

@@ -1,4 +1,5 @@
 import bs4
+import re
 
 from . import utils
 
@@ -18,7 +19,7 @@ def parse_page(html_source):
 	soup_divs = soup_profile.find_all('div', recursive=False)
 	soup_pic_div = soup_divs[0]
 	soup_info_div = soup_divs[1]
-	soup_table = soup_profile.table
+	soup_table = soup_profile.find('table')
 
 	soup_name = soup_profile.find_previous_sibling('div')
 	if soup_name.h1 and soup_name.h1.string:
@@ -84,47 +85,44 @@ def _parse_org_info(soup_profile_info):
 				org_info['region'] = value
 			if name == 'Staff' and isinstance(value, list):
 				org_info['staff'] = value
-			if name == 'Description':
-				if soup_child.span:
-					org_info['description'] = unicode(soup_child.span.string)
-				else:
-					org_info['description'] = value
+			if name == 'Description' and not isinstance(soup_child.string, bs4.element.Comment):
+				org_info['description'] = value
 	return org_info
 
 def _parse_org_releases(table):
 	releases = []
 	if not table:
 		return releases
-	soup_rows = table.find_all('tr', recursive=False)
+	soup_rows = table.find_all('tr')
 	if len(soup_rows) < 1:
 		return releases
 
 	for soup_row in soup_rows[1:]:
 		release = {}
 		soup_cells = soup_row.find_all('td')
-		if len(soup_cells)<6:
+		if len(soup_cells)<5:
 			continue
 
-		release['role'] = unicode(soup_cells[0].span.string)
-		release['catalog'] = unicode(soup_cells[1].span.string)
-		if soup_cells[2].img:
-			release['reprint'] = True
+		release['catalog'] = unicode(soup_cells[0].span.string)
 
-		if soup_cells[4].a:		# event link
-			link = soup_cells[4].a['href']
+		if soup_cells[3].a:		# event link
+			link = soup_cells[3].a['href']
 			link = utils.trim_absolute(link)
 			event = {}
 			event['link'] = link
-			event['name'] = soup_cells[4].a['title']
-			event['shortname'] = unicode(soup_cells[4].a.span.string)
+			event['name'] = re.search(r"^Released at (.+) \(", soup_cells[3].a['title']).group(1)
+			event['shortname'] = unicode(soup_cells[3].a.span.get_text().strip())
 			release['event'] = event
 
-		if soup_cells[5].span.a:
-			release['date'] = utils.parse_date_time(soup_cells[5].span.a.string)
-		else:
-			release['date'] = utils.parse_date_time(soup_cells[5].span.string)
+		if soup_cells[3].span: # role
+			release['role'] = unicode(soup_cells[3].span.string)
 
-		soup_album = soup_cells[3]
+		if soup_cells[-1].span.a:
+			release['date'] = utils.parse_date_time(soup_cells[-1].span.a.string)
+		else:
+			release['date'] = utils.parse_date_time(soup_cells[-1].span.string)
+
+		soup_album = soup_cells[2]
 		if soup_album.a:
 			link = soup_album.a['href']
 			link = utils.trim_absolute(link)
@@ -142,7 +140,7 @@ def _parse_websites(soup_websites):
 	sites = {}
 	for soup_category in soup_websites.find_all('div', recursive=False):
 		category = unicode(soup_category.b.string)
-		soup_links = soup_category.find_all('a', recursive=False)
+		soup_links = soup_category.find_all('a')
 		links = []
 		for soup_link in soup_links:
 			link = soup_link['href']
