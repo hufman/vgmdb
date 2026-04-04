@@ -72,3 +72,4 @@ jobs:
           DISCOGS_SECRET: "${{ secrets.DISCOGS_SECRET }}"
           SPOTIFY_ID: "${{ secrets.SPOTIFY_ID }}"
           SPOTIFY_SECRET: "${{ secrets.SPOTIFY_SECRET }}"
+          USER_COOKIE: "${{ secrets.USER_COOKIE }}"
