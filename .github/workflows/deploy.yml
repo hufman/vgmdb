@@ -62,6 +62,7 @@ jobs:
           DOCKER_HOST: "${{ secrets.DOCKER_HOST_2 }}"
           VIRTUAL_HOST: vgmdb.info
           VIRTUAL_PORT: 80
+          LETSENCRYPT_HOST: vgmdb.info
           SEARCH_INDEX: "true"
           STATSD_HOST: "dsig-telegraf"
           AMAZON_ACCESS_KEY_ID: "${{ secrets.AMAZON_ACCESS_KEY_ID }}"
