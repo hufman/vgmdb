@@ -10,7 +10,7 @@ def parse_page(html_source):
 	org_info = {}
 	org_info['websites'] = {}
 	html_source = utils.fix_invalid_table(html_source)
-	soup = bs4.BeautifulSoup(html_source)
+	soup = bs4.BeautifulSoup(html_source, features="lxml")
 	soup_profile = soup.find(id='innermain')
 	soup_right_column = soup.find(id='rightcolumn')
 	if soup_profile == None:
@@ -56,7 +56,7 @@ def _parse_org_info(soup_profile_info):
 		if not isinstance(soup_child, bs4.Tag):
 			continue
 		if soup_child.name == 'dt':
-			name = unicode(soup_child.b.string)
+			name = soup_child.b.string
 			value = None
 		if soup_child.name == 'dd':
 			if soup_child.a:
@@ -77,7 +77,7 @@ def _parse_org_info(soup_profile_info):
 							item['owner'] = True
 					value.append(item)
 			else:
-				value = unicode(soup_child.string)
+				value = soup_child.string
 
 			if name == 'Type':
 				org_info['type'] = value
@@ -103,7 +103,7 @@ def _parse_org_releases(table):
 		if len(soup_cells)<5:
 			continue
 
-		release['catalog'] = unicode(soup_cells[0].span.string)
+		release['catalog'] = soup_cells[0].span.string
 
 		if soup_cells[3].a:		# event link
 			link = soup_cells[3].a['href']
@@ -111,11 +111,11 @@ def _parse_org_releases(table):
 			event = {}
 			event['link'] = link
 			event['name'] = re.search(r"^Released at (.+) \(", soup_cells[3].a['title']).group(1)
-			event['shortname'] = unicode(soup_cells[3].a.span.get_text().strip())
+			event['shortname'] = soup_cells[3].a.span.get_text().strip()
 			release['event'] = event
 
 		if soup_cells[3].span: # role
-			release['role'] = unicode(soup_cells[3].span.string)
+			release['role'] = soup_cells[3].span.string
 
 		if soup_cells[-1].span.a:
 			release['date'] = utils.parse_date_time(soup_cells[-1].span.a.string)
@@ -139,12 +139,12 @@ def _parse_websites(soup_websites):
 	""" Given an array of divs containing website information """
 	sites = {}
 	for soup_category in soup_websites.find_all('div', recursive=False):
-		category = unicode(soup_category.b.string)
+		category = soup_category.b.string
 		soup_links = soup_category.find_all('a')
 		links = []
 		for soup_link in soup_links:
 			link = soup_link['href']
-			name = unicode(soup_link.string)
+			name = soup_link.string
 			if link[0:9] == '/redirect':
 				link = utils.strip_redirect(link)
 			links.append({"link":link, "name":name})

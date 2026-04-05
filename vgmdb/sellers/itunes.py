@@ -1,7 +1,7 @@
-import urllib
-import urlparse
 import json
 import logging
+import urllib.parse
+import urllib.request
 from ._utils import squash_str, find_best_match
 from .. import config
 
@@ -20,26 +20,26 @@ def add_affiliate_id(link):
 	query = 3
 	TD_URL = "http://clk.tradedoubler.com/click?p=%s&a=%s&url=%s"
 	if AFFILIATE_ID:
-		parts = list(urlparse.urlsplit(link))
+		parts = list(urllib.parse.urlsplit(link))
 		if parts[query] == '':
 			parts[query] += '?'
 		else:
 			parts[query] += '&'
 		parts[query] += 'at=%s'%(AFFILIATE_ID,)
-		link = urlparse.urlunsplit(parts)
+		link = urllib.parse.urlunsplit(parts)
 	if TD_PROGRAM_ID and TD_WEBSITE_ID:
-		parts = list(urlparse.urlsplit(link))
+		parts = list(urllib.parse.urlsplit(link))
 		if parts[query] == '':
 			parts[query] += '?'
 		else:
 			parts[query] += '&'
 		parts[query] += 'partnerId=2003'
-		link = urlparse.urlunsplit(parts)
-		link = TD_URL % (TD_PROGRAM_ID, TD_WEBSITE_ID, urllib.quote(link))
+		link = urllib.parse.urlunsplit(parts)
+		link = TD_URL % (TD_PROGRAM_ID, TD_WEBSITE_ID, urllib.parse.quote(link))
 	return link
 
 def empty_album(info):
-	search_url = SEARCH_API+'entity=album&term=%s'%(urllib.quote(squash_str(info['name'])),)
+	search_url = SEARCH_API+'entity=album&term=%s'%(urllib.parse.quote(squash_str(info['name'])),)
 	result = {"name":"iTunes",
 	          "icon":"static/itunes.png"
 	         }
@@ -63,15 +63,15 @@ def search_album(info):
 
 def search_album_name(info):
 	title = info['name']
-	url = SEARCH_API + "entity=album&term=%s"%(urllib.quote(squash_str(title)),)
-	webdata = urllib.urlopen(url).read()
+	url = SEARCH_API + "entity=album&term=%s"%(urllib.parse.quote(squash_str(title)),)
+	webdata = urllib.request.urlopen(url).read()
 	data = json.loads(webdata)
 	found = find_best_match(squash_str(title), data['results'],
 	   threshold=0.5, key=lambda x:squash_str(x['collectionName']))
 	return found
 
 def empty_artist(info):
-	search_url = SEARCH_API+'entity=musicArtist&term=%s'%(urllib.quote(squash_str(info['name'])),)
+	search_url = SEARCH_API+'entity=musicArtist&term=%s'%(urllib.parse.quote(squash_str(info['name'])),)
 	result = {"name":"iTunes",
 	          "icon":"static/itunes.png"
 	         }
@@ -91,8 +91,8 @@ def search_artist(info):
 	return result
 
 def search_artist_name(name):
-	url = SEARCH_API+'entity=musicArtist&term=%s'%(urllib.quote(squash_str(name)),)
-	webdata = urllib.urlopen(url).read()
+	url = SEARCH_API+'entity=musicArtist&term=%s'%(urllib.parse.quote(squash_str(name)),)
+	webdata = urllib.request.urlopen(url).read()
 	data = json.loads(webdata)
 	found = find_best_match(squash_str(name), data['results'],
 	   threshold=0.7, key=lambda x:squash_str(x['artistName']))

@@ -4,9 +4,10 @@ import rdflib
 from rdflib import Graph, Namespace, Literal, BNode, URIRef
 from rdflib.namespace import NamespaceManager
 
-from urlparse import urljoin
+from urllib.parse import urljoin
 # fix for the base in turtle serialization
 import rdflib.plugins.serializers.turtle as turtle
+
 if not hasattr(turtle.TurtleSerializer, 'real_startDocument'):
 	turtle.TurtleSerializer.real_startDocument = turtle.TurtleSerializer.startDocument
 def turtle_patched_startDocument(self):
@@ -57,7 +58,7 @@ def linktype(link, is_type):
 
 def add_lang_names(g, subject, names, rel=[FOAF.name, SCHEMA.name]):
 
-	if isinstance(names, str) or isinstance(names, unicode):
+	if isinstance(names, str):
 		for r in rel:
 			g.add((subject, r, Literal(names, lang='en')))
 	else:
@@ -68,11 +69,11 @@ def add_lang_names(g, subject, names, rel=[FOAF.name, SCHEMA.name]):
 
 def add_discography(g, subject, albums, rel=[FOAF.made, SCHEMA.album], rev=[]):
 	for album in albums:
-		albumlink = URIRef(link(album['link'])+"#subject") if album.has_key('link') else BNode()
-		perflink = URIRef(link(album['link'])+"#performance") if album.has_key('link') else BNode()
-		complink = URIRef(link(album['link'])+"#composition") if album.has_key('link') else BNode()
-		lyricslink = URIRef(link(album['link'])+"#lyrics") if album.has_key('link') else BNode()
-		vocalslink = URIRef(link(album['link'])+"#vocals") if album.has_key('vocals') else BNode()
+		albumlink = URIRef(link(album['link'])+"#subject") if 'link' in album else BNode()
+		perflink = URIRef(link(album['link'])+"#performance") if 'link' in album else BNode()
+		complink = URIRef(link(album['link'])+"#composition") if 'link' in album else BNode()
+		lyricslink = URIRef(link(album['link'])+"#lyrics") if 'link' in album else BNode()
+		vocalslink = URIRef(link(album['link'])+"#vocals") if 'vocals' in album else BNode()
 		g.add((perflink, RDF.type, MO.Performance))
 		g.add((complink, RDF.type, MO.Composition))
 		g.add((lyricslink, RDF.type, MO.Lyrics))
@@ -83,17 +84,17 @@ def add_discography(g, subject, albums, rel=[FOAF.made, SCHEMA.album], rev=[]):
 		add_lang_names(g, albumlink, album['titles'], rel=[DCTERMS.title, SCHEMA.name])
 		add_lang_names(g, perflink, album['titles'], rel=[DCTERMS.title, SCHEMA.name])
 		add_lang_names(g, complink, album['titles'], rel=[DCTERMS.title, SCHEMA.name])
-		if album.has_key('date'):
+		if 'date' in album:
 			g.add((albumlink, DCTERMS.created, Literal(album['date'], datatype=XSD.date)))
 			g.add((albumlink, SCHEMA.datePublished, Literal(album['date'], datatype=XSD.date)))
-		if album.has_key('release_date'):
+		if 'release_date' in album:
 			g.add((albumlink, DCTERMS.created, Literal(album['release_date'], datatype=XSD.date)))
 			g.add((albumlink, SCHEMA.datePublished, Literal(album['release_date'], datatype=XSD.date)))
-		if album.has_key('catalog'):
+		if 'catalog' in album:
 			g.add((albumlink, MO.catalogue_number, Literal(album['catalog'])))
-		if album.has_key('publisher'):
+		if 'publisher' in album:
 			pubdata = album['publisher']
-			publisher = URIRef(link(pubdata['link'])+"#subject") if pubdata.has_key('link') else BNode()
+			publisher = URIRef(link(pubdata['link'])+"#subject") if 'link' in pubdata else BNode()
 			g.add((albumlink, MO.publisher, publisher))
 			g.add((albumlink, SCHEMA.publisher, publisher))
 			g.add((publisher, RDF.type, SCHEMA.Organization))
@@ -103,7 +104,7 @@ def add_discography(g, subject, albums, rel=[FOAF.made, SCHEMA.album], rev=[]):
 			g.add((subject, pred, albumlink))
 		for pred in rev:
 			g.add((albumlink, pred, subject))
-		if album.has_key('link') and album.has_key('roles'):
+		if 'link' in album and 'roles' in album:
 			if 'Composer' in album['roles']:
 				g.add((subject, FOAF.made, albumlink))
 				g.add((subject, FOAF.made, complink))
@@ -139,7 +140,7 @@ def add_depiction(g, subject, image, thumb):
 	g.add((thumb, RDF.type, FOAF.Image))
 
 def generate_artist(config, data):
-	if data.has_key('link'):
+	if 'link' in data:
 		doc = URIRef(link(data['link']))
 		uri = link(data['link'])
 	else:
@@ -149,7 +150,7 @@ def generate_artist(config, data):
 	subject = URIRef(uri + "#subject")
 	g.add((doc, FOAF.primaryTopic, subject))
 
-	if data.has_key('members') and len(data['members'])>0:
+	if 'members' in data and len(data['members'])>0:
 		g.add((subject, RDF.type, SCHEMA.MusicGroup))
 		g.add((subject, RDF.type, FOAF.Organization))
 	else:
@@ -158,27 +159,27 @@ def generate_artist(config, data):
 		g.add((subject, RDF.type, FOAF.Person))
 	g.add((subject, FOAF.name, Literal(data['name'])))
 	g.add((subject, SCHEMA.name, Literal(data['name'])))
-	if data.has_key('picture_full'):
+	if 'picture_full' in data:
 		img = data['picture_full']
 		thumb = data['picture_small']
 		add_depiction(g, subject, img, thumb)
 		img = URIRef(img)
 		g.add((subject, FOAF.img, img))
-	if data.has_key('birthdate'):
+	if 'birthdate' in data:
 		birthinfo = URIRef(uri + "#birthinfo")
 		g.add((birthinfo, RDF.type, BIO.Birth))
 		g.add((birthinfo, BIO.principal, subject))
 		g.add((birthinfo, BIO.date, Literal(data['birthdate'], datatype=XSD.date)))
-		if data.has_key('birthplace'):
+		if 'birthplace' in data:
 			g.add((birthinfo, BIO.place, Literal(data['birthplace'])))
-	if data.has_key('deathdate'):
+	if 'deathdate' in data:
 		deathinfo = URIRef(uri + "#deathinfo")
 		g.add((deathinfo, RDF.type, BIO.Death))
 		g.add((deathinfo, BIO.principal, subject))
 		g.add((deathinfo, BIO.date, Literal(data['deathdate'], datatype=XSD.date)))
-	if data.has_key('units'):
+	if 'units' in data:
 		for unit in data['units']:
-			unitlink = URIRef(link(unit['link']+"#subject")) if unit.has_key('link') else BNode()
+			unitlink = URIRef(link(unit['link']+"#subject")) if 'link' in unit else BNode()
 			g.add((unitlink, RDF.type, SCHEMA.MusicGroup))
 			g.add((unitlink, RDF.type, FOAF.Organization))
 			g.add((subject, MO.member_of, unitlink))
@@ -186,9 +187,9 @@ def generate_artist(config, data):
 			g.add((unitlink, MO.member, subject))
 			g.add((unitlink, SCHEMA.musicGroupMember, subject))
 			add_lang_names(g, unitlink, unit['names'], rel=[FOAF.name])
-	if data.has_key('members'):
+	if 'members' in data:
 		for member in data['members']:
-			memberlink = URIRef(link(member['link']+"#subject")) if member.has_key('link') else BNode()
+			memberlink = URIRef(link(member['link']+"#subject")) if 'link' in member else BNode()
 			g.add((memberlink, RDF.type, SCHEMA.Person))
 			g.add((memberlink, RDF.type, FOAF.Person))
 			g.add((subject, FOAF.member, memberlink))
@@ -196,26 +197,26 @@ def generate_artist(config, data):
 			g.add((subject, SCHEMA.musicGroupMember, memberlink))
 			g.add((memberlink, MO.member_of, subject))
 			add_lang_names(g, memberlink, member['names'], rel=[FOAF.name])
-	if data.has_key('websites'):
+	if 'websites' in data:
 		for websitetype, websites in data['websites'].items():
 			for website in websites:
 				g.add((subject, FOAF.page, URIRef(website['link'])))
-	if data.has_key('twitter_names'):
+	if 'twitter_names' in data:
 		for name in data['twitter_names']:
 			account = BNode()
 			g.add((account, RDF.type, FOAF.OnlineChatAccount))
 			g.add((account, FOAF.accountServiceHomepage, URIRef('http://www.twitter.com/')))
 			g.add((account, FOAF.accountName, Literal(name)))
 			g.add((subject, FOAF.account, account))
-	if data.has_key('discography'):
+	if 'discography' in data:
 		add_discography(g, subject, data['discography'], rel=[FOAF.made, SCHEMA.album], rev=[DCTERMS.creator, SCHEMA.byArtist])
-	if data.has_key('featured_on'):
+	if 'featured_on' in data:
 		add_discography(g, subject, data['featured_on'], rel=[], rev=[MO.tribute_to])
 
 	return g
 
 def generate_album(config, data):
-	if data.has_key('link'):
+	if 'link' in data:
 		doc = URIRef(link(data['link']))
 		uri = link(data['link'])
 	else:
@@ -258,13 +259,13 @@ def generate_album(config, data):
 	add_lang_names(g, subject, data['names'], rel=[DCTERMS.title, SCHEMA.name])
 	add_lang_names(g, performance, data['names'], rel=[DCTERMS.title, SCHEMA.name])
 	add_lang_names(g, composition, data['names'], rel=[DCTERMS.title, SCHEMA.name])
-	if data.has_key('picture_full'):
+	if 'picture_full' in data:
 		img = data['picture_full']
 		thumb = data['picture_small']
 		add_depiction(g, subject, img, thumb)
-	if data.has_key('catalog'):
+	if 'catalog' in data:
 		g.add((subject, MO.catalogue_number, Literal(data['catalog'])))
-	if data.has_key('release_date'):
+	if 'release_date' in data:
 		g.add((subject, DCTERMS.created, Literal(data['release_date'], datatype=XSD.date)))
 		g.add((subject, SCHEMA.datePublished, Literal(data['release_date'], datatype=XSD.date)))
 	for release_event in data['release_events']:
@@ -272,8 +273,8 @@ def generate_album(config, data):
 		g.add((subject, MO.release, event))
 		g.add((event, SCHEMA.name, Literal(release_event['name'])))
 		g.add((event, RDF.type, MO.Release))
-	if data.has_key('publisher'):
-		publisher = URIRef(link(data['publisher']['link'])+'#subject') if data['publisher'].has_key('link') else BNode()
+	if 'publisher' in data:
+		publisher = URIRef(link(data['publisher']['link'])+'#subject') if 'link' in data['publisher'] else BNode()
 		g.add((subject, SCHEMA.publisher, publisher))
 		g.add((subject, MO.publisher, publisher))
 		add_lang_names(g, publisher, data['publisher']['names'])
@@ -284,16 +285,16 @@ def generate_album(config, data):
 		g.add((subject, MO.other_release_of, reprinturi))
 		g.add((reprinturi, RDF.type, MO.Release))
 		g.add((reprinturi, MO.catalogue_number, Literal(reprint['catalog'])))
-	if data.has_key('bootleg_of'):
+	if 'bootleg_of' in data:
 		reprinturi = URIRef(link(data['bootleg_of']['link']))
 		g.add((subject, MO.other_release_of, reprinturi))
 		g.add((reprinturi, RDF.type, MO.Release))
 		g.add((reprinturi, MO.catalogue_number, Literal(data['bootleg_of']['catalog'])))
-	if data.has_key('category'):
+	if 'category' in data:
 		g.add((subject, SCHEMA.genre, Literal(data['category'])))
-	if data.has_key('media_format'):
+	if 'media_format' in data:
 		g.add((subject, MO.media_type, Literal(data['media_format'])))
-	if data.has_key('rating'):
+	if 'rating' in data:
 		rating = BNode()
 		g.add((subject, SCHEMA.aggregateRating, rating))
 		g.add((rating, RDF.type, SCHEMA.AggregateRating))
@@ -303,7 +304,7 @@ def generate_album(config, data):
 
 	def add_people(g, subject, list, rel, rev):
 		for persondata in list:
-			person = URIRef(link(persondata['link'])+"#subject") if persondata.has_key('link') else BNode()
+			person = URIRef(link(persondata['link'])+"#subject") if 'link' in persondata else BNode()
 			g.add((person, RDF.type, SCHEMA.Person))
 			g.add((person, RDF.type, FOAF.Person))
 			add_lang_names(g, person, persondata['names'])
@@ -311,22 +312,22 @@ def generate_album(config, data):
 				g.add((subject, r, person))
 			for r in rev:
 				g.add((person, r, subject))
-	if data.has_key('composers'):
+	if 'composers' in data:
 		add_people(g, subject, data['composers'], rel=[], rev=[DCTERMS.creator, FOAF.made])
 		add_people(g, composition, data['composers'], rel=[MO.composer], rev=[FOAF.made])
-	if data.has_key('performers'):
+	if 'performers' in data:
 		add_people(g, subject, data['performers'], rel=[SCHEMA.byArtist], rev=[])
 		add_people(g, performance, data['performers'], rel=[MO.performer, SCHEMA.byArtist], rev=[MO.performed])
-	if data.has_key('lyricists'):
+	if 'lyricists' in data:
 		add_people(g, subject, data['lyricists'], rel=[], rev=[FOAF.made])
 		add_people(g, lyrics, data['lyricists'], rel=[], rev=[FOAF.made])
-	if data.has_key('vocals'):
+	if 'vocals' in data:
 		add_people(g, subject, data['vocals'], rel=[], rev=[FOAF.made])
 		add_people(g, vocals, data['vocals'], rel=[], rev=[FOAF.made])
 
-	if data.has_key('products'):
+	if 'products' in data:
 		for productdata in data['products']:
-			product = URIRef(link(productdata['link'])+"#subject") if productdata.has_key('link') else BNode()
+			product = URIRef(link(productdata['link'])+"#subject") if 'link' in productdata else BNode()
 			g.add((product, RDF.type, SCHEMA.CreativeWork))
 			g.add((subject, SCHEMA.about, product))
 			add_lang_names(g, product, productdata['names'])
@@ -342,7 +343,7 @@ def generate_album(config, data):
 		g.add((record, MO.record_name, Literal(index, datatype=XSD.integer)))
 		g.add((record, MO.track_count, Literal(len(discdata['tracks']), datatype=XSD.integer)))
 		g.add((record, SCHEMA.numTracks, Literal(len(discdata['tracks']), datatype=XSD.integer)))
-		if discdata.has_key('disc_length') and discdata['disc_length']:
+		if 'disc_length' in discdata and discdata['disc_length']:
 			interval = "PT" + discdata['disc_length']
 			g.add((record, SCHEMA.duration, Literal(interval, datatype=XSD.interval)))
 		trackno = 0
@@ -356,7 +357,7 @@ def generate_album(config, data):
 			g.add((track, RDF.type, MO.Track))
 			g.add((track, MO.track_number, Literal(trackno, datatype=XSD.integer)))
 			add_lang_names(g, track, trackdata['names'], rel=[SCHEMA.name, DCTERMS.title])
-			if trackdata.has_key('track_length') and \
+			if 'track_length' in trackdata and \
 			   trackdata['track_length']:
 				interval = "PT" + trackdata['track_length']
 				g.add((track, SCHEMA.duration, Literal(interval, datatype=XSD.interval)))
@@ -364,7 +365,7 @@ def generate_album(config, data):
 	return g
 
 def generate_product(config, data):
-	if data.has_key('link'):
+	if 'link' in data:
 		doc = URIRef(link(data['link']))
 		uri = link(data['link'])
 	else:
@@ -375,23 +376,23 @@ def generate_product(config, data):
 	g.add((subject, RDF.type, SCHEMA.CreativeWork))
 	g.add((subject, DCTERMS.title, Literal(data['name'])))
 	g.add((subject, SCHEMA.name, Literal(data['name'])))
-	if data.has_key('picture_full'):
+	if 'picture_full' in data:
 		img = data['picture_full']
 		thumb = data['picture_small']
 		add_depiction(g, subject, img, thumb)
-	if data.has_key('release_date'):
+	if 'release_date' in data:
 		g.add((subject, DCTERMS.created, Literal(data['release_date'], datatype=XSD.date)))
 		g.add((subject, SCHEMA.datePublished, Literal(data['release_date'], datatype=XSD.date)))
-	if data.has_key('franchises'):
+	if 'franchises' in data:
 		for franchisedata in data['franchises']:
-			franchise = URIRef(link(franchisedata['link'])+"#subject") if franchisedata.has_key('link') else BNode()
+			franchise = URIRef(link(franchisedata['link'])+"#subject") if 'link' in franchisedata else BNode()
 			g.add((franchise, RDF.type, SCHEMA.CreativeWork))
 			add_lang_names(g, franchise, franchisedata['names'], rel=[DCTERMS.title, SCHEMA.name])
-	if data.has_key('titles'):
+	if 'titles' in data:
 		for titledata in data['titles']:
-			title = URIRef(link(titledata['link'])+"#subject") if titledata.has_key('link') else BNode()
+			title = URIRef(link(titledata['link'])+"#subject") if 'link' in titledata else BNode()
 			g.add((title, RDF.type, SCHEMA.CreativeWork))
-			if titledata.has_key('date'):
+			if 'date' in titledata:
 				g.add((title, SCHEMA.datePublished, Literal(titledata['date'], datatype=XSD.date)))
 				g.add((title, DCTERMS.created, Literal(titledata['date'], datatype=XSD.date)))
 			add_lang_names(g, title, titledata['names'], rel=[DCTERMS.title, SCHEMA.name])
@@ -400,7 +401,7 @@ def generate_product(config, data):
 	return g
 
 def generate_release(config, data):
-	if data.has_key('link'):
+	if 'link' in data:
 		doc = URIRef(link(data['link']))
 		uri = link(data['link'])
 	else:
@@ -411,16 +412,16 @@ def generate_release(config, data):
 	g.add((subject, RDF.type, SCHEMA.CreativeWork))
 	g.add((subject, DCTERMS.title, Literal(data['name'])))
 	g.add((subject, SCHEMA.name, Literal(data['name'])))
-	if data.has_key('picture_full'):
+	if 'picture_full' in data:
 		img = data['picture_full']
 		thumb = data['picture_small']
 		add_depiction(g, subject, img, thumb)
-	if data.has_key('release_date'):
+	if 'release_date' in data:
 		g.add((subject, DCTERMS.created, Literal(data['release_date'], datatype=XSD.date)))
 		g.add((subject, SCHEMA.datePublished, Literal(data['release_date'], datatype=XSD.date)))
-	if data.has_key('products'):
+	if 'products' in data:
 		for productdata in data['products']:
-			product = URIRef(link(productdata['link'])+"#subject") if productdata.has_key('link') else BNode()
+			product = URIRef(link(productdata['link'])+"#subject") if 'link' in productdata else BNode()
 			g.add((product, RDF.type, SCHEMA.CreativeWork))
 			add_lang_names(g, product, productdata['names'], rel=[DCTERMS.title, SCHEMA.name])
 	add_discography(g, subject, data['release_albums'], rel=[], rev=[SCHEMA.about])
@@ -429,7 +430,7 @@ def generate_release(config, data):
 	return g
 
 def generate_org(config, data):
-	if data.has_key('link'):
+	if 'link' in data:
 		doc = URIRef(link(data['link']))
 		uri = link(data['link'])
 	else:
@@ -441,13 +442,13 @@ def generate_org(config, data):
 	g.add((subject, RDF.type, FOAF.Organization))
 	g.add((subject, FOAF.name, Literal(data['name'])))
 	g.add((subject, SCHEMA.name, Literal(data['name'])))
-	if data.has_key('picture_full'):
+	if 'picture_full' in data:
 		img = data['picture_full']
 		thumb = data['picture_small']
 		add_depiction(g, subject, img, thumb)
-	if data.has_key('staff'):
+	if 'staff' in data:
 		for staffdata in data['staff']:
-			staff = URIRef(link(staffdata['link'])+"#subject") if staffdata.has_key('link') else BNode()
+			staff = URIRef(link(staffdata['link'])+"#subject") if 'link' in staffdata else BNode()
 			g.add((subject, SCHEMA.member, staff))
 			g.add((staff, FOAF.member, subject))
 			g.add((staff, SCHEMA.memberOf, subject))
@@ -455,7 +456,7 @@ def generate_org(config, data):
 			g.add((staff, RDF.type, SCHEMA.MusicGroup))
 			g.add((staff, RDF.type, FOAF.Person))
 			add_lang_names(g, staff, staffdata['names'], rel=[FOAF.name])
-	if data.has_key('websites'):
+	if 'websites' in data:
 		for websitetype, websites in data['websites'].items():
 			for website in websites:
 				g.add((subject, FOAF.page, URIRef(website['link'])))
@@ -464,7 +465,7 @@ def generate_org(config, data):
 	return g
 
 def generate_event(config, data):
-	if data.has_key('link'):
+	if 'link' in data:
 		doc = URIRef(link(data['link']))
 		uri = link(data['link'])
 	else:

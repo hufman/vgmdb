@@ -1,8 +1,7 @@
-import urllib
-import urllib2
-import urlparse
 import json
 import logging
+import urllib.parse
+import urllib.request
 from ._utils import squash_str,find_best_match, primary_name
 from .. import config
 
@@ -10,11 +9,11 @@ SEARCH_API = 'https://api.discogs.com/database/search'
 
 def search(query):
 	url = SEARCH_API + '?' + query
-	request = urllib2.Request(url)
-	request.add_header('User-Agent', 'VGMdb/1.0 vgmdb.info')
+	request = urllib.request.Request(url)
+	request.add_header('User-Agent', 'vgmdb/1.0 +https://vgmdb.info')
 	if hasattr(config, 'DISCOGS_KEY') and hasattr(config, 'DISCOGS_SECRET'):
 		request.add_header('Authorization', 'Discogs key=%s, secret=%s'%(config.DISCOGS_KEY, config.DISCOGS_SECRET))
-	opener = urllib2.build_opener()
+	opener = urllib.request.build_opener()
 	return opener.open(request).read()
 
 class NullHandler(logging.Handler):
@@ -24,7 +23,7 @@ logger = logging.getLogger(__name__)
 logger.addHandler(NullHandler())
 
 def empty_album(info):
-	search_url = "http://www.discogs.com/search?q=%s&type=master"%(urllib.quote(squash_str(info['name'])),)
+	search_url = "http://www.discogs.com/search?q=%s&type=master"%(urllib.parse.quote(squash_str(info['name'])),)
 	result = {"name":"discogs",
 	          "icon":"static/discogs.ico",
 	          "search": search_url
@@ -47,7 +46,7 @@ def search_album(info):
 			if found:
 				result['surity'] = 'album'
 		if found:
-			result['found'] = urlparse.urljoin("http://discogs.com/",found['uri'])
+			result['found'] = urllib.parse.urljoin("http://discogs.com/",found['uri'])
 	except:
 		import traceback
 		logger.warning(traceback.format_exc())
@@ -55,7 +54,7 @@ def search_album(info):
 	return result
 
 def search_album_catalog(catalog):
-	webdata = search('type=master&catno=%s'%(urllib.quote(squash_str(catalog)),))
+	webdata = search('type=master&catno=%s'%(urllib.parse.quote(squash_str(catalog)),))
 	data = json.loads(webdata)
 	found = find_best_match(squash_str(catalog), data['results'],
 	   threshold=0.9, key=lambda x:squash_str(x['catno']))
@@ -66,7 +65,7 @@ def search_artist_album_name(info):
 		return None
 	artist = primary_name(info['composers'][0]['names'])
 	title = info['name']
-	webdata = search("type=master&artist=%s&release_title=%s"%(urllib.quote(squash_str(artist)),urllib.quote(squash_str(title))))
+	webdata = search("type=master&artist=%s&release_title=%s"%(urllib.parse.quote(squash_str(artist)),urllib.parse.quote(squash_str(title))))
 	data = json.loads(webdata)
 	found = find_best_match(squash_str(title), data['results'],
 	   threshold=0.5, key=lambda x:squash_str(x['title']))
@@ -74,14 +73,14 @@ def search_artist_album_name(info):
 
 def search_album_name(info):
 	title = info['name']
-	webdata = search("type=master&release_title=%s"%(urllib.quote(squash_str(title)),))
+	webdata = search("type=master&release_title=%s"%(urllib.parse.quote(squash_str(title)),))
 	data = json.loads(webdata)
 	found = find_best_match(squash_str(title), data['results'],
 	   threshold=0.5, key=lambda x:squash_str(x['title']))
 	return found
 
 def empty_artist(info):
-	search_url = "http://www.discogs.com/search?q=%s&type=artist"%(urllib.quote(squash_str(info['name'])),)
+	search_url = "http://www.discogs.com/search?q=%s&type=artist"%(urllib.parse.quote(squash_str(info['name'])),)
 	result = {"name":"discogs",
 	          "icon":"static/discogs.ico",
 	          "search": search_url
@@ -93,7 +92,7 @@ def search_artist(info):
 		found = search_artist_name(info['name'])
 		if found:
 			result['surity'] = 'name'
-			result['found'] = urlparse.urljoin("http://discogs.com/",found['uri'])
+			result['found'] = urllib.parse.urljoin("http://discogs.com/",found['uri'])
 	except:
 		import traceback
 		logger.warning(traceback.format_exc())
@@ -101,7 +100,7 @@ def search_artist(info):
 	return result
 
 def search_artist_name(name):
-	webdata = search("type=artist&q=%s"%(urllib.quote(squash_str(name))))
+	webdata = search("type=artist&q=%s"%(urllib.parse.quote(squash_str(name))))
 	data = json.loads(webdata)
 	found = find_best_match(squash_str(name), data['results'],
 	   threshold=0.7, key=lambda x:squash_str(x['title']))

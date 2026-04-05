@@ -4,7 +4,7 @@
 {% endblock %}
 {% block title %}
     <h1>Search Results</h1>
-    <h3>Searched for {{data.query.decode('utf-8')}}</h3>
+    <h3>Searched for {{data.query}}</h3>
 {% endblock %}
 {% block quickinfo %}
 {% endblock %}

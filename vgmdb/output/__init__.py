@@ -3,13 +3,13 @@ from vgmdb.accept import parse_accept_header
 import vgmdb.config
 
 # import submodules
-import html
-import json
-import yaml
-import turtle
-import rdfxml
-import jsonl
-import jsonp
+from . import html
+from . import json
+from . import yaml
+from . import turtle
+from . import rdfxml
+from . import jsonl
+from . import jsonp
 
 # As output modules are loaded the name_outputters and
 # add_name_handler will be populated
@@ -60,7 +60,7 @@ def reload_module(name):
 
 def load_plugins():
 	from types import ModuleType
-	for module in globals().values():
+	for module in list(globals().values()):
 		if isinstance(module, ModuleType) and \
 		   hasattr(module, 'name') and \
 		   hasattr(module, 'mimetypes') and \
@@ -70,6 +70,7 @@ def load_plugins():
 			except:
 				# couldn't load plugin
 				sys.stderr.write("Couldn't create outputter %s: %s\n"%(module.name, sys.exc_info()[1]))
+				raise
 
 def decide_format(forced, accept, useragent=''):
 	format = "json"

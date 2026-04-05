@@ -1,5 +1,4 @@
-import urllib
-import urlparse
+import urllib.parse
 import json
 import logging
 import time
@@ -51,7 +50,7 @@ def run_search(keywords, artist=None):
 	return response.search_result.items
 
 def empty_album(info):
-	search_url = SEARCH_PAGE + "&field-keywords=%s"%(urllib.quote(squash_str(info['name'])))
+	search_url = SEARCH_PAGE + "&field-keywords=%s"%(urllib.parse.quote(squash_str(info['name'])))
 	result = {"name":"Amazon",
 	          "icon":"static/amazon.png",
 	          "search": search_url
@@ -104,7 +103,7 @@ def search_album_name(info):
 	return found
 
 def empty_artist(info):
-	search_url = SEARCH_PAGE + "&field-artist=%s"%(urllib.quote(squash_str(info['name'])),)
+	search_url = SEARCH_PAGE + "&field-artist=%s"%(urllib.parse.quote(squash_str(info['name'])),)
 	result = {"name":"Amazon",
 	          "icon":"static/amazon.png",
 	          "search": search_url

@@ -28,10 +28,6 @@ except:
 	pass
 
 import pickle
-try:
-	import cPickle as pickle
-except:
-	pass
 
 gaecache = None
 try:

@@ -1,7 +1,7 @@
 import bs4
 
 from . import utils
-import urlparse
+import urllib.parse
 
 fetch_url = lambda type: "https://vgmdb.net/db/recent.php?do=view_%s"%(type,)
 fetch_page = lambda type: utils.fetch_page(fetch_url(type))
@@ -9,7 +9,7 @@ fetch_page = lambda type: utils.fetch_page(fetch_url(type))
 def parse_page(html_source):
 	recent_info = {}
 	html_source = utils.fix_invalid_table(html_source)
-	soup = bs4.BeautifulSoup(html_source)
+	soup = bs4.BeautifulSoup(html_source, features="lxml")
 	
 	soup_innermain = soup.find(id='innermain')
 	if soup_innermain == None:
@@ -69,7 +69,7 @@ def _parse_table_media(color_codes, soup_cells):
 
 	# first column
 	soup_catalog = soup_cells[0]
-	info['catalog'] = unicode(soup_cells[0].string)
+	info['catalog'] = soup_cells[0].string
 	if info['catalog'] == 'Deleted Media':
 		info['deleted'] = True
 
@@ -119,7 +119,7 @@ def _parse_table_artists(color_codes, soup_cells):
 		soup_link = soup_cells[0].a
 		info['linked'] = {
 			"link": utils.trim_absolute(soup_link['href']),
-			"catalog": unicode(soup_link.string)
+			"catalog": soup_link.string
 		}
 	return info
 
@@ -131,7 +131,7 @@ def _parse_table_products(color_codes, soup_cells):
 		soup_link = soup_cells[0].a
 		info['linked'] = {
 			"link": utils.trim_absolute(soup_link['href']),
-			"catalog": unicode(soup_link.string)
+			"catalog": soup_link.string
 		}
 	return info
 
@@ -143,13 +143,13 @@ def _parse_table_labels(color_codes, soup_cells):
 		soup_link = soup_cells[0].a
 		info['linked'] = {
 			"link": utils.trim_absolute(soup_link['href']),
-			"catalog": unicode(soup_link.string)
+			"catalog": soup_link.string
 		}
 	if info['edit'] == 'Artist Linkup' and soup_cells[0].a:
 		soup_link = soup_cells[0].a
 		info['linked'] = {
 			"link": utils.trim_absolute(soup_link['href']),
-			"names": {'en':unicode(soup_link.string)}
+			"names": {'en':soup_link.string}
 		}
 	return info
 
@@ -162,21 +162,21 @@ def _parse_table_links(color_codes, soup_cells):
 	   ['Album Link', 'Purchase Link']:
 		info.update({
 			"link": utils.trim_absolute(soup_link['href']),
-			"catalog": unicode(soup_link.string)
+			"catalog": soup_link.string
 		})
 	if 'link_type' in info and info['link_type'] in \
 	   ['Artist Link']:
 		soup_link = soup_cells[0].a
 		info.update({
 			"link": utils.trim_absolute(soup_link['href']),
-			"names": {'en':unicode(soup_link.string)}
+			"names": {'en':soup_link.string}
 		})
 	if 'link_type' in info and info['link_type'] in \
 	   ['Organization Link', 'Product Link']:
 		soup_link = soup_cells[0].a
 		item_link = utils.trim_absolute(soup_link['href'])
-		parsed_link = urlparse.urlparse(item_link)
-		parsed_qs = urlparse.parse_qs(parsed_link[4])
+		parsed_link = urllib.parse.urlparse(item_link)
+		parsed_qs = urllib.parse.parse_qs(parsed_link[4])
 		item_id = parsed_qs.get('id', None)
 		if item_id:
 			if info['link_type'] == 'Organization Link':
@@ -185,7 +185,7 @@ def _parse_table_links(color_codes, soup_cells):
 				item_link = 'product/' + item_id[0]
 		info.update({
 			"link": item_link,
-			"names": {'en':unicode(soup_link.string)}
+			"names": {'en':soup_link.string}
 		})
 	return info
 
@@ -223,7 +223,7 @@ def _parse_color_codes(soup_container):
 	"""
 	color_codes = {}
 	for soup_type in soup_container.find_all('span'):
-		name = unicode(soup_type.string)
+		name = soup_type.string
 		if soup_type.has_attr('style') and 'color' in soup_type['style']:
 			style = soup_type['style']
 			color = style.split(':')[-1].strip()
@@ -323,7 +323,7 @@ def _parse_title_cell(type, color_codes, soup_cell):
 	if type == 'links':
 		info['link_data'] = {
 			'link': utils.force_absolute(soup_link['href']),
-			'title': unicode(soup_link.string or '')
+			'title': soup_link.string or ''
 		}
 	else:
 		info['link'] = utils.trim_absolute(soup_link['href'])
@@ -336,10 +336,10 @@ def _parse_contributor_cell(soup_cell):
 	info = {}
 	soup_link = soup_cell.a
 	info['contributor'] = {
-	    'name': unicode(soup_link.string),
+	    'name': soup_link.string,
 	    'link': utils.force_absolute(soup_link['href'])
 	}
 	soup_date = soup_cell.br.next_element
-	date_str = unicode(soup_date) + unicode(soup_date.next_element.string)
+	date_str = soup_date + soup_date.next_element.string
 	info['date'] = utils.parse_date_time(date_str)
 	return info

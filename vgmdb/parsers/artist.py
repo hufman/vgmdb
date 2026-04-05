@@ -7,7 +7,7 @@ fetch_page = lambda id: utils.fetch_info_page('artist', id)
 
 def parse_page(html_source):
 	artist_info = {}
-	soup = bs4.BeautifulSoup(html_source)
+	soup = bs4.BeautifulSoup(html_source, features="lxml")
 	soup_profile = soup.find(id='innermain')
 	if soup_profile == None:
 		return None	# info not found
@@ -134,7 +134,7 @@ def _parse_profile_info(soup_profile_left):
 			if isinstance(soup_item_data, bs4.NavigableString):
 				texts = []
 				while isinstance(soup_item_data, bs4.NavigableString):
-					texts.append(unicode(soup_item_data))
+					texts.append(soup_item_data)
 					soup_item_data = soup_item_data.next
 				text = ''.join(texts).strip()
 				if len(text) > 0:
@@ -144,7 +144,7 @@ def _parse_profile_info(soup_profile_left):
 				item_data = {}
 				if soup_item_data.name == 'a':
 					item_data['link'] = utils.trim_absolute(soup_item_data['href'])
-					item_data['names'] = {"en":unicode(soup_item_data.string)}
+					item_data['names'] = {"en":soup_item_data.string}
 					pic_tag = soup_item_data.find_next_sibling('img')
 					if pic_tag:
 						if pic_tag['src'] == 'http://media.vgmdb.net/img/owner.gif':
@@ -155,7 +155,7 @@ def _parse_profile_info(soup_profile_left):
 						names = {}
 						for soup_name in soup_names:
 							lang = soup_name['lang']
-							name = unicode(soup_name.string)
+							name = soup_name.string
 							names[lang] = name
 						item_data['names'] = names
 					item_list.append(item_data)
@@ -171,12 +171,12 @@ def _parse_profile_info(soup_profile_left):
 					  soup_votes.contents[1] + \
 					  soup_votes.contents[2].string + \
 					  soup_votes.contents[3]
-					ret['Album Votes'] = unicode(ret['Album Votes'])
+					ret['Album Votes'] = ret['Album Votes']
 				if soup_item_data.name == 'span' and \
 				  soup_item_data.has_attr('class') and \
 				  'time' in soup_item_data['class']:
 					if soup_item_data.next_sibling:
-						item_list.append(unicode(soup_item_data.string) + \
+						item_list.append(soup_item_data.string + \
 						                 soup_item_data.next_sibling)
 					
 
@@ -186,18 +186,18 @@ def _parse_profile_info(soup_profile_left):
 		# what item headings indicate people, and should have names
 		people_lists = ['Aliases', 'Former Members', 'Members', 'Units', 'Organizations', 'Variations']
 		# detect if there is a single text item
-		if len(item_list) == 1 and isinstance(item_list[0], unicode) and \
+		if len(item_list) == 1 and isinstance(item_list[0], str) and \
 		   item_name not in people_lists:
 			ret[item_name] = item_list[0]
 		else:
 			ret[item_name] = item_list
 		# make sure all the items from people have names
 		for people_type in people_lists:
-			if not ret.has_key(people_type):
+			if people_type not in ret:
 				continue
 			proper = []
 			for improper in ret[people_type]:
-				if isinstance(improper,basestring):
+				if isinstance(improper, str):
 					langcode = 'en'
 					if not utils.is_english(improper):
 						langcode = 'ja'
@@ -209,16 +209,16 @@ def _parse_profile_info(soup_profile_left):
 
 def _promote_profile_info(profile_info):
 	artist_info = {}
-	if profile_info.has_key('Birthdate'):
+	if 'Birthdate' in profile_info:
 		artist_info['birthdate'] = utils.parse_date_time(profile_info['Birthdate']);
-	if profile_info.has_key('Birthplace'):
+	if 'Birthplace' in profile_info:
 		artist_info['birthplace'] = profile_info['Birthplace'];
 	promote_types = {'aliases':'Aliases',
 	                 'members':'Members',
 	                 'units':'Units',
 	                 'organizations':'Organizations'}
 	for promote_key, info_key in promote_types.items():
-		if not profile_info.has_key(info_key):
+		if info_key not in profile_info:
 			continue
 		artist_info[promote_key] = profile_info[info_key]
 	return artist_info
@@ -227,12 +227,12 @@ def _parse_websites(soup_websites):
 	""" Given an array of divs containing website information """
 	sites = {}
 	for soup_category in soup_websites.find_all('div', recursive=False):
-		category = unicode(soup_category.b.string)
+		category = soup_category.b.string
 		soup_links = soup_category.find_all('a', recursive=False)
 		links = []
 		for soup_link in soup_links:
 			link = soup_link['href']
-			name = unicode(soup_link.string)
+			name = soup_link.string
 			if link[0:9] == '/redirect':
 				link = utils.strip_redirect(link)
 			links.append({"link":link,"name":name})

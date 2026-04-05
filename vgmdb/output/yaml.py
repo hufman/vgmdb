@@ -1,4 +1,3 @@
-from __future__ import absolute_import
 
 mimetypes = ['text/yaml', 'text/x-yaml',
              'application/yaml', 'application/x-yaml']

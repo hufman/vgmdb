@@ -24,7 +24,7 @@ def find_best_match(query, matches, threshold=0.7, key=lambda x:x):
 
 def primary_name(names):
 	""" Given a dict of lang->names, return a default one """
-	langs = names.keys()
+	langs = list(names.keys())
 	if 'en' in langs:
 		return names['en']
 	return names[langs[0]]

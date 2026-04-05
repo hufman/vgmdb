@@ -6,8 +6,9 @@ import unicodedata
 import random
 import re
 import time
-import urllib2
-import urlparse
+import urllib.error
+import urllib.request
+
 from .. import config
 
 
@@ -15,22 +16,22 @@ db_parser = re.compile(r'db/([a-z]+)\.php')
 
 def fetch_page(url, retries=2, return_page_object=False):
 	try:
-		request = urllib2.Request(url)
-		request.add_header('User-Agent', 'VGMdb/1.0 vgmdb.info')
+		request = urllib.request.Request(url)
+		request.add_header('User-Agent', 'VGMdb/1.0 +https://vgmdb.info')
 		if config.USER_COOKIE != None:
 			request.add_header('Cookie', config.USER_COOKIE)
-		page = urllib2.urlopen(request, None, 30)
+		page = urllib.request.urlopen(request, None, 30)
 		if return_page_object:
 			return page
 		data = page.read()
 		data = data.decode('utf-8', 'ignore')
 		return data
-	except urllib2.HTTPError, error:
-		print >> sys.stderr, "HTTPError %s while fetching %s" % (error.code, url)
+	except urllib.error.HTTPError as error:
+		print("HTTPError %s while fetching %s" % (error.code, url), file=sys.stderr)
 		if error.code == 503 and retries:
 			time.sleep(random.randint(500, 3000)/1000.0)
 			return fetch_page(url, retries-1)
-		print >> sys.stderr, error.read()
+		print(error.read(), file=sys.stderr)
 		raise
 
 def url_info_page(type, id):
@@ -105,10 +106,10 @@ def is_english(text):
 	def is_letter(char):
 		return unicodedata.category(char)[0] == 'L'
 	decomposed = unicodedata.normalize('NFD', text)   # split off accent chars
-	trimmed = filter(is_letter, decomposed)
+	trimmed = (l for l in decomposed if is_letter(l))
 	trimmed = [extra_normalize(char) for char in trimmed]
 	count = len(trimmed)
-	count_english = len(filter(is_english_char, trimmed))
+	count_english = len([l for l in trimmed if is_english_char(l)])
 	if (count == 0):
 		return True	# by default
 	else:
@@ -212,7 +213,7 @@ def parse_shallow_string(soup_element):
 	Given an element, return the strings inside, but not inside nested elements
 	"""
 	if not isinstance(soup_element, bs4.Tag):
-		ret = unicode(soup_element.string)
+		ret = soup_element.string
 	else:
 		bits = []
 		for child in soup_element.children:
@@ -299,18 +300,18 @@ def trim_absolute(link):
 def force_absolute(link):
 	if link.startswith('http://') or link.startswith('https://'):
 		return link
-	return urlparse.urljoin('https://vgmdb.net/', link)
+	return urllib.parse.urljoin('https://vgmdb.net/', link)
 
 def parse_vgmdb_link(link):
 	vgmdb_link_types = {}
 
 	link = trim_absolute(link)
-	parsed_link = urlparse.urlparse(link)
+	parsed_link = urllib.parse.urlparse(link)
 	maybe_db = db_parser.match(parsed_link[2])
 	if maybe_db:
 		db_type = maybe_db.group(1)
 		item_type = vgmdb_link_types.get(db_type, db_type)
-		parsed_qs = urlparse.parse_qs(parsed_link[4])
+		parsed_qs = urllib.parse.parse_qs(parsed_link[4])
 		item_ids = parsed_qs.get('id', None)
 		if item_ids:
 			return "%s/%s"%(item_type, item_ids[0])
@@ -348,16 +349,16 @@ def parse_discography(soup_disco_table, label_type='roles'):
 		return albums
 	for soup_tbody in soup_disco_table.find_all("tbody", recursive=False):
 		soup_rows = soup_tbody.find_all("tr", recursive=False)
-		year = unicode(soup_rows[0].find('h3').string)
+		year = soup_rows[0].find('h3').string
 		for soup_album_tr in soup_rows[1:]:
 			soup_cells = soup_album_tr.find_all('td')
-			month_day = unicode(soup_cells[0].string)
+			month_day = soup_cells[0].string
 			soup_album = soup_cells[1].a
 			link = soup_album['href']
 			link = trim_absolute(link)
 			album_type = soup_album['class'][1].split('-')[1]
 			soup_album_info = soup_cells[1].find_all('span', recursive=False)
-			catalog = unicode(soup_album_info[0].string)
+			catalog = soup_album_info[0].string
 			roles_str = parse_string(soup_album_info[1])
 			roles = roles_str.split(',')
 			roles = [x.strip() for x in roles]
@@ -369,7 +370,7 @@ def parse_discography(soup_disco_table, label_type='roles'):
 				for child in soup_title.children:
 					if isinstance(child, bs4.Tag):
 						continue
-					title_text = unicode(child)
+					title_text = child
 					title_text = title_text.strip().strip('"')
 				if title_lang and title_text:
 					titles[title_lang] = title_text
@@ -450,7 +451,7 @@ _category_type = {
 	"Enclosure/Promo": "bonus", "Doujin/Fanmade": "doujin",
 	"Delayed/Cancelled": "cancel", "Bootleg": "bootleg"
 }
-_type_category = dict((v,k) for (k,v) in _category_type.iteritems())
+_type_category = dict((v,k) for (k,v) in _category_type.items())
 
 category_type = lambda k: _category_type.get(k)
 type_category = lambda k: _type_category.get(k)

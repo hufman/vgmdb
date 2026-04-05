@@ -9,9 +9,9 @@ class outputter(object):
 	def __init__(self, config):
 		self._config = config
 		if self._config.AUTO_RELOAD and \
-                   'vgmdb.output.rdf' in sys.modules.keys():
+                   'vgmdb.output.rdf' in list(sys.modules.keys()):
 			reload(sys.modules['vgmdb.output.rdf'])
-		import rdf
+		from . import rdf
 		self._rdf = rdf
 
 	def __call__(self, type, data, filterkey=None):

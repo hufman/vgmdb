@@ -9,7 +9,7 @@ def parse_page(html_source):
 	productlist_info = {}
 	productlist_info['products'] = []
 	html_source = utils.fix_invalid_table(html_source)
-	soup = bs4.BeautifulSoup(html_source)
+	soup = bs4.BeautifulSoup(html_source, features="lxml")
 	soup_pref = soup.find(id='pref')
 	soup_innermain = soup_pref.parent
 	if soup_innermain == None:
@@ -32,14 +32,14 @@ def parse_page(html_source):
 	soup_navbar = soup_innermain.find_all('div', recursive=False)[1]
 	soup_sections = soup_navbar.find_all('div', recursive=False)
 	soup_metadata = soup_sections[0]
-	productlist_info['meta']['time'] = unicode(soup_metadata.div.b.string)
+	productlist_info['meta']['time'] = soup_metadata.div.b.string
 	soup_letters = soup_sections[1]
 	productlist_info['letters'] = []
 	for soup_letter in soup_letters.find_all('td'):
 		if soup_letter.a:
-			letter = unicode(soup_letter.a.string)
+			letter = soup_letter.a.string
 		if soup_letter.strong:
-			letter = unicode(soup_letter.strong.string)
+			letter = soup_letter.strong.string
 		productlist_info['letters'].append(letter)
 	productlist_info['pagination'] = {'last': page_count}
 	
@@ -52,13 +52,13 @@ def _parse_product(soup_row):
 
 	# parse type
 	soup_span = soup_type.span
-	product_type = unicode(soup_span.string)
+	product_type = soup_span.string
 
 	# parse title
 	soup_link = soup_name.a
 	product_link = soup_link['href']
 	product_link = utils.trim_absolute(product_link)
-	product_name = unicode(soup_link.string)
+	product_name = soup_link.string
 
 	return {'link':product_link,
 	        'type': product_type,

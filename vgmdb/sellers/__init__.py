@@ -41,9 +41,9 @@ class Timer(object):
 		self.msecs = self.secs * 1000  # millisecs
 		if self.verbose:
 			if self.tag:
-				print '%s - elapsed time: %f ms' % (self.tag, self.msecs)
+				print('%s - elapsed time: %f ms' % (self.tag, self.msecs))
 			else:
-				print 'elapsed time: %f ms' % self.msecs
+				print('elapsed time: %f ms' % self.msecs)
 
 def search(type, id, start_search=True, wait=True, allow_partial=False):
 	"""
@@ -133,7 +133,7 @@ def _search_all_async(type, id, info):
 			return prev
 	executor = ThreadPoolExecutor(max_workers=5)
 	results = executor.map(search_module, search_modules, timeout=60)
-	results = filter(lambda x:x, results)
+	results = [x for x in results if x]
 	return results
 
 def _search_all_workers(type, id, info, wait):

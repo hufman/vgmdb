@@ -1,6 +1,6 @@
-import urllib
-import urlparse
 import json
+import urllib.parse
+import urllib.request
 
 
 BASE_URL = 'http://www.cdjapan.co.jp/products?q=%s&term.media_format=cd'
@@ -12,22 +12,22 @@ SERIES_INFO = 'http://www.cdjapan.co.jp/series/%s'
 PRODUCT_INFO = 'http://www.cdjapan.co.jp/product/%s'
 
 def get_search_url(query):
-	return BASE_URL%(urllib.quote(query),)
+	return BASE_URL%(urllib.parse.quote(query),)
 
 def search_artists(query):
-	link = API_SEARCH_ARTIST % (urllib.quote(query),)
+	link = API_SEARCH_ARTIST % (urllib.parse.quote(query),)
 	return parse_facets(ARTIST_INFO, fetch(link))
 
 def search_series(query):
-	link = API_SEARCH_SERIES % (urllib.quote(query),)
+	link = API_SEARCH_SERIES % (urllib.parse.quote(query),)
 	return parse_facets(SERIES_INFO, fetch(link))
 
 def search_products(query):
-	link = API_SEARCH_PRODUCTS % (urllib.quote(query),)
+	link = API_SEARCH_PRODUCTS % (urllib.parse.quote(query),)
 	return parse_records(fetch(link))
 
 def fetch(link):
-	return json.load(urllib.urlopen(link))
+	return json.load(urllib.request.urlopen(link))
 
 def parse_facets(info_link, data):
 	if data:

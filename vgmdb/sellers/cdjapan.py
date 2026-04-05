@@ -1,5 +1,5 @@
 import logging
-import cdjapan_parse as parser
+from . import cdjapan_parse as parser
 from ._utils import squash_str,find_best_match, primary_name
 
 class NullHandler(logging.Handler):

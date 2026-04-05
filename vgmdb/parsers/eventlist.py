@@ -11,7 +11,7 @@ def parse_page(html_source):
 	eventlist_info['events'] = {}
 	eventlist_info['years'] = []
 	html_source = utils.fix_invalid_table(html_source)
-	soup = bs4.BeautifulSoup(html_source)
+	soup = bs4.BeautifulSoup(html_source, features="lxml")
 	soup_pref = soup.find(id='pref')
 	soup_innermain = soup_pref.parent
 	if soup_innermain == None:
@@ -21,10 +21,10 @@ def parse_page(html_source):
 	soup_table = soup_innermain.find('table')
 	for soup_cell in soup_table.find_all('td'):
 		for soup_year in soup_cell.find_all('h3', recursive=False):
-			year = unicode(soup_year.string)
+			year = soup_year.string
 			if year not in eventlist_info['years']:
 				eventlist_info['years'].append(year)
-			if not eventlist_info['events'].has_key(year):
+			if year not in eventlist_info['events']:
 				eventlist_info['events'][year] = []
 			if not soup_year.find_next('ul'):
 				import ipdb; ipdb.set_trace()
@@ -54,7 +54,7 @@ def _parse_event(soup_event):
 	info = _parse_eventlink(soup_link)
 	soup_short = soup_event.find('a', recursive=False)	# optional shorttag
 	if soup_short and soup_short.span and soup_short.span.string:
-		info['shortname'] = unicode(soup_short.span.string)
+		info['shortname'] = soup_short.span.string
 	soup_date = soup_event.div
 	if soup_date:
 		dates = soup_date.string.split('to')

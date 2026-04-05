@@ -7,14 +7,15 @@ import random
 import re
 import sys
 import time
+import urllib.parse
+import urllib.request
 from . import utils
-import urllib
 
 logger = logging.getLogger(__name__)
 
-class AppURLOpener(urllib.FancyURLopener):
+class AppURLOpener(urllib.request.FancyURLopener):
 	version = "vgmdbapi/0.2 +https://vgmdb.info"
-urllib._urlopener = AppURLOpener()
+urllib.request._urlopener = AppURLOpener()
 
 BLOOM_INDEX = {}
 SEARCH_INDEX = {}
@@ -72,7 +73,7 @@ def generate_search_index():
 	logger.info("Building index of %s items took %s" % (count, time.time() - start))
 
 def fetch_url(query):
-	return 'https://vgmdb.net/search?q=%s'%(urllib.quote(query))
+	return 'https://vgmdb.net/search?q=%s'%(urllib.parse.quote(query))
 
 def fetch_page(query):
 	if SEARCH_INDEX:
@@ -97,7 +98,7 @@ def search_locally(query):
 	pieces = [p.decode('utf-8').lower() for p in query.split() if len(p) >= 3]
 	substrings = ["(?=.*%s)"%(re.escape(p),) for p in pieces]
 	needle = re.compile("".join(substrings), re.I)
-	for section, data in SEARCH_INDEX.iteritems():
+	for section, data in SEARCH_INDEX.items():
 		# check if this section has this set of keywords
 		if not all(piece[:16].encode('utf-8') in BLOOM_INDEX[section] for piece in pieces):
 			logger.debug("%s not found in %s" % (pieces, section))
@@ -122,13 +123,12 @@ def search_locally(query):
 
 
 def masquerade(url, page):
-	import urlparse
 	import importlib
 	sections = {'albums':[],
 	            'artists':[],
 	            'orgs':[],
 	            'products':[]}
-	parsed = urlparse.urlparse(page.geturl())
+	parsed = urllib.parse.urlparse(page.geturl())
 	data = page.read()
 	data = data.decode('utf-8', 'ignore')
 	for section in sections.keys():
@@ -141,9 +141,9 @@ def masquerade(url, page):
 			info['link'] = parsed.path[1:]
 			fake = generate_fakeresult(info)
 			sections[section].append(fake)
-	orig_parsed = urlparse.urlparse(url)
-	query = urlparse.parse_qs(orig_parsed.query)['q'][0]
-	query = urllib.unquote(query)
+	orig_parsed = urllib.parse.urlparse(url)
+	query = urllib.parse.parse_qs(orig_parsed.query)['q'][0]
+	query = urllib.parse.unquote(query)
 	fake = {
 	    "meta":{},
 	    "query":query,
@@ -188,7 +188,7 @@ def parse_page(html_source):
 	search_info['results'] = {}
 	search_info['sections'] = []
 	html_source = utils.fix_invalid_table(html_source)
-	soup = bs4.BeautifulSoup(html_source)
+	soup = bs4.BeautifulSoup(html_source, features="lxml")
 	soup_innermain = soup.find(id='innermain')
 	if soup_innermain == None:
 		return None	# info not found
@@ -198,7 +198,7 @@ def parse_page(html_source):
 		if not soup_section.has_attr('id'):
 			continue
 		section_type = soup_section['id']
-		if not section_types.has_key(section_type):
+		if section_type not in section_types:
 			continue
 		section_type = section_types[section_type]
 		parse_item = globals()['_parse_'+section_type[:-1]]
@@ -242,14 +242,14 @@ def _parse_listitem(soup_row):
 
 def _parse_album(soup_row):
 	soup_cells = soup_row.find_all('td', recursive=False)
-	catalog = unicode(soup_cells[0].span.string)
+	catalog = soup_cells[0].span.string
 	special = soup_cells[1].img
 	soup_album = soup_cells[2]
 	link = soup_album.a['href']
 	link = utils.trim_absolute(link)
 	names = utils.parse_names(soup_album.a)
 	date = utils.parse_date_time(soup_cells[3].string)
-	media_format = unicode(soup_cells[4].string)
+	media_format = soup_cells[4].string
 	info = {'link':link,
 	        'catalog':catalog,
 	        'titles':names,

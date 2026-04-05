@@ -9,7 +9,7 @@ def parse_page(html_source):
 	albumlist_info = {}
 	albumlist_info['albums'] = []
 	html_source = utils.fix_invalid_table(html_source)
-	soup = bs4.BeautifulSoup(html_source)
+	soup = bs4.BeautifulSoup(html_source, features="lxml")
 	soup_innermain = soup.find(id='innermain')
 	if soup_innermain == None:
 		return None	# info not found
@@ -25,7 +25,7 @@ def parse_page(html_source):
 
 		# parse catalog
 		soup_span = soup_catalog.span
-		album_catalog = unicode(soup_span.string)
+		album_catalog = soup_span.string
 
 		# parse title
 		soup_link = soup_title.a
@@ -57,11 +57,11 @@ def parse_page(html_source):
 	albumlist_info['meta'] = {}
 	soup_navbar = soup_innermain.parent.div
 	soup_metadata = soup_navbar.div
-	albumlist_info['meta']['time'] = unicode(soup_metadata.b.string)
+	albumlist_info['meta']['time'] = soup_metadata.b.string
 	soup_letters = soup_navbar.ul
 	albumlist_info['letters'] = []
 	for soup_letter in soup_letters.find_all('li'):
-		letter = unicode(soup_letter.a.h3.string)
+		letter = soup_letter.a.h3.string
 		albumlist_info['letters'].append(letter)
 	albumlist_info['pagination'] = {'last': page_count}
 	

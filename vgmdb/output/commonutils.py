@@ -23,7 +23,7 @@ def normalize_language_codes(language):
 	language_parts = language.split('-')
 	new_language_parts = []
 	for part in language_parts:
-		if language_codes.has_key(part):
+		if part in language_codes:
 			new_language_parts.append(language_codes[part])
 		else:
 			# try to find similar

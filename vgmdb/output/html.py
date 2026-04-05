@@ -1,5 +1,5 @@
 from .commonutils import normalize_language_codes
-import urlparse
+import urllib.parse
 import datetime
 
 mimetypes = ['text/html']
@@ -12,6 +12,7 @@ class outputter(object):
 
 	def __init__(self, config):
 		import jinja2
+		import markupsafe
 		self._config = config
 		self._templates = jinja2.Environment(loader=jinja2.PackageLoader('vgmdb.output'), trim_blocks=True, autoescape=autoescape)
 		self._templates.filters['artist_type'] = self.artist_type
@@ -29,8 +30,8 @@ class outputter(object):
 		self._templates.filters['or_unavailable'] = self.or_unavailable
 		self._templates.tests['empty'] = lambda x:len(x)==0
 		self._templates.tests['linktype'] = self.linktype
-		self._Markup = jinja2.Markup
-		self._escape = jinja2.escape
+		self._Markup = markupsafe.Markup
+		self._escape = markupsafe.escape
 
 	def __call__(self, type, data, filterkey=None):
 		data['type'] = type
@@ -39,7 +40,7 @@ class outputter(object):
 
 	def artist_type(self, artist_data):
 		types = []
-		if artist_data.has_key('members') and len(artist_data['members']) > 0:
+		if 'members' in artist_data and len(artist_data['members']) > 0:
 			types.append('schema:MusicGroup')
 			types.append('foaf:Organization')
 		else:
@@ -56,11 +57,11 @@ class outputter(object):
 			return '<span lang="%s" xml:lang="%s">%s</span>'%(lang, lang, self._escape(name))
 	def lang_names(self, names, rel="schema:name foaf:name"):
 		segments = []
-		if isinstance(names, str) or isinstance(names, unicode):
+		if isinstance(names, str):
 			segments.append(self.span_name('en', names, rel))
 		else:
 			names = dict(names)
-			if names.has_key('en'):
+			if 'en' in names:
 				segments.append(self.span_name('en', names['en'], rel))
 				del names['en']
 			for lang in sorted(names.keys()):
@@ -75,12 +76,12 @@ class outputter(object):
 			link = link[1:]
 		return link
 	def absolute_linkhref(self, link):
-		return urlparse.urljoin(self._config.BASE_URL, self.linkhref(link))
+		return urllib.parse.urljoin(self._config.BASE_URL, self.linkhref(link))
 	def absolute_linkhref_scheme(self, link):
 		base_url = self._config.BASE_URL
 		if base_url[0:2] == '//':
 			base_url = 'http:' + base_url
-		return urlparse.urljoin(base_url, self.linkhref(link))
+		return urllib.parse.urljoin(base_url, self.linkhref(link))
 
 	def resource_attr(self, href, type='resource', hash="subject"):
 		if href != None and len(href)>0:

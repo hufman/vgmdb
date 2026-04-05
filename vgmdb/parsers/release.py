@@ -7,7 +7,7 @@ fetch_page = lambda id: utils.fetch_page(fetch_url(id))
 
 def parse_page(html_source):
 	release_info = {}
-	soup = bs4.BeautifulSoup(html_source)
+	soup = bs4.BeautifulSoup(html_source, features="lxml")
 	soup_profile = soup.find(id='innermain')
 	soup_right_column = soup.find(id='rightcolumn')
 	if soup_profile == None:
@@ -19,9 +19,9 @@ def parse_page(html_source):
 	if soup_real_name:
 		soup_real_name = soup_real_name.span
 		if len(soup_real_name.contents) == 1:
-			release_info['name_real'] = unicode(soup_real_name.string)
+			release_info['name_real'] = soup_real_name.string
 		elif len(soup_real_name.contents) > 1:
-			release_info['name_real'] = unicode(soup_real_name.contents[0].string)
+			release_info['name_real'] = soup_real_name.contents[0].string
 
 	soup_type = soup_name.find_next_sibling('span')
 	if soup_type:
@@ -43,7 +43,7 @@ def parse_page(html_source):
 	release_info['product_albums'] = []
 	soup_section_heads = soup_profile.find_all('h3', recursive=False)
 	for soup_section_head in soup_section_heads:
-		section_name = unicode(soup_section_head.string)
+		section_name = soup_section_head.string
 		soup_section = soup_section_head.find_next_sibling('div')
 		if section_name == 'Products':
 			release_info['products'] = _parse_products(soup_section.div)
@@ -95,10 +95,10 @@ def _parse_release_info(soup_profile_info):
 			if not isinstance(soup_child, bs4.Tag):
 				continue
 			if soup_child.name == 'dt':
-				name = unicode(soup_child.b.string)
+				name = soup_child.b.string
 				value = None
 			if soup_child.name == 'dd':
-				value = unicode(soup_child.string)
+				value = soup_child.string
 				maps = {
 					'Catalog': 'catalog', 'EAN/UPC/JAN': 'upc',
 					'Release Type': 'release_type',

@@ -10,7 +10,7 @@ def parse_page(html_source):
 	product_info['description'] = ''
 	product_info['websites'] = {}
 	product_info['albums'] = []
-	soup = bs4.BeautifulSoup(html_source)
+	soup = bs4.BeautifulSoup(html_source, features="lxml")
 	soup_profile = soup.find(id='innermain')
 	soup_right_column = soup.find(id='rightcolumn')
 	if soup_profile == None:
@@ -22,9 +22,9 @@ def parse_page(html_source):
 	if soup_real_name:
 		soup_real_name = soup_real_name.span
 		if len(soup_real_name.contents) == 1:
-			product_info['name_real'] = unicode(soup_real_name.string)
+			product_info['name_real'] = soup_real_name.string
 		elif len(soup_real_name.contents) > 1:
-			product_info['name_real'] = unicode(soup_real_name.contents[0].string)
+			product_info['name_real'] = soup_real_name.contents[0].string
 
 	soup_type = soup_name.find_next_sibling('span')
 	if soup_type:
@@ -72,17 +72,17 @@ def parse_page(html_source):
 	soup_right_divs = soup_right_column.find_all('div', recursive=False)
 	for soup_right_section in soup_right_divs[:-1]:
 		if 'rtop' in soup_right_section.find('b', recursive=False)['class']:
-			section_head = unicode(soup_right_section.div.h3.string)
+			section_head = soup_right_section.div.h3.string
 		if 'rbot' in soup_right_section.find('b', recursive=False)['class']:
 			soup_section_body = soup_right_section.div
 			if section_head == 'Websites':
 				product_info['websites'] = {}
 				for soup_website_section in soup_section_body.find_all('div', recursive=False):
-					website_type = unicode(soup_website_section.b.string)
+					website_type = soup_website_section.b.string
 					websites = []
 					for soup_site in soup_website_section.find_all('a', recursive=False):
 						link = utils.strip_redirect(soup_site['href'])
-						name = unicode(soup_site.string)
+						name = soup_site.string
 						websites.append({"link":link,"name":name})
 					product_info['websites'][website_type] = websites
 	product_info['meta'] = utils.parse_meta(soup_right_divs[-1].div)
@@ -99,7 +99,7 @@ def _parse_product_info(soup_profile_info):
 		if not isinstance(soup_child, bs4.Tag):
 			continue
 		if soup_child.name == 'dt':
-			name = unicode(soup_child.b.string)
+			name = soup_child.b.string
 			value = None
 		if soup_child.name == 'dd':
 			if soup_child.div:
@@ -112,7 +112,7 @@ def _parse_product_info(soup_profile_info):
 						value.append(item)
 			else:
 				if soup_child.string:
-					value = unicode(soup_child.string)
+					value = soup_child.string
 
 			if name == 'Franchises' and isinstance(value, list):
 				product_info['franchises'] = value
@@ -159,8 +159,8 @@ def _parse_product_releases(soup_table):
 			release['names'] = utils.parse_names(soup_cells[1].a)
 		else:
 			release['names'] = utils.parse_names(soup_cells[1].span)
-		release['region'] = unicode(soup_cells[2].span.string)
-		release['platform'] = unicode(soup_cells[3].span.string)
+		release['region'] = soup_cells[2].span.string
+		release['platform'] = soup_cells[3].span.string
 		releases.append(release)
 	releases = sorted(releases, key=lambda e:e['date'])
 	return releases

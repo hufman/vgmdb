@@ -1,5 +1,4 @@
 from bottle import route, response, request, static_file, abort, hook, error
-import urllib
 from functools import wraps
 
 from datetime import datetime

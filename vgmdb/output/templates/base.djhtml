@@ -33,7 +33,7 @@
       <div class="sidebar" resource="{{data.link | linkhref}}#subject">
         <div class="box">
           <div class="boxsection">
-            <form method="get" action="search"><label for="search_query">Search: </label><input type="search" id="search_query" name="q" placeholder="{{data.get('query', '').decode('utf-8')}}"/></form>
+            <form method="get" action="search"><label for="search_query">Search: </label><input type="search" id="search_query" name="q" placeholder="{{data.get('query', '')}}"/></form>
             <label>Browse:</label>
             <ul class="inline">
               <li><a href="albumlist">Albums</a></li>
