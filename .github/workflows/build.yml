@@ -8,7 +8,7 @@ on:
 
 jobs:
   unitTest:
-    runs-on: ubuntu-22.04  # old enough for py2
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout the project
         uses: actions/checkout@v4
@@ -16,9 +16,13 @@ jobs:
           fetch-depth: 0
           submodules: true
       - name: Install apt dependencies
-        run: sudo apt-get update && sudo apt-get install virtualenv python2-dev libxml2-dev libxslt-dev
+        run: sudo apt-get update && sudo apt-get install virtualenv libxml2-dev libxslt-dev
+      - name: Install python 3.11
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
       - name: Install dependencies
-        run: virtualenv --python=/usr/bin/python2 venv && venv/bin/pip install -r requirements.txt
+        run: virtualenv --python=`which python` venv && venv/bin/pip install -U setuptools && venv/bin/pip install -r requirements.txt
       - name: Run unit tests
         run: . venv/bin/activate && ./tests.sh
 
