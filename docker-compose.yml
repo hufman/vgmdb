@@ -23,6 +23,7 @@ services:
       - REDIS_HOST=redis
       - DATA_BACKGROUND=true
       - CELERY_PING=false
+      - DEBUG
       - STATSD_HOST
       - VIRTUAL_HOST
       - VIRTUAL_PORT
@@ -45,6 +46,7 @@ services:
     environment:
       - SEARCH_INDEX
       - REDIS_HOST=redis
+      - DEBUG
       - STATSD_HOST
       - AMAZON_ACCESS_KEY_ID
       - AMAZON_SECRET_ACCESS_KEY
