@@ -139,13 +139,13 @@ def _parse_table_labels(color_codes, soup_cells):
 	info = {}
 	info.update(_parse_title_cell('labels', color_codes, soup_cells[1]))
 	info.update(_parse_contributor_cell(soup_cells[2]))
-	if info['edit'] == 'Album Linkup':
+	if info['edit'] == 'Album Linkup' and soup_cells[0].a:
 		soup_link = soup_cells[0].a
 		info['linked'] = {
 			"link": utils.trim_absolute(soup_link['href']),
 			"catalog": unicode(soup_link.string)
 		}
-	if info['edit'] == 'Artist Linkup':
+	if info['edit'] == 'Artist Linkup' and soup_cells[0].a:
 		soup_link = soup_cells[0].a
 		info['linked'] = {
 			"link": utils.trim_absolute(soup_link['href']),
@@ -249,6 +249,8 @@ def _parse_title_cell(type, color_codes, soup_cell):
 	info['edit'] = 'updated'
 	soup_badges = soup_cell.find_all('img')
 	for soup_badge in soup_badges:
+		if 'title' not in soup_badge.attrs:
+			continue
 		if soup_badge['title'] == 'Child Album':
 			info['reprint'] = True
 		if soup_badge['title'] == 'New Submission':
