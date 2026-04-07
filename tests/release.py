@@ -6,12 +6,16 @@ from vgmdb.parsers import release
 
 base = os.path.dirname(__file__)
 
+def read_file(name):
+	with open(os.path.join(base, name), 'r', errors='ignore') as data:
+		return data.read()
+
 class TestReleases(unittest.TestCase):
 	def setUp(self):
 		pass
 
 	def test_ataraxiavita(self):
-		at_code = file(os.path.join(base, 'release_hollowataraxiavita.html'), 'r').read()
+		at_code = read_file('release_hollowataraxiavita.html')
 		at = release.parse_page(at_code)
 		self.assertEqual(u'Fate/hollow ataraxia', at['name'])
 		self.assertEqual(u'Fate/hollow ataraxia', at['products'][0]['names']['en'])
@@ -41,7 +45,7 @@ class TestReleases(unittest.TestCase):
 		self.assertEqual(112, at['meta']['visitors'])
 
 	def test_ataraxiapc(self):
-		at_code = file(os.path.join(base, 'release_hollowataraxiapc.html'), 'r').read()
+		at_code = read_file('release_hollowataraxiapc.html')
 		at = release.parse_page(at_code)
 		self.assertEqual(0, len(at['release_albums']))	# this release doesn't have albums
 		self.assertEqual(25, len(at['product_albums']))

@@ -2,11 +2,11 @@
 import os
 import datetime
 import unittest
+from urllib.parse import urljoin
 
 from ._rdf import TestRDF
 from vgmdb.parsers import orglist
 from vgmdb.config import BASE_URL
-from urlparse import urljoin
 
 class TestOrglistRDF(TestRDF):
 	data_parser = lambda self,x: orglist.parse_page(x)

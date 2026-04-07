@@ -2,11 +2,11 @@
 import os
 import datetime
 import unittest
+from urllib.parse import urljoin
 
 from ._rdf import TestRDF
 from vgmdb.parsers import artistlist
 from vgmdb.config import BASE_URL
-from urlparse import urljoin
 
 class TestArtistlistRDF(TestRDF):
 	data_parser = lambda self,x: artistlist.parse_page(x)

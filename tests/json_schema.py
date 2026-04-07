@@ -11,6 +11,10 @@ import vgmdb.parsers
 base = os.path.dirname(__file__)
 project = os.path.dirname(base)
 
+def read_file(name):
+	with open(os.path.join(base, name), 'r', errors='ignore') as data:
+		return data.read()
+
 def get_draft4_validator(schema_absolute_path):
 	with open(schema_absolute_path) as schema_file:
 		schema = json.load(schema_file)
@@ -27,7 +31,7 @@ class TestJsonSchemaMeta(type):
 		def gen_test(schema, filename, parser):
 			def test(self):
 				logging.info('Validating json schema %s with file %s' % (schema, filename))
-				code = file(filename, 'r').read()
+				code = read_file(filename)
 				data = parser.parse_page(code)
 				data['link'] = 'unknown/A1'
 				data['vgmdb_link'] = 'http://vgmdb.net/unknown/1'

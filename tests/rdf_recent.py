@@ -2,11 +2,11 @@
 import os
 import datetime
 import unittest
+from urllib.parse import urljoin
 
 from ._rdf import TestRDF
 from vgmdb.parsers import recent
 from vgmdb.config import BASE_URL
-from urlparse import urljoin
 
 class TestRecentRDF(TestRDF):
 	data_parser = lambda self,x: recent.parse_page(x)

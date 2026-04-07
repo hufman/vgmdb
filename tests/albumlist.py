@@ -6,12 +6,16 @@ from vgmdb.parsers import albumlist
 
 base = os.path.dirname(__file__)
 
+def read_file(name):
+	with open(os.path.join(base, name), 'r', errors='ignore') as data:
+		return data.read()
+
 class TestAlbumList(unittest.TestCase):
 	def setUp(self):
 		pass
 
 	def test_list(self):
-		list_code = file(os.path.join(base, 'albumlist.html'), 'r').read()
+		list_code = read_file('albumlist.html')
 		list = albumlist.parse_page(list_code)
 
 		self.assertEqual(u"album/12991", list['albums'][0]['link'])

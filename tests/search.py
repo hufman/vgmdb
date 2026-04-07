@@ -6,12 +6,16 @@ import vgmdb.parsers.search
 
 base = os.path.dirname(__file__)
 
+def read_file(name):
+	with open(os.path.join(base, name), 'r', errors='ignore') as data:
+		return data.read()
+
 class TestSearchList(unittest.TestCase):
 	def setUp(self):
 		pass
 
 	def test_search(self):
-		search_code = file(os.path.join(base, 'search.html'), 'r').read()
+		search_code = read_file('search.html')
 		search = vgmdb.parsers.search.parse_page(search_code)
 
 		self.assertEqual(8, len(search['results']['albums']))
@@ -33,7 +37,7 @@ class TestSearchList(unittest.TestCase):
 		self.assertEqual(u"Game", search['results']['products'][0]['type'])
 
 	def test_search_quotes(self):
-		search_code = file(os.path.join(base, 'search_quotes.html'), 'r').read()
+		search_code = read_file('search_quotes.html')
 		search = vgmdb.parsers.search.parse_page(search_code)
 
 		self.assertEqual("''Snake Eater'' song from METAL GEAR SOLID 3", search['query'])

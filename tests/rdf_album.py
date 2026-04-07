@@ -3,11 +3,11 @@ import os
 import datetime
 import unittest
 import decimal
+from urllib.parse import urljoin
 
 from ._rdf import TestRDF
 from vgmdb.parsers import album
 from vgmdb.config import BASE_URL
-from urlparse import urljoin
 
 class TestAlbumsRDF(TestRDF):
 	data_parser = lambda self,x: album.parse_page(x)
@@ -63,8 +63,8 @@ class TestAlbumsRDF(TestRDF):
 			"select ?name where { ?person mo:performed <@base#performance> . ?person foaf:name ?name . filter(lang(?name)='en')} order by ?name" : "Chie Sasakura",
 			"select ?records where { <@base#subject> mo:record_count ?records . }" : 1,
 			"select ?tracks where { <@base#subject> mo:record ?record . ?record mo:track_count ?tracks . }" : 13,
-			"select ?length where { <@base#subject> mo:record ?record . ?record mo:track ?track . ?track mo:track_number \"1\"^^xsd:integer . ?track schema:duration ?length . }" : "PT3:09",
-			"select ?length where { <@base#subject> mo:record ?record . ?record schema:duration ?length . }" : "PT64:16",
+			"select ?length where { <@base#subject> mo:record ?record . ?record mo:track ?track . ?track mo:track_number \"1\"^^xsd:integer . ?track schema:duration ?length . }" : "PT00H03M09S",
+			"select ?length where { <@base#subject> mo:record ?record . ?record schema:duration ?length . }" : "PT01H04M16S",
 			"select ?name where { <@base#subject> mo:record ?record . ?record mo:track ?track . ?track mo:track_number \"1\"^^xsd:integer . ?track schema:name ?name . filter(lang(?name)='en')}" : "Liberi Fatali",
 			"select ?name where { <@base#subject> mo:record ?record . ?record mo:track ?track . ?track mo:track_number \"1\"^^xsd:integer . ?track dcterms:title ?name . filter(lang(?name)='en')}" : "Liberi Fatali",
 			"select ?publisher where { <@base#subject> mo:publisher ?publisher . }" : "<@baseorg/54#subject>",

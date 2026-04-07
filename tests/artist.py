@@ -6,12 +6,16 @@ from vgmdb.parsers import artist
 
 base = os.path.dirname(__file__)
 
+def read_file(name):
+	with open(os.path.join(base, name), 'r', errors='ignore') as data:
+		return data.read()
+
 class TestArtists(unittest.TestCase):
 	def setUp(self):
 		pass
 
 	def test_nobuo(self):
-		nobuo_code = file(os.path.join(base, 'artist_nobuo.html'), 'r').read()
+		nobuo_code = read_file('artist_nobuo.html')
 		nobuo = artist.parse_page(nobuo_code)
 		self.assertEqual(u'Nobuo Uematsu', nobuo['name'])
 		self.assertEqual(u'male', nobuo['sex'])
@@ -48,7 +52,7 @@ class TestArtists(unittest.TestCase):
 		blackmages_name = u"ザ・ブラックメイジーズ"
 		name_info = artist._parse_full_name(blackmages_name)
 		self.assertEqual(u'ザ・ブラックメイジーズ', name_info['name_real'])
-		self.assertTrue(not name_info.has_key('name_trans'))
+		self.assertTrue('name_trans' not in name_info)
 
 	def test_sungwoon_name(self):
 		""" Korean name """
@@ -64,7 +68,7 @@ class TestArtists(unittest.TestCase):
 		self.assertEqual(0, len(name_info.keys()))
 
 	def test_ss(self):
-		ss_code = file(os.path.join(base, 'artist_ss.html'), 'r').read()
+		ss_code = read_file('artist_ss.html')
 		ss = artist.parse_page(ss_code)
 		self.assertEqual(u'Composer (as HAPPY-SYNTHESIZER)', ss['discography'][13]['roles'][0])
 		self.assertEqual(u'Arranger (as (S_S))', ss['discography'][14]['roles'][0])
@@ -76,13 +80,13 @@ class TestArtists(unittest.TestCase):
 
 	def test_s_s(self):
 		# sexy synthesizer alias
-		ss_code = file(os.path.join(base, 'artist_s_s.html'), 'r').read()
+		ss_code = read_file('artist_s_s.html')
 		ss = artist.parse_page(ss_code)
 		self.assertEqual(u'(S_S)', ss['name'])
 		self.assertEqual(u'Alias', ss['type'])
 
 	def test_offenbach(self):
-		offenbach_code = file(os.path.join(base, 'artist_offenbach.html'), 'r').read()
+		offenbach_code = read_file('artist_offenbach.html')
 		offenbach = artist.parse_page(offenbach_code)
 		self.assertEqual(u'Jacques Offenbach', offenbach['name'])
 		self.assertEqual(u'male', offenbach['sex'])
@@ -91,7 +95,7 @@ class TestArtists(unittest.TestCase):
 		self.assertEqual('1880-10-05', offenbach['deathdate'])
 
 	def test_key(self):
-		key_code = file(os.path.join(base, 'artist_key.html'), 'r').read()
+		key_code = read_file('artist_key.html')
 		key = artist.parse_page(key_code)
 		self.assertEqual(u'Jun Maeda', key['name'])
 		self.assertEqual(u'Individual', key['type'])
@@ -100,7 +104,7 @@ class TestArtists(unittest.TestCase):
 		self.assertEqual(u'KEY', key['aliases'][0]['names']['en'])
 
 	def test_rookies(self):
-		rookies_code = file(os.path.join(base, 'artist_rookies.html'), 'r').read()
+		rookies_code = read_file('artist_rookies.html')
 		rookies = artist.parse_page(rookies_code)
 		self.assertEqual(u"ROOKiEZ is PUNK'D", rookies['name'])
 		self.assertEqual(3, len(rookies['info']['Members']))
@@ -113,12 +117,12 @@ class TestArtists(unittest.TestCase):
 		self.assertEqual(u'2RASH', rookies['info']['Former Members'][0]['names']['en'])
 
 	def test_horie(self):
-		horie_code = file(os.path.join(base, 'artist_horie.html'), 'r').read()
+		horie_code = read_file('artist_horie.html')
 		horie = artist.parse_page(horie_code)
 		self.assertEqual('B', horie['info']['Bloodtype'])
 
 	def test_kirkhope_logged_in(self):
-		kirkhope_code = file(os.path.join(base, 'artist_kirkhope_logged_in.html'), 'r').read()
+		kirkhope_code = read_file('artist_kirkhope_logged_in.html')
 		artist.parse_page(kirkhope_code)
 
 

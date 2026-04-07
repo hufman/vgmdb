@@ -6,12 +6,16 @@ from vgmdb.parsers import album
 
 base = os.path.dirname(__file__)
 
+def read_file(name):
+	with open(os.path.join(base, name), 'r', errors='ignore') as data:
+		return data.read()
+
 class TestAlbums(unittest.TestCase):
 	def setUp(self):
 		pass
 
 	def test_ff8(self):
-		ff8_code = file(os.path.join(base, 'album_ff8.html'), 'r').read()
+		ff8_code = read_file('album_ff8.html')
 		ff8 = album.parse_page(ff8_code)
 
 		self.assertEqual(u"FITHOS LUSEC WECOS VINOSEC: FINAL FANTASY VIII [Limited Edition]", ff8['names']['en'])
@@ -70,13 +74,13 @@ class TestAlbums(unittest.TestCase):
 		self.assertEqual(35, ff8['meta']['freedb'])
 
 	def test_ff8_logged_in(self):
-		ff8_code = file(os.path.join(base, 'album_ff8_logged_in.html'), 'r').read()
+		ff8_code = read_file('album_ff8_logged_in.html')
 		ff8 = album.parse_page(ff8_code)
 
 		self.assertEqual(u"Disc 1", ff8['discs'][0]['name'])
 
 	def test_arciel(self):
-		arciel_code = file(os.path.join(base, 'album_arciel.html'), 'r').read()
+		arciel_code = read_file('album_arciel.html')
 		arciel = album.parse_page(arciel_code)
 
 		self.assertEqual(u"Ar tonelico III Image CD Utau Oka ~Ar=Ciel Ar=Dor~", arciel['names']['en'])
@@ -87,12 +91,12 @@ class TestAlbums(unittest.TestCase):
 		self.assertTrue(u"Akiko Shikata" in arciel['notes'])
 
 	def test_at3(self):
-		at3_code = file(os.path.join(base, 'album_at3.html'), 'r').read()
+		at3_code = read_file('album_at3.html')
 		at3 = album.parse_page(at3_code)
 		self.assertEqual(2, len(at3['discs']))
 		self.assertEqual(u'EXEC_FLIP_FUSIONSPHERE/.', at3['discs'][1]['tracks'][3]['names']['Romaji'])
 	def test_viking(self):
-		viking_code = file(os.path.join(base, 'album_viking.html'), 'r').read()
+		viking_code = read_file('album_viking.html')
 		viking = album.parse_page(viking_code)
 
 		self.assertEqual('Free', viking['release_price']['price'])
@@ -101,7 +105,7 @@ class TestAlbums(unittest.TestCase):
 		self.assertEqual('Duty Cycle Generator', viking['publisher']['names']['en'])
 
 	def test_blooming(self):
-		blooming_code = file(os.path.join(base, 'album_blooming.html'), 'r').read()
+		blooming_code = read_file('album_blooming.html')
 		blooming = album.parse_page(blooming_code)
 
 		self.assertEqual('KMCM-2', blooming['catalog'])
@@ -112,7 +116,7 @@ class TestAlbums(unittest.TestCase):
 		self.assertEqual('CDJapan (OOP)', blooming['stores'][0]['name'])
 
 	def test_istoria(self):
-		istoria_code = file(os.path.join(base, 'album_istoria.html'), 'r').read()
+		istoria_code = read_file('album_istoria.html')
 		istoria = album.parse_page(istoria_code)
 
 		self.assertEqual(u'Tomoki Yamada', istoria['performers'][-1]['names']['en'])
@@ -122,7 +126,7 @@ class TestAlbums(unittest.TestCase):
 		self.assertEqual(u'event/146', istoria['release_events'][0]['link'])
 
 	def test_zwei(self):
-		zwei_code = file(os.path.join(base, 'album_zwei.html'), 'r').read()
+		zwei_code = read_file('album_zwei.html')
 		zwei = album.parse_page(zwei_code)
 		self.assertEqual(5, len(zwei['composers']))
 		self.assertEqual(u'Falcom Sound Team jdk', zwei['composers'][0]['names']['en'])
@@ -130,7 +134,7 @@ class TestAlbums(unittest.TestCase):
 		self.assertEqual(u'Atsushi Shirakawa', zwei['composers'][1]['names']['en'])
 
 	def test_bootleg(self):
-		bootleg_code = file(os.path.join(base, 'album_bootleg.html'), 'r').read()
+		bootleg_code = read_file('album_bootleg.html')
 		bootleg = album.parse_page(bootleg_code)
 		self.assertEqual('GAME-119', bootleg['catalog'])
 		self.assertEqual(True, bootleg['bootleg'])
@@ -139,7 +143,7 @@ class TestAlbums(unittest.TestCase):
 
 	def test_brokennight(self):
 		# has a linked release
-		night_code = file(os.path.join(base, 'album_brokennight.html'), 'r').read()
+		night_code = read_file('album_brokennight.html')
 		night = album.parse_page(night_code)
 		self.assertEqual('DFCL-2101~2', night['catalog'])
 		self.assertEqual('Sony PlayStation Vita', night['platforms'][0])
@@ -149,7 +153,7 @@ class TestAlbums(unittest.TestCase):
 
 	def test_touhou(self):
 		# has multiple releases
-		touhou_code = file(os.path.join(base, 'album_touhou.html'), 'r').read()
+		touhou_code = read_file('album_touhou.html')
 		touhou = album.parse_page(touhou_code)
 		self.assertEqual('IO-0212', touhou['catalog'])
 		self.assertEqual(2, len(touhou['release_events']))
@@ -162,7 +166,7 @@ class TestAlbums(unittest.TestCase):
 
 	def test_million(self):
 		# has multiple publishers
-		million_code = file(os.path.join(base, 'album_million.html'), 'r').read()
+		million_code = read_file('album_million.html')
 		million = album.parse_page(million_code)
 		self.assertEqual(3, len(million['organizations']))
 		self.assertEqual(u'Key Sounds Label', million['publisher']['names']['en'])
@@ -183,7 +187,7 @@ class TestAlbums(unittest.TestCase):
 
 	def test_got(self):
 		# used to have unlinked publisher and a distributor
-		got_code = file(os.path.join(base, 'album_got.html'), 'r').read()
+		got_code = read_file('album_got.html')
 		got = album.parse_page(got_code)
 		self.assertEqual(2, len(got['organizations']))
 		self.assertEqual(u'Game Audio Factory', got['publisher']['names']['en'])
@@ -193,7 +197,7 @@ class TestAlbums(unittest.TestCase):
 
 	def test_gameover(self):
 		# an extra Music credits
-		go_code = file(os.path.join(base, 'album_gameover.html'), 'r').read()
+		go_code = read_file('album_gameover.html')
 		go = album.parse_page(go_code)
 		self.assertEqual(u'Hiroshi Kawaguchi', go['composers'][-1]['names']['en'])
 

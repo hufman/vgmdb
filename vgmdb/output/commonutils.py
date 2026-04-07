@@ -41,3 +41,18 @@ def normalize_language_codes(language):
 			else:
 				new_language_parts.append(part)
 	return '-'.join(new_language_parts)
+
+def format_duration(duration_str):
+	while duration_str.count(':') < 2:
+		duration_str = '00:' + duration_str
+	hour, minute, second = duration_str.split(':')
+	hour = int(hour)
+	minute = int(minute)
+	second = int(second)
+	while second >= 60:
+		second = second - 60
+		minute = minute + 1
+	while minute >= 60:
+		minute = minute - 60
+		hour = hour + 1
+	return 'PT%02dH%02dM%02dS' % (hour, minute, second)

@@ -137,12 +137,12 @@
           <span property="mo:record_number" content="{{loop.index}}" datatype="xsd:integer"></span>
           <span property="mo:track_count" content="{{disc.tracks | count}}" datatype="xsd:integer"></span>
           <span property="schema:numTracks" content="{{disc.tracks | count}}" datatype="xsd:integer"></span>
-          <span property="schema:duration" content="{{disc.disc_length | format_interval}}" datatype="xsd:interval"></span>
+          <span property="schema:duration" content="{{disc.disc_length | format_duration}}" datatype="xsd:duration"></span>
         </span>
         <h3>{{disc.name}}</h3>
         <ol class="unstyled">
           {% for track in disc.tracks %}
-          <li rel="mo:track schema:track" rev="schema:inPlaylist" typeof="schema:MusicRecording mo:Track"><span property="mo:track_number" datatype="xsd:integer">{{loop.index}}</span> - <span class="names">{{track.names|lang_names(rel="schema:name dcterms:title")}}</span> (<span property="schema:duration" content="{{track.track_length|format_interval}}" datatype="xsd:interval">{{track.track_length}}</span>)</li>
+          <li rel="mo:track schema:track" rev="schema:inPlaylist" typeof="schema:MusicRecording mo:Track"><span property="mo:track_number" datatype="xsd:integer">{{loop.index}}</span> - <span class="names">{{track.names|lang_names(rel="schema:name dcterms:title")}}</span> (<span property="schema:duration" content="{{track.track_length|format_duration}}" datatype="xsd:duration">{{track.track_length}}</span>)</li>
           {% endfor %}
         </ol>
         {% endfor %}

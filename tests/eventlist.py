@@ -6,12 +6,16 @@ from vgmdb.parsers import eventlist
 
 base = os.path.dirname(__file__)
 
+def read_file(name):
+	with open(os.path.join(base, name), 'r', errors='ignore') as data:
+		return data.read()
+
 class TestEventList(unittest.TestCase):
 	def setUp(self):
 		pass
 
 	def test_list(self):
-		list_code = file(os.path.join(base, 'eventlist.html'), 'r').read()
+		list_code = read_file('eventlist.html')
 		list = eventlist.parse_page(list_code)
 
 		self.assertEqual(25, len(list['events'].keys()))

@@ -10,38 +10,38 @@ class TestParseAcceptHeader(unittest.TestCase):
 		          ('application/json', {}, 1.0),
 		          ('application/xml', {}, 0.9),
 		          ('*/*', {}, 0.8)]
-		self.assertEquals(parse_accept_header(accept), should)
+		self.assertEqual(should, parse_accept_header(accept))
 
 	def test_parse_accept_header_smart_client(self):
 		accept = "application/vnd.ficture.lightt-v1.1+json"
 		should = [('application/json', {'version': 1.1,
 		           'vendor': 'vnd.ficture.lightt'}, 1.0)]
-		self.assertEquals(parse_accept_header(accept), should)
+		self.assertEqual(should, parse_accept_header(accept))
 
 	def test_parse_accept_header_dumbish_client(self):
 		accept = "application/vnd.ficture.lightt-v1.0"
 		should = [('application/vnd.ficture.lightt-v1.0', {}, 1.0)]
-		self.assertEquals(parse_accept_header(accept), should)
+		self.assertEqual(should, parse_accept_header(accept))
 
 	def test_parse_accept_header_also_dumb_client(self):
 		accept = "application/vnd.ficture.lightt"
 		should = [('application/vnd.ficture.lightt', {}, 1.0)]
-		self.assertEquals(parse_accept_header(accept), should)
+		self.assertEqual(should, parse_accept_header(accept))
 
 	def test_parse_accept_header_dumb_client(self):
 		accept = "application/json"
 		should = [('application/json', {}, 1.0)]
-		self.assertEquals(parse_accept_header(accept), should)
+		self.assertEqual(should, parse_accept_header(accept))
 
 	def test_parse_accept_header_really_dumb_client(self):
 		accept = ""
 		should = [('', {}, 1.0)]
-		self.assertEquals(parse_accept_header(accept), should)
+		self.assertEqual(should, parse_accept_header(accept))
 
 	def test_parse_accept_header_null(self):
 		accept = None
 		should = []
-		self.assertEquals(parse_accept_header(accept), should)
+		self.assertEqual(should, parse_accept_header(accept))
 
 
 if __name__ == '__main__':

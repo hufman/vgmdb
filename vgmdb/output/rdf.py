@@ -1,8 +1,10 @@
-from .commonutils import normalize_language_codes
+from .commonutils import format_duration, normalize_language_codes
 
+import datetime
 import rdflib
 from rdflib import Graph, Namespace, Literal, BNode, URIRef
 from rdflib.namespace import NamespaceManager
+import re
 
 from urllib.parse import urljoin
 # fix for the base in turtle serialization
@@ -40,7 +42,7 @@ def generate(config, type, data):
 	else:
 		doc = BNode()
 		uri = base
-		graph = Graph('IOMemory', doc)
+		graph = Graph('Memory', doc)
 	graph.namespace_manager = ns
 	return graph
 
@@ -146,7 +148,7 @@ def generate_artist(config, data):
 	else:
 		doc = BNode()
 		uri = base
-	g = Graph('IOMemory', doc)
+	g = Graph('Memory', doc)
 	subject = URIRef(uri + "#subject")
 	g.add((doc, FOAF.primaryTopic, subject))
 
@@ -222,7 +224,7 @@ def generate_album(config, data):
 	else:
 		doc = BNode()
 		uri = base
-	g = Graph('IOMemory', doc)
+	g = Graph('Memory', doc)
 	subject = URIRef(uri + "#subject")
 	musicalexpression = URIRef(uri + "#musicalexpression")
 	performance = URIRef(uri + "#performance")
@@ -344,8 +346,8 @@ def generate_album(config, data):
 		g.add((record, MO.track_count, Literal(len(discdata['tracks']), datatype=XSD.integer)))
 		g.add((record, SCHEMA.numTracks, Literal(len(discdata['tracks']), datatype=XSD.integer)))
 		if 'disc_length' in discdata and discdata['disc_length']:
-			interval = "PT" + discdata['disc_length']
-			g.add((record, SCHEMA.duration, Literal(interval, datatype=XSD.interval)))
+			duration = format_duration(discdata['disc_length'])
+			g.add((record, SCHEMA.duration, Literal(duration, datatype=XSD.duration)))
 		trackno = 0
 		for trackdata in discdata['tracks']:
 			trackno += 1
@@ -359,8 +361,8 @@ def generate_album(config, data):
 			add_lang_names(g, track, trackdata['names'], rel=[SCHEMA.name, DCTERMS.title])
 			if 'track_length' in trackdata and \
 			   trackdata['track_length']:
-				interval = "PT" + trackdata['track_length']
-				g.add((track, SCHEMA.duration, Literal(interval, datatype=XSD.interval)))
+				duration = format_duration(trackdata['track_length'])
+				g.add((track, SCHEMA.duration, Literal(duration, datatype=XSD.duration)))
 
 	return g
 
@@ -371,7 +373,7 @@ def generate_product(config, data):
 	else:
 		doc = BNode()
 		uri = base
-	g = Graph('IOMemory', doc)
+	g = Graph('Memory', doc)
 	subject = URIRef(uri + "#subject")
 	g.add((subject, RDF.type, SCHEMA.CreativeWork))
 	g.add((subject, DCTERMS.title, Literal(data['name'])))
@@ -407,7 +409,7 @@ def generate_release(config, data):
 	else:
 		doc = BNode()
 		uri = base
-	g = Graph('IOMemory', doc)
+	g = Graph('Memory', doc)
 	subject = URIRef(uri + "#subject")
 	g.add((subject, RDF.type, SCHEMA.CreativeWork))
 	g.add((subject, DCTERMS.title, Literal(data['name'])))
@@ -436,7 +438,7 @@ def generate_org(config, data):
 	else:
 		doc = BNode()
 		uri = base
-	g = Graph('IOMemory', doc)
+	g = Graph('Memory', doc)
 	subject = URIRef(uri + "#subject")
 	g.add((subject, RDF.type, SCHEMA.Organization))
 	g.add((subject, RDF.type, FOAF.Organization))
@@ -471,7 +473,7 @@ def generate_event(config, data):
 	else:
 		doc = BNode()
 		uri = base
-	g = Graph('IOMemory', doc)
+	g = Graph('Memory', doc)
 	subject = URIRef(uri + "#subject")
 	g.add((subject, RDF.type, SCHEMA.MusicEvent))
 	g.add((subject, RDF.type, MO.ReleaseEvent))
@@ -487,18 +489,18 @@ def generate_event(config, data):
 	return g
 
 def generate_albumlist(config, data):
-	g = Graph('IOMemory', BNode())
+	g = Graph('Memory', BNode())
 	add_discography(g, None, data['albums'], rel=[], rev=[])
 	return g
 def generate_artistlist(config, data):
-	g = Graph('IOMemory', BNode())
+	g = Graph('Memory', BNode())
 	for artist_data in data['artists']:
 		artist = URIRef(link(artist_data['link'])+"#subject")
 		add_lang_names(g, artist, artist_data['names'], rel=[FOAF.name])
 		g.add((artist, RDF.type, SCHEMA.MusicGroup))
 	return g
 def generate_productlist(config, data):
-	g = Graph('IOMemory', BNode())
+	g = Graph('Memory', BNode())
 	for product_data in data['products']:
 		product = URIRef(link(product_data['link'])+"#subject")
 		add_lang_names(g, product, product_data['names'], rel=[SCHEMA.name, DCTERMS.title])
@@ -510,7 +512,7 @@ def generate_orglist(config, data):
 		add_lang_names(g, org, org_data['names'], rel=[FOAF.name, SCHEMA.name])
 		g.add((org, RDF.type, SCHEMA.Organization))
 		g.add((org, RDF.type, FOAF.Organization))
-	g = Graph('IOMemory', BNode())
+	g = Graph('Memory', BNode())
 	if isinstance(data['orgs'], list):
 		orglist = data['orgs']
 	else:
@@ -526,7 +528,7 @@ def generate_orglist(config, data):
 				add_org_tuple(g, extra_org)
 	return g
 def generate_eventlist(config, data):
-	g = Graph('IOMemory', BNode())
+	g = Graph('Memory', BNode())
 	if isinstance(data['events'], list):
 		eventlist = data['events']
 	else:
@@ -545,7 +547,7 @@ def generate_eventlist(config, data):
 		g.add((release_event, TL.at, Literal(event_data['startdate'], datatype=XSD.date)))
 	return g
 def generate_search(config, data):
-	g = Graph('IOMemory', BNode())
+	g = Graph('Memory', BNode())
 	for section in data['results'].keys():
 		generator = globals()['generate_%slist'%(section[:-1],)]
 		subg = generator(config, data['results'])
@@ -553,7 +555,7 @@ def generate_search(config, data):
 	return g
 
 def generate_recent(config, data):
-	g = Graph('IOMemory', BNode())
+	g = Graph('Memory', BNode())
 	for update in data['updates']:
 		if 'link' in update:
 			subject = URIRef(link(update['link'])+"#subject")

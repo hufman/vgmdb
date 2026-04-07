@@ -50,11 +50,11 @@ class TestArtistsRDF(TestRDF):
 			"select ?name where { <@base#subject> foaf:name ?name . }" : "Nobuo Uematsu",
 			"select ?name where { <@base#subject> schema:name ?name . }" : "Nobuo Uematsu",
 			"select ?name where { ?person rdf:type foaf:Person . ?person foaf:name ?name . }" : u'Nobuo Uematsu',
-			"select ?birthdate where { ?birth rdf:type bio:Birth . ?birth bio:date ?birthdate . }" : datetime.date(1959,03,21),
+			"select ?birthdate where { ?birth rdf:type bio:Birth . ?birth bio:date ?birthdate . }" : datetime.date(1959,3,21),
 			"select ?name where { ?album rdf:type schema:MusicAlbum . <@base#subject> foaf:made ?album . ?album dcterms:title ?name . ?album schema:datePublished ?date . filter(lang(?name) = 'en')  } order by ?date" : 'CRUISE CHASER BLASSTY',
 			"select ?name where { ?album rdf:type schema:MusicAlbum . ?artist foaf:made ?album . ?album dcterms:title ?name . ?album schema:datePublished ?date . filter(lang(?name) = 'en')  } order by ?date" : 'CRUISE CHASER BLASSTY',
-			"select ?date where { ?album rdf:type schema:MusicAlbum . ?artist foaf:made ?album . ?album schema:datePublished ?date . } order by ?date" : datetime.date(1986,04,26),
-			"select ?date where { ?album rdf:type mo:Release . ?artist foaf:made ?album . ?album dcterms:created ?date . } order by ?date" : datetime.date(1986,04,26),
+			"select ?date where { ?album rdf:type schema:MusicAlbum . ?artist foaf:made ?album . ?album schema:datePublished ?date . } order by ?date" : datetime.date(1986,4,26),
+			"select ?date where { ?album rdf:type mo:Release . ?artist foaf:made ?album . ?album dcterms:created ?date . } order by ?date" : datetime.date(1986,4,26),
 			"select ?catalog where { ?album mo:catalogue_number ?catalog . ?album dcterms:title \"SYMPHONIC SUITE FINAL FANTASY\"@en . }" : "H28X-10007",
 			"select ?handle where { ?person foaf:account ?account . ?account foaf:accountServiceHomepage <http://www.twitter.com/> . ?account foaf:accountName ?handle . }" : "UematsuNobuo",
 			"select ?image where { <@base#subject> foaf:depiction ?image . ?image a foaf:Image }" : "<https://media.vgm.io/artists/77/77/77-1345913713.jpg>",
@@ -105,7 +105,7 @@ class TestArtistsRDF(TestRDF):
 		}
 		test_first_result = {
 			"select ?date where { ?birth bio:principal <@base#subject> . ?birth a bio:Birth . ?birth bio:date ?date . }" : datetime.date(1819,6,20),
-			"select ?date where { ?death bio:principal <@base#subject> . ?death a bio:Death . ?death bio:date ?date . }" : datetime.date(1880,10,05)
+			"select ?date where { ?death bio:principal <@base#subject> . ?death a bio:Death . ?death bio:date ?date . }" : datetime.date(1880,10,5)
 		}
 
 		self.run_tests(graph, test_count_results, test_first_result)

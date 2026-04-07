@@ -6,12 +6,16 @@ from vgmdb.parsers import orglist
 
 base = os.path.dirname(__file__)
 
+def read_file(name):
+	with open(os.path.join(base, name), 'r', errors='ignore') as data:
+		return data.read()
+
 class TestOrgList(unittest.TestCase):
 	def setUp(self):
 		pass
 
 	def test_list(self):
-		list_code = file(os.path.join(base, 'orglist.html'), 'r').read()
+		list_code = read_file('orglist.html')
 		list = orglist.parse_page(list_code)
 
 		self.assertEqual(27, len(list['orgs'].keys()))

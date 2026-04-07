@@ -31,8 +31,8 @@ class TestOrgRDF(TestRDF):
 			"select ?page where { <@base#subject> foaf:page <http://www.originalsoundversion.com/?p=3691> . }" : 1
 		}
 		test_first_result = {
-			"select ?date where { ?album dcterms:created ?date . } order by ?date" : datetime.date(2011,02,23),
-			"select ?date where { ?album schema:datePublished ?date . } order by ?date" : datetime.date(2011,02,23),
+			"select ?date where { ?album dcterms:created ?date . } order by ?date" : datetime.date(2011,2,23),
+			"select ?date where { ?album schema:datePublished ?date . } order by ?date" : datetime.date(2011,2,23),
 			"select ?catalog where { ?album schema:datePublished ?date . ?album mo:catalogue_number ?catalog . } order by ?date" : "DERP-10012~4",
 			"select ?album where { ?album schema:datePublished ?date . } order by ?date" : "<@basealbum/22773#subject>",
 			"select ?name where { ?album schema:datePublished ?date . ?album schema:name ?name . filter(lang(?name)='ja-latn') } order by ?date" : "THE LAST STORY Original Soundtrack",

@@ -6,12 +6,16 @@ from vgmdb.parsers import org
 
 base = os.path.dirname(__file__)
 
+def read_file(name):
+	with open(os.path.join(base, name), 'r', errors='ignore') as data:
+		return data.read()
+
 class TestOrgs(unittest.TestCase):
 	def setUp(self):
 		pass
 
 	def test_dogear(self):
-		dogear_code = file(os.path.join(base, 'org_dogear.html'), 'r').read()
+		dogear_code = read_file('org_dogear.html')
 		dogear = org.parse_page(dogear_code)
 		self.assertEqual(u"Dog Ear Records Co., Ltd.", dogear['name'])
 		self.assertEqual(u"Media / Entertainment Company", dogear['type'])
@@ -31,7 +35,7 @@ class TestOrgs(unittest.TestCase):
 		self.assertEqual(u"https://media.vgm.io/orgs/53/135/135-1246205463.gif", dogear['picture_full'])
 
 	def test_vagrancy(self):
-		vagrancy_code = file(os.path.join(base, 'org_vagrancy.html'), 'r').read()
+		vagrancy_code = read_file('org_vagrancy.html')
 		vagrancy = org.parse_page(vagrancy_code)
 		self.assertEqual(u"VAGRANCY", vagrancy['name'])
 		self.assertEqual(u"Akiko Shikata", vagrancy['staff'][0]['names']['en'])
@@ -42,7 +46,7 @@ class TestOrgs(unittest.TestCase):
 		self.assertEqual(u"event/29", vagrancy['releases'][0]['event']['link'])
 
 	def test_vagrancy_logged_in(self):
-		vagrancy_code = file(os.path.join(base, 'org_vagrancy_logged_in.html'), 'r').read()
+		vagrancy_code = read_file('org_vagrancy_logged_in.html')
 		vagrancy = org.parse_page(vagrancy_code)
 		self.assertEqual(u"Doujin Group / Independent", vagrancy['type'])
 		self.assertEqual(30, len(vagrancy['releases']))

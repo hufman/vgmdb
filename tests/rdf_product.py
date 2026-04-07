@@ -23,7 +23,7 @@ class TestProductRDF(TestRDF):
 			"select ?name where { <@base#subject> schema:name ?name . }" : "The Elder Scrolls V: Skyrim",
 			"select ?catalog where { ?album mo:catalogue_number \"JOY-552\" . ?album mo:catalogue_number ?catalog . } " : "JOY-552",
 			"select ?name where { ?album mo:catalogue_number \"JOY-552\" . ?album dcterms:title ?name . filter(lang(?name)='en') } " : "A Bard's Side Quest",
-			"select ?date where { ?album mo:catalogue_number \"JOY-552\" . ?album dcterms:created ?date . } " : datetime.date(2013,01,18),
+			"select ?date where { ?album mo:catalogue_number \"JOY-552\" . ?album dcterms:created ?date . } " : datetime.date(2013,1,18),
 			"select ?about where { ?album mo:catalogue_number \"JOY-552\" . ?album schema:about ?about . } " : "<@base#subject>",
 			"select ?image where { <@base#subject> foaf:depiction ?image . ?image a foaf:Image } " : "<https://media.vgm.io/products/78/1387/1387-1347504448.jpg>",
 			"select ?image where { <@base#subject> schema:image ?image . ?image a schema:ImageObject } " : "<https://media.vgm.io/products/78/1387/1387-1347504448.jpg>",

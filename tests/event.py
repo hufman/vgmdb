@@ -6,12 +6,16 @@ from vgmdb.parsers import event
 
 base = os.path.dirname(__file__)
 
+def read_file(name):
+	with open(os.path.join(base, name), 'r', errors='ignore') as data:
+		return data.read()
+
 class TestEvents(unittest.TestCase):
 	def setUp(self):
 		pass
 
 	def test_m3(self):
-		m3_code = file(os.path.join(base, 'event_m3.html'), 'r').read()
+		m3_code = read_file('event_m3.html')
 		m3 = event.parse_page(m3_code)
 		self.assertEqual(u'M3-2012 Fall', m3['name'])
 		self.assertEqual(u'2012-10-28', m3['startdate'])
@@ -27,7 +31,7 @@ class TestEvents(unittest.TestCase):
 		self.assertEqual(30, len(m3['releases']))
 
 	def test_cm54(self):
-		cm54_code = file(os.path.join(base, 'event_cm54.html'), 'r').read()
+		cm54_code = read_file('event_cm54.html')
 		cm54 = event.parse_page(cm54_code)
 		self.assertEqual(u'Comic Market 54', cm54['name'])
 		self.assertEqual(u'1998-08-14', cm54['startdate'])

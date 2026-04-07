@@ -2,11 +2,11 @@
 import os
 import datetime
 import unittest
+from urllib.parse import urljoin
 
 from ._rdf import TestRDF
 from vgmdb.parsers import albumlist
 from vgmdb.config import BASE_URL
-from urlparse import urljoin
 
 class TestAlbumlistRDF(TestRDF):
 	data_parser = lambda self,x: albumlist.parse_page(x)
@@ -20,8 +20,8 @@ class TestAlbumlistRDF(TestRDF):
 			"select ?album where { ?album rdf:type schema:MusicAlbum . }" : 99
 		}
 		test_first_result = {
-			"select ?published where { <@basealbum/12991#subject> schema:datePublished ?published . }" : datetime.date(2004,04,29),
-			"select ?published where { <@basealbum/12991#subject> dcterms:created ?published . }" : datetime.date(2004,04,29),
+			"select ?published where { <@basealbum/12991#subject> schema:datePublished ?published . }" : datetime.date(2004,4,29),
+			"select ?published where { <@basealbum/12991#subject> dcterms:created ?published . }" : datetime.date(2004,4,29),
 			"select ?published where { <@basealbum/12991#subject> mo:catalogue_number ?published . }" : "OEMM-0073",
 			"select ?name where { <@basealbum/12992#subject> dcterms:title ?name . FILTER(lang(?name)='en') }" : "f II"
 		}

@@ -1,4 +1,4 @@
-from .commonutils import normalize_language_codes
+from .commonutils import format_duration, normalize_language_codes
 import urllib.parse
 import datetime
 
@@ -26,7 +26,7 @@ class outputter(object):
 		self._templates.filters['link_album'] = self.link
 		self._templates.filters['lang_names'] = self.lang_names
 		self._templates.filters['format_date'] = self.format_date
-		self._templates.filters['format_interval'] = self.format_interval
+		self._templates.filters['format_duration'] = self.format_duration
 		self._templates.filters['or_unavailable'] = self.or_unavailable
 		self._templates.tests['empty'] = lambda x:len(x)==0
 		self._templates.tests['linktype'] = self.linktype
@@ -137,9 +137,9 @@ class outputter(object):
 				return date.strftime("%%b %%d, %s"%year)
 			else:
 				return date
-	def format_interval(self, time):
+	def format_duration(self, time):
 		if time:
-			return "PT" + time
+			return format_duration(time)
 		else:
 			return ''
 

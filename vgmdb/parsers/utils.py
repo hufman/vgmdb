@@ -113,7 +113,7 @@ def is_english(text):
 	if (count == 0):
 		return True	# by default
 	else:
-		return (count_english / count) > 0.5
+		return (count_english / count) > 0.8
 
 def parse_date_time(time):
 	"""
