@@ -3,5 +3,5 @@ if [ z"$DEBUG" = "z" ]; then
 	export DEBUG=False
 fi
 export USE_GEVENT=True
-cd /; exec su www-data -s /bin/sh -c "/usr/bin/python2 run.py"
+cd /; exec su www-data -s /bin/sh -c "/venv/bin/python run.py"
 

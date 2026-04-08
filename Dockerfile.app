@@ -1,4 +1,4 @@
-FROM vgmdb_reqs:0b51ca
+FROM vgmdb_reqs:fafeba09eb80
 
 # install vgmdb software
 ADD vgmdb /vgmdb
@@ -16,6 +16,7 @@ RUN mkdir /etc/service/celery-priority
 ADD docker/sv-celery-priority /etc/service/celery-priority/run
 RUN mkdir /etc/service/celery-background
 ADD docker/sv-celery-background /etc/service/celery-background/run
+RUN ln -s /vgmdb /venv/lib/python3.11/site-packages/vgmdb
 
 # other changes
 RUN chmod +x /etc/service/*/run

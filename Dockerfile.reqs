@@ -1,4 +1,4 @@
-FROM phusion/baseimage:bionic-1.0.0
+FROM phusion/baseimage:noble
 
 # setting up the baseimage
 ENV HOME=/root
@@ -12,16 +12,23 @@ RUN mkdir /etc/service/nginx
 ADD docker/sv-nginx /etc/service/nginx/run
 ADD docker/nginx-site.conf /etc/nginx/sites-enabled/default
 
+# Install python3.11
+RUN apt install software-properties-common -y
+RUN add-apt-repository ppa:deadsnakes/ppa
+RUN apt-get update -y
+RUN apt install python3.11 python3-pip python3-virtualenv -y
+
 # explicitly install vgmdb runtime requirements, to avoid
 # removal in apt-get autoremove.
-RUN apt-get install -y libpython2.7 libxml2 libxslt1.1 zlib1g
+RUN apt-get install -y libxml2 libxslt1.1 zlib1g
 
 # install vgmdb requirements
-RUN apt-get install -y python-dev python-pip libxml2-dev libxslt1-dev zlib1g-dev git
-RUN apt-get install -y uwsgi uwsgi-plugin-python uwsgi-plugin-gevent-python python-gevent
+RUN apt-get install -y python3.11-dev python3-pip libxml2-dev libxslt1-dev zlib1g-dev git
+RUN apt-get install -y uwsgi uwsgi-plugin-python3 uwsgi-plugin-gevent-python3
 ADD requirements.txt /requirements.txt
-RUN sed -i '/gevent/d' /requirements.txt
-RUN pip install -r /requirements.txt
+RUN virtualenv --python=/usr/bin/python3.11 /venv
+RUN /venv/bin/pip install -U setuptools
+RUN /venv/bin/pip install --break-system-packages -r /requirements.txt
 RUN ln -s /usr/lib/uwsgi/plugins/gevent_python_plugin.so /usr/lib/uwsgi/plugins/gevent_plugin.so
 
 # other changes
@@ -30,5 +37,5 @@ RUN chmod +x /etc/service/*/run
 CMD ["/sbin/my_init"]
 EXPOSE 80
 
-RUN apt-get autoremove -y python-dev libxml2-dev libxslt1-dev zlib1g-dev
+RUN apt-get autoremove -y python3.11-dev libxml2-dev libxslt1-dev zlib1g-dev
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
