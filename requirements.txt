@@ -32,7 +32,7 @@ celery==5.2.7
 
 jsonschema==2.4.0
 
-redis==2.10.6
+redis==5.3.1
 
 # Monitoring
 statsd-telegraf==3.2.1.post1
