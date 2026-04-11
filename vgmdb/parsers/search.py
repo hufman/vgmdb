@@ -95,7 +95,7 @@ def search_locally(query):
 	            'products':[]}
 
 	start = time.time()
-	pieces = [p.decode('utf-8').lower() for p in query.split() if len(p) >= 3]
+	pieces = [p.lower() for p in query.split() if len(p) >= 3]
 	substrings = ["(?=.*%s)"%(re.escape(p),) for p in pieces]
 	needle = re.compile("".join(substrings), re.I)
 	for section, data in SEARCH_INDEX.items():
