@@ -58,7 +58,7 @@ def _parse_product(soup_row):
 	soup_link = soup_name.a
 	product_link = soup_link['href']
 	product_link = utils.trim_absolute(product_link)
-	product_name = soup_link.string
+	product_name = next(soup_link.span.stripped_strings)
 
 	return {'link':product_link,
 	        'type': product_type,
