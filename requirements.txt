@@ -28,7 +28,7 @@ amightygirl.paapi5-python-sdk==1.0.0
 
 # Seller optimizations
 futures==2.1.4
-celery==5.2.7
+celery==5.3.6
 
 jsonschema==2.4.0
 

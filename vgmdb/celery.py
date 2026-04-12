@@ -14,9 +14,10 @@ celery = Celery('vgmdb.celery',
                 broker=broker,
                 backend=result,
                 include=['vgmdb._tasks', 'vgmdb.sellers._tasks'])
-celery.conf.update(
-	CELERY_CACHE_BACKEND=cache
-)
+celery.conf.update({
+	'cache_backend': cache,
+	'result_backend_thread_safe': True,
+})
 
 @celeryd_init.connect
 def generate_search_index(*args, **kwargs):
