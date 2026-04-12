@@ -74,7 +74,7 @@ if 'MEMCACHE_SERVERS' in globals():
 env_keys = [
   'BASE_URL', 'DATA_BACKGROUND', 'SEARCH_INDEX', 'STATSD_HOST',
   'CELERY_BROKER', 'CELERY_RESULT_BACKEND', 'CELERY_CACHE_BACKEND', 'CELERY_PING',
-  'REDIS_HOST', 'CACHE_PATH',
+  'REDIS_HOST', 'CACHE_PATH', 'CACHE_PATH_READONLY',
   'AMAZON_ACCESS_KEY_ID', 'AMAZON_SECRET_ACCESS_KEY', 'AMAZON_ASSOCIATE_TAG',
   'ITUNES_AFFILIATE_ID', 'ITUNES_TD_PROGRAM_ID', 'ITUNES_TD_WEBSITE_ID',
   'DISCOGS_KEY', 'DISCOGS_SECRET', 'RDIO_KEY', 'RDIO_SECRET',
@@ -82,7 +82,7 @@ env_keys = [
 ]
 for key in env_keys:
 	if os.environ.get(key):
-		if key in {'CELERY_PING', 'DATA_BACKGROUND', 'SEARCH_INDEX'}:
+		if key in {'CELERY_PING', 'DATA_BACKGROUND', 'SEARCH_INDEX', 'CACHE_PATH_READONLY'}:
 			value = os.environ[key]
 			if value.lower().startswith('t'):
 				globals()[key] = True

@@ -177,7 +177,37 @@ class FileCache(object):
 		except:
 			pass
 
+class ReadOnlyCache(object):
+	def __init__(self, backend):
+		self._backend = backend
+	def __getitem__(self, key):
+		return self._backend[key]
+	def __setitem__(self, key, value):
+		pass
+	def __delitem__(self, key):
+		pass
+
+class MultiCache(object):
+	def __init__(self, *backends):
+		self._backends = backends
+
+	def __getitem__(self, key):
+		for backend in self._backends:
+			existing = backend[key]
+			if existing:
+				return existing
+		return None
+
+	def __setitem__(self, key, value):
+		for backend in self._backends:
+			backend[key] = value
+
+	def __delitem__(self, key):
+		for backend in self._backends:
+			del backend[key]
+
 cache = None
+file_cache = None
 
 if not cache and gaecache:
 	try:
@@ -200,9 +230,21 @@ if not cache and 'redis' in globals() and config.REDIS_HOST:
 	except Exception as e:
 		logger.warning("Failed to create Redis client: %s" % (e, ))
 
-if not cache and config.CACHE_PATH:
+if config.CACHE_PATH:
 	logger.info("Storing cache files at %s" % (config.CACHE_PATH,))
-	cache = FileCache(config.CACHE_PATH)
+	file_cache = FileCache(config.CACHE_PATH)
+if file_cache and config.CACHE_PATH_READONLY:
+	logger.info('Marking file cache as readonly')
+	file_cache = ReadOnlyCache(file_cache)
+
+if cache and file_cache:
+	logger.info("Enabling MultiCache")
+	cache = MultiCache(cache, file_cache)
+elif not cache and file_cache:
+	cache = file_cache
+else:
+	# no file cache
+	pass
 
 if not cache:
 	logger.info("Failing back to null cache")
