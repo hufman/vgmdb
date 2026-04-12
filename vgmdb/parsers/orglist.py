@@ -62,6 +62,6 @@ def _parse_org(soup_org):
 def _parse_orglink(soup_link):
 	org_link = soup_link['href']
 	org_link = utils.trim_absolute(org_link)
-	org_name = soup_link.string
+	org_name = next(soup_link.stripped_strings)
 	return {'link': org_link,
 	        'names': {'en':org_name}}
