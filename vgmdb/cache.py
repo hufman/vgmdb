@@ -134,6 +134,49 @@ class RedisCache(object):
 		except:
 			pass
 
+class FileCache(object):
+	def __init__(self, path):
+		self._path = path
+		if not os.path.exists(path):
+			logger.error('Cache path %s does not exist!' % (key,))
+	def _ensure_parent_directory(self, key):
+		path = os.path.join(self._path, os.path.dirname(key))
+		if path.startswith(self._path):
+			if not os.path.exists(path):
+				os.makedirs(path)
+	def _get_key_path(self, key):
+		path = os.path.join(self._path, key)
+		if path.startswith(self._path):
+			return path
+		else:
+			raise Exception('Invalid cache key')
+
+	def __getitem__(self, key):
+		path = self._get_key_path(key)
+		if os.path.exists(path):
+			try:
+				with open(path, 'r') as data:
+					return json.load(data)
+			except Exception as e:
+				logger.warning("Failed to load %s from cache: %s"% (key, e))
+				return None
+		else:
+			return None
+	def __setitem__(self, key, value):
+		try:
+			self._ensure_parent_directory(key)
+			path = self._get_key_path(key)
+			with open(path, 'w') as data:
+				return json.dump(value, data)
+		except Exception as e:
+			logger.warning("Failed to set %s in cache: %s"% (key, e))
+	def __delitem__(self, key):
+		try:
+			path = self._get_key_path(key)
+			os.unlink(path)
+		except:
+			pass
+
 cache = None
 
 if not cache and gaecache:
@@ -150,12 +193,16 @@ if not cache and memcache:
 	except Exception as e:
 		logger.warning("Failed to create Memcache client: %s" % (e, ))
 
-if not cache and 'redis' in globals() and hasattr(config, 'REDIS_HOST'):
+if not cache and 'redis' in globals() and config.REDIS_HOST:
 	try:
 		logger.info("Connecting Redis client to %s" % (config.REDIS_HOST,))
 		cache = RedisCache(config.REDIS_HOST)
 	except Exception as e:
 		logger.warning("Failed to create Redis client: %s" % (e, ))
+
+if not cache and config.CACHE_PATH:
+	logger.info("Storing cache files at %s" % (config.CACHE_PATH,))
+	cache = FileCache(config.CACHE_PATH)
 
 if not cache:
 	logger.info("Failing back to null cache")
