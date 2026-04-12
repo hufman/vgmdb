@@ -1,0 +1,10 @@
+FROM hufman/vgmdb:latest
+
+RUN mkdir /var/cache/vgmdb
+ENV CACHE_PATH=/var/cache/vgmdb
+
+RUN --mount=type=secret,id=user_cookie USER_COOKIE=`cat /run/secrets/user_cookie` /venv/bin/python /scripts/cache_lists.py
+
+ENV CACHE_PATH_READONLY=true
+
+CMD ["/bin/false"]

@@ -11,4 +11,4 @@ def parse_org(org):
 	org_info = vgmdb.fetch.org(org, use_cache=False)
 	return json.dumps(org_info, sort_keys=True, indent=4, separators=(',',': '), ensure_ascii=False)
 if __name__ == '__main__' and len(sys.argv) > 1:
-	print parse_org(sys.argv[1]).encode('utf-8')
+	print(parse_org(sys.argv[1]))

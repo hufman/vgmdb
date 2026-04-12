@@ -9,6 +9,7 @@ RUN mkdir /www_root
 ADD static /www_root/static
 ADD raml /www_root/raml
 ADD schema /www_root/schema
+ADD scripts /scripts
 ADD static/robots.txt /www_root/robots.txt
 RUN mkdir /etc/service/vgmdb
 ADD docker/sv-vgmdb /etc/service/vgmdb/run

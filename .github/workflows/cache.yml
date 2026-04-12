@@ -1,0 +1,47 @@
+name: cache
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    if: github.repository == 'hufman/vgmdb'
+    strategy:
+      matrix:
+        platform: [amd64, arm64]
+    steps:
+      - name: Checkout the project
+        uses: actions/checkout@v4
+      - name: Login to DockerHub
+        run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u hufman --password-stdin
+
+      - name: Prepare Qemu building
+        uses: docker/setup-qemu-action@v2
+
+      - name: Pull vgmdb image
+        run: |
+          docker pull hufman/vgmdb:latest
+
+      - name: Build the platform-specific image
+        run: docker build -f Dockerfile.cache --platform $PLATFORM --secret id=user_cookie,env=USER_COOKIE -t hufman/vgmdb_cache:latest-$PLATFORM .
+        env:
+          PLATFORM: ${{ matrix.platform }}
+          USER_COOKIE: ${{ secrets.USER_COOKIE }}
+
+      - name: Push the image
+        run: |
+          PLATFORM=${{ matrix.platform }}
+          docker push hufman/vgmdb_cache:latest-$PLATFORM
+
+  dockerfinalize:
+    needs: build
+    runs-on: ubuntu-24.04
+    if: github.repository == 'hufman/vgmdb'
+    steps:
+      - name: Login to DockerHub
+        run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u hufman --password-stdin
+      - name: Combine multiplatform images
+        run: |
+          docker manifest create hufman/vgmdb_cache:latest $(docker manifest inspect hufman/vgmdb_cache:latest-amd64 >/dev/null && echo hufman/vgmdb_cache:latest-amd64) $(docker manifest inspect hufman/vgmdb_cache:latest-arm64 >/dev/null && echo hufman/vgmdb_cache:latest-arm64)
+          docker manifest push hufman/vgmdb_cache:latest
