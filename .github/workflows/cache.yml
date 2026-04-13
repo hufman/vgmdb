@@ -45,3 +45,12 @@ jobs:
         run: |
           docker manifest create hufman/vgmdb_cache:latest $(docker manifest inspect hufman/vgmdb_cache:latest-amd64 >/dev/null && echo hufman/vgmdb_cache:latest-amd64) $(docker manifest inspect hufman/vgmdb_cache:latest-arm64 >/dev/null && echo hufman/vgmdb_cache:latest-arm64)
           docker manifest push hufman/vgmdb_cache:latest
+
+      - name: Deploy the latest version
+        uses: octokit/request-action@v2.x
+        with:
+          route: POST /repos/:repository/actions/workflows/restart.yml/dispatches
+        env:
+          GITHUB_TOKEN: "${{ secrets.DEPLOY_TOKEN }}"
+          INPUT_REPOSITORY: "${{ github.repository }}"
+          INPUT_REF: master

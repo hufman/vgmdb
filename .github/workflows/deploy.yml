@@ -23,7 +23,7 @@ jobs:
           fetch-depth: 0
       - name: Switch to specified version
         run: |
-          sed -i 's/vgmdb\(.*\):latest/vgmdb\1:${{ github.event.inputs.tag }}/' docker-compose.yml
+          sed -i 's/vgmdb\(_web|_celery\):latest/vgmdb\1:${{ github.event.inputs.tag }}/' docker-compose.yml
       - name: Extract Docker authentication
         run: |
           mkdir .docker
@@ -52,6 +52,7 @@ jobs:
       - name: Deploy the services (arm)
         run: |
           docker compose -p vgmdbapi pull --quiet
+          docker pull hufman/vgmdb_cache:latest
         env:
           DOCKER_HOST: "${{ secrets.DOCKER_HOST_2 }}"
       - name: Restart the services (arm)

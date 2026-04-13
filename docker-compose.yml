@@ -44,9 +44,17 @@ services:
     labels:
       com.joyent.package: g4-highcpu-256M
     restart: always
+    volumes:
+      - type: image
+        source: hufman/vgmdb_cache:latest
+        target: /var/cache/vgmdb
+        image:
+          subpath: var/cache/vgmdb
     environment:
       - SEARCH_INDEX
       - REDIS_HOST=redis
+      - CACHE_PATH=/var/cache/vgmdb
+      - CACHE_PATH_READONLY=true
       - DEBUG
       - STATSD_HOST
       - AMAZON_ACCESS_KEY_ID
