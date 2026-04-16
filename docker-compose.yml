@@ -66,3 +66,9 @@ services:
       - SPOTIFY_ID
       - SPOTIFY_SECRET
       - USER_COOKIE
+  vgmdb_flower:
+    image: mher/flower:latest
+    links:
+      - redis
+    restart: always
+    command: celery --broker=redis://redis flower
