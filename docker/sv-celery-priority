@@ -1,3 +1,3 @@
 #!/bin/sh
 export SEARCH_INDEX=false
-exec su -s /bin/sh www-data -c "/venv/bin/celery --config=vgmdb.celery --app=vgmdb.celery worker --max-tasks-per-child=1000 --time-limit=300 --concurrency=5 --pool=threads --hostname=vgmdb-priority.%h --queues=celery"
+exec su -s /bin/sh www-data -c "/venv/bin/celery --config=vgmdb.celery --app=vgmdb.celery worker --max-tasks-per-child=1000 --time-limit=300 --concurrency=4 --pool=prefork --hostname=vgmdb-priority.%h --queues=celery"
