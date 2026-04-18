@@ -17,6 +17,8 @@ RUN mkdir /etc/service/celery-priority
 ADD docker/sv-celery-priority /etc/service/celery-priority/run
 RUN mkdir /etc/service/celery-background
 ADD docker/sv-celery-background /etc/service/celery-background/run
+RUN mkdir /etc/service/celery-search
+ADD docker/sv-celery-search /etc/service/celery-search/run
 RUN ln -s /vgmdb /venv/lib/python3.11/site-packages/vgmdb
 RUN echo '* soft nofile 262144' > /etc/security/limits.d/nofile.conf
 

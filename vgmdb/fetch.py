@@ -59,7 +59,7 @@ def _fetch_page(cache_key, page_type, id, link=None, use_cache=True, use_celery=
 				if page_type == 'search':
 					running = task.apply_async(args=[cache_key, page_type, id, link],
                                                                    expires=60,
-                                                                   queue='background')
+                                                                   queue='search')
 				else:
 					running = task.apply_async(args=[cache_key, page_type, id, link],
                                                                    expires=60)
