@@ -16,7 +16,6 @@ celery = Celery('vgmdb.celery',
                 include=['vgmdb._tasks', 'vgmdb.sellers._tasks'])
 celery.conf.update({
 	'cache_backend': cache,
-	'result_backend_thread_safe': True,
 })
 
 @celeryd_init.connect
