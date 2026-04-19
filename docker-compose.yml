@@ -55,6 +55,7 @@ services:
       - REDIS_HOST=redis
       - CACHE_PATH=/var/cache/vgmdb
       - CACHE_PATH_READONLY=true
+      - INDEX_PATH=/tmp/vgmdb_index
       - DEBUG
       - STATSD_HOST
       - AMAZON_ACCESS_KEY_ID
