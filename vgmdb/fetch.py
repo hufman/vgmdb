@@ -37,7 +37,7 @@ def _fetch_page(cache_key, page_type, id, link=None, use_cache=True, use_celery=
 	if prevdata:
 		_metrics.incr('fetch.cache_hit', tags={'page_type': page_type})
 		info = prevdata
-		if not _is_info_current(info):
+		if not _is_info_current(info) and getattr(_vgmdb.config, 'DATA_BACKGROUND', False):
 			_metrics.incr('fetch.cache_refresh', tags={'page_type': page_type})
 			task = _vgmdb._tasks.request_page
 			running = task.apply_async(args=[cache_key, page_type, id, link], queue='background')

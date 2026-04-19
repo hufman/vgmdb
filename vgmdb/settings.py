@@ -7,9 +7,10 @@ CELERY_BROKER = 'amqp://guest@127.0.0.1//'
 CELERY_RESULT_BACKEND = 'cache'
 CELERY_CACHE_BACKEND = 'memcached://127.0.0.1:11211/'
 CELERY_PING = True
-REDIS_HOST=None
-CACHE_PATH=None
-CACHE_PATH_READONLY=False
+REDIS_HOST  =None
+CACHE_PATH = None
+CACHE_PATH_READONLY = False
+INDEX_PATH = None
 DATA_BACKGROUND = False
 SEARCH_INDEX = False
 STATSD_HOST = None
@@ -39,3 +40,7 @@ try:
 	from .local_settings import *
 except Exception as e:
 	logging.warning("Could not load local_settings: %s" % (e,))
+
+# fill in search index path, if available
+if CACHE_PATH and not INDEX_PATH:
+	INDEX_PATH = CACHE_PATH + '/search_index'

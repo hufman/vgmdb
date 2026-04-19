@@ -1,15 +1,22 @@
-from bloom_filter import BloomFilter
 import bs4
+import os
+import whoosh
+import whoosh.analysis
+import whoosh.fields
+import whoosh.index
+import whoosh.qparser
 
-from itertools import combinations
+from itertools import chain
 import logging
 import random
 import re
 import sys
 import time
+import threading
 import urllib.parse
 import urllib.request
 from . import utils
+import vgmdb.settings
 
 logger = logging.getLogger(__name__)
 
@@ -17,59 +24,99 @@ class AppURLOpener(urllib.request.FancyURLopener):
 	version = "vgmdbapi/0.2 +https://vgmdb.info"
 urllib.request._urlopener = AppURLOpener()
 
-BLOOM_INDEX = {}
+THREAD_LOCAL = threading.local()
 SEARCH_INDEX = {}
+
+class MultiFilter(whoosh.analysis.MultiFilter):
+	# https://github.com/Sygil-Dev/whoosh-reloaded/pull/82/changes
+	def __call__(self, tokens):
+		t = next(tokens, None)
+		if t is not None:
+			selected_filter = self.filters.get(t.mode, self.default_filter)
+			return selected_filter(chain([t], tokens))
+		return []
 
 def generate_search_index():
 	import vgmdb.fetch
 	logger.info("Starting to build search index")
 	start = time.time()
 
-	def add_keyword(bloom_filter, keyword):
-		keyword = keyword.lower()
-		length = len(keyword)
-		for start, end in combinations(range(length), r=2):
-			if start + 2 >= end:  # a string of length <=3
-				continue
-			if start + 15 < end:  # a string of length >= 16
-				continue
-			bloom_filter.add(keyword[start:end+1].encode('utf-8'))
-	def add_keywords(bloom_filter, phrase):
-		for piece in phrase.split():
-			add_keyword(bloom_filter, piece)
-	def add_items(bloom_filter, items):
+	def index_path():
+		if not vgmdb.settings.INDEX_PATH:
+			raise Exception('CACHE_PATH or INDEX_PATH is not set')
+		return vgmdb.settings.INDEX_PATH
+
+	def create_index(name):
+		analyzer = whoosh.analysis.StandardAnalyzer(minsize=3) | MultiFilter(
+			index=whoosh.analysis.NgramFilter(minsize=3, maxsize=20),
+			query=whoosh.analysis.PassFilter(),
+		)
+		schema = whoosh.fields.Schema(
+			title=whoosh.fields.TEXT(sortable=True, analyzer=analyzer),
+			document=whoosh.fields.STORED,
+		)
+		if not os.path.exists(index_path()):
+			os.mkdir(index_path())
+		storage = whoosh.filedb.filestore.FileStorage(index_path())
+		return storage.create_index(schema, indexname=name)
+
+	def open_index(name):
+		index_complete = os.path.exists(os.path.join(index_path(), '%s.sealed' % (name,)))
+		if index_complete and whoosh.index.exists_in(index_path(), indexname=name):
+			storage = whoosh.filedb.filestore.FileStorage(index_path())
+			return storage.open_index(indexname=name)
+		else:
+			return None
+
+	def add_item_to_index(index, item):
+		titles = []
+		for title in item.get('titles', {}).values():
+			titles.append(title)
+		for name in item.get('names', {}).values():
+			titles.append(name)
+		if 'name_real' in item:
+			titles.append(item['name_real'])
+		index.add_document(title='\n'.join(titles), document=item)
+
+	def add_items_to_index(index, items):
 		for item in items:
-			for title in set(item.get('titles', {}).values()):
-				add_keywords(bloom_filter, title)
-			for name in set(item.get('names', {}).values()):
-				add_keywords(bloom_filter, name)
-			if 'name_real' in item:
-				add_keywords(bloom_filter, item['name_real'])
-
-	for list, section in (('albumlist', 'albums'), ('artistlist', 'artists'), ('productlist', 'products')):
-		bloom_elements = 100000000 if section == 'albums' else 1000000
-		BLOOM_INDEX[section] = BloomFilter(max_elements=bloom_elements, error_rate=0.1)
-		SEARCH_INDEX[section] = []
-		for letter in '#ABCDEFGHIJKLMNOPQRSTUVWXYZ':
-			id = letter + '1'
-			while id:
-				logger.info('... %s/%s' % (list, id))
-				data = vgmdb.fetch.list(list, id, use_celery=False)
-				SEARCH_INDEX[section].extend(data[section])
-				add_items(BLOOM_INDEX[section], data[section])
-				id = data['pagination'].get('link_next', '/').split('/')[-1]  # next page
-
-	data = vgmdb.fetch.list('orglist', '', use_celery=False)
-	SEARCH_INDEX['orgs'] = []
-	for letter_data in data['orgs'].values():
-		SEARCH_INDEX['orgs'].extend(letter_data)
-	# insert into bloom filter
-	BLOOM_INDEX['orgs'] = BloomFilter(max_elements=100000, error_rate=0.1)
-	add_items(BLOOM_INDEX['orgs'], SEARCH_INDEX['orgs'])
+			add_item_to_index(index, item)
 
 	count = 0
-	for section_data in SEARCH_INDEX.values():
-		count += len(section_data)
+	for list, section in (('albumlist', 'albums'), ('artistlist', 'artists'), ('productlist', 'products')):
+		index = open_index(section)
+		if index:
+			SEARCH_INDEX[section] = index
+		else:
+			SEARCH_INDEX[section] = create_index(section)
+			writer = SEARCH_INDEX[section].writer(limitmb=256)
+			for letter in '#ABCDEFGHIJKLMNOPQRSTUVWXYZ':
+				id = letter + '1'
+				while id:
+					logger.info('... %s/%s' % (list, id))
+					data = vgmdb.fetch.list(list, id, use_celery=False)
+					add_items_to_index(writer, data[section])
+					count += len(data)
+					id = data['pagination'].get('link_next', '/').split('/')[-1]  # next page
+			writer.commit()
+			index_seal = os.path.join(index_path(), '%s.sealed' % (section,))
+			open(index_seal, 'a').close()
+
+	section = 'orgs'
+	index = open_index(section)
+	if index:
+		SEARCH_INDEX[section] = index
+	else:
+		SEARCH_INDEX[section] = create_index(section)
+		writer = SEARCH_INDEX[section].writer(limitmb=256)
+		data = vgmdb.fetch.list('orglist', '', use_celery=False)
+		for letter_data in data[section].values():
+			add_items_to_index(writer, letter_data)
+			count += len(letter_data)
+		writer.commit()
+		index_seal = os.path.join(index_path(), '%s.sealed' % (section,))
+		open(index_seal, 'a').close()
+
 	logger.info("Building index of %s items took %s" % (count, time.time() - start))
 
 def fetch_url(query):
@@ -89,30 +136,30 @@ def fetch_page(query):
 
 
 def search_locally(query):
+	def open_index_searchers():
+		if hasattr(THREAD_LOCAL, 'searchers'):
+			return THREAD_LOCAL.searchers
+		searchers = {}
+		for section, index in SEARCH_INDEX.items():
+			searchers[section] = index.searcher()
+		THREAD_LOCAL.searchers = searchers
+		return searchers
+		
 	sections = {'albums':[],
 	            'artists':[],
 	            'orgs':[],
 	            'products':[]}
 
 	start = time.time()
-	pieces = [p.lower() for p in query.split() if len(p) >= 3]
-	substrings = ["(?=.*%s)"%(re.escape(p),) for p in pieces]
-	needle = re.compile("".join(substrings), re.I)
-	for section, data in SEARCH_INDEX.items():
+	for section, searcher in open_index_searchers().items():
 		# check if this section has this set of keywords
-		if not all(piece[:16].encode('utf-8') in BLOOM_INDEX[section] for piece in pieces):
-			logger.debug("%s not found in %s" % (pieces, section))
-			continue  # and skip if not
-		for item in data:
-			# albums
-			if any(needle.match(t) for t in item.get('titles', {}).values()):
-				sections[section].append(item)
-			# others
-			elif any(needle.match(t) for t in item.get('names', {}).values()):
-				sections[section].append(item)
-			elif needle.match(item.get('name_real', '')):
-				sections[section].append(item)
-	logger.debug("Searching for %s locally took %s" % (pieces, time.time() - start,))
+		qp = whoosh.qparser.SimpleParser('title', searcher.ixreader.schema)
+		q = qp.parse(query)
+		results = searcher.search(q, sortedby='title', limit=2000)
+		for hit in results:
+			sections[section].append(hit['document'])
+	logger.debug("Searching for %s locally took %s" % (query, time.time() - start,))
+
 	fake = {
 	    "meta":{},
 	    "query":query,
