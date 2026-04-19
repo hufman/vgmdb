@@ -3,5 +3,6 @@ if [ z"$DEBUG" = "z" ]; then
 	export DEBUG=False
 fi
 export USE_GEVENT=True
-cd /; exec su www-data -s /bin/sh -c "/venv/bin/python run.py"
+#cd /; exec su www-data -s /bin/sh -c "/venv/bin/python run.py"
+cd /; exec su www-data -s /bin/sh -c "/venv/bin/gunicorn --worker-class gevent -b 0.0.0.0:9990 --workers 2 --max-requests 2048 vgmdb.main:app"
 
