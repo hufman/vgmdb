@@ -28,11 +28,15 @@ jobs:
 
   dockerize:
     needs: unitTest
-    runs-on: ubuntu-24.04
+    runs-on: ${{ matrix.runner }}
     if: github.repository == 'hufman/vgmdb'
     strategy:
       matrix:
-        platform: [amd64, arm64]
+        include:
+          - platform: amd64
+            runner: ubuntu-24.04
+          - platform: arm64
+            runner: ubuntu-24.04-arm64
     steps:
       - name: Checkout the project
         uses: actions/checkout@v4
@@ -40,9 +44,6 @@ jobs:
         run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u hufman --password-stdin
       - name: Get the version
         run: echo REV=$(echo ${GITHUB_SHA:0:8}) >> $GITHUB_ENV
-
-      - name: Prepare Qemu building
-        uses: docker/setup-qemu-action@v2
 
       - name: Pull reqs image, if existant
         run: |
